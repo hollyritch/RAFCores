@@ -221,12 +221,12 @@ the reaction $r$. We denote by
 the educts and products of reaction $r$, respectively. A catalyst is an entity $x\in X$ such 
 that $s^{-}_{xr}\cdot s^{+}_{xr}\neq 0$. In this case, we say that $r$ is explicitly catalyzed 
 by $x$. Note that a reaction may have multiple catalysts. We thereby collect all catalysts 
-for a reaction $r$ in the set $C_r$ and denote by $\mathcal{K}\coloneqq\{(K_r,r) \ | \ r\in R 
+for a reaction $r$ in the set $\mathcal{K}_r$ and denote by $\mathcal{K}\coloneqq\{(K_r,r) \ | \ r\in R 
 \text{ explicitly catalyzed}\}$ the set of \emph{catalyzations}. The catalysts of a \emph{catalyzation} 
-are denoted by $X(C_r)$. The triple $(X',R',\mathcal{K}')$ is called a catalyzed RN. 
+are denoted by $X(\mathcal{K}_r)$. The triple $(X',R',\mathcal{K}')$ is called a catalyzed RN. 
 
 A tuple $(X', R')$ is called a subnetwork of $(X,R)$ if $X'\subseteq X, R'\subseteq R$. We 
-say a subnetwork $(X',R')$ is well formed if for an $r\in R': \exists x_1,x_2\in X: 
+say a subnetwork $(X',R')$ is well formed if for any $r\in R': \exists x_1,x_2\in X: 
 s^-_{x_1r}>0, s^+_{x_2r}>0$. Considering a subnetwork $(X',R')$, we may distinguish 
 a certain subset of entities $F', W'\subseteq X$ defined as
 \begin{equation}
@@ -240,15 +240,21 @@ We call $F'$ and $W'$ the set of food and waste molecules for the subnetwork $(X
 respectively. A triple $(X',R',\mathcal{K}')$ such that $X'\subseteq X, R'\subseteq R, 
 \mathcal{K}'\subseteq \mathcal{K}$ is called a catalyzed subnetwork.
 
-The closure of a set $X'$ w.r.t. to a set $R'$ denoted as $ is the unique minimal set $Y$ such that for 
-any $r\in R': 
+The closure of a set $X'$ w.r.t. to a set $R'$ denoted as $c(X'_{R'})$ is the unique minimal set $Y$ such that for 
+any $r\in R'$: 
+
+\begin{equation}
+	E_r\subseteq X'\cup Y \Rightarrow P_r\subseteq W.
+\end{equation}
+
+We thereby define an RAF in our setting as:
 
 \begin{definition}[RAF]
-	Let $(X',R',C')$ be a catalyzed subnetwork with food-set $F'$ and waste molecules $W'$. Then
+	Let $(X',R',\mathcal{K}')$ be a catalyzed subnetwork with food-set $F'$ and waste molecules $W'$. Then
 	$R'$ is called: 
 		\begin{itemize} 
-			\item{\emph{reflexive autocatalytic} if $\forall r\in R': \emptyset \neq X(C_r)\subseteq X'$}
-			\item{\emph{F-generated} if $\forall r\in R': \emptyset \neq X(C_r)\subseteq X'$}
+			\item{\emph{reflexive autocatalytic} if $\forall r\in R': \emptyset \neq X(\mathcal{K}_r)\subseteq X'$}
+			\item{\emph{F-generated} if $\bigcup_{r\in R'} P_r\subseteq c(X'_{R'})$}
 		\end{itemize}
 \end{definition}
 
