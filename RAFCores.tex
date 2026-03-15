@@ -252,7 +252,7 @@ respectively. The closure of a set $X'$ w.r.t. to a set $R'$ denoted as $\closur
 the unique minimal set $Y$ such that for any $r\in R'$: 
 
 \begin{equation}
-	E_r\subseteq X'\cup Y \Rightarrow P_r\subseteq W.
+	E_r\subseteq X'\cup Y \Rightarrow P_r\subseteq Y.
 \end{equation}
 
 A (catalyzed) RN can be represented by its \emph{K\"onig graph}, a bipartite directed graph $\king (X,R,\cat) \coloneqq 
@@ -275,24 +275,29 @@ K\"onig graph} as the bipartite directed graph $\queen (X,R,\cat) \coloneqq (X\c
 	\end{split}
 \end{equation}
 
-We thereby define an RAF in our setting as:
+First, we give a formal definition of a reflexive autocatalytic food-generated system (RAF) 
+as defined in \cite{hordijk_detecting_2004}.
 
 \begin{definition}[RAF]
-	For a RN $(X,R)$ let $(X',R',\cat')$ be a catalyzed subnetwork with food-set $F'$. Then
-	$(X',R',\cat', F')$ is called: 
+	Let $(X,R,\cat)$ be a catalyzed network with $F\subseteq X$. Then
+	a set $R'$ is called  
 		\begin{itemize} 
-			\item[i.]{\emph{reflexive autocatalytic} (RA) if $\forall r\in R': \emptyset \neq X(\mathcal{K}_r)\subseteq X'$}
-			\item[ii.]{\emph{F-generated} if $\bigcup_{r\in R'} E_r\subseteq \closure{R'}{F'}$}
+			\item[i.]{\emph{reflexive autocatalytic} (RA) if $\forall r\in R': \emptyset \neq X(\mathcal{K}_r)\subseteq \bigcup_{r\in R'}E_r\cup P_r$}
+			\item[ii.]{\emph{F-generated} if $\bigcup_{r\in R'} E_r\subseteq \closure{R'}{F}$}
 			\item[iii.]{\emph{reflexive autocatalytic} and \emph{F-generated} (RAF) if both i. and ii. hold}
 		\end{itemize}
 \end{definition}
 
-Note that $E_r\subseteq \closure{R'}{F'}$ directly implies $P_r\subseteq \closure{R'}{F'}$. 
-
-We start with some simple observations. 
+Note that $ii.$ directly implies that also $P_r\subseteq \closure{R'}{F}$. In addition, here $F\subseteq X$ 
+while a food-set $F'$ for a subnetwork $(X',R')$ is defined such that $X'\cap F'=\emptyset$. This 
+allows us to restrict RAFs to subnetworks. We call a subnetwork $(X',R',\cat')$ with 
+food-set $F'$ a \emph{RAF-subnetwork} if $R'$ is a RAF and $X'=\closure{R'}{F'}\setminus F'$. 
 
 \begin{lemma}
-	Let $(X',R',\cat', F')$ be an RAF w.r.t. $F'$. Then there is $v>0$ such that $\SM[X'\setminus F,R']v>0$. 	
+	Let $(X,R,\cat)$ be a catalyzed reaction network. A subnetwork $(X',R',\cat')$ with food-set $F'$ is a 
+	RAF-subnetwork if and only if the following holds: 
+		\item[i.]{$\forall x\in X' \ \exists f\in F': P=(f,\ldots, x)$ is a directed path in $\king(X'\cup F',R',\cat')$}
+		\item[ii.]{$\forall r\in R' \ \exists x\in X'\cup F': (x,r,x)$ is an elementary circuit in $\king(X'\cup F',R',\cat')$}
 \end{lemma}
 \begin{proof}
 	
