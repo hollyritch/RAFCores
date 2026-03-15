@@ -107,6 +107,7 @@
 % \DeclareMathOperator{\orb}{orb}
 \newcommand{\whatever}{\mbox{\,.\,}}
 \newcommand{\king}{\mathbf{K}}
+\newcommand{\queen}{\mathbf{Q}}
 \newcommand{\SM}{\mathbf{S}}
 \newcommand{\closure}[2]{\mathscr{C}_{#1}(#2)}
 \newcommand{\cat}{\mathcal{K}}
@@ -232,7 +233,7 @@ of reaction $r$. Note that a reaction may have multiple catalysts. We collect al
 for a reaction $r$ in the set $\cat_r$ and denote by $\cat(R)\coloneqq\{(K_r,r) \ | \ r\in R 
 \text{ explicitly catalyzed}\}$ the set of \emph{catalyzations}. The catalysts of a \emph{catalyzation} 
 are denoted by $X(\cat_r)$. The triple $(X,R,\cat)$ with $\cat=\cat(R)$ is called a catalyzed RN. Note
-that there maybe uncatalyzed reactions in a catalyzed RN.
+that there may be uncatalyzed reactions in a catalyzed RN.
 
 A tuple $(X', R')$ is called a subnetwork of $(X,R)$ if $X'\subseteq X, R'\subseteq R$, and  
 accordingly, $(X', R',\cat')$ is called a catalyzed subnetwork if additionally $\cat'=\cat(R')$. We 
@@ -254,11 +255,31 @@ the unique minimal set $Y$ such that for any $r\in R'$:
 	E_r\subseteq X'\cup Y \Rightarrow P_r\subseteq W.
 \end{equation}
 
+A (catalyzed) RN can be represented by its \emph{K\"onig graph}, a bipartite directed graph $\king (X,R,\cat) \coloneqq 
+(X\cup R, E_1\cup E_2)$ with
+\begin{equation}
+	\begin{split}
+		E_1 & \coloneqq \{(x,r) \ \vert \ s^-_{xr}>0\} \\
+		E_2 & \coloneqq \{(r,x) \ \vert \ s^+_{xr}>0\}.
+	\end{split}
+\end{equation}
+
+To align with the setting of \cite{hordijk_detecting_2004}, we define a slight variation denoted as \emph{catalyzed 
+K\"onig graph} as the bipartite directed graph $\queen (X,R,\cat) \coloneqq (X\cup R, E_1\cup E_2\cup E_{\cat})$
+
+\begin{equation}
+	\begin{split}
+		E_1 & \coloneqq \{(x,r) \ \vert \ \SM_{xr}<0\} \\
+		E_2 & \coloneqq \{(r,x) \ \vert \ \SM_{xr}>0\} \\
+		E_{\cat} & \coloneqq \{(x,r) \ \vert \ x\in X(\cat_r)\} \\
+	\end{split}
+\end{equation}
+
 We thereby define an RAF in our setting as:
 
 \begin{definition}[RAF]
-	For a RN $(X,R)$ let $(X',R',\mathcal{K}')$ be a catalyzed subnetwork with food-set $F'$. Then
-	$R'$ is called: 
+	For a RN $(X,R)$ let $(X',R',\cat')$ be a catalyzed subnetwork with food-set $F'$. Then
+	$(X',R',\cat', F')$ is called: 
 		\begin{itemize} 
 			\item[i.]{\emph{reflexive autocatalytic} (RA) if $\forall r\in R': \emptyset \neq X(\mathcal{K}_r)\subseteq X'$}
 			\item[ii.]{\emph{F-generated} if $\bigcup_{r\in R'} E_r\subseteq \closure{R'}{F'}$}
@@ -266,6 +287,17 @@ We thereby define an RAF in our setting as:
 		\end{itemize}
 \end{definition}
 
-Note that $E_r\subseteq \closure{R'}{F'}$ directly implies $P_r\subseteq \closure{R'}{F'}$.
+Note that $E_r\subseteq \closure{R'}{F'}$ directly implies $P_r\subseteq \closure{R'}{F'}$. 
+
+We start with some simple observations. 
+
+\begin{lemma}
+	Let $(X',R',\cat', F')$ be an RAF w.r.t. $F'$. Then there is $v>0$ such that $\SM[X'\setminus F,R']v>0$. 	
+\end{lemma}
+\begin{proof}
+	
+\end{proof}
+
+\bibliography{RAFCores}
 
 \end{document}
