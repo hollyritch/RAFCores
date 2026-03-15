@@ -108,6 +108,8 @@
 \newcommand{\whatever}{\mbox{\,.\,}}
 \newcommand{\king}{\mathbf{K}}
 \newcommand{\SM}{\mathbf{S}}
+\newcommand{\closure}[2]{\mathscr{C}_{#1}(#2)}
+\newcommand{\cat}{\mathcal{K}}
 \newcommand{\ORCID}[1]{}
 \DeclareMathOperator{\suck}{succ}
 \newcommand{\Code}[1]{\texttt{\upshape{#1}}}
@@ -211,21 +213,29 @@ and a set of reactions $R$. For any $r\in R$ we can write a stoichiometric equat
 		\sum_{x\in X}s^-_{xr} \cdot x \rightarrow s^+_{xr}\cdot x
 	\end{equation}
 where $s^{\pm}_{xr}$ are the educt and product stoichiometry of the molecule $x$ in 
-the reaction $r$. We denote by 
+the reaction $r$. The \emph{stoichiometric matrix} $\SM$ encodes all net-stoichiometries:
+\begin{equation}
+	\SM_{xr}\coloneqq s^+_{xr}-s^-_{xrs}
+\end{equation}
+ We denote by 
 	\begin{equation}
 		\begin{split}
 			E_r&\coloneqq \{x\in X \ \vert \ s^-_{xr}-s^+_{xr}>0\} \\
 			P_r&\coloneqq \{x\in X \ \vert \ s^-_{xr}-s^+_{xr}<0\} \\
 		\end{split}
 	\end{equation}
-the educts and products of reaction $r$, respectively. A catalyst is an entity $x\in X$ such 
-that $s^{-}_{xr}\cdot s^{+}_{xr}\neq 0$. In this case, we say that $r$ is explicitly catalyzed 
-by $x$. Note that a reaction may have multiple catalysts. We thereby collect all catalysts 
-for a reaction $r$ in the set $\mathcal{K}_r$ and denote by $\mathcal{K}\coloneqq\{(K_r,r) \ | \ r\in R 
+the reactants (educts) and products of reaction $r$, respectively. A catalyst is an entity $x\in X$ such 
+that $s^{-}_{xr}\cdot s^{+}_{xr}\neq 0$ and we say that $r$ is explicitly catalyzed 
+by $x$. In case $s^-_{xr}>s^+_{xr}>0$, $x$ is both reactant and catalyst 
+of reaction $r$, while in case $s^+_{xr}>s^-_{xr}>0$, $x$ is both product and catalyst 
+of reaction $r$. Note that a reaction may have multiple catalysts. We collect all catalysts 
+for a reaction $r$ in the set $\cat_r$ and denote by $\cat(R)\coloneqq\{(K_r,r) \ | \ r\in R 
 \text{ explicitly catalyzed}\}$ the set of \emph{catalyzations}. The catalysts of a \emph{catalyzation} 
-are denoted by $X(\mathcal{K}_r)$. The triple $(X',R',\mathcal{K}')$ is called a catalyzed RN. 
+are denoted by $X(\cat_r)$. The triple $(X,R,\cat)$ with $\cat=\cat(R)$ is called a catalyzed RN. Note
+that there maybe uncatalyzed reactions in a catalyzed RN.
 
-A tuple $(X', R')$ is called a subnetwork of $(X,R)$ if $X'\subseteq X, R'\subseteq R$. We 
+A tuple $(X', R')$ is called a subnetwork of $(X,R)$ if $X'\subseteq X, R'\subseteq R$, and  
+accordingly, $(X', R',\cat')$ is called a catalyzed subnetwork if additionally $\cat'=\cat(R')$. We 
 say a subnetwork $(X',R')$ is well formed if for any $r\in R': \exists x_1,x_2\in X: 
 s^-_{x_1r}>0, s^+_{x_2r}>0$. Considering a subnetwork $(X',R')$, we may distinguish 
 a certain subset of entities $F', W'\subseteq X$ defined as
@@ -237,11 +247,8 @@ a certain subset of entities $F', W'\subseteq X$ defined as
 \end{equation}
 
 We call $F'$ and $W'$ the set of food and waste molecules for the subnetwork $(X',R')$,
-respectively. A triple $(X',R',\mathcal{K}')$ such that $X'\subseteq X, R'\subseteq R, 
-\mathcal{K}'\subseteq \mathcal{K}$ is called a catalyzed subnetwork.
-
-The closure of a set $X'$ w.r.t. to a set $R'$ denoted as $c(X'_{R'})$ is the unique minimal set $Y$ such that for 
-any $r\in R'$: 
+respectively. The closure of a set $X'$ w.r.t. to a set $R'$ denoted as $\closure{R'}{X'}$ is 
+the unique minimal set $Y$ such that for any $r\in R'$: 
 
 \begin{equation}
 	E_r\subseteq X'\cup Y \Rightarrow P_r\subseteq W.
@@ -250,12 +257,15 @@ any $r\in R'$:
 We thereby define an RAF in our setting as:
 
 \begin{definition}[RAF]
-	Let $(X',R',\mathcal{K}')$ be a catalyzed subnetwork with food-set $F'$ and waste molecules $W'$. Then
+	For a RN $(X,R)$ let $(X',R',\mathcal{K}')$ be a catalyzed subnetwork with food-set $F'$. Then
 	$R'$ is called: 
 		\begin{itemize} 
-			\item{\emph{reflexive autocatalytic} if $\forall r\in R': \emptyset \neq X(\mathcal{K}_r)\subseteq X'$}
-			\item{\emph{F-generated} if $\bigcup_{r\in R'} P_r\subseteq c(X'_{R'})$}
+			\item[i.]{\emph{reflexive autocatalytic} (RA) if $\forall r\in R': \emptyset \neq X(\mathcal{K}_r)\subseteq X'$}
+			\item[ii.]{\emph{F-generated} if $\bigcup_{r\in R'} E_r\subseteq \closure{R'}{F'}$}
+			\item[iii.]{\emph{reflexive autocatalytic} and \emph{F-generated} (RAF) if both i. and ii. hold}
 		\end{itemize}
 \end{definition}
+
+Note that $E_r\subseteq \closure{R'}{F'}$ directly implies $P_r\subseteq \closure{R'}{F'}$.
 
 \end{document}
