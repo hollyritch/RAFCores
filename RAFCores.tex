@@ -255,11 +255,12 @@ the unique minimal set $Y$ such that for any $r\in R'$:
 	E(r)\subseteq X'\cup Y \Rightarrow P(r)\subseteq Y.
 \end{equation}
 
-Note that $\closure{R'}{X'}$ does not contain the set $X'$ itself. However, it will be convenient 
+Note that $\closure{R'}{X'}$ does not necessarily contain the set $X'$ itself. However, it will be convenient 
 to obtain the set $\closure{R'}{X'}$ iteratively. We therefore define:
 \begin{equation}
 	\Phi_{R'}: X \rightarrow X, \Phi_{R'}(Z) \coloneqq Z \cup \{P(r) \subseteq Z \ \vert \ E(r)\subseteq Z\}. 
 \end{equation}
+
 It is indeed easy to verify that the repetitive iteration of $\Phi_{R'}(X')$ yields $\closure{R'}{X'}\cup X'$. To this end, recall 
 that an RN is composed of two finite-sized sets, i.e., $|X|<\infty$ and $|R|<\infty$. The intuitive assumption that 
 a repetitive application of $\Phi_{R'}$ actually converges is indeed true.
@@ -298,6 +299,9 @@ We thereby obtain that $\mathcal{Z} = X'\cup \closure{R'}{X'}$. Uniqueness of th
 	In addition, there is an $n\in\mathbb{N}: \left(\bigcirc_{i=0}^n \Phi_{R'}\right)(X')=\left(\bigcirc_{i=0}^m \Phi_{R'}\right)(X'), m\geq n$.
 \end{corollary}
 \vspace{6pt}
+The sequence $(Z_k)_{k\in\mathbb{N}}$ implies a sequence of reactions that can be applied in the $k$-th step, i.e. 
+$(\Upsilon_{R'}^k(X'))_{k\in\mathbb{N}}$ with $(\Upsilon_{R'}^k(X')) \coloneqq \{r\in R' \ | \ E(r)\subseteq Z_k\}$.
+
 A (catalyzed) RN can be represented by its \emph{K\"onig graph}, a directed bipartite graph $\king (X,R,\cat) \coloneqq 
 (X\cup R, E_1\cup E_2)$ with
 \begin{equation}
@@ -360,44 +364,41 @@ of $\closure{R'}{F}$.
 	that there is a sequence of reactions $(r_i)_{i\in\mathbb{N}}$ with $E(r_i)\in Z_{i}, P(r_i)\in Z_{i+1}, 0\leq i \leq n-1$ such
 	that $\{x_i, r_i) \ | \ \SM_{(x_ir_i}<0, x_i\in E(r_i)\} \in E_1(\king')$ and $\{(r_i,x_{i+1}) \ \vert \ \SM_{x_{i+1},r_i}>0, 
 	x_{i+1}\in P(r_i)\}\in E_2(\king')$. $x_0\in F$ then yields the required path.
-	\end{proof}
-
-\TODO{Actually, I think what we want here is not only such a path and not only a sequence of reactions, but actually a partial order 
-on the reactions that yields us this closure.}
-
-The graph $\king(\closure{R'}{F'}, R', \cat')$ is not necessarily connected since some entities from $F$ are neither reactants, nor 
-products, nor catalysts.
-
-We have now seen that the closure of $F$ w.r.t. a set of reactions $R'$ contains not only all the reactants and products of the 
-reactions in $R'$ but also all the catalysts $c\in \cat(R'): c \in F$. Nevertheless, $F$ might contain more entities that do not take 
-part in any reaction $r\in R'$ since $F\subseteq X$ may be chosen arbitrarily. In contrast, a food-set $F'$ for a subnetwork 
-$(X', R')$ is a direct consequence from the set of entities $X'$ and reactions $R'$. This allows us to translate the definition 
-of RAFs to subnetworks. 
-\vspace{6pt}
-\begin{definition}
-	Let $(X,R,\cat)$ be a catalyzed RN with $F\subseteq X$. A catalyzed subnetwork $(X',R',\cat')$ with 
-	food-set $F'$ is a \emph{RAF-subnetwork} if $R'$ is a RAF and $X'=\closure{R'}{F'}\setminus F'$. 
-\end{definition}
-\vspace{6pt}
-A convenient consequence from this definition is that there is a one-to-one correspondence between RAFs $R'$
-in $(X,R,\cat)$ and \emph{RAF-subnetwork}. Finding a suitable characterization for RAF-subnetworks would, thereby,
-allow us to identify RAFs in bipartite graphs. 
-\vspace{6pt}
-\begin{lemma}
-	Let $(X,R,\cat)$ be a catalyzed RN. A catalyzed subnetwork $(X',R',\cat')$ with food-set $F'\subseteq X$ is a 
-	RAF-subnetwork if and only if the following holds: 
-	\begin{itemize}
-		\item[i.]{$\forall r\in R' \ \exists x\in X'\cup F': (x,r,x)$ is an elementary circuit in $\king(X'\cup F',R',\cat')$}
-		\item[ii.]{$\forall x\in X' \ \exists f\in F': P=(f,\ldots, x)$ is a directed path in $\king(X'\cup F',R',\cat')$}
-	\end{itemize}
-\end{lemma}
-\begin{proof}
-	Assume $(X',R',\cat')$ is a RAF-subnetwork. Then $R'$ is a RAF and $X'=\closure{R'}{F'}\setminus F'$. Since $R'$ 
-	is a RAF, for any reaction $r\in R': \emptyset \neq X(\cat_r)\subseteq E(R')\cup P(R')\subseteq \closure{R'}{F'} 
-	= X' \cup F'$, thus an $x\in X' \cup F': (x,r)\in E_1(\king), (r,x)\in E_2(\king)$, and thereby $(x,r,x)$ an 
-	elementary circuit in $\king(X'\cup F',R',\cat')$ showing $i$. Then Lemma~\ref{lem:RAFPath} yields $ii$.
-	Conversely, \TODO{to be continued}.
 \end{proof}
+
+%The graph $\king(\closure{R'}{F'}, R', \cat')$ is not necessarily connected since some entities from $F$ are neither reactants, nor 
+%products, nor catalysts.
+%
+%We have now seen that the closure of $F$ w.r.t. a set of reactions $R'$ contains not only all the reactants and products of the 
+%reactions in $R'$ but also all the catalysts $c\in \cat(R'): c \in F$. Nevertheless, $F$ might contain more entities that do not take 
+%part in any reaction $r\in R'$ since $F\subseteq X$ may be chosen arbitrarily. In contrast, a food-set $F'$ for a subnetwork 
+%$(X', R')$ is a direct consequence from the set of entities $X'$ and reactions $R'$. This allows us to translate the definition 
+%of RAFs to subnetworks. 
+%\vspace{6pt}
+%\begin{definition}
+%	Let $(X,R,\cat)$ be a catalyzed RN with $F\subseteq X$. A catalyzed subnetwork $(X',R',\cat')$ with 
+%	food-set $F'$ is a \emph{RAF-subnetwork} if $R'$ is a RAF and $X'\cup F'=\closure{R'}{F'}\cup F'$. 
+%\end{definition}
+%\vspace{6pt}
+%A convenient consequence from this definition is that there is a one-to-one correspondence between RAFs $R'$
+%in $(X,R,\cat)$ and \emph{RAF-subnetwork}. Finding a suitable characterization for RAF-subnetworks would, thereby,
+%allow us to identify RAFs in bipartite graphs. 
+%\vspace{6pt}
+%\begin{lemma}
+%	Let $(X,R,\cat)$ be a catalyzed RN. A catalyzed subnetwork $(X',R',\cat')$ with food-set $F'\subseteq X$ is a 
+%	RAF-subnetwork if and only if the following holds: 
+%	\begin{itemize}
+%		\item[i.]{$\forall r\in R' \ \exists x\in X'\cup F': (x,r,x)$ is an elementary circuit in $\king(X'\cup F',R',\cat')$}
+%		\item[ii.]{\TODO{$\forall x\in X' \ \exists f\in F': P=(f,\ldots, x)$ is a directed path in $\king(X'\cup F',R',\cat')$}}
+%	\end{itemize}
+%\end{lemma}
+%\begin{proof}
+%	Assume $(X',R',\cat')$ is a RAF-subnetwork. Then $R'$ is a RAF and $X'=\closure{R'}{F'}\setminus F'$. Since $R'$ 
+%	is a RAF, for any reaction $r\in R': \emptyset \neq X(\cat_r)\subseteq E(R')\cup P(R')\subseteq \closure{R'}{F'} 
+%	= X' \cup F'$, thus an $x\in X' \cup F': (x,r)\in E_1(\king), (r,x)\in E_2(\king)$, and thereby $(x,r,x)$ an 
+%	elementary circuit in $\king(X'\cup F',R',\cat')$ showing $i$. Then Lemma~\ref{lem:RAFPath} yields $ii$.
+%	Conversely, $i.$ implies that each reaction from $R'$ is catalyzed. 
+%\end{proof}
 \vspace{6pt}
 \bibliography{RAFCores}
 
