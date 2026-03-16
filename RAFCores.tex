@@ -221,8 +221,8 @@ the reaction $r$. The \emph{stoichiometric matrix} $\SM$ encodes all net-stoichi
  We denote by 
 	\begin{equation}
 		\begin{split}
-			E_r&\coloneqq \{x\in X \ \vert \ s^-_{xr}-s^+_{xr}>0\} \\
-			P_r&\coloneqq \{x\in X \ \vert \ s^-_{xr}-s^+_{xr}<0\} \\
+			E: R \rightarrow X, E(r) & \coloneqq \{x\in X \ \vert \ s^-_{xr}-s^+_{xr}>0\} \\
+			P: R \rightarrow X, P(r) & \coloneqq \{x\in X \ \vert \ s^-_{xr}-s^+_{xr}<0\} \\
 		\end{split}
 	\end{equation}
 the reactants (educts) and products of reaction $r$, respectively. A catalyst is an entity $x\in X$ such 
@@ -251,8 +251,8 @@ We call $F'$ and $W'$ the set of food and waste molecules for the subnetwork $(X
 respectively. The closure of a set $X'$ w.r.t. to a set $R'$ denoted as $\closure{R'}{X'}$ is 
 the unique minimal set $Y$ such that for any $r\in R'$: 
 
-\begin{equation}
-	E_r\subseteq X'\cup Y \Rightarrow P_r\subseteq Y.
+\begin{equation}\label{eq:Closure}
+	E(r)\subseteq X'\cup Y \Rightarrow P(r)\subseteq Y.
 \end{equation}
 
 A (catalyzed) RN can be represented by its \emph{K\"onig graph}, a bipartite directed graph $\king (X,R,\cat) \coloneqq 
@@ -271,35 +271,72 @@ K\"onig graph} as the bipartite directed graph $\queen (X,R,\cat) \coloneqq (X\c
 	\begin{split}
 		E_1 & \coloneqq \{(x,r) \ \vert \ \SM_{xr}<0\} \\
 		E_2 & \coloneqq \{(r,x) \ \vert \ \SM_{xr}>0\} \\
-		E_{\cat} & \coloneqq \{(x,r) \ \vert \ x\in X(\cat_r)\} \\
+		E_{\cat} & \coloneqq \{(x,r) \ \vert \ x\in X(\cat_r)\}.
 	\end{split}
 \end{equation}
 
-First, we give a formal definition of a reflexive autocatalytic food-generated system (RAF) 
-as defined in \cite{hordijk_detecting_2004}.
-
-\begin{definition}[RAF]
+First, we give the formal definition of a reflexive autocatalytic food-generated system (RAF) provided in 
+\cite{hordijk_detecting_2004}.
+\vspace{6pt}
+\begin{definition}[RAF]\label{def:RAF}
 	Let $(X,R,\cat)$ be a catalyzed network with $F\subseteq X$. Then
 	a set $R'$ is called  
 		\begin{itemize} 
-			\item[i.]{\emph{reflexive autocatalytic} (RA) if $\forall r\in R': \emptyset \neq X(\mathcal{K}_r)\subseteq \bigcup_{r\in R'}E_r\cup P_r$}
-			\item[ii.]{\emph{F-generated} if $\bigcup_{r\in R'} E_r\subseteq \closure{R'}{F}$}
+			\item[i.]{\emph{reflexive autocatalytic} (RA) if $\forall r\in R': \emptyset \neq X(\mathcal{K}_r)\subseteq E(R')\cup P(R')$}
+			\item[ii.]{\emph{F-generated} if $E(R')\subseteq \closure{R'}{F}$}
 			\item[iii.]{\emph{reflexive autocatalytic} and \emph{F-generated} (RAF) if both i. and ii. hold}
 		\end{itemize}
 \end{definition}
-
-Note that $ii.$ directly implies that also $P_r\subseteq \closure{R'}{F}$. In addition, here $F\subseteq X$ 
-while a food-set $F'$ for a subnetwork $(X',R')$ is defined such that $X'\cap F'=\emptyset$. This 
-allows us to restrict RAFs to subnetworks. We call a subnetwork $(X',R',\cat')$ with 
-food-set $F'$ a \emph{RAF-subnetwork} if $R'$ is a RAF and $X'=\closure{R'}{F'}\setminus F'$. 
-
-\begin{lemma}
-	Let $(X,R,\cat)$ be a catalyzed reaction network. A subnetwork $(X',R',\cat')$ with food-set $F'$ is a 
-	RAF-subnetwork if and only if the following holds: 
-		\item[i.]{$\forall x\in X' \ \exists f\in F': P=(f,\ldots, x)$ is a directed path in $\king(X'\cup F',R',\cat')$}
-		\item[ii.]{$\forall r\in R' \ \exists x\in X'\cup F': (x,r,x)$ is an elementary circuit in $\king(X'\cup F',R',\cat')$}
+\vspace{6pt}
+Note that $ii.$, together with Eq.\ref{eq:Closure}, directly implies that all products for any reaction $r\in R'$ are also contained 
+in the closure of $F'$, thus $P_r\subseteq \closure{R'}{F}$. In addition, the set of catalysts $\cat(R')$ is indeed also a subset 
+of $\closure{R'}{F}$. 
+\vspace{6pt}
+\begin{lemma}\label{lem:catClose}
+	Let $(X,R,\cat)$ be a catalyzed network with $F\subseteq X$ and $R'$ an RAF. Then $\cat(R') \subseteq \closure{R'}{F}$.
 \end{lemma}
 \begin{proof}
+	Let $c\in \cat(R')$. Then there is a reaction $r\in R': c\in \cat_r$. If $c\in F \Rightarrow c\in \closure{R'}{F}$. If $c\notin F$.
+	then $c$ is F-generated, and thus by Def.~\ref{def:RAF}i. $c\in E(R')\cup P(R')\subseteq \closure{R'}{F}$. 
+\end{proof}	
+\vspace{6pt} Next, we translate the notion of a closure in a graph-theoretical setting. 
+\vspace{6pt}
+\begin{lemma}
+	Let $(X,R,\cat)$ be a catalyzed network with $F\subseteq X$ and $R'$ and RAF. Then the graph $\king(\closure{R'}{F'}, R', \cat')$ 
+	is connected. Moreover, for any $x\in \closure{R'}{F'}: \exists f\in F: P=(f, \ldots, x)$ is a path in $\king(\closure{R'}{F'}, R', \cat')$.
+\end{lemma}
+\begin{proof}
+		
+\end{proof}
+
+We have now seen that the closure of $F$ w.r.t. a set of reactions $R'$ contains not only all the reactants and products of the 
+reactions in $R'$ but also all the catalysts $c\in \cat(R'): c \in F$. Nevertheless, $F$ might contain more entities that do not take 
+part in any reaction $r\in R'$ since $F\subseteq X$ may be chosen arbitrarily. In contrast, a food-set $F'$ for a subnetwork 
+$(X', R')$ is a direct consequence from the set of entities $X'$ and reactions $R'$. This allows us to translate the definition 
+of RAFs to subnetworks. 
+
+\begin{definition}
+	Let $(X,R,\cat)$ be a catalyzed RN with $F\subseteq X$. A catalyzed subnetwork $(X',R',\cat')$ with 
+	food-set $F'$ is a \emph{RAF-subnetwork} if $R'$ is a RAF and $X'=\closure{R'}{F'}\setminus F'$. 
+\end{definition}
+
+A convenient consequence from this definition is that there is a one-to-one correspondence between RAFs $R'$
+in $(X,R,\cat)$ and \emph{RAF-subnetwork}. Finding a suitable characterization for RAF-subnetworks would, thereby,
+allow us to identify RAFs in bipartite graphs. 
+
+\begin{lemma}
+	Let $(X,R,\cat)$ be a catalyzed RN. A catalyzed subnetwork $(X',R',\cat')$ with food-set $F'\subseteq X$ is a 
+	RAF-subnetwork if and only if the following holds: 
+	\begin{itemize}
+		\item[i.]{$\forall x\in X' \ \exists f\in F': P=(f,\ldots, x)$ is a directed path in $\king(X'\cup F',R',\cat')$}
+		\item[ii.]{$\forall r\in R' \ \exists x\in X'\cup F': (x,r,x)$ is an elementary circuit in $\king(X'\cup F',R',\cat')$}
+	\end{itemize}
+\end{lemma}
+\begin{proof}
+	Assume $(X',R',\cat')$ is a RAF-subnetwork. Then $R'$ is a RAF and $X'=\closure{R'}{F'}\setminus F'$. Since $R'$ 
+	is a RAF, for any reaction $r\in R': \emptyset \neq X(\cat_r)\subseteq E(R')\cup P(R')\subseteq \closure{R'}{F'} 
+	= X' \cup F'$, thus an $x\in X' \cup F': (x,r)\in E_1(\king), (r,x)\in E_2(\king)$, and thereby $(x,r,x)$ an 
+	elementary circuit in $\king(X'\cup F',R',\cat')$. 
 	
 \end{proof}
 
