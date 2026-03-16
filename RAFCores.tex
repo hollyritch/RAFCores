@@ -255,6 +255,47 @@ the unique minimal set $Y$ such that for any $r\in R'$:
 	E(r)\subseteq X'\cup Y \Rightarrow P(r)\subseteq Y.
 \end{equation}
 
+Note that $\closure{R'}{X'}$ does not contain the set $X'$ itself. However, it will be convenient 
+to obtain the set $\closure{R'}{X'}$ iteratively. We therefore define:
+\begin{equation}
+	\Phi_{R'}: X \rightarrow X, \Phi_{R'}(Z) \coloneqq Z \cup \{P(r) \subseteq Z \ \vert \ E(r)\subseteq Z\}. 
+\end{equation}
+It is easy to verify that repetive iteration of $\Phi_{R'}(X')$ yields $\closure{R'}{X'}\cup X'$. We first show
+that for any finite-sized RN the repetitive application of $\Phi_{R'}$ actually converges.  
+\begin{lemma}
+	Let $(X,R)$ be a finite-sized reaction network. For a set $X'\subseteq X$ and $R'\subseteq R$ there 
+	is an $n\in \mathbb{N}$ such that: 
+	\begin{equation}
+		\left(\bigcirc_{i=1}^n \Phi_{R'}\right)(X') =\left(\bigcirc_{i=1}^{m} \Phi_{R'}\right)(X'), m\geq n, m\in \mathbb{N}
+	\end{equation}
+\end{lemma}
+\begin{proof}
+	Assume this is not the case. Then in each $k$-th step 
+	\begin{equation}
+		|\left(\bigcirc_{i=1}^n \Phi_{R'}\right)(X')| < |\left(\bigcirc_{i=1}^{k+1} \Phi_{R'}\right)(X')|,
+	\end{equation}
+	which implies that
+	\begin{equation}
+		|\left(\bigcirc_{i=1}^n \Phi_{R'}\right)(X')| \overset{k\rightarrow\infty}{\infty}	
+	\end{equation}
+	a contradiction that $|X|<\infty$.
+\end{proof}
+
+\begin{lemma}
+	Let $(X,R,\cat)$ be a catalyzed network of finite size with $X'\subseteq X, R'\subseteq R$. Then there 
+	is an $n\in\mathbb{N}$:
+		\begin{equation}
+			\left(\bigcirc_{i=1}^n \Phi_{R'}\right)(X')  =\closure{R'}{X'} \cup X'
+		\end{equation}
+\end{lemma}
+\begin{proof}
+	We show this by mutual inclusion. Let $x\in \left(\bigcirc_{i=1}^\infty \Phi_{R'}\right)(X')$. If $x\in X'$, the statement
+	is true. Therefore, assume $x \notin X'$. Then $x\in P(r)$ for some $r\in R'$. Assume by contradiction $x\notin \closure{R'}{X'}$. 
+	Then there is no reaction $r\in R'$, such that $x\in P(r)$, a contradiction. Since $|X'|<\infty$ there is $n\in \mathbb{N}$ big
+	enough s.t. 
+	
+\end{proof}
+
 A (catalyzed) RN can be represented by its \emph{K\"onig graph}, a bipartite directed graph $\king (X,R,\cat) \coloneqq 
 (X\cup R, E_1\cup E_2)$ with
 \begin{equation}
@@ -302,12 +343,21 @@ of $\closure{R'}{F}$.
 \vspace{6pt} Next, we translate the notion of a closure in a graph-theoretical setting. 
 \vspace{6pt}
 \begin{lemma}
-	Let $(X,R,\cat)$ be a catalyzed network with $F\subseteq X$ and $R'$ and RAF. Then the graph $\king(\closure{R'}{F'}, R', \cat')$ 
-	is connected. Moreover, for any $x\in \closure{R'}{F'}: \exists f\in F: P=(f, \ldots, x)$ is a path in $\king(\closure{R'}{F'}, R', \cat')$.
+	Let $(X,R,\cat)$ be a catalyzed network with $F\subseteq X$ and $R'$ an RAF. Then, 
+	for any $x\in \closure{R'}{F}\setminus F: \exists f\in F: P=(f, \ldots, x)$ is a path in 
+	$\king'\coloneqq \king(\closure{R'}{F'}, R', \cat')$.
 \end{lemma}
 \begin{proof}
-		
+	Let $x\in \closure{R'}{F}\setminus F$. We define 
+	Then there is some $r_x\in R': x\in P(r_x) \Rightarrow (r_x,x)\in 
+	E_2(\king')$. If $E(r_x)\cap F\neq \emptyset$ then for any $f_x\in E(r_x)\cap F: (f,r_x,x)$ is a path in $\king'$. 
+	Otherwise, since $E(r)\subseteq \closure{R'}{F}$ for each $x_1 \in E(r_x): \exists r_{x_1}\in R': P(r)$
 \end{proof}
+
+\TODO{sequence of reactions}
+
+The graph $\king(\closure{R'}{F'}, R', \cat')$ is not necessarily connected since some entities from $F$ are neither reactants, nor 
+products, nor catalysts.
 
 We have now seen that the closure of $F$ w.r.t. a set of reactions $R'$ contains not only all the reactants and products of the 
 reactions in $R'$ but also all the catalysts $c\in \cat(R'): c \in F$. Nevertheless, $F$ might contain more entities that do not take 
