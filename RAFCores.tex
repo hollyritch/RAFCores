@@ -260,10 +260,12 @@ to obtain the set $\closure{R'}{X'}$ iteratively. We therefore define:
 \begin{equation}
 	\Phi_{R'}: X \rightarrow X, \Phi_{R'}(Z) \coloneqq Z \cup \{P(r) \subseteq Z \ \vert \ E(r)\subseteq Z\}. 
 \end{equation}
-It is easy to verify that repetive iteration of $\Phi_{R'}(X')$ yields $\closure{R'}{X'}\cup X'$. We first show
-that for any finite-sized RN the repetitive application of $\Phi_{R'}$ actually converges.  
-\begin{lemma}
-	Let $(X,R)$ be a finite-sized reaction network. For a set $X'\subseteq X$ and $R'\subseteq R$ there 
+It is indeed easy to verify that the repetitive iteration of $\Phi_{R'}(X')$ yields $\closure{R'}{X'}\cup X'$. To this end, recall 
+that an RN is composed of two finite-sized sets, i.e., $|X|<\infty$ and $|R|<\infty$. The intuitive assumption that 
+a repetitive application of $\Phi_{R'}$ actually converges is indeed true.
+\vspace{6pt}
+\begin{lemma}\label{lem:finSize}
+	Let $(X,R)$ be a reaction network. For a set $X'\subseteq X$ and $R'\subseteq R$ there 
 	is an $n\in \mathbb{N}$ such that: 
 	\begin{equation}
 		\left(\bigcirc_{i=1}^n \Phi_{R'}\right)(X') =\left(\bigcirc_{i=1}^{m} \Phi_{R'}\right)(X'), m\geq n, m\in \mathbb{N}
@@ -272,29 +274,28 @@ that for any finite-sized RN the repetitive application of $\Phi_{R'}$ actually 
 \begin{proof}
 	Assume this is not the case. Then in each $k$-th step 
 	\begin{equation}
-		|\left(\bigcirc_{i=1}^n \Phi_{R'}\right)(X')| < |\left(\bigcirc_{i=1}^{k+1} \Phi_{R'}\right)(X')|,
+		|\left(\bigcirc_{i=1}^k \Phi_{R'}\right)(X')| < |\left(\bigcirc_{i=1}^{k+1} \Phi_{R'}\right)(X')|,
 	\end{equation}
 	which implies that
 	\begin{equation}
-		|\left(\bigcirc_{i=1}^n \Phi_{R'}\right)(X')| \overset{k\rightarrow\infty}{\infty}	
+		|\left(\bigcirc_{i=1}^k \Phi_{R'}\right)(X')| \overset{k\rightarrow\infty}{\longrightarrow}{\infty}	
 	\end{equation}
-	a contradiction that $|X|<\infty$.
+	a contradiction given that $|X|<\infty$.
 \end{proof}
 
-\begin{lemma}
-	Let $(X,R,\cat)$ be a catalyzed network of finite size with $X'\subseteq X, R'\subseteq R$. Then there 
-	is an $n\in\mathbb{N}$:
-		\begin{equation}
-			\left(\bigcirc_{i=1}^n \Phi_{R'}\right)(X')  =\closure{R'}{X'} \cup X'
-		\end{equation}
-\end{lemma}
-\begin{proof}
-	We show this by mutual inclusion. Let $x\in \left(\bigcirc_{i=1}^\infty \Phi_{R'}\right)(X')$. If $x\in X'$, the statement
-	is true. Therefore, assume $x \notin X'$. Then $x\in P(r)$ for some $r\in R'$. Assume by contradiction $x\notin \closure{R'}{X'}$. 
-	Then there is no reaction $r\in R'$, such that $x\in P(r)$, a contradiction. Since $|X'|<\infty$ there is $n\in \mathbb{N}$ big
-	enough s.t. 
-	
-\end{proof}
+The sequence $(Z_k)_{k\in\mathbb{N}} \coloneqq X'\cup \left(\left(\bigcirc_{i=1}^k \Phi_{R'}\right)(X')\right)_{k\in \mathbb{N}}$ thereby converges. We let
+$\mathcal{Z}\coloneqq X'\cup \lim_{k\rightarrow \infty} (Z_k)_{k\in \mathbb{N}}$. By definition of $\closure{R'}{X'}$ for any $k\in \mathbb{N}: Z_k \subseteq \closure{R'}{X'}$. 
+Assume now that there is $x\in \closure{R'}{X'} \cup X'$ such that $x\notin \mathcal{Z}$. Then, trivially, $x\notin X'$, and there is an $r\in R': x \in P(r)$ 
+for which $E(r), P(r)\subseteq \closure{R'}{X'}$. This implies, however, that for all $y\in E(r)$ it holds that either $y\in X'$ or there is $r_y: y\in P_{r_y}$ with $E_{r_y}, P_{r_y}
+\subseteq \closure{R'}{X'}$. Repeating this argument until all $y\in X'$ yields that there is a $k\in \mathbb{N}$ such that $x\in \left(\bigcirc_{i=1}^k \Phi_{R'}\right)(X')$, a contradiction. 
+We thereby obtain that $\mathcal{Z} = X'\cup \closure{R'}{X'}$. Uniqueness of the limit then yields:
+
+\begin{corollary}
+	Let $(X,R,\cat)$ be a catalyzed network of finite size with $X'\subseteq X, R'\subseteq R$. The $X'\cup \closure{R'}{X'}$ is the unique limit of the sequence
+	\begin{equation}
+		\left(\left(\bigcirc_{i=0}^k \Phi_{R'}\right)(X')\right)_{k\in\mathbb{N}}
+	\end{equation}
+\end{corollary}
 
 A (catalyzed) RN can be represented by its \emph{K\"onig graph}, a bipartite directed graph $\king (X,R,\cat) \coloneqq 
 (X\cup R, E_1\cup E_2)$ with
