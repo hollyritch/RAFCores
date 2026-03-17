@@ -208,7 +208,8 @@
 \maketitle
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Notation}
+\holy{
+\section{Preliminaries}
 
 A reaction network $(X,R)$ is tuple of two finite sets, set of metabolites $X$ 
 and a set of reactions $R$. For any $r\in R$ we can write a stoichiometric equation as:
@@ -375,7 +376,7 @@ of $\closure{R'}{F}$.
 	that $\{x_i, r_i) \ | \ \SM_{(x_ir_i}<0, x_i\in E(r_i)\} \in E_1(\king')$ and $\{(r_i,x_{i+1}) \ \vert \ \SM_{x_{i+1},r_i}>0, 
 	x_{i+1}\in P(r_i)\}\in E_2(\king')$. $x_0\in F$ then yields the required path.
 \end{proof}
-
+}
 %The graph $\king(\closure{R'}{F'}, R', \cat')$ is not necessarily connected since some entities from $F$ are neither reactants, nor 
 %products, nor catalysts.
 %
@@ -409,6 +410,7 @@ of $\closure{R'}{F}$.
 %	elementary circuit in $\king(X'\cup F',R',\cat')$ showing $i$. Then Lemma~\ref{lem:RAFPath} yields $ii$.
 %	Conversely, $i.$ implies that each reaction from $R'$ is catalyzed. 
 %\end{proof}
+
 \vspace{6pt}
 \bibliography{RAFCores}
 
