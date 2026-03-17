@@ -110,6 +110,8 @@
 \newcommand{\queen}{\mathbf{Q}}
 \newcommand{\SM}{\mathbf{S}}
 \newcommand{\closure}[2]{\mathscr{C}_{#1}(#2)}
+\newcommand{\cl}[0]{\mathscr{X}}
+\newcommand{\PO}[0]{\mathscr{R}}
 \newcommand{\cat}{\mathcal{K}}
 \newcommand{\ORCID}[1]{}
 \DeclareMathOperator{\suck}{succ}
@@ -249,58 +251,66 @@ a certain subset of entities $F', W'\subseteq X$ defined as
 
 We call $F'$ and $W'$ the set of food and waste molecules for the subnetwork $(X',R')$,
 respectively. The closure of a set $X'$ w.r.t. to a set $R'$ denoted as $\closure{R'}{X'}$ is 
-the unique minimal set $Y$ such that for any $r\in R'$: 
+the unique minimal set $Y$ containing $X'$ such that for any $r\in R': E(r)\subseteq Y 
+\Rightarrow P(r)\subseteq Y$. Thus:
 
 \begin{equation}\label{eq:Closure}
-	E(r)\subseteq X'\cup Y \Rightarrow P(r)\subseteq Y.
+	\closure{R'}{X'} \coloneqq \min \underbrace{\{ Z \subseteq X \ | \ X'\subseteq Z, E(r) \subseteq Z \Rightarrow P(r) \subseteq Z \ \forall r\in R'\}}_{\eqqcolon \mathfrak{C}_{R'}(X')}
 \end{equation}
 
-Note that $\closure{R'}{X'}$ does not necessarily contain the set $X'$ itself. However, it will be convenient 
-to obtain the set $\closure{R'}{X'}$ iteratively. We therefore define:
+However, it will be convenient to obtain the set $\closure{R'}{X'}$ iteratively. We therefore define:
 \begin{equation}
-	\Phi_{R'}: X \rightarrow X, \Phi_{R'}(Z) \coloneqq Z \cup \{P(r) \subseteq Z \ \vert \ E(r)\subseteq Z\}. 
+	\cl_{R'}: \mathfrak{P}(X) \rightarrow \mathfrak{P}(X), \cl_{R'}(Z) \coloneqq Z \cup \{P(r) \subseteq Z \ \vert \ E(r)\subseteq Z\}. 
 \end{equation}
+We will write $\cl(X')$ instead of $\cl_{R'}(X')$ as well as $\closure{}{X'}$ instead of $\closure{R'}{X'}$ where appropriate. 
+It is indeed not obvious that the repetitive iteration of $\cl_{R'}(X')$ yields $\closure{R'}{X'}$. However, 
+recall that an RN is composed of two finite-sized sets, i.e., $|X|<\infty$ and $|R|<\infty$. By definition, the composition 
+$\cl\circ \cl$ is well defined. Moreover, we let $\cl^n(X')\coloneqq \left(\bigcirc^n_{i=0} \ \cl \right)(X')$, i.e., $\cl^0(X')\coloneqq X'$. 
+The intuitive assumption that a repetitive application of $\cl$ on a set $X'$ actually converges is indeed true.
 
-It is indeed easy to verify that the repetitive iteration of $\Phi_{R'}(X')$ yields $\closure{R'}{X'}\cup X'$. To this end, recall 
-that an RN is composed of two finite-sized sets, i.e., $|X|<\infty$ and $|R|<\infty$. The intuitive assumption that 
-a repetitive application of $\Phi_{R'}$ actually converges is indeed true.
 \vspace{6pt}
 \begin{lemma}\label{lem:finSize}
 	Let $(X,R)$ be a reaction network. For a set $X'\subseteq X$ and $R'\subseteq R$ there 
 	is an $n\in \mathbb{N}$ such that: 
 	\begin{equation}
-		\left(\bigcirc_{i=1}^n \Phi_{R'}\right)(X') =\left(\bigcirc_{i=1}^{m} \Phi_{R'}\right)(X'), m\geq n, m\in \mathbb{N}
+		\cl^n(X') = \cl^m (X'), m\geq n, m\in \mathbb{N}
 	\end{equation}
 \end{lemma}
 \begin{proof}
 	Assume this is not the case. Then in each $k$-th step 
 	\begin{equation}
-		|\left(\bigcirc_{i=1}^k \Phi_{R'}\right)(X')| < |\left(\bigcirc_{i=1}^{k+1} \Phi_{R'}\right)(X')|,
+		|\cl^k(X')| < |\cl^{k+1}(X')|,
 	\end{equation}
 	which implies that
 	\begin{equation}
-		|\left(\bigcirc_{i=1}^k \Phi_{R'}\right)(X')| \overset{k\rightarrow\infty}{\longrightarrow}{\infty}	
+		|\cl^k(X')| \overset{k\rightarrow\infty}{\longrightarrow}{\infty}	
 	\end{equation}
 	a contradiction given that $|X|<\infty$.
 \end{proof}
 
-The sequence $(Z_k)_{k\in\mathbb{N}} \coloneqq X'\cup \left(\left(\bigcirc_{i=1}^k \Phi_{R'}\right)(X')\right)_{k\in \mathbb{N}}$ thereby converges. We let
-$\mathcal{Z}\coloneqq X'\cup \lim_{k\rightarrow \infty} (Z_k)_{k\in \mathbb{N}}$. By definition of $\closure{R'}{X'}$ for any $k\in \mathbb{N}: Z_k \subseteq \closure{R'}{X'}$. 
-Assume now that there is $x\in \closure{R'}{X'} \cup X'$ such that $x\notin \mathcal{Z}$. Then, trivially, $x\notin X'$, and there is an $r\in R': x \in P(r)$ 
-for which $E(r), P(r)\subseteq \closure{R'}{X'}$. This implies, however, that for all $y\in E(r)$ it holds that either $y\in X'$ or there is $r_y: y\in P(r_y=$ with $E(r_y), P(r_y)
-\subseteq \closure{R'}{X'}$. Repeating this argument recursively until all $y\in X'$, yields that there is a $k\in \mathbb{N}$ such that $x\in \left(\bigcirc_{i=1}^k \Phi_{R'}\right)(X')$, a contradiction. 
-We thereby obtain that $\mathcal{Z} = X'\cup \closure{R'}{X'}$. Uniqueness of the limit then yields:
+The sequence $(\cl^k(X'))_{k\in \mathbb{N}}$ thereby converges, and it remains to show that for the limit it holds
+$\mathcal{X}\coloneqq \lim_{k\rightarrow \infty} \cl^k(X') = \closure{}{X'}$. By definition
+for any $k\in\mathbb{N}: \cl^k(X')\subseteq \closure{}{X'}$. In addition, the convergence of $\cl^k(X')$ gurantees that 
+$\mathcal{X}\in \mathfrak{C}(X')$. Thus by minimality $\closure{}{X'}\subseteq \mathcal{X}$, which yields by mutual
+inclusion that $\lim_{k\rightarrow \infty} \cl^k(X') = \closure{}{X'}$. With the uniqueness of the limit, the subsequent 
+corollary follows.
+
 \vspace{6pt}
 \begin{corollary}\label{cor:seqLimit}
-	Let $(X,R,\cat)$ be a catalyzed network of finite size with $X'\subseteq X, R'\subseteq R$. Then $X'\cup \closure{R'}{X'}$ is the unique limit of the sequence
+	Let $(X,R,\cat)$ be a catalyzed network of finite size with $X'\subseteq X, R'\subseteq R$. Then $\closure{R'}{X'}$ 
+	is the unique limit of the sequence
 	\begin{equation}
-		\left(\left(\bigcirc_{i=0}^k \Phi_{R'}\right)(X')\right)_{k\in\mathbb{N}}.
+		\left(\left(\bigcirc_{i=1}^k \ \cl_{R'}\right)(X')\right)_{k\in\mathbb{N}}.
 	\end{equation}
-	In addition, there is an $n\in\mathbb{N}: \left(\bigcirc_{i=0}^n \Phi_{R'}\right)(X')=\left(\bigcirc_{i=0}^m \Phi_{R'}\right)(X'), m\geq n$.
+	In addition, there is an $n\in\mathbb{N}: \cl^n_{R'}(X')=\cl^m_{R'}(X'), m\geq n$.
 \end{corollary}
 \vspace{6pt}
-The sequence $(Z_k)_{k\in\mathbb{N}}$ implies a sequence of reactions that can be applied in the $k$-th step, i.e. 
-$(\Upsilon_{R'}^k(X'))_{k\in\mathbb{N}}$ with $(\Upsilon_{R'}^k(X')) \coloneqq \{r\in R' \ | \ E(r)\subseteq Z_k\}$.
+By definition of $\cl_{R'}$, the sequence $(\cl_{R'}^k(X')_{k\in\mathbb{N}}$ directly implies a partial order on the reactions 
+that can be carried out in the $k$-th step, i.e., for which all reactants are contained in the set $\cl^k_{R'}(X')$. We thereby 
+let:
+\begin{equation}
+	\PO_{R'}^k(X') \coloneqq \{r\in R' \ | \ E(r)\subseteq \cl^k_{R'}(X')\}
+\end{equation}
 
 A (catalyzed) RN can be represented by its \emph{K\"onig graph}, a directed bipartite graph $\king (X,R,\cat) \coloneqq 
 (X\cup R, E_1\cup E_2)$ with
