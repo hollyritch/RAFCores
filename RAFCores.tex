@@ -235,15 +235,18 @@ of reaction $r$, while in case $s^+_{xr}>s^-_{xr}>0$, $x$ is both product and ca
 of reaction $r$. Note that a reaction may have multiple catalysts. We collect all catalysts 
 for a reaction $r$ in the set $\cat_r$ and denote by $\cat(R)\coloneqq\{(K_r,r) \ | \ r\in R 
 \text{ explicitly catalyzed}\}$ the set of \emph{catalyzations}. The catalysts of a \emph{catalyzation} 
-are denoted by $X(\cat_r)$. The triple $(X,R,\cat)$ with $\cat=\cat(R)$ is called a catalyzed RN. Note
-that there may be uncatalyzed reactions in a catalyzed RN.
+are denoted by $X(\cat_r)$. The triple $(X,R,\cat)$ with $\cat=\cat(R)$ is called a partially catalyzed 
+RN. Note that there may be uncatalyzed reactions in a catalyzed RN. If $|\cat| = |R'|$, however, i.e., 
+each reaction is catalyzed, we call $(X,R,\cat)$ a catalyzed RN. 
 
 A tuple $(X', R')$ is called a subnetwork of $(X,R)$ if $X'\subseteq X, R'\subseteq R$, and  
-accordingly, $(X', R',\cat')$ is called a catalyzed subnetwork if additionally $\cat'=\cat(R')$. We 
+accordingly, $(X', R',\cat(R'))$ is called a partially catalyzed subnetwork. If additionally $|\cat(R')|=|R'|$, 
+and $\cat(R')\subseteq X'$, i.e., each reaction in $(X',R')$ is catalyzed then . A 
+catalyzed network We 
 say a subnetwork $(X',R')$ is well formed if for any $r\in R': \exists x_1,x_2\in X: 
 s^-_{x_1r}>0, s^+_{x_2r}>0$. Considering a subnetwork $(X',R')$, we may distinguish 
 a certain subset of entities $F', W'\subseteq X$ defined as
-\begin{equation}
+\begin{equation}\label{eq:FoodWaste}
 	\begin{split}
 		F'&\coloneqq \{x\in X: x\notin X', \exists r\in R': s^{-}_{xr}>0\}\\
 		W'&\coloneqq \{x\in X: x\notin X', \exists r\in R': s^{+}_{xr}>0\}.
@@ -346,18 +349,25 @@ First, we give the formal definition of a reflexive autocatalytic food-generated
 		\end{itemize}
 \end{definition}
 \vspace{6pt}
+
 Note that $ii.$, together with Eq.\ref{eq:Closure}, directly implies that all products for any reaction $r\in R'$ are also contained 
-in the closure of $F'$, thus $P_r\subseteq \closure{R'}{F}$. In addition, the set of catalysts $\cat(R')$ is indeed also a subset 
-of $\closure{R'}{F}$. 
-\vspace{6pt}
-\begin{lemma}\label{lem:catClose}
-	Let $(X,R,\cat)$ be a catalyzed network with $F\subseteq X$ and $R'$ an RAF. Then $\cat(R') \subseteq \closure{R'}{F}$.
+in the closure of $F'$, thus $P_r\subseteq \closure{R'}{F}$. We now connect the notion of an RAF with a graph-theoretical setting. 
+We start with the reflexive autocatalytic part. 
+
+\begin{definition}
+	Let $(X,R, \cat)$ be a catalyzed RN. A subnetwork $(X',R')$ is called reflexive-autocatalytic if $\cat(R')\substeq X'$. 
+\end{definition}
+
+We denote the subgraph of a subnetwork by $\king'\coloneqq \king(X',R')$. A direct consequence is the following lemma:
+
+\begin{lemma}\label{lem:RASubnetwork}
+	Let $(X,R, \cat)$ be a catalyzed RN. A subnetwork $(X',R')$ is reflexive-autocatalytic if and only if
+	for all $r\in R' \ \exists x\in X' (x,r),(r,x)\in E(\king')$.
 \end{lemma}
 \begin{proof}
-	Let $c\in \cat(R')$. Then there is a reaction $r\in R': c\in \cat_r$. If $c\in F \Rightarrow c\in \closure{R'}{F}$. If $c\notin F$.
-	then $c$ is F-generated, and thus by Def.~\ref{def:RAF}i. $c\in E(R')\cup P(R')\subseteq \closure{R'}{F}$. 
-\end{proof}	
-\vspace{6pt} Next, we translate the notion of a closure in a graph-theoretical setting. 
+	If 
+\end{proof}
+
 \vspace{6pt}
 \begin{lemma}\label{lem:RAFPath}
 	Let $(X,R,\cat)$ be a catalyzed network with $F\subseteq X$ and $R'$ an RAF. Then, 
@@ -366,24 +376,40 @@ of $\closure{R'}{F}$.
 \end{lemma}
 \begin{proof}
 	Let $x\in \closure{R'}{F}\setminus F$. By Corollary~\ref{cor:seqLimit} we have for some $n\in\mathbb{N}$ that
-	$\closure{R'}{F}\setminus F = \left(\bigcirc_{i=0}^n \Phi_{R'}\right)(F) \setminus F$. Since the right-hand side of 
-	the last equation can also be written as 
+	$\closure{R'}{F}\setminus F = \cl^n_{R'}(F) \setminus F$. Thus, there is the sequence:
 	\begin{equation}
-		\bigcup_{i=0}^n \underbrace{\left(\bigcirc_{j=0}^i \Phi_{R'}\right)(F)}_{Z_i}
+		(\mathscr{Z}^k_{R'}(F))_{n\in\mathbb{N}}\coloneqq (\cl^{k-1}_{R'}(F), \PO^k_{R'}(F))_{n\in\mathbb{N}}
 	\end{equation}
-	with $Z_i\subseteq Z_{i+1}, 0\leq i\leq {n-1}$ it follows that $x\in Z_i$ for some $i\in 1\leq {n-1}$. However, this implies
-	that there is a sequence of reactions $(r_i)_{i\in\mathbb{N}}$ with $E(r_i)\in Z_{i}, P(r_i)\in Z_{i+1}, 0\leq i \leq n-1$ such
-	that $\{x_i, r_i) \ | \ \SM_{(x_ir_i}<0, x_i\in E(r_i)\} \in E_1(\king')$ and $\{(r_i,x_{i+1}) \ \vert \ \SM_{x_{i+1},r_i}>0, 
-	x_{i+1}\in P(r_i)\}\in E_2(\king')$. $x_0\in F$ then yields the required path.
+	such that for any $r\in \PO^k_{R'}(F)$ there is $y\in \cl^{k-1}_{R'}(F), z\in\cl^{k}_{R'}(F): (y,r)\in E_1(\king'), (r,z)\in E_2(\king')$. 
+	Thus, starting with $x\in \cl^{n}_{R'}(F)$ and recursively applying upper argument, there is a sequence of vertices $
+	(x_0, r_1, x_1, \ldots, r_n, x_n): (x_{i-1},r_i)\in E_1(\king'), (r_i,x_i)\in E_2(\king'), 1\leq i\leq n, x=x_n$ that is a path 
+	in $\king'$.
 \end{proof}
+
+However, a simple path is in general not enough. \TODO{To be continued}
 }
-%The graph $\king(\closure{R'}{F'}, R', \cat')$ is not necessarily connected since some entities from $F$ are neither reactants, nor 
-%products, nor catalysts.
-%
-%We have now seen that the closure of $F$ w.r.t. a set of reactions $R'$ contains not only all the reactants and products of the 
-%reactions in $R'$ but also all the catalysts $c\in \cat(R'): c \in F$. Nevertheless, $F$ might contain more entities that do not take 
-%part in any reaction $r\in R'$ since $F\subseteq X$ may be chosen arbitrarily. In contrast, a food-set $F'$ for a subnetwork 
-%$(X', R')$ is a direct consequence from the set of entities $X'$ and reactions $R'$. This allows us to translate the definition 
+
+In theory, for an RN $(X,R,\cat)$, $F$ could be chosen arbitrarily. Depending on the network structure and the RAF $R'$, 
+$F$ might be identical to its own closure. To see this, consider the following example network: 
+\begin{equation}
+	\begin{split}
+		r_1: x_1 \overset{x_1}{\longrightarrow} x_2 \\
+		r_2: x_2 \overset{x_2}{\longrightarrow} x_1 \\
+	\end{split}
+\end{equation}
+with $F=\cat=X=\{x_1,x_2\}$ and RAF $R' = \{r_1,r_2\}$. Then $F=\closure{R'}{F}$. However, $F$ could also contain reactions 
+that are not connected to the rest, depending on the RAF. For example
+\begin{equation}
+	\begin{split}
+		r_1: x_1 &\overset{x_1}{\longrightarrow} x_2 \\
+		r_2: x_2 &\overset{x_2}{\longrightarrow} x_1 \\
+		r_3: x_3 &\overset{x_3}{\longrightarrow} x_1 
+	\end{split}
+\end{equation}
+with $F=\cat=X=\{x_1,x_2,x_3\}$ and RAF $R'=\{r_1,r_2\}$, we have $x_3\in F\Rightarrow F\subseteq \closure{R'}{F}$ but $x_3$ is dis-connected
+in the graph $\king(X(R') \cup F, R', \cat(R'))$. In contrast, a food-set $F'$ for a subnetwork $(X', R')$ as defined in Eq.~\ref{eq:FoodWaste} is a direct 
+consequence from the set of entities $X'$ and the set of reactions $R'$. However, even if we assume that $\cat(R') \subseteq X'$, thus $(X',R',\cat(R')$ 
+is  is reflexive autocatalytic it is not enough
 %of RAFs to subnetworks. 
 %\vspace{6pt}
 %\begin{definition}
