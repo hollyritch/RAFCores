@@ -208,7 +208,6 @@
 \maketitle
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\holy{
 \section{Preliminaries}
 
 A reaction network $(X,R)$ is tuple of two finite sets, set of metabolites $X$ 
@@ -234,16 +233,13 @@ by $x$. In case $s^-_{xr}>s^+_{xr}>0$, $x$ is both reactant and catalyst
 of reaction $r$, while in case $s^+_{xr}>s^-_{xr}>0$, $x$ is both product and catalyst 
 of reaction $r$. Note that a reaction may have multiple catalysts. We collect all catalysts 
 for a reaction $r$ in the set $\cat_r$ and denote by $\cat(R)\coloneqq\{(K_r,r) \ | \ r\in R 
-\text{ explicitly catalyzed}\}$ the set of \emph{catalyzations}. The catalysts of a \emph{catalyzation} 
-are denoted by $X(\cat_r)$. The triple $(X,R,\cat)$ with $\cat=\cat(R)$ is called a partially catalyzed 
-RN. Note that there may be uncatalyzed reactions in a catalyzed RN. If $|\cat| = |R'|$, however, i.e., 
-each reaction is catalyzed, we call $(X,R,\cat)$ a catalyzed RN. 
+\text{ explicitly catalyzed}\}$ the set of \emph{catalyzations}. Note that it is possible to have 
+$\cat(R)=\emptyset$. The catalysts of a \emph{catalyzation} are denoted by $X(\cat_r)$. The 
+triple $(X,R,\cat)$ with $\cat=\cat(R)\neq\emptyset$ is called a partially catalyzed 
+RN. If $|\cat| = |R'|$, i.e., each reaction is catalyzed, we call $(X,R,\cat)$ a catalyzed RN. 
 
-A tuple $(X', R')$ is called a subnetwork of $(X,R)$ if $X'\subseteq X, R'\subseteq R$, and  
-accordingly, $(X', R',\cat(R'))$ is called a partially catalyzed subnetwork. If additionally $|\cat(R')|=|R'|$, 
-and $\cat(R')\subseteq X'$, i.e., each reaction in $(X',R')$ is catalyzed then . A 
-catalyzed network We 
-say a subnetwork $(X',R')$ is well formed if for any $r\in R': \exists x_1,x_2\in X: 
+A tuple $(X', R')$ is called a subnetwork of $(X,R)$ if $X'\subseteq X, R'\subseteq R$- A 
+catalyzed network We say a subnetwork $(X',R')$ is well formed if for any $r\in R': \exists x_1,x_2\in X: 
 s^-_{x_1r}>0, s^+_{x_2r}>0$. Considering a subnetwork $(X',R')$, we may distinguish 
 a certain subset of entities $F', W'\subseteq X$ defined as
 \begin{equation}\label{eq:FoodWaste}
@@ -252,7 +248,6 @@ a certain subset of entities $F', W'\subseteq X$ defined as
 		W'&\coloneqq \{x\in X: x\notin X', \exists r\in R': s^{+}_{xr}>0\}.
 	\end{split}
 \end{equation}
-
 We call $F'$ and $W'$ the set of food and waste molecules for the subnetwork $(X',R')$,
 respectively. The closure of a set $X'$ w.r.t. to a set $R'$ denoted as $\closure{R'}{X'}$ is 
 the unique minimal set $Y$ containing $X'$ such that for any $r\in R': E(r)\subseteq Y 
@@ -351,21 +346,27 @@ First, we give the formal definition of a reflexive autocatalytic food-generated
 \vspace{6pt}
 
 Note that $ii.$, together with Eq.\ref{eq:Closure}, directly implies that all products for any reaction $r\in R'$ are also contained 
-in the closure of $F'$, thus $P_r\subseteq \closure{R'}{F}$. We now connect the notion of an RAF with a graph-theoretical setting. 
-We start with the reflexive autocatalytic part. 
+in the closure of $F'$, thus $P_r\subseteq \closure{R'}{F}$. We now start to translate the RAF setting to subnetworks. We call 
+a subnetwork $(X', R')$ partially catalyzed if $\cat(R')\neq \emptyset$. 
 
 \begin{definition}
-	Let $(X,R, \cat)$ be a catalyzed RN. A subnetwork $(X',R')$ is called reflexive-autocatalytic if $\cat(R')\substeq X'$. 
+	Let $(X,R)$ be a catalyzed RN. A subnetwork $(X',R')$ is called (autonomously) reflexive-autocatalytic if $|R'|=|\cat(R')| \ 
+	(X(\cat(R'))\subseteq X')$.
 \end{definition}
 
 We denote the subgraph of a subnetwork by $\king'\coloneqq \king(X',R')$. A direct consequence is the following lemma:
 
 \begin{lemma}\label{lem:RASubnetwork}
-	Let $(X,R, \cat)$ be a catalyzed RN. A subnetwork $(X',R')$ is reflexive-autocatalytic if and only if
-	for all $r\in R' \ \exists x\in X' (x,r),(r,x)\in E(\king')$.
+	Let $(X, R, \cat)$ be a catalyzed RN. A subnetwork $(X',R')$ is (autonomously) reflexive-autocatalytic if and only if
+	for all $r\in R' \ \exists x\in X: (x,r),(r,x)\in E(\king(X\cup X(\cat(R')), R') \ (E(\king')$. 
 \end{lemma}
 \begin{proof}
-	If 
+	If $(X',R')$ is reflexive autocatalytic $|R'|=|\cat(R')|$, thus each reaction $r$ is explicitely catalyzed by an $x_r\in X(\cat_r)\subseteq X$.
+	Then $s^-_{x_rr}>0$ and $s^+_{x_rr}>0$ yields by definition $(x_r,r)$ and $(x_r,r) \in E(\king(X\cup X(\cat(R')), R')$, respectively.
+	If $(X',R')$ is autonomously reflexive-autocatalytic then $X(\cat(R')\subseteq X'\Rightarrow \king(X\cup X(\cat(R'), R') = \king'$ which
+	yields the second part of the claim. Conversely, if for each $r\in R': \exists x\in X$ such that $(x,r),(r,x)\in E(\king(X\cup X(\cat(R')), R')$, 
+	then by definition $s^-_{xr}>0,s^+_{xr}>0$, thus $x\in X(\cat_r)$. If, additionally, $(x,r),(r,x) \in E(\king')$ then $x\in X'$ and thus 
+	$X(\cat(R')\subseteq X'$ which yields that $(X',R')$ is autonomously catalyzed. 
 \end{proof}
 
 \vspace{6pt}
@@ -387,7 +388,7 @@ We denote the subgraph of a subnetwork by $\king'\coloneqq \king(X',R')$. A dire
 \end{proof}
 
 However, a simple path is in general not enough. \TODO{To be continued}
-}
+
 
 In theory, for an RN $(X,R,\cat)$, $F$ could be chosen arbitrarily. Depending on the network structure and the RAF $R'$, 
 $F$ might be identical to its own closure. To see this, consider the following example network: 
