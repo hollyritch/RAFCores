@@ -251,6 +251,53 @@ a certain subset of entities $F', W'\subseteq X$ defined as
 We call $F'$ and $W'$ the set of food and waste molecules for the subnetwork $(X',R')$,
 respectively. A subnetwork is called \emph{educt} and \emph{product complete} if $F'\subseteq X'$ and 
 $W'\subseteq X'$, respectively. 
+
+A (catalyzed) RN can be represented by its \emph{K\"onig graph}, a directed bipartite graph $\king (X,R,\cat) \coloneqq 
+(X\cup R, E_1\cup E_2)$ with
+\begin{equation}
+	\begin{split}
+		E_1 & \coloneqq \{(x,r) \ \vert \ s^-_{xr}>0\} \\
+		E_2 & \coloneqq \{(r,x) \ \vert \ s^+_{xr}>0\}.
+	\end{split}
+\end{equation}
+
+To align with the setting of \cite{hordijk_detecting_2004}, we define a slight variation denoted as \emph{catalyzed 
+K\"onig graph} as the bipartite directed graph $\queen (X,R,\cat) \coloneqq (X\cup R, E_1\cup E_2\cup E_{\cat})$
+
+\begin{equation}
+	\begin{split}
+		E_1 & \coloneqq \{(x,r) \ \vert \ \SM_{xr}<0\} \\
+		E_2 & \coloneqq \{(r,x) \ \vert \ \SM_{xr}>0\} \\
+		E_{\cat} & \coloneqq \{(x,r) \ \vert \ x\in X(\cat_r)\}.
+	\end{split}
+\end{equation}
+
+A reflexive autocatalytic food-generated system (RAF) was defined in \cite{hordijk_detecting_2004}. In our notation,
+we have the following definition.
+\vspace{6pt}
+\begin{definition}[RAF]\label{def:RAF}
+	Let $(X,R,\cat)$ be a catalyzed network with $F\subseteq X$. Then
+	a set $R'$ is called  
+		\begin{itemize} 
+			\item[i.]{\emph{reflexive autocatalytic} (RA) if $\forall r\in R': \emptyset \neq X(\mathcal{K}_r)\subseteq E(R')\cup P(R')$}
+			\item[ii.]{\emph{F-generated} if $E(R')\subseteq \closure{R'}{F}$}
+			\item[iii.]{\emph{reflexive autocatalytic} and \emph{F-generated} (RAF) if both i. and ii. hold}
+		\end{itemize}
+\end{definition}
+\vspace{6pt}
+
+Note that $ii.$, together with Eq.\ref{eq:Closure}, directly implies that all products for any reaction $r\in R'$ are also contained 
+in the closure of $F'$, thus $P_r\subseteq \closure{R'}{F}$. Special attention will be put on a RAF $R'$ such that there is no 
+$R''\subset R'$ that is again a RAF. In the literature, this notion has been termed \emph{irreducible} \cite{hordijk_detecting_2004, 
+hordijk_autocatalytic_2013, hordijk_autocatalytic_2010}. However, to avoid confusion with the notion of irreducibility of a matrix, 
+we refer to such a RAF as a \emph{minimal RAF}. 
+
+Before translating the setting of a RAF into a subnetwork-based approach, we start by analyzing how specific properties of a RAF 
+translate into the bipartite K\"onig graph. We refer to the bipartite K\"onig representation of a RAF simply by \emph{K\"onig RAF}. 
+We start with the consequences of the closure. 
+
+\subsection{Properties of K\"onig RAFs}
+
 The closure of a set $X'$ w.r.t. to a set $R'$ denoted as $\closure{R'}{X'}$ is the unique minimal set $Y$ 
 containing $X'$ such that for any $r\in R': E(r)\subseteq Y \Rightarrow P(r)\subseteq Y$. Thus:
 
@@ -312,43 +359,35 @@ let:
 	\PO_{R'}^k(X') \coloneqq \{r\in R' \ | \ E(r)\subseteq \cl^k_{R'}(X')\}
 \end{equation}
 
-A (catalyzed) RN can be represented by its \emph{K\"onig graph}, a directed bipartite graph $\king (X,R,\cat) \coloneqq 
-(X\cup R, E_1\cup E_2)$ with
-\begin{equation}
-	\begin{split}
-		E_1 & \coloneqq \{(x,r) \ \vert \ s^-_{xr}>0\} \\
-		E_2 & \coloneqq \{(r,x) \ \vert \ s^+_{xr}>0\}.
-	\end{split}
-\end{equation}
-
-To align with the setting of \cite{hordijk_detecting_2004}, we define a slight variation denoted as \emph{catalyzed 
-K\"onig graph} as the bipartite directed graph $\queen (X,R,\cat) \coloneqq (X\cup R, E_1\cup E_2\cup E_{\cat})$
-
-\begin{equation}
-	\begin{split}
-		E_1 & \coloneqq \{(x,r) \ \vert \ \SM_{xr}<0\} \\
-		E_2 & \coloneqq \{(r,x) \ \vert \ \SM_{xr}>0\} \\
-		E_{\cat} & \coloneqq \{(x,r) \ \vert \ x\in X(\cat_r)\}.
-	\end{split}
-\end{equation}
-
-First, we give the formal definition of a reflexive autocatalytic food-generated system (RAF) provided in 
-\cite{hordijk_detecting_2004}.
+We are now in the position to deduce the consequences of Def.~\ref{def:RAF}ii. to the K\"onig RAF. 
 \vspace{6pt}
-\begin{definition}[RAF]\label{def:RAF}
-	Let $(X,R,\cat)$ be a catalyzed network with $F\subseteq X$. Then
-	a set $R'$ is called  
-		\begin{itemize} 
-			\item[i.]{\emph{reflexive autocatalytic} (RA) if $\forall r\in R': \emptyset \neq X(\mathcal{K}_r)\subseteq E(R')\cup P(R')$}
-			\item[ii.]{\emph{F-generated} if $E(R')\subseteq \closure{R'}{F}$}
-			\item[iii.]{\emph{reflexive autocatalytic} and \emph{F-generated} (RAF) if both i. and ii. hold}
-		\end{itemize}
-\end{definition}
-\vspace{6pt}
+\begin{lemma}\label{lem:RAFPath}
+	Let $(X,R,\cat)$ be a catalyzed network with $F\subseteq X$ and $R'$ an RAF. Then, 
+	for any $x\in \closure{R'}{F}\setminus F: \exists f\in F: P=(f, \ldots, x)$ is a path in 
+	$\king'\coloneqq \king(\closure{R'}{F}\cup F, R', \cat')$.
+\end{lemma}
+\begin{proof}
+	Let $x\in \closure{R'}{F}\setminus F$. By Corollary~\ref{cor:seqLimit} we have for some $n\in\mathbb{N}$ that
+	$\closure{R'}{F}\setminus F = \cl^n_{R'}(F) \setminus F$. Thus, there is the sequence:
+	\begin{equation}
+		(\mathscr{Z}^k_{R'}(F))_{n\in\mathbb{N}}\coloneqq (\cl^{k-1}_{R'}(F), \PO^k_{R'}(F))_{n\in\mathbb{N}}
+	\end{equation}
+	such that for any $r\in \PO^k_{R'}(F)$ there is $y\in \cl^{k-1}_{R'}(F), z\in\cl^{k}_{R'}(F): (y,r)\in E_1(\king'), (r,z)\in E_2(\king')$. 
+	Thus, starting with $x\in \cl^{n}_{R'}(F)$ and recursively applying upper argument, there is a sequence of vertices $
+	(x_0, r_1, x_1, \ldots, r_n, x_n): (x_{i-1},r_i)\in E_1(\king'), (r_i,x_i)\in E_2(\king'), 1\leq i\leq n, x=x_n$ that is a path 
+	in $\king'$.
+\end{proof}
 
-Note that $ii.$, together with Eq.\ref{eq:Closure}, directly implies that all products for any reaction $r\in R'$ are also contained 
-in the closure of $F'$, thus $P_r\subseteq \closure{R'}{F}$. We now start to translate the RAF setting to subnetworks. We call 
-a subnetwork $(X', R')$ partially catalyzed if $\cat(R')\neq \emptyset$. 
+To connect with the setting of autocatalytic matrices and autocatalytic cores sensu Blokhuis \cite{blokhuis_Universal_2020}, in the following, 
+we are considering only those RAFs $R': \cat(R')\cap F=\emptyset$, which we call \emph{catalytically autonomous} RAFs
+
+\vspace{48pt}
+
+We are now translating this definition to subnetworks.
+
+\subsection{Reflexively autocatalytic subnetworks}
+
+We now begin translating the RAF setting into subnetworks. We call a subnetwork $(X', R')$ partially catalyzed if $\cat(R')\neq \emptyset$. 
 \vspace{6pt}
 \begin{definition}
 	Let $(X,R)$ be a catalyzed RN. A subnetwork $(X',R')$ is called (autonomously) reflexive-autocatalytic if $|R'|=|\cat(R')| \ 
@@ -377,24 +416,8 @@ specific food-set for $(X',R')$ as follows:
 	F'_{\cat'}\coloneqq \{x\in X(\cat') \ | \ x\notin X'\} 
 \end{equation}
 
-The second step is to capture the notion of F-generated for explicit subnetworks. 
-\vspace{6pt}
-\begin{lemma}\label{lem:RAFPath}
-	Let $(X,R,\cat)$ be a catalyzed network with $F\subseteq X$ and $R'$ an RAF. Then, 
-	for any $x\in \closure{R'}{F}\setminus F: \exists f\in F: P=(f, \ldots, x)$ is a path in 
-	$\king'\coloneqq \king(\closure{R'}{F}\cup F, R', \cat')$.
-\end{lemma}
-\begin{proof}
-	Let $x\in \closure{R'}{F}\setminus F$. By Corollary~\ref{cor:seqLimit} we have for some $n\in\mathbb{N}$ that
-	$\closure{R'}{F}\setminus F = \cl^n_{R'}(F) \setminus F$. Thus, there is the sequence:
-	\begin{equation}
-		(\mathscr{Z}^k_{R'}(F))_{n\in\mathbb{N}}\coloneqq (\cl^{k-1}_{R'}(F), \PO^k_{R'}(F))_{n\in\mathbb{N}}
-	\end{equation}
-	such that for any $r\in \PO^k_{R'}(F)$ there is $y\in \cl^{k-1}_{R'}(F), z\in\cl^{k}_{R'}(F): (y,r)\in E_1(\king'), (r,z)\in E_2(\king')$. 
-	Thus, starting with $x\in \cl^{n}_{R'}(F)$ and recursively applying upper argument, there is a sequence of vertices $
-	(x_0, r_1, x_1, \ldots, r_n, x_n): (x_{i-1},r_i)\in E_1(\king'), (r_i,x_i)\in E_2(\king'), 1\leq i\leq n, x=x_n$ that is a path 
-	in $\king'$.
-\end{proof}
+\subsection{F-generated subnetworks}
+
 
 However, a simple path is in general not enough. \TODO{To be continued}
 
