@@ -1,5 +1,5 @@
 \documentclass[pdflatex]{sn-jnl}
-\renewcommand{\textfraction}{.002}
+ \renewcommand{\textfraction}{.002}
 \renewcommand{\floatpagefraction}{.995}
 \setcounter{totalnumber}{5}
 \renewcommand{\topfraction}{.995}
@@ -249,9 +249,10 @@ a certain subset of entities $F', W'\subseteq X$ defined as
 	\end{split}
 \end{equation}
 We call $F'$ and $W'$ the set of food and waste molecules for the subnetwork $(X',R')$,
-respectively. The closure of a set $X'$ w.r.t. to a set $R'$ denoted as $\closure{R'}{X'}$ is 
-the unique minimal set $Y$ containing $X'$ such that for any $r\in R': E(r)\subseteq Y 
-\Rightarrow P(r)\subseteq Y$. Thus:
+respectively. A subnetwork is called \emph{educt} and \emph{product complete} if $F'\subseteq X'$ and 
+$W'\subseteq X'$, respectively. 
+The closure of a set $X'$ w.r.t. to a set $R'$ denoted as $\closure{R'}{X'}$ is the unique minimal set $Y$ 
+containing $X'$ such that for any $r\in R': E(r)\subseteq Y \Rightarrow P(r)\subseteq Y$. Thus:
 
 \begin{equation}\label{eq:Closure}
 	\closure{R'}{X'} \coloneqq \min \underbrace{\{ Z \subseteq X \ | \ X'\subseteq Z, E(r) \subseteq Z \Rightarrow P(r) \subseteq Z \ \forall r\in R'\}}_{\eqqcolon \mathfrak{C}_{R'}(X')}
@@ -348,27 +349,35 @@ First, we give the formal definition of a reflexive autocatalytic food-generated
 Note that $ii.$, together with Eq.\ref{eq:Closure}, directly implies that all products for any reaction $r\in R'$ are also contained 
 in the closure of $F'$, thus $P_r\subseteq \closure{R'}{F}$. We now start to translate the RAF setting to subnetworks. We call 
 a subnetwork $(X', R')$ partially catalyzed if $\cat(R')\neq \emptyset$. 
-
+\vspace{6pt}
 \begin{definition}
 	Let $(X,R)$ be a catalyzed RN. A subnetwork $(X',R')$ is called (autonomously) reflexive-autocatalytic if $|R'|=|\cat(R')| \ 
 	(X(\cat(R'))\subseteq X')$.
 \end{definition}
-
-We denote the subgraph of a subnetwork by $\king'\coloneqq \king(X',R')$. A direct consequence is the following lemma:
-
+\vspace{6pt}
+We denote the subgraph of a subnetwork by $\king'\coloneqq \king(X',R')$ and write $\cat'$ instead of $\cat(R')$. A direct consequence 
+is then the following lemma:
+\vspace{6pt}
 \begin{lemma}\label{lem:RASubnetwork}
 	Let $(X, R, \cat)$ be a catalyzed RN. A subnetwork $(X',R')$ is (autonomously) reflexive-autocatalytic if and only if
-	for all $r\in R' \ \exists x\in X: (x,r),(r,x)\in E(\king(X\cup X(\cat(R')), R') \ (E(\king')$. 
+	for all $r\in R' \ \exists x\in X: (x,r),(r,x)\in E(\king(X\cup X(\cat'), R') \ (E(\king'))$. 
 \end{lemma}
 \begin{proof}
-	If $(X',R')$ is reflexive autocatalytic $|R'|=|\cat(R')|$, thus each reaction $r$ is explicitely catalyzed by an $x_r\in X(\cat_r)\subseteq X$.
-	Then $s^-_{x_rr}>0$ and $s^+_{x_rr}>0$ yields by definition $(x_r,r)$ and $(x_r,r) \in E(\king(X\cup X(\cat(R')), R')$, respectively.
-	If $(X',R')$ is autonomously reflexive-autocatalytic then $X(\cat(R')\subseteq X'\Rightarrow \king(X\cup X(\cat(R'), R') = \king'$ which
-	yields the second part of the claim. Conversely, if for each $r\in R': \exists x\in X$ such that $(x,r),(r,x)\in E(\king(X\cup X(\cat(R')), R')$, 
+	If $(X',R')$ is reflexive autocatalytic $|R'|=|\cat'|$, thus each reaction $r$ is explicitely catalyzed by an $x_r\in X(\cat_r)\subseteq X$.
+	Then $s^-_{x_rr}>0$ and $s^+_{x_rr}>0$ yields by definition $(x_r,r)$ and $(x_r,r) \in E(\king(X\cup X(\cat'), R')$, respectively.
+	If $(X',R')$ is autonomously reflexive-autocatalytic then $X(\cat'\subseteq X'\Rightarrow \king(X\cup X(\cat'), R') = \king'$ which
+	yields the second part of the claim. Conversely, if for each $r\in R': \exists x\in X$ such that $(x,r),(r,x)\in E(\king(X\cup X(\cat')), R')$, 
 	then by definition $s^-_{xr}>0,s^+_{xr}>0$, thus $x\in X(\cat_r)$. If, additionally, $(x,r),(r,x) \in E(\king')$ then $x\in X'$ and thus 
-	$X(\cat(R')\subseteq X'$ which yields that $(X',R')$ is autonomously catalyzed. 
+	$X(\cat'\subseteq X'$ which yields that $(X',R')$ is autonomously reflexive-autocatalytic. 
 \end{proof}
+\vspace{6pt}
+The definition of the food-set $F'$ in Eq.~\ref{eq:FoodWaste} does not include catalysts. We therefore additionally define the catalyst 
+specific food-set for $(X',R')$ as follows:
+\begin{equation}
+	F'_{\cat'}\coloneqq \{x\in X(\cat') \ | \ x\notin X'\} 
+\end{equation}
 
+The second step is to capture the notion of F-generated for explicit subnetworks. 
 \vspace{6pt}
 \begin{lemma}\label{lem:RAFPath}
 	Let $(X,R,\cat)$ be a catalyzed network with $F\subseteq X$ and $R'$ an RAF. Then, 
