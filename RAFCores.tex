@@ -379,9 +379,11 @@ We are now in the position to deduce the consequences of Def.~\ref{def:RAF}ii. t
 \end{proof}
 
 To connect with the setting of autocatalytic matrices and autocatalytic cores sensu Blokhuis \cite{blokhuis_Universal_2020}, in the following, 
-we are considering only those RAFs $R': \cat(R')\cap F=\emptyset$, which we call \emph{catalytically autonomous} RAFs
+we are considering only those RAFs $R': \cat(R')\cap F=\emptyset$, which we call \emph{catalytically autonomous} RAFs.
 
-\vspace{48pt}
+\begin{lemma}
+	Let $(X',R')$ be a \emph{catalytically autonomous} RAFs. Then $(X',R')$ contains an autocatalytic core. \TODO{Define autocatalytic cores before}
+\end{lemma}
 
 We are now translating this definition to subnetworks.
 
@@ -418,10 +420,6 @@ specific food-set for $(X',R')$ as follows:
 
 \subsection{F-generated subnetworks}
 
-
-However, a simple path is in general not enough. \TODO{To be continued}
-
-
 In theory, for an RN $(X,R,\cat)$, $F$ could be chosen arbitrarily. Depending on the network structure and the RAF $R'$, 
 $F$ might be identical to its own closure. To see this, consider the following example network: 
 \begin{equation}
@@ -441,34 +439,13 @@ that are not connected to the rest, depending on the RAF. For example
 \end{equation}
 with $F=\cat=X=\{x_1,x_2,x_3\}$ and RAF $R'=\{r_1,r_2\}$, we have $x_3\in F\Rightarrow F\subseteq \closure{R'}{F}$ but $x_3$ is dis-connected
 in the graph $\king(X(R') \cup F, R', \cat(R'))$. In contrast, a food-set $F'$ for a subnetwork $(X', R')$ as defined in Eq.~\ref{eq:FoodWaste} is a direct 
-consequence from the set of entities $X'$ and the set of reactions $R'$. However, even if we assume that $\cat(R') \subseteq X'$, thus $(X',R',\cat(R')$ 
-is  is reflexive autocatalytic it is not enough
-%of RAFs to subnetworks. 
-%\vspace{6pt}
-%\begin{definition}
-%	Let $(X,R,\cat)$ be a catalyzed RN with $F\subseteq X$. A catalyzed subnetwork $(X',R',\cat')$ with 
-%	food-set $F'$ is a \emph{RAF-subnetwork} if $R'$ is a RAF and $X'\cup F'=\closure{R'}{F'}\cup F'$. 
-%\end{definition}
-%\vspace{6pt}
-%A convenient consequence from this definition is that there is a one-to-one correspondence between RAFs $R'$
-%in $(X,R,\cat)$ and \emph{RAF-subnetwork}. Finding a suitable characterization for RAF-subnetworks would, thereby,
-%allow us to identify RAFs in bipartite graphs. 
-%\vspace{6pt}
-%\begin{lemma}
-%	Let $(X,R,\cat)$ be a catalyzed RN. A catalyzed subnetwork $(X',R',\cat')$ with food-set $F'\subseteq X$ is a 
-%	RAF-subnetwork if and only if the following holds: 
-%	\begin{itemize}
-%		\item[i.]{$\forall r\in R' \ \exists x\in X'\cup F': (x,r,x)$ is an elementary circuit in $\king(X'\cup F',R',\cat')$}
-%		\item[ii.]{\TODO{$\forall x\in X' \ \exists f\in F': P=(f,\ldots, x)$ is a directed path in $\king(X'\cup F',R',\cat')$}}
-%	\end{itemize}
-%\end{lemma}
-%\begin{proof}
-%	Assume $(X',R',\cat')$ is a RAF-subnetwork. Then $R'$ is a RAF and $X'=\closure{R'}{F'}\setminus F'$. Since $R'$ 
-%	is a RAF, for any reaction $r\in R': \emptyset \neq X(\cat_r)\subseteq E(R')\cup P(R')\subseteq \closure{R'}{F'} 
-%	= X' \cup F'$, thus an $x\in X' \cup F': (x,r)\in E_1(\king), (r,x)\in E_2(\king)$, and thereby $(x,r,x)$ an 
-%	elementary circuit in $\king(X'\cup F',R',\cat')$ showing $i$. Then Lemma~\ref{lem:RAFPath} yields $ii$.
-%	Conversely, $i.$ implies that each reaction from $R'$ is catalyzed. 
-%\end{proof}
+consequence from the set of entities $X'$ and the set of reactions $R'$. We therefore introduce the following definition
+
+\begin{definition}[Food-generated subnetwork]
+	Let $(X, R, \cat)$ be a catalyzed RN. A subnetwork $(X',R')$ is called food generated, 
+\end{definition}
+
+
 
 \vspace{6pt}
 \bibliography{RAFCores}
