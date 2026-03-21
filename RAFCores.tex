@@ -430,15 +430,48 @@ we have a first straightforward result.
 	 and obtain again that forall $x\in \POX^{k-1}: f(x)>0$ and with observation $*$ that also $f(x)>0, \in \POX^{\ell}: f(x)>0, k-1\leq \ell \leq n$.
 	 Then by construction, we obtain $v_r$ is strictly positive and $Av>0$. 
 \end{proof}
+\vspace{6pt}
 
-As a direct corollary we obtain:
+The origin of the semipositivity of the $A\coloneqq \SM[(\closure{\RAF}{F}\setminus F,R')]$ could be of 
+many flavors, for example, a simple food-generated autocatalytic reaction. 
+Consider the following example:
 
-\begin{corollary}
-	Let $(X,R)$ be a catalyzed RN with food-set $F$ and $\RAF$ a RAF. Then $(\closure{R'}{F},R')$ contains an autocatalytic core. 
-\end{corollary}
+\begin{equation}
+	\begin{split}
+		r_0: f_1 & \overset{f_2}{\longrightarrow} x_1 \\ 
+		r_i: x_i & \overset{x_i}{\longrightarrow} x_{i+1}.
+	\end{split}
+\end{equation}
 
-Next, we are considering only those RAFs $\RAF: \cat(\RAF)\cap F=\emptyset$, which we call \emph{catalytically autonomous} RAFs.
+In this example, the catalyst for reaction $r_0$ is an element of the food set.
+Not considering the food molecules, the reaction $r_0$ then translates to 
+$\overset{r_0}\rightarrow x_1$, which drives semipositivity of $A$. 
+Thus, it is natural to consider examples where none of the catalysts are 
+contained in the food set. Consider the following RAF $\RAF={r_1,r_2}$, 
+with food-set $F=\{f\}$ and $X\coloneqq \{f,x_1,x_2\}$.
 
+\begin{equation}
+	\begin{split}
+		r_1&: f  \overset{x_1}{\longrightarrow} x_2 \\ 
+		r_2&: x_2  \overset{x_2}{\longrightarrow} x_1
+	\end{split}
+\end{equation}
+
+The matrix $A\coloneqq \SM[(\closure{\RAF}{F}\setminus F,R')]$ then reads:
+
+\begin{equation}
+	A\coloneqq 
+		\begin{pmatrix}
+			0 & 1
+			1 & -1
+		\end{pmatrix}
+\end{equation}
+
+which is an autocatalytic core of size $2$ that is associated with an elementary 
+circuit in $\king(\closure{\RAF}{F},R'), R')$. This is, however, no coincidence. 
+Let us therefore consider only \emph{catalytically autonomous} RAFs $\RAF$ 
+for which $\cat(\RAF)\cap F=\emptyset$.
+\vspace{6pt}
 \begin{lemma}
 	Let $(X,R)$ be a catalyzed network with food-set F and $\RAF$ a \emph{catalytically autonomous} RAFs. Then $(\closure{\RAF}{F},\RAF)$ contains an 
 	autocatalytic core $(X',R')$ that is either an explicit autocatalytic reaction or $\king(X',R')$ is an elementary circuit and the 
@@ -447,6 +480,7 @@ Next, we are considering only those RAFs $\RAF: \cat(\RAF)\cap F=\emptyset$, whi
 \begin{proof}
 	\TODO{Include and adapt proof from Overleaf}
 \end{proof}
+\vspace{6pt}
 
 \section{RAF-Subnetworks}
 
