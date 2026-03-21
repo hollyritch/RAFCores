@@ -431,15 +431,17 @@ we have a first straightforward result.
 	 Then by construction, we obtain $v_r$ is strictly positive and $Av>0$. 
 \end{proof}
 
+As a direct corollary we obtain:
+
 \begin{corollary}
-	Let $(X,R)$ be a catalyzed RN with food-set $F$ and $R'$ a RAF. Then $(\closure{R'}{F},R')$ contains an autocatalytic core. 
+	Let $(X,R)$ be a catalyzed RN with food-set $F$ and $\RAF$ a RAF. Then $(\closure{R'}{F},R')$ contains an autocatalytic core. 
 \end{corollary}
 
-Next, we are considering only those RAFs $R': \cat(R')\cap F=\emptyset$, which we call \emph{catalytically autonomous} RAFs.
+Next, we are considering only those RAFs $\RAF: \cat(\RAF)\cap F=\emptyset$, which we call \emph{catalytically autonomous} RAFs.
 
 \begin{lemma}
-	Let $(X,R)$ be a catalyzed network with food-set F and $R'$ a \emph{catalytically autonomous} RAFs. Then $(\closure{R'}{F},R')$ contains an 
-	autocatalytic core $(X',R'')$ that is either an explicit autocatalytic reaction or $\king(X',R')$ is an elementary circuit and the 
+	Let $(X,R)$ be a catalyzed network with food-set F and $\RAF$ a \emph{catalytically autonomous} RAFs. Then $(\closure{\RAF}{F},\RAF)$ contains an 
+	autocatalytic core $(X',R')$ that is either an explicit autocatalytic reaction or $\king(X',R')$ is an elementary circuit and the 
 	corresponding CS matrix $\SM[\child]$ has at least one strong Metzler column.
 \end{lemma}
 \begin{proof}
@@ -491,7 +493,7 @@ $F$ might be identical to its own closure. To see this, consider the following e
 		r_2: x_2 \overset{x_2}{\longrightarrow} x_1 \\
 	\end{split}
 \end{equation}
-with $F=\cat=X=\{x_1,x_2\}$ and RAF $R' = \{r_1,r_2\}$. Then $F=\closure{R'}{F}$. However, $F$ could also contain reactions 
+with $F=\cat=X=\{x_1,x_2\}$ and RAF $\RAF = \{r_1,r_2\}$. Then $F=\closure{\RAF}{F}$. However, $F$ could also contain reactions 
 that are not connected to the rest, depending on the RAF. For example
 \begin{equation}
 	\begin{split}
@@ -500,8 +502,8 @@ that are not connected to the rest, depending on the RAF. For example
 		r_3: x_3 &\overset{x_3}{\longrightarrow} x_1 
 	\end{split}
 \end{equation}
-with $F=\cat=X=\{x_1,x_2,x_3\}$ and RAF $R'=\{r_1,r_2\}$, we have $x_3\in F\Rightarrow F\subseteq \closure{R'}{F}$ but $x_3$ is dis-connected
-in the graph $\king(X(R') \cup F, R', \cat(R'))$. In contrast, a food-set $F'$ for a subnetwork $(X', R')$ as defined in Eq.~\ref{eq:FoodWaste} is a direct 
+with $F=\cat=X=\{x_1,x_2,x_3\}$ and RAF $\RAF=\{r_1,r_2\}$, we have $x_3\in F\Rightarrow F\subseteq \closure{\RAF}{F}$ but $x_3$ is disconnected
+in the graph $\king(X(\RAF) \cup F, \RAF, \cat(\RAF))$. In contrast, a food-set $F'$ for a subnetwork $(X', R')$ as defined in Eq.~\ref{eq:FoodWaste} is a direct 
 consequence from the set of entities $X'$ and the set of reactions $R'$. We therefore introduce the following definition
 
 \begin{definition}[Food-generated subnetwork]
