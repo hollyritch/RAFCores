@@ -256,6 +256,15 @@ We call $F'$ and $W'$ the set of food and waste molecules for the subnetwork $(X
 respectively. A subnetwork is called \emph{educt} and \emph{product complete} if $F'\subseteq X'$ and 
 $W'\subseteq X'$, respectively. 
 
+The widely accepted definition of (structural) autocatalysis was proposed in \cite{Blokhuis:20}.
+\begin{definition}\label{def:autSubRN}
+  An RN $(X,R)$ is \emph{autocatalytic} if it contains a sub-RN $(X',R')$ such that
+\begin{enumerate}
+ \item[(i)]  $(X',R')$ is  well-formed;
+ \item[(ii)]  $\mathbf{S}[X',R']$ is semi-positive.
+\end{enumerate}
+\end{definition}
+
 A (catalyzed) RN can be represented by its \emph{K\"onig graph}, a directed bipartite graph $\king (X,R,\cat) \coloneqq 
 (X\cup R, E_1\cup E_2)$ with
 \begin{equation}
@@ -433,33 +442,28 @@ we have a first straightforward result.
 \end{proof}
 \vspace{6pt}
 
-The origin of the semipositivity of the $A\coloneqq \SM[(\closure{\RAF}{F}\setminus F,R')]$ could be of 
-many flavors, for example, a simple food-generated autocatalytic reaction. 
-Consider the following example:
-
+The semipositivity of $A\coloneqq \SM[(\closure{\RAF}{F}\setminus F,R')]$ 
+originates from at least one food-generated reaction. For example, in the 
+following RN:
 \begin{equation}
 	\begin{split}
 		r_0: f_1 & \overset{f_2}{\longrightarrow} x_1 \\ 
-		r_i: x_i & \overset{x_i}{\longrightarrow} x_{i+1}.
+		r_i: x_i & \overset{x_i}{\longrightarrow} x_{i+1},
 	\end{split}
 \end{equation}
-
-In this example, the catalyst for reaction $r_0$ is an element of the food set.
-Not considering the food molecules, the reaction $r_0$ then translates to 
-$\overset{r_0}\rightarrow x_1$, which drives semipositivity of $A$. 
-Thus, it is natural to consider examples where none of the catalysts are 
-contained in the food set. Consider the following RAF $\RAF={r_1,r_2}$, 
-with food-set $F=\{f\}$ and $X\coloneqq \{f,x_1,x_2\}$.
-
+reaction $r_0$ has only non-negative entries in $A$. However, 
+$r_0$ has no reactant in $\closure{\RAF}{F}\setminus F$, not 
+even a catalyst. By definition~\ref{def:autSubRN}, $(\closure{\RAF}{F}\setminus F,R')$ 
+is not an autocatalytic subnetwork since it is not well-formed. One way of avoiding such a  
+situation, is to require that none of the catalysts is contained in the food set. Consider the following 
+RAF $\RAF={r_1,r_2}$, with food-set $F=\{f\}$ and $X\coloneqq \{f,x_1,x_2\}$.
 \begin{equation}
 	\begin{split}
 		r_1&: f  \overset{x_1}{\longrightarrow} x_2 \\ 
 		r_2&: x_2  \overset{x_2}{\longrightarrow} x_1
 	\end{split}
 \end{equation}
-
 The matrix $A\coloneqq \SM[(\closure{\RAF}{F}\setminus F,R')]$ then reads:
-
 \begin{equation}
 	A\coloneqq 
 		\begin{pmatrix}
@@ -470,17 +474,27 @@ The matrix $A\coloneqq \SM[(\closure{\RAF}{F}\setminus F,R')]$ then reads:
 
 which is an autocatalytic core of size $2$ that is associated with an elementary 
 circuit in $\king(\closure{\RAF}{F},R'), R')$. This is, however, no coincidence. 
-Let us therefore consider only \emph{catalytically autonomous} RAFs $\RAF$ 
-for which $\cat(\RAF)\cap F=\emptyset$.
+Let us therefore consider only \emph{catalytically autonomous} RAFs $\RAF$, 
+i.e., for which $\cat(\RAF)\cap F=\emptyset$.
 \vspace{6pt}
 \begin{lemma}
-	Let $(X,R)$ be a catalyzed network with food-set F and $\RAF$ a \emph{catalytically autonomous} RAFs. Then $(\closure{\RAF}{F},\RAF)$ contains an 
-	autocatalytic core $(X',R')$ that is either an explicit autocatalytic reaction or $\king(X',R')$ is an elementary circuit and the 
-	corresponding CS matrix $\SM[\child]$ has at least one strong Metzler column.
+	Let $(X,R)$ be a catalyzed network with food-set $F$ and $\RAF$ a \emph{catalytically autonomous} RAFs. 
+	Then $(\closure{\RAF}{F},\RAF)$ contains an autocatalytic core $(X',R')$ that is either an explicit autocatalytic 
+	reaction or $\king(X',R')$ is an elementary circuit and the corresponding CS matrix $\SM[\child]$ has at least 
+	one strong Metzler column.
 \end{lemma}
 \begin{proof}
 	\TODO{Include and adapt proof from Overleaf}
 \end{proof}
+\vspace{6pt}
+
+Another possibility to obtain well-formed subnetworks is to require that the starting catalyst (\TODO{What does that
+actually mean?} is not in the food set, and each reaction $r\in R'$ has a reactant $x$ in the non-food molecules with 
+$s^-_{xr}>0$.
+
+\TODO{Another open point here is that we can have food molecules that are produced....not entirely sure yet how to 
+deal with this case.}
+
 \vspace{6pt}
 
 \section{RAF-Subnetworks}
