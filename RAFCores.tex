@@ -256,15 +256,6 @@ We call $F'$ and $W'$ the set of food and waste molecules for the subnetwork $(X
 respectively. A subnetwork is called \emph{educt} and \emph{product complete} if $F'\subseteq X'$ and 
 $W'\subseteq X'$, respectively. 
 
-The widely accepted definition of (structural) autocatalysis was proposed in \cite{Blokhuis:20}.
-\begin{definition}\label{def:autSubRN}
-  An RN $(X,R)$ is \emph{autocatalytic} if it contains a sub-RN $(X',R')$ such that
-\begin{enumerate}
- \item[(i)]  $(X',R')$ is  well-formed;
- \item[(ii)]  $\mathbf{S}[X',R']$ is semi-positive.
-\end{enumerate}
-\end{definition}
-
 A (catalyzed) RN can be represented by its \emph{K\"onig graph}, a directed bipartite graph $\king (X,R,\cat) \coloneqq 
 (X\cup R, E_1\cup E_2)$ with
 \begin{equation}
@@ -281,6 +272,7 @@ A (catalyzed) RN can be represented by its \emph{K\"onig graph}, a directed bipa
 	\item{CS-matrices, Metzler-matrices}
 	\item{(strong) Metzler column, i.e., no negative entry on the diagonal}
 	\item{Fluffles}
+	\item{Define CAF}
 \end{itemize}
 }
 
@@ -297,8 +289,8 @@ A (catalyzed) RN can be represented by its \emph{K\"onig graph}, a directed bipa
 
 \section{RAFs}
 
-A reflexive autocatalytic food-generated system (RAF) was defined in \cite{hordijk_detecting_2004}. We adapt here 
-to our notation and have the following definition.
+We adapt the definition of a reflexive autocatalytic food-generated system \cite{hordijk_detecting_2004}, here 
+to our notation.
 \vspace{6pt}
 \begin{definition}[RAF]\label{def:RAF}
 	Let $(X,R,\cat)$ be a catalyzed network with $F\subseteq X$. Then
@@ -317,9 +309,8 @@ $\RAF'\subset \RAF$ that is again a RAF. In the literature, this notion has been
 hordijk_autocatalytic_2013, hordijk_autocatalytic_2010}. However, to avoid confusion with the notion of irreducibility of a matrix, 
 we refer to such a RAF as a \emph{minimal RAF}. 
 
-Before translating the setting of a RAF into a subnetwork-based approach, we start by analyzing how specific properties of a RAF 
-translate into the bipartite K\"onig graph. We refer to the bipartite K\"onig representation of a RAF simply by \emph{K\"onig RAF}. 
-We start with the consequences of the closure. The closure of a set $X'$ w.r.t. to a set $R'$ denoted as $\closure{R'}{X'}$ is the 
+Before connecting the notion of a RAF with the definition of an autocatalytic subnetwork, we start by translating specific properties of a RAF 
+into the bipartite K\"onig graph. We start with the consequences of the closure. The closure of a set $X'$ w.r.t. to a set $R'$ denoted as $\closure{R'}{X'}$ is the 
 unique minimal set $Y$ containing $X'$ such that for any $r\in R': E(r)\subseteq Y \Rightarrow P(r)\subseteq Y$. Thus:
 
 \begin{equation}\label{eq:Closure}
@@ -389,7 +380,7 @@ For both $\cl^k_{R'}(X)$ and $\PO_{R'}^k(X')$, it might be convenient to conside
 		\POR_{R'}^0(X') & \coloneqq \emptyset \qquad \POR_{R'}^k(X')\coloneqq \PO^k_{R'}(X) \left(\bigcup_{i=0}^{k-1} \PO^k_{R'}(X) \right)
 	\end{split}
 \end{equation}
-We are now in the position to deduce the consequences of Def.~\ref{def:RAF}ii. to the K\"onig RAF. 
+We are now in the position to deduce the consequences of Def.~\ref{def:RAF}ii. to the bipartite K\"onig representation of a RAF. 
 \vspace{6pt}
 \begin{lemma}\label{lem:RAFPath}
 	Let $(X,R,\cat)$ be a catalyzed network with $F\subseteq X$ and $\RAF$ an RAF. Then, 
@@ -408,13 +399,27 @@ We are now in the position to deduce the consequences of Def.~\ref{def:RAF}ii. t
 	in $\king'$.
 \end{proof}
 
-Connecting to the autocatalytic term sensu Blokhuis \cite{blokhuis_Universal_2020}, in the following, 
-we have a first straightforward result.
+\section{RAFs and autocatalytic subnetworks}
+
+We continue by connecting the notion of RAFs to autocatalysis sensu Blokhuis \cite{blokhuis_Universal_2020}, which  
+provided the widely accepted definition of (structural) autocatalysis in 2020.
+\vspace{6pt}
+\begin{definition}\label{def:autSubRN}
+  An RN $(X,R)$ is \emph{autocatalytic} if it contains a sub-RN $(X',R')$ such that
+\begin{enumerate}
+ \item[(i)]  $(X',R')$ is  well-formed;
+ \item[(ii)]  $\mathbf{S}[X',R']$ is semi-positive.
+\end{enumerate}
+\end{definition}
 \vspace{6pt}
 
+Our first goal will be to find suitable restrictions of RAFs such that we obtain both of these conditions.
+Indeed, restricting the set of considered molecules to all but the food molecules yields semipositivity 
+of the particular submatrix.
+\vspace{6pt}
 \begin{lemma}
 	Let $(X,R)$ be a catalyzed RN with food-set $F$ and $\RAF$ a RAF. Then it holds that 
-	the matrix $A\coloneqq \SM[\closure{\RAF}{F}\setminus F,R']$ is semipositive, i.e., $Av>0$.
+	the matrix $A\coloneqq \SM[\closure{\RAF}{F}\setminus F,\RAF]$ is semipositive, i.e., $Av>0$.
 \end{lemma}
 \begin{proof}
 	We prove by induction. We know that for some $n\in \mathbb{N}: \cl^n_{\RAF}(F)=\closure{\RAF}{F}\eqqcolon X'$. 
@@ -442,20 +447,41 @@ we have a first straightforward result.
 \end{proof}
 \vspace{6pt}
 
-The semipositivity of $A\coloneqq \SM[(\closure{\RAF}{F}\setminus F,R')]$ 
-originates from at least one food-generated reaction. For example, in the 
-following RN:
+A natural extension to this statement relies in considering not only species from 
+$\closure{\RAF}{F}\setminus F$ but from the set of food-generated entities, i.e.
+\begin{equation}
+	\mathbf{X}_{\RAF} \coloneqq \bigcup_{k=1}^n \POX^k_{\RAF}(F)
+\end{equation}
+
+However, in this case, semipositivity is not guaranteed. To see this, consider 
+the following example:
+\begin{equation}
+	\begin{split}
+		r_1: f_1 & \overset{f_1}{\longrightarrow} x_1\\
+		r_2: x_1 & \overset{x_1}{\longrightarrow} f_1 \\		
+	\end{split}
+\end{equation}
+with the RAF $\RAF\coloneqq \{r_1,r_2\}$ and food-set $F\coloneqq \{f_1\}$. Then
+$\SM[\mathbf{X}_{\RAF}, \RAF]$ reads:
+\begin{equation}
+	\begin{pmatrix}
+		-1 & 1 \\
+		1 & -1
+	\end{pmatrix}
+\end{equation}
+which is indeed not semipositiv. The semipositivity of $A\coloneqq \SM[(\closure{\RAF}{F}\setminus F,\RAF)]$ 
+in general originates from at least one food-generated reaction. For example, in the following RN:
 \begin{equation}
 	\begin{split}
 		r_0: f_1 & \overset{f_2}{\longrightarrow} x_1 \\ 
 		r_i: x_i & \overset{x_i}{\longrightarrow} x_{i+1},
 	\end{split}
 \end{equation}
-reaction $r_0$ has only non-negative entries in $A$. However, 
-$r_0$ has no reactant in $\closure{\RAF}{F}\setminus F$, not 
-even a catalyst. By definition~\ref{def:autSubRN}, $(\closure{\RAF}{F}\setminus F,R')$ 
-is not an autocatalytic subnetwork since it is not well-formed. One way of avoiding such a  
-situation, is to require that none of the catalysts is contained in the food set. Consider the following 
+reaction $r_0$ forms a strong Metzler-column in $A$, which allows for an unrestricted input of $x_1$. \TODO{mhhh...I am not satisfied yet}.
+However, $r_0$ has no reactant in $\closure{\RAF}{F}\setminus F$, not even a catalyst. By 
+definition~\ref{def:autSubRN}, $(\closure{\RAF}{F}\setminus F,R')$ is not an autocatalytic subnetwork 
+since it is not well-formed. One way of avoiding such a situation is to require that none of the 
+catalysts is contained in the food set. Consider the following 
 RAF $\RAF={r_1,r_2}$, with food-set $F=\{f\}$ and $X\coloneqq \{f,x_1,x_2\}$.
 \begin{equation}
 	\begin{split}
@@ -471,7 +497,6 @@ The matrix $A\coloneqq \SM[(\closure{\RAF}{F}\setminus F,R')]$ then reads:
 			1 & -1
 		\end{pmatrix}
 \end{equation}
-
 which is an autocatalytic core of size $2$ that is associated with an elementary 
 circuit in $\king(\closure{\RAF}{F},R'), R')$. This is, however, no coincidence. 
 Let us therefore consider only \emph{catalytically autonomous} RAFs $\RAF$, 
@@ -488,10 +513,24 @@ i.e., for which $\cat(\RAF)\cap F=\emptyset$.
 \end{proof}
 \vspace{6pt}
 
-Another possibility to obtain well-formed subnetworks is to require that the starting catalyst (\TODO{What does that
-actually mean?} is not in the food set, and each reaction $r\in R'$ has a reactant $x$ in the non-food molecules with 
-$s^-_{xr}>0$.
+Generalizing this notion, we can require that every reaction has a reactant (not necessarily a net-reactant)
+that is not an element of the food set. 
 
+\begin{lemma}
+	Let $(X,R)$ be a catalyzed network with food-set $F$ and $\RAF$ a RAF, where for each $r\in R'$ there is
+	$x\in \closure{\RAF}{F}\setminus F: s_{xr}^->0$. Then $(\closure{\RAF}{F},\RAF)$ contains an autocatalytic 
+	core $(X',R')$ that is either an explicit autocatalytic reaction or $\king(X',R')$ is an elementary circuit and the 
+	corresponding CS matrix $\SM[\child]$ has at least one strong Metzler column.
+\end{lemma}
+\begin{proof}
+	
+\end{proof}
+ 
+Building on this....
+
+\begin{lemma}
+	A RAF is a CAF or it contains an autocatalytic core.
+\end{lemma}
 \TODO{Another open point here is that we can have food molecules that are produced....not entirely sure yet how to 
 deal with this case.}
 
