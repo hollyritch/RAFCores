@@ -304,10 +304,7 @@ to our notation.
 \vspace{6pt}
 
 Note that $ii.$, together with Eq.\ref{eq:Closure}, directly implies that all products for any reaction $r\in \RAF$ are also contained 
-in the closure of $F'$, thus $P_r\subseteq \closure{\RAF}{F}$. Special attention will be put on a RAF $R'$ such that there is no 
-$\RAF'\subset \RAF$ that is again a RAF. In the literature, this notion has been termed \emph{irreducible} \cite{hordijk_detecting_2004, 
-hordijk_autocatalytic_2013, hordijk_autocatalytic_2010}. However, to avoid confusion with the notion of irreducibility of a matrix, 
-we refer to such a RAF as a \emph{minimal RAF}. 
+in the closure of $F'$, thus $P_r\subseteq \closure{\RAF}{F}$. 
 
 Before connecting the notion of a RAF with the definition of an autocatalytic subnetwork, we start by translating specific properties of a RAF 
 into the bipartite K\"onig graph. We start with the consequences of the closure. The closure of a set $X'$ w.r.t. to a set $R'$ denoted as $\closure{R'}{X'}$ is the 
@@ -397,6 +394,21 @@ We are now in the position to deduce the consequences of Def.~\ref{def:RAF}ii. t
 	Thus, starting with $x\in \cl^{n}_{\RAF}(F)$ and recursively applying the upper argument, there is a sequence of vertices $
 	(x_0, r_1, x_1, \ldots, r_n, x_n): (x_{i-1},r_i)\in E_1(\king'), (r_i,x_i)\in E_2(\king'), 1\leq i\leq n, x=x_n$ that is a path 
 	in $\king'$.
+\end{proof}
+
+Special attention was put on \emph{irreducible} RAFs, i.e., $\RAFS$ for which no $\RAF'\subset \RAF$ is again a RAF 
+\cite{hordijk_detecting_2004, hordijk_autocatalytic_2013, hordijk_autocatalytic_2010}. However, to avoid confusion with 
+the notion of irreducibility of a matrix, we refer to such a RAF as a \emph{minimal RAF}. In addition, we call any RAF of 
+size $1$ a trivial RAF. We can then find a structure on the K\"onig representation of a non-trivial RAF if all species entities 
+exhibiting no incoming and no outgoing edges are removed. We start with the following observation.
+
+\begin{lemma}
+	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal RAF. Then $\RAF$ is non-trivial 
+	if and only if the graph $\king[\cl_{\RAF}(F)\setminus Y, \RAF]$ with $Y\coloneqq \{x\in \cl_{\RAF}(F) \ | \ \nexists r \in 
+	\RAF \text{s.t. } s^-_{xr}>0 \text{ or } s^+_{xr}>0\}$ is strongly-connected.
+\end{lemma}
+\begin{proof}
+	
 \end{proof}
 
 \section{RAFs and autocatalytic subnetworks}
