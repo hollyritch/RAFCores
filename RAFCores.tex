@@ -492,21 +492,17 @@ In general, irreducible RAFs are not necessarily strong blocks, as is captured i
 Indeed, $r_0$ is a cut-vertex, since it has two catalysts, which are part of different 
 autocatalytic cores, with CS $\child_1\coloneqq (\{x_1,x_2\}, \{r_0,r_1\}, \kappa_1), \kappa_1(x_1)\coloneqq r_0, 
 \kappa_1(x_2)\coloneqq r_1$ and $\child_2\coloneqq (\{y_1,y_2\}, \{r_0,r_2\}, \kappa_1), 
-\kappa_1(y_1)\coloneqq r_0, \kappa_1(y_2)\coloneqq r_2$. Nevertheless, a reaction
-with multiple catalysts is known as referred to as \emph{concurrent tandem catalysis}, but
-extremely rare in metabolic networks and \TODO{(Cite)}. It is therefore reasonable to 
-consider reaction networks where each reaction has at most one catalyst. We denote such a 
-network as first-grade catalytic. We then have the following result.
+\kappa_1(y_1)\coloneqq r_0, \kappa_1(y_2)\coloneqq r_2$. 
 
-\begin{lemma}
-	Let $(X,R, \cat)$ be a first-catalyzed network with food-set $F$, and $\RAF$ be a non-trivial minimal RAF. The graph 
-	$G \coloneqq \king[\cl_{\RAF}(F)\setminus Y, \RAF]$ with $Y\coloneqq \{x\in \cl_{\RAF}(F) \ | \ \nexists r \in 
-	\RAF \text{ s.t. } s^-_{xr}>0 \text{ or } s^+_{xr'}>0\}$ is then a strong block. 
-\end{lemma}
-\begin{proof}
-	
-\end{proof}
-\TODO{Question: Can this happen, if each reaction is catalyzed by only one catalyst?}
+\TODO{Don't think we get a strong block also if we impose no reaction with two catalysts as evident from:}
+
+\begin{equation}
+	\begin{split}
+		r1&: f1  + x1 -> x1 + x2\\
+		r2&: f2 + x4 -> x4 + x3\\
+		r3&: 2x3 + x2 -> x2 + x4 + x1
+	\end{split}
+\end{equation
 
 \section{RAFs and autocatalytic subnetworks}
 
