@@ -377,6 +377,7 @@ For both $\cl^k_{R'}(X)$ and $\PO_{R'}^k(X')$, it might be convenient to conside
 		\POR_{R'}^0(X') & \coloneqq \emptyset \qquad \POR_{R'}^k(X')\coloneqq \PO^k_{R'}(X) \left(\bigcup_{i=0}^{k-1} \PO^k_{R'}(X) \right)
 	\end{split}
 \end{equation}
+\vspace{6pt}
 We are now in the position to deduce the consequences of Def.~\ref{def:RAF}ii. to the bipartite K\"onig representation of a RAF. 
 \vspace{6pt}
 \begin{lemma}\label{lem:RAFPath}
@@ -395,6 +396,7 @@ We are now in the position to deduce the consequences of Def.~\ref{def:RAF}ii. t
 	(x_0, r_1, x_1, \ldots, r_n, x_n): (x_{i-1},r_i)\in E_1(\king'), (r_i,x_i)\in E_2(\king'), 1\leq i\leq n, x=x_n$ that is a path 
 	in $\king'$.
 \end{proof}
+\vspace{6pt}
 
 Special emphasis has been placed on \emph{irreducible} RAFs, i.e., $\RAF$ for which no $\RAF'\subset \RAF$ is again a RAF 
 \cite{hordijk_detecting_2004, hordijk_autocatalytic_2013, hordijk_autocatalytic_2010}. However, to avoid confusion with 
@@ -402,7 +404,7 @@ the notion of irreducibility of a matrix, we refer to such a RAF as a \emph{mini
 size $1$ a trivial RAF. We can then find a structure on the K\"onig representation of a non-trivial RAF if all species entities 
 exhibiting no incoming and no outgoing edges are removed. We start with the following trivial observation, which is a direct
 consequence of Lemma~\ref{lem:RAFPath}.
-
+\vspace{6pt}
 \begin{lemma}\label{lem:weaklyConnected}
 	A $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal RAF. Then $\king[\cl_{\RAF}(F), \RAF]$
 	is weakly-connected.
@@ -415,31 +417,38 @@ consequence of Lemma~\ref{lem:RAFPath}.
 	of $r''\in R(\king')$ is catalyzed by an entity of $x''\in X(\king'')$. Thus $R(\king')$ and $R(\king'')$ are RAFs themselves and since
 	$R(\king'), R(\king'')\subseteq \RAF$, $\RAF$ was not a minimal RAF, thus a contradiction.
 \end{proof}
-
+\vspace{6pt}
 A minimal RAF is thereby weakly-connected. Nevertheless, it is not a mere sequence of reactions, but exhibits some structure. 
 The following Lemma sheds some light on this.
-
+\vspace{6pt}
 \begin{lemma}\label{lem:elemCirc}
 	A $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal, non-trivial RAF. Then 
 	every $r\in \RAF$ is part of an elementary circuit. 
 \end{lemma}
-\begin{lemma}
+\begin{proof}
 	Assume this is not the case. Then there is a reaction $r\in \RAF$ for which all reactants have no incoming edges, 
 	or all products have no outgoing edges, which in both cases implies that $\RAF\setminus \{r\}$ is a RAF, thus, 
 	$\RAF$ is not minimal, a contradiction.
-\end{lemma}
-
+\end{proof}
+\vspace{6pt}
 We are now in the position to prove the following main result.
-
-\begin{lemma}
+\vspace{6pt}
+\begin{theorem}
 	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal RAF. Then $\RAF$ is non-trivial 
 	if and only if the graph $\king[\cl_{\RAF}(F)\setminus Y, \RAF]$ with $Y\coloneqq \{x\in \cl_{\RAF}(F) \ | \ \nexists r \in 
 	\RAF \text{ s.t. } s^-_{xr}>0 \text{ or } s^+_{xr'}>0\}$ is not a single reaction entity and strongly-connected.
-\end{lemma}
+\end{theorem}
 \begin{proof}
 	If $\RAF$ is trivial, the graph $\king[\cl_{\RAF}(F)\setminus Y, \RAF]$ is a single reaction entity. Therefore, let $\RAF$ be 
-	a non-trivial $\RAF$, thus $|\RAF|\geq 2$. We now know that any reaction is located on an elementary circuit and thereby 
-	connected to all reactions on that circuit. Assume now there two elementary
+	a non-trivial $\RAF$, thus $|\RAF|\geq 2$. By Lemma~\ref{lem:weaklyConnected} and \ref{lem:elemCirc} we now know that 
+	$\king[\cl_{\RAF}(F), \RAF]$ is weakly connected, and any reaction is located on an elementary circuit, respectively. Removing 
+	species vertices that have no incoming or no outgoing edges does not destroy any of these properties. Elementary circuits are, 
+	by definition, strongly connected. Assume now there are two elementary circuits $C_1$ and $C_2$ such that for any two vertices 
+	$u\in V(C_1)$ and $v\in V(C_2)$ there is either a path from $u$ to $v$ or from $v$ to $u$. Assume, w.l.o.g., the second. Thus there 
+	is a path from $u$ to $v$ since 	$\king[\cl_{\RAF}(F)\setminus Y, \RAF]$ is weakly-connected. This, however, implies that 
+	$V(C_1)\cap V(C_2)=\emptyset$ and therefore none of the reactions in $R(C_1)$ has a reactant or a catalyst that is an entity from 
+	$X(C_2)$. Thereby, $\RAF\setminus R(C_2)$ is a RAF and thus $\RAF$ was not-minimal. Thereby, such two elementary circuits 
+	cannot exist and for any two reaction vertices $r_1,r_2\in \RAF$ there is a path from $r_1$ to $r_2$ and vice versa.  
 \end{proof}
 
 \section{RAFs and autocatalytic subnetworks}
