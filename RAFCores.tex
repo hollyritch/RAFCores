@@ -449,15 +449,6 @@ Reaction vertices are not only located on elementary circuits, but any two eleme
 \end{proof}
 \vspace{6pt}
 
-A direct consequence from this results is that any two reaction vertices are located on a common elementary circuit. 
-
-\vspace{6pt}
-\begin{corollary}\label{cor:2reacComElCirc}
-	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ a minimal RAF. Then any two reaction 
-	vertices $r_1,r_2$ of $\king[\cl_{\RAF}(F), \RAF]$ are located on a common elementary circuit. 
-\end{corollary}
-\vspace{6pt}
-
 $\king[\cl_{\RAF}(F), \RAF]$ might contain vertices that have either no incoming or outgoing edges. By Lemma~\ref{lem:elemCirc},
 these can only be metabolite vertices, e.g., entities from the food-set or products that are not reactants for any reaction. We thereby
 observe that the last three Lemmata also hold if all such vertices are removed. 
@@ -488,6 +479,23 @@ We are now in the position to prove the following main result.
 	$(y, P_{r_y,r_x},x)$, which completes the proof.
 \end{proof}
 \vspace{6pt}
+
+In general, irreducible RAFs are not necessarily strong blocks, as is captured in the following example.
+
+\begin{equation}
+	\begin{split}
+		r_0&: f_1\overset{ x_1, y_1} \rightarrow x_2 + y_2 \\
+		r_1&: x_2\overset{x_2} \rightarrow x_1 \\
+		r_2&: x_2\overset{y_2} \rightarrow y_1 \\
+	\end{split}
+\end{equation}
+
+Indeed, $r_0$ is a cut-vertex, since it has two catalysts, which are part of different 
+autocatalytic cores, with CS $\child_1\coloneqq (\{x_1,x_2\}, \{r_0,r_1\}, \kappa_1), \kappa_1(x_1)\coloneqq r_0, 
+\kappa_1(x_2)\coloneqq r_1$ and $\child_2\coloneqq (\{y_1,y_2\}, \{r_0,r_2\}, \kappa_1), 
+\kappa_1(y_1)\coloneqq r_0, \kappa_1(y_2)\coloneqq r_2$.
+
+\TODO{Question: Can this happen, if each reaction is catalyzed by only one catalyst?}
 
 \section{RAFs and autocatalytic subnetworks}
 
