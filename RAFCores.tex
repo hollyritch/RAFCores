@@ -456,8 +456,8 @@ observe that the last three Lemmata also hold if all such vertices are removed.
 \vspace{6pt}
 \begin{corollary}[\TODO{Requires proof or clear?}]\label{cor:3Res}
 	Let $(X,R, \cat)$ be a catalyzed network with food-set $F, \RAF$ a minimal RAF, and $Y\coloneqq \{x\in \cl_{\RAF}(F) \ | \ \nexists r \in 
-	\RAF \text{ s.t. } s^-_{xr}>0 \text{ or } s^+_{xr'}>0\}$. Then Lemmata~\ref{lem:weaklyConnected}, \ref{lem:elemCirc}, \ref{lem:strElCirc},
-	and Cor.~\ref{cor:2reacComElCirc} also hold for the graph $\king[\cl_{\RAF}(F)\setminus Y, \RAF]$.
+	\RAF \text{ s.t. } s^-_{xr}>0 \text{ or } s^+_{xr'}>0\}$. Then Lemmata~\ref{lem:weaklyConnected}, \ref{lem:elemCirc}, and \ref{lem:strElCirc},
+	 also hold for the graph $\king[\cl_{\RAF}(F)\setminus Y, \RAF]$.
 \end{corollary}
 \vspace{6pt}
 
@@ -472,7 +472,7 @@ We are now in the position to prove the following main result.
 \begin{proof}
 	If $\RAF$ is trivial, the graph $\king[\cl_{\RAF}(F)\setminus Y, \RAF]$ is a single reaction entity. Therefore, let $\RAF$ be 
 	a non-trivial $\RAF$, thus $|\RAF|\geq 2$. By Corollary~\ref{cor:3Res} we know that 	$\king[\cl_{\RAF}(F)\setminus Y, \RAF]$ 
-	is weakly connected and any two reactions are located on a common elementary circuit, respectively. 
+	is weakly connected, and for any two reactions $r_1$ and $r_2$ there is a path from $r_1$ to $r_2$ and from $r_2$ to $r_1$. 
 	Assume now thereby, there are species $x,y\in \cl_{\RAF}(F)\setminus Y$ such that there is, w.l.o.g., a path from $x$ to $y$. 
 	Then $x$ has an incoming edge from a reaction $r_x$ and $y$ has an outgoing reaction to a reaction $r_y$. By 
 	Corollary~\ref{Cor:3Res}, there is a path $P_{r_y,r_x}$ from $r_y$ to $r_x$ and thereby also a path from $y$ to $x$, i.e.,
