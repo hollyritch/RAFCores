@@ -423,7 +423,7 @@ The following Lemma sheds some light on this.
 \vspace{6pt}
 \begin{lemma}\label{lem:elemCirc}
 	A $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal, non-trivial RAF. Then 
-	every $r\in \RAF$ is part of an elementary circuit. 
+	every $r\in \RAF$ is part of an elementary circuit in $\king[\cl_{\RAF}(F), \RAF]$.
 \end{lemma}
 \begin{proof}
 	Assume this is not the case. Then there is a reaction $r\in \RAF$ for which all reactants have no incoming edges, 
@@ -431,7 +431,45 @@ The following Lemma sheds some light on this.
 	$\RAF$ is not minimal, a contradiction.
 \end{proof}
 \vspace{6pt}
+
+Reaction vertices are not only located on elementary circuits, but any two elementary circuits are also strongly connected.
+\vspace{6pt}
+\begin{lemma}\label{lem:strElCirc}
+	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ a minimal RAF. For two elementary
+	circuits $C_1,C_2$ of $\king[\cl_{\RAF}(F), \RAF]$ there is for any two vertices $u\in V(C_1)$ and $v\in V(C_2)$
+	a path from $u$ to $v$ and from $v$ to $u$.
+\end{lemma}
+\begin{proof}
+	We know that $\king[\cl_{\RAF}(F), \RAF]$ is weakly-connected. Assume now, w.l.o.g, there are vertices $u\in V(C_1)$ and 
+	$v\in V(C_2)$ such that there is a path from $u$ to $v$, but not from $v$ to $u$. Elementary circuits are, by definition, 
+	strongly connected; thus, there is a path from $x$ to $y$ and $y$ to $x$ for any two vertices on an elementary circuit. 
+	Therefore, there is no path from any vertex $w\in V(C_1)$ to any vertex $z\in V(C_2)$. This implies that $V(C_1)\cap 
+	V(C_2)=\emptyset$ and none of the reactions in $R(C_1)$ has a reactant or a catalyst that is an entity from $X(C_2)$. 
+	Thereby, $\RAF\setminus R(C_2)$ is a RAF and thus $\RAF$ was not-minimal. 
+\end{proof}
+
+A direct consequence from this results is that any two reaction vertices are located on a common elementary circuit. 
+
+\begin{corollary}\label{cor:2reacComElCirc}
+	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ a minimal RAF. Then any two reaction 
+	vertices $r_1,r_2$ of $\king[\cl_{\RAF}(F), \RAF]$ are located on a common elementary circuit. 
+\end{corollary}
+\vspace{6pt}
+
+$\king[\cl_{\RAF}(F), \RAF]$ might contain vertices that have either no incoming or outgoing edges. By Lemma~\ref{lem:elemCirc},
+these can only be metabolite vertices, e.g., entities from the food-set or products that are not reactants for any reaction. We thereby
+observe that the last three Lemmata also hold if all such vertices are removed. 
+
+\vspace{6pt}
+\begin{corollary}[\TODO{Requires proof or clear?}]\label{cor:3Res}
+	Let $(X,R, \cat)$ be a catalyzed network with food-set $F, \RAF$ a minimal RAF, and $Y\coloneqq \{x\in \cl_{\RAF}(F) \ | \ \nexists r \in 
+	\RAF \text{ s.t. } s^-_{xr}>0 \text{ or } s^+_{xr'}>0\}$. Then Lemmata~\ref{lem:weaklyConnected}, \ref{lem:elemCirc}, \ref{lem:strElCirc},
+	and Cor.~\ref{cor:2reacComElCirc} also hold for the graph $\king[\cl_{\RAF}(F)\setminus Y, \RAF]$.
+\end{corollary}
+\vspace{6pt}
+
 We are now in the position to prove the following main result.
+
 \vspace{6pt}
 \begin{theorem}
 	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal RAF. Then $\RAF$ is non-trivial 
@@ -440,16 +478,14 @@ We are now in the position to prove the following main result.
 \end{theorem}
 \begin{proof}
 	If $\RAF$ is trivial, the graph $\king[\cl_{\RAF}(F)\setminus Y, \RAF]$ is a single reaction entity. Therefore, let $\RAF$ be 
-	a non-trivial $\RAF$, thus $|\RAF|\geq 2$. By Lemma~\ref{lem:weaklyConnected} and \ref{lem:elemCirc} we now know that 
-	$\king[\cl_{\RAF}(F), \RAF]$ is weakly connected, and any reaction is located on an elementary circuit, respectively. Removing 
-	species vertices that have no incoming or no outgoing edges does not destroy any of these properties. Elementary circuits are, 
-	by definition, strongly connected. Assume now there are two elementary circuits $C_1$ and $C_2$ such that for any two vertices 
-	$u\in V(C_1)$ and $v\in V(C_2)$ there is either a path from $u$ to $v$ or from $v$ to $u$. Assume, w.l.o.g., the second. Thus there 
-	is a path from $u$ to $v$ since 	$\king[\cl_{\RAF}(F)\setminus Y, \RAF]$ is weakly-connected. This, however, implies that 
-	$V(C_1)\cap V(C_2)=\emptyset$ and therefore none of the reactions in $R(C_1)$ has a reactant or a catalyst that is an entity from 
-	$X(C_2)$. Thereby, $\RAF\setminus R(C_2)$ is a RAF and thus $\RAF$ was not-minimal. Thereby, such two elementary circuits 
-	cannot exist and for any two reaction vertices $r_1,r_2\in \RAF$ there is a path from $r_1$ to $r_2$ and vice versa.  
+	a non-trivial $\RAF$, thus $|\RAF|\geq 2$. By Corollary~\ref{cor:3Res} we know that 	$\king[\cl_{\RAF}(F)\setminus Y, \RAF]$ 
+	is weakly connected and any two reactions are located on a common elementary circuit, respectively. 
+	Assume now thereby, there are species $x,y\in \cl_{\RAF}(F)\setminus Y$ such that there is, w.l.o.g., a path from $x$ to $y$. 
+	Then $x$ has an incoming edge from a reaction $r_x$ and $y$ has an outgoing reaction to a reaction $r_y$. By 
+	Corollary~\ref{Cor:3Res}, there is a path $P_{r_y,r_x}$ from $r_y$ to $r_x$ and thereby also a path from $y$ to $x$, i.e.,
+	$(y, P_{r_y,r_x},x)$, which completes the proof.
 \end{proof}
+\vspace{6pt}
 
 \section{RAFs and autocatalytic subnetworks}
 
