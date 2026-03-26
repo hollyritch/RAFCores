@@ -492,9 +492,8 @@ In general, irreducible RAFs are not necessarily strong blocks, as is captured i
 Indeed, $r_0$ is a cut-vertex, since it has two catalysts, which are part of different 
 autocatalytic cores, with CS $\child_1\coloneqq (\{x_1,x_2\}, \{r_0,r_1\}, \kappa_1), \kappa_1(x_1)\coloneqq r_0, 
 \kappa_1(x_2)\coloneqq r_1$ and $\child_2\coloneqq (\{y_1,y_2\}, \{r_0,r_2\}, \kappa_1), 
-\kappa_1(y_1)\coloneqq r_0, \kappa_1(y_2)\coloneqq r_2$. 
-
-\TODO{Don't think we get a strong block also if we impose no reaction with two catalysts as evident from:
+\kappa_1(y_1)\coloneqq r_0, \kappa_1(y_2)\coloneqq r_2$. Nevertheless, this is not restricted 
+to the situation of a reaction having two catalysts. To see this consider the following example:
 
 \begin{equation}
 	\begin{split}
@@ -504,7 +503,15 @@ autocatalytic cores, with CS $\child_1\coloneqq (\{x_1,x_2\}, \{r_0,r_1\}, \kapp
 	\end{split}
 \end{equation}
 
-However....we have strong blocks inside....also fluffles....yes autocat cores prooflater}
+We note, however, that in both examples the cut-vertex is a reaction vertex. This is, indeed, not a coincidence, as 
+the next result shows.
+
+\begin{lemma}
+	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal, non-trivial RAF. If
+	$G\coloneqq \king[\cl_{\RAF}(F)\setminus Y, \RAF]$ with $Y\coloneqq \{x\in \cl_{\RAF}(F) \ | \ \nexists r \in 
+	\RAF \text{ s.t. } s^-_{xr}>0 \text{ or } s^+_{xr'}>0\}$ is not a strong-block, then every cut-vertex is a reaction 
+	vertex.
+\end{lemma}
 
 \section{RAFs and autocatalytic subnetworks}
 
