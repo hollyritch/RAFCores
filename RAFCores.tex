@@ -439,6 +439,15 @@ If a minimal RAF is non-trivial, i.e., if it is composed of more than one reacti
 as defined in Lemma~\ref{lem:weaklyConnected2}, is more than a sequence of reactions. Indeed, it  
 exhibits specific structural elements. The following Lemma allows us to gain more insight into the 
 organization of a minimal, non-trivial RAF.
+
+\begin{lemma}
+	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal, non-trivial RAF. Then 
+	for every $r\in \RAF$ there is an $x\in \closure{\RAF}{F}\setminus F: s^-_{xr}>0$.
+\end{lemma}
+\begin{proof}
+	Assume this is not the case for an $r\in \RAF$. Then $\{r\}$ is a $\RAF$ and thus $\RAF$ was not minimal.
+\end{proof}
+
 \vspace{6pt}
 \begin{lemma}\label{lem:elemCirc}
 	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal, non-trivial RAF. Then 
@@ -448,7 +457,8 @@ organization of a minimal, non-trivial RAF.
 	Assume this is not the case. Then there is a reaction $r\in \RAF$ for which all species $x\in X(G)$ with $s^-_{xr}>0$ 
 	have no incoming edges, or all species $y\in X(G)$ with $s^+_{yr}>0$ have no outgoing edges, which in both cases 
 	implies that $\RAF\setminus \{r\}$ is a RAF. Since $|\RAF|>1$, then $|\RAF\setminus \{r\}|\neq \emptyset$ thus, $\RAF$ 
-	was not minimal, a contradiction. The same arguments when substituting $G$ with $H$.
+	was not minimal, a contradiction. The same arguments when substituting $G$ with $H$, i.e., since every $r\in \RAF: 
+	\exists x\in \closure{\RAF}{F}\setminus F: s^-_{xr}>0$.
 \end{proof}
 \vspace{6pt}
 
@@ -466,7 +476,7 @@ Reaction vertices are not only located on elementary circuits, but any two eleme
 	strongly connected; thus, there is a path from $x$ to $y$ and $y$ to $x$ for any two vertices on an elementary circuit. 
 	Therefore, there is no path from any vertex $w\in V(C_1)$ to any vertex $z\in V(C_2)$. This implies that $V(C_1)\cap 
 	V(C_2)=\emptyset$ and none of the reactions in $R(C_1)$ has a reactant or a catalyst that is an entity from $X(C_2)$. 
-	Thereby, $\RAF\setminus R(C_2)$ is a RAF and thus $\RAF$ was not-minimal. }
+	Thereby, $\RAF\setminus R(C_2)$ is a RAF and thus $\RAF$ was not-minimal.}
 \end{proof}
 \vspace{6pt}
 
