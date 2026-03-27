@@ -407,7 +407,7 @@ consequence of Lemma~\ref{lem:RAFPath}.
 \vspace{6pt}
 \begin{lemma}\label{lem:weaklyConnected}
 	A $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal RAF. 
-	Then $\king[\closure{\RAF}(F), \RAF]$ is weakly-connected.
+	Then $\king[\closure{\RAF}{F}, \RAF]$ is weakly-connected.
 \end{lemma}
 \begin{proof}
 	Assume this is not the case. Then we have at least two connected components $\king', \king''$. By assumption both $X(\king')$ 
@@ -422,7 +422,7 @@ A minimal RAF, thereby, has a corresponding weakly-connected bipartite K\"onig g
 We note that the upper result not only holds for the graph $G\coloneqq \king[\closure{\RAF}(F)\setminus 
 F, \RAF]$, but also for the graph $H\coloneqq \king[\closure{\RAF}(F)\setminus F, \RAF]$ where all 
 food-vertices have been removed.
-
+\vspace{6pt}
 \begin{lemma}\label{lem:weaklyConnected2}
 	A $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal RAF. Then 
 	$H\coloneqq \king[\closure{\RAF}{F}\setminus F, \RAF]$ is weakly-connected.
@@ -434,12 +434,12 @@ food-vertices have been removed.
 	\subseteq F$, i.e., none of the species $x_1\in X(C_1)$ is a reactant, product, or catalyst for a reaction $r_2\in R(C_2)$ 
 	and vice-versa. Thus, $R(C_1), R(C_2)$ are both RAFs and $\RAF$ is not minimal,  a contradiction.
 \end{proof}
-
+\vspace{6pt}
 If a minimal RAF is non-trivial, i.e., if it is composed of more than one reaction, the graph $H$ 
 as defined in Lemma~\ref{lem:weaklyConnected2}, is more than a sequence of reactions. Indeed, it  
 exhibits specific structural elements. The following Lemma allows us to gain more insight into the 
 organization of a minimal, non-trivial RAF.
-
+\vspace{6pt}
 \begin{lemma}
 	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal, non-trivial RAF. Then 
 	for every $r\in \RAF$ there is an $x\in \closure{\RAF}{F}\setminus F: s^-_{xr}>0$.
@@ -494,10 +494,10 @@ circuit. Nevertheless, $H$ might contain species that are only products but neve
 following example illustrates. 
 \begin{equation}
 	\begin{split}
-		r_1: f \overset{x_1}{\longrightarrow} x_2 \\
-		r_2: x_2 \overset{x_2}{\longrightarrow} x_1 + x_3
+		r_1& : f \overset{x_1}{\longrightarrow} x_2 \\
+		r_2& : x_2 \overset{x_2}{\longrightarrow} x_1 + x_3
 	\end{split}
-\end{equation
+\end{equation}
 
 Then ${r_1,r_2}$ is indeed a RAF w.r.t. to $F$. Nevertheless, $x_3$ is never consumed by any reaction. Naturally, any strictly positive reaction 
 vector yields a net increase in the concentration of such species, which motivates to consider the graph $H$ without those vertices. In addition, 
@@ -620,16 +620,14 @@ Every species of a strong block is only produced and consumed by a reaction of t
 vector $v|_{R(C)}$ that denotes the sub-vector of $v$ restricted to the reactions of the strong block $C$ 
 directly yields for the submatrix restricted to the species and reactions of the strong block: 
 \begin{equation}
-	\SM[X(C), R(C)]v|_{R(C)>0
+	\SM[X(C), R(C)]v|_{R(C)}>0
 \end{equation}
-and thereby semipositivity. In addition, any strong block is by definition well-formed and we obtain
+and thereby semipositivity. In addition, any strong block is by definition well-formed, and we obtain
 the following statement
 
 \begin{theorem}
 	Any strong block of a minimal RAF contains an autocatalytic core. 
 \end{theorem}
-
-
 
 
 A natural extension to this statement relies on considering not only species from 
