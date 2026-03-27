@@ -554,12 +554,11 @@ a cut-vertex, as the next lemma shows.
 
 \begin{lemma}
 	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal, non-trivial RAF. If
-	$G\coloneqq \king[\cl_{\RAF}(F)\setminus Y, \RAF]$ with $Y\coloneqq \{x\in \cl_{\RAF}(F) \ | \ \nexists r \in 
-	\RAF \text{ s.t. } s^-_{xr}>0 \text{ or } s^+_{xr'}>0\}$ is not a strong-block, then every cut-vertex is a reaction 
+	$L$ is not a strong-block, then every cut-vertex is a reaction 
 	vertex.
 \end{lemma}
 \begin{proof}
-	Assume there is a cut-vertex $w\in X(G)$. Then $G[V(G)\setminus \{w\}]$ is composed of at least two connected
+	Assume there is a cut-vertex $w\in X(G)$. Then $L[V(L)\setminus \{w\}]$ is composed of at least two connected
 	components $C_1,C_2$. Then for any two vertices $v\in C_1$ and $u\in C_2$ we have $w\in P_{uv}$ and 
 	$w\in P_{vu}$ for any path connecting $u$ and $v$. Therefore, there is no $x_1\in X(C_1)$ such that $x_1$ is 
 	a reactant, product, or catalyst for any reaction $r_2\in R(C_2)$, and there is no $x_2\in X(C_2)$ such that $x_2$ 
@@ -568,8 +567,7 @@ a cut-vertex, as the next lemma shows.
 	in any case, contradicting the minimality of $\RAF$.
 \end{proof}	
 
-This result allows us to decompose $G\coloneqq \king[\cl_{\RAF}(F)\setminus Y, \RAF]$ into strong blocks. We will see 
-that each of these strong blocks indeed contains an autocatalytic core
+This result allows us to decompose $L$ into strong blocks. We will see that each of these strong blocks indeed contains an autocatalytic core
 
 \section{RAFs and autocatalytic subnetworks}
 
@@ -617,6 +615,22 @@ set of considered molecules to all but the food molecules yields semipositivity 
 	 Then by construction, we obtain $v_r$ is strictly positive and $Av>0$. 
 \end{proof}
 \vspace{6pt}
+
+Every species of a strong block is only produced and consumed by a reaction of that block. Thereby, the 
+vector $v|_{R(C)}$ that denotes the sub-vector of $v$ restricted to the reactions of the strong block $C$ 
+directly yields for the submatrix restricted to the species and reactions of the strong block: 
+\begin{equation}
+	\SM[X(C), R(C)]v|_{R(C)>0
+\end{equation}
+and thereby semipositivity. In addition, any strong block is by definition well-formed and we obtain
+the following statement
+
+\begin{theorem}
+	Any strong block of a minimal RAF contains an autocatalytic core. 
+\end{theorem}
+
+
+
 
 A natural extension to this statement relies on considering not only species from 
 $\closure{\RAF}{F}\setminus F$ but from the set of food-generated entities, i.e.
