@@ -401,7 +401,7 @@ We are now in the position to deduce the consequences of Def.~\ref{def:RAF}ii. t
 Special emphasis has been placed on \emph{irreducible} RAFs, i.e., $\RAF$ for which no $\RAF'\subset \RAF$ is again a RAF 
 \cite{hordijk_detecting_2004, hordijk_autocatalytic_2013, hordijk_autocatalytic_2010}. However, to avoid confusion with 
 the notion of irreducibility of a matrix, we refer to such a RAF as a \emph{minimal RAF}. In addition, we call any RAF of 
-size $1$ a trivial RAF. We can then find a structure on the K\"onig representation of a non-trivial RAF if all species entities 
+size $1$ a \emph{trivial} RAF. We can then find a structure on the K\"onig representation of a non-trivial RAF if all species entities 
 exhibiting no incoming and no outgoing edges are removed. We start with the following trivial observation, which is a direct
 consequence of Lemma~\ref{lem:RAFPath}.
 \vspace{6pt}
@@ -419,7 +419,7 @@ consequence of Lemma~\ref{lem:RAFPath}.
 \end{proof}
 \vspace{6pt}
 A minimal RAF, thereby, has a corresponding weakly-connected bipartite K\"onig graph. 
-We note that the upper result not only holds for the graph $G\coloneqq \king[\closure{\RAF}(F)\setminus 
+We note that the upper result not only holds for the graph $G\coloneqq \king[\closure{\RAF}{F}\setminus 
 F, \RAF]$, but also for the graph $H\coloneqq \king[\closure{\RAF}(F)\setminus F, \RAF]$ where all 
 food-vertices have been removed.
 \vspace{6pt}
@@ -445,7 +445,7 @@ organization of a minimal, non-trivial RAF.
 	for every $r\in \RAF$ there is an $x\in \closure{\RAF}{F}\setminus F: s^-_{xr}>0$.
 \end{lemma}
 \begin{proof}
-	Assume this is not the case for an $r\in \RAF$. Then $\{r\}$ is a $\RAF$ and thus $\RAF$ was not minimal.
+	Assume this is not the case for an $r\in \RAF$. Then $\{r\}$ is a RAF and thus $\RAF$ was not minimal.
 \end{proof}
 
 \vspace{6pt}
@@ -457,7 +457,7 @@ organization of a minimal, non-trivial RAF.
 	Assume this is not the case. Since $G$ is of finite size, there is a reaction $r\in \RAF$ for which all species $x\in X(G)$ with $s^-_{xr}>0$ 
 	have no incoming edges, or all species $y\in X(G)$ with $s^+_{yr}>0$ have no outgoing edges, which in both cases 
 	implies that $\RAF\setminus \{r\}$ is a RAF. Since $|\RAF|>1$, then $|\RAF\setminus \{r\}|\neq \emptyset$ thus, $\RAF$ 
-	was not minimal, a contradiction. The same arguments when substituting $G$ with $H$, i.e., since every $r\in \RAF: 
+	was not minimal, a contradiction. The same arguments holds when substituting $G$ with $H$, i.e., since every $r\in \RAF: 
 	\exists x\in \closure{\RAF}{F}\setminus F: s^-_{xr}>0$.
 \end{proof}
 \vspace{6pt}
