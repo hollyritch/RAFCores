@@ -217,7 +217,7 @@
 A reaction network $(X,R)$ is tuple of two finite sets, set of metabolites $X$ 
 and a set of reactions $R$. For any $r\in R$ we can write a stoichiometric equation as:
 	\begin{equation}
-		\sum_{x\in X}s^-_{xr} \cdot x \rightarrow s^+_{xr}\cdot x
+		\sum_{x\in X}\ s^-_{xr} \cdot x \rightarrow \sum_{x\in X} \ s^+_{xr}\cdot x
 	\end{equation}
 where $s^{\pm}_{xr}$ are the educt and product stoichiometry of the molecule $x$ in 
 the reaction $r$. The \emph{stoichiometric matrix} $\SM$ encodes all net-stoichiometries:
@@ -425,7 +425,7 @@ food-vertices have been removed.
 
 \begin{lemma}\label{lem:weaklyConnected2}
 	A $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal RAF. Then 
-	$H\coloneqq \king[\closure{\RAF}(F)\setminus F, \RAF]$ is weakly-connected.
+	$H\coloneqq \king[\closure{\RAF}{F}\setminus F, \RAF]$ is weakly-connected.
 \end{lemma}
 \begin{proof}
 	By Lemma~\ref{lem:weaklyConnected} $G\coloneqq \king[\closure{\RAF}(F), \RAF]$ is weakly-connected. 
@@ -462,18 +462,27 @@ organization of a minimal, non-trivial RAF.
 \end{proof}
 \vspace{6pt}
 
-We say that two elementary circuits $C_1, C_2$ are strongly-connected if there are $u\in V(C_1)$ and $v\in V(C_2)$ 
-such that there are paths $P_{uv}$ and $P_{vu}$. Elementary circuits are themselves strongly connected, 
-thus for any two vertices $x,y$ on a common elementary circuit, there are paths $P_{xy}$ and $P_{yx}$. Thus it is sufficient 
-to identify $u_1, u_2\in V(C_1)$ and $u\in V(C_1)$ and $v\in V(C_2)$ such that there are paths $P_{u_1v_1}$ and 
-$P_{v_2u2}$. 
+We say that two elementary circuits $C_1, C_2$ are 1-connected from $C_1$ to $C_2$ if there are vertices $u\in V(C_1)$ 
+and $v\in V(C_2)$ such that there is a path $P_{uv}$ connecting them. Since elementary circuits are strongly connected, 
+if $C_1$ and $C_2$ are 1-connected from $C_1$ to $C_2$ there is a path $P_{uv}$ connecting any two vertices $u\in V(C_1)$ 
+and $v\in V(C_2)$. We say two elementary circuits are strongly connected if they are 1-connected from $C_1$ to $C_2$ and 
+from $C_2$ to $C_1$.
 \vspace{6pt}
 \begin{lemma}\label{lem:strElCirc}
 	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ a minimal, non-trivial RAF. Any two elementary circuits $C_1,C_2$ 
 	in $G \ (H)$ are strongly connected. 
 \end{lemma}
 	\begin{proof}
-		We start with reaction vertices in $\POR^1_{\RAF}(F)$. If $\POR^1_{\RAF}(F)$ Assume there is no path $P_{r_1r_2}$ and no path $P_{r_2r_1}$ in $G$ .
+		We start again with $G$ and reaction vertices in $\POR^1_{\RAF}(F)$. Assume the trivial case $|\POR^1_{\RAF}(F)|=1$. According to 
+		Lemma~\ref{lem:elemCirc}, $r^*\in \POR^1_{\RAF}(F)$ is located on an elementary circuit $C^*$. Assume there is an elementary
+		circuit $C\neq C^*$ such that $C^*$ is not strongly-connected with $C$. Since $G$ is weakly-connected and $|\POR^1_{\RAF}(F)|=1$, 
+		$C^*$ is $1$-connected to $C$. If $C$ is not $1$-connected to $C^*$ then $\RAF\setminus R(C)$ is a RAF thus $\RAF$ not minimal. 
+		Now assume that $|\POR^1_{\RAF}(F)|>1$ and let $r_1,r_2\in \POR^1_{\RAF}(F)$. Then $r_1,r_2$ are located on two elementary circuits
+		$C_1$ and $C_2$. If $C_1=C_2$, there is nothing to show. Thus, assume $C_1\neq C_2$. If $C_1$ is not 1-connected to $C_2$ and 
+		vice versa, then $\RAF\setminus R(C_2)$ is a RAF and $\RAF\setminus R(C_2)$ is a RAF which contradicts minimality of $\RAF$. So 
+		assume that $C_1$ is 1-connected to $C_2$, but $C_2$ is not $1$-connected to $C_1$. Then $\RAF\setminus R(C_2)$ is a $\RAF$ 
+		contradicting minimality. Substituting the roles of $C_1$ and $C_2$ yields that $C_1$ and $C_2$ are strongly connected. Together
+		with the trivial case, this implies that any two elementary circuits are strongly connected.
 	\end{proof}
 \vspace{6pt}
 
