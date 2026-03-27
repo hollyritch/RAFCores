@@ -406,7 +406,7 @@ exhibiting no incoming and no outgoing edges are removed. We start with the foll
 consequence of Lemma~\ref{lem:RAFPath}.
 \vspace{6pt}
 \begin{lemma}\label{lem:weaklyConnected}
-	A $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal RAF. Then $\king[\cl_{\RAF}(F), \RAF]$
+	A $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal RAF. Then $\king[\closure{\RAF}(F), \RAF]$
 	is weakly-connected.
 \end{lemma}
 \begin{proof}
@@ -418,12 +418,28 @@ consequence of Lemma~\ref{lem:RAFPath}.
 	$R(\king'), R(\king'')\subseteq \RAF$, $\RAF$ was not a minimal RAF, thus a contradiction.
 \end{proof}
 \vspace{6pt}
-A minimal RAF is thereby weakly-connected. Nevertheless, it is not a mere sequence of reactions, but exhibits some structure. 
-The following Lemma sheds some light on this.
+A minimal RAF, thereby, has a corresponding weakly-connected bipartite K\"onig graph. 
+We note that the upper result also holds for the graph $\king[\closure{\RAF}(F)\setminus 
+F, \RAF]$. 
+
+\begin{lemma}\label{lem:weaklyConnected}
+	A $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal RAF. Then 
+	$\king[\closure{\RAF}(F)\setminus F, \RAF]$ is weakly-connected.
+\end{lemma}
+\begin{proof}
+	By Lemma~\ref{lem:weaklyConnected} $L\coloneqq \king[\closure{\RAF}(F), \RAF]$ is weakly-connected. 
+	Assume now there is an $f\in F$ and $u,v\in in \closure{\RAF}(F)\setminus F$ and such $L[V(L)\setminus \{f\}]$
+	is composed of at least two connected components $C_1, C_2$. Then $\closure{R(C_1)}(F)\cap \closure{R(C_2)}(F) 
+	\subseteq F$, i.e., none of the species $x_1\in X(C_1)$ is a reactant, product, or catalyst for a reaction $r_2\in R(C_2)$ 
+	and vice-versa. Thus, $R(C_1), R(C_2)$ are both RAFs and $\RAF$ is not minimal.
+\end{proof}
+
+Any food-molecules from the graph,  however, it is more than a sequence of reactions, but exhibits a particular structure. 
+The following Lemma allows us to gain more insight into the organization of a RAF.
 \vspace{6pt}
 \begin{lemma}\label{lem:elemCirc}
-	A $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal, non-trivial RAF. Then 
-	every $r\in \RAF$ is part of an elementary circuit in $\king[\cl_{\RAF}(F), \RAF]$.
+	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal, non-trivial RAF. Then 
+	every $r\in \RAF$ is part of an elementary circuit in $\king[\closure{\RAF}(F), \RAF]$.
 \end{lemma}
 \begin{proof}
 	Assume this is not the case. Then there is a reaction $r\in \RAF$ for which all reactants have no incoming edges, 
@@ -492,8 +508,14 @@ In general, irreducible RAFs are not necessarily strong blocks, as is captured i
 Indeed, $r_0$ is a cut-vertex, since it has two catalysts, which are part of different 
 autocatalytic cores, with CS $\child_1\coloneqq (\{x_1,x_2\}, \{r_0,r_1\}, \kappa_1), \kappa_1(x_1)\coloneqq r_0, 
 \kappa_1(x_2)\coloneqq r_1$ and $\child_2\coloneqq (\{y_1,y_2\}, \{r_0,r_2\}, \kappa_1), 
-\kappa_1(y_1)\coloneqq r_0, \kappa_1(y_2)\coloneqq r_2$. Nevertheless, this is not restricted 
-to the situation of a reaction having two catalysts. To see this consider the following example:
+\kappa_1(y_1)\coloneqq r_0, \kappa_1(y_2)\coloneqq r_2$. 
+\vspace{6pt}
+\begin{corollary}
+	A RAF is either a strong block or contains a cut-vertex.
+\end{corollary}
+\vspace{6pt}
+The occurrence of cut-vertices is not restricted to the situation of a reaction having two catalysts. 
+To see this, consider the following example:
 
 \begin{equation}
 	\begin{split}
@@ -503,8 +525,8 @@ to the situation of a reaction having two catalysts. To see this consider the fo
 	\end{split}
 \end{equation}
 
-We note, however, that in both examples the cut-vertex is a reaction vertex. This is, indeed, not a coincidence, as 
-the next result shows.
+We note that in both examples, the cut-vertex is a reaction vertex. Indeed, a species vertex cannot be
+a cut-vertex, as the next lemma shows.
 
 \begin{lemma}
 	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal, non-trivial RAF. If
@@ -512,6 +534,18 @@ the next result shows.
 	\RAF \text{ s.t. } s^-_{xr}>0 \text{ or } s^+_{xr'}>0\}$ is not a strong-block, then every cut-vertex is a reaction 
 	vertex.
 \end{lemma}
+\begin{proof}
+	Assume there is a cut-vertex $w\in X(G)$. Then $G[V(G)\setminus \{w\}]$ is composed of at least two connected
+	components $C_1,C_2$. Then for any two vertices $v\in C_1$ and $u\in C_2$ we have $w\in P_{uv}$ and 
+	$w\in P_{vu}$ for any path connecting $u$ and $v$. Therefore, there is no $x_1\in X(C_1)$ such that $x_1$ is 
+	a reactant, product, or catalyst for any reaction $r_2\in R(C_2)$, and there is no $x_2\in X(C_2)$ such that $x_2$ 
+	is a reactant, product, or catalyst for any reaction $r_1\in R(C_1)$. Then $\cl_{R(C_1)(F)}\neq \emptyset$, implying
+	that $R(C_1)$ is a RAF or (not mutually exclusive) $\cl_{R(C_2)(F)}\neq \emptyset$, implying that $R(C_2)$ is a RAF, 
+	in any case, contradicting the minimality of $\RAF$.
+\end{proof}	
+
+This result allows us to decompose $G\coloneqq \king[\cl_{\RAF}(F)\setminus Y, \RAF]$ into strong blocks. We will see 
+that each of these strong blocks indeed contains an autocatalytic core
 
 \section{RAFs and autocatalytic subnetworks}
 
@@ -527,14 +561,13 @@ provided the widely accepted definition of (structural) autocatalysis in 2020.
 \end{definition}
 \vspace{6pt}
 
-Our first goal will be to find suitable restrictions of RAFs such that we obtain both of these conditions.
-Indeed, restricting the set of considered molecules to all but the food molecules yields semipositivity 
-of the particular submatrix.
+Our first goal is to find suitable restrictions of RAFs that satisfy both conditions. Indeed, restricting the 
+set of considered molecules to all but the food molecules yields semipositivity of the particular submatrix.
 \vspace{6pt}
-\begin{lemma}
+\begin{theorem}\label{thm:NonFoodSemipositiv}
 	Let $(X,R)$ be a catalyzed RN with food-set $F$ and $\RAF$ a RAF. Then it holds that 
 	the matrix $A\coloneqq \SM[\closure{\RAF}{F}\setminus F,\RAF]$ is semipositive, i.e., $Av>0$.
-\end{lemma}
+\end{theorem}
 \begin{proof}
 	We prove by induction. We know that for some $n\in \mathbb{N}: \cl^n_{\RAF}(F)=\closure{\RAF}{F}\eqqcolon X'$. 
 	We observe that for an $x\in \POX^k\coloneqq \POX^k_{\RAF}(F)$, $\SM_{xr}=0$ for any 
@@ -561,7 +594,7 @@ of the particular submatrix.
 \end{proof}
 \vspace{6pt}
 
-A natural extension to this statement relies in considering not only species from 
+A natural extension to this statement relies on considering not only species from 
 $\closure{\RAF}{F}\setminus F$ but from the set of food-generated entities, i.e.
 \begin{equation}
 	\mathbf{X}_{\RAF} \coloneqq \bigcup_{k=1}^n \POX^k_{\RAF}(F)
@@ -583,15 +616,25 @@ $\SM[\mathbf{X}_{\RAF}, \RAF]$ reads:
 		1 & -1
 	\end{pmatrix}
 \end{equation}
-which is indeed not semipositiv. The semipositivity of $A\coloneqq \SM[(\closure{\RAF}{F}\setminus F,\RAF)]$ 
-in general originates from at least one food-generated reaction. For example, in the following RN:
+which is indeed not semipositiv. 
+
+Non-trivial minimal RAFs are strongly connected and can be decomposed into strong blocks. 
+The subnetwork induced by each of these strong blocks is naturally well-formed. In addition,
+any species is solely produced or consumed by a reaction within the block. Thereby, the sub-vector
+of $v$ as constructed in the proof of Thm.~\ref{thm:NonFoodSemipositiv} and restricted to the 
+reactions contained in the strong block, directly yields semipositivity on the submatrix containing
+all species and reaction vertices within the strong block.
+
+
+The semipositivity of $A\coloneqq \SM[(\closure{\RAF}{F}\setminus F,\RAF)]$ in general originates 
+from at least one food-generated reaction. For example, in the following RN:
 \begin{equation}
 	\begin{split}
 		r_0: f_1 & \overset{f_2}{\longrightarrow} x_1 \\ 
 		r_i: x_i & \overset{x_i}{\longrightarrow} x_{i+1},
 	\end{split}
 \end{equation}
-reaction $r_0$ forms a strong Metzler-column in $A$, which allows for an unrestricted input of $x_1$. \TODO{mhhh...I am not satisfied yet}.
+reaction $r_0$ forms a non-negative column in $A$, which allows for an unrestricted input of $x_1$. 
 However, $r_0$ has no reactant in $\closure{\RAF}{F}\setminus F$, not even a catalyst. By 
 definition~\ref{def:autSubRN}, $(\closure{\RAF}{F}\setminus F,R')$ is not an autocatalytic subnetwork 
 since it is not well-formed. One way of avoiding such a situation is to require that none of the 
