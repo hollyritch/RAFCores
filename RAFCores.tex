@@ -210,7 +210,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \maketitle
-\holy{
+\holy{}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Preliminaries}
 
@@ -497,11 +497,11 @@ following example illustrates.
 		r_1: f \overset{x_1}{\longrightarrow} x_2 \\
 		r_2: x_2 \overset{x_2}{\longrightarrow} x_1 + x_3
 	\end{split}
-\end{equation
+\end{equation}
 
 Then ${r_1,r_2}$ is indeed a RAF w.r.t. to $F$. Nevertheless, $x_3$ is never consumed by any reaction. Naturally, any strictly positive reaction 
 vector yields a net increase in the concentration of such species, which motivates to consider the graph $H$ without those vertices. In addition, 
-these species are never located on an elementary circuit, and we obtain that Lemma~\ref{lem:strElCirc} holds if these species are removed.
+these species are never located on an elementary circuit, and we obtain that Le1mma~\ref{lem:strElCirc} holds if these species are removed.
 
 \begin{corollary}\label{lem:strElCirc}
 	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ a minimal, non-trivial RAF. Any two elementary circuits $C_1,C_2$ 
@@ -620,7 +620,7 @@ Every species of a strong block is only produced and consumed by a reaction of t
 vector $v|_{R(C)}$ that denotes the sub-vector of $v$ restricted to the reactions of the strong block $C$ 
 directly yields for the submatrix restricted to the species and reactions of the strong block: 
 \begin{equation}
-	\SM[X(C), R(C)]v|_{R(C)>0
+  \SM[X(C), R(C)]v|_{R(C)}>0
 \end{equation}
 and thereby semipositivity. In addition, any strong block is by definition well-formed and we obtain
 the following statement
@@ -874,7 +874,7 @@ specific food-set for $(X',R')$ as follows:
 \begin{equation}
 	F'_{\cat'}\coloneqq \{x\in X(\cat') \ | \ x\notin X'\} 
 \end{equation}
-}
+
 
 \vspace{6pt}
 \bibliography{RAFCores}
