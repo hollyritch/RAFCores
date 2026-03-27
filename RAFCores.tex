@@ -406,8 +406,8 @@ exhibiting no incoming and no outgoing edges are removed. We start with the foll
 consequence of Lemma~\ref{lem:RAFPath}.
 \vspace{6pt}
 \begin{lemma}\label{lem:weaklyConnected}
-	A $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal RAF. Then $\king[\closure{\RAF}(F), \RAF]$
-	is weakly-connected.
+	A $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal RAF. 
+	Then $\king[\closure{\RAF}(F), \RAF]$ is weakly-connected.
 \end{lemma}
 \begin{proof}
 	Assume this is not the case. Then we have at least two connected components $\king', \king''$. By assumption both $X(\king')$ 
@@ -419,32 +419,36 @@ consequence of Lemma~\ref{lem:RAFPath}.
 \end{proof}
 \vspace{6pt}
 A minimal RAF, thereby, has a corresponding weakly-connected bipartite K\"onig graph. 
-We note that the upper result also holds for the graph $\king[\closure{\RAF}(F)\setminus 
-F, \RAF]$. 
+We note that the upper result not only holds for the graph $G\coloneqq \king[\closure{\RAF}(F)\setminus 
+F, \RAF]$, but also for the graph $H\coloneqq \king[\closure{\RAF}(F)\setminus F, \RAF]$ where all 
+food-vertices have been removed.
 
-\begin{lemma}\label{lem:weaklyConnected}
+\begin{lemma}\label{lem:weaklyConnected2}
 	A $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal RAF. Then 
-	$\king[\closure{\RAF}(F)\setminus F, \RAF]$ is weakly-connected.
+	$H\coloneqq \king[\closure{\RAF}(F)\setminus F, \RAF]$ is weakly-connected.
 \end{lemma}
 \begin{proof}
-	By Lemma~\ref{lem:weaklyConnected} $L\coloneqq \king[\closure{\RAF}(F), \RAF]$ is weakly-connected. 
-	Assume now there is an $f\in F$ and $u,v\in in \closure{\RAF}(F)\setminus F$ and such $L[V(L)\setminus \{f\}]$
+	By Lemma~\ref{lem:weaklyConnected} $G\coloneqq \king[\closure{\RAF}(F), \RAF]$ is weakly-connected. 
+	Assume now there is an $f\in F$ and $u,v\in in \closure{\RAF}(F)\setminus F$ and such $G[V(G)\setminus \{f\}]$
 	is composed of at least two connected components $C_1, C_2$. Then $\closure{R(C_1)}(F)\cap \closure{R(C_2)}(F) 
 	\subseteq F$, i.e., none of the species $x_1\in X(C_1)$ is a reactant, product, or catalyst for a reaction $r_2\in R(C_2)$ 
-	and vice-versa. Thus, $R(C_1), R(C_2)$ are both RAFs and $\RAF$ is not minimal.
+	and vice-versa. Thus, $R(C_1), R(C_2)$ are both RAFs and $\RAF$ is not minimal,  a contradiction.
 \end{proof}
 
-Any food-molecules from the graph,  however, it is more than a sequence of reactions, but exhibits a particular structure. 
-The following Lemma allows us to gain more insight into the organization of a RAF.
+If a minimal RAF is non-trivial, i.e., if it is composed of more than one reaction, the graph $H$ 
+as defined in Lemma~\ref{lem:weaklyConnected2}, is more than a sequence of reactions. Indeed, it  
+exhibits specific structural elements. The following Lemma allows us to gain more insight into the 
+organization of a minimal, non-trivial RAF.
 \vspace{6pt}
 \begin{lemma}\label{lem:elemCirc}
 	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal, non-trivial RAF. Then 
-	every $r\in \RAF$ is part of an elementary circuit in $\king[\closure{\RAF}(F), \RAF]$.
+	every $r\in \RAF$ is part of an elementary circuit in $G$ and $H$.
 \end{lemma}
 \begin{proof}
-	Assume this is not the case. Then there is a reaction $r\in \RAF$ for which all reactants have no incoming edges, 
-	or all products have no outgoing edges, which in both cases implies that $\RAF\setminus \{r\}$ is a RAF, thus, 
-	$\RAF$ is not minimal, a contradiction.
+	Assume this is not the case. Then there is a reaction $r\in \RAF$ for which all species $x\in X(G)$ with $s^-_{xr}>0$ 
+	have no incoming edges, or all species $y\in X(G)$ with $s^+_{yr}>0$ have no outgoing edges, which in both cases 
+	implies that $\RAF\setminus \{r\}$ is a RAF. Since $|\RAF|>1$, then $|\RAF\setminus \{r\}|\neq \emptyset$ thus, $\RAF$ 
+	was not minimal, a contradiction. The same arguments when substituting $G$ with $H$.
 \end{proof}
 \vspace{6pt}
 
@@ -456,16 +460,17 @@ Reaction vertices are not only located on elementary circuits, but any two eleme
 	a path from $u$ to $v$ and from $v$ to $u$.
 \end{lemma}
 \begin{proof}
-	We know that $\king[\cl_{\RAF}(F), \RAF]$ is weakly-connected. Assume now, w.l.o.g, there are vertices $u\in V(C_1)$ and 
+	We know that $\king[\cl_{\RAF}(F), \RAF]$ is weakly-connected. \TODO{Needs fixing....this does not follow from 
+	weak-connectedness: } \OLD{Assume now, w.l.o.g, there are vertices $u\in V(C_1)$ and 
 	$v\in V(C_2)$ such that there is a path from $u$ to $v$, but not from $v$ to $u$. Elementary circuits are, by definition, 
 	strongly connected; thus, there is a path from $x$ to $y$ and $y$ to $x$ for any two vertices on an elementary circuit. 
 	Therefore, there is no path from any vertex $w\in V(C_1)$ to any vertex $z\in V(C_2)$. This implies that $V(C_1)\cap 
 	V(C_2)=\emptyset$ and none of the reactions in $R(C_1)$ has a reactant or a catalyst that is an entity from $X(C_2)$. 
-	Thereby, $\RAF\setminus R(C_2)$ is a RAF and thus $\RAF$ was not-minimal. 
+	Thereby, $\RAF\setminus R(C_2)$ is a RAF and thus $\RAF$ was not-minimal. }
 \end{proof}
 \vspace{6pt}
 
-$\king[\cl_{\RAF}(F), \RAF]$ might contain vertices that have either no incoming or outgoing edges. By Lemma~\ref{lem:elemCirc},
+\TODO{Also needs fixing!!} \OLD{$\king[\cl_{\RAF}(F), \RAF]$ might contain vertices that have either no incoming or outgoing edges. By Lemma~\ref{lem:elemCirc},
 these can only be metabolite vertices, e.g., entities from the food-set or products that are not reactants for any reaction. We thereby
 observe that the last three Lemmata also hold if all such vertices are removed. 
 
@@ -476,7 +481,7 @@ observe that the last three Lemmata also hold if all such vertices are removed.
 	 also hold for the graph $\king[\cl_{\RAF}(F)\setminus Y, \RAF]$.
 \end{corollary}
 \vspace{6pt}
-
+}
 We are now in the position to prove the following main result.
 
 \vspace{6pt}
@@ -487,11 +492,12 @@ We are now in the position to prove the following main result.
 \end{theorem}
 \begin{proof}
 	If $\RAF$ is trivial, then $G$ is a single reaction entity. Therefore, let $\RAF$ be a non-trivial $\RAF$, thus $|\RAF|\geq 2$. 
-	By Corollary~\ref{cor:3Res} we know that 	$G$ is weakly connected, and for any two reactions $r_1$ and $r_2$ there is a 
+	\TODO{The following needs fixing! Again, this does not follow from weak connectedness!!!} \OLD{By Corollary~\ref{cor:3Res} 
+	we know that $G$ is weakly connected, and for any two reactions $r_1$ and $r_2$ there is a 
 	path from $r_1$ to $r_2$ and from $r_2$ to $r_1$. Assume now thereby, there are species $x,y\in \cl_{\RAF}(F)\setminus Y$ 
 	such that there is, w.l.o.g., a path from $x$ to $y$. Then $x$ has an incoming edge from a reaction $r_x$ and $y$ has an 
 	outgoing reaction to a reaction $r_y$. By Corollary~\ref{Cor:3Res}, there is a path $P_{r_y,r_x}$ from $r_y$ to $r_x$ and 
-	thereby also a path from $y$ to $x$, i.e., $(y, P_{r_y,r_x},x)$, which completes the proof.
+	thereby also a path from $y$ to $x$, i.e., $(y, P_{r_y,r_x},x)$, which completes the proof.}
 \end{proof}
 \vspace{6pt}
 
