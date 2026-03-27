@@ -462,14 +462,18 @@ organization of a minimal, non-trivial RAF.
 \end{proof}
 \vspace{6pt}
 
-Reaction vertices are not only located on elementary circuits, but any two elementary circuits are also strongly connected.
+We say that two elementary circuits $C_1, C_2$ are strongly-connected if there are $u\in V(C_1)$ and $v\in V(C_2)$ 
+such that there are paths $P_{uv}$ and $P_{vu}$. Elementary circuits are themselves strongly connected, 
+thus for any two vertices $x,y$ on a common elementary circuit, there are paths $P_{xy}$ and $P_{yx}$. Thus it is sufficient 
+to identify $u_1, u_2\in V(C_1)$ and $u\in V(C_1)$ and $v\in V(C_2)$ such that there are paths $P_{u_1v_1}$ and 
+$P_{v_2u2}$. 
 \vspace{6pt}
 \begin{lemma}\label{lem:strElCirc}
-	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ a minimal, non-trivial RAF. For two reaction vertices
-	$r_1\neq r_2$ there are paths $P_{r_1r_2}$ and $P_{r_2r_1}$ in $G \ (H)$.
+	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ a minimal, non-trivial RAF. Any two elementary circuits $C_1,C_2$ 
+	in $G \ (H)$ are strongly connected. 
 \end{lemma}
 	\begin{proof}
-		We know that $G$ and $H$ are weakly-connected. Assume there is no path $P_{r_1r_2}$ and no path $P_{r_2r_1}$ in $G$ .
+		We start with reaction vertices in $\POR^1_{\RAF}(F)$. If $\POR^1_{\RAF}(F)$ Assume there is no path $P_{r_1r_2}$ and no path $P_{r_2r_1}$ in $G$ .
 	\end{proof}
 \vspace{6pt}
 
