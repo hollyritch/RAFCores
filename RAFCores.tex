@@ -482,39 +482,41 @@ from $C_2$ to $C_1$.
 		vice versa, then $\RAF\setminus R(C_2)$ is a RAF and $\RAF\setminus R(C_2)$ is a RAF which contradicts minimality of $\RAF$. So 
 		assume that $C_1$ is 1-connected to $C_2$, but $C_2$ is not $1$-connected to $C_1$. Then $\RAF\setminus R(C_2)$ is a $\RAF$ 
 		contradicting minimality. Substituting the roles of $C_1$ and $C_2$ yields that $C_1$ and $C_2$ are strongly connected. Together
-		with the trivial case, this implies that any two elementary circuits are strongly connected.
+		with the trivial case, this implies that any two elementary circuits are strongly connected. The same arguments hold for $H$.
 	\end{proof}
 \vspace{6pt}
 
-\TODO{Also needs fixing!!} \OLD{$\king[\cl_{\RAF}(F), \RAF]$ might contain vertices that have either no incoming or outgoing edges. By Lemma~\ref{lem:elemCirc},
-these can only be metabolite vertices, e.g., entities from the food-set or products that are not reactants for any reaction. We thereby
-observe that the last three Lemmata also hold if all such vertices are removed. 
+The graph $H$ does not contain any $f\in F$, thus any vertex in $H$ has at least one incoming edge. By Lemma~\ref{lem:elemCirc}, 
+any reaction vertex is located on an elementary circuit. Since elementary circuits are pairwisely strongly connected, species vertices
+are either located on an elementary circuit themselves, or they connect two elementary circuits, $C_1$ and $C_2$, i.e., reactants of
+a reaction of $C_1$ and a product of a reaction of $C_2$. Thus, such vertices are thereby directly located themselves on an elementary 
+circuit. Nevertheless, $H$ might contain species that are only products but never reactants, and thus have no outgoing edges, as the 
+following example illustrates. 
+\begin{equation}
+	\begin{split}
+		r_1: f \overset{x_1}{\longrightarrow} x_2 \\
+		r_2: x_2 \overset{x_2}{\longrightarrow} x_1 + x_3
+	\end{split}
+\end{equation
 
-\vspace{6pt}
-\begin{corollary}[\TODO{Requires proof or clear?}]\label{cor:3Res}
-	Let $(X,R, \cat)$ be a catalyzed network with food-set $F, \RAF$ a minimal RAF, and $Y\coloneqq \{x\in \cl_{\RAF}(F) \ | \ \nexists r \in 
-	\RAF \text{ s.t. } s^-_{xr}>0 \text{ or } s^+_{xr'}>0\}$. Then Lemmata~\ref{lem:weaklyConnected}, \ref{lem:elemCirc}, and \ref{lem:strElCirc},
-	 also hold for the graph $\king[\cl_{\RAF}(F)\setminus Y, \RAF]$.
+Then ${r_1,r_2}$ is indeed a RAF w.r.t. to $F$. Nevertheless, $x_3$ is never consumed by any reaction. Naturally, any strictly positive reaction 
+vector yields a net increase in the concentration of such species, which motivates to consider the graph $H$ without those vertices. In addition, 
+these species are never located on an elementary circuit, and we obtain that Lemma~\ref{lem:strElCirc} holds if these species are removed.
+
+\begin{corollary}\label{lem:strElCirc}
+	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ a minimal, non-trivial RAF. Any two elementary circuits $C_1,C_2$ 
+	in $L\coloneqq H[V(H)\setminus W]$ with $W\coloneqq \{x\in \closure{\RAF}(F) \ | \ \nexists r \in \RAF \text{ s.t. } s^-_{xr}>0\}$ are strongly connected. 
 \end{corollary}
-\vspace{6pt}
-}
-We are now in the position to prove the following main result.
+
+For brevity of presentation, we let $L\coloneqq H[V(H)\setminus W]$ with $W\coloneqq \{x\in \closure{\RAF}(F) \ 
+| \ \nexists r \in \RAF \text{ s.t. } s^-_{xr}>0\}$ in the following. If $\RAF$ is composed of a single reaction, then 
+$L$ is a singleton, i.e., the very reaction vertex of $\RAF$. We may then directly conclude the following:
 
 \vspace{6pt}
 \begin{theorem}[\TODO{Not entirely sure about the only if part....}]
 	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal RAF. Then $\RAF$ is non-trivial 
-	if and only if the graph $G\coloneqq \king[\cl_{\RAF}(F)\setminus Y, \RAF]$ with $Y\coloneqq \{x\in \cl_{\RAF}(F) \ | \ \nexists r \in 
-	\RAF \text{ s.t. } s^-_{xr}>0 \text{ or } s^+_{xr'}>0\}$ is not a single reaction entity and strongly-connected.
+	if and only if the graph $L$ is not a single reaction entity and strongly-connected.
 \end{theorem}
-\begin{proof}
-	If $\RAF$ is trivial, then $G$ is a single reaction entity. Therefore, let $\RAF$ be a non-trivial $\RAF$, thus $|\RAF|\geq 2$. 
-	\TODO{The following needs fixing! Again, this does not follow from weak connectedness!!!} \OLD{By Corollary~\ref{cor:3Res} 
-	we know that $G$ is weakly connected, and for any two reactions $r_1$ and $r_2$ there is a 
-	path from $r_1$ to $r_2$ and from $r_2$ to $r_1$. Assume now thereby, there are species $x,y\in \cl_{\RAF}(F)\setminus Y$ 
-	such that there is, w.l.o.g., a path from $x$ to $y$. Then $x$ has an incoming edge from a reaction $r_x$ and $y$ has an 
-	outgoing reaction to a reaction $r_y$. By Corollary~\ref{Cor:3Res}, there is a path $P_{r_y,r_x}$ from $r_y$ to $r_x$ and 
-	thereby also a path from $y$ to $x$, i.e., $(y, P_{r_y,r_x},x)$, which completes the proof.}
-\end{proof}
 \vspace{6pt}
 
 In general, irreducible RAFs are not necessarily strong blocks, as is captured in the following example.
