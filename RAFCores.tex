@@ -502,13 +502,13 @@ following example illustrates.
 Then ${r_1,r_2}$ is indeed a RAF w.r.t. to $F$. Nevertheless, $x_3$ is never consumed by any reaction. Naturally, any strictly positive reaction 
 vector yields a net increase in the concentration of such species, which motivates to consider the graph $H$ without those vertices. In addition, 
 these species are never located on an elementary circuit, and we obtain that Lemma~\ref{lem:strElCirc} holds if these species are removed.
-
+\vspace{6pt}
 \begin{corollary}\label{lem:strElCirc}
 	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ a minimal, non-trivial RAF. Any two elementary circuits $C_1,C_2$ 
-	in $L\coloneqq H[V(H)\setminus W]$ with $W\coloneqq \{x\in \closure{\RAF}(F) \ | \ \nexists r \in \RAF \text{ s.t. } s^-_{xr}>0\}$ are strongly connected. 
+	in $L\coloneqq H[V(H)\setminus W]$ with $W\coloneqq \{x\in \closure{\RAF}{F} \ | \ \nexists r \in \RAF \text{ s.t. } s^-_{xr}>0\}$ are strongly connected. 
 \end{corollary}
-
-For brevity of presentation, we let $L\coloneqq H[V(H)\setminus W]$ with $W\coloneqq \{x\in \closure{\RAF}(F) \ 
+\vspace{6pt}
+For brevity of presentation, we let $L\coloneqq H[V(H)\setminus W]$ with $W\coloneqq \{x\in \closure{\RAF}{F} \ 
 | \ \nexists r \in \RAF \text{ s.t. } s^-_{xr}>0\}$ in the following. If $\RAF$ is composed of a single reaction, then 
 $L$ is a singleton, i.e., the very reaction vertex of $\RAF$. We may then directly conclude the following:
 
@@ -567,7 +567,40 @@ a cut-vertex, as the next lemma shows.
 	in any case, contradicting the minimality of $\RAF$.
 \end{proof}	
 
-This result allows us to decompose $L$ into strong blocks. We will see that each of these strong blocks indeed contains an autocatalytic core
+This result allows us to decompose $L$ into strong blocks. We will see in the next section that each of these strong blocks 
+indeed contains an autocatalytic core. Here, we continue by identifying a structural property common to any strong block 
+that warrants semipositivity. 
+\vspace{6pt}
+\begin{lemma}\label{lem:cutVertexPureCat}
+	Any strong block of $L$ contains a reaction vertex $r\in \RAF$ that has only \emph{pure} catalysts as reactants.
+\end{lemma}
+\begin{proof}
+	We start with strong blocks $B$ which contain a reaction vertex $r\in \POR^1_{\RAF}(F)$. The net-reactants of any of these 
+	reactions are subsets of $F$. Since $L[B]$ is strongly-connected, it has at least one \emph{pure} catalyst as reactant. Any 
+	other strong block $B'$ contains a cut-vertex $r^*\in \RAF$. We start with the simple case in which $B'$ contains only one cut-vertex. 
+	With $g_{r^*}\coloneqq \min_{1\leq k\leq n} \{k: r^*\in \POR^k_{\RAF}\}$ we observe that $g_{r^*}< g_{r}, \ \forall \ r\in R(B')
+	\setminus \{r^*\}$. Since $L[B']$ is strongly connected, it has at least one reactant and one product. Assume a reactant $x\in X(B')$ 
+	is a net-reactant. This, however, implies that $x$ is a product of a reaction $r\in R(S): g_{r} < g_{r^*}$, a contradiction. Assume 
+	now that $B'$ has cut-vertices: $r^*_1, \ldots, r^*_k$. Again, we observe, that there is an $r^*_j: g_{r^*_j}< g_{r}, \forall \ r\in R(B')
+	\setminus \{r^*_j\}$. Assume now that every cut-vertex has a net-reactant $x_i\in X(S')$. Then each $x_i$ is a product of some reaction 
+	in $r_i$, and it follows that $g_{r_i}<g_{r^*_i}$. This contradicts the previous observation, and the claim follows.
+\end{proof}
+\vspace{6pt}
+
+A direct consequence of Lemma~ \ref{lem:cutVertexPureCat} is that the stoichiometric submatrix on the non-food molecules, reflecting 
+the strong block $B$, always contains a non-negative column for the reaction $r^*\in R(B)$ that has only a catalyst $x^*\in X(B)$ as 
+reactant in $B$ with at least one positive entry for a product $y^*\in X(B): s^+_{yr^*}>0$:
+
+\begin{equation}
+	\begin{pmatrix}
+						& 	\ldots 	& 	r^* 		& \ldots \\
+						& 	\ddots 	& 	\vdots 	& \ddots \\
+					x^* 	& 	\ldots 	& 	0 		& \ldots \\
+						& 	\ddots 	& 	\vdots 	& \ddots \\
+					y^* 	& 	\ldots 	& 	s^+_{y^*r^*} & \ldots \\
+						& 	\ddots 	& 	\vdots 	& \ddots \\
+	\end{pmatrix}
+\end{equation}
 
 \section{RAFs and autocatalytic subnetworks}
 
@@ -623,13 +656,16 @@ directly yields for the submatrix restricted to the species and reactions of the
 	\SM[X(C), R(C)]v|_{R(C)}>0
 \end{equation}
 and thereby semipositivity. In addition, any strong block is by definition well-formed, and we obtain
-the following statement
-
+the following statement.
+\vspace{6pt}
 \begin{theorem}
 	Any strong block of a minimal RAF contains an autocatalytic core. 
 \end{theorem}
+\vspace{6pt}
 
+We will now describe the nature of this 
 
+\TODO{Construction site ahead}
 A natural extension to this statement relies on considering not only species from 
 $\closure{\RAF}{F}\setminus F$ but from the set of food-generated entities, i.e.
 \begin{equation}
@@ -663,7 +699,7 @@ all species and reaction vertices within the strong block.
 
 
 The semipositivity of $A\coloneqq \SM[(\closure{\RAF}{F}\setminus F,\RAF)]$ in general originates 
-from at least one food-generated reaction. For example, in the following RN:
+from at least one of the form $x_1\rightarrow x_1 + x_2$. For example, in the following RN:
 \begin{equation}
 	\begin{split}
 		r_0: f_1 & \overset{f_2}{\longrightarrow} x_1 \\ 
