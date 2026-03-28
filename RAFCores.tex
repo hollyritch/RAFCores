@@ -238,8 +238,8 @@ The \emph{stoichiometric matrix} $\SM$ encodes all net-stoichiometries:
       \hat{s}^-_{xr} = -\SM_{xr} & \text{ if } \SM_{xr}\le 0 \\
       \hat{s}^+_{xr} = \SM_{xr} & \text{ if } \SM_{xr}\le 0 \\
     \end{split}
-  \end{equation}
-  \TODO{we want this a bit differently ...}  
+  \end{equation}}
+  \TODO{we want the following  a bit differently ...}  
   \begin{equation}
     \begin{split}
       E: R \rightarrow X, E(r) & \coloneqq \{x\in X \ \vert \ s^-_{xr}-s^+_{xr}>0\} \\
@@ -279,7 +279,7 @@ RN. If $|\cat| = |R'|$, i.e., each reaction is catalyzed, we call $(X,R,\cat)$ a
   \end{equation}
   In the CRN setting, thus we have the reactant (educt) set $E(r)\cup K(r)$
   and the product set $P(r)\cup K(r)$. Clearly, we have $K(r)=\emptyset$ if
-  the reaction is uncatalyzed.
+  the reaction is uncatalyzed.}
 
   \TODO{I would prefer to find other letters for the \emph{net reactants}
     and \emph{net products} to leave at least $E$ ``clean'' for the edge
@@ -291,12 +291,12 @@ RN. If $|\cat| = |R'|$, i.e., each reaction is catalyzed, we call $(X,R,\cat)$ a
     \begin{equation}
       \mathcal{K}_{\hat{r}} \coloneqq \{ K(r) | r\in\hat{r} \}
     \end{equation}
-    Thus, for every $r\in\hat{r}$, there is a 
-    $K\in\mathcal{K}_{\hat{r}}$ such that $r$ has educts.
-    \TODO{In fact, we should be even more anal-retentive her and insist
-      that two sets $K,K'\in\mathcal{K}_{\hat{r}}$ are distinct if their
-      stoichiometric coefficients are distinct. Thus need to
-      define $\mathcal{K}_{\hat{r}}$ as a multiset. }
+    Thus, for every $r\in\hat{r}$, there is a $K\in\mathcal{K}_{\hat{r}}$
+    such that $r$ has educts.}  \TODO{In fact, we should be even more
+    anal-retentive her and insist that two sets
+    $K,K'\in\mathcal{K}_{\hat{r}}$ are distinct if their stoichiometric
+    coefficients are distinct. Thus need to define $\mathcal{K}_{\hat{r}}$
+    as a multiset. }
 
     \PFS{The next consequence is that there are also different notions of
       subnetworks for both formalisms.} 
