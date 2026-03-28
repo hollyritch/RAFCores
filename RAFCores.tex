@@ -216,22 +216,40 @@
 
 A reaction network $(X,R)$ is tuple of two finite sets, set of metabolites $X$ 
 and a set of reactions $R$. For any $r\in R$ we can write a stoichiometric equation as:
-	\begin{equation}
-		\sum_{x\in X}\ s^-_{xr} \cdot x \rightarrow \sum_{x\in X} \ s^+_{xr}\cdot x
-	\end{equation}
-where $s^{\pm}_{xr}$ are the educt and product stoichiometry of the molecule $x$ in 
-the reaction $r$. The \emph{stoichiometric matrix} $\SM$ encodes all net-stoichiometries:
 \begin{equation}
-	\SM_{xr}\coloneqq s^+_{xr}-s^-_{xrs}
+  \sum_{x\in X}\ s^-_{xr} \cdot x \rightarrow \sum_{x\in X} \ s^+_{xr}\cdot x
 \end{equation}
- We denote by 
-	\begin{equation}
-		\begin{split}
-			E: R \rightarrow X, E(r) & \coloneqq \{x\in X \ \vert \ s^-_{xr}-s^+_{xr}>0\} \\
-			P: R \rightarrow X, P(r) & \coloneqq \{x\in X \ \vert \ s^-_{xr}-s^+_{xr}<0\} \\
-		\end{split}
-	\end{equation}
-the reactants (educts) and products of reaction $r$, respectively. A catalyst is an entity $x\in X$ such 
+where $s^{\pm}_{xr}$ are the educt and product stoichiometry of the
+molecule $x$ in the reaction $r$.
+
+\TODO{So far, PFS is happy with this. The problem starts here, however,
+  since there is NOT a 1-1 correspondence between the CRN reactions and the
+  net-reactions.}
+
+The \emph{stoichiometric matrix} $\SM$ encodes all net-stoichiometries:
+\begin{equation}
+  \SM_{xr}\coloneqq s^+_{xr}-s^-_{xr}
+\end{equation}
+\PFS{For a reaction $r$ we can define its \emph{net reaction} $\hat{r}$ as
+  \begin{equation}
+    \begin{split}
+      \sum_{x\in X}\ \hat{s}^-_{xr} \cdot x &\rightarrow \sum_{x\in X}
+      \ \hat{s}^+_{xr}\cdot x \\
+      \hat{s}^-_{xr} = -\SM_{xr} & \text{ if } \SM_{xr}\le 0 \\
+      \hat{s}^+_{xr} = \SM_{xr} & \text{ if } \SM_{xr}\le 0 \\
+    \end{split}
+  \end{equation}
+  \TODO{we want this a bit differently ...}  
+  \begin{equation}
+    \begin{split}
+      E: R \rightarrow X, E(r) & \coloneqq \{x\in X \ \vert \ s^-_{xr}-s^+_{xr}>0\} \\
+      P: R \rightarrow X, P(r) & \coloneqq \{x\in X \ \vert \ s^-_{xr}-s^+_{xr}<0\} \\
+    \end{split}
+  \end{equation}
+  the \PFS{net} reactants (educts) and \PFS{net} products of reaction $r$,
+  respectively.
+
+A catalyst is an entity $x\in X$ such 
 that $s^{-}_{xr}\cdot s^{+}_{xr}\neq 0$ and we say that $r$ is explicitly catalyzed 
 by $x$. In case $s^-_{xr}>s^+_{xr}>0$, $x$ is both reactant and catalyst 
 of reaction $r$, while in case $s^+_{xr}>s^-_{xr}>0$, $x$ is both product and catalyst 
@@ -241,6 +259,50 @@ for a reaction $r$ in the set $\cat_r$ and denote by $\cat(R)\coloneqq\{(K_r,r) 
 $\cat(R)=\emptyset$. The catalysts of a \emph{catalyzation} are denoted by $X(\cat_r)$. The 
 triple $(X,R,\cat)$ with $\cat=\cat(R)\neq\emptyset$ is called a partially catalyzed 
 RN. If $|\cat| = |R'|$, i.e., each reaction is catalyzed, we call $(X,R,\cat)$ a catalyzed RN. 
+
+\TODO{PFS says, we might want to stay closer to the CRN notation. The first
+  issue to note is that the set $R$ of reactions in RA(F) is not the same
+  as the set of reactions in the CRN setting.}
+
+\PFS{Let me write a $\hat{\phantom{a}}$ for the RAF version here. A
+  reaction $\hat r\in \hat{R}$ is \emph{an equivalence class} of rections
+  $r\in R$. Let us write $r,r'\in\hat{r}$ for the CRN reactions that belong
+  the same RAF reaction $\hat{r}$. We have
+  \begin{equation} 
+    r\in \hat{r}  \quad \iff \quad E(r)=E(r') \text{ and } P(r)=P(r').
+  \end{equation}
+  The difference between the members of the equivalence class $\hat r$
+  are exactly the \emph{catalyzations}. From the point of view of CRN
+  reactions $r\in R$, we have to specify the catalysts. 
+  \begin{equation}
+    K(r)\coloneqq \{ x\in X| s^-_{xr}=s^+_{xr}>0\}
+  \end{equation}
+  In the CRN setting, thus we have the reactant (educt) set $E(r)\cup K(r)$
+  and the product set $P(r)\cup K(r)$. Clearly, we have $K(r)=\emptyset$ if
+  the reaction is uncatalyzed.
+
+  \TODO{I would prefer to find other letters for the \emph{net reactants}
+    and \emph{net products} to leave at least $E$ ``clean'' for the edge
+    set in fluffles etc.}
+  
+  \PFS{Now let us turn to the RAF setting and consider the catalyzation.
+    Every catalyzation of $\hat{r}$ corresponds to the set catalysts $K(r)$
+    in a particular reaction $r\in\hat{r}$. In other words, we have 
+    \begin{equation}
+      \mathcal{K}_{\hat{r}} \coloneqq \{ K(r) | r\in\hat{r} \}
+    \end{equation}
+    Thus, for every $r\in\hat{r}$, there is a 
+    $K\in\mathcal{K}_{\hat{r}}$ such that $r$ has educts.
+    \TODO{In fact, we should be even more anal-retentive her and insist
+      that two sets $K,K'\in\mathcal{K}_{\hat{r}}$ are distinct if their
+      stoichiometric coefficients are distinct. Thus need to
+      define $\mathcal{K}_{\hat{r}}$ as a multiset. }
+
+    \PFS{The next consequence is that there are also different notions of
+      subnetworks for both formalisms.} 
+    
+
+
 
 A tuple $(X', R')$ is called a subnetwork of $(X,R)$ if $X'\subseteq X, R'\subseteq R$- A 
 catalyzed network We say a subnetwork $(X',R')$ is well formed if for any $r\in R': \exists x_1,x_2\in X: 
