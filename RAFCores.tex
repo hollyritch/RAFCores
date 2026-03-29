@@ -398,10 +398,53 @@ We are now in the position to deduce the consequences of Def.~\ref{def:RAF}ii. t
 \end{proof}
 \vspace{6pt}
 
-Special emphasis has been placed on \emph{irreducible} RAFs, i.e., $\RAF$ for which no $\RAF'\subset \RAF$ is again a RAF 
-\cite{hordijk_detecting_2004, hordijk_autocatalytic_2013, hordijk_autocatalytic_2010}. However, to avoid confusion with 
-the notion of irreducibility of a matrix, we refer to such a RAF as a \emph{minimal RAF}. In addition, we call any RAF of 
-size $1$ a \emph{trivial} RAF. We can then find a structure on the K\"onig representation of a non-trivial RAF if all species entities 
+A restriction of the RAF definition, i.e., that $\RAF$ is a RAF for which no $\RAF'\subset \RAF$ is again a RAF, has been 
+introduced as \emph{irreducible} RAFs \cite{hordijk_detecting_2004, hordijk_autocatalytic_2013, hordijk_autocatalytic_2010}. 
+To avoid confusion with the notion of irreducibility of a matrix, we refer to them as \emph{minimal RAFs}. We shall see that 
+the minimality condition yields a number of interesting structural consequences. A non-minimal RAF is given in the following 
+example:\\
+\vspace{6pt}
+\begin{minipage}[c]{0.4\textwidth}
+	\centering
+	\begin{equation}
+		\begin{split}
+			r_0&: f_2\overset{f_1}\longrightarrow x_1\\
+			r_1&: x_1\overset{x_1}\longrightarrow x_2\\
+			r_2&: x_1\overset{x_1}\longrightarrow x_2
+		\end{split}
+	\end{equation}
+\end{minipage}%
+\hfill%
+\begin{minipage}[c]{0.55\textwidth}
+	\begin{tikzpicture}
+		\node[draw,circle] (f1) at (0,0) {$f_1$};
+		\node[draw,circle] (f2) at (0,-2) {$f_2$};
+		\node[draw,circle] (x1) at (2,-1) {$x_1$};
+		\node[draw,circle] (x2) at (4,-1) {$x_2$};
+		
+		\node[draw,rectangle] (r0) at (1,-1) {$r_0$};
+		\node[draw,rectangle] (r1) at (3,0) {$r_1$};
+		\node[draw,rectangle] (r2) at (3,-2) {$r_2$};
+		
+		\draw[->] (f1) to [bend left =30] (r0);
+		\draw[->] (f2) to  (r0);
+		\draw[->] (r0) to [bend left =30] (f1);
+		\draw[->] (r0) to (x1);
+		\draw[->] (x1) to [bend right =30] (r1);
+		\draw[->] (r1) to [bend right =30] (x1);
+		\draw[->] (r1) to (x2);
+		\draw[->] (x2) to [bend right =30] (r2);
+		\draw[->] (r2) to [bend right =30] (x2);
+		\draw[->] (r2) to (x1);
+	\end{tikzpicture}
+\end{minipage}
+
+Indeed, $\RAF=\{r_1\}$ is a RAF, and thus, any addition of $r_1$ or $r_2$ would violate minimality. We call any 
+RAF of size $1$ a \emph{trivial} RAF. A closed RAF \emph{(CAF)} is a RAF $\RAF$ where the reactions can 
+be ordered $r_1, r_2, \ldots, r_k$ such that, for each $i \geq 1$, each reactant of $r_i$ and at least one catalyst 
+of $r_i$ is contained in the food set and/or is a product of an earlier reaction in the sequence). 
+
+We can then find a structure on the K\"onig representation of a non-trivial RAF if all species entities 
 exhibiting no incoming and no outgoing edges are removed. We start with the following trivial observation, which is a direct
 consequence of Lemma~\ref{lem:RAFPath}.
 \vspace{6pt}
@@ -419,8 +462,8 @@ consequence of Lemma~\ref{lem:RAFPath}.
 \end{proof}
 \vspace{6pt}
 A minimal RAF, thereby, has a corresponding weakly-connected bipartite K\"onig graph. 
-We note that the upper result not only holds for the graph $G\coloneqq \king[\closure{\RAF}{F}\setminus 
-F, \RAF]$, but also for the graph $H\coloneqq \king[\closure{\RAF}(F)\setminus F, \RAF]$ where all 
+We note that the upper result not only holds for the graph $G\coloneqq \king[\closure{\RAF}{F}, \RAF]$, 
+but also for the graph $H\coloneqq \king[\closure{\RAF}{F}\setminus F, \RAF]$ where all 
 food-vertices have been removed.
 \vspace{6pt}
 \begin{lemma}\label{lem:weaklyConnected2}
@@ -513,7 +556,7 @@ For brevity of presentation, we let $L\coloneqq H[V(H)\setminus W]$ with $W\colo
 $L$ is a singleton, i.e., the very reaction vertex of $\RAF$. We may then directly conclude the following:
 
 \vspace{6pt}
-\begin{theorem}[\TODO{Not entirely sure about the only if part....}]
+\begin{theorem}
 	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal RAF. Then $\RAF$ is non-trivial 
 	if and only if the graph $L$ is not a single reaction entity and strongly-connected.
 \end{theorem}
