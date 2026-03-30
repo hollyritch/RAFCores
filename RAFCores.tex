@@ -476,7 +476,10 @@ which is a direct consequence of Lemma~\ref{lem:RAFPath}.
 \end{proof}
 \vspace{6pt}
 A minimal RAF, thereby, has a corresponding weakly-connected bipartite K\"onig graph. 
-We note that the upper result not only holds for the graph $G\coloneqq \king[\closure{\RAF}{F}, \RAF]$, 
+We note that the upper result not only holds for the graph 
+\begin{equation}\label{eq:graphG}
+	G\coloneqq \king[\closure{\RAF}{F}, \RAF],
+\end{equation}
 but also for the graph 
 \begin{equation}\label{eq:graphH}
 	H\coloneqq \king[\closure{\RAF}{F}\setminus F, \RAF]
@@ -653,7 +656,7 @@ $L$ is a singleton, i.e., the very reaction vertex of $\RAF$. We may then direct
 \end{theorem}
 \vspace{6pt}
 
-In general, irreducible RAFs are not necessarily strong blocks, as is captured in the following example.
+In general, \emph{minimal} RAFs are not necessarily strong blocks, as is captured in the following example.
 \begin{figure}[h]
 	\centering
 	\begin{minipage}[c]{0.49\textwidth}
@@ -696,7 +699,7 @@ In general, irreducible RAFs are not necessarily strong blocks, as is captured i
 			
 		\end{tikzpicture}
 	\end{minipage}
-	\caption{lll}
+	\caption{A minimal RAF with a cut-vertex $r_0$ of the graph $L$ as defined in equation.}
 	\label{fig:}
 \end{figure}
 \FloatBarrier
@@ -712,18 +715,51 @@ autocatalytic cores with child-selections $\child_1\coloneqq (\{x_1,x_2\}, \{r_0
 \vspace{6pt}
 The occurrence of cut-vertices is not restricted to the situation of a reaction having two catalysts. 
 To see this, consider the following example:
-
-\begin{equation}
-	\begin{split}
-		r1&: f1  + x1 -> x1 + x2\\
-		r2&: f2 + x4 -> x4 + x3\\
-		r3&: 2x3 + x2 -> x2 + x4 + x1
-	\end{split}
-\end{equation}
+\begin{figure}[h]
+	\begin{minipage}[c]{0.49\textwidth}
+		\begin{equation}
+			\begin{split}
+				r_1&: f_1  \overset{x_1}{\longrightarrow} x_2\\
+				r_2&: f_2  \overset{x_4}{\longrightarrow} x3\\
+				r_3&: 2x_3 \overset{x_2}{\longrightarrow} x4 + x1
+			\end{split}
+		\end{equation}
+	\end{minipage}%
+	\hfill%
+	\begin{minipage}[c]{0.49\textwidth}
+		\begin{tikzpicture}
+			\node[draw, circle] (f1) at (0,0) {$f_1$};
+			\node[draw, circle] (f2) at (4,-2) {$f_2$};
+			\node[draw, circle] (x1) at (2,0) {$x_1$};			
+			\node[draw, circle] (x2) at (1,-1) {$x_2$};
+			\node[draw, circle] (x3) at (3,-1) {$x_3$};
+			\node[draw, circle] (x4) at (2,-2) {$x_4$};
+						
+			\node[draw, rectangle] (r1) at (1,0) {$r_1$};
+			\node[draw, rectangle] (r2) at (2,-1) {$r_2$};
+			\node[draw, rectangle] (r3) at (3,-2) {$r_3$};
+			
+			\draw[->] (f1) to (r1);
+			\draw[->] (f2) to (r3);
+			\draw[->] (x1) to [bend right = 30] (r1);
+			\draw[->] (r1) to [bend right = 30] (x1);
+			\draw[->] (r1) to (x2);			
+			\draw[->] (x2) to (r2);
+			\draw[->] (x3) to [bend right] (r2);
+			\draw[->] (r2) to [bend right] (x3);
+			\draw[->] (r2) to (x1);
+			\draw[->] (r2) to (x4);
+			\draw[->] (x4) to [bend right = 30] (r3);
+			\draw[->] (r3) to [bend right = 30] (x4);
+			\draw[->] (r3) to (x3);
+		\end{tikzpicture}
+	\end{minipage}
+\end{figure}
+\FloatBarrier
 
 We note that in both examples, the cut-vertex is a reaction vertex. Indeed, a species vertex cannot be
 a cut-vertex, as the next lemma shows.
-
+\vspace{6pt}
 \begin{lemma}
 	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal, non-trivial RAF. If
 	$L$ is not a strong-block, then every cut-vertex is a reaction 
@@ -738,6 +774,7 @@ a cut-vertex, as the next lemma shows.
 	that $R(C_1)$ is a RAF or (not mutually exclusive) $\cl_{R(C_2)(F)}\neq \emptyset$, implying that $R(C_2)$ is a RAF, 
 	in any case, contradicting the minimality of $\RAF$.
 \end{proof}	
+\vspace{6pt}
 
 This result allows us to decompose $L$ into strong blocks. We will see in the next section that each of these strong blocks 
 indeed contains an autocatalytic core. Here, we continue by identifying a structural property common to any strong block 
