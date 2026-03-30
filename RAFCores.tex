@@ -954,6 +954,23 @@ the elementary circuit $C=(x_1,r_1, x_3,r_3,x_4,r_4)$ with $\child = \{X(C), R(C
 			    \end{pmatrix},
 \end{equation}
 which is clearly non-semipositiv since any $v>0$ yields either $(\SM v)_1=0$ or $(\SM v)_3=0$. 
+However, for every pure reaction vertex, we will always find an autocatalytic subnetwork that 
+has a spanning elementary circuit containing that vertex.
+\vspace{6pt}
+\begin{theorem}
+	For a minimal, non-trivial RAF $\RAF$, let $B$ be a strong block in the graph of the graph $L$ from 
+	Eq.~\ref{eq:graphL}. For any \emph{pure reaction}, that is for each $r^*\in R^*(B)\coloneqq \{r\in R(B) \ | 
+	\ s^-_{xr}>0 \Rightarrow 0<s^+_{xr}=s^-_{xr}, \forall x\in X(B)\}$, there is an elementary circuit $C$ in $B$
+	such that $\SM[X(C), R(C)]$ is autocatalytic. 
+\end{theorem} 
+\vspace{6pt}
+\begin{proof}
+	We prove by construction and construct a CS inductively. For the base case, we let $r_1\in R^*(B)$ and $R_1'\coloneqq \{r_1\}$. 
+	and then choose an $x_1 \in \cat_{r^*}$ and set $\child_1\coloneqq \{\{x_1\}, \{r_1\}, \kappa(x_1)=r_1\}$. Then $\child_1$ is a CS.
+	In every $k$-th step we choose $r_k\in \POR^m_{\RAF}(F): s^+_{x_{k-1}r_k}-s^-_{x_{k-1}r_k}>0$ with $m = \min_{i=1, \ldots, n} \{\POR^i_{\RAF}(F) 	\ | 
+	\ s^+_{x_{k-1}r_k}-s^-_{x_{k-1}r_k}>0 \}$ and $x_k \in POX^{\ell}_{\RAF}(F): s_{x_kr_k}<0$ with $\ell=\min_{i=1, \ldots, n} \{\POR^i_{\RAF}(F) \ | \ s^+_{xr} 
+	-s^-_{xr}>0 \}$. We observe, that in this way, $r_k\in R(B)$ and $x_k\in X(B)$ for any $k$.
+\end{proof}
 
 \TODO{Construction site ahead}
 A natural extension to this statemen relies on considering not only species from 
