@@ -304,7 +304,9 @@ to our notation.
 \vspace{6pt}
 
 Note that $ii.$, together with Eq.\ref{eq:Closure}, directly implies that all products for any reaction $r\in \RAF$ are also contained 
-in the closure of $F'$, thus $P_r\subseteq \closure{\RAF}{F}$. 
+in the closure of $F'$, thus $P_r\subseteq \closure{\RAF}{F}$. A closed RAF \emph{(CAF)} is a RAF $\RAF$ where the reactions 
+can be ordered $r_1, r_2, \ldots, r_k$ such that, for each $i \geq 1$, each reactant of $r_i$ and at least one catalyst of $r_i$ is 
+contained in the food set and/or is a product of an earlier reaction in the sequence). 
 
 Before connecting the notion of a RAF with the definition of an autocatalytic subnetwork, we start by translating specific properties of a RAF 
 into the bipartite K\"onig graph. We start with the consequences of the closure. The closure of a set $X'$ w.r.t. to a set $R'$ denoted as $\closure{R'}{X'}$ is the 
@@ -377,8 +379,8 @@ For both $\cl^k_{R'}(X)$ and $\PO_{R'}^k(X')$, it might be convenient to conside
 		\POR_{R'}^0(X') & \coloneqq \emptyset \qquad \POR_{R'}^k(X')\coloneqq \PO^k_{R'}(X) \left(\bigcup_{i=0}^{k-1} \PO^k_{R'}(X) \right)
 	\end{split}
 \end{equation}
-\vspace{6pt}
 We are now in the position to deduce the consequences of Def.~\ref{def:RAF}ii. to the bipartite K\"onig representation of a RAF. 
+
 \vspace{6pt}
 \begin{lemma}\label{lem:RAFPath}
 	Let $(X,R,\cat)$ be a catalyzed network with $F\subseteq X$ and $\RAF$ an RAF. Then, 
@@ -398,11 +400,11 @@ We are now in the position to deduce the consequences of Def.~\ref{def:RAF}ii. t
 \end{proof}
 \vspace{6pt}
 
-A restriction of the RAF definition, i.e., that $\RAF$ is a RAF for which no $\RAF'\subset \RAF$ is again a RAF, has been 
-introduced as \emph{irreducible} RAFs \cite{hordijk_detecting_2004, hordijk_autocatalytic_2013, hordijk_autocatalytic_2010}. 
-To avoid confusion with the notion of irreducibility of a matrix, we refer to them as \emph{minimal RAFs}. We shall see that 
-the minimality condition yields a number of interesting structural consequences. A non-minimal RAF is given in the following 
-example:\\
+A question, which naturally arises for a given RAF $\RAF$, is whether there is an $\RAF'\subset \RAF$ that is itself a RAF. This 
+notion has been termed \emph{irreducible} RAFs in the literature \cite{hordijk_detecting_2004, hordijk_autocatalytic_2013, 
+hordijk_autocatalytic_2010}. However, to avoid confusion with the notion of irreducibility of a matrix, we refer to them as 
+\emph{minimal RAFs}. We shall see that the minimality condition yields a number of interesting structural consequences. 
+We start with an example of a non-minimal RAF:\\
 \vspace{6pt}
 \begin{minipage}[c]{0.4\textwidth}
 	\centering
@@ -440,9 +442,19 @@ example:\\
 \end{minipage}
 
 Indeed, $\RAF=\{r_1\}$ is a RAF, and thus, any addition of $r_1$ or $r_2$ would violate minimality. We call any 
-RAF of size $1$ a \emph{trivial} RAF. A closed RAF \emph{(CAF)} is a RAF $\RAF$ where the reactions can 
-be ordered $r_1, r_2, \ldots, r_k$ such that, for each $i \geq 1$, each reactant of $r_i$ and at least one catalyst 
-of $r_i$ is contained in the food set and/or is a product of an earlier reaction in the sequence). 
+RAF of size $1$ a \emph{trivial} RAF. At this point, we note that for catalyzed reaction networks, where 
+each reaction is catalyzed by at most one catalyst, we get the following statement.
+
+\vspace{6pt}
+\begin{lemma}
+	Let $(X,R,\cat)$ be a catalyzed reaction network with food-set $F$ such that $|\cat_{r}|\leq 1, \forall r\in R$. Then every minimal
+	CAF is trivial. 
+\end{lemma}
+\begin{proof}
+	Let $\RAF$ be a CAF and assume $|\RAF|>1$. Let $r\in \POR^1_{\RAF}(F)$. Then all reactants and catalysts are for $r$ are in 
+	$F$ since $\RAF$ is a CAF. Thus $\{r\}$ is a RAF itself, contradicting the minimality of $\RAF$.
+\end{proof}
+\vspace{6pt}
 
 We can then find a structure on the K\"onig representation of a non-trivial RAF if all species entities 
 exhibiting no incoming and no outgoing edges are removed. We start with the following trivial observation, which is a direct
