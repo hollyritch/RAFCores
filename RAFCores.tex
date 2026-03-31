@@ -463,7 +463,7 @@ RAF when all food molecules and all species exhibiting no outgoing edges are rem
 which is a direct consequence of Lemma~\ref{lem:RAFPath}.
 \vspace{6pt}
 \begin{lemma}\label{lem:weaklyConnected}
-	A $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal RAF. 
+	A $(X, R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal RAF. 
 	Then $\king[\closure{\RAF}{F}, \RAF]$ is weakly-connected.
 \end{lemma}
 \begin{proof}
@@ -763,7 +763,7 @@ the following example:
 As in Fig.~\ref{ex:CutVertex2}, both strong blocks, i.e., $\king[\{x_1,x_2\}\cup \{r_1,r_2\}]$ and $\king[\{x_3,x_4\}\cup \{r_2,r_3\}]$ 
 share a common cut-vertex that is a reaction vertex. Indeed, a species vertex cannot be a cut-vertex, as the next lemma shows.
 \vspace{6pt}
-\begin{lemma}
+\begin{lemma}\label{lem:CutVertexReac}
 	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal, non-trivial RAF. If
 	$L$ is not a strong block, then every cut-vertex is a reaction 
 	vertex.
@@ -814,7 +814,64 @@ reactant in $B$ with at least one positive entry for a product $y^*\in X(B): s^+
 	\end{pmatrix}
 \end{equation}
 
-This has direct consequences for the presence of autocatalytic subnetworks within a minimal RAF, which we will address in the next section. 
+If the strong block consists of a single reaction $r$ and a single species $x \in \cat_r$, then $r$ is an explicit autocatalytic reaction
+\vspace{6pt}
+\begin{lemma}
+	Let $B$ be a strong block of $L$ that is composed of a single reaction $r$ and a single species $x$. Then $r$ is an explicit
+	autocatalytic reaction, and $x$ is a catalyst and a net product of $r$.
+\end{lemma}
+\begin{proof}
+	Assume first that $x$ is not a catalyst. Since $B$ is strongly connected, there is an edge $(x,r)$ and $(r,x)$. Assume now that 
+	$x$ is not a net product of $r$. Then $x$ is produced by a reaction of another block $B'$. Then there is another path connecting 
+	$B$ to $B'$ since otherwise $x$ would be a cut-vertex, which is not possible by Lemma~\ref{lem:CutVertexReac}. Then 
+	$r$ is an explicit autocatalytic reaction. 
+\end{proof}
+\vspace{6pt}
+The following example captures such a situation. 
+\begin{figure}
+	\centering
+	\begin{minipage}[c]{0.5\textwidth}
+		\begin{equation}
+			\begin{split}
+				r_1&: f \overset{x_1}{\longrightarrow} x_2 \\
+				r_2&: 2x_2 \overset{x_3}{\longrightarrow} x_3 + x_4 \\
+				r_3&: x_4 \overset{x_4}{\longrightarrow} x_1
+			\end{split}
+		\end{equation}
+	\end{minipage}%
+	\hfill%
+	\begin{minipage}[c]{0.5\textwidth}
+		\centering
+		\begin{tikzpicture}
+			\node[draw, circle] (f) at (0,0) {$f$};
+			\node[draw, circle] (x1) at (1,1) {$x1$};
+			\node[draw, circle] (x2) at (1,-1) {$x2$};
+			\node[draw, circle] (x3) at (3,-1) {$x3$};
+			\node[draw, circle] (x4) at (2,0) {$x4$};
+			
+			\node[draw, rectangle] (r1) at (1,0) {$r1$};
+			\node[draw, rectangle] (r2) at (2,-1) {$r2$};
+			\node[draw, rectangle] (r3) at (2, 1) {$r3$};
+			
+			\draw[->] (f) to (r1);
+			\draw[->] (x1) to [bend right = 30] (r1);
+			\draw[->] (r1) to [bend right = 30] (x1);
+			\draw[->] (r1) to (x2);
+			\draw[->] (x2) to (r2);			
+			\draw[->] (x4) to [bend right = 30] (r3);
+			\draw[->] (r3) to [bend right = 30] (x4);
+			\draw[->] (r2) to (x4);
+			\draw[->] (x3) to [bend right = 30] (r2);
+			\draw[->] (r2) to [bend right = 30] (x3);
+			\draw[->] (r3) to (x1);
+		\end{tikzpicture}
+	\end{minipage}
+	\caption{Depiction of an explicit autocatalytic reaction.}
+\end{figure}
+
+Then $B=\{x_3, r_2\}$ is a strong block and $r_2$ is an explicit autocatalytic reaction. 
+This has direct consequences for the presence of autocatalytic subnetworks within a 
+minimal RAF, which we will address in the next section. 
 
 \section{RAFs and autocatalytic subnetworks}
 
@@ -954,8 +1011,45 @@ the elementary circuit $C=(x_1,r_1, x_3,r_3,x_4,r_4)$ with $\child = \{X(C), R(C
 			    \end{pmatrix},
 \end{equation}
 which is clearly non-semipositiv since any $v>0$ yields either $(\SM v)_1=0$ or $(\SM v)_3=0$. 
-However, for every pure reaction vertex, we will always find an autocatalytic subnetwork that 
-has a spanning elementary circuit containing that vertex.
+We first start with a sufficient condition for an autocatalytic subnetwork.
+\vspace{6pt}
+\begin{lemma}
+	Let $B$ be a strong block of the graph $L$. Then any MR-chordfree elementary circuit 
+	$C$ containing a pure \emph{pure reaction}, that is an $r^*\in R^*(B)\coloneqq \{r\in R(B) \ | 
+	\ s^-_{xr}>0 \Rightarrow 0<s^+_{xr}=s^-_{xr}, \forall x\in X(B)\}$, has an autocatalytic CS 
+	that is defined by the edges $E_1(C)$.  
+\end{lemma}
+\begin{proof}
+	If $C$ is MR-chordfree, then the associated CS matrix$\SM[\child]$ of the $k$-CS $\child = (X(C), 
+	R(C), \kappa: \kappa(x) \coloneqq v^C_{out}(x)$ is irreducible and reads by construction:
+	\begin{equation}
+			\SM[X(C), R(C)] = 
+				\begin{pmatrix}
+						0 	& 	 		&	 			&  			& 	p_1	\\
+						p_2	& 	-r_2  		& 				&     P''  		&		\\
+					 		& 	p_3  		& 	\ddots 		&      			&		\\
+							& 	 		& 	\ddots 		& \ddots 		&    	 	\\
+						P'	& 	 		& 				& p_k 		& -r_k     	\\
+				\end{pmatrix},
+	\end{equation}
+
+i.e., $\SM[\child]$ with $\{r_i\}\in \mathbb{R}_{\geq 0}, i=2,\ldots, k$ and $\{p_i\}\in \mathbb{R}_{>0},i=1,\ldots, k$ and non-negative
+entries in $P'$ and $P''$. We may then construct $v\in \mathbb{R}^{k}_{>0}$ as $v(r_k)\coloneqq 1$ and 
+\begin{equation}
+	v_{i}=\begin{cases}
+			\frac{v_{i+1}\cdot r_{i+1}}{p_{i+1}} +1 & \text{if } r_{i+1}>0 \\
+			\frac{v_{i+1}}{p_{i+1}} +1 & \text{if } r_{i+1}=0
+		\end{cases}
+\end{equation}
+Then $v>0$ and by construction we directly obtain $\SM[\child]v>0$ since $P'$ and $P''$ contain only non-negative entries. 
+\end{proof}
+\vspace{6pt}
+
+However, such MR-chordfree elementary circuits are not necessarily autocatalytic cores. It therefore remains to show every pure reaction vertex, we will always find an autocatalytic subnetwork that has a spanning elementary 
+circuit containing that vertex.
+
+
+
 \vspace{6pt}
 \begin{theorem}
 	For a minimal, non-trivial RAF $\RAF$, let $B$ be a strong block in the graph of the graph $L$ from 
