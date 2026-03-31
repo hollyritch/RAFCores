@@ -156,9 +156,9 @@
 %\author[1]{\fnm{Thomas} \sur{Gatter}}\email{thomas@bioinf.uni-leipzig.de}
 %\ORCID{0000-0002-5016-5191} 
 %
-%\author[1,2]{\fnm{Nicola} \sur{Vassena}}\email{nicola.vassena@uni-leipzig.de}
-%
-%\ORCID{0000-0001-5411-4976} 
+\author[1,2]{\fnm{Nicola} \sur{Vassena}}\email{nicola.vassena@uni-leipzig.de}
+
+\ORCID{0000-0001-5411-4976} 
 %
 %\author[1,2,3,4,5,6,7,8,9]{\fnm{Peter F.}\sur{Stadler}}\email{studla@bioinf.uni-leipzig.de}
 %\ORCID{0000-0001-5567-3016}
@@ -210,8 +210,9 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \maketitle
+
 \holy{}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Preliminaries}
 
 A reaction network $(X,R)$ is tuple of two finite sets, set of metabolites $X$ 
@@ -366,7 +367,9 @@ to our notation.
 \vspace{6pt}
 
 Note that $ii.$, together with Eq.\ref{eq:Closure}, directly implies that all products for any reaction $r\in \RAF$ are also contained 
-in the closure of $F'$, thus $P_r\subseteq \closure{\RAF}{F}$. 
+in the closure of $F'$, thus $P_r\subseteq \closure{\RAF}{F}$. A closed RAF \emph{(CAF)} is a RAF $\RAF$ where the reactions 
+can be ordered $r_1, r_2, \ldots, r_k$ such that, for each $i \geq 1$, each reactant of $r_i$ and at least one catalyst of $r_i$ is 
+contained in the food set and/or is a product of an earlier reaction in the sequence). 
 
 Before connecting the notion of a RAF with the definition of an autocatalytic subnetwork, we start by translating specific properties of a RAF 
 into the bipartite K\"onig graph. We start with the consequences of the closure. The closure of a set $X'$ w.r.t. to a set $R'$ denoted as $\closure{R'}{X'}$ is the 
@@ -439,8 +442,8 @@ For both $\cl^k_{R'}(X)$ and $\PO_{R'}^k(X')$, it might be convenient to conside
 		\POR_{R'}^0(X') & \coloneqq \emptyset \qquad \POR_{R'}^k(X')\coloneqq \PO^k_{R'}(X) \left(\bigcup_{i=0}^{k-1} \PO^k_{R'}(X) \right)
 	\end{split}
 \end{equation}
-\vspace{6pt}
 We are now in the position to deduce the consequences of Def.~\ref{def:RAF}ii. to the bipartite K\"onig representation of a RAF. 
+
 \vspace{6pt}
 \begin{lemma}\label{lem:RAFPath}
 	Let $(X,R,\cat)$ be a catalyzed network with $F\subseteq X$ and $\RAF$ an RAF. Then, 
@@ -460,15 +463,70 @@ We are now in the position to deduce the consequences of Def.~\ref{def:RAF}ii. t
 \end{proof}
 \vspace{6pt}
 
-Special emphasis has been placed on \emph{irreducible} RAFs, i.e., $\RAF$ for which no $\RAF'\subset \RAF$ is again a RAF 
-\cite{hordijk_detecting_2004, hordijk_autocatalytic_2013, hordijk_autocatalytic_2010}. However, to avoid confusion with 
-the notion of irreducibility of a matrix, we refer to such a RAF as a \emph{minimal RAF}. In addition, we call any RAF of 
-size $1$ a \emph{trivial} RAF. We can then find a structure on the K\"onig representation of a non-trivial RAF if all species entities 
-exhibiting no incoming and no outgoing edges are removed. We start with the following trivial observation, which is a direct
-consequence of Lemma~\ref{lem:RAFPath}.
+A question, which naturally arises for a given RAF $\RAF$, is whether there is an $\RAF'\subset \RAF$ that is itself a RAF. This 
+notion has been termed \emph{irreducible} RAFs in the literature \cite{hordijk_detecting_2004, hordijk_autocatalytic_2013, 
+hordijk_autocatalytic_2010}. However, to avoid confusion with the notion of irreducibility of a matrix, we refer to them as 
+\emph{minimal RAFs}. We shall see that the minimality condition yields a number of interesting structural consequences. 
+We start with an example of a non-minimal RAF:\\
+\vspace{6pt}
+\begin{minipage}[c]{0.4\textwidth}
+	\centering
+	\begin{equation}
+		\begin{split}
+			r_0&: f_2\overset{f_1}\longrightarrow x_1\\
+			r_1&: x_1\overset{x_1}\longrightarrow x_2\\
+			r_2&: x_1\overset{x_1}\longrightarrow x_2
+		\end{split}
+	\end{equation}
+\end{minipage}%
+\hfill%
+\begin{minipage}[c]{0.55\textwidth}
+	\begin{tikzpicture}
+		\node[draw,circle] (f1) at (0,0) {$f_1$};
+		\node[draw,circle] (f2) at (0,-2) {$f_2$};
+		\node[draw,circle] (x1) at (2,-1) {$x_1$};
+		\node[draw,circle] (x2) at (4,-1) {$x_2$};
+		
+		\node[draw,rectangle] (r0) at (1,-1) {$r_0$};
+		\node[draw,rectangle] (r1) at (3,0) {$r_1$};
+		\node[draw,rectangle] (r2) at (3,-2) {$r_2$};
+		
+		\draw[->] (f1) to [bend left =30] (r0);
+		\draw[->] (f2) to  (r0);
+		\draw[->] (r0) to [bend left =30] (f1);
+		\draw[->] (r0) to (x1);
+		\draw[->] (x1) to [bend right =30] (r1);
+		\draw[->] (r1) to [bend right =30] (x1);
+		\draw[->] (r1) to (x2);
+		\draw[->] (x2) to [bend right =30] (r2);
+		\draw[->] (r2) to [bend right =30] (x2);
+		\draw[->] (r2) to (x1);
+	\end{tikzpicture}
+\end{minipage}
+
+Indeed, $\RAF=\{r_1\}$ is a RAF, and thus, any addition of $r_1$ or $r_2$ would violate minimality. We call any 
+RAF of size $1$ a \emph{trivial} RAF. At this point, we note that for catalyzed reaction networks, where 
+each reaction is catalyzed by at most one catalyst, we get the following statement. 
+
+\vspace{6pt}
+\begin{lemma}
+	Let $(X,R,\cat)$ be a catalyzed reaction network with food-set $F$ such that $|\cat_{r}|\leq 1, \forall r\in R$. Then every minimal
+	CAF is trivial. 
+\end{lemma}
+\begin{proof}
+	Let $\RAF$ be a CAF and assume $|\RAF|>1$. Let $r\in \POR^1_{\RAF}(F)$. Then all reactants and catalysts are for $r$ are in 
+	$F$ since $\RAF$ is a CAF. Thus $\{r\}$ is a RAF itself, contradicting the minimality of $\RAF$.
+\end{proof}
+\vspace{6pt}
+
+An example for a trivial CAF is $\{r_0\}$ in the last example. 
+
+Interestingly, the minimality condition has a series of interesting consequences on the structure of the K\"onig representation for non-trivial 
+RAF when all food molecules and all species exhibiting no outgoing edges are removed. We start with the following trivial observation, 
+which is a direct consequence of Lemma~\ref{lem:RAFPath}.
 \vspace{6pt}
 \begin{lemma}\label{lem:weaklyConnected}
-	A $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal RAF. 
+	A $(X, R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal RAF. 
 	Then $\king[\closure{\RAF}{F}, \RAF]$ is weakly-connected.
 \end{lemma}
 \begin{proof}
@@ -481,9 +539,15 @@ consequence of Lemma~\ref{lem:RAFPath}.
 \end{proof}
 \vspace{6pt}
 A minimal RAF, thereby, has a corresponding weakly-connected bipartite K\"onig graph. 
-We note that the upper result not only holds for the graph $G\coloneqq \king[\closure{\RAF}{F}\setminus 
-F, \RAF]$, but also for the graph $H\coloneqq \king[\closure{\RAF}(F)\setminus F, \RAF]$ where all 
-food-vertices have been removed.
+We note that the upper result not only holds for the graph 
+\begin{equation}\label{eq:graphG}
+	G\coloneqq \king[\closure{\RAF}{F}, \RAF],
+\end{equation}
+but also for the graph 
+\begin{equation}\label{eq:graphH}
+	H\coloneqq \king[\closure{\RAF}{F}\setminus F, \RAF]
+\end{equation} 
+where all food-vertices have been removed.
 \vspace{6pt}
 \begin{lemma}\label{lem:weaklyConnected2}
 	A $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal RAF. Then 
@@ -498,9 +562,8 @@ food-vertices have been removed.
 \end{proof}
 \vspace{6pt}
 If a minimal RAF is non-trivial, i.e., if it is composed of more than one reaction, the graph $H$ 
-as defined in Lemma~\ref{lem:weaklyConnected2}, is more than a sequence of reactions. Indeed, it  
-exhibits specific structural elements. The following Lemma allows us to gain more insight into the 
-organization of a minimal, non-trivial RAF.
+as defined in Lemma~\ref{lem:weaklyConnected2}, is more than a sequence of reactions. The following 
+lemmata allow us to gain more insight into the organization of minimal, non-trivial RAFs.
 \vspace{6pt}
 \begin{lemma}
 	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal, non-trivial RAF. Then 
@@ -554,74 +617,219 @@ are either located on an elementary circuit themselves, or they connect two elem
 a reaction of $C_1$ and a product of a reaction of $C_2$. Thus, such vertices are thereby directly located themselves on an elementary 
 circuit. Nevertheless, $H$ might contain species that are only products but never reactants, and thus have no outgoing edges, as the 
 following example illustrates. 
-\begin{equation}
-	\begin{split}
-		r_1& : f \overset{x_1}{\longrightarrow} x_2 \\
-		r_2& : x_2 \overset{x_2}{\longrightarrow} x_1 + x_3
-	\end{split}
-\end{equation}
+\begin{figure}[h]
+	\centering
+	\begin{minipage}[c]{0.3\textwidth}
+		\begin{equation}
+			\begin{split}
+				r_1& : f \overset{x_1}{\longrightarrow} x_2 \\
+				r_2& : x_2 \overset{x_2}{\longrightarrow} x_1 + x_3
+			\end{split}
+		\end{equation}
+	\end{minipage}%
+	\hfill%
+	\begin{minipage}[c]{0.23\textwidth}
+		\centering
+		\begin{tikzpicture}
+			\node[draw, circle] (f) at (0,0) {$f$};
+			\node[draw, circle] (x1) at (2,0) {$x_1$};	
+			\node[draw, circle] (x2) at (1,-2) {$x_2$};
+			\node[draw, circle] (x3) at (1,-4) {$x_3$};
+		
+			\node[draw, rectangle] (r1) at (1,-1) {$r_1$};
+			\node[draw, rectangle] (r2) at (1,-3) {$r_2$};
+		
+			\draw[->] (f) to (r1);
+			\draw[->] (x1) to [bend right = 30] (r1);
+			\draw[->] (r1) to [bend right = 30] (x1);
+			\draw[->] (r1) to (x2);
+			\draw[->] (x2) to [bend left = 30](r2);
+			\draw[->] (r2) to [bend left = 30](x2);
+			\draw[->] (x2) to (r1);
+			\draw[->] (r2) to (x3);
+			\draw[->] (r2) to [bend right = 30] (x1);
+		\end{tikzpicture}	
+	\end{minipage}%
+	\hfill%
+	\begin{minipage}[c]{0.23\textwidth}
+		\centering
+		\begin{tikzpicture}
+			\node[draw, circle] (x1) at (2,0) {$x_1$};	
+			\node[draw, circle] (x2) at (1,-2) {$x_2$};
+			\node[draw, circle] (x3) at (1,-4) {$x_3$};
+		
+			\node[draw, rectangle] (r1) at (1,-1) {$r_1$};
+			\node[draw, rectangle] (r2) at (1,-3) {$r_2$};
+		
+			\draw[->] (x1) to [bend right = 30] (r1);
+			\draw[->] (r1) to [bend right = 30] (x1);
+			\draw[->] (r1) to (x2);
+			\draw[->] (x2) to [bend left = 30](r2);
+			\draw[->] (r2) to [bend left = 30](x2);
+			\draw[->] (x2) to (r1);
+			\draw[->] (r2) to (x3);
+			\draw[->] (r2) to [bend right = 30] (x1);
+		\end{tikzpicture}	
+	\end{minipage}%
+	\hfill%
+	\begin{minipage}[c]{0.23\textwidth}
+		\centering
+		\begin{tikzpicture}
+			\node[draw, circle] (x1) at (2,0) {$x_1$};	
+			\node[draw, circle] (x2) at (1,-2) {$x_2$};
+		
+			\node[draw, rectangle] (r1) at (1,-1) {$r_1$};
+			\node[draw, rectangle] (r2) at (1,-3) {$r_2$};
+		
+			\draw[->] (x1) to [bend right = 30] (r1);
+			\draw[->] (r1) to [bend right = 30] (x1);
+			\draw[->] (r1) to (x2);
+			\draw[->] (x2) to [bend left = 30](r2);
+			\draw[->] (r2) to [bend left = 30](x2);
+			\draw[->] (x2) to (r1);
+			\draw[->] (r2) to [bend right = 30] (x1);
+		\end{tikzpicture}	
+	\end{minipage}
+	\caption{A minimal RAF $\RAF$ \textit{(left)} with its directed K\"onig graph represnetation 
+	$G\coloneqq \king[\closure{\RAF}{F}, \RAF]$  \textit{(middle left)}, $H\coloneqq \king[\closure{\RAF}{F} 
+	\setminus F, \RAF]$ \textit{(middle right)}, and $L\coloneqq H[V(H) \setminus W, \RAF], W 
+	\coloneqq \{x\in \closure{\RAF}{F} \ | \ \nexists r \in \RAF \text{ s.t. } s^-_{xr}>0\}$ \textit{(right)}.}
+	\label{fig:}
+\end{figure}
+\FloatBarrier
 
-Then ${r_1,r_2}$ is indeed a RAF w.r.t. to $F$. Nevertheless, $x_3$ is never consumed by any reaction. Naturally, any strictly positive reaction 
+Indeed, $\{r_1,r_2\}$ is a RAF w.r.t. to $F$. Nevertheless, $x_3$ is never consumed by any reaction. Naturally, any strictly positive reaction 
 vector yields a net increase in the concentration of such species, which motivates to consider the graph $H$ without those vertices. In addition, 
-<<<<<<< HEAD
-these species are never located on an elementary circuit, and we obtain that Le1mma~\ref{lem:strElCirc} holds if these species are removed.
-
-=======
 these species are never located on an elementary circuit, and we obtain that Lemma~\ref{lem:strElCirc} holds if these species are removed.
 \vspace{6pt}
->>>>>>> 3e7c4d3ec39a2a2899a3bc2da671ee255f6b87e3
 \begin{corollary}\label{lem:strElCirc}
+
 	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ a minimal, non-trivial RAF. Any two elementary circuits $C_1,C_2$ 
 	in $L\coloneqq H[V(H)\setminus W]$ with $W\coloneqq \{x\in \closure{\RAF}{F} \ | \ \nexists r \in \RAF \text{ s.t. } s^-_{xr}>0\}$ are strongly connected. 
 \end{corollary}
 \vspace{6pt}
-For brevity of presentation, we let $L\coloneqq H[V(H)\setminus W]$ with $W\coloneqq \{x\in \closure{\RAF}{F} \ 
-| \ \nexists r \in \RAF \text{ s.t. } s^-_{xr}>0\}$ in the following. If $\RAF$ is composed of a single reaction, then 
-$L$ is a singleton, i.e., the very reaction vertex of $\RAF$. We may then directly conclude the following:
+For brevity of presentation, we let 
+\begin{equation}\label{eq:graphL}
+	L\coloneqq H[V(H]\setminus W], W\coloneqq \coloneqq \{x\in \closure{\RAF}{F} \ | \ \nexists r \in \RAF \text{ s.t. } s^-_{xr}>0\} 
+\end{equation}
+in the following. If $\RAF$ is composed of a single reaction, then $L$ is a singleton, i.e., the very reaction vertex of $\RAF$. 
+We may therefore directly conclude:
 
 \vspace{6pt}
-\begin{theorem}[\TODO{Not entirely sure about the only if part....}]
+\begin{theorem}
 	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal RAF. Then $\RAF$ is non-trivial 
 	if and only if the graph $L$ is not a single reaction entity and strongly-connected.
 \end{theorem}
 \vspace{6pt}
 
-In general, irreducible RAFs are not necessarily strong blocks, as is captured in the following example.
+In general, \emph{minimal} RAFs are not necessarily strong blocks, as is captured in the following example.
+\begin{figure}[h]
+	\centering
+	\begin{minipage}[c]{0.49\textwidth}
+		\centering
+		\begin{equation}
+			\begin{split}
+				r_0&: f\overset{ x_1, y_1}{\longrightarrow} x_2 + y_2 \\
+				r_1&: x_2\overset{x_2}{\longrightarrow} x_1 \\
+				r_2&: x_2\overset{y_2}{\longrightarrow} y_1 
+			\end{split}
+		\end{equation}
+	\end{minipage}%
+	\hfill%
+	\begin{minipage}[c]{0.49\textwidth}
+		\centering
+		\begin{tikzpicture}
+			\node[draw, circle] (f) at (-1,0) {$f$};
+			\node[draw, circle] (x1) at (0,1) {$x_1$};
+			\node[draw, circle] (x2) at (2,1) {$x_2$};
+			\node[draw, circle] (y1) at (0,-1) {$y_1$};
+			\node[draw, circle] (y2) at (2,-1) {$y_2$};
+						
+			\node[draw, rectangle] (r0) at (1,0) {$r_0$};
+			\node[draw, rectangle] (r1) at (1,2) {$r_1$};
+			\node[draw, rectangle] (r2) at (1,-2) {$r_2$};
+			
+			\draw[->] (f) to (r0);
+			\draw[->] (x1) to [bend right = 30] (r0);
+			\draw[->] (r0) to [bend right = 30] (x1);
+			\draw[->] (y1) to [bend right = 30] (r0);
+			\draw[->] (r0) to [bend right = 30] (y1);
+			\draw[->] (r0) to (x2);
+			\draw[->] (r0) to (y2);
+			\draw[->] (x2) to [bend right = 30] (r1);
+			\draw[->] (r1) to [bend right = 30] (x2);
+			\draw[->] (y2) to [bend right = 30] (r2);
+			\draw[->] (r2) to [bend right = 30] (y2);
+			\draw[->] (r1) to (x1);
+			\draw[->] (r2) to (y1);
+			
+		\end{tikzpicture}
+	\end{minipage}
+	\caption{A minimal RAF with a cut-vertex $r_0$ of the graph $L$ as defined in equation.}
+	\label{ex:CutVertex}
+\end{figure}
+\FloatBarrier
 
-\begin{equation}
-	\begin{split}
-		r_0&: f_1\overset{ x_1, y_1} \rightarrow x_2 + y_2 \\
-		r_1&: x_2\overset{x_2} \rightarrow x_1 \\
-		r_2&: x_2\overset{y_2} \rightarrow y_1 \\
-	\end{split}
-\end{equation}
-
-Indeed, $r_0$ is a cut-vertex, since it has two catalysts, which are part of different 
-autocatalytic cores, with CS $\child_1\coloneqq (\{x_1,x_2\}, \{r_0,r_1\}, \kappa_1), \kappa_1(x_1)\coloneqq r_0, 
-\kappa_1(x_2)\coloneqq r_1$ and $\child_2\coloneqq (\{y_1,y_2\}, \{r_0,r_2\}, \kappa_1), 
-\kappa_1(y_1)\coloneqq r_0, \kappa_1(y_2)\coloneqq r_2$. 
+Indeed, $r_0$ is a cut-vertex, since it has two catalysts, which is part of two different strong blocks 
+$\king[\{x_1,x_2\} \cup \{r_1,r_2\}]$ and $\king[\{y_1,y_2\} \cup \{r_1,r_3\}]$. 
 \vspace{6pt}
 \begin{corollary}
-	A RAF is either a strong block or contains a cut-vertex.
+	A minimal, non-trivial RAF is either a strong block or contains a cut-vertex.
 \end{corollary}
 \vspace{6pt}
-The occurrence of cut-vertices is not restricted to the situation of a reaction having two catalysts. 
-To see this, consider the following example:
+The occurrence of cut-vertices is not restricted to reactions with two catalysts. To see this, consider 
+the following example:
+\begin{figure}[h]
+	\begin{minipage}[c]{0.49\textwidth}
+		\begin{equation}
+			\begin{split}
+				r_1&: f_1  \overset{x_1}{\longrightarrow} x_2\\
+				r_2&: f_2  \overset{x_4}{\longrightarrow} x3\\
+				r_3&: 2x_3 \overset{x_2}{\longrightarrow} x4 + x1
+			\end{split}
+		\end{equation}
+	\end{minipage}%
+	\hfill%
+	\begin{minipage}[c]{0.49\textwidth}
+		\begin{tikzpicture}
+			\node[draw, circle] (f1) at (0,0) {$f_1$};
+			\node[draw, circle] (f2) at (4,-2) {$f_2$};
+			\node[draw, circle] (x1) at (2,0) {$x_1$};			
+			\node[draw, circle] (x2) at (1,-1) {$x_2$};
+			\node[draw, circle] (x3) at (3,-1) {$x_3$};
+			\node[draw, circle] (x4) at (2,-2) {$x_4$};
+						
+			\node[draw, rectangle] (r1) at (1,0) {$r_1$};
+			\node[draw, rectangle] (r2) at (2,-1) {$r_2$};
+			\node[draw, rectangle] (r3) at (3,-2) {$r_3$};
+			
+			\draw[->] (f1) to (r1);
+			\draw[->] (f2) to (r3);
+			\draw[->] (x1) to [bend right = 30] (r1);
+			\draw[->] (r1) to [bend right = 30] (x1);
+			\draw[->] (r1) to (x2);			
+			\draw[->] (x2) to (r2);
+			\draw[->] (x3) to [bend right] (r2);
+			\draw[->] (r2) to [bend right] (x3);
+			\draw[->] (r2) to (x1);
+			\draw[->] (r2) to (x4);
+			\draw[->] (x4) to [bend right = 30] (r3);
+			\draw[->] (r3) to [bend right = 30] (x4);
+			\draw[->] (r3) to (x3);
+		\end{tikzpicture}
+	\end{minipage}
+	\caption{Example of a RAF with a cut-vertex that has a single catalyst \textit{(left)} with depiction of the corresponding 
+	König graph \textit{(right)}.}
+	\label{ex:CutVertex2}
+\end{figure}
+\FloatBarrier
 
-\begin{equation}
-	\begin{split}
-		r1&: f1  + x1 -> x1 + x2\\
-		r2&: f2 + x4 -> x4 + x3\\
-		r3&: 2x3 + x2 -> x2 + x4 + x1
-	\end{split}
-\end{equation}
-
-We note that in both examples, the cut-vertex is a reaction vertex. Indeed, a species vertex cannot be
-a cut-vertex, as the next lemma shows.
-
-\begin{lemma}
+As in Fig.~\ref{ex:CutVertex2}, both strong blocks, i.e., $\king[\{x_1,x_2\}\cup \{r_1,r_2\}]$ and $\king[\{x_3,x_4\}\cup \{r_2,r_3\}]$ 
+share a common cut-vertex that is a reaction vertex. Indeed, a species vertex cannot be a cut-vertex, as the next lemma shows.
+\vspace{6pt}
+\begin{lemma}\label{lem:CutVertexReac}
 	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal, non-trivial RAF. If
-	$L$ is not a strong-block, then every cut-vertex is a reaction 
+	$L$ is not a strong block, then every cut-vertex is a reaction 
 	vertex.
 \end{lemma}
 \begin{proof}
@@ -633,6 +841,7 @@ a cut-vertex, as the next lemma shows.
 	that $R(C_1)$ is a RAF or (not mutually exclusive) $\cl_{R(C_2)(F)}\neq \emptyset$, implying that $R(C_2)$ is a RAF, 
 	in any case, contradicting the minimality of $\RAF$.
 \end{proof}	
+\vspace{6pt}
 
 This result allows us to decompose $L$ into strong blocks. We will see in the next section that each of these strong blocks 
 indeed contains an autocatalytic core. Here, we continue by identifying a structural property common to any strong block 
@@ -659,7 +868,7 @@ the strong block $B$, always contains a non-negative column for the reaction $r^
 reactant in $B$ with at least one positive entry for a product $y^*\in X(B): s^+_{yr^*}>0$:
 
 \begin{equation}
-	\begin{pmatrix}
+	\SM[X(B), R(B)] = \begin{pmatrix}
 						& 	\ldots 	& 	r^* 		& \ldots \\
 						& 	\ddots 	& 	\vdots 	& \ddots \\
 					x^* 	& 	\ldots 	& 	0 		& \ldots \\
@@ -668,6 +877,65 @@ reactant in $B$ with at least one positive entry for a product $y^*\in X(B): s^+
 						& 	\ddots 	& 	\vdots 	& \ddots \\
 	\end{pmatrix}
 \end{equation}
+
+If the strong block consists of a single reaction $r$ and a single species $x \in \cat_r$, then $r$ is an explicit autocatalytic reaction
+\vspace{6pt}
+\begin{lemma}
+	Let $B$ be a strong block of $L$ that is composed of a single reaction $r$ and a single species $x$. Then $r$ is an explicit
+	autocatalytic reaction, and $x$ is a catalyst and a net product of $r$.
+\end{lemma}
+\begin{proof}
+	Assume first that $x$ is not a catalyst. Since $B$ is strongly connected, there is an edge $(x,r)$ and $(r,x)$. Assume now that 
+	$x$ is not a net product of $r$. Then $x$ is produced by a reaction of another block $B'$. Then there is another path connecting 
+	$B$ to $B'$ since otherwise $x$ would be a cut-vertex, which is not possible by Lemma~\ref{lem:CutVertexReac}. Then 
+	$r$ is an explicit autocatalytic reaction. 
+\end{proof}
+\vspace{6pt}
+The following example captures such a situation. 
+\begin{figure}
+	\centering
+	\begin{minipage}[c]{0.5\textwidth}
+		\begin{equation}
+			\begin{split}
+				r_1&: f \overset{x_1}{\longrightarrow} x_2 \\
+				r_2&: 2x_2 \overset{x_3}{\longrightarrow} x_3 + x_4 \\
+				r_3&: x_4 \overset{x_4}{\longrightarrow} x_1
+			\end{split}
+		\end{equation}
+	\end{minipage}%
+	\hfill%
+	\begin{minipage}[c]{0.5\textwidth}
+		\centering
+		\begin{tikzpicture}
+			\node[draw, circle] (f) at (0,0) {$f$};
+			\node[draw, circle] (x1) at (1,1) {$x1$};
+			\node[draw, circle] (x2) at (1,-1) {$x2$};
+			\node[draw, circle] (x3) at (3,-1) {$x3$};
+			\node[draw, circle] (x4) at (2,0) {$x4$};
+			
+			\node[draw, rectangle] (r1) at (1,0) {$r1$};
+			\node[draw, rectangle] (r2) at (2,-1) {$r2$};
+			\node[draw, rectangle] (r3) at (2, 1) {$r3$};
+			
+			\draw[->] (f) to (r1);
+			\draw[->] (x1) to [bend right = 30] (r1);
+			\draw[->] (r1) to [bend right = 30] (x1);
+			\draw[->] (r1) to (x2);
+			\draw[->] (x2) to (r2);			
+			\draw[->] (x4) to [bend right = 30] (r3);
+			\draw[->] (r3) to [bend right = 30] (x4);
+			\draw[->] (r2) to (x4);
+			\draw[->] (x3) to [bend right = 30] (r2);
+			\draw[->] (r2) to [bend right = 30] (x3);
+			\draw[->] (r3) to (x1);
+		\end{tikzpicture}
+	\end{minipage}
+	\caption{Depiction of an explicit autocatalytic reaction.}
+\end{figure}
+
+Then $B=\{x_3, r_2\}$ is a strong block and $r_2$ is an explicit autocatalytic reaction. 
+This has direct consequences for the presence of autocatalytic subnetworks within a 
+minimal RAF, which we will address in the next section. 
 
 \section{RAFs and autocatalytic subnetworks}
 
@@ -729,15 +997,145 @@ directly yields for the submatrix restricted to the species and reactions of the
 and thereby semipositivity. In addition, any strong block is by definition well-formed, and we obtain
 the following statement.
 \vspace{6pt}
-\begin{theorem}
+\begin{theorem}\label{Thm:StrBlockCore}
 	Any strong block of a minimal RAF contains an autocatalytic core. 
 \end{theorem}
 \vspace{6pt}
 
-We will now describe the nature of this 
+Thm~\ref{Thm:StrBlockCore} provides only information on the existence, but not on the structure of the 
+subnetworks responsible for the semipositivity of the corresponding submatrix. Leveraging on the result 
+of Lemma~\ref{lem:cutVertexPureCat}. Recall, therefore, that for any strong block $B$, there is a reaction
+vertex $r^*\in R(B)$ such that for all $x\in X(B)$ with $s_{xr^*}^->0$ it holds that $s_{xr^*}^+=s_{xr^*}^->0$, i.e. 
+all reactants of $r^*$ in $B$ are pure catalysts. We will refer to these vertices as \emph{pure reactions}. As shown 
+above, \emph{pure reactions} give rise to a non-negative column with at least one positive entry in the stoichiometric 
+submatrix $\SM[X(B), R(B)]$. However, this alone is not sufficient to warrant semipositivity, neither for any CS 
+matrix nor for a CS induced by an elementary circuit inside the strong block containing a \emph{pure reaction}.
+
+\begin{figure}[h]
+	\begin{minipage}[c]{0.45\textwidth}
+		\begin{equation}
+			\begin{split}
+				r_1&: f \overset{x_1}{\longrightarrow} x_2 \\
+				r_2&: x_2 \overset{x_2}{\longrightarrow} x_1 + x_3 \\
+				r_3&: x_3 + x_1 \overset{x_3}{\longrightarrow} x_4 \\
+				r_4&: x_4 \overset{x_4}{\longrightarrow} x_1				
+			\end{split}
+		\end{equation}
+	\end{minipage}%
+	\hfill%
+	\begin{minipage}[c]{0.49\textwidth}
+		\centering
+		\begin{tikzpicture}
+			\node[draw, circle] (f) at (0,0) {$f$};
+			\node[draw, circle] (x1) at (1,1) {$x_1$};
+			\node[draw, circle] (x2) at (1,-1) {$x_2$};
+			\node[draw, circle] (x3) at (3,-1) {$x_3$};
+			\node[draw, circle] (x4) at (3,1) {$x_4$};
+			
+			\node[draw, rectangle] (r1) at (1,0) {$r_1$};
+			\node[draw, rectangle] (r2) at (2,-1) {$r_2$};
+			\node[draw, rectangle] (r3) at (3,0) {$r_3$};
+			\node[draw, rectangle] (r4) at (2,1) {$r_4$};
+
+			\draw[->] (f) to (r1);
+			\draw[->] (x1) to [bend right = 30] (r1);
+			\draw[->] (r1) to [bend right = 30] (x1);
+			\draw[->] (r1) to (x2);
+			\draw[->] (r1) to [bend right = 95, looseness=2.0](x3);
+			\draw[->] (x2) to [bend right = 30] (r2);
+			\draw[->] (r2) to [bend right = 30] (x2);
+			\draw[->] (r2) to (x1);
+			\draw[->] (r2) to (x3);
+			\draw[->] (x1) to (r3);
+			\draw[->] (x3) to [bend right = 30] (r3);
+			\draw[->] (r3) to [bend right = 30] (x3);
+			\draw[->] (r3) to (x4);
+			\draw[->] (x4) to [bend right = 30] (r4);
+			\draw[->] (r4) to [bend right = 30] (x4);
+			\draw[->] (r4) to (x1);
+		\end{tikzpicture}
+	\end{minipage}
+\end{figure}
+
+Then $\RAF=\{r_1,r_2,r_3,r_4\}$ is a minimal RAF and rhe CS-matrix 
+$\child\coloneqq \{X\setminus \{f\}, \RAF, \kappa: \kappa(x_i)=r_i, i=1,\ldots, 
+4\}$ reads:
+\begin{equation}
+	\SM[\child] = \begin{pmatrix}
+			   	0 & 1  &  -1 & 1 \\
+				1 & -1 &  0  & 0 \\		
+				1 & 1 &  -1  & 0 \\
+				0 & 0 &   1  & -1 \\  
+			    \end{pmatrix}
+\end{equation}
+which is semipositive with $v\coloneqq \begin{pmatrix} 4 & 3 & 2 & 1\end{pmatrix}^T$. However,
+the elementary circuit $C=(x_1,r_1, x_3,r_3,x_4,r_4)$ with $\child = \{X(C), R(C), \kappa: 
+\kappa(x_i)=r_i, i=1,3,4\}$ has associated CS matrix:
+\begin{equation}
+	\SM[\child] = \begin{pmatrix}
+			   	0 &  -1 & 1 \\
+				1 &  -1 & 0 \\
+				0 &   1 & -1 \\  
+			    \end{pmatrix},
+\end{equation}
+which is clearly non-semipositiv since any $v>0$ yields either $(\SM v)_1=0$ or $(\SM v)_3=0$. 
+We first start with a sufficient condition for an autocatalytic subnetwork.
+\vspace{6pt}
+\begin{lemma}
+	Let $B$ be a strong block of the graph $L$. Then any MR-chordfree elementary circuit 
+	$C$ containing a pure \emph{pure reaction}, that is an $r^*\in R^*(B)\coloneqq \{r\in R(B) \ | 
+	\ s^-_{xr}>0 \Rightarrow 0<s^+_{xr}=s^-_{xr}, \forall x\in X(B)\}$, has an autocatalytic CS 
+	that is defined by the edges $E_1(C)$.  
+\end{lemma}
+\begin{proof}
+	If $C$ is MR-chordfree, then the associated CS matrix$\SM[\child]$ of the $k$-CS $\child = (X(C), 
+	R(C), \kappa: \kappa(x) \coloneqq v^C_{out}(x)$ is irreducible and reads by construction:
+	\begin{equation}
+			\SM[X(C), R(C)] = 
+				\begin{pmatrix}
+						0 	& 	 		&	 			&  			& 	p_1	\\
+						p_2	& 	-r_2  		& 				&     P''  		&		\\
+					 		& 	p_3  		& 	\ddots 		&      			&		\\
+							& 	 		& 	\ddots 		& \ddots 		&    	 	\\
+						P'	& 	 		& 				& p_k 		& -r_k     	\\
+				\end{pmatrix},
+	\end{equation}
+
+i.e., $\SM[\child]$ with $\{r_i\}\in \mathbb{R}_{\geq 0}, i=2,\ldots, k$ and $\{p_i\}\in \mathbb{R}_{>0},i=1,\ldots, k$ and non-negative
+entries in $P'$ and $P''$. We may then construct $v\in \mathbb{R}^{k}_{>0}$ as $v(r_k)\coloneqq 1$ and 
+\begin{equation}
+	v_{i}=\begin{cases}
+			\frac{v_{i+1}\cdot r_{i+1}}{p_{i+1}} +1 & \text{if } r_{i+1}>0 \\
+			\frac{v_{i+1}}{p_{i+1}} +1 & \text{if } r_{i+1}=0
+		\end{cases}
+\end{equation}
+Then $v>0$ and by construction we directly obtain $\SM[\child]v>0$ since $P'$ and $P''$ contain only non-negative entries. 
+\end{proof}
+\vspace{6pt}
+
+However, such MR-chordfree elementary circuits are not necessarily autocatalytic cores. It therefore remains to show every pure reaction vertex, we will always find an autocatalytic subnetwork that has a spanning elementary 
+circuit containing that vertex.
+
+
+
+\vspace{6pt}
+\begin{theorem}
+	For a minimal, non-trivial RAF $\RAF$, let $B$ be a strong block in the graph of the graph $L$ from 
+	Eq.~\ref{eq:graphL}. For any \emph{pure reaction}, that is for each $r^*\in R^*(B)\coloneqq \{r\in R(B) \ | 
+	\ s^-_{xr}>0 \Rightarrow 0<s^+_{xr}=s^-_{xr}, \forall x\in X(B)\}$, there is an elementary circuit $C$ in $B$
+	such that $\SM[X(C), R(C)]$ is autocatalytic. 
+\end{theorem} 
+\vspace{6pt}
+\begin{proof}
+	We prove by construction and construct a CS inductively. For the base case, we let $r_1\in R^*(B)$ and $R_1'\coloneqq \{r_1\}$. 
+	and then choose an $x_1 \in \cat_{r^*}$ and set $\child_1\coloneqq \{\{x_1\}, \{r_1\}, \kappa(x_1)=r_1\}$. Then $\child_1$ is a CS.
+	In every $k$-th step we choose $r_k\in \POR^m_{\RAF}(F): s^+_{x_{k-1}r_k}-s^-_{x_{k-1}r_k}>0$ with $m = \min_{i=1, \ldots, n} \{\POR^i_{\RAF}(F) 	\ | 
+	\ s^+_{x_{k-1}r_k}-s^-_{x_{k-1}r_k}>0 \}$ and $x_k \in POX^{\ell}_{\RAF}(F): s_{x_kr_k}<0$ with $\ell=\min_{i=1, \ldots, n} \{\POR^i_{\RAF}(F) \ | \ s^+_{xr} 
+	-s^-_{xr}>0 \}$. We observe, that in this way, $r_k\in R(B)$ and $x_k\in X(B)$ for any $k$.
+\end{proof}
 
 \TODO{Construction site ahead}
-A natural extension to this statement relies on considering not only species from 
+A natural extension to this statemen relies on considering not only species from 
 $\closure{\RAF}{F}\setminus F$ but from the set of food-generated entities, i.e.
 \begin{equation}
 	\mathbf{X}_{\RAF} \coloneqq \bigcup_{k=1}^n \POX^k_{\RAF}(F)
@@ -745,20 +1143,24 @@ $\closure{\RAF}{F}\setminus F$ but from the set of food-generated entities, i.e.
 
 However, in this case, semipositivity is not guaranteed. To see this, consider 
 the following example:
+
 \begin{equation}
 	\begin{split}
 		r_1: f_1 & \overset{f_1}{\longrightarrow} x_1\\
 		r_2: x_1 & \overset{x_1}{\longrightarrow} f_1 \\		
 	\end{split}
 \end{equation}
+
 with the RAF $\RAF\coloneqq \{r_1,r_2\}$ and food-set $F\coloneqq \{f_1\}$. Then
 $\SM[\mathbf{X}_{\RAF}, \RAF]$ reads:
+
 \begin{equation}
 	\begin{pmatrix}
 		-1 & 1 \\
 		1 & -1
 	\end{pmatrix}
 \end{equation}
+
 which is indeed not semipositiv. 
 
 Non-trivial minimal RAFs are strongly connected and can be decomposed into strong blocks. 
@@ -979,7 +1381,11 @@ specific food-set for $(X',R')$ as follows:
 \begin{equation}
 	F'_{\cat'}\coloneqq \{x\in X(\cat') \ | \ x\notin X'\} 
 \end{equation}
+<<<<<<< HEAD
 
+=======
+%}
+>>>>>>> aa3de4a18b2011bf73054cc2908b9b23a38a838d
 
 \vspace{6pt}
 \bibliography{RAFCores}
