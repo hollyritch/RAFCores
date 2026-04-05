@@ -229,32 +229,30 @@ and a set of reactions $R$. For any $r\in R$ we can write a stoichiometric equat
 \end{equation}
 where $s^{\pm}_{xr}$ are the educt and product stoichiometry of the
 molecule $x$ in the reaction $r$.
-
-\TODO{So far, PFS is happy with this. The problem starts here, however,
-  since there is NOT a 1-1 correspondence between the CRN reactions and the
-  net-reactions.}
-
 The \emph{stoichiometric matrix} $\SM$ encodes all net-stoichiometries:
 \begin{equation}
   \SM_{xr}\coloneqq s^+_{xr}-s^-_{xr}
 \end{equation}
-\PFS{For a reaction $r$ we can define its \emph{net reaction} $\hat{r}$ as
+For a reaction $r$ we can define its \emph{net reaction} $\hat{r}$ as
   \begin{equation}
+      \sum_{x\in X}\ \hat{s}^-_{xr} \cdot x \rightarrow \sum_{x\in X}
+      \ \hat{s}^+_{xr}\cdot x 
+    \end{equation}
+    with 
+    \begin{equation}
     \begin{split}
-      \sum_{x\in X}\ \hat{s}^-_{xr} \cdot x &\rightarrow \sum_{x\in X}
-      \ \hat{s}^+_{xr}\cdot x \\
-      \hat{s}^-_{xr} = -\SM_{xr} & \text{ if } \SM_{xr}\le 0 \\
-      \hat{s}^+_{xr} = \SM_{xr} & \text{ if } \SM_{xr}\le 0 \\
+      \hat{s}^-_{xr} = -\SM_{xr}  \qquad &\text{ if } \SM_{xr}\le 0 \\
+      \hat{s}^+_{xr} = \SM_{xr}  \qquad &\text{ if } \SM_{xr}\le 0    
     \end{split}
-  \end{equation}}
-  \TODO{we want the following  a bit differently ...}  
+  \end{equation}
+  and 
   \begin{equation}
     \begin{split}
       \educts: R \rightarrow X, \educts(r) & \coloneqq \{x\in X \ \vert \ s^-_{xr}-s^+_{xr}>0\} \\
       \products: R \rightarrow X, \products(r) & \coloneqq \{x\in X \ \vert \ s^-_{xr}-s^+_{xr}<0\} \\
     \end{split}
   \end{equation}
-  the \PFS{net} reactants (educts) and \PFS{net} products of reaction $r$,
+  the as the net reactants (educts) and net products of reaction $r$,
   respectively.
 
 A catalyst is an entity $x\in X$ such 
@@ -288,11 +286,6 @@ RN. If $|\cat| = |R'|$, i.e., each reaction is catalyzed, we call $(X,R,\cat)$ a
   In the CRN setting, thus we have the reactant (educt) set $\educts(r)\cup K(r)$
   and the product set $\products(r)\cup K(r)$. Clearly, we have $K(r)=\emptyset$ if
   the reaction is uncatalyzed.}
-
-  \TODO{I would prefer to find other letters for the \emph{net reactants}
-    and \emph{net products} to leave at least $E$ ``clean'' for the edge
-    set in fluffles etc.} \holy{I don't care about the naming. I changed it to $\educts$
-    and $\products$ so you can easily change it.}
   
   \PFS{Now let us turn to the RAF setting and consider the catalyzation.
     Every catalyzation of $\hat{r}$ corresponds to the set catalysts $K(r)$
@@ -450,6 +443,13 @@ For both $\cl^k_{R'}(X)$ and $\PO_{R'}^k(X')$, it might be convenient to conside
 		\POR_{R'}^0(X') & \coloneqq \emptyset \qquad \POR_{R'}^k(X')\coloneqq \PO^k_{R'}(X) \left(\bigcup_{i=0}^{k-1} \PO^k_{R'}(X) \right)
 	\end{split}
 \end{equation}
+In addition, we define two maps that determine the generation of the first appearance of a metabolite or a reaction. 
+\begin{equation}\label{eq:Gen}
+	\begin{split}
+		g&: X' \rightarrow \mathbb{N}, g(x)\coloneqq k \quad \text{ s. t. } x\in \POX_{R'}^k(X') \\
+		h&: R' \rightarrow \mathbb{N}, h(r)\coloneqq k \quad \text{ s. t. } r\in \POR_{R'}^k(X') 
+	\end{split}
+\end{equation}
 We are now in the position to deduce the consequences of Def.~\ref{def:RAF}ii. to the bipartite K\"onig representation of a RAF. 
 
 \vspace{6pt}
@@ -474,7 +474,8 @@ We are now in the position to deduce the consequences of Def.~\ref{def:RAF}ii. t
 A question, which naturally arises for a given RAF $\RAF$, is whether there is an $\RAF'\subset \RAF$ that is itself a RAF. This 
 notion has been termed \emph{irreducible} RAFs in the literature \cite{hordijk_detecting_2004, hordijk_autocatalytic_2013, 
 hordijk_autocatalytic_2010}. However, to avoid confusion with the notion of irreducibility of a matrix, we refer to them as 
-\emph{minimal RAFs}. We shall see that the minimality condition yields a number of interesting structural consequences. 
+\emph{minimal RAFs}. We shall see that the minimality condition yields a number of interesting structural consequences. The
+first is an obvious but important result.
 \vspace{6pt}
 \begin{lemma}
 	Let $(X,R,\cat)$ be a catalyzed RN with food-set $F$ and $\RAF$ be a RAF. For $r',r'' \in \RAF$ with $r',r'' \in[r']_{\simeq}, r'\neq r''$ 
@@ -482,13 +483,14 @@ hordijk_autocatalytic_2010}. However, to avoid confusion with the notion of irre
 \end{lemma}
 \vspace{6pt} 
 A direct consequence of this Lemma is the following Corollary.
-
+\vspace{6pt} 
 \begin{corollary}
 	Let $(X,R,\cat)$ be a catalyzed RN with food-set $F$ and $\RAF$ be a minimal RAF. For $r',r'' \in[r']_{\simeq}, r'\neq r''$ 
 	$r'\in \RAF\Rightarrow r''\notin \RAF$.
 \end{corollary}
-
-We start with an example of a non-minimal RAF:\\
+\vspace{6pt} 
+This allows us to CRNS that contain only one representative for each equivalence class of a minimal RAF.
+Before venturing forth we give an example of a non-minimal RAF:\\
 \vspace{6pt}
 \begin{minipage}[c]{0.4\textwidth}
 	\centering
@@ -875,12 +877,12 @@ that warrants semipositivity.
 	We start with strong blocks $B$ which contain a reaction vertex $r\in \POR^1_{\RAF}(F)$. The net-reactants of any of these 
 	reactions are subsets of $F$. Since $L[B]$ is strongly-connected, it has at least one \emph{pure} catalyst as reactant. Any 
 	other strong block $B'$ contains a cut-vertex $r^*\in \RAF$. We start with the simple case in which $B'$ contains only one cut-vertex. 
-	With $g_{r^*}\coloneqq \min_{1\leq k\leq n} \{k: r^*\in \POR^k_{\RAF}\}$ we observe that $g_{r^*}< g_{r}, \ \forall \ r\in R(B')
-	\setminus \{r^*\}$. Since $L[B']$ is strongly connected, it has at least one reactant and one product. Assume a reactant $x\in X(B')$ 
-	is a net-reactant. This, however, implies that $x$ is a product of a reaction $r\in R(S): g_{r} < g_{r^*}$, a contradiction. Assume 
-	now that $B'$ has cut-vertices: $r^*_1, \ldots, r^*_k$. Again, we observe, that there is an $r^*_j: g_{r^*_j}< g_{r}, \forall \ r\in R(B')
+	With $h(r^*)$ as defined in Eq.~\ref{eq:Gen} we observe that $h(r^*)< h(r), \ \forall \ r\in R(B')\setminus \{r^*\}$. Since $L[B']$ is 
+	strongly connected, it has at least one reactant and one product. Assume a reactant $x\in X(B')$ 
+	is a net-reactant. This, however, implies that $x$ is a product of a reaction $r\in R(S): h(r)< h(r^*)$, a contradiction. Assume 
+	now that $B'$ has cut-vertices: $r^*_1, \ldots, r^*_k$. Again, we observe, that there is an $r^*_j: h(r^*_j)< h(r), \forall \ r\in R(B')
 	\setminus \{r^*_j\}$. Assume now that every cut-vertex has a net-reactant $x_i\in X(S')$. Then each $x_i$ is a product of some reaction 
-	in $r_i$, and it follows that $g_{r_i}<g_{r^*_i}$. This contradicts the previous observation, and the claim follows.
+	in $r_i$, and it follows that $h(r_i)<g(r^*_i)$. This contradicts the previous observation, and the claim follows.
 \end{proof}
 \vspace{6pt}
 
@@ -913,7 +915,7 @@ If the strong block consists of a single reaction $r$ and a single species $x \i
 \end{proof}
 \vspace{6pt}
 The following example captures such a situation. 
-\begin{figure}
+\begin{figure}[h]
 	\centering
 	\begin{minipage}[c]{0.5\textwidth}
 		\begin{equation}
@@ -953,7 +955,7 @@ The following example captures such a situation.
 	\end{minipage}
 	\caption{Depiction of an explicit autocatalytic reaction.}
 \end{figure}
-
+\FloatBarrier
 Then $B=\{x_3, r_2\}$ is a strong block and $r_2$ is an explicit autocatalytic reaction. 
 This has direct consequences for the presence of autocatalytic subnetworks within a 
 minimal RAF, which we will address in the next section. 
@@ -1009,11 +1011,7 @@ Every species of a strong block is only produced and consumed by a reaction of t
 vector $v|_{R(C)}$ that denotes the sub-vector of $v$ restricted to the reactions of the strong block $C$ 
 directly yields for the submatrix restricted to the species and reactions of the strong block: 
 \begin{equation}
-<<<<<<< HEAD
   \SM[X(C), R(C)]v|_{R(C)}>0
-=======
-	\SM[X(C), R(C)]v|_{R(C)}>0
->>>>>>> 3e7c4d3ec39a2a2899a3bc2da671ee255f6b87e3
 \end{equation}
 and thereby semipositivity. In addition, any strong block is by definition well-formed, and we obtain
 the following statement.
@@ -1400,11 +1398,6 @@ specific food-set for $(X',R')$ as follows:
 \begin{equation}
 	F'_{\cat'}\coloneqq \{x\in X(\cat') \ | \ x\notin X'\} 
 \end{equation}
-<<<<<<< HEAD
-
-=======
-%}
->>>>>>> aa3de4a18b2011bf73054cc2908b9b23a38a838d
 
 \vspace{6pt}
 \bibliography{RAFCores}
