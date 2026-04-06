@@ -447,7 +447,8 @@ In addition, we define two maps that determine the generation of the first appea
 		h&: R' \rightarrow \mathbb{N}, h(r)\coloneqq k \quad \text{ s. t. } r\in \POR_{R'}^k(X') 
 	\end{split}
 \end{equation}
-We are now in the position to deduce the consequences of Def.~\ref{def:RAF}ii. to the bipartite K\"onig representation of a RAF. 
+We refer to the value of $g$ and $h$ as the generation of a reaction or metabolite. We are now in the position to 
+deduce the consequences of Def.~\ref{def:RAF}ii. to the bipartite K\"onig representation of a RAF. 
 
 \vspace{6pt}
 \begin{lemma}\label{lem:RAFPath}
@@ -857,8 +858,8 @@ share a common cut-vertex that is a reaction vertex. Indeed, a species vertex ca
 	components $C_1,C_2$. Then for any two vertices $v\in C_1$ and $u\in C_2$ we have $w\in P_{uv}$ and 
 	$w\in P_{vu}$ for any path connecting $u$ and $v$. Therefore, there is no $x_1\in X(C_1)$ such that $x_1$ is 
 	a reactant, product, or catalyst for any reaction $r_2\in R(C_2)$, and there is no $x_2\in X(C_2)$ such that $x_2$ 
-	is a reactant, product, or catalyst for any reaction $r_1\in R(C_1)$. Then $\cl_{R(C_1)(F)}\neq \emptyset$, implying
-	that $R(C_1)$ is a RAF or (not mutually exclusive) $\cl_{R(C_2)(F)}\neq \emptyset$, implying that $R(C_2)$ is a RAF, 
+	is a reactant, product, or catalyst for any reaction $r_1\in R(C_1)$. Then $\cl_{R(C_1)}(F)\neq \emptyset$, implying
+	that $R(C_1)$ is a RAF or (not mutually exclusive) $\cl_{R(C_2)}(F)\neq \emptyset$, implying that $R(C_2)$ is a RAF, 
 	in any case, contradicting the minimality of $\RAF$.
 \end{proof}	
 \vspace{6pt}
@@ -883,9 +884,9 @@ that warrants semipositivity.
 \end{proof}
 \vspace{6pt}
 
-A direct consequence of Lemma~ \ref{lem:cutVertexPureCat} is that the stoichiometric submatrix on the non-food molecules, reflecting 
-the strong block $B$, always contains a non-negative column for the reaction $r^*\in R(B)$ that has only a catalyst $x^*\in X(B)$ as 
-reactant in $B$ with at least one positive entry for a product $y^*\in X(B): s^+_{yr^*}>0$:
+A direct consequence of Lemma~ \ref{lem:cutVertexPureCat} is that the stoichiometric submatrix reflecting the strong block $B$, 
+always contains a non-negative column. This column is induced by a reaction $r^*\in R(B)$ that has only catalysts as reactants 
+in $B$ and at least one positive entry for a product $y^*\in X(B): s^+_{yr^*}>0$:
 
 \begin{equation}
 	\SM[X(B), R(B)] = \begin{pmatrix}
@@ -898,7 +899,25 @@ reactant in $B$ with at least one positive entry for a product $y^*\in X(B): s^+
 	\end{pmatrix}
 \end{equation}
 
-If the strong block consists of a single reaction $r$ and a single species $x \in \cat_r$, then $r$ is an explicit autocatalytic reaction
+The cut-vertices that have only catalysts as reactants play an important role in the partial order of a strong block. In particular,
+there is always at least one that has the lowest generation number of all reactions. 
+
+\begin{lemma}
+	Let $B$ be a strong block of $L$. Then there is $r*\in R(B*): g(r*)\leq g(r), \forall~r\in R(B)$ and 
+	$g(r^*)<g(r), \forall R\in R(B)\setminus r*\in R^*(B)$.
+\end{lemma}
+\begin{proof}
+	Let $B$ be a strong block of $L$. We choose an $r^*\in R^*(B)$ and assume $|R^*(B)|=1$. 
+	Assume now there is an $r\in R(B)\setminus \{r^*\} : g(r) < g(r^*)$. Then $r$ has a net-reactant 
+	$x \in X(B)$ since $B$. Thus, there is a reaction $r'$ that has $x$ as a net-product, which implies 
+	$g(r')< g(r)$. If $r'$ has a net-reactant $x'\in X(B)$, the same argument holds for $r'$ and, i.e., for 
+	all reactions that have a net-reactant in $B$, a contradiction since $B$ is finite. Thus $g(r*)<g(r), 
+	\forall r\in R(B)\setminus \{r*\}$. Assume now $|R^*(B)|>1$. We may then chose $r^*\in R^*(B): 
+	g(r^*)\leq g(r') \forall r'\in R^*(B)$. Assume now there is $r\in R(B): g(r)<g(r^*)$. Then $r \notin R^*(B)$ 
+	due to the choice of $r^*$. For $r\in R(B)\setminus R^*(B)$, we apply the upper argument and obtain 
+	the same contradiction as above.
+\end{proof}
+If the strong block consists of a single reaction $r$ and a single species $x \in \cat_r$, then $r$ is an explicit autocatalytic reaction.
 \vspace{6pt}
 \begin{lemma}
 	Let $B$ be a strong block of $L$ that is composed of a single reaction $r$ and a single species $x$. Then $r$ is an explicit
@@ -1095,7 +1114,7 @@ the elementary circuit $C=(x_1,r_1, x_3,r_3,x_4,r_4)$ with $\child = \{X(C), R(C
 			    \end{pmatrix},
 \end{equation}
 which is clearly non-semipositiv since any $v>0$ yields either $(\SM v)_1=0$ or $(\SM v)_3=0$. 
-We first start with a sufficient condition for an autocatalytic subnetwork.
+We start with a sufficient condition for an autocatalytic subnetwork.
 \vspace{6pt}
 \begin{lemma}
 	Let $B$ be a strong block of the graph $L$. Then any MR-chordfree elementary circuit 
