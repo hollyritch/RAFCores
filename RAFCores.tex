@@ -300,9 +300,8 @@ RN. If $|\cat| = |R'|$, i.e., each reaction is catalyzed, we call $(X,R,\cat)$ a
     \PFS{The next consequence is that there are also different notions of
       subnetworks for both formalisms.} 
     
-
-
-
+    
+    
 A tuple $(X', R')$ is called a subnetwork of $(X,R)$ if $X'\subseteq X, R'\subseteq R$- A 
 catalyzed network We say a subnetwork $(X',R')$ is well formed if for any $r\in R': \exists x_1,x_2\in X: 
 s^-_{x_1r}>0, s^+_{x_2r}>0$. Considering a subnetwork $(X',R')$, we may distinguish 
@@ -370,8 +369,8 @@ can be ordered $r_1, r_2, \ldots, r_k$ such that, for each $i \geq 1$, each reac
 contained in the food set and/or is a product of an earlier reaction in the sequence). 
 
 Before connecting the notion of a RAF with the definition of an autocatalytic subnetwork, we start by translating specific properties of a RAF 
-into the bipartite K\"onig graph. We start with the consequences of the closure. The closure of a set $X'$ w.r.t. to a set $R'$ denoted as $\closure{R'}{X'}$ is the 
-unique minimal set $Y$ containing $X'$ such that for any $r\in R': \educts(r)\subseteq Y \Rightarrow \products(r)\subseteq Y$. Thus:
+into the bipartite K\"onig graph. We begin by examining the consequences of the closure. The closure of a set $X'$ w.r.t. to a set $R'$ denoted 
+as $\closure{R'}{X'}$ is the unique minimal set $Y$ containing $X'$ such that for any $r\in R': \educts(r)\subseteq Y \Rightarrow \products(r)\subseteq Y$. Thus:
 
 \begin{equation}\label{eq:Closure}
 	\closure{R'}{X'} \coloneqq \min \underbrace{\{ Z \subseteq X \ | \ X'\subseteq Z, \educts(r) \subseteq Z \Rightarrow \products(r) \subseteq Z \ \forall r\in R'\}}_{\eqqcolon \mathfrak{C}_{R'}(X')}
@@ -884,7 +883,7 @@ that warrants semipositivity.
 \end{proof}
 \vspace{6pt}
 
-A direct consequence of Lemma~ \ref{lem:cutVertexPureCat} is that the stoichiometric submatrix reflecting the strong block $B$, 
+A direct consequence of Lemma~\ref{lem:cutVertexPureCat} is that the stoichiometric submatrix reflecting the strong block $B$, 
 always contains a non-negative column. This column is induced by a reaction $r^*\in R(B)$ that has only catalysts as reactants 
 in $B$ and at least one positive entry for a product $y^*\in X(B): s^+_{yr^*}>0$:
 
@@ -899,24 +898,56 @@ in $B$ and at least one positive entry for a product $y^*\in X(B): s^+_{yr^*}>0$
 	\end{pmatrix}
 \end{equation}
 
-The cut-vertices that have only catalysts as reactants play an important role in the partial order of a strong block. In particular,
-there is always at least one that has the lowest generation number of all reactions. 
-
-\begin{lemma}
-	Let $B$ be a strong block of $L$. Then there is $r*\in R(B*): g(r*)\leq g(r), \forall~r\in R(B)$ and 
-	$g(r^*)<g(r), \forall R\in R(B)\setminus r*\in R^*(B)$.
+Cut-vertices with only catalysts as reactants play an important role in the partial order of a strong block. To this 
+end, we define the set of \emph{pure reactions} by 
+\begin{equation}\label{eq:pureReactions}
+	R^*(B)\coloneqq \{r\in R(B) \ | 	\ s^-_{xr}>0 \Rightarrow 0<s^+_{xr}=s^-_{xr}, \forall x\in X(B)\}
+\end{equation}
+In particular, there is always at least one that has the lowest generation number of all reactions. 
+\vspace{6pt}
+\begin{lemma}\label{lem:genPureReacs}
+	Let $B$ be a strong block of $L$. Then there is $r^*\in R(B*): g(r^*)\leq g(r), \forall~r\in R(B)$ and 
+	$g(r^*)<g(r), \forall R\in R(B)\setminus r^*\in R^*(B)$.
 \end{lemma}
 \begin{proof}
 	Let $B$ be a strong block of $L$. We choose an $r^*\in R^*(B)$ and assume $|R^*(B)|=1$. 
-	Assume now there is an $r\in R(B)\setminus \{r^*\} : g(r) < g(r^*)$. Then $r$ has a net-reactant 
+	Assume now there is an $r\in R(B)\setminus \{r^*\} : h(r) < h(r^*)$. Then $r$ has a net-reactant 
 	$x \in X(B)$ since $B$. Thus, there is a reaction $r'$ that has $x$ as a net-product, which implies 
-	$g(r')< g(r)$. If $r'$ has a net-reactant $x'\in X(B)$, the same argument holds for $r'$ and, i.e., for 
-	all reactions that have a net-reactant in $B$, a contradiction since $B$ is finite. Thus $g(r*)<g(r), 
+	$h(r')< h(r)$. If $r'$ has a net-reactant $x'\in X(B)$, the same argument holds for $r'$ and, i.e., for 
+	all reactions that have a net-reactant in $B$, a contradiction since $B$ is finite. Thus $h(r*)<h(r), 
 	\forall r\in R(B)\setminus \{r*\}$. Assume now $|R^*(B)|>1$. We may then chose $r^*\in R^*(B): 
-	g(r^*)\leq g(r') \forall r'\in R^*(B)$. Assume now there is $r\in R(B): g(r)<g(r^*)$. Then $r \notin R^*(B)$ 
+	g(r^*)\leq g(r') \forall r'\in R^*(B)$. Assume now there is $r\in R(B): h(r)<h(r^*)$. Then $r \notin R^*(B)$ 
 	due to the choice of $r^*$. For $r\in R(B)\setminus R^*(B)$, we apply the upper argument and obtain 
 	the same contradiction as above.
 \end{proof}
+\vspace{6pt}
+Any pure reaction vertex is located on an elementary circuit. These circuits may have metabolite-to-reaction,
+so-called MR-, chords. However, in each strong block, there is always one elementary circuit containing 
+a pure reaction that is MR-chordfree.
+\vspace{6pt}
+\begin{lemma}
+	Let $B$ be a strong block of $L$. Then $B$ contains an elementary circuit $C$ that is MR-chordfree and 
+	$r^*\in R(C), r^*\in R^*(B)$.   
+\end{lemma}
+\begin{proof}
+	We start with the simple case, i.e., $|R^*(B)|=1$, and show by construction. For $r_1\in R^*(B)$ we have
+	by Lemma~\ref{lem:genPureReacs} that $h(r_1)<h(r'), \forall r'\in R(B)\setminus r_1$. We may then choose 
+	a catalyst of $r_1$ as $x\in X(\cat_{r_1}): g(x)\leq g(x'), x\in X(\cat_{r_1})$ since they are the only reactants
+	of $r_1$. In every $k$-th step we may then choose, for $x_k$ the reaction $r_{k+1}\in P(x_k)\coloneqq \{r \in R(B) \ 
+	| \ s^+_{x_k,r}-s^-_{x_k,r}>0\}$ such that $h(r_{k+1})\leq h(r_l), r_l\in P(x_k)$ and $x_{k+1}\in \educts(r_{k+r}) \cup 
+	X(\cat_{r_{k+1}}): g(x_{k+1})\leq g(x_l), x_l \in \educts(r_{k+1}) \cup X(\cat_{r_{k+1}})$. In this way, we obtain 
+	\begin{equation}
+		h(x_k) \leq g(r_{k+1}) \leq h(x_k), \forall k\geq 0
+	\end{equation}
+	and therefore obtain strict monotone decreasing sequences of $g(x_i), i\geq 1$ and $h(r_j), j\geq 2$. Thus, no 
+	vertex is visited twice, and after a maximum of $\min(|X(B)|, |R(B)|)$ steps, we reach $r_1$ again. We then observe
+	that there cannot be any MR-edges of the form $(x_i,r_j)$ with $i>j$, thus no MR-chords if $i<j$, since this would imply
+	$g(x_i)>h(r_j)$. In addition, by construction, there can also not be any MR-edges of the form $(x_i,r_j)$ if $i<j$ since 
+	then $g(x_i)<g(x_j), x_i,x_j\in \educts(r_{k+1}) \cup X(\cat_{r_{k+1}})$. 
+	We may now treat the more complicated case and assume $|R^*(B)|>1$. Then convergence of our construction is not 
+	easily guaranteed.
+\end{proof}
+
 If the strong block consists of a single reaction $r$ and a single species $x \in \cat_r$, then $r$ is an explicit autocatalytic reaction.
 \vspace{6pt}
 \begin{lemma}
