@@ -263,39 +263,52 @@ $\cat(R)=\emptyset$. The catalysts of a \emph{catalyzation} are denoted by $X(\c
 triple $(X,R,\cat)$ with $\cat=\cat(R)\neq\emptyset$ is called a partially catalyzed 
 RN. If $|\cat| = |R'|$, i.e., each reaction is catalyzed, we call $(X,R,\cat)$ a catalyzed RN. 
 
-\TODO{PFS says, we might want to stay closer to the CRN notation. The first
-  issue to note is that the set $R$ of reactions in RA(F) is not the same
-  as the set of reactions in the CRN setting.}
-
-\PFS{Let me write a $\hat{\phantom{a}}$ for the RAF version here. A
-  reaction $\hat r\in \hat{R}$ is \emph{an equivalence class} of rections
-  $r\in R$. Let us write $r,r'\in\hat{r}$ for the CRN reactions that belong
-  the same RAF reaction $\hat{r}$. We have
-  \begin{equation} 
-    r\in \hat{r}  \quad \iff \quad \educts(r)=\educts(r') \text{ and } \products(r)=\products(r').
-  \end{equation}
-  The difference between the members of the equivalence class $\hat r$
-  are exactly the \emph{catalyzations}. From the point of view of CRN
-  reactions $r\in R$, we have to specify the catalysts. 
+One reaction can be catalyzed by multiple, but also by different catalysts separately. One
+example is the hydrogenation of ethene to ethane that can be mediated by platinum, palladium, or nickel.
+Reactions $r_1\neq r_2$ sharing the same educts and products then differ only by $\cat_{r_1}\neq 
+\cat_{r_2}$. We therefore define:
+\begin{equation}
+	r_1\sim r_2 \Leftrightarrow \educts(r_1)=\educts(r_2) \text{ and } \products(r_1)=\products(r_2).
+\end{equation}
+ It is readily verified that $\sim$ is indeed an equivalence relationship. We denote the set of reaction equivalence 
+ classes by $\hat{R}\coloneqq \{[r]_{\sim} \ | \ r\in R\}$. Let us write $r,r'\in\hat{r}$ for the CRN reactions that belong
+ the same reaction $\hat{r}$. The difference between the members of the equivalence class $\hat {r} $ is exactly 
+ the \emph{catalyzations}. From the point of view of CRN reactions $r\in R$, the catalysts need to be specified. 
   \begin{equation}
     K(r)\coloneqq \{ x\in X| s^-_{xr}=s^+_{xr}>0\}
   \end{equation}
-  In the CRN setting, thus we have the reactant (educt) set $\educts(r)\cup K(r)$
-  and the product set $\products(r)\cup K(r)$. Clearly, we have $K(r)=\emptyset$ if
-  the reaction is uncatalyzed.}
+  Thus, we have the reactant (educt) set $\educts(r)\cup K(r)$ and the product set 
+  $\products(r)\cup K(r)$. Clearly, we have $K(r)=\emptyset$ if the reaction is 
+  uncatalyzed. A one-to-one correspondence between the set of reactions 
+  in a CRN, i.e. $R$, and the corresponding reflexively autocatalytic food-generated 
+  (RAF) systems \cite{hordijk_detecting_2004}, i.e. $\hat{R}$, only exists if for each 
+  reaction $r\in R: |\cat_r|\leq 1$. 
+\vspace{6pt}
+\begin{definition}[RAF]\label{def:RAF}
+	Let $(X,R,\cat)$ be a catalyzed network with $F\subseteq X$. Then
+	a set $\RAF\subseteq R$ is called  
+		\begin{itemize} 
+			\item[i.]{\emph{reflexive autocatalytic} (RA) if $\forall r\in \RAF: \emptyset \neq X(\mathcal{K}_r)\subseteq \educts(\RAF)\cup \products(R')$}
+			\item[ii.]{\emph{F-generated} if $\educts(\RAF)\subseteq \closure{\RAF}{F}$}
+			\item[iii.]{\emph{reflexive autocatalytic} and \emph{F-generated} (RAF) if both i. and ii. hold}
+		\end{itemize}
+\end{definition}
+\vspace{6pt}
   
-  \PFS{Now let us turn to the RAF setting and consider the catalyzation.
+  Let us now turn to the RAF setting and consider the catalyzations.
     Every catalyzation of $\hat{r}$ corresponds to the set catalysts $K(r)$
     in a particular reaction $r\in\hat{r}$. In other words, we have 
     \begin{equation}
       \mathcal{K}_{\hat{r}} \coloneqq \{ K(r) | r\in\hat{r} \}
     \end{equation}
     Thus, for every $r\in\hat{r}$, there is a $K\in\mathcal{K}_{\hat{r}}$
-    such that $r$ has educts.}  \TODO{In fact, we should be even more
-    anal-retentive her and insist that two sets
+    such that $r$ has educts.  
+    
+    \TODO{In fact, we should be even more
+    anal-retentive here and insist that two sets
     $K,K'\in\mathcal{K}_{\hat{r}}$ are distinct if their stoichiometric
     coefficients are distinct. Thus need to define $\mathcal{K}_{\hat{r}}$
-    as a multiset. }
+    as a multiset.}
 
     \PFS{The next consequence is that there are also different notions of
       subnetworks for both formalisms.} 
@@ -347,21 +360,7 @@ A (catalyzed) RN can be represented by its \emph{K\"onig graph}, a directed bipa
 %	\end{split}
 %\end{equation}
 
-\section{RAFs}
-
-We adapt the definition of a reflexive autocatalytic food-generated system \cite{hordijk_detecting_2004}, here 
-to our notation.
-\vspace{6pt}
-\begin{definition}[RAF]\label{def:RAF}
-	Let $(X,R,\cat)$ be a catalyzed network with $F\subseteq X$. Then
-	a set $\RAF\subseteq R$ is called  
-		\begin{itemize} 
-			\item[i.]{\emph{reflexive autocatalytic} (RA) if $\forall r\in \RAF: \emptyset \neq X(\mathcal{K}_r)\subseteq \educts(\RAF)\cup \products(R')$}
-			\item[ii.]{\emph{F-generated} if $\educts(\RAF)\subseteq \closure{\RAF}{F}$}
-			\item[iii.]{\emph{reflexive autocatalytic} and \emph{F-generated} (RAF) if both i. and ii. hold}
-		\end{itemize}
-\end{definition}
-\vspace{6pt}
+\section{Minimal RAFs}
 
 Note that $ii.$, together with Eq.\ref{eq:Closure}, directly implies that all products for any reaction $r\in \RAF$ are also contained 
 in the closure of $F'$, thus $\products_r\subseteq \closure{\RAF}{F}$. A closed RAF \emph{(CAF)} is a RAF $\RAF$ where the reactions 
