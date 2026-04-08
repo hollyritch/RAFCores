@@ -598,11 +598,9 @@ lemmata allow us to gain more insight into the organization of minimal, non-triv
 	every $r\in \RAF$ is part of an elementary circuit in $G$ and $H$.
 \end{lemma}
 \begin{proof}
-	Assume this is not the case. Since $G$ is of finite size, there is a reaction $r\in \RAF$ for which all species $x\in X(G)$ with $s^-_{xr}>0$ 
-	have no incoming edges, or all species $y\in X(G)$ with $s^+_{yr}>0$ have no outgoing edges, which in both cases 
-	implies that $\RAF\setminus \{r\}$ is a RAF. Since $|\RAF|>1$, then $|\RAF\setminus \{r\}|\neq \emptyset$ thus, $\RAF$ 
-	was not minimal, a contradiction. The same arguments holds when substituting $G$ with $H$, i.e., since every $r\in \RAF: 
-	\exists x\in \closure{\RAF}{F}\setminus F: s^-_{xr}>0$.
+	Assume this is not the case. Then there is a reaction $r\in \RAF$ such that for all descendants of $r$, i.e., $\forall v \in D(r)\coloneqq \{u\in V(G) \ | 
+	\ (r, \ldots, u) \text{ is path in} G\}$ there is no path $(v, \ldots, r)$ in $G$. Since there is a path from a reaction $r_1\in R(G): g(r_1)=1$ to $r$, there 
+	cannot be a path from any $v \in D(r)$ to $r_1$. Thus, $\RAF \setminus R(D(r))$ is a RAF and therefore $\RAF$ was not minimal.
 \end{proof}
 \vspace{6pt}
 
