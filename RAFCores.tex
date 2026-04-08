@@ -900,13 +900,14 @@ in $B$ and at least one positive entry for a product $y^*\in X(B): s^+_{yr^*}>0$
 Cut-vertices with only catalysts as reactants play an important role in the partial order of a strong block. To this 
 end, we define the set of \emph{pure reactions} by 
 \begin{equation}\label{eq:pureReactions}
-	R^*(B)\coloneqq \{r\in R(B) \ | 	\ s^-_{xr}>0 \Rightarrow 0<s^+_{xr}=s^-_{xr}, \forall x\in X(B)\}
+	R^*(B)\coloneqq \{r\in R(B) \ | \ s^-_{xr}>0 \Rightarrow s^+_{xr}=s^-_{xr}, \forall x\in X(B)\}
 \end{equation}
-In particular, there is always at least one that has the lowest generation number of all reactions. 
+In particular, there is always at least one \emph{pure reaction} that has the lowest generation number of all 
+reactions within the block. 
 \vspace{6pt}
 \begin{lemma}\label{lem:genPureReacs}
 	Let $B$ be a strong block of $L$. Then there is $r^*\in R(B*): g(r^*)\leq g(r), \forall~r\in R(B)$ and 
-	$g(r^*)<g(r), \forall R\in R(B)\setminus r^*\in R^*(B)$.
+	$g(r^*)<g(r), \forall r\in R(B)\setminus R^*(B)$.
 \end{lemma}
 \begin{proof}
 	Let $B$ be a strong block of $L$. We choose an $r^*\in R^*(B)$ and assume $|R^*(B)|=1$. 
@@ -922,11 +923,12 @@ In particular, there is always at least one that has the lowest generation numbe
 \vspace{6pt}
 Any pure reaction vertex is located on an elementary circuit. These circuits may have metabolite-to-reaction,
 so-called MR-, chords. However, in each strong block, there is always one elementary circuit containing 
-a pure reaction that is MR-chordfree.
+a pure reaction that is MR-chordfree. For brevity of presentation, the \emph{canonical} CS of an elementary 
+circuit is defined as follows $\child(C)\coloneqq \{X(C), R(C), \kappa: \kappa(x)\coloneqq v^C_{out}\}$.
 \vspace{6pt}
 \begin{lemma}
-	Let $B$ be a strong block of $L$. Then $B$ contains an elementary circuit $C$ that is MR-chordfree and 
-	$r^*\in R(C), r^*\in R^*(B)$.   
+	Let $B$ be a strong block of $L$. Then $B$ has an elementary circuit $C$ with $r\in R(C): r\in R^*(B)$ and
+	$\SM[\child]$ is a Metzler matrix.
 \end{lemma}
 \begin{proof}
 	We start with the simple case, i.e., $|R^*(B)|=1$, and show by construction. For $r_1\in R^*(B)$ we have
@@ -938,13 +940,15 @@ a pure reaction that is MR-chordfree.
 	\begin{equation}
 		h(x_k) \leq g(r_{k+1}) \leq h(x_k), \forall k\geq 0
 	\end{equation}
-	and therefore obtain strict monotone decreasing sequences of $g(x_i), i\geq 1$ and $h(r_j), j\geq 2$. Thus, no 
-	vertex is visited twice, and after a maximum of $\min(|X(B)|, |R(B)|)$ steps, we reach $r_1$ again. We then observe
-	that there cannot be any MR-edges of the form $(x_i,r_j)$ with $i>j$, thus no MR-chords if $i<j$, since this would imply
-	$g(x_i)>h(r_j)$. In addition, by construction, there can also not be any MR-edges of the form $(x_i,r_j)$ if $i<j$ since 
-	then $g(x_i)<g(x_j), x_i,x_j\in \educts(r_{k+1}) \cup X(\cat_{r_{k+1}})$. 
-	We may now treat the more complicated case and assume $|R^*(B)|>1$. Then convergence of our construction is not 
-	easily guaranteed.
+	and therefore two strict monotone decreasing sequences of $g(x_i), i\geq 1$ and $h(r_j), j\geq 2$. Thus, no 
+	vertex is visited twice, and after a maximum of $2\cdot \min(|X(B)|, |R(B)|)$ vertices, we reach $r_1$ again. Assume there 
+	is an MR-edge $(x_i,r_j)$ with $i>j$. Then $g(x_i)>h(r_j)$, which implies that $x_i$ is a pure catalysts for $r_j$.
+	Thus $\SM[\child]_{x_i, r_j}=0$. By construction, there cannot be an MR-edge if $i<j$ since this implies 
+	$g(x_i)<g(x_j), x_i,x_j\in \educts(r_{k+1}) \cup X(\cat_{r_{k+1}})$, a contradiction to our construction. Thus, $\SM[\child]$ is
+	Metzler. 
+	 
+	We may now treat the more complicated case and assume $|R^*(B)|>1$. Then the convergence of our construction is not 
+	easily guaranteed. \TODO{Construct now sequence of such sequences above ....}
 \end{proof}
 
 If the strong block consists of a single reaction $r$ and a single species $x \in \cat_r$, then $r$ is an explicit autocatalytic reaction.
@@ -1147,16 +1151,17 @@ which is clearly non-semipositiv since any $v>0$ yields either $(\SM v)_1=0$ or 
 We start with a sufficient condition for an autocatalytic subnetwork.
 \vspace{6pt}
 \begin{lemma}
-	Let $B$ be a strong block of the graph $L$. Then any MR-chordfree elementary circuit 
-	$C$ containing a pure \emph{pure reaction}, that is an $r^*\in R^*(B)\coloneqq \{r\in R(B) \ | 
-	\ s^-_{xr}>0 \Rightarrow 0<s^+_{xr}=s^-_{xr}, \forall x\in X(B)\}$, has an autocatalytic CS 
-	that is defined by the edges $E_1(C)$.  
+	Let $B$ be a strong block of the graph $L$ and $C$ be an elementary circuit $C$ in $B$ with 
+	associated CS $\child$ that is defined by the edges $E_1(C)$. In addition, let $C$ contain a  
+	\emph{pure reaction} (Eq.~\ref{eq:pureReactions}). Then $\SM[\child]$ is autocatalytic if it is 
+	a Metzler matrix. 
 \end{lemma}
 \begin{proof}
-	If $C$ is MR-chordfree, then the associated CS matrix$\SM[\child]$ of the $k$-CS $\child = (X(C), 
-	R(C), \kappa: \kappa(x) \coloneqq v^C_{out}(x)$ is irreducible and reads by construction:
+	If $C$ is an elementary circuit its associated CS matrix $\SM[\child]$ of the $k$-CS 
+	$\child = (X(C), R(C), \kappa: \kappa(x) \coloneqq v^C_{out}(x)$ is irreducible, by pre-requisite 
+	Metzler, and reads by construction:
 	\begin{equation}
-			\SM[X(C), R(C)] = 
+			\SM[\child] = 
 				\begin{pmatrix}
 						0 	& 	 		&	 			&  			& 	p_1	\\
 						p_2	& 	-r_2  		& 				&     P''  		&		\\
@@ -1178,15 +1183,23 @@ Then $v>0$ and by construction we directly obtain $\SM[\child]v>0$ since $P'$ an
 \end{proof}
 \vspace{6pt}
 
-However, such MR-chordfree elementary circuits are not necessarily autocatalytic cores. We therefore next give a construction 
-that directly identifies autocatalytic cores. 
+Note that the statement of the Lemma allows MR-chords that emerge as digons induced by pure catalysts and thereby yield only
+$0$ as off-diagonal entries in $\SM[\child]$. A direct consequence is then the following:
+\vspace{6pt}
+\begin{corollary}
+	Any MR-chordless elementary circuit of a strong block in $L$ containing a \emph{pure reaction} vertex has an autocatalytic
+	CS matrix.  
+\end{corollary}
+\vspace{6pt}
+
+Such elementary circuits, MR-chordfree or not, are neither necessarily autocatalytic cores, nor is their existence guaranteed. 
+However, they can be constructed directly, which proves the existence of at least on of them in each strong block.
 
 \vspace{6pt}
 \begin{theorem}
 	For a minimal, non-trivial RAF $\RAF$, let $B$ be a strong block in the graph of the graph $L$ from 
-	Eq.~\ref{eq:graphL}. For any \emph{pure reaction}, that is for each $r^*\in R^*(B)\coloneqq \{r\in R(B) \ | 
-	\ s^-_{xr}>0 \Rightarrow 0<s^+_{xr}=s^-_{xr}, \forall x\in X(B)\}$, there is an elementary circuit $C$ in $B$
-	such that $\SM[X(C), R(C)]$ is autocatalytic. 
+	Eq.~\ref{eq:graphL}. For any \emph{pure reaction} (Eq.~\ref{eq:pureReactions}), there is an elementary 
+	circuit $C$ in $B$ such that $\SM[X(C), R(C)]$ is autocatalytic. 
 \end{theorem} 
 \vspace{6pt}
 \begin{proof}
