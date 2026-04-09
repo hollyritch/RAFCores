@@ -592,17 +592,93 @@ lemmata allow us to gain more insight into the organization of minimal, non-triv
 	Assume this is not the case for an $r\in \RAF$. Then $\{r\}$ is a RAF and thus $\RAF$ was not minimal.
 \end{proof}
 
+We next investigate the cyclicity of $G$ and $H$. Since all food-molecules are absent in $G$ and $H$, we first 
+obtain that all vertices in $H$ have an in-degree greater than $0$. A simple result from 
+\cite{bang-jensen_digraphs_2002} then yields:
+
+\vspace{6pt}
+\begin{corollary}
+	$H$ contains an elementary circuit. 
+\end{corollary}
+\vspace{6pt}
+
+This was already shown in \cite{steel_minimal_2013}, however, not for the bipartite but for the R-graph. Since addition 
+of the food molecules does not destroy this property, we also obtain:
+
+\vspace{6pt}
+\begin{corollary}
+	$G$ contains an elementary circuit. 
+\end{corollary}
+\vspace{6pt}
+
+For minimal RAFs this result can be strengthened. To this end, we define the descendants and ascendants of a vertex $v$ in a graph 
+in the following way
+
+\begin{equation}
+	\begin{split}
+		D(v) & \coloneqq \{u \in V \ | \text{ exists a path } P=(v,\ldots, u)  \} \\
+		A(v) & \coloneqq \{u \in V \ | \text{ exists a path } P=(u,\ldots, v)  \} \\
+	\end{split}
+\end{equation}
+
+Before we can prove one of the main results of this section, we need some preparation. 
+
+\begin{lemma}
+	Let $\RAF$ be a minimal, non-trivial RAF, with $|\POR^1_{\RAF}(F)|=1$. 
+	Then $r\in \POR^1_{\RAF}(F)$ is located on an elementary circuit that is 
+	not a digon in $G$ and $H$.
+\end{lemma}
+\begin{proof}
+	Since $\RAF$ is non-trivial $|\RAF|>1$. If $\cat_{r}\subseteq F$ then $\{r\}$ is a minimal RAF.
+	Thus, there is $c\in \cat_r: c\not in F$. Then $c\in D(r)$. If $c\in \products(r)$, then $\{r\}$ again
+	is minimal $\RAF$. With the edge $(c,r)$, $(r,\ldots, c, r)$ is an elementary circuit that is not 
+	a digon. 
+\end{proof}
+
+We now extend this result.
+
+\begin{lemma}
+	Let $\RAF$ be a minimal, non-trivial RAF, with $|\POR^1_{\RAF}(F)|=1$. 
+	Then any $r\in \RAF$ is located on an elementary circuit that is 
+	not a digon in $G$ and $H$.
+\end{lemma}
+\begin{proof}
+	We know that $r\in \POR^1_{\RAF}(F)$ is located on an elementary circuit. Assume now
+	there are $r_1', r_2', \ldots r'_k \in \RAF: r_i\neq r, 1\leq i\leq k$ that are not located on an 
+	elementary circuit. However, then $\RAF \setminus \bigcup_{i=1}^k R(D(r_i))\neq \emptyset$ 
+	is a RAF, contradicting the minimality of $\RAF$.
+\end{proof}
+
+\TODO{Now generalize to the following....maybe stepwisely....
+
 \vspace{6pt}
 \begin{lemma}\label{lem:elemCirc}
 	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal, non-trivial RAF. Then 
-	every $r\in \RAF$ is part of an elementary circuit in $G$ and $H$.
+	every $r\in \RAF$ is part of an elementary circuit that is not a digon in $G$ and $H$.
 \end{lemma}
 \begin{proof}
-	Assume this is not the case. Then there is a reaction $r\in \RAF$ such that for all descendants of $r$, i.e., $\forall v \in D(r)\coloneqq \{u\in V(G) \ | 
-	\ (r, \ldots, u) \text{ is path in} G\}$ there is no path $(v, \ldots, r)$ in $G$. Since there is a path from a reaction $r_1\in R(G): g(r_1)=1$ to $r$, there 
-	cannot be a path from any $v \in D(r)$ to $r_1$. Thus, $\RAF \setminus R(D(r))$ is a RAF and therefore $\RAF$ was not minimal.
+	Assume this is not the case. Then there is an $r_1\in \RAF$ that is not located on an elementary circuit. Then there are 
+	two cases. 
+	
+	i.) If $r_1\in \POR^1_{\RAF}(F)$, then $A(r_1)=\emptyset$ in $G$ and $H$. If $\cat_{r_1} \subseteq F$ then $\{r_1\}$ 
+	is a minimal RAF and $\RAF$ was not minimal. Thus, there is $c_1\in \cat_{r_1}: c\notin F$, but $c\notin D(r_1)$ since otherwise
+	$r$ would be located on an elementary circuit. Then $|\POR^1_{\RAF}(F)| > 1$, since otherwise $\RAF$ would not be a RAF,
+	because $c_1$ would not be food-generated. Assume now $|\POR^1_{\RAF}(F)| = 2$. Then $c_1\in D(r_2), r_1\neq r_2\in \POR^1_{\RAF}(F)$. 
+	Then there is no vertex $v\in D(r_1)$ such that there is path from $v$ to $r_2$ since otherwise there would be a path from 
+	$(r_1, \ldots, v)$, $(v,\ldots, r_2)$, $(r_2, \ldots, c_1)$, and the edge $(c_1, r_1)$. Thus $W\coloneqq (r_1, \ldots, v,\ldots, r_2,\ldots, c_1, r_1)$
+	would be a closed walk which could be reduced to a closed path by removing the parts between vertices that are visited twice.
+	which yields an elementary circuit. 
+	Thus, there is no vertex $v\in D(r_1)$ and therefore $\cat_{r_2}\subseteq D(r_2)$. However, then 
+
+	
+	\TODO{mmhh...this is more complicated than I thought, but now we have to construct kind of a zick-zack-path to }
+	
+	If $r\in \POR^k_{\RAF}(F),k>1$, then $A(r)\neq \emptyset$ and there is no path from any $u\in D(r)$ to any $v\in A(r)$. 
+	
 \end{proof}
 \vspace{6pt}
+}
+
 
 We say that two elementary circuits $C_1, C_2$ are 1-connected from $C_1$ to $C_2$ if there are vertices $u\in V(C_1)$ 
 and $v\in V(C_2)$ such that there is a path $P_{uv}$ connecting them. Since elementary circuits are strongly connected, 
