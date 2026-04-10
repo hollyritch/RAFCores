@@ -621,35 +621,70 @@ in the following way
 	\end{split}
 \end{equation}
 
-Before we can prove one of the main results of this section, we need some preparation. 
+Before we can prove one of the main results of this section, we need an auxilliary Lemma.
+
+%\begin{lemma}\label{lem:elemCirc1}
+%	Let $\RAF$ be a minimal, non-trivial RAF, with $|\POR^1_{\RAF}(F)|=1$. 
+%	Then $r\in \POR^1_{\RAF}(F)$ is located on an elementary circuit that is 
+%	not a digon in $G$ and $H$.
+%\end{lemma}
+%\begin{proof}
+%	We show this for $H$ first. Since $\RAF$ is non-trivial $|\RAF|>1$. If $\cat_{r}\subseteq F$ then $\{r\}$ is a minimal RAF.
+%	Thus, there is $c\in \cat_r: c\not in F$. Then $c\in D(r)$. If $c\in \products(r)$, then $\{r\}$ again
+%	is minimal $\RAF$. With the edge $(c,r)$, $(r,\ldots, c, r)$ is an elementary circuit that is not 
+%	a digon. Addition of the food-molecules does not disrupt this argument; thus, the statement 
+%	also holds for $G$.	
+%\end{proof}
+%
+%
+%\vspace{6pt}
+%We now extend this result.
+%\vspace{6pt}
+%
+%\begin{lemma}
+%	Let $\RAF$ be a minimal, non-trivial RAF, with $|\POR^1_{\RAF}(F)|=1$. 
+%	Then any $r\in \RAF$ is located on an elementary circuit that is 
+%	not a digon in $G$ and $H$.
+%\end{lemma}
+%\begin{proof}
+%	Again, we start with the graph $H$. We know that $r_1\in \POR^1_{\RAF}(F)$ is located on 
+%	an elementary circuit. Assume now there is a reaction $r\in \RAF$ that is not located on an 
+%	elementary circuit. We now show that $\RAF' \coloneqq \RAF\setminus (R(D(r))\cup \{r\}$ 
+%	is a RAF. First, we observe that $\RAF'\neq \emptyset$, since $r_1\notin \RAF'$. Otherwise,
+%	$r$ would be located on an elementary circuit. Therefore, 	assume $\RAF'$ is not a $\RAF$. 
+%	Since $\RAF$ is reflexively autocatalytic and $\RAF'\subseteq \RAF$, $\RAF'$ is reflexively 
+%	autocatalytic. Then, there is a reaction $r'\in \RAF'$ for which a reactant or a catalyst $x\in 
+%	X(H)$ with $s^-_{xr'}>0$ it holds that $x\notin \closure{\RAF'}(F)$. Since $x\in \closure{\RAF}(F)$ 
+%	is a product of some reaction $r''\in R(D(R'))\cup \{r'\}$. However, then $r''\in R(D(R'))\cup \{r'\}$, 
+%	which is a contradiction. Thus, $\RAF'$ is a RAF and therefore $\RAF$ was not minimal. Adding
+%	the food molecules to $H$ does not change the arguments, thus the result also holds for $G$. 	
+%\end{proof}
 
 \begin{lemma}
-	Let $\RAF$ be a minimal, non-trivial RAF, with $|\POR^1_{\RAF}(F)|=1$. 
-	Then $r\in \POR^1_{\RAF}(F)$ is located on an elementary circuit that is 
-	not a digon in $G$ and $H$.
+	Let $\RAF$ be a minimal, non-trivial RAF. Then every reaction in $r\in \POR^1_{\RAF}(F)$ 
+	that is located on an elementary circuit that is not a digon in $G$ and $H$.
 \end{lemma}
 \begin{proof}
-	Since $\RAF$ is non-trivial $|\RAF|>1$. If $\cat_{r}\subseteq F$ then $\{r\}$ is a minimal RAF.
-	Thus, there is $c\in \cat_r: c\not in F$. Then $c\in D(r)$. If $c\in \products(r)$, then $\{r\}$ again
-	is minimal $\RAF$. With the edge $(c,r)$, $(r,\ldots, c, r)$ is an elementary circuit that is not 
-	a digon. 
+	Assume this is not the case. Then there is a reaction $r_1\in \POR^1_{\RAF}(F)$, such that 
+	all reactants and catalysts are in $F$. The $\{r_1\}$ is a RAF which directly contradicts 
+	the minimality of $\RAF$. Since $r_1\in \POR^1_{\RAF}(F)$ are in $F$, there is 
+	$c_1\in \cat_{r_1}: c_1\not in F$. Then $c_1\in D(r_2), r_2\in \POR^1_{\RAF}(F)$, thus 
+	$r_1\in D(r_2)$. Now, we apply the same argument as above for $r_2$. If $\cat_{r_2}\subseteq F$,
+	the $\{r_2\}$ is a $\RAF$ contradicting minimality. Thus there is $c_2\in \cat_{r_2}: c_2\notin F$. 
+	Then there is an $r_3\in \POR^1_{\RAF}(F)$ such that $c_2\in D(r_3)$. We repeat the arguments
+	until we reach an $r_l$ such that $r_l=r_k$ for some $k<l$, thus we reach a reaction again, which 
+	is guaranteed since $\RAF$ is finite. Then all reactions $r_k, \ldots, r_{l-1}$ are located on an 
+	elementary circuit. If $l>1$ then $\RAF'\coloneqq \RAF\setminus (D(r_1)\cup\{r_1\})$ is a $\RAF$.
+	Again, we observe that $\RAF'\neq \emptyset$ since it contains the reactions $r_k,\ldots, r_{l-1}$.
+	Assume this is not the case. Since $\RAF'\subseteq \RAF$, it is reflexively autocatalytic. Then 
+	there is again a reaction $r'\in \RAF'$ for which a reactant or a catalyst $x$ is not in $\closure{\RAF'}(F)$. 
+	Since $x\in \closure{\RAF}(F)$ then $x\in D(r_1)$. Then $r'\in D(r_1)$ a contradiction. Thus, $\RAF'$ is
+	a RAF, and $\RAF$ was not minimal. Adding the food molecules to $H$ does not change the arguments,
+	thus it holds also for $G$.
 \end{proof}
+\vspace{6pt}
 
-We now extend this result.
-
-\begin{lemma}
-	Let $\RAF$ be a minimal, non-trivial RAF, with $|\POR^1_{\RAF}(F)|=1$. 
-	Then any $r\in \RAF$ is located on an elementary circuit that is 
-	not a digon in $G$ and $H$.
-\end{lemma}
-\begin{proof}
-	We know that $r\in \POR^1_{\RAF}(F)$ is located on an elementary circuit. Assume now
-	there are $r_1', r_2', \ldots r'_k \in \RAF: r_i\neq r, 1\leq i\leq k$ that are not located on an 
-	elementary circuit. However, then $\RAF \setminus \bigcup_{i=1}^k R(D(r_i))\neq \emptyset$ 
-	is a RAF, contradicting the minimality of $\RAF$.
-\end{proof}
-
-\TODO{Now generalize to the following....maybe stepwisely....
+We are now in a position to prove an important result of this section.
 
 \vspace{6pt}
 \begin{lemma}\label{lem:elemCirc}
@@ -657,28 +692,20 @@ We now extend this result.
 	every $r\in \RAF$ is part of an elementary circuit that is not a digon in $G$ and $H$.
 \end{lemma}
 \begin{proof}
-	Assume this is not the case. Then there is an $r_1\in \RAF$ that is not located on an elementary circuit. Then there are 
-	two cases. 
-	
-	i.) If $r_1\in \POR^1_{\RAF}(F)$, then $A(r_1)=\emptyset$ in $G$ and $H$. If $\cat_{r_1} \subseteq F$ then $\{r_1\}$ 
-	is a minimal RAF and $\RAF$ was not minimal. Thus, there is $c_1\in \cat_{r_1}: c\notin F$, but $c\notin D(r_1)$ since otherwise
-	$r$ would be located on an elementary circuit. Then $|\POR^1_{\RAF}(F)| > 1$, since otherwise $\RAF$ would not be a RAF,
-	because $c_1$ would not be food-generated. Assume now $|\POR^1_{\RAF}(F)| = 2$. Then $c_1\in D(r_2), r_1\neq r_2\in \POR^1_{\RAF}(F)$. 
-	Then there is no vertex $v\in D(r_1)$ such that there is path from $v$ to $r_2$ since otherwise there would be a path from 
-	$(r_1, \ldots, v)$, $(v,\ldots, r_2)$, $(r_2, \ldots, c_1)$, and the edge $(c_1, r_1)$. Thus $W\coloneqq (r_1, \ldots, v,\ldots, r_2,\ldots, c_1, r_1)$
-	would be a closed walk which could be reduced to a closed path by removing the parts between vertices that are visited twice.
-	which yields an elementary circuit. 
-	Thus, there is no vertex $v\in D(r_1)$ and therefore $\cat_{r_2}\subseteq D(r_2)$. However, then 
-
-	
-	\TODO{mmhh...this is more complicated than I thought, but now we have to construct kind of a zick-zack-path to }
-	
-	If $r\in \POR^k_{\RAF}(F),k>1$, then $A(r)\neq \emptyset$ and there is no path from any $u\in D(r)$ to any $v\in A(r)$. 
-	
+	Again, we start with the graph $H$. We know that each $r_1\in \POR^1_{\RAF}(F)$ is 
+	is located on an elementary circuit. Assume now there is a reaction $r\in \RAF$ that is 
+	not located on an elementary circuit. We now show that $\RAF' \coloneqq \RAF\setminus 
+	(R(D(r))\cup \{r\}$ is a RAF. First, we observe that $\RAF'\neq \emptyset$, since $\POR^1_{\RAF}(F) 
+	\subseteq \RAF'$. Otherwise, $r$ would be located on an elementary circuit. Therefore, 
+	assume $\RAF'$ is not a $\RAF$. Since $\RAF$ is reflexively autocatalytic and 
+	$\RAF'\subseteq \RAF$, $\RAF'$ is reflexively autocatalytic. Then, there is a reaction 
+	$r'\in \RAF'$ for which a reactant or a catalyst $x\in X(H)$ with $s^-_{xr'}>0$ it holds that 
+	$x\notin \closure{\RAF'}(F)$. Since $x\in \closure{\RAF}(F)$ is a product of some reaction 
+	$r''\in R(D(R'))\cup \{r'\}$. However, then $r''\in R(D(R'))\cup \{r'\}$, which is a contradiction. 
+	Thus, $\RAF'$ is a RAF and therefore $\RAF$ was not minimal. Adding the food molecules 
+	to $H$ does not change the arguments, thus the result also holds for $G$. 		
 \end{proof}
 \vspace{6pt}
-}
-
 
 We say that two elementary circuits $C_1, C_2$ are 1-connected from $C_1$ to $C_2$ if there are vertices $u\in V(C_1)$ 
 and $v\in V(C_2)$ such that there is a path $P_{uv}$ connecting them. Since elementary circuits are strongly connected, 
@@ -809,11 +836,18 @@ in the following. If $\RAF$ is composed of a single reaction, then $L$ is a sing
 We may therefore directly conclude:
 
 \vspace{6pt}
-\begin{theorem}
+\begin{theorem}\label{thm:RAFStrCon}
 	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal RAF. Then $\RAF$ is non-trivial 
 	if and only if the graph $L$ is not a single reaction entity and strongly-connected.
 \end{theorem}
 \vspace{6pt}
+
+One important consequence of Thm.~\ref{thm:RAFStrCon} is that the R-Graph of $L$, thus of a RAF, is also strongly connected.
+
+\begin{corollary}
+	Let $\RAF$ be a non-trivial, minimal RAF. Then the R-Graph graph of $L$, $\mathcal{R}\coloneqq \{\RAF, E\}$ with 
+	$E\coloneqq = \{(r_1,r_2) \ | \ \exists x X(L): s^+_{xr_1}>0, s^-_{xr_2}>0\}$  is strongly connected.
+\end{corollary}
 
 In general, \emph{minimal} RAFs are not necessarily strong blocks, as is captured in the following example.
 \begin{figure}[h]
