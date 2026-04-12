@@ -847,14 +847,13 @@ vector yields a net increase in the concentration of such species, which motivat
 these species are never located on an elementary circuit, and we obtain that Lemma~\ref{lem:strElCirc} holds if these species are removed.
 \vspace{6pt}
 \begin{corollary}\label{lem:strElCirc}
-
 	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ a minimal, non-trivial RAF. Any two elementary circuits $C_1,C_2$ 
 	in $L\coloneqq H[V(H)\setminus W]$ with $W\coloneqq \{x\in \closure{\RAF}{F} \ | \ \nexists r \in \RAF \text{ s.t. } s^-_{xr}>0\}$ are strongly connected. 
 \end{corollary}
 \vspace{6pt}
 For brevity of presentation, we let 
 \begin{equation}\label{eq:graphL}
-	L\coloneqq H[V(H]\setminus W], W\coloneqq \coloneqq \{x\in \closure{\RAF}{F} \ | \ \nexists r \in \RAF \text{ s.t. } s^-_{xr}>0\} 
+	L\coloneqq H[V(H]\setminus W], W\coloneqq \{x\in \closure{\RAF}{F} \ | \ \nexists r \in \RAF \text{ s.t. } s^-_{xr}>0\} 
 \end{equation}
 in the following. If $\RAF$ is composed of a single reaction, then $L$ is a singleton, i.e., the very reaction vertex of $\RAF$. 
 We may therefore directly conclude:
@@ -867,11 +866,12 @@ We may therefore directly conclude:
 \vspace{6pt}
 
 One important consequence of Thm.~\ref{thm:RAFStrCon} is that the R-Graph of $L$, thus of a RAF, is also strongly connected.
-
+\vspace{6pt}
 \begin{corollary}
 	Let $\RAF$ be a non-trivial, minimal RAF. Then the R-Graph graph of $L$, $\mathcal{R}\coloneqq \{\RAF, E\}$ with 
-	$E\coloneqq = \{(r_1,r_2) \ | \ \exists x X(L): s^+_{xr_1}>0, s^-_{xr_2}>0\}$  is strongly connected.
+	$E\coloneqq \{(r_1,r_2) \ | \ \exists x X(L): s^+_{xr_1}>0, s^-_{xr_2}>0\}$  is strongly connected.
 \end{corollary}
+\vspace{6pt}
 
 In general, \emph{minimal} RAFs are not necessarily strong blocks, as is captured in the following example.
 \begin{figure}[h]
@@ -997,21 +997,30 @@ share a common cut-vertex that is a reaction vertex. Indeed, a species vertex ca
 This result allows us to decompose $L$ into strong blocks. We will see in the next section that each of these strong blocks 
 indeed contains an autocatalytic core. Here, however, we continue by stating a necessary condition for a reaction to be a 
 cut-verex.
+\vspace{6pt}
 
 \begin{lemma}
-	If $r\in R(L)$ is a cut-vertex, then $r$ has at 
-	least two incoming and two outgoing edges.
+	Let $\RAF$ be a non-trivial, minimal RAF. If $r\in R(L)$ is a cut-vertex, then $r$ has at least two incoming and two outgoing edges.
 \end{lemma}
 \begin{proof}
-	Let $B_1$ and $B_2$ be the two blocks that are separated by $r$. Assume now that $r$ has 
-	only one incoming edge and the net-reactant is located in $B_1$. Then the catalyst is also 
-	the only net-reactant. Then, however, $\RAF\setminus R(B_2)$ is a RAF and thus $\RAF$ 
-	was not minimal. Assume now that $r$ has only one outgoing edge and the catalyst is in $B_2$. 
-	At least on net reactant is then in $B_1$. The only catalyst is also the only net product. 
-	Thus $r$ is an explicit autocatalytic reaction. Then, however, $\RAF\setminus R(B_2)$ is a RAF.
-	\TODO{Make it clearer}
+	We denote the two parts of $L$ separated by $r$ by $L_1$ and $L_2$. Assume now that $r$ has 
+	only one incoming edge. Then there can only be one catalyst $c_r$, which is also the only net reactant. 
+	Assume w.l.o.g. that $c_r \in V(L_1)$. Then, however, there is no path from any $u\in V(L_2)$ to any 
+	$v\in V(L_1)$. Thus, $L$ is not strongly connected, and thereby $\RAF$ is not minimal. Assume now 
+	that $r$ has only one outgoing edge. Then it has only one catalyst $c_r$ again, which is the net 
+	product of $r$. Assume again w.l.o.g. that $c_r\in V(L_2)$. Then, there is again no path from any 
+	$u\in V(L_2)$ to any $v\in V(L_1)$ which implies that $L$ was not strongly connected and thus $\RAF$ 
+	not minimal.
 \end{proof}
-
+\vspace{6pt}
+Monomolecular reaction systems, i.e., those that have only one net reactant and one net 
+product, thereby contain no cut-vertices. As an immediate result, we obtain:
+\vspace{6pt}
+\begin{corollary}
+	Let $\RAF$ be a non-trivial minimal RAF. If each $r\in \RAF$ has only one net reactant
+	and one net product, then $L$ is a strong block.
+\end{corollary}
+\vspace{6pt}
 We continue by identifying a structural property common to any strong block that warrants semipositivity. 
 \vspace{6pt}
 \begin{lemma}\label{lem:cutVertexPureCat}
