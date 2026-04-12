@@ -272,7 +272,7 @@ Reactions $r_1\neq r_2$ sharing the same educts and products then differ only by
 \end{equation}
  It is readily verified that $\sim$ is indeed an equivalence relationship. We denote the set of reaction equivalence 
  classes by $\hat{R}\coloneqq \{[r]_{\sim} \ | \ r\in R\}$. Let us write $r,r'\in\hat{r}$ for the CRN reactions that belong
- the same reaction $\hat{r}$. The difference between the members of the equivalence class $\hat {r} $ is exactly 
+ the same reaction $\hat{r}\in \hat{R}$. The difference between the members of the equivalence class $\hat {r} $ is exactly 
  the \emph{catalyzations}. From the point of view of CRN reactions $r\in R$, the catalysts need to be specified. 
   \begin{equation}
     K(r)\coloneqq \{ x\in X| s^-_{xr}=s^+_{xr}>0\}
@@ -338,6 +338,20 @@ A (catalyzed) RN can be represented by its \emph{K\"onig graph}, a directed bipa
 	\end{split}
 \end{equation}
 
+The K\"onig graph is also known as the Species-Reaction (SR-) or Metabolite-Reaction (MR-) graph. Two other representations 
+can be directly derived from it, the S- and the R-graph. The R-graph, in particular, is the graph
+\begin{equation}
+	\begin{split}
+		\mathcal{R}(\king)&\coloneqq \{R(\king), E\} \\
+		E &\coloneqq \{(r_1,r_2) \ | \ \exists x X(\king): s^+_{xr_1}>0, s^-_{xr_2}>0\}
+	\end{split}
+ \end{equation}
+We will also simply write $\mathcal{R}$ if the bipartite graph is clear from the context. 
+In the following sections, we will investigate the implications of different set
+properties of RAFs on how they translate into structural properties of its bipartite 
+K\"onig graph. We will put an important focus on the minimality condition here
+since it allows us to identify 
+
 \TODO{Define:,  
 \begin{itemize}
 	\item{Autocatalytic matrices and autocatalytic cores}
@@ -360,12 +374,15 @@ A (catalyzed) RN can be represented by its \emph{K\"onig graph}, a directed bipa
 %	\end{split}
 %\end{equation}
 
-\section{Minimal RAFs}
+\section{The partial order of RAFs}
 
-Note that $ii.$, together with Eq.\ref{eq:Closure}, directly implies that all products for any reaction $r\in \RAF$ are also contained 
-in the closure of $F'$, thus $\products_r\subseteq \closure{\RAF}{F}$. A closed RAF \emph{(CAF)} is a RAF $\RAF$ where the reactions 
-can be ordered $r_1, r_2, \ldots, r_k$ such that, for each $i \geq 1$, each reactant of $r_i$ and at least one catalyst of $r_i$ is 
-contained in the food set and/or is a product of an earlier reaction in the sequence). 
+Property $ii.$ of Def.~\ref{def:RAF}, together with Eq.\ref{eq:Closure}, directly 
+implies that all products for any reaction $r\in \RAF$ are also contained 
+in the closure of $F'$, thus $\products_r\subseteq \closure{\RAF}{F}$. 
+A closed RAF \emph{(CAF)} is a RAF $\RAF$ where the reactions 
+can be ordered $r_1, r_2, \ldots, r_k$ such that, for each $i \geq 1$, each 
+reactant of $r_i$ and at least one catalyst of $r_i$ is contained in the food set 
+and/or is a product of an earlier reaction in the sequence. 
 
 Before connecting the notion of a RAF with the definition of an autocatalytic subnetwork, we start by translating specific properties of a RAF 
 into the bipartite K\"onig graph. We begin by examining the consequences of the closure. The closure of a set $X'$ w.r.t. to a set $R'$ denoted 
@@ -445,7 +462,7 @@ In addition, we define two maps that determine the generation of the first appea
 		h&: R' \rightarrow \mathbb{N}, h(r)\coloneqq k \quad \text{ s. t. } r\in \POR_{R'}^k(X') 
 	\end{split}
 \end{equation}
-We refer to the value of $g$ and $h$ as the generation of a reaction or metabolite. We are now in the position to 
+We refer to the values of $g$ and $h$ as the generation of a reaction or metabolite. We are now in the position to 
 deduce the consequences of Def.~\ref{def:RAF}ii. to the bipartite K\"onig representation of a RAF. 
 
 \vspace{6pt}
@@ -467,6 +484,8 @@ deduce the consequences of Def.~\ref{def:RAF}ii. to the bipartite K\"onig repres
 \end{proof}
 \vspace{6pt}
 
+\section{Minimal RAFs}
+
 A question, which naturally arises for a given RAF $\RAF$, is whether there is an $\RAF'\subset \RAF$ that is itself a RAF. This 
 notion has been termed \emph{irreducible} RAFs in the literature \cite{hordijk_detecting_2004, hordijk_autocatalytic_2013, 
 hordijk_autocatalytic_2010}. However, to avoid confusion with the notion of irreducibility of a matrix, we refer to them as 
@@ -477,16 +496,21 @@ first is an obvious but important result.
 	Let $(X,R,\cat)$ be a catalyzed RN with food-set $F$ and $\RAF$ be a RAF. For $r',r'' \in \RAF$ with $r',r'' \in[r']_{\simeq}, r'\neq r''$ 
 	it holds that $\RAF\setminus \{r'\}$ is a RAF and $\RAF\setminus \{r''\}$ is a RAF.
 \end{lemma}
+\begin{proof}
+	Let $\RAF'\coloneqq \RAF \setminus \{r'\}$ and $\RAF''\coloneqq \RAF \setminus \{r''\}$. Since $\educts(r')=\educts(r'')$ and 
+	$\products(r')=\products(r'')$ we observe that $\closure{\RAF}{F}= \closure{\RAF'}{F}=\closure{\RAF''}{F}$. With $\RAF$ 
+	being a RAF, both $\RAF'$ and $\RAF''$ are RAFs.
+\end{proof}
 \vspace{6pt} 
-A direct consequence of this Lemma is the following Corollary.
+A direct consequence of this Lemma is that only one representative of each equivalence class can be part of a RAF:
 \vspace{6pt} 
 \begin{corollary}
-	Let $(X,R,\cat)$ be a catalyzed RN with food-set $F$ and $\RAF$ be a minimal RAF. For $r',r'' \in[r']_{\simeq}, r'\neq r''$ 
+	Let $(X,R,\cat)$ be a catalyzed RN with food-set $F$ and $\RAF$ be a minimal RAF. For $r',r'' \in[r']_{\sim}, r'\neq r''$ 
 	$r'\in \RAF\Rightarrow r''\notin \RAF$.
 \end{corollary}
 \vspace{6pt} 
 This allows us to CRNS that contain only one representative for each equivalence class of a minimal RAF.
-Before venturing forth we give an example of a non-minimal RAF:\\
+Before venturing forth, we give an example of a non-minimal RAF:\\
 \vspace{6pt}
 \begin{minipage}[c]{0.4\textwidth}
 	\centering
