@@ -979,9 +979,9 @@ As in Fig.~\ref{ex:CutVertex2}, both strong blocks, i.e., $\king[\{x_1,x_2\}\cup
 share a common cut-vertex that is a reaction vertex. Indeed, a species vertex cannot be a cut-vertex, as the next lemma shows.
 \vspace{6pt}
 \begin{lemma}\label{lem:CutVertexReac}
-	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal, non-trivial RAF. If
-	$L$ is not a strong block, then every cut-vertex is a reaction 
-	vertex.
+	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ 
+	be a minimal, non-trivial RAF. If $L$ is not a strong block, then every 
+	cut-vertex is a reaction vertex.
 \end{lemma}
 \begin{proof}
 	Assume there is a cut-vertex $w\in X(G)$. Then $L[V(L)\setminus \{w\}]$ is composed of at least two connected
@@ -995,8 +995,22 @@ share a common cut-vertex that is a reaction vertex. Indeed, a species vertex ca
 \vspace{6pt}
 
 This result allows us to decompose $L$ into strong blocks. We will see in the next section that each of these strong blocks 
-indeed contains an autocatalytic core. Here, we continue by identifying a structural property common to any strong block 
-that warrants semipositivity. 
+indeed contains an autocatalytic core. Here, however, we continue by stating a necessary condition for a reaction to be a 
+cut-verex.
+
+\begin{lemma}
+	If $r\in R(L)$ is a cut-vertex and not an explicit autocatalytic reaction, then $r$ has at 
+	least two incoming and two outgoing edges.
+\end{lemma}
+\begin{proof}
+	Let $B_1$ and $B_2$ be the two blocks that are separated by $r$. Assume now that $r$ has 
+	only one incoming edge and the net-reactant is located in $B_1$. Then the catalyst is also 
+	the only net-reactant. Then, however, $\RAF\setminus R(B_1)$ is a RAF and thus $\RAF$ 
+	was not minimal. Assume now that $r$ has only one outgoing edge. The only catalyst is also 
+	the only net product. Thus $r$ is an explicit autocatalytic reaction.
+\end{proof}
+
+We continue by identifying a structural property common to any strong block that warrants semipositivity. 
 \vspace{6pt}
 \begin{lemma}\label{lem:cutVertexPureCat}
 	Any strong block of $L$ contains a reaction vertex $r\in \RAF$ that has only \emph{pure} catalysts as reactants.
