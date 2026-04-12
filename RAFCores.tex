@@ -999,15 +999,17 @@ indeed contains an autocatalytic core. Here, however, we continue by stating a n
 cut-verex.
 
 \begin{lemma}
-	If $r\in R(L)$ is a cut-vertex and not an explicit autocatalytic reaction, then $r$ has at 
+	If $r\in R(L)$ is a cut-vertex, then $r$ has at 
 	least two incoming and two outgoing edges.
 \end{lemma}
 \begin{proof}
 	Let $B_1$ and $B_2$ be the two blocks that are separated by $r$. Assume now that $r$ has 
 	only one incoming edge and the net-reactant is located in $B_1$. Then the catalyst is also 
-	the only net-reactant. Then, however, $\RAF\setminus R(B_1)$ is a RAF and thus $\RAF$ 
-	was not minimal. Assume now that $r$ has only one outgoing edge. The only catalyst is also 
-	the only net product. Thus $r$ is an explicit autocatalytic reaction.
+	the only net-reactant. Then, however, $\RAF\setminus R(B_2)$ is a RAF and thus $\RAF$ 
+	was not minimal. Assume now that $r$ has only one outgoing edge and the catalyst is in $B_2$. 
+	At least on net reactant is then in $B_1$. The only catalyst is also the only net product. 
+	Thus $r$ is an explicit autocatalytic reaction. Then, however, $\RAF\setminus R(B_2)$ is a RAF.
+	\TODO{Make it clearer}
 \end{proof}
 
 We continue by identifying a structural property common to any strong block that warrants semipositivity. 
