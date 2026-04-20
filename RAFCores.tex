@@ -118,6 +118,8 @@
 \newcommand{\cat}{\mathcal{K}}
 \newcommand{\educts}{\mathcal{E}}
 \newcommand{\products}{\mathcal{P}}
+\newcommand{\feducts}{\mathbf{E}}
+\newcommand{\froducts}{\mathbf{P}}
 \newcommand{\ORCID}[1]{}
 \DeclareMathOperator{\suck}{succ}
 \newcommand{\Code}[1]{\texttt{\upshape{#1}}}
@@ -134,8 +136,6 @@
 \newcommand{\TG}[1]{\begingroup\color{green}#1\endgroup}
 \newcommand{\NV}[1]{\begingroup\color{teal}#1\endgroup}
 \newcommand{\OLD}[1]{\begingroup\tiny\color{gray}#1\endgroup}
-
-
 
 % Linenumbers for debugging
 \usepackage{lineno}
@@ -225,7 +225,14 @@ and a set of reactions $R$. For any $r\in R$ we can write a stoichiometric equat
   \sum_{x\in X}\ s^-_{xr} \cdot x \rightarrow \sum_{x\in X} \ s^+_{xr}\cdot x
 \end{equation}
 where $s^{\pm}_{xr}$ are the educt and product stoichiometry of the
-molecule $x$ in the reaction $r$.
+molecule $x$ in the reaction $r$. Reactants and products are collected in the sets:
+\begin{equation}
+	\begin{split}
+		\educts&:  R\rightarrow X, \educts(r) \coloneqq \{x\in X \ \vert \ s^-_{xr}>0\} \\
+		\products&: R \rightarrow X, \products(r) \coloneqq \{x\in X \ \vert \ s^+_{xr}>0\} 
+	\end{split}
+\end{equation}
+
 The \emph{stoichiometric matrix} $\SM$ encodes all net-stoichiometries:
 \begin{equation}
   \SM_{xr}\coloneqq s^+_{xr}-s^-_{xr}
@@ -249,89 +256,94 @@ For a reaction $r$ we can define its \emph{net reaction} $\hat{r}$ as
       \hat{\products}: R \rightarrow X, \hat{\products}(r) & \coloneqq \{x\in X \ \vert \ \hat{s}^+_{xr}>0\} \\
     \end{split}
   \end{equation}
-  as the net reactants (educts) and net products of reaction $r$, respectively.
+  as the net reactants (educts) and net products of reaction $r$, respectively. Note we thereby have 
+  $\hat{\educts}(r) = \educts(\hat{r})$ and $\hat{\products}(r) = \products(\hat{r})$.
 
 Multiple reasons exist that account for the case $s^{\pm}_{xr}\neq \hat{s}^{\pm}_{xr}$. 
-One can be the solving agent. For example, in the reaction:
+One can be solving agents that mediate proton transfer between reactants. For example, 
+the reaction of water-free sulfuric acid with sodium hydroxide pellets is initiated at those sites, 
+where water is extracted from the surrounding gas phase due to the high hygroscopy of sulfuric acid 
+and sodium hydroxide on some localized surface moisture. Thus in:
 \begin{equation}
-	\text{HCl} + \text{H}_2\text{O} \leftrightharpoons \text{H}_3\text{O}^+ + \text{Cl}^- 
+	\text{H}_2\text{SO}_4 + 2\text{H}_2\text{O} \leftrightharpoons 2\text{H}_3\text{O}^+ + \text{SO}_4^{2-} 
 \end{equation}
-H$_2$O serves as the proton acceptor. In case, a base, such as NaOH, is added, which 
-dissolves in an aqueous solution into Na$^+$ and OH$^-$ ions, the hydronium ions react with 
-the hydroxide ions to form water molecules again, i.e.:
+H$_2$O serves as the proton acceptor, dissolves the solid sodium hydroxide, and hydrates the hydroxide ions:
 \begin{equation}
-	\text{H}_3\text{O}^+ + \text{Cl}^- + \text{NaOH} \leftrightharpoons \text{H}_2\text{O} + \text{HCl},
+	\text{NaOH}  \leftrightharpoons \text{Na}^+ + \text{OH}^- \text{ (hydrated) }  
 \end{equation}
-which yields the following overall reaction:
+The hydronium ions consequently react with the hydroxide ions to form water molecules again:
 \begin{equation}
-	\text{HCl} + \text{H}_2\text{O} + \text{NaOH} \leftrightharpoons 2\text{H}_2\text{O} +  \text{NaCl}. 
+	2\text{H}_3\text{O}^+ + 2\text{OH}^-  \leftrightharpoons 4 \text{H}_2\text{O},
 \end{equation}
-In this case, $1=s_{xr}^-\neq \hat{s}_{xr}^-=0$, and $2=s_{xr}^+\neq \hat{s}^+_{xr}=1$. 
-According to Brønsted/Lowry's acid-base theory, water does not act as a catalyst but directly participates 
-as a reactant to form hydronium ions. 
+which yields the overall reaction:
+\begin{equation}
+	\text{H}_2{SO}_4 + 2\text{H}_2\text{O} + 2\text{NaOH} \leftrightharpoons 4\text{H}_2\text{O} + 2\text{Na}^+ + \text{SO}_4^{2-}. 
+\end{equation}
+In this case, $2=s_{xr}^-\neq \hat{s}_{xr}^-=0$, and $4=s_{xr}^+\neq \hat{s}^+_{xr}=2$ for H$_2$O.
+Although complete water-freeness can not be guaranteed under realistic conditions, water is not considered
+to act as a catalyst since it does not fundamentally change the reaction mechanism, but rather removes environmental
+constraints by facilitating proton transfer via hydronium ion formation or stabilization of hydroxide ions through hydrate hulls. 
 
-A catalyst, on the other hand, is an entity $x\in X$ such that $s^{-}_{xr}\cdot s^{+}_{xr}\neq 0$ 
-and it increases the speed of a reaction. In this case, we say that $r$ is explicitly 
-catalyzed by $x$. In case $s^-_{xr}>s^+_{xr}>0$, $x$ is both reactant and catalyst of 
-reaction $r$, while in case $s^+_{xr}>s^-_{xr}>0$, $x$ is both product and catalyst of 
-reaction $r$. However, to account for entities being both a reactant/product and a catalyst, we 
+A catalyst, on the other hand, is an entity $x\in X$ such that $s^{-}_{xr}\cdot s^{+}_{xr}\neq 0$, which 
+increases the speed of a reaction; however, by changing the fundamental chemistry of the reaction. 
+In this case, we say that $r$ is explicitly catalyzed by $x$. In case $s^-_{xr}>s^+_{xr}>0$, $x$ is 
+both reactant and catalyst of reaction $r$, while in case $s^+_{xr}>s^-_{xr}>0$, $x$ is both product and catalyst of 
+reaction $r$. To account for these cases, in which entities are both a reactant/product and a catalyst, we 
 distinguish the stoichiometries in general as follows: 
 \begin{equation}
 	s^{\pm}_{xr} \coloneqq \sigma^{\pm}_{xr} + \kappa_{xr}.
 \end{equation}
-By this definition, it is readily verified that $\SM_{xr} = s^+_{xr}-s^-_{xr} = \sigma^+_{xr} - \sigma^-_{xr}$.
-The stoichiometric Eq.~\ref{eq:reaction} can then be rewritten as:
+By this definition, it is readily verified that $\SM_{xr} = s^+_{xr}-s^-_{xr} = \sigma^+_{xr} - \sigma^-_{xr}$, thus the net stoichiometries
+remain unchanged. The stoichiometric Eq.~\ref{eq:reaction} can then be rewritten as:
 \begin{equation}
 	r: \sum_{x\in X}\ (\sigma^-_{xr} + \kappa_{xr}) \cdot x \rightarrow \sum_{x\in X} \ (\sigma^+_{xr} + \kappa_{xr}) \cdot x.
 \end{equation}
-The set of educts, products, and catalysts of a reaction can then be conveniently derived as:
+We refer to species with $\sigma^{-}_{xr}$, $\sigma^{+}_{xr}$, and $\kappa_{xr}$ as F-reactants, F-products, and 
+F-catalysts, respectively, and collect them in sets:
 \begin{equation}
 	\begin{split}
-		\educts(r) & \coloneqq \{x\in X \ | \ \sigma^-_{xr} > 0\} \\
-		\products(r) & \coloneqq \{x\in X \ | \ \sigma^+_{xr} > 0\} \\
+		\feducts(r) & \coloneqq \{x\in X \ | \ \sigma^-_{xr} > 0\} \\
+		\froducts(r) & \coloneqq \{x\in X \ | \ \sigma^+_{xr} > 0\} \\
 		\cat(r) & \coloneqq \{x\in X \ | \ \kappa_{xr} > 0\}
 	\end{split}
 \end{equation} 
-Note that we thus have $\hat{\educts}(r) = \educts(\hat{r})$ and $\hat{\products}(r) = \products(\hat{r})$, which motivates 
-defining the following relation:
+We may observe that $\hat{\feducts}(r) = \feducts(\hat{r}) = \educts(\hat{r}) = \hat{\educts}(r)$ and 
+$\hat{\froducts}(r) = \froducts(\hat{r}) = \products(\hat{r}) = \hat{\products}(r)$, which motivates to 
+introduce the following relation:
 \begin{equation}
 	r_1\sim r_2 \Leftrightarrow \SM_{xr_1}=\SM_{xr_2}, \forall x\in X
 \end{equation}
-It is readily verified that $\sim$ is indeed an equivalence relationship. The set of equivalence class $[r]_{\sim}$ thereby collects 
+It is readily verified that $\sim$ is indeed an equivalence relationship. The equivalence class $[r]_{\sim}$ thereby collects 
 all stoichiometric equations that share the same net reaction:
 \begin{equation}
 	[r]_{\sim} = \left\{r':  \sum_{x\in X}\ (\sigma^-_{xr} + \kappa_{xr}) \cdot x \rightarrow \sum_{x\in X} \ (\sigma^+_{xr} + 
 	\kappa_{xr}) \cdot x \ \middle\vert \  \hat{s}^{\pm}_{xr'} = \hat{s}^{\pm}_{xr}\right\}
 \end{equation}
-The natural representative of an equivalence class $[r]_{\sim}$ is $\hat{r}$. It may have multiple catalysts, 
-either acting alone or synergistically. One example is the hydrogenation of ethene to ethane that can be 
-mediated by platinum, palladium, or nickel. Thus, for each representative $r\in [\hat{r}]_{\sim}$, we collect the 
-catalysts in the set $\cat_r\coloneqq \{x\in X \ \vert \ \kappa_{xr}> 0\}$. Note that $\cat_r$ may be empty, 
-i.e., $\cat_{\hat{r}}=\emptyset$ by definition. The catalysts of $[r]_{\sim}$ is thereby a collection 
-$\cat_{[r]_{\sim}}=\{\cat_{r'} \ | \ r'\in [r]_{\sim}\}$. We denote by $\cat(R)\coloneqq\{(\cat_r,r) \ | \ r\in R, 
-\cat_r\neq\emptyset\}$ the set of \emph{catalyzations}. In case all reactions are $r\in R$ uncatalyzed, 
-$\cat(R)=\emptyset$. The triple $(X,R,\cat)$ with $\cat=\cat(R)\neq\emptyset$ is called a partially catalyzed 
+Each equivalence class $[r]_{\sim}$ therefore has a natural representative, i.e., $\hat{r}$. Different representatives of 
+the same equivalence class may have different or multiple synergistically acting catalysts \cite{}. For example, the 
+hydrogenation of ethene to ethane can be mediated by platinum, palladium, or nickel separately. A famous example 
+for co-catalysis, i.e., where the orchestrated cooperation of two catalysts is required, is the dual-catalyst system of 
+palladium and copper in the Hoechst-Wacker process, where ethene is oxidized to acetaldehyde \cite{}. The set of 
+catalysts may also be empty, i.e., for $\cat({\hat{r}})=\emptyset$ by definition, or if the reaction is uncatalyzed. In
+accordance, the catalysts of an equivalence class $[r]_{\sim}$ is a collection $\cat([r]_{\sim})=\{\cat(r') \ | \ r'\in [r]_{\sim}\}$. 
+
+A simple observation is that $\cat(r) \neq \cat(r') \Rightarrow r\neq r'$. However, in general, the converse is true, 
+since $r,r'\in [r]_{\sim}$ may be distinct due to $\educts(r)\neq \educts(r')$ or $\products(r)\neq \products(r')$. We thus
+can state a first result:
+
+\vspace{6pt}
+\begin{corollary}
+	Let $r,r'\in [r]_{\sim}$. Then $r=r'$ if and only if $\educts(r)=\educts(r'), \products(r)= \products(r')$, and $
+	\cat(r) = \cat(r')$.
+\end{corollary}
+\vspace{6pt}
+
+We denote by $\cat(R)\coloneqq\{(\cat(r),r) \ | \ r\in R, \cat(r) \neq\emptyset\}$ the set of \emph{catalyzations}. In case all reactions 
+are $r\in R$ are uncatalyzed, $\cat(R)=\emptyset$. The triple $(X,R,\cat)$ with $\cat=\cat(R)\neq\emptyset$ is called a partially catalyzed 
 RN. If $|\cat| = |R|$, i.e., each reaction is catalyzed, we call $(X,R,\cat)$ a catalyzed RN. 
 
-%One reaction can be catalyzed by multiple, but also by different catalysts separately. 
-%Reactions $r_1\neq r_2$ sharing the same educts and products then differ only by $\cat_{r_1}\neq 
-%\cat_{r_2}$. We therefore define:
-%\begin{equation}
-%	r_1\sim r_2 \Leftrightarrow \educts(r_1)=\educts(r_2) \text{ and } \products(r_1)=\products(r_2).
-%\end{equation}
-% It is readily verified that $\sim$ is indeed an equivalence relationship. We denote the set of reaction equivalence 
-% classes by $\hat{R}\coloneqq \{[r]_{\sim} \ | \ r\in R\}$. Let us write $r,r'\in\hat{r}$ for the CRN reactions that belong
-% the same reaction $\hat{r}\in \hat{R}$. The difference between the members of the equivalence class $\hat {r} $ is exactly 
-% the \emph{catalyzations}. From the point of view of CRN reactions $r\in R$, the catalysts need to be specified. 
-%  \begin{equation}
-%    K(r)\coloneqq \{ x\in X| s^-_{xr}=s^+_{xr}>0\}
-%  \end{equation}
-  Thus, we have the reactant (educt) set $\educts(r)\cup K(r)$ and the product set 
-  $\products(r)\cup K(r)$. Clearly, we have $K(r)=\emptyset$ if the reaction is 
-  uncatalyzed. A one-to-one correspondence between the set of reactions 
-  in a CRN, i.e. $R$, and the corresponding reflexively autocatalytic food-generated 
-  (RAF) systems \cite{hordijk_detecting_2004}, i.e. $\hat{R}$, only exists if for each 
-  reaction $r\in R: |\cat_r|\leq 1$. 
+\TODO{Now definition of a RAF, maybe already in the Nicola setting or first in the original RAF setting}.
+
 \vspace{6pt}
 \begin{definition}[RAF]\label{def:RAF}
 	Let $(X,R,\cat)$ be a catalyzed network with $F\subseteq X$. Then
