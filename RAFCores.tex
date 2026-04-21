@@ -256,14 +256,21 @@ For a reaction $r$ we can define its \emph{net reaction} $\hat{r}$ as
       \hat{\products}: R \rightarrow X, \hat{\products}(r) & \coloneqq \{x\in X \ \vert \ \hat{s}^+_{xr}>0\} \\
     \end{split}
   \end{equation}
-  as the net reactants (educts) and net products of reaction $r$, respectively. Note we thereby have 
+  as the net reactants (educts) and net products of reaction $r$, respectively. Note, we thereby have 
   $\hat{\educts}(r) = \educts(\hat{r})$ and $\hat{\products}(r) = \products(\hat{r})$.
 
-Multiple reasons exist that account for the case $s^{\pm}_{xr}\neq \hat{s}^{\pm}_{xr}$. 
-One can be solving agents that mediate proton transfer between reactants. For example, 
-the reaction of water-free sulfuric acid with sodium hydroxide pellets is initiated at those sites, 
-where water is extracted from the surrounding gas phase due to the high hygroscopy of sulfuric acid 
-and sodium hydroxide on some localized surface moisture. Thus in:
+Multiple reasons exist that account for the case $s^{\pm}_{xr}\neq \hat{s}^{\pm}_{xr}$;
+one are catalysts. In the original CRN setting, a catalyst for a reaction $r$ is an entity $x\in X$ 
+such that $s^{-}_{xr}\cdot s^{+}_{xr}\neq 0$, thus it appears on both sides of the stoichiometric 
+equation of $r$. In case $s^-_{xr}>s^+_{xr}>0$, we say $x$ is both reactant and catalyst of reaction 
+$r$, while in case $s^+_{xr}>s^-_{xr}>0$, $x$ is both product and catalyst of reaction $r$. In the latter 
+$x$ is also called an autocatalyst, while in the former case, $x$ is called an autoinhibitor. 
+
+From a chemical perspective, however, a catalyst is an entity $x\in X$ that not only satisfies $s^{-}_{xr}\cdot 
+s^{+}_{xr}\neq 0$, but also increases the speed of a reaction. But not only can catalysts act in this way, but 
+also the solvent, such as water. Consider the reaction of water-free sulfuric acid with sodium hydroxide 
+pellets, which is in general initiated at those sites where water is extracted from the surrounding gas phase 
+due to the high hygroscopy of sulfuric acid and sodium hydroxide on some localized surface moisture. Thus in:
 \begin{equation}
 	\text{H}_2\text{SO}_4 + 2\text{H}_2\text{O} \leftrightharpoons 2\text{H}_3\text{O}^+ + \text{SO}_4^{2-} 
 \end{equation}
@@ -280,26 +287,23 @@ which yields the overall reaction:
 	\text{H}_2{SO}_4 + 2\text{H}_2\text{O} + 2\text{NaOH} \leftrightharpoons 4\text{H}_2\text{O} + 2\text{Na}^+ + \text{SO}_4^{2-}. 
 \end{equation}
 In this case, $2=s_{xr}^-\neq \hat{s}_{xr}^-=0$, and $4=s_{xr}^+\neq \hat{s}^+_{xr}=2$ for H$_2$O.
-Although complete water-freeness can not be guaranteed under realistic conditions, water is not considered
+Although complete water-freeness can not be guaranteed under realistic labratory conditions, water is not considered
 to act as a catalyst since it does not fundamentally change the reaction mechanism, but rather removes environmental
-constraints by facilitating proton transfer via hydronium ion formation or stabilization of hydroxide ions through hydrate hulls. 
+constraints by facilitating proton transfer via hydronium ion formation, stabilizing hydroxide ions through hydrate shells,
+and forming chains of hydrogen bonds.
 
-A catalyst, on the other hand, is an entity $x\in X$ such that $s^{-}_{xr}\cdot s^{+}_{xr}\neq 0$, which 
-increases the speed of a reaction; however, by changing the fundamental chemistry of the reaction. 
-In this case, we say that $r$ is explicitly catalyzed by $x$. In case $s^-_{xr}>s^+_{xr}>0$, $x$ is 
-both reactant and catalyst of reaction $r$, while in case $s^+_{xr}>s^-_{xr}>0$, $x$ is both product and catalyst of 
-reaction $r$. To account for these cases, in which entities are both a reactant/product and a catalyst, we 
-distinguish the stoichiometries in general as follows: 
+To account for the different roles an entity can play within a chemical reaction, we partition  
+stoichiometries as done in \cite{bridging_Golnik_2026} in the following way: 
 \begin{equation}
 	s^{\pm}_{xr} \coloneqq \sigma^{\pm}_{xr} + \kappa_{xr}.
 \end{equation}
 By this definition, it is readily verified that $\SM_{xr} = s^+_{xr}-s^-_{xr} = \sigma^+_{xr} - \sigma^-_{xr}$, thus the net stoichiometries
 remain unchanged. The stoichiometric Eq.~\ref{eq:reaction} can then be rewritten as:
-\begin{equation}
+\begin{equation}\label{eq:Mod.SmEq}
 	r: \sum_{x\in X}\ (\sigma^-_{xr} + \kappa_{xr}) \cdot x \rightarrow \sum_{x\in X} \ (\sigma^+_{xr} + \kappa_{xr}) \cdot x.
 \end{equation}
-We refer to species with $\sigma^{-}_{xr}$, $\sigma^{+}_{xr}$, and $\kappa_{xr}$ as F-reactants, F-products, and 
-F-catalysts, respectively, and collect them in sets:
+We refer to species appearing in Eq.~\ref{eq:Mod.SmEq} with $\sigma^{-}_{xr}>0$, $\sigma^{+}_{xr}>0$, and $\kappa_{xr}>0$ as 
+F-reactants, F-products, and F-catalysts, respectively, and collect them in sets:
 \begin{equation}
 	\begin{split}
 		\feducts(r) & \coloneqq \{x\in X \ | \ \sigma^-_{xr} > 0\} \\
