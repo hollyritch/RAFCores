@@ -108,18 +108,23 @@
 \newcommand{\whatever}{\mbox{\,.\,}}
 \newcommand{\king}{\mathbf{K}}
 \newcommand{\queen}{\mathbf{Q}}
-\newcommand{\SM}{\mathbf{S}}
+\newcommand{\SM}{\mathbb{S}}
 \newcommand{\closure}[2]{\mathscr{C}_{#1}(#2)}
 \newcommand{\cl}[0]{\mathscr{X}}
+\newcommand{\CR}[0]{\mathcal{R}}
+\newcommand{\C}[1]{\mathit{#1}}
+\newcommand{\FR}[0]{\mathbf{R}}
+\newcommand{\F}[1]{\mathbf{#1}}
+\newcommand{\net}[1]{\hat{#1}}
+\newcommand{\RAF}[0]{\mathbf{R'}}
 \newcommand{\PO}[0]{\mathscr{R}}
 \newcommand{\POR}[0]{\mathcal{R}}
-\newcommand{\RAF}[0]{\mathbf{R}}
 \newcommand{\POX}[0]{\mathcal{X}}
-\newcommand{\cat}{\mathcal{K}}
-\newcommand{\educts}{\mathcal{E}}
-\newcommand{\products}{\mathcal{P}}
+\newcommand{\cat}{\mathbf{C}}
+\newcommand{\ceducts}{\mathcal{E}}
+\newcommand{\cproducts}{\mathcal{P}}
 \newcommand{\feducts}{\mathbf{E}}
-\newcommand{\froducts}{\mathbf{P}}
+\newcommand{\fproducts}{\mathbf{P}}
 \newcommand{\ORCID}[1]{}
 \DeclareMathOperator{\suck}{succ}
 \newcommand{\Code}[1]{\texttt{\upshape{#1}}}
@@ -215,12 +220,18 @@
 
 \holy{}
 
-\section{Preliminaries}
+\section{Representation of Reactions in Chemical Networks}
 
+The literature on systems of chemical interactions is inconsistent in the way how 
+they are formalized. In particular, different authors have introduced different notions of 
+reactions \cite{muller_what_2022}. We will therefore take advantage of different style formats, i.e., $\CR$ 
+and $\FR$, to highlight sets of reactions that are derived from chemical reaction networks 
+\cite{muller_what_2022} and from catalytic reaction systems \cite{lohn_evolving_1998}, 
+respectively. We will see that both sets do not contain the same mathematical objects. 
 
-
-A reaction network $(X,R)$ is tuple of two finite sets, set of metabolites $X$ 
-and a set of reactions $R$. For any $r\in R$ we can write a stoichiometric equation as:
+The most general setting is given by the framework of a chemical reaction network (CRN). 
+A CRN $(X,\CR)$ is a tuple of two finite sets, a set of metabolites $X$ 
+and a set of reactions $\CR$. For any $r\in \CR$, we can write a stoichiometric equation as: 
 \begin{equation}\label{eq:reaction}
   \sum_{x\in X}\ s^-_{xr} \cdot x \rightarrow \sum_{x\in X} \ s^+_{xr}\cdot x
 \end{equation}
@@ -228,8 +239,8 @@ where $s^{\pm}_{xr}$ are the educt and product stoichiometry of the
 molecule $x$ in the reaction $r$. Reactants and products are collected in the sets:
 \begin{equation}
 	\begin{split}
-		\educts&:  R\rightarrow X, \educts(r) \coloneqq \{x\in X \ \vert \ s^-_{xr}>0\} \\
-		\products&: R \rightarrow X, \products(r) \coloneqq \{x\in X \ \vert \ s^+_{xr}>0\} 
+		\ceducts&:  \CR \rightarrow X, \ceducts(r) \coloneqq \{x\in X \ \vert \ s^-_{xr}>0\} \\
+		\cproducts&: \CR \rightarrow X, \cproducts(r) \coloneqq \{x\in X \ \vert \ s^+_{xr}>0\} 
 	\end{split}
 \end{equation}
 
@@ -237,34 +248,34 @@ The \emph{stoichiometric matrix} $\SM$ encodes all net-stoichiometries:
 \begin{equation}
   \SM_{xr}\coloneqq s^+_{xr}-s^-_{xr}
 \end{equation}
-For a reaction $r$ we can define its \emph{net reaction} $\hat{r}$ as
+For a reaction $r$ we can define its \emph{net reaction} $\net{r}$ as
   \begin{equation}
-      \sum_{x\in X}\ \hat{s}^-_{xr} \cdot x \rightarrow \sum_{x\in X}
-      \ \hat{s}^+_{xr}\cdot x 
+      \sum_{x\in X}\ \net{s}^-_{xr} \cdot x \rightarrow \sum_{x\in X}
+      \ \net{s}^+_{xr}\cdot x 
     \end{equation}
     with 
     \begin{equation}
     \begin{split}
-      \hat{s}^-_{xr} = -\SM_{xr}  \qquad &\text{ if } \SM_{xr} < 0, \text{and } 0 \text{ otherwise}\\
-      \hat{s}^+_{xr} = \SM_{xr}  \qquad &\text{ if } \SM_{xr}> 0, \text{and } 0 \text{ otherwise}   
+      \net{s}^-_{xr} = -\SM_{xr}  \qquad &\text{ if } \SM_{xr} < 0, \text{and } 0 \text{ otherwise}\\
+      \net{s}^+_{xr} = \SM_{xr}  \qquad &\text{ if } \SM_{xr}> 0, \text{and } 0 \text{ otherwise}   
     \end{split}
   \end{equation}
   and 
   \begin{equation}
     \begin{split}
-      \hat{\educts}: R \rightarrow X, \hat{\educts}(r) & \coloneqq \{x\in X \ \vert \ \hat{s}^-_{xr}>0\} \\
-      \hat{\products}: R \rightarrow X, \hat{\products}(r) & \coloneqq \{x\in X \ \vert \ \hat{s}^+_{xr}>0\} \\
+      \net{\ceducts}: \CR \rightarrow X, \net{\ceducts}(r) & \coloneqq \{x\in X \ \vert \ \net{s}^-_{xr}>0\} \\
+      \net{\cproducts}: \CR \rightarrow X, \net{\cproducts}(r) & \coloneqq \{x\in X \ \vert \ \net{s}^+_{xr}>0\} \\
     \end{split}
   \end{equation}
   as the net reactants (educts) and net products of reaction $r$, respectively. Note, we thereby have 
-  $\hat{\educts}(r) = \educts(\hat{r})$ and $\hat{\products}(r) = \products(\hat{r})$.
+  $\net{\ceducts}(r) = \ceducts(\net{r})$ and $\net{\cproducts}(r) = \cproducts(\net{r})$.
 
-Multiple reasons exist that account for the case $s^{\pm}_{xr}\neq \hat{s}^{\pm}_{xr}$;
+Multiple reasons exist that account for the case $s^{\pm}_{xr}\neq \net{s}^{\pm}_{xr}$;
 one are catalysts. In the original CRN setting, a catalyst for a reaction $r$ is an entity $x\in X$ 
 such that $s^{-}_{xr}\cdot s^{+}_{xr}\neq 0$, thus it appears on both sides of the stoichiometric 
 equation of $r$. In case $s^-_{xr}>s^+_{xr}>0$, we say $x$ is both reactant and catalyst of reaction 
 $r$, while in case $s^+_{xr}>s^-_{xr}>0$, $x$ is both product and catalyst of reaction $r$. In the latter 
-$x$ is also called an autocatalyst, while in the former case, $x$ is called an autoinhibitor. 
+$x$ is also called an \emph{autocatalyst}, while in the former case, $x$ is called an \emph{autoinhibitor}. 
 
 From a chemical perspective, a catalyst is an entity $x\in X$ that not only satisfies $s^{-}_{xr}\cdot 
 s^{+}_{xr}\neq 0$, but also increases the speed of a reaction. However, not only can catalysts act in this way, 
@@ -274,20 +285,21 @@ due to the high hygroscopy of sulfuric acid and sodium hydroxide on some localiz
 \begin{equation}
 	\text{H}_2\text{SO}_4 + 2\text{H}_2\text{O} \leftrightharpoons 2\text{H}_3\text{O}^+ + \text{SO}_4^{2-} 
 \end{equation}
-H$_2$O serves as the proton acceptor, dissolves the solid sodium hydroxide, and hydrates the hydroxide ions:
+H$_2$O serves as the proton acceptor. It further dissolves the solid sodium hydroxide and hydrates the hydroxide 
+ions:
 \begin{equation}
-	\text{NaOH}  \leftrightharpoons \text{Na}^+ + \text{OH}^- \text{ (hydrated) }  
+	\text{NaOH}  \leftrightharpoons \text{Na}^+ + \text{OH}^- \text{ (hydrated)}.  
 \end{equation}
 The hydronium ions consequently react with the hydroxide ions to form water molecules again:
 \begin{equation}
-	2\text{H}_3\text{O}^+ + 2\text{OH}^-  \leftrightharpoons 4 \text{H}_2\text{O},
+	\text{H}_3\text{O}^+ + \text{OH}^-  \leftrightharpoons 2 \text{H}_2\text{O},
 \end{equation}
 which yields the overall reaction:
 \begin{equation}
 	\text{H}_2{SO}_4 + 2\text{H}_2\text{O} + 2\text{NaOH} \leftrightharpoons 4\text{H}_2\text{O} + 2\text{Na}^+ + \text{SO}_4^{2-}. 
 \end{equation}
-In this case, $2=s_{xr}^-\neq \hat{s}_{xr}^-=0$, and $4=s_{xr}^+\neq \hat{s}^+_{xr}=2$ for H$_2$O.
-Although complete water-freeness can not be guaranteed under realistic labratory conditions, water is not considered
+In this case, $2=s_{xr}^-\neq \net{s}_{xr}^-=0$, and $4=s_{xr}^+\neq \net{s}^+_{xr}=2$ for H$_2$O.
+Although a complete absence of water is unachievable under realistic laboratory conditions, it is not considered
 to act as a catalyst since it does not fundamentally change the reaction mechanism, but rather removes environmental
 constraints by facilitating proton transfer via hydronium ion formation, stabilizing hydroxide ions through hydrate shells,
 and forming chains of hydrogen bonds.
@@ -307,97 +319,134 @@ F-reactants, F-products, and F-catalysts, respectively, and collect them in the 
 \begin{equation}
 	\begin{split}
 		\feducts(r) & \coloneqq \{x\in X \ | \ \sigma^-_{xr} > 0\} \\
-		\froducts(r) & \coloneqq \{x\in X \ | \ \sigma^+_{xr} > 0\} \\
+		\fproducts(r) & \coloneqq \{x\in X \ | \ \sigma^+_{xr} > 0\} \\
 		\cat(r) & \coloneqq \{x\in X \ | \ \kappa_{xr} > 0\}
 	\end{split}
 \end{equation} 
+To distinguish the F-catalysts from the F-reactants and F-products, we will write stoichiometric equations
+as follows:
+\begin{equation}
+	r: \sum_{x\in X}\ \sigma^-_{xr} \cdot x \xrightarrow{\kappa_{xr} \cdot x\ : \ \kappa_{xr}>0} \sum_{x\in X} \ \sigma^+_{xr}  \cdot x.
+\end{equation}
 As shown in \cite{bridging_Golnik_2026} we have:
 \begin{equation}
 	\begin{split}
-		\hat{\educts}(r) \subseteq \feducts(r) &\subseteq \educts(r) \\
-		\hat{\products}(r) \subseteq \froducts(r) &\subseteq \products(r) \\
-		\cat(r) \cup (\feducts(r)\cap \froducts(r)) &= \educts(r)\cap \products(r)\\
+		\net{\ceducts}(r) \subseteq \feducts(r) &\subseteq \ceducts(r) \\
+		\net{\cproducts}(r) \subseteq \fproducts(r) &\subseteq \cproducts(r) \\
+		\cat(r) \cup (\feducts(r)\cap \fproducts(r)) &= \ceducts(r)\cap \cproducts(r)\\
 	\end{split}
 \end{equation}
-We may, additionally, observe that $\hat{\feducts}(r) = \feducts(\hat{r}) = \educts(\hat{r}) = \hat{\educts}(r)$ and 
-$\hat{\froducts}(r) = \froducts(\hat{r}) = \products(\hat{r}) = \hat{\products}(r)$, which motivates to 
+We may, additionally, observe that $\net{\feducts}(r) = \feducts(\net{r}) = \ceducts(\net{r}) = \net{\ceducts}(r)$ and 
+$\net{\fproducts}(r) = \fproducts(\net{r}) = \cproducts(\net{r}) = \net{\cproducts}(r)$, which motivates to 
 introduce the following relation:
 \begin{equation}
-	r_1\sim r_2 \Leftrightarrow \SM_{xr_1}=\SM_{xr_2}, \forall x\in X
+	r_1\bumpeq r_2 \Leftrightarrow \SM_{xr_1}=\SM_{xr_2}, \forall x\in X
 \end{equation}
-It is readily verified that $\sim$ is indeed an equivalence relationship. Each equivalence class $[r]_{\sim}$ thereby collects 
-all stoichiometric equations that share the same net reaction $\hat{r}$, which is the natural representative of $[r]_\sim$.
-%\begin{equation}
-%	[r]_{\sim} = \left\{r':  \sum_{x\in X}\ (\sigma^-_{xr} + \kappa_{xr}) \cdot x \rightarrow \sum_{x\in X} \ (\sigma^+_{xr} + 
-%	\kappa_{xr}) \cdot x \ \middle\vert \  \hat{s}^{\pm}_{xr'} = \hat{s}^{\pm}_{xr}, \forall x\in X\right\}
-%\end{equation}
-
-Different representatives of the same equivalence class may have different or multiple synergistically acting 
-catalysts. For example, the hydrogenation of ethene to ethane can be mediated by platinum, palladium, 
-or nickel separately \TODO{\cite{}}. A famous example for co-catalysis, i.e., where the orchestrated cooperation of two catalysts 
-is required, is the dual-catalyst system of palladium and copper in the Hoechst-Wacker process, where ethene is 
-oxidized to acetaldehyde \TODO{\cite{}}. The set of catalysts may also be empty, i.e., $\cat({\hat{r}})=\emptyset$ by 
-definition, or if the reaction is uncatalyzed. In accordance, the catalysts of an equivalence class $[r]_{\sim}$ is a 
-collection $\cat([r]_{\sim})=\{\cat(r') \ | \ r'\in [r]_{\sim}\}$. 
-
-A simple observation is that $\cat(r) \neq \cat(r') \Rightarrow r\neq r'$. However, in general, the converse is not true, 
-since $r,r'\in [r]_{\sim}$ may be distinct due to $\educts(r)\neq \educts(r')$ or $\products(r)\neq \products(r')$. We thus
-can state a first result:
+It is readily verified that $\bumpeq$ is indeed an equivalence relationship. Each equivalence class $[r]_{\bumpeq}$ thereby collects 
+all stoichiometric equations that share the same net reaction $\net{r}$, which is, in particular, the natural representative of 
+$[r]_\bumpeq$:
+\begin{equation}\label{eq:CEquivClass}
+	[r]_{\bumpeq} = \left\{r': \sum_{x\in X}\ (\sigma^-_{xr} + \kappa_{xr}) \cdot x)\rightarrow \sum_{x\in X} \ (\sigma^+_{xr} + \kappa_{xr} \cdot x)  \ \middle\vert \  \net{s}^{\pm}_{xr'} = \net{s}^{\pm}_{xr}, \forall x\in X\right\}
+\end{equation}
+Note that, in general, each $\bumpeq$-equivalence class is of infinite size. However, we may restrict the relation to 
+$\mathcal{R}$ simply by writing $\bumpeq_{\CR}$. A consequence from Eq.~\ref{eq:CEquivClass} then is that 
+$\cat(r) \neq \cat(r') \Rightarrow r\neq r'$. However, in general, the converse is not true, since $r,r'\in [r]_{\bumpeq}$ 
+may be distinct due to $\ceducts(r)\neq \ceducts(r')$ or $\cproducts(r)\neq \cproducts(r')$:
 
 \vspace{6pt}
 \begin{corollary}
-	Let $r,r'\in [r]_{\sim}$. Then $r=r'$ if and only if $\educts(r)=\educts(r'), \products(r)= \products(r')$, and $
+	Let $r,r'\in [r]_{\bumpeq}$. Then $r=r'$ if and only if $\ceducts(r)=\ceducts(r'), \cproducts(r)= \cproducts(r')$, and $
 	\cat(r) = \cat(r')$.
 \end{corollary}
 \vspace{6pt}
 
-Literature on chemical systems does not yield a consistent notion of equivalence between reactions. Chemical reaction networks 
-deliver the most general framework in this context, since each reaction of an $\sim$-equivalence class is considered a unique object. 
-Reflexively autocatalytic sets (RAF) \cite{hordijk_detecting_2004}, however, take a different approach. Before 
-stating the definition of a RAF we require another formality. The closure of a set $X'$ w.r.t. to a set $R'$ denoted as 
-$\closure{R'}{X'}$ is the unique minimal set $Y$ containing $X'$ such that for any $r\in R': \educts(r)\subseteq Y \Rightarrow \products(r)\subseteq Y$. Thus:
+Different representatives of the same $\bumpeq$-equivalence class may have different or multiple synergistically acting 
+catalysts. For example, the hydrogenation of ethene to ethane can be mediated by platinum, palladium, 
+or nickel separately \cite{crampton_ethylene_2016}. An example for co-catalysis, i.e., where the 
+orchestrated cooperation of two catalysts is required, is the dual-catalyst system of palladium and copper in 
+the Hoechst-Wacker process, where ethene is oxidized to acetaldehyde \cite{jira_acetaldehyde_2009}. The 
+set of catalysts may also be empty, i.e., $\cat({\net{r}})=\emptyset$ by definition, or if the reaction is uncatalyzed. 
+In accordance, the catalysts of an equivalence class $[r]_{\bumpeq}$ is a collection $\cat([r]_{\bumpeq})=\{\cat(r') \ | \ r'\in [r]_{\bumpeq}\}$. 
+
+In a CRN $(X,\CR)$, representatives of an equivalence class $[r]_{\bumpeq}$ are distinct objects. Thus,
+it is possible that two reactions of the same equivalence class, $r,r'\in [r]_{\bumpeq}$, are in $\CR$. In this case,
+they appear as unique vertices in the bipartite K\"onigs representation of a CRN:
+\begin{equation}
+	K\coloneqq (X\cup \C{R}, E_1\cup E_2),
+\end{equation}
+where $E_1\coloneqq \{(x,r) \ | \ s^-_{xr}>0\}$ and $E_2\coloneqq \{(x,r) \ | \ s^+_{xr}>0\}$. 
+We will refer to these kinds of reactions as C-reactions and denote them in normal font.
+
+Catalytic reaction systems (CRS) sensu Lohn \cite{lohn_evolving_1998} take a different approach. 
+In particular, two C-reactions $r_1, r_2$ are considered indistinguishable if they differ only in their 
+F-catalysts but share the same F-reactants and F-products:
+\begin{equation}
+	r_1\sim r_2 \Leftrightarrow \feducts(r_1)=\feducts(r_2), \fproducts(r_1)=\fproducts(r_2), 
+\end{equation}
+Again, $\sim$ is indeed an equivalence relationship. We refer to a $\sim$-equivalence class as an
+F-reaction, which is given by: 
+\begin{equation}\label{eq:fEquivClass}
+	[r]_{\sim}= \left\{r' \in [r]_{\bumpeq} \ \middle\vert \ \sigma_{xr'}^{\pm} = \sigma_{xr}^\pm, \forall x\in X \right\}
+\end{equation}
+The subtle difference between Eq.~\ref{eq:CEquivClass} and Eq.~\ref{eq:fEquivClass} directly yields 
+$r_1\sim r_2 \Rightarrow r_1\bumpeq r_2$, while the converse is in general not true, as shown 
+by the following example:
+\begin{equation}
+	\begin{split}
+		r_1&: x_1 + x_2 \xrightarrow{x_3} x_2 + x_4 \\
+		r_2&: x_1 \hspace{23pt} \xrightarrow{x_3} x_4
+	\end{split}
+\end{equation} 
+A $\sim$-equivalence class $[r]_{\sim}$ also has a natural representative, i.e., the reaction 
+$\tilde{r}\in [r]_{\sim}: \cat(\tilde{r}) = \emptyset$. Note that $\tilde{r}= \hat{r}$ if and only if
+$\feducts(r)= \net{\ceducts}(r)$ and $\fproducts(r) = \net{\cproducts}(r)$. For consistency, 
+we will denote F-reactions in bold, i.e., $\F{r}$ and sets of F-reactions by $\FR$. We additionally
+abuse notation and write $r\in \F{r}$ for $r\in [r]_\sim$. 
+
+In general, a $\simeq$ equivalence class is of infinite size. However, given a set of F-reactions 
+$\FR$ together with a set of species $X$, we might want to restrict each $\simeq$-equivalence class 
+to contain only those representatives that are catalyzed by an $x\in X$. This is realized by 
+\emph{catalyzations}, i.e., pairs $(X',\F{r})$ for which $X'\subseteq X, \F{r}\in \FR$ and there 
+$\exists \ r\in \F{r}: \kappa_{xr}>0, \forall x\in X'$. For each $\F{r}\in \FR$ we collect all 
+catalyzations in a set $\cat(F{r})=\{(X',r) \ X'\subseteq X, \exists \ r\in \F{r}: \kappa_{xr}>0, \forall x\in X'\}$
+
+The set of F-reactions $\FR$ together with a set of species $X$ constitute the basis for a 
+CRS. objects that Before stating the definition of a RAF we require another formality. The closure of a set $X'$ w.r.t. to a set $R'$ denoted as 
+$\closure{R'}{X'}$ is the unique minimal set $Y$ containing $X'$ such that for any $r\in R': \ceducts(r)\subseteq Y \Rightarrow \cproducts(r)\subseteq Y$. Thus:
 \begin{equation}\label{eq:Closure}
-	\closure{R'}{X'} \coloneqq \min \underbrace{\{ Z \subseteq X \ | \ X'\subseteq Z, \educts(r) \subseteq Z \Rightarrow \products(r) \subseteq Z \ \forall r\in R'\}}_{\eqqcolon \mathfrak{C}_{R'}(X')}
+	\closure{R'}{X'} \coloneqq \min \underbrace{\{ Z \subseteq X \ | \ X'\subseteq Z, \ceducts(r) \subseteq Z \Rightarrow \cproducts(r) \subseteq Z \ \forall r\in R'\}}_{\eqqcolon \mathfrak{C}_{R'}(X')}
 \end{equation}
 
-\TODO{We need to formally speak here from the perspective of a CRS...not a CRN. Maybe pull up the equivalence $\simeq$ 
-and introduce a CRS as a restriction of a CRN. This is probably the best way to navigate these structures.}
 \vspace{6pt}
 \begin{definition}[RAF]\label{def:RAF}
 	Let $(X,R,\cat)$ be a catalyzed network with $F\subseteq X$. Then
 	a set $\RAF\subseteq R$ is called  
 		\begin{itemize} 
-			\item[i.]{\emph{reflexive autocatalytic} (RA) if $\forall r\in \RAF: \emptyset \neq \cat(r)\subseteq \feducts(\RAF)\cup \froducts(\RAF)$}
+			\item[i.]{\emph{reflexive autocatalytic} (RA) if $\forall r\in \RAF: \emptyset \neq \cat(r)\subseteq \feducts(\RAF)\cup \fproducts(\RAF)$}
 			\item[ii.]{\emph{F-generated} if $\feducts(\RAF)\subseteq \closure{\RAF}{F}$}
 			\item[iii.]{\emph{reflexive autocatalytic} and \emph{F-generated} (RAF) if both i. and ii. hold}
 		\end{itemize}
 \end{definition}
 \vspace{6pt}
   
-From a RAF perspective, two reactions $r, r'$ with catalysts $\cat(r)\neq \emptyset, \cat(r)\neq \emptyset$ 
-are considered equivalent if and only if $\feducts(r)=\feducts(r')$ and $\froducts(r)=\froducts(r')$. We denote 
-this notion of equivalence by $r\simeq r'$. For two reactions $r_1,r_2\in [r]_{\simeq}$ it thereby holds that 
-$r_1\neq r_2$ if and only $\cat(r_1)\neq \cat(r_2)$. In addition, $r_1\sim r_2\Rightarrow r_1\simeq r_2$ 
-but not vice versa.  
-
  We denote by $\cat(R)\coloneqq\{(\cat(r),r) \ | \ r\in R, \cat(r) \neq\emptyset\}$ the set of \emph{catalyzations}. In case all reactions 
 are $r\in R$ are uncatalyzed, $\cat(R)=\emptyset$. The triple $(X,R,\cat)$ with $\cat=\cat(R)\neq\emptyset$ is called a partially catalyzed 
 RN. If $|\cat| = |R|$, i.e., each reaction is catalyzed, we call $(X,R,\cat)$ a catalyzed RN.   
 
   
   Let us now turn to the RAF setting and consider the catalyzations.
-    Every catalyzation of $\hat{r}$ corresponds to the set catalysts $K(r)$
-    in a particular reaction $r\in\hat{r}$. In other words, we have 
+    Every catalyzation of $\net{r}$ corresponds to the set catalysts $K(r)$
+    in a particular reaction $r\in\net{r}$. In other words, we have 
     \begin{equation}
-      \mathcal{K}_{\hat{r}} \coloneqq \{ K(r) | r\in\hat{r} \}
+      \mathcal{K}_{\net{r}} \coloneqq \{ K(r) | r\in\net{r} \}
     \end{equation}
-    Thus, for every $r\in\hat{r}$, there is a $K\in\mathcal{K}_{\hat{r}}$
+    Thus, for every $r\in\net{r}$, there is a $K\in\mathcal{K}_{\net{r}}$
     such that $r$ has educts.  
     
     \TODO{In fact, we should be even more
     anal-retentive here and insist that two sets
-    $K,K'\in\mathcal{K}_{\hat{r}}$ are distinct if their stoichiometric
-    coefficients are distinct. Thus need to define $\mathcal{K}_{\hat{r}}$
+    $K,K'\in\mathcal{K}_{\net{r}}$ are distinct if their stoichiometric
+    coefficients are distinct. Thus need to define $\mathcal{K}_{\net{r}}$
     as a multiset.}
 
     \PFS{The next consequence is that there are also different notions of
@@ -458,7 +507,7 @@ since it allows us to identify
 
 Property $ii.$ of Def.~\ref{def:RAF}, together with Eq.\ref{eq:Closure}, directly 
 implies that all products for any reaction $r\in \RAF$ are also contained 
-in the closure of $F'$, thus $\products_r\subseteq \closure{\RAF}{F}$. 
+in the closure of $F'$, thus $\cproducts_r\subseteq \closure{\RAF}{F}$. 
 A closed RAF \emph{(CAF)} is a RAF $\RAF$ where the reactions 
 can be ordered $r_1, r_2, \ldots, r_k$ such that, for each $i \geq 1$, each 
 reactant of $r_i$ and at least one catalyst of $r_i$ is contained in the food set 
@@ -466,16 +515,16 @@ and/or is a product of an earlier reaction in the sequence.
 
 Before connecting the notion of a RAF with the definition of an autocatalytic subnetwork, we start by translating specific properties of a RAF 
 into the bipartite K\"onig graph. We begin by examining the consequences of the closure. The closure of a set $X'$ w.r.t. to a set $R'$ denoted 
-as $\closure{R'}{X'}$ is the unique minimal set $Y$ containing $X'$ such that for any $r\in R': \educts(r)\subseteq Y \Rightarrow \products(r)\subseteq Y$. Thus:
+as $\closure{R'}{X'}$ is the unique minimal set $Y$ containing $X'$ such that for any $r\in R': \ceducts(r)\subseteq Y \Rightarrow \cproducts(r)\subseteq Y$. Thus:
 
 \begin{equation}\label{eq:Closure}
-	\closure{R'}{X'} \coloneqq \min \underbrace{\{ Z \subseteq X \ | \ X'\subseteq Z, \educts(r) \subseteq Z \Rightarrow \products(r) \subseteq Z \ \forall r\in R'\}}_{\eqqcolon \mathfrak{C}_{R'}(X')}
+	\closure{R'}{X'} \coloneqq \min \underbrace{\{ Z \subseteq X \ | \ X'\subseteq Z, \ceducts(r) \subseteq Z \Rightarrow \cproducts(r) \subseteq Z \ \forall r\in R'\}}_{\eqqcolon \mathfrak{C}_{R'}(X')}
 \end{equation}
 
 However, it will be convenient to obtain the set $\closure{R'}{X'}$ iteratively. We therefore define:
 
 \begin{equation}
-	\cl_{R'}: \mathfrak{P}(X) \rightarrow \mathfrak{P}(X), \cl_{R'}(Z) \coloneqq Z \cup \{\products(r) \subseteq Z \ \vert \ \educts(r)\subseteq Z\}. 
+	\cl_{R'}: \mathfrak{P}(X) \rightarrow \mathfrak{P}(X), \cl_{R'}(Z) \coloneqq Z \cup \{\cproducts(r) \subseteq Z \ \vert \ \ceducts(r)\subseteq Z\}. 
 \end{equation}
 \vspace{6pt}
 
@@ -525,7 +574,7 @@ By definition of $\cl_{R'}$, the sequence $(\cl_{R'}^k(X')_{k\in\mathbb{N}}$ dir
 that can be carried out in the $k$-th step, i.e., for which all reactants are contained in the set $\cl^k_{R'}(X')$. We thereby 
 let:
 \begin{equation}
-	\PO_{R'}^k(X') \coloneqq \{r\in R' \ | \ \educts(r)\subseteq \cl^k_{R'}(X')\}
+	\PO_{R'}^k(X') \coloneqq \{r\in R' \ | \ \ceducts(r)\subseteq \cl^k_{R'}(X')\}
 \end{equation}
 
 For both $\cl^k_{R'}(X)$ and $\PO_{R'}^k(X')$, it might be convenient to consider their partial order as:
@@ -573,12 +622,12 @@ hordijk_autocatalytic_2010}. However, to avoid confusion with the notion of irre
 first is an obvious but important result.
 \vspace{6pt}
 \begin{lemma}
-	Let $(X,R,\cat)$ be a catalyzed RN with food-set $F$ and $\RAF$ be a RAF. For $r',r'' \in \RAF$ with $r',r'' \in[r']_{\simeq}, r'\neq r''$ 
+	Let $(X,R,\cat)$ be a catalyzed RN with food-set $F$ and $\RAF$ be a RAF. For $r',r'' \in \RAF$ with $r',r'' \in[r']_{\bumpeq}, r'\neq r''$ 
 	it holds that $\RAF\setminus \{r'\}$ is a RAF and $\RAF\setminus \{r''\}$ is a RAF.
 \end{lemma}
 \begin{proof}
-	Let $\RAF'\coloneqq \RAF \setminus \{r'\}$ and $\RAF''\coloneqq \RAF \setminus \{r''\}$. Since $\educts(r')=\educts(r'')$ and 
-	$\products(r')=\products(r'')$ we observe that $\closure{\RAF}{F}= \closure{\RAF'}{F}=\closure{\RAF''}{F}$. With $\RAF$ 
+	Let $\RAF'\coloneqq \RAF \setminus \{r'\}$ and $\RAF''\coloneqq \RAF \setminus \{r''\}$. Since $\ceducts(r')=\ceducts(r'')$ and 
+	$\cproducts(r')=\cproducts(r'')$ we observe that $\closure{\RAF}{F}= \closure{\RAF'}{F}=\closure{\RAF''}{F}$. With $\RAF$ 
 	being a RAF, both $\RAF'$ and $\RAF''$ are RAFs.
 \end{proof}
 \vspace{6pt} 
@@ -734,7 +783,7 @@ Before we can prove one of the main results of this section, we need an auxillia
 %\end{lemma}
 %\begin{proof}
 %	We show this for $H$ first. Since $\RAF$ is non-trivial $|\RAF|>1$. If $\cat_{r}\subseteq F$ then $\{r\}$ is a minimal RAF.
-%	Thus, there is $c\in \cat_r: c\not in F$. Then $c\in D(r)$. If $c\in \products(r)$, then $\{r\}$ again
+%	Thus, there is $c\in \cat_r: c\not in F$. Then $c\in D(r)$. If $c\in \cproducts(r)$, then $\{r\}$ again
 %	is minimal $\RAF$. With the edge $(c,r)$, $(r,\ldots, c, r)$ is an elementary circuit that is not 
 %	a digon. Addition of the food-molecules does not disrupt this argument; thus, the statement 
 %	also holds for $G$.	
@@ -1293,8 +1342,8 @@ circuit is defined as follows $\child(C)\coloneqq \{X(C), R(C), \kappa: \kappa(x
 	by Lemma~\ref{lem:genPureReacs} that $h(r_1)<h(r'), \forall r'\in R(B)\setminus r_1$. We may then choose 
 	a catalyst of $r_1$ as $x\in X(\cat_{r_1}): g(x)\leq g(x'), x\in X(\cat_{r_1})$ since they are the only reactants
 	of $r_1$. In every $k$-th step we may then choose, for $x_k$ the reaction $r_{k+1}\in P(x_k)\coloneqq \{r \in R(B) \ 
-	| \ s^+_{x_k,r}-s^-_{x_k,r}>0\}$ such that $h(r_{k+1})\leq h(r_l), r_l\in P(x_k)$ and $x_{k+1}\in \educts(r_{k+r}) \cup 
-	X(\cat_{r_{k+1}}): g(x_{k+1})\leq g(x_l), x_l \in \educts(r_{k+1}) \cup X(\cat_{r_{k+1}})$. In this way, we obtain 
+	| \ s^+_{x_k,r}-s^-_{x_k,r}>0\}$ such that $h(r_{k+1})\leq h(r_l), r_l\in P(x_k)$ and $x_{k+1}\in \ceducts(r_{k+r}) \cup 
+	X(\cat_{r_{k+1}}): g(x_{k+1})\leq g(x_l), x_l \in \ceducts(r_{k+1}) \cup X(\cat_{r_{k+1}})$. In this way, we obtain 
 	\begin{equation}
 		h(x_k) \leq g(r_{k+1}) \leq h(x_k), \forall k\geq 0
 	\end{equation}
@@ -1302,7 +1351,7 @@ circuit is defined as follows $\child(C)\coloneqq \{X(C), R(C), \kappa: \kappa(x
 	vertex is visited twice, and after a maximum of $2\cdot \min(|X(B)|, |R(B)|)$ vertices, we reach $r_1$ again. Assume there 
 	is an MR-edge $(x_i,r_j)$ with $i>j$. Then $g(x_i)>h(r_j)$, which implies that $x_i$ is a pure catalysts for $r_j$.
 	Thus $\SM[\child]_{x_i, r_j}=0$. By construction, there cannot be an MR-edge if $i<j$ since this implies 
-	$g(x_i)<g(x_j), x_i,x_j\in \educts(r_{k+1}) \cup X(\cat_{r_{k+1}})$, a contradiction to our construction. Thus, $\SM[\child]$ is
+	$g(x_i)<g(x_j), x_i,x_j\in \ceducts(r_{k+1}) \cup X(\cat_{r_{k+1}})$, a contradiction to our construction. Thus, $\SM[\child]$ is
 	Metzler. 
 	 
 	We may now treat the more complicated case and assume $|R^*(B)|>1$. Then the convergence of our construction is not 
