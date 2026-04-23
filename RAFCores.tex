@@ -408,14 +408,19 @@ $\queen(\Phi)$ and the corresponding bipartite graph of the $K(\Gamma(\Phi))$.
 \begin{theorem}
 	Let $\Phi\coloneqq (X,\FR, \cat)$ be a CRS with corresponding CRN $\Gamma(\Phi)$. The bipartite
 	directed K\"onig graph graph $\queen\coloneqq \queen(\Phi)$ is the quotient graph of $\king \coloneqq \king(\Gamma(\Phi))$ w.r.t. the
-	equivalence relation $\sim$ as defined in Eq.~\ref{eq:fEquiv}.
+	equivalence relation $\sim$ as defined in Eq.~\ref{eq:fEquiv}. Moreover, $\queen$ is strongly connected
+	if and only if $\king$ is strongly connected.
 \end{theorem}
 \begin{proof}
 	Let $(x,\fr) \in E_1(\queen)$. By definition, there is an $r'\in \fr: s^-_{xr'}>0$, thus $(x,r')\in E_1(\king)$. 
 	Let now, $(x,r)\in E_1(\king)$. By definition of $\queen$, there is an edge $(x,\fr)\in E_1(\queen)$. 
-	Similar arguments hold for edges from $E_2(\queen)$ and $E_2(\king)$.	
+	Similar arguments hold for edges from $E_2(\queen)$ and $E_2(\king)$. For the second statement, we note
+	that the only if direction is true in general for any quotient graph. \TODO{Mh....this is a little bit tedious 
+	since we have paths that run through catalysts, which are catalysts for different representatives of 
+	the equivalence they sandwich....}
 \end{proof}
 \vspace{6pt}
+
 
 \section{Reflexively autocatalytic sets (RAFs)}
 
