@@ -111,16 +111,17 @@
 \newcommand{\food}{\ensuremath{\mathbf{F}}}
 \newcommand{\SM}{\mathbb{S}}
 \newcommand{\closure}[2]{\mathscr{C}_{#1}(#2)}
-\newcommand{\cl}[0]{\mathscr{X}}
+\newcommand{\cl}[0]{c}
 \newcommand{\CR}[0]{\mathcal{R}}
 \newcommand{\C}[1]{\mathit{#1}}
 \newcommand{\FR}[0]{\mathbf{R}}
-\newcommand{\F}[1]{\mathbf{#1}}
+%\newcommand{\F}[1]{\mathbf{#1}}
+\newcommand{\fr}[0]{\mathbf{r}}
 \newcommand{\net}[1]{\hat{#1}}
 \newcommand{\RAF}[0]{\mathbf{R'}}
-\newcommand{\PO}[0]{\mathscr{R}}
-\newcommand{\POR}[0]{\mathcal{R}}
-\newcommand{\POX}[0]{\mathcal{X}}
+\newcommand{\PO}[0]{d}
+\newcommand{\POR}[0]{\mathscr{R}}
+\newcommand{\POX}[0]{\mathscr{X}}
 \newcommand{\cat}{\mathbf{C}}
 \newcommand{\ceducts}{\mathcal{E}}
 \newcommand{\cproducts}{\mathcal{P}}
@@ -329,7 +330,7 @@ different or multiple synergistically acting catalysts. For example, the hydroge
 can be mediated by platinum, palladium, or nickel separately \cite{crampton_ethylene_2016}. An example 
 for co-catalysis, i.e., where the orchestrated cooperation of two catalysts is required, is the dual-catalyst 
 system of palladium and copper in the Hoechst-Wacker process, where ethene is oxidized to acetaldehyde 
-\cite{jira_acetaldehyde_2009}. We therefore define the set of catalysts as a multiset as follows:
+\cite{jira_acetaldehyde_2009}. We therefore define the set of catalysts as a multiset:
 \begin{equation}
 	\cat(r)\coloneqq \{\kappa_{xr} \cdot x\ | \ x\in X\}
 \end{equation}
@@ -373,33 +374,32 @@ F-catalysts but share the same F-reactants and F-products:
 	r_1\sim r_2 \Leftrightarrow \feducts(r_1)=\feducts(r_2), \fproducts(r_1)=\fproducts(r_2), 
 \end{equation}
 Indeed, $\sim$ is an equivalence relation. We call a $\sim$-equivalence class an F-reaction, 
-and, for consistency, denote them in bold, i.e., $\F{r}\coloneqq [r]_\sim$ for:
+and, for consistency, denote them in bold, i.e., $\fr\coloneqq [r]_\sim$ for:
 \begin{equation}\label{eq:fEquivClass}
 	\begin{split}
-		[r]_{\sim}= \left\{r': \sum_{x\in X}\ (\sigma^-_{xr'} + \kappa_{xr'}) \cdot x)\rightarrow \sum_{x\in X} \ (\sigma^+_{xr'} + \kappa_{xr'} \cdot x) \ \middle\vert \ \sigma_{xr'}^{\pm} = \sigma_{xr}^\pm, \forall x\in X \right\}
+		\fr= \left\{r': \sum_{x\in X}\ (\sigma^-_{xr'} + \kappa_{xr'}) \cdot x)\rightarrow \sum_{x\in X} \ (\sigma^+_{xr'} + \kappa_{xr'} \cdot x) \ \middle\vert \ \sigma_{xr'}^{\pm} = \sigma_{xr}^\pm, \forall x\in X \right\}
 	\end{split}
 \end{equation}
-With a slight abuse of notation, we write $r\in \F{r}$ for $r\in [r]_\sim$ and $\FR$ for sets of F-reactions. 
-Moreover, we may also write $\feducts(\F{r})$ and $\fproducts(\F{r})$ since $\feducts(r') =\feducts(r), \fproducts(r') =\fproducts(r), 
+With a slight abuse of notation, we write $r\in \fr$ for $r\in [r]_\sim$, and $\FR$ for sets of F-reactions. 
+Moreover, we may also write $\feducts(\fr)$ and $\fproducts(\fr)$ since $\feducts(r') =\feducts(r), \fproducts(r') =\fproducts(r), 
 \forall r' \in[r]_\sim$. The natural representative is the uncatalyzed reaction $\tilde{r}\in [r]_{\sim}: \cat(\tilde{r}) = \emptyset$, 
-which is identical with the net reaction $\hat{r}$, i.e., $\tilde{r}= \hat{r}$ if and only if 
-$\feducts(r)= \net{\ceducts}(r)$ and $\fproducts(\tilde{r}) = \net{\cproducts}(r)$. 
+which is the net reaction $\hat{r}$ if and only if $\feducts(r)= \net{\ceducts}(r)$ and $\fproducts(\tilde{r}) = \net{\cproducts}(r)$. 
 
 As defined in Eq.~\ref{eq:fEquivClass}, $[r]_\sim$ is of infinite size, which is an unrealistic scenario for 
 a chemical system. Given a set of F-reactions $\FR$ together with a set of species $X$, the size of each 
 $\sim$-equivalence class can be restricted to those representatives that are catalyzed by members of 
-the species set, the catalysts $\cat = \bigcup_{r\in \F{r} \in \FR} \cat(r)$. In this way, each F-reaction is of 
+the species set, the catalysts $\cat = \bigcup_{r\in \fr \in \FR} \cat(r)$. In this way, each F-reaction is of 
 finite size, and throughout we will consider them finite unless otherwise specified. A CRS is then the triple 
 $\Phi \coloneqq (X,\FR, \cat)$. Every $\Phi \coloneqq (X,\FR, \cat)$, thereby, has a unique corresponding 
-CRN $\Gamma(\Phi) = (X, \CR)$, where $\CR=\bigcup_{\F{r} \in \FR}\F{r}$. For clarity, we might write the 
+CRN $\Gamma(\Phi) = (X, \CR)$, where $\CR=\bigcup_{\fr \in \FR}\fr$. For clarity, we might write the 
 CRN as a triple as $(X, \CR, \cat)$.
 
 Analogously to the bipartite graph representation of a CRN, the bipartite graph of a CRS 
 is given as $\queen(\Phi=(X,\FR, \cat))\coloneqq (X \cup \FR, E_1\cup E_2)$ with:
 \begin{equation}
 	\begin{split}
-		E_1\coloneqq \{(x,\F{r}) \ | \ x\in X, \F{r}\in \FR: s^-_{xr}>0 \text{ for some } r \in \F{r} \} \\
-		E_2\coloneqq \{(x,\F{r}) \ | \ x\in X, \F{r}\in \FR: s^+_{xr}>0 \text{ for some } r \in \F{r} \}
+		E_1\coloneqq \{(x,\fr) \ | \ x\in X, \fr\in \FR: s^-_{xr}>0 \text{ for some } r \in \fr \} \\
+		E_2\coloneqq \{(x,\fr) \ | \ x\in X, \fr\in \FR: s^+_{xr}>0 \text{ for some } r \in \fr \}
 	\end{split}
 \end{equation}
 In fact, the $\sim$-equivalence relation induces a convenient connection between the bipartite graph of 
@@ -411,195 +411,116 @@ $\queen(\Phi)$ and the corresponding bipartite graph of the $K(\Gamma(\Phi))$.
 	equivalence relation $\sim$ as defined in Eq.~\ref{eq:fEquiv}.
 \end{theorem}
 \begin{proof}
-	Let $(x,\F{r}) \in E_1(\queen)$. By definition, there is an $r\in \F{r}: s^-{xr}>0$, thus $(x,r)\in E_1(\king)$. 
-	Let now, $(x,r)\in E_1(\king)$. By definition of $\queen$, there is an edge $(x,[r]_\sim=\F{r})\in E_1(\queen)$. 
+	Let $(x,\fr) \in E_1(\queen)$. By definition, there is an $r'\in \fr: s^-_{xr'}>0$, thus $(x,r')\in E_1(\king)$. 
+	Let now, $(x,r)\in E_1(\king)$. By definition of $\queen$, there is an edge $(x,\fr)\in E_1(\queen)$. 
 	Similar arguments hold for edges from $E_2(\queen)$ and $E_2(\king)$.	
 \end{proof}
 \vspace{6pt}
 
-\section{RAFs and their partial order}
+\section{Reflexively autocatalytic sets (RAFs)}
 
-Catalytic reaction systems (CRS) are the fundamental structure on which the framework of reflexively autocatalytic sets 
+Catalytic reaction systems (CRS) are the fundamental structure on which the notion of reflexively autocatalytic sets 
 is built \cite{steel_emergence_2000, hordijk_detecting_2004}. In addition, they rely on the closure of a set $X' \subseteq X$ 
 w.r.t. to a set $\RAF \subseteq \FR$, denoted as $\closure{R'}{X'}$, which is the unique minimal set $Y$ containing $X'$ 
-such that for any $\F{r}\in \RAF: \feducts(r)\subseteq Y \Rightarrow \fproducts(r)\subseteq Y$. Thus:
+such that for any $\fr\in \RAF: \feducts(r)\subseteq Y \Rightarrow \fproducts(r)\subseteq Y$. Thus:
 \begin{equation}\label{eq:Closure}
-	\closure{R'}{X'} \coloneqq \min \underbrace{\{ Z \subseteq X \ | \ X'\subseteq Z, \feducts(r) \subseteq Z \Rightarrow \fproducts(r) \subseteq Z \ \forall r\in \RAF'\}}_{\eqqcolon \mathfrak{C}_{\RAF'}(X')}
+	\closure{R'}{X'} \coloneqq \min \underbrace{\{ Z \subseteq X \ | \ X'\subseteq Z, \feducts(r) \subseteq Z \Rightarrow \fproducts(r) \subseteq Z \ \forall r\in \RAF'\}}_{\eqqcolon \mathfrak{C}_{\RAF}(X')}
 \end{equation}
 
-An reflexively autocatalytic set (RAF) is then defined as follows:
+A reflexively autocatalytic set (RAF) is then defined as follows:
 
 \vspace{6pt}
 \begin{definition}[RAF]\label{def:RAF}
 	Let $(X,\FR,\cat)$ be a CRS with $\food\subseteq X$. A set $\RAF\subseteq \FR$ is called  
 		\vspace{6pt}
 		\begin{itemize} 
-			\item[i.]{\emph{reflexive autocatalytic} (RA) if $\forall r\in \RAF: \emptyset \neq X(\cat(r))\subseteq \feducts(\RAF)\cup \fproducts(\RAF)$}\\[-0.5em]
-			\item[ii.]{\emph{\food-generated} if $\feducts(\RAF)\subseteq \closure{\RAF}{\food}$}\\[-0.5em]
+			\item[i.]{\emph{reflexive autocatalytic} (RA) if $\forall r\in \RAF: \emptyset \neq X(\cat(r))\subseteq \feducts(\RAF)\cup \fproducts(\RAF)$}\\[-1.0em]
+			\item[ii.]{\emph{\food-generated} if $\feducts(\RAF)\subseteq \closure{\RAF}{\food}$}\\[-1.0em]
 			\item[iii.]{\emph{reflexive autocatalytic} and \emph{\food-generated} (RAF) if both i. and ii. hold}
 		\end{itemize}
 \end{definition}
 \vspace{6pt}
-  
-% We denote by $\cat(R)\coloneqq\{(\cat(r),r) \ | \ r\in R, \cat(r) \neq\emptyset\}$ the set of \emph{catalyzations}. In case all reactions 
-%are $r\in R$ are uncatalyzed, $\cat(R)=\emptyset$. The triple $(X,R,\cat)$ with $\cat=\cat(R)\neq\emptyset$ is called a partially catalyzed 
-%RN. If $|\cat| = |R|$, i.e., each reaction is catalyzed, we call $(X,R,\cat)$ a catalyzed RN.   
-%
-%  
-%  Let us now turn to the RAF setting and consider the catalyzations.
-%    Every catalyzation of $\net{r}$ corresponds to the set catalysts $K(r)$
-%    in a particular reaction $r\in\net{r}$. In other words, we have 
-%    \begin{equation}
-%      \mathcal{K}_{\net{r}} \coloneqq \{ K(r) | r\in\net{r} \}
-%    \end{equation}
-%    Thus, for every $r\in\net{r}$, there is a $K\in\mathcal{K}_{\net{r}}$
-%    such that $r$ has educts.  
-%    
-%    \TODO{In fact, we should be even more
-%    anal-retentive here and insist that two sets
-%    $K,K'\in\mathcal{K}_{\net{r}}$ are distinct if their stoichiometric
-%    coefficients are distinct. Thus need to define $\mathcal{K}_{\net{r}}$
-%    as a multiset.}
-%
-%    \PFS{The next consequence is that there are also different notions of
-%      subnetworks for both formalisms.} 
-%    
-%A tuple $(X', R')$ is called a subnetwork of $(X,R)$ if $X'\subseteq X, R'\subseteq R$- A 
-%catalyzed network We say a subnetwork $(X',R')$ is well formed if for any $r\in R': \exists x_1,x_2\in X: 
-%s^-_{x_1r}>0, s^+_{x_2r}>0$. Considering a subnetwork $(X',R')$, we may distinguish 
-%a certain subset of entities $F', W'\subseteq X$ defined as
-%\begin{equation}\label{eq:FoodWaste}
-%	\begin{split}
-%		F'&\coloneqq \{x\in X: x\notin X', \exists r\in R': s^{-}_{xr}>0\}\\
-%		W'&\coloneqq \{x\in X: x\notin X', \exists r\in R': s^{+}_{xr}>0\}.
-%	\end{split}
-%\end{equation}
-%We call $F'$ and $W'$ the set of food and waste molecules for the subnetwork $(X',R')$,
-%respectively. A subnetwork is called \emph{educt} and \emph{product complete} if $F'\subseteq X'$ and 
-%$W'\subseteq X'$, respectively. 
-%
-%A (catalyzed) RN can be represented by its \emph{K\"onig graph}, a directed bipartite graph $\king (X,R,\cat) \coloneqq 
-%(X\cup R, E_1\cup E_2)$ with
-%\begin{equation}
-%	\begin{split}
-%		E_1 & \coloneqq \{(x,r) \ \vert \ s^-_{xr}>0\} \\
-%		E_2 & \coloneqq \{(r,x) \ \vert \ s^+_{xr}>0\}.
-%	\end{split}
-%\end{equation}
 
-%The K\"onig graph is also known as the Species-Reaction (SR-) or Metabolite-Reaction (MR-) graph. Two other representations 
-%can be directly derived from it, the S- and the R-graph. The R-graph, in particular, is the graph
-%\begin{equation}
-%	\begin{split}
-%		\mathcal{R}(\king)&\coloneqq \{R(\king), E\} \\
-%		E &\coloneqq \{(r_1,r_2) \ | \ \exists x X(\king): s^+_{xr_1}>0, s^-_{xr_2}>0\}
-%	\end{split}
-% \end{equation}
-%We will also simply write $\mathcal{R}$ if the bipartite graph is clear from the context. 
-%In the following sections, we will investigate the implications of different set
-%properties of RAFs on how they translate into structural properties of its bipartite 
-%K\"onig graph. We will put an important focus on the minimality condition here
-%since it allows us to identify 
+Property $ii.$ of Def.~\ref{def:RAF}, together with Eq.~\ref{eq:Closure}, directly 
+implies that all F-products for any reaction $\fr\in \RAF$ are also contained 
+in the $\closure{\RAF}{\food}$, thus $\fproducts(r)\subseteq \closure{\RAF}{\food}$. 
 
-%\TODO{Define:,  
-%\begin{itemize}
-%	\item{Autocatalytic matrices and autocatalytic cores}
-%	\item{Child-selections}
-%	\item{CS-matrices, Metzler-matrices}
-%	\item{(strong) Metzler column, i.e., no negative entry on the diagonal}
-%	\item{Fluffles}
-%	\item{Define CAF}
-%\end{itemize}
-%}
+\subsection{A Partial Order on RAFs}
 
-Property $ii.$ of Def.~\ref{def:RAF}, together with Eq.\ref{eq:Closure}, directly 
-implies that all products for any reaction $r\in \RAF$ are also contained 
-in the closure of $F'$, thus $\cproducts_r\subseteq \closure{\RAF}{F}$. 
-A closed RAF \emph{(CAF)} is a RAF $\RAF$ where the reactions 
-can be ordered $r_1, r_2, \ldots, r_k$ such that, for each $i \geq 1$, each 
-reactant of $r_i$ and at least one catalyst of $r_i$ is contained in the food set 
-and/or is a product of an earlier reaction in the sequence. 
-
-Before connecting the notion of a RAF with the definition of an autocatalytic subnetwork, we start by translating specific properties of a RAF 
-into the bipartite K\"onig graph. We begin by examining the consequences of the closure. The closure of a set $X'$ w.r.t. to a set $R'$ denoted 
-as $\closure{R'}{X'}$ is the unique minimal set $Y$ containing $X'$ such that for any $r\in R': \ceducts(r)\subseteq Y \Rightarrow \cproducts(r)\subseteq Y$. Thus:
-
-\begin{equation}\label{eq:Closure}
-	\closure{R'}{X'} \coloneqq \min \underbrace{\{ Z \subseteq X \ | \ X'\subseteq Z, \ceducts(r) \subseteq Z \Rightarrow \cproducts(r) \subseteq Z \ \forall r\in R'\}}_{\eqqcolon \mathfrak{C}_{R'}(X')}
-\end{equation}
-
-However, it will be convenient to obtain the set $\closure{R'}{X'}$ iteratively. We therefore define:
-
+The closure naturally induces a partial order $\preceq$ on a RAF $\RAF$. This can be 
+achieved by obtaining the set $\closure{R'}{X'}$ iteratively. Let therefore:
 \begin{equation}
-	\cl_{R'}: \mathfrak{P}(X) \rightarrow \mathfrak{P}(X), \cl_{R'}(Z) \coloneqq Z \cup \{\cproducts(r) \subseteq Z \ \vert \ \ceducts(r)\subseteq Z\}. 
+	c_{\RAF}: 2^X \rightarrow 2^X, c_{\RAF}(X') \coloneqq X' \cup \{\fproducts(\fr) \subseteq X' \ \vert \ \feducts(\fr)\subseteq X'\}. 
 \end{equation}
-\vspace{6pt}
+We will write $c(X')$ instead of $c_{\RAF}(X')$ as well as $\closure{}{X'}$ instead of $\closure{\RAF}{X'}$, whenever 
+it is appropriate.   
 
-We will write $\cl(X')$ instead of $\cl_{R'}(X')$ as well as $\closure{}{X'}$ instead of $\closure{R'}{X'}$ where appropriate. 
-It is indeed not obvious that the repetitive iteration of $\cl_{R'}(X')$ yields $\closure{R'}{X'}$. However, 
-recall that an RN is composed of two finite-sized sets, i.e., $|X|<\infty$ and $|R|<\infty$. By definition, the composition 
-$\cl\circ \cl$ is well defined. Moreover, we let $\cl^n(X')\coloneqq \left(\bigcirc^n_{i=0} \ \cl \right)(X')$, i.e., $\cl^0(X')\coloneqq X'$. 
-The intuitive assumption that a repetitive application of $\cl$ on a set $X'$ actually converges is indeed true.
+It has been shown earlier that the repetitive iteration of $c(X')$ indeed yields $\closure{}{X'}$ 
+\cite{Stadler2018}. However, to keep this contribution self-contained, we include the proof 
+for this statement here \TODO{(Move what follows to the appendix since this is rather technical
+and keep only the interesting result on the partial order.)}. 
+To this end, recall that a CRS is composed of two finite-sized sets, i.e., $|X|<\infty$ and $\FR|<\infty$. 
+By definition, the composition $c\circ c$ is well defined. Moreover, we let $c^n(X')\coloneqq \left(\bigcirc^n_{i=0} \ c \right)(X')$, 
+i.e., $\cl^0(X')\coloneqq X'$ and show that repetitive application of $c$ on a set $X'$ actually converges is indeed true.
 
 \vspace{6pt}
 \begin{lemma}\label{lem:finSize}
-	Let $(X,R)$ be a reaction network. For a set $X'\subseteq X$ and $R'\subseteq R$ there 
+	Let $(X,\FR, \cat)$ be a CRS. For a set $X'\subseteq X$ and $\RAF\subseteq \RAF$ there 
 	is an $n\in \mathbb{N}$ such that: 
 	\begin{equation}
-		\cl^n(X') = \cl^m (X'), m\geq n, m\in \mathbb{N}
+		c^n(X') = c^m (X'), m\geq n, m\in \mathbb{N}
 	\end{equation}
 \end{lemma}
 \begin{proof}
-	Assume this is not the case. Then in each $k$-th step 
-	\begin{equation}
-		|\cl^k(X')| < |\cl^{k+1}(X')|,
-	\end{equation}
-	which implies that
-	\begin{equation}
-		|\cl^k(X')| \overset{k\rightarrow\infty}{\longrightarrow}{\infty}	
-	\end{equation}
-	a contradiction given that $|X|<\infty$.
+	Assume this is not the case. Then in each $k$-th step $|c^k(X')| < |c^{k+1}(X')|$,
+	which implies that $|c^k(X')| \xrightarrow{k\rightarrow\infty}\infty$. This is a 
+	contradiction, given that $|X|<\infty$.
 \end{proof}
-
-The sequence $(\cl^k(X'))_{k\in \mathbb{N}}$ thereby converges, and it remains to show that for the limit it holds
-$\lim_{k\rightarrow \infty} \cl^k(X') = \closure{}{X'}$. By definition, for any $k\in\mathbb{N}: \cl^k(X')\subseteq \closure{}{X'}$. 
-In addition, the convergence of $\cl^k(X')$ gurantees that $\lim_{k\rightarrow \infty} \cl^k(X')\in \mathfrak{C}(X')$. Thus by 
-minimality $\closure{}{X'}\subseteq \lim_{k\rightarrow \infty} \cl^k(X')$, which yields by mutual inclusion that 
-$\lim_{k\rightarrow \infty} \cl^k(X') = \closure{}{X'}$. With the uniqueness of the limit, the subsequent corollary follows.
+\vspace{6pt}
+It remains to show that $\lim_{k\rightarrow \infty} \cl^k(X') = \closure{}{X'}$. By definition, for 
+any $k\in\mathbb{N}: \cl^k(X')\subseteq \closure{}{X'}$. In addition, the convergence of $\cl^k(X')$ gurantees 
+that $\lim_{k\rightarrow \infty} \cl^k(X')\in \mathfrak{C}(X')$. Thus by minimality $\closure{}{X'}\subseteq 
+\lim_{k\rightarrow \infty} \cl^k(X')$, which yields by mutual inclusion that $\lim_{k\rightarrow \infty} \cl^k(X') 
+= \closure{}{X'}$. With the uniqueness of the limit, the subsequent corollary follows.
 
 \vspace{6pt}
 \begin{corollary}\label{cor:seqLimit}
-	Let $(X,R,\cat)$ be a catalyzed network of finite size with $X'\subseteq X, R'\subseteq R$. Then $\closure{R'}{X'}$ 
-	is the unique limit of the sequence
+	Let $(X,\FR,\cat)$ be a catalyzed network of finite size with $X'\subseteq X, \RAF\subseteq R$. 
+	Then $\closure{\RAF}{X'}$ is the unique limit of the sequence
 	\begin{equation}
-		\left(\left(\bigcirc_{i=1}^k \ \cl_{R'}\right)(X')\right)_{k\in\mathbb{N}}.
+		\left(\left(\bigcirc_{i=1}^k \ c_{\RAF}\right)(X')\right)_{k\in\mathbb{N}}.
 	\end{equation}
-	In addition, there is an $n\in\mathbb{N}: \cl^n_{R'}(X')=\cl^m_{R'}(X'), m\geq n$.
+	In addition, there is an $n\in\mathbb{N}: c^n_{\RAF}(X')=c^m_{\RAF}(X'), m\geq n$.
 \end{corollary}
 \vspace{6pt}
-By definition of $\cl_{R'}$, the sequence $(\cl_{R'}^k(X')_{k\in\mathbb{N}}$ directly implies a partial order on the reactions 
-that can be carried out in the $k$-th step, i.e., for which all reactants are contained in the set $\cl^k_{R'}(X')$. We thereby 
-let:
+The sequence $(c^k(X')_{k\in\mathbb{N}}$ directly yields a sequence of reactions that can be
+executed in the $k$-th step, i.e., for which all reactants are contained in the set $\cl^k(X')$: 
 \begin{equation}
-	\PO_{R'}^k(X') \coloneqq \{r\in R' \ | \ \ceducts(r)\subseteq \cl^k_{R'}(X')\}
+	d_{\RAF}^k(X') \coloneqq \{r\in \RAF \ | \ \ceducts(r)\subseteq c^k_{\RAF}(X')\}
 \end{equation}
-
-For both $\cl^k_{R'}(X)$ and $\PO_{R'}^k(X')$, it might be convenient to consider their partial order as:
+However, it might be to restrict the sets obtained by $c^k(X')$ and $d^k(X')$ to those species and 
+reactions that are not present in an earlier set $c^\ell(X')$ and $d^\ell(X'), \ell<k$, respectively:
 \begin{equation}
 	\begin{split}
-		\POX_{R'}^0(X')& \coloneqq X' \qquad \POX_{R'}^k(X')\coloneqq \cl^k_{R'}(X)\setminus \left(\bigcup_{i=0}^{k-1} \cl^k_{R'}(X) \right)\\
-		\POR_{R'}^0(X') & \coloneqq \emptyset \qquad \POR_{R'}^k(X')\coloneqq \PO^k_{R'}(X) \left(\bigcup_{i=0}^{k-1} \PO^k_{R'}(X) \right)
+		\POX_{\RAF}^0(X')& \coloneqq X' \qquad \POX_{\RAF}^k(X')\coloneqq c^k_{\RAF}(X)\setminus \left(\bigcup_{i=0}^{k-1} c^k_{\RAF}(X) \right)\\
+		\POR_{\RAF}^0(X') & \coloneqq \emptyset \qquad \POR_{\RAF}^k(X')\coloneqq \PO^k_{\RAF}(X) \setminus \left(\bigcup_{i=0}^{k-1} \PO^k_{R'}(X) \right)
 	\end{split}
 \end{equation}
-In addition, we define two maps that determine the generation of the first appearance of a metabolite or a reaction. 
+The partial order $\preceq$ is based on the two maps that determine the $k$ of the first appearance 
+of a metabolite or a reaction: 
 \begin{equation}\label{eq:Gen}
 	\begin{split}
 		g&: X' \rightarrow \mathbb{N}, g(x)\coloneqq k \quad \text{ s. t. } x\in \POX_{R'}^k(X') \\
-		h&: R' \rightarrow \mathbb{N}, h(r)\coloneqq k \quad \text{ s. t. } r\in \POR_{R'}^k(X') 
+		h&: R' \rightarrow \mathbb{N}, h(r)\coloneqq k \quad \text{ s. t. } r\in \POR_{R'}^k(X'). 
 	\end{split}
 \end{equation}
-We refer to the values of $g$ and $h$ as the generation of a reaction or metabolite. We are now in the position to 
-deduce the consequences of Def.~\ref{def:RAF}ii. to the bipartite K\"onig representation of a RAF. 
+In particular, a species $x_1$ precedes a species $x_2: x_1\preceq x_2$ if and only if $g(x_1) \leq g(x_2)$ 
+and a reaction $\fr_1$ precedes a reaction $\fr_2: \fr_1\preceq \fr_2$ if and only if $h(\fr_1) \leq h(\fr_2)$. We refer 
+to the values of $g$ and $h$ as the generation of a reaction or metabolite. 
+
+\holy{RG up to this point in rewriting.}
+We are now in the position to deduce the consequences of Def.~\ref{def:RAF}ii. to the bipartite K\"onig 
+representation of a RAF. 
 
 \vspace{6pt}
 \begin{lemma}\label{lem:RAFPath}
@@ -705,7 +626,7 @@ RAF when all food molecules and all species exhibiting no outgoing edges are rem
 which is a direct consequence of Lemma~\ref{lem:RAFPath}.
 \vspace{6pt}
 \begin{lemma}\label{lem:weaklyConnected}
-	A $(X, R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal RAF. 
+	A $(X, \FR, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal RAF. 
 	Then $\king[\closure{\RAF}{F}, \RAF]$ is weakly-connected.
 \end{lemma}
 \begin{proof}
