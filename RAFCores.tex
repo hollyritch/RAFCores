@@ -317,55 +317,48 @@ remain unchanged. The stoichiometric Eq.~\ref{eq:reaction} can then be rewritten
 	r: \sum_{x\in X}\ \sigma^-_{xr} \cdot x + \left(\sum_{x\in X}\ \kappa_{xr} \cdot x\right)\rightarrow \sum_{x\in X} \ \sigma^+_{xr}  \cdot x + \left(\sum_{x\in X}\ \kappa_{xr} \cdot x\right).
 \end{equation}
 We refer to species appearing in Eq.~\ref{eq:Mod.SmEq} with $\sigma^{-}_{xr}>0$, $\sigma^{+}_{xr}>0$, and $\kappa_{xr}>0$ as 
-F-reactants, F-products, and F-catalysts, respectively, and collect them in the following sets:
+F-reactants, F-products, and F-catalysts, respectively. We collect F-reactants and F-products in the following sets:
 \begin{equation}
 	\begin{split}
 		\feducts(r) & \coloneqq \{x\in X \ | \ \sigma^-_{xr} > 0\} \\
 		\fproducts(r) & \coloneqq \{x\in X \ | \ \sigma^+_{xr} > 0\} \\
-		\cat(r) & \coloneqq \{\kappa_{xr} \cdot x \ | \ x \in X\}
 	\end{split}
 \end{equation} 
-Note that $\cat$ is a multiset and might be empty, if $\kappa_{xr}=0, \forall x\in X$. To distinguish the 
-F-catalysts from the F-reactants and F-products, we will write stoichiometric equations as follows:
+Different reactions with the same net reaction may differ in their usage of catalysts, by requiring 
+different or multiple synergistically acting catalysts. For example, the hydrogenation of ethene to ethane 
+can be mediated by platinum, palladium, or nickel separately \cite{crampton_ethylene_2016}. An example 
+for co-catalysis, i.e., where the orchestrated cooperation of two catalysts is required, is the dual-catalyst 
+system of palladium and copper in the Hoechst-Wacker process, where ethene is oxidized to acetaldehyde 
+\cite{jira_acetaldehyde_2009}. We therefore define the set of catalysts as a multiset as follows:
 \begin{equation}
+	\cat(r)\coloneqq \{\kappa_{xr} \cdot x\ | \ x\in X\}
+\end{equation}
+The set of F-catalysts may be empty, i.e., for $\cat({\net{r}})=\emptyset$ by definition, or if the reaction is uncatalyzed. 
+To distinguish the F-catalysts from the F-reactants and F-products, we will write stoichiometric equations as follows:
+\begin{equation}\label{eq:Mod.SmEq.2}
 	r: \sum_{x\in X}\ \sigma^-_{xr} \cdot x \xrightarrow{x \in \cat(r)} \sum_{x\in X} \ \sigma^+_{xr}  \cdot x.
 \end{equation}
-As shown in \cite{bridging_Golnik_2026} we have:
-\begin{equation}
-	\begin{split}
-		\net{\ceducts}(r) \subseteq \feducts(r) &\subseteq \ceducts(r) \\
-		\net{\cproducts}(r) \subseteq \fproducts(r) &\subseteq \cproducts(r) \\
-	\end{split}
-\end{equation}
-We may, additionally, observe that $\net{\feducts}(r) = \feducts(\net{r}) = \ceducts(\net{r}) = \net{\ceducts}(r)$ and 
-$\net{\fproducts}(r) = \fproducts(\net{r}) = \cproducts(\net{r}) = \net{\cproducts}(r)$, which motivates to 
-introduce the following relation:
-\begin{equation}
-	r_1\bumpeq r_2 \Leftrightarrow \SM_{xr_1}=\SM_{xr_2}, \forall x\in X
-\end{equation}
-It is readily verified that $\bumpeq$ is indeed an equivalence relationship. Each equivalence class $[r]_{\bumpeq}$ thereby collects 
-all stoichiometric equations that share the same net reaction $\net{r}$, which is, in particular, the natural representative of 
-$[r]_\bumpeq$:
-\begin{equation}\label{eq:CEquivClass}
-	[r]_{\bumpeq} = \left\{r': \sum_{x\in X}\ (\sigma^-_{xr} + \kappa_{xr}) \cdot x)\rightarrow \sum_{x\in X} \ (\sigma^+_{xr} + \kappa_{xr} \cdot x)  \ \middle\vert \  \net{s}^{\pm}_{xr'} = \net{s}^{\pm}_{xr}, \forall x\in X\right\}
-\end{equation}
-Note that, in general, each $\bumpeq$-equivalence class is of infinite size. However, we may restrict the relation to 
-$\mathcal{R}$ simply by writing $\bumpeq_{\CR}$. A consequence from Eq.~\ref{eq:CEquivClass} then is that 
-$\cat(r) \neq \cat(r') \Rightarrow r\neq r'$. However, in general, the converse is not true, since $r,r'\in [r]_{\bumpeq}$ 
-may be distinct if $\feducts(r)\neq \feducts(r')$ or $\fproducts(r)\neq \fproducts(r')$. 
+%We may, additionally, observe that $\net{\feducts}(r) = \feducts(\net{r}) = \ceducts(\net{r}) = \net{\ceducts}(r)$ and 
+%$\net{\fproducts}(r) = \fproducts(\net{r}) = \cproducts(\net{r}) = \net{\cproducts}(r)$, which motivates to 
+%introduce the following relation:
+%\begin{equation}
+%	r_1\bumpeq r_2 \Leftrightarrow \SM_{xr_1}=\SM_{xr_2}, \forall x\in X
+%\end{equation}
+%It is readily verified that $\bumpeq$ is indeed an equivalence relationship. Each equivalence class $[r]_{\bumpeq}$ thereby collects 
+%all stoichiometric equations that share the same net reaction $\net{r}$, which is, in particular, the natural representative of 
+%$[r]_\bumpeq$:
+%\begin{equation}\label{eq:CEquivClass}
+%	[r]_{\bumpeq} = \left\{r': \sum_{x\in X}\ (\sigma^-_{xr} + \kappa_{xr}) \cdot x)\rightarrow \sum_{x\in X} \ (\sigma^+_{xr} + \kappa_{xr} \cdot x)  \ \middle\vert \  \net{s}^{\pm}_{xr'} = \net{s}^{\pm}_{xr}, \forall x\in X\right\}
+%\end{equation}
+%Note that, in general, each $\bumpeq$-equivalence class is of infinite size. However, we may restrict the relation to 
+%$\mathcal{R}$ simply by writing $\bumpeq_{\CR}$. A consequence from Eq.~\ref{eq:CEquivClass} then is that 
+%$\cat(r) \neq \cat(r') \Rightarrow r\neq r'$. However, in general, the converse is not true, since $r,r'\in [r]_{\bumpeq}$ 
+%may be distinct if $\feducts(r)\neq \feducts(r')$ or $\fproducts(r)\neq \fproducts(r')$. 
 
-Different representatives of the same $\bumpeq$-equivalence class may have different or multiple synergistically acting 
-catalysts. For example, the hydrogenation of ethene to ethane can be mediated by platinum, palladium, 
-or nickel separately \cite{crampton_ethylene_2016}. An example for co-catalysis, i.e., where the 
-orchestrated cooperation of two catalysts is required, is the dual-catalyst system of palladium and copper in 
-the Hoechst-Wacker process, where ethene is oxidized to acetaldehyde \cite{jira_acetaldehyde_2009}. The 
-set of catalysts may also be empty, i.e., $\cat({\net{r}})=\emptyset$ by definition, or if the reaction is uncatalyzed. 
-In accordance, the catalysts of an equivalence class $[r]_{\bumpeq}$ is a collection $\cat([r]_{\bumpeq})=\{\cat(r') \ | \ r'\in [r]_{\bumpeq}\}$. 
-
-In a CRN $(X,\CR)$, representatives of an equivalence class $[r]_{\bumpeq}$ are distinct objects. Thus,
-it is possible that two reactions of the same equivalence class, $r,r'\in [r]_{\bumpeq}$, are in $\CR$. In this case,
-they appear as unique vertices in the bipartite K\"onigs representation of a CRN $\king\coloneqq (X\cup \C{R}, 
-E_1\cup E_2)$, where
+In a CRN $(X,\CR)$, each reaction $r$, as specified by Eq.~\ref{eq:Mod.SmEq}, is a distinct object. Thus,
+it is possible that two reactions, sharing the same net reaction, are elements of $\CR$. In this case, they 
+appear as unique vertices in the bipartite K\"onigs representation of a CRN 
+$\king\coloneqq (X\cup \C{R}, E_1\cup E_2)$, where
 \begin{equation}
 	\begin{split}
 		E_1\coloneqq \{(x,r) \ | \ s^-_{xr}>0\} \quad \text{ and } \quad E_2\coloneqq \{(x,r) \ | \ s^+_{xr}>0 \}. 
@@ -379,30 +372,22 @@ F-catalysts but share the same F-reactants and F-products:
 \begin{equation}\label{eq:fEquiv}
 	r_1\sim r_2 \Leftrightarrow \feducts(r_1)=\feducts(r_2), \fproducts(r_1)=\fproducts(r_2), 
 \end{equation}
-Again, $\sim$ is indeed an equivalence relation. The subtle difference between Eq.~\ref{eq:CEquivClass} 
-and Eq.~\ref{eq:fEquivClass} directly yields $r_1\sim r_2 \Rightarrow r_1\bumpeq r_2$, while the converse, 
-in general, is not true, as shown by the following example:
-\begin{equation}
-	\begin{split}
-		r_1&: x_1 + x_2 \xrightarrow{x_3} x_2 + x_4 \\
-		r_2&: x_1 \hspace{23pt} \xrightarrow{x_3} x_4
-	\end{split}
-\end{equation} 
-We call a $\sim$-equivalence class an F-reaction, and, for consistency, denote them in bold, i.e., $\F{r}$:
+Indeed, $\sim$ is an equivalence relation. We call a $\sim$-equivalence class an F-reaction, 
+and, for consistency, denote them in bold, i.e., $\F{r}\coloneqq [r]_\sim$ for:
 \begin{equation}\label{eq:fEquivClass}
 	\begin{split}
-		\F{r}\coloneqq [r]_{\sim}= \left\{r' \in [r]_{\bumpeq} \ \middle\vert \ \sigma_{xr'}^{\pm} = \sigma_{xr}^\pm, \forall x\in X \right\}
+		[r]_{\sim}= \left\{r': \sum_{x\in X}\ (\sigma^-_{xr'} + \kappa_{xr'}) \cdot x)\rightarrow \sum_{x\in X} \ (\sigma^+_{xr'} + \kappa_{xr'} \cdot x) \ \middle\vert \ \sigma_{xr'}^{\pm} = \sigma_{xr}^\pm, \forall x\in X \right\}
 	\end{split}
 \end{equation}
-With a slight abuse of notation, we write $r\in \F{r}$ for $r\in [r]_\sim$, for sets of F-reactions $\FR$, 
-and $\feducts(\F{r})$ as well as $\fproducts(\F{r})$ since $\feducts(r') =\feducts(r), \fproducts(r') =\fproducts(r), 
-\forall r' \in[r_\sim]$. The natural representative is the uncatalyzed reaction $\tilde{r}\in [r]_{\sim}: \cat(\tilde{r}) = \emptyset$, 
-which is identical with the natural representative $[r]_{\bumpeq}$, i.e., $\tilde{r}= \hat{r}$ 
-if and only if $\feducts(r)= \net{\ceducts}(r)$ and $\fproducts(\tilde{r}) = \net{\cproducts}(r)$. 
+With a slight abuse of notation, we write $r\in \F{r}$ for $r\in [r]_\sim$ and $\FR$ for sets of F-reactions. 
+Moreover, we may also write $\feducts(\F{r})$ and $\fproducts(\F{r})$ since $\feducts(r') =\feducts(r), \fproducts(r') =\fproducts(r), 
+\forall r' \in[r]_\sim$. The natural representative is the uncatalyzed reaction $\tilde{r}\in [r]_{\sim}: \cat(\tilde{r}) = \emptyset$, 
+which is identical with the net reaction $\hat{r}$, i.e., $\tilde{r}= \hat{r}$ if and only if 
+$\feducts(r)= \net{\ceducts}(r)$ and $\fproducts(\tilde{r}) = \net{\cproducts}(r)$. 
 
-As defined in Eq.~\ref{eq:CEquivClass}, $[r]_\sim$ is of infinite size, which is an unrealistic scenario for 
+As defined in Eq.~\ref{eq:fEquivClass}, $[r]_\sim$ is of infinite size, which is an unrealistic scenario for 
 a chemical system. Given a set of F-reactions $\FR$ together with a set of species $X$, the size of each 
-$\simeq$-equivalence class can be restricted to those representatives that are catalyzed by members of 
+$\sim$-equivalence class can be restricted to those representatives that are catalyzed by members of 
 the species set, the catalysts $\cat = \bigcup_{r\in \F{r} \in \FR} \cat(r)$. In this way, each F-reaction is of 
 finite size, and throughout we will consider them finite unless otherwise specified. A CRS is then the triple 
 $\Phi \coloneqq (X,\FR, \cat)$. Every $\Phi \coloneqq (X,\FR, \cat)$, thereby, has a unique corresponding 
