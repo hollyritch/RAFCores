@@ -120,8 +120,7 @@
 \newcommand{\PO}[0]{\mathscr{R}}
 \newcommand{\POR}[0]{\mathcal{R}}
 \newcommand{\POX}[0]{\mathcal{X}}
-\newcommand{\cat}{\mathbf{K}}
-\newcommand{\cats}{\mathbf{C}}
+\newcommand{\cat}{\mathbf{C}}
 \newcommand{\ceducts}{\mathcal{E}}
 \newcommand{\cproducts}{\mathcal{P}}
 \newcommand{\feducts}{\mathbf{E}}
@@ -321,20 +320,19 @@ F-reactants, F-products, and F-catalysts, respectively, and collect them in the 
 	\begin{split}
 		\feducts(r) & \coloneqq \{x\in X \ | \ \sigma^-_{xr} > 0\} \\
 		\fproducts(r) & \coloneqq \{x\in X \ | \ \sigma^+_{xr} > 0\} \\
-		\cat(r) & \coloneqq \{x\in X \ | \ \kappa_{xr} > 0\}
+		\cat(r) & \coloneqq \{\kappa_{xr} \cdot x \ | \ x \in X\}
 	\end{split}
 \end{equation} 
-To distinguish the F-catalysts from the F-reactants and F-products, we will write stoichiometric equations
-as follows:
+Note that $\cat$ is a multiset and might be empty, if $\kappa_{xr}=0, \forall x\in X$. To distinguish the 
+F-catalysts from the F-reactants and F-products, we will write stoichiometric equations as follows:
 \begin{equation}
-	r: \sum_{x\in X}\ \sigma^-_{xr} \cdot x \xrightarrow{\kappa_{xr} \cdot x\ : \ \kappa_{xr}>0} \sum_{x\in X} \ \sigma^+_{xr}  \cdot x.
+	r: \sum_{x\in X}\ \sigma^-_{xr} \cdot x \xrightarrow{x \in \cat(r)} \sum_{x\in X} \ \sigma^+_{xr}  \cdot x.
 \end{equation}
 As shown in \cite{bridging_Golnik_2026} we have:
 \begin{equation}
 	\begin{split}
 		\net{\ceducts}(r) \subseteq \feducts(r) &\subseteq \ceducts(r) \\
 		\net{\cproducts}(r) \subseteq \fproducts(r) &\subseteq \cproducts(r) \\
-		\cat(r) \cup (\feducts(r)\cap \fproducts(r)) &= \ceducts(r)\cap \cproducts(r)\\
 	\end{split}
 \end{equation}
 We may, additionally, observe that $\net{\feducts}(r) = \feducts(\net{r}) = \ceducts(\net{r}) = \net{\ceducts}(r)$ and 
@@ -402,26 +400,15 @@ if and only if $\feducts(r)= \net{\ceducts}(r)$ and $\fproducts(\tilde{r}) = \ne
 As defined in Eq.~\ref{eq:CEquivClass}, $[r]_\sim$ is of infinite size, which is an unrealistic scenario for 
 a chemical system. Given a set of F-reactions $\FR$ together with a set of species $X$, the size of each 
 $\simeq$-equivalence class can be restricted to those representatives that are catalyzed by members of 
-the species set. This is realized by \emph{catalyzation}, i.e., tuples $(\cats_r, r)$ where $\cats_r$ is a multi-set
-for a C-reaction $r\in \F{r}\in \FR$ defined as:
-\begin{equation}
-	\cats_r\coloneqq \{\kappa_{xr}\cdot x \ | \ x\in \cat(r)\}
-\end{equation}
-while $\cats_r \coloneqq \emptyset$ if $\cat(r)=\emptyset$. In contrast to $\cat(r), \cats_r$ is a multi-set that might
-contain the same catalyst more than once. The set of all catalyzations 
-is the set:
-\begin{equation}
-	\cats(\F{r})=\{(C_r, r) \ | \ r\in \F{r}, C_r\neq \emptyset\}
-\end{equation}
-In this way, each F-reaction is of finite size, and throughout we will consider them finite unless otherwise specified. 
-A CRS is then the triple $(X,\FR, \cat)$, where
-\begin{equation}
-	\cat=\bigcup_{r\in \F{r} \in \FR} \cat(r).
-\end{equation}
-Analogously to the bipartite graph representation of a CRN, we define the bipartite graph of 
+the species set, the catalysts $\cat = \bigcup_{r\in \F{r} \in \FR} \cat(r)$. In this way, each F-reaction is of 
+finite size, and throughout we will consider them finite unless otherwise specified. A CRS is then the triple 
+$(X,\FR, \cat)$. Analogously to the bipartite graph representation of a CRN, we define the bipartite graph of 
 a CRS as $Q\coloneqq (X \cup \FR, E_1\cup E_2)$ with:
 \begin{equation}
-	E_1\coloneqq \{(x,\F{r}) \ | \ x\in X, \F{r}\in \FR, \}
+	\begin{split}
+		E_1\coloneqq \{(x,\F{r}) \ | \ x\in X, \F{r}\in \FR: s^-_{xr}>0 \text{ for some } r \in \F{r} \} \\
+		E_2\coloneqq \{(x,\F{r}) \ | \ x\in X, \F{r}\in \FR: s^+_{xr}>0 \text{ for some } r \in \F{r} \}
+	\end{split}
 \end{equation}
 
 Before stating the definition of a RAF we require another formality. The 
