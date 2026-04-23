@@ -159,21 +159,22 @@
 
 \author*[1,4]{\fnm{Richard} \sur{Golnik}}\email{richard@bioinf.uni-leipzig.de}
 \ORCID{0000-0002-8582-5006} 
-%
-%\author[1]{\fnm{Thomas} \sur{Gatter}}\email{thomas@bioinf.uni-leipzig.de}
-%\ORCID{0000-0002-5016-5191} 
-%
+
+\author[1]{\fnm{Thomas} \sur{Gatter}}\email{thomas@bioinf.uni-leipzig.de}
+\ORCID{0000-0002-5016-5191} 
+
+\author[1]{\fnm{Wim} \sur{Hordijk}}\email{wim@worldwidewanderings.net}
+\ORCID{0000-0002-0223-6194} 
+
 \author[1,2]{\fnm{Nicola} \sur{Vassena}}\email{nicola.vassena@uni-leipzig.de}
-
 \ORCID{0000-0001-5411-4976} 
-%
-%\author[1,2,3,4,5,6,7,8,9]{\fnm{Peter F.}\sur{Stadler}}\email{studla@bioinf.uni-leipzig.de}
-%\ORCID{0000-0001-5567-3016}
 
+\author[1,2,3,4,5,6,7,8,9]{\fnm{Peter F.}\sur{Stadler}}\email{studla@bioinf.uni-leipzig.de}
+\ORCID{0000-0001-5567-3016}
 
 \affil[1]{\orgdiv{Bioinformatics Group, Department of Computer Science}
   \orgname{Leipzig University}, \orgaddress{\street{H{\"a}rtelstra{\ss}e 16–18},
-    \postcode{D-04107} \city{Leipzig}, \country{Germany}}}
+    \postcode{D-04107} \city{Leipzig}, \country{Germany}}} 
 
 \affil[2]{\orgdiv{Interdisciplinary Center for Bioinformatics}
 	\orgaddress{\orgname{Leipzig University}, \postcode{D-04107}
@@ -230,7 +231,7 @@ and $\FR$, to highlight sets of reactions that are derived from chemical reactio
 respectively. We will see that both sets do not contain the same mathematical objects. 
 
 The most general setting is given by the framework of a chemical reaction network (CRN). 
-A CRN $(X,\CR)$ is a tuple of two finite sets, a set of metabolites $X$ 
+A CRN $\Gamma \coloneqq (X,\CR)$ is a tuple of two finite sets, a set of metabolites $X$ 
 and a set of reactions $\CR$. For any $r\in \CR$, we can write a stoichiometric equation as: 
 \begin{equation}\label{eq:reaction}
   \sum_{x\in X}\ s^-_{xr} \cdot x \rightarrow \sum_{x\in X} \ s^+_{xr}\cdot x
@@ -374,7 +375,7 @@ We will refer to these kinds of reactions as C-reactions and denote them in norm
 Catalytic reaction systems (CRS) sensu Lohn \cite{lohn_evolving_1998} take a different approach. 
 In particular, two C-reactions $r_1, r_2$ are considered indistinguishable if they differ only in their 
 F-catalysts but share the same F-reactants and F-products:
-\begin{equation}
+\begin{equation}\label{eq:fEquiv}
 	r_1\sim r_2 \Leftrightarrow \feducts(r_1)=\feducts(r_2), \fproducts(r_1)=\fproducts(r_2), 
 \end{equation}
 Again, $\sim$ is indeed an equivalence relation. The subtle difference between Eq.~\ref{eq:CEquivClass} 
@@ -402,16 +403,38 @@ a chemical system. Given a set of F-reactions $\FR$ together with a set of speci
 $\simeq$-equivalence class can be restricted to those representatives that are catalyzed by members of 
 the species set, the catalysts $\cat = \bigcup_{r\in \F{r} \in \FR} \cat(r)$. In this way, each F-reaction is of 
 finite size, and throughout we will consider them finite unless otherwise specified. A CRS is then the triple 
-$(X,\FR, \cat)$. Analogously to the bipartite graph representation of a CRN, we define the bipartite graph of 
-a CRS as $Q\coloneqq (X \cup \FR, E_1\cup E_2)$ with:
+$\Phi \coloneqq (X,\FR, \cat)$. Every $\Phi \coloneqq (X,\FR, \cat)$, thereby, has a unique corresponding 
+CRN $\Gamma(\Phi) = (X, \CR)$, where $\CR=\bigcup_{\F{r} \in \FR}\F{r}$. For clarity, we might write the 
+CRN as a triple as $(X, \CR, \cat)$.
+
+Analogously to the bipartite graph representation of a CRN, the bipartite graph of a CRS 
+is given as $\queen(\Phi=(X,\FR, \cat))\coloneqq (X \cup \FR, E_1\cup E_2)$ with:
 \begin{equation}
 	\begin{split}
 		E_1\coloneqq \{(x,\F{r}) \ | \ x\in X, \F{r}\in \FR: s^-_{xr}>0 \text{ for some } r \in \F{r} \} \\
 		E_2\coloneqq \{(x,\F{r}) \ | \ x\in X, \F{r}\in \FR: s^+_{xr}>0 \text{ for some } r \in \F{r} \}
 	\end{split}
 \end{equation}
+In fact, the $\sim$-equivalence relation induces a convenient connection between the bipartite graph of 
+$\queen(\Phi)$ and the corresponding bipartite graph of the $K(\Gamma(\Phi))$.
+\vspace{6pt}
+\begin{theorem}
+	Let $\Phi\coloneqq (X,\FR, \cat)$ be a CRS with corresponding CRN $\Gamma(\Phi)$. The bipartite
+	directed K\"onig graph graph $\queen\coloneqq \queen(\Phi)$ is the quotient graph of $\king \coloneqq \king(\Gamma(\Phi))$ w.r.t. the
+	equivalence relation $\sim$ as defined in Eq.~\ref{eq:fEquiv}.
+\end{theorem}
+\begin{proof}
+	Let $(x,\F{r}) \in E_1(\queen)$. By definition, there is an $r\in \F{r}: s^-{xr}>0$, thus $(x,r)\in E_1(\king)$. 
+	Let now, $(x,r)\in E_1(\king)$. By definition of $\queen$, there is an edge $(x,[r]_\sim=\F{r})\in E_1(\queen)$. 
+	Similar arguments hold for edges from $E_2(\queen)$ and $E_2(\king)$.	
+\end{proof}
+\vspace{6pt}
 
-Before stating the definition of a RAF we require another formality. The 
+\section{RAFs and their partial order}
+
+Catalytic reaction systems (CRS) are the fundamental structure on which the framework of reflexively autocatalytic sets 
+is built \cite{hordijk_detecting_2004}. The 
+
 closure of a set $X'$ w.r.t. to a set $R'$ denoted as $\closure{R'}{X'}$ is the unique minimal 
 set $Y$ containing $X'$ such that for any $r\in R': \ceducts(r)\subseteq Y \Rightarrow \cproducts(r)\subseteq Y$. Thus:
 \begin{equation}\label{eq:Closure}
@@ -430,79 +453,77 @@ set $Y$ containing $X'$ such that for any $r\in R': \ceducts(r)\subseteq Y \Righ
 \end{definition}
 \vspace{6pt}
   
- We denote by $\cat(R)\coloneqq\{(\cat(r),r) \ | \ r\in R, \cat(r) \neq\emptyset\}$ the set of \emph{catalyzations}. In case all reactions 
-are $r\in R$ are uncatalyzed, $\cat(R)=\emptyset$. The triple $(X,R,\cat)$ with $\cat=\cat(R)\neq\emptyset$ is called a partially catalyzed 
-RN. If $|\cat| = |R|$, i.e., each reaction is catalyzed, we call $(X,R,\cat)$ a catalyzed RN.   
+% We denote by $\cat(R)\coloneqq\{(\cat(r),r) \ | \ r\in R, \cat(r) \neq\emptyset\}$ the set of \emph{catalyzations}. In case all reactions 
+%are $r\in R$ are uncatalyzed, $\cat(R)=\emptyset$. The triple $(X,R,\cat)$ with $\cat=\cat(R)\neq\emptyset$ is called a partially catalyzed 
+%RN. If $|\cat| = |R|$, i.e., each reaction is catalyzed, we call $(X,R,\cat)$ a catalyzed RN.   
+%
+%  
+%  Let us now turn to the RAF setting and consider the catalyzations.
+%    Every catalyzation of $\net{r}$ corresponds to the set catalysts $K(r)$
+%    in a particular reaction $r\in\net{r}$. In other words, we have 
+%    \begin{equation}
+%      \mathcal{K}_{\net{r}} \coloneqq \{ K(r) | r\in\net{r} \}
+%    \end{equation}
+%    Thus, for every $r\in\net{r}$, there is a $K\in\mathcal{K}_{\net{r}}$
+%    such that $r$ has educts.  
+%    
+%    \TODO{In fact, we should be even more
+%    anal-retentive here and insist that two sets
+%    $K,K'\in\mathcal{K}_{\net{r}}$ are distinct if their stoichiometric
+%    coefficients are distinct. Thus need to define $\mathcal{K}_{\net{r}}$
+%    as a multiset.}
+%
+%    \PFS{The next consequence is that there are also different notions of
+%      subnetworks for both formalisms.} 
+%    
+%A tuple $(X', R')$ is called a subnetwork of $(X,R)$ if $X'\subseteq X, R'\subseteq R$- A 
+%catalyzed network We say a subnetwork $(X',R')$ is well formed if for any $r\in R': \exists x_1,x_2\in X: 
+%s^-_{x_1r}>0, s^+_{x_2r}>0$. Considering a subnetwork $(X',R')$, we may distinguish 
+%a certain subset of entities $F', W'\subseteq X$ defined as
+%\begin{equation}\label{eq:FoodWaste}
+%	\begin{split}
+%		F'&\coloneqq \{x\in X: x\notin X', \exists r\in R': s^{-}_{xr}>0\}\\
+%		W'&\coloneqq \{x\in X: x\notin X', \exists r\in R': s^{+}_{xr}>0\}.
+%	\end{split}
+%\end{equation}
+%We call $F'$ and $W'$ the set of food and waste molecules for the subnetwork $(X',R')$,
+%respectively. A subnetwork is called \emph{educt} and \emph{product complete} if $F'\subseteq X'$ and 
+%$W'\subseteq X'$, respectively. 
+%
+%A (catalyzed) RN can be represented by its \emph{K\"onig graph}, a directed bipartite graph $\king (X,R,\cat) \coloneqq 
+%(X\cup R, E_1\cup E_2)$ with
+%\begin{equation}
+%	\begin{split}
+%		E_1 & \coloneqq \{(x,r) \ \vert \ s^-_{xr}>0\} \\
+%		E_2 & \coloneqq \{(r,x) \ \vert \ s^+_{xr}>0\}.
+%	\end{split}
+%\end{equation}
 
-  
-  Let us now turn to the RAF setting and consider the catalyzations.
-    Every catalyzation of $\net{r}$ corresponds to the set catalysts $K(r)$
-    in a particular reaction $r\in\net{r}$. In other words, we have 
-    \begin{equation}
-      \mathcal{K}_{\net{r}} \coloneqq \{ K(r) | r\in\net{r} \}
-    \end{equation}
-    Thus, for every $r\in\net{r}$, there is a $K\in\mathcal{K}_{\net{r}}$
-    such that $r$ has educts.  
-    
-    \TODO{In fact, we should be even more
-    anal-retentive here and insist that two sets
-    $K,K'\in\mathcal{K}_{\net{r}}$ are distinct if their stoichiometric
-    coefficients are distinct. Thus need to define $\mathcal{K}_{\net{r}}$
-    as a multiset.}
+%The K\"onig graph is also known as the Species-Reaction (SR-) or Metabolite-Reaction (MR-) graph. Two other representations 
+%can be directly derived from it, the S- and the R-graph. The R-graph, in particular, is the graph
+%\begin{equation}
+%	\begin{split}
+%		\mathcal{R}(\king)&\coloneqq \{R(\king), E\} \\
+%		E &\coloneqq \{(r_1,r_2) \ | \ \exists x X(\king): s^+_{xr_1}>0, s^-_{xr_2}>0\}
+%	\end{split}
+% \end{equation}
+%We will also simply write $\mathcal{R}$ if the bipartite graph is clear from the context. 
+%In the following sections, we will investigate the implications of different set
+%properties of RAFs on how they translate into structural properties of its bipartite 
+%K\"onig graph. We will put an important focus on the minimality condition here
+%since it allows us to identify 
 
-    \PFS{The next consequence is that there are also different notions of
-      subnetworks for both formalisms.} 
-    
-A tuple $(X', R')$ is called a subnetwork of $(X,R)$ if $X'\subseteq X, R'\subseteq R$- A 
-catalyzed network We say a subnetwork $(X',R')$ is well formed if for any $r\in R': \exists x_1,x_2\in X: 
-s^-_{x_1r}>0, s^+_{x_2r}>0$. Considering a subnetwork $(X',R')$, we may distinguish 
-a certain subset of entities $F', W'\subseteq X$ defined as
-\begin{equation}\label{eq:FoodWaste}
-	\begin{split}
-		F'&\coloneqq \{x\in X: x\notin X', \exists r\in R': s^{-}_{xr}>0\}\\
-		W'&\coloneqq \{x\in X: x\notin X', \exists r\in R': s^{+}_{xr}>0\}.
-	\end{split}
-\end{equation}
-We call $F'$ and $W'$ the set of food and waste molecules for the subnetwork $(X',R')$,
-respectively. A subnetwork is called \emph{educt} and \emph{product complete} if $F'\subseteq X'$ and 
-$W'\subseteq X'$, respectively. 
+%\TODO{Define:,  
+%\begin{itemize}
+%	\item{Autocatalytic matrices and autocatalytic cores}
+%	\item{Child-selections}
+%	\item{CS-matrices, Metzler-matrices}
+%	\item{(strong) Metzler column, i.e., no negative entry on the diagonal}
+%	\item{Fluffles}
+%	\item{Define CAF}
+%\end{itemize}
+%}
 
-A (catalyzed) RN can be represented by its \emph{K\"onig graph}, a directed bipartite graph $\king (X,R,\cat) \coloneqq 
-(X\cup R, E_1\cup E_2)$ with
-\begin{equation}
-	\begin{split}
-		E_1 & \coloneqq \{(x,r) \ \vert \ s^-_{xr}>0\} \\
-		E_2 & \coloneqq \{(r,x) \ \vert \ s^+_{xr}>0\}.
-	\end{split}
-\end{equation}
-
-The K\"onig graph is also known as the Species-Reaction (SR-) or Metabolite-Reaction (MR-) graph. Two other representations 
-can be directly derived from it, the S- and the R-graph. The R-graph, in particular, is the graph
-\begin{equation}
-	\begin{split}
-		\mathcal{R}(\king)&\coloneqq \{R(\king), E\} \\
-		E &\coloneqq \{(r_1,r_2) \ | \ \exists x X(\king): s^+_{xr_1}>0, s^-_{xr_2}>0\}
-	\end{split}
- \end{equation}
-We will also simply write $\mathcal{R}$ if the bipartite graph is clear from the context. 
-In the following sections, we will investigate the implications of different set
-properties of RAFs on how they translate into structural properties of its bipartite 
-K\"onig graph. We will put an important focus on the minimality condition here
-since it allows us to identify 
-
-\TODO{Define:,  
-\begin{itemize}
-	\item{Autocatalytic matrices and autocatalytic cores}
-	\item{Child-selections}
-	\item{CS-matrices, Metzler-matrices}
-	\item{(strong) Metzler column, i.e., no negative entry on the diagonal}
-	\item{Fluffles}
-	\item{Define CAF}
-\end{itemize}
-}
-
-
-\section{The partial order of RAFs}
 
 Property $ii.$ of Def.~\ref{def:RAF}, together with Eq.\ref{eq:Closure}, directly 
 implies that all products for any reaction $r\in \RAF$ are also contained 
