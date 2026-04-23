@@ -108,6 +108,7 @@
 \newcommand{\whatever}{\mbox{\,.\,}}
 \newcommand{\king}{K}
 \newcommand{\queen}{\mathbf{Q}}
+\newcommand{\food}{\ensuremath{\mathbf{F}}}
 \newcommand{\SM}{\mathbb{S}}
 \newcommand{\closure}[2]{\mathscr{C}_{#1}(#2)}
 \newcommand{\cl}[0]{\mathscr{X}}
@@ -393,8 +394,9 @@ We call a $\sim$-equivalence class an F-reaction, and, for consistency, denote t
 		\F{r}\coloneqq [r]_{\sim}= \left\{r' \in [r]_{\bumpeq} \ \middle\vert \ \sigma_{xr'}^{\pm} = \sigma_{xr}^\pm, \forall x\in X \right\}
 	\end{split}
 \end{equation}
-With a slight abuse of notation, we write $r\in \F{r}$ for $r\in [r]_\sim$ and for sets of F-reactions $\FR$. 
-The natural representative is the uncatalyzed reaction $\tilde{r}\in [r]_{\sim}: \cat(\tilde{r}) = \emptyset$, 
+With a slight abuse of notation, we write $r\in \F{r}$ for $r\in [r]_\sim$, for sets of F-reactions $\FR$, 
+and $\feducts(\F{r})$ as well as $\fproducts(\F{r})$ since $\feducts(r') =\feducts(r), \fproducts(r') =\fproducts(r), 
+\forall r' \in[r_\sim]$. The natural representative is the uncatalyzed reaction $\tilde{r}\in [r]_{\sim}: \cat(\tilde{r}) = \emptyset$, 
 which is identical with the natural representative $[r]_{\bumpeq}$, i.e., $\tilde{r}= \hat{r}$ 
 if and only if $\feducts(r)= \net{\ceducts}(r)$ and $\fproducts(\tilde{r}) = \net{\cproducts}(r)$. 
 
@@ -433,22 +435,23 @@ $\queen(\Phi)$ and the corresponding bipartite graph of the $K(\Gamma(\Phi))$.
 \section{RAFs and their partial order}
 
 Catalytic reaction systems (CRS) are the fundamental structure on which the framework of reflexively autocatalytic sets 
-is built \cite{hordijk_detecting_2004}. The 
-
-closure of a set $X'$ w.r.t. to a set $R'$ denoted as $\closure{R'}{X'}$ is the unique minimal 
-set $Y$ containing $X'$ such that for any $r\in R': \ceducts(r)\subseteq Y \Rightarrow \cproducts(r)\subseteq Y$. Thus:
+is built \cite{steel_emergence_2000, hordijk_detecting_2004}. In addition, they rely on the closure of a set $X' \subseteq X$ 
+w.r.t. to a set $\RAF \subseteq \FR$, denoted as $\closure{R'}{X'}$, which is the unique minimal set $Y$ containing $X'$ 
+such that for any $\F{r}\in \RAF: \feducts(r)\subseteq Y \Rightarrow \fproducts(r)\subseteq Y$. Thus:
 \begin{equation}\label{eq:Closure}
-	\closure{R'}{X'} \coloneqq \min \underbrace{\{ Z \subseteq X \ | \ X'\subseteq Z, \ceducts(r) \subseteq Z \Rightarrow \cproducts(r) \subseteq Z \ \forall r\in R'\}}_{\eqqcolon \mathfrak{C}_{R'}(X')}
+	\closure{R'}{X'} \coloneqq \min \underbrace{\{ Z \subseteq X \ | \ X'\subseteq Z, \feducts(r) \subseteq Z \Rightarrow \fproducts(r) \subseteq Z \ \forall r\in \RAF'\}}_{\eqqcolon \mathfrak{C}_{\RAF'}(X')}
 \end{equation}
+
+An reflexively autocatalytic set (RAF) is then defined as follows:
 
 \vspace{6pt}
 \begin{definition}[RAF]\label{def:RAF}
-	Let $(X,R,\cat)$ be a catalyzed network with $F\subseteq X$. Then
-	a set $\RAF\subseteq R$ is called  
+	Let $(X,\FR,\cat)$ be a CRS with $\food\subseteq X$. A set $\RAF\subseteq \FR$ is called  
+		\vspace{6pt}
 		\begin{itemize} 
-			\item[i.]{\emph{reflexive autocatalytic} (RA) if $\forall r\in \RAF: \emptyset \neq \cat(r)\subseteq \feducts(\RAF)\cup \fproducts(\RAF)$}
-			\item[ii.]{\emph{F-generated} if $\feducts(\RAF)\subseteq \closure{\RAF}{F}$}
-			\item[iii.]{\emph{reflexive autocatalytic} and \emph{F-generated} (RAF) if both i. and ii. hold}
+			\item[i.]{\emph{reflexive autocatalytic} (RA) if $\forall r\in \RAF: \emptyset \neq X(\cat(r))\subseteq \feducts(\RAF)\cup \fproducts(\RAF)$}\\[-0.5em]
+			\item[ii.]{\emph{\food-generated} if $\feducts(\RAF)\subseteq \closure{\RAF}{\food}$}\\[-0.5em]
+			\item[iii.]{\emph{reflexive autocatalytic} and \emph{\food-generated} (RAF) if both i. and ii. hold}
 		\end{itemize}
 \end{definition}
 \vspace{6pt}
@@ -523,7 +526,6 @@ set $Y$ containing $X'$ such that for any $r\in R': \ceducts(r)\subseteq Y \Righ
 %	\item{Define CAF}
 %\end{itemize}
 %}
-
 
 Property $ii.$ of Def.~\ref{def:RAF}, together with Eq.\ref{eq:Closure}, directly 
 implies that all products for any reaction $r\in \RAF$ are also contained 
@@ -616,7 +618,7 @@ deduce the consequences of Def.~\ref{def:RAF}ii. to the bipartite K\"onig repres
 
 \vspace{6pt}
 \begin{lemma}\label{lem:RAFPath}
-	Let $(X,R,\cat)$ be a catalyzed network with $F\subseteq X$ and $\RAF$ an RAF. Then, 
+	Let $(X,R,\cat)$ be a catalyzed network with $\food \subseteq X$ and $\RAF$ an RAF. Then, 
 	for any $x\in \closure{\RAF}{F}\setminus F: \exists f\in F: P=(f, \ldots, x)$ is a path in 
 	$\king'\coloneqq \king(\closure{\RAF}{F}\cup F, R', \cat')$.
 \end{lemma}
