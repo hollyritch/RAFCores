@@ -106,7 +106,7 @@
 % \DeclareMathOperator{\Aut}{Aut}
 % \DeclareMathOperator{\orb}{orb}
 \newcommand{\whatever}{\mbox{\,.\,}}
-\newcommand{\king}{\mathbf{K}}
+\newcommand{\king}{K}
 \newcommand{\queen}{\mathbf{Q}}
 \newcommand{\SM}{\mathbb{S}}
 \newcommand{\closure}[2]{\mathscr{C}_{#1}(#2)}
@@ -120,7 +120,8 @@
 \newcommand{\PO}[0]{\mathscr{R}}
 \newcommand{\POR}[0]{\mathcal{R}}
 \newcommand{\POX}[0]{\mathcal{X}}
-\newcommand{\cat}{\mathbf{C}}
+\newcommand{\cat}{\mathbf{K}}
+\newcommand{\cats}{\mathbf{C}}
 \newcommand{\ceducts}{\mathcal{E}}
 \newcommand{\cproducts}{\mathcal{P}}
 \newcommand{\feducts}{\mathbf{E}}
@@ -220,7 +221,7 @@
 
 \holy{}
 
-\section{Representation of Reactions in Chemical Networks}
+\section{Representation of Chemical Systems}
 
 The literature on systems of chemical interactions is inconsistent in the way how 
 they are formalized. In particular, different authors have introduced different notions of 
@@ -351,14 +352,7 @@ $[r]_\bumpeq$:
 Note that, in general, each $\bumpeq$-equivalence class is of infinite size. However, we may restrict the relation to 
 $\mathcal{R}$ simply by writing $\bumpeq_{\CR}$. A consequence from Eq.~\ref{eq:CEquivClass} then is that 
 $\cat(r) \neq \cat(r') \Rightarrow r\neq r'$. However, in general, the converse is not true, since $r,r'\in [r]_{\bumpeq}$ 
-may be distinct due to $\ceducts(r)\neq \ceducts(r')$ or $\cproducts(r)\neq \cproducts(r')$:
-
-\vspace{6pt}
-\begin{corollary}
-	Let $r,r'\in [r]_{\bumpeq}$. Then $r=r'$ if and only if $\ceducts(r)=\ceducts(r'), \cproducts(r)= \cproducts(r')$, and $
-	\cat(r) = \cat(r')$.
-\end{corollary}
-\vspace{6pt}
+may be distinct if $\feducts(r)\neq \feducts(r')$ or $\fproducts(r)\neq \fproducts(r')$. 
 
 Different representatives of the same $\bumpeq$-equivalence class may have different or multiple synergistically acting 
 catalysts. For example, the hydrogenation of ethene to ethane can be mediated by platinum, palladium, 
@@ -370,12 +364,14 @@ In accordance, the catalysts of an equivalence class $[r]_{\bumpeq}$ is a collec
 
 In a CRN $(X,\CR)$, representatives of an equivalence class $[r]_{\bumpeq}$ are distinct objects. Thus,
 it is possible that two reactions of the same equivalence class, $r,r'\in [r]_{\bumpeq}$, are in $\CR$. In this case,
-they appear as unique vertices in the bipartite K\"onigs representation of a CRN:
+they appear as unique vertices in the bipartite K\"onigs representation of a CRN $\king\coloneqq (X\cup \C{R}, 
+E_1\cup E_2)$, where
 \begin{equation}
-	K\coloneqq (X\cup \C{R}, E_1\cup E_2),
+	\begin{split}
+		E_1\coloneqq \{(x,r) \ | \ s^-_{xr}>0\} \quad \text{ and } \quad E_2\coloneqq \{(x,r) \ | \ s^+_{xr}>0 \}. 
+	\end{split}
 \end{equation}
-where $E_1\coloneqq \{(x,r) \ | \ s^-_{xr}>0\}$ and $E_2\coloneqq \{(x,r) \ | \ s^+_{xr}>0\}$. 
-We will refer to these kinds of reactions as C-reactions and denote them in normal font.
+We will refer to these kinds of reactions as C-reactions and denote them in normal font. 
 
 Catalytic reaction systems (CRS) sensu Lohn \cite{lohn_evolving_1998} take a different approach. 
 In particular, two C-reactions $r_1, r_2$ are considered indistinguishable if they differ only in their 
@@ -383,36 +379,54 @@ F-catalysts but share the same F-reactants and F-products:
 \begin{equation}
 	r_1\sim r_2 \Leftrightarrow \feducts(r_1)=\feducts(r_2), \fproducts(r_1)=\fproducts(r_2), 
 \end{equation}
-Again, $\sim$ is indeed an equivalence relationship. We refer to a $\sim$-equivalence class as an
-F-reaction, which is given by: 
-\begin{equation}\label{eq:fEquivClass}
-	[r]_{\sim}= \left\{r' \in [r]_{\bumpeq} \ \middle\vert \ \sigma_{xr'}^{\pm} = \sigma_{xr}^\pm, \forall x\in X \right\}
-\end{equation}
-The subtle difference between Eq.~\ref{eq:CEquivClass} and Eq.~\ref{eq:fEquivClass} directly yields 
-$r_1\sim r_2 \Rightarrow r_1\bumpeq r_2$, while the converse is in general not true, as shown 
-by the following example:
+Again, $\sim$ is indeed an equivalence relation. The subtle difference between Eq.~\ref{eq:CEquivClass} 
+and Eq.~\ref{eq:fEquivClass} directly yields $r_1\sim r_2 \Rightarrow r_1\bumpeq r_2$, while the converse, 
+in general, is not true, as shown by the following example:
 \begin{equation}
 	\begin{split}
 		r_1&: x_1 + x_2 \xrightarrow{x_3} x_2 + x_4 \\
 		r_2&: x_1 \hspace{23pt} \xrightarrow{x_3} x_4
 	\end{split}
 \end{equation} 
-A $\sim$-equivalence class $[r]_{\sim}$ also has a natural representative, i.e., the reaction 
-$\tilde{r}\in [r]_{\sim}: \cat(\tilde{r}) = \emptyset$. Note that $\tilde{r}= \hat{r}$ if and only if
-$\feducts(r)= \net{\ceducts}(r)$ and $\fproducts(r) = \net{\cproducts}(r)$. For consistency, 
-we will denote F-reactions in bold, i.e., $\F{r}$ and sets of F-reactions by $\FR$. We additionally
-abuse notation and write $r\in \F{r}$ for $r\in [r]_\sim$. 
+We call a $\sim$-equivalence class an F-reaction, and, for consistency, denote them in bold, i.e., $\F{r}$:
+\begin{equation}\label{eq:fEquivClass}
+	\begin{split}
+		\F{r}\coloneqq [r]_{\sim}= \left\{r' \in [r]_{\bumpeq} \ \middle\vert \ \sigma_{xr'}^{\pm} = \sigma_{xr}^\pm, \forall x\in X \right\}
+	\end{split}
+\end{equation}
+With a slight abuse of notation, we write $r\in \F{r}$ for $r\in [r]_\sim$ and for sets of F-reactions $\FR$. 
+The natural representative is the uncatalyzed reaction $\tilde{r}\in [r]_{\sim}: \cat(\tilde{r}) = \emptyset$, 
+which is identical with the natural representative $[r]_{\bumpeq}$, i.e., $\tilde{r}= \hat{r}$ 
+if and only if $\feducts(r)= \net{\ceducts}(r)$ and $\fproducts(\tilde{r}) = \net{\cproducts}(r)$. 
 
-In general, a $\simeq$ equivalence class is of infinite size. However, given a set of F-reactions 
-$\FR$ together with a set of species $X$, we can restrict the size of each $\simeq$-equivalence 
-class to contain only those representatives that are catalyzed by an $x\in X$. This is realized by 
-\emph{catalyzations}, i.e., pairs $(X',\F{r})$ for which $X'\subseteq X, \F{r}\in \FR$ and there 
-$\exists \ r\in \F{r}: \kappa_{xr}>0, \forall x\in X'$. For each $\F{r}\in \FR$ we collect all 
-catalyzations in a set $\cat(F{r})=\{(X',r) \ X'\subseteq X, \exists \ r\in \F{r}: \kappa_{xr}>0, \forall x\in X'\}$
+As defined in Eq.~\ref{eq:CEquivClass}, $[r]_\sim$ is of infinite size, which is an unrealistic scenario for 
+a chemical system. Given a set of F-reactions $\FR$ together with a set of species $X$, the size of each 
+$\simeq$-equivalence class can be restricted to those representatives that are catalyzed by members of 
+the species set. This is realized by \emph{catalyzation}, i.e., tuples $(\cats_r, r)$ where $\cats_r$ is a multi-set
+for a C-reaction $r\in \F{r}\in \FR$ defined as:
+\begin{equation}
+	\cats_r\coloneqq \{\kappa_{xr}\cdot x \ | \ x\in \cat(r)\}
+\end{equation}
+while $\cats_r \coloneqq \emptyset$ if $\cat(r)=\emptyset$. In contrast to $\cat(r), \cats_r$ is a multi-set that might
+contain the same catalyst more than once. The set of all catalyzations 
+is the set:
+\begin{equation}
+	\cats(\F{r})=\{(C_r, r) \ | \ r\in \F{r}, C_r\neq \emptyset\}
+\end{equation}
+In this way, each F-reaction is of finite size, and throughout we will consider them finite unless otherwise specified. 
+A CRS is then the triple $(X,\FR, \cat)$, where
+\begin{equation}
+	\cat=\bigcup_{r\in \F{r} \in \FR} \cat(r).
+\end{equation}
+Analogously to the bipartite graph representation of a CRN, we define the bipartite graph of 
+a CRS as $Q\coloneqq (X \cup \FR, E_1\cup E_2)$ with:
+\begin{equation}
+	E_1\coloneqq \{(x,\F{r}) \ | \ x\in X, \F{r}\in \FR, \}
+\end{equation}
 
-The set of F-reactions $\FR$ together with a set of species $X$ constitute the basis for a 
-CRS. objects that Before stating the definition of a RAF we require another formality. The closure of a set $X'$ w.r.t. to a set $R'$ denoted as 
-$\closure{R'}{X'}$ is the unique minimal set $Y$ containing $X'$ such that for any $r\in R': \ceducts(r)\subseteq Y \Rightarrow \cproducts(r)\subseteq Y$. Thus:
+Before stating the definition of a RAF we require another formality. The 
+closure of a set $X'$ w.r.t. to a set $R'$ denoted as $\closure{R'}{X'}$ is the unique minimal 
+set $Y$ containing $X'$ such that for any $r\in R': \ceducts(r)\subseteq Y \Rightarrow \cproducts(r)\subseteq Y$. Thus:
 \begin{equation}\label{eq:Closure}
 	\closure{R'}{X'} \coloneqq \min \underbrace{\{ Z \subseteq X \ | \ X'\subseteq Z, \ceducts(r) \subseteq Z \Rightarrow \cproducts(r) \subseteq Z \ \forall r\in R'\}}_{\eqqcolon \mathfrak{C}_{R'}(X')}
 \end{equation}
@@ -451,8 +465,6 @@ RN. If $|\cat| = |R|$, i.e., each reaction is catalyzed, we call $(X,R,\cat)$ a 
 
     \PFS{The next consequence is that there are also different notions of
       subnetworks for both formalisms.} 
-    
-    
     
 A tuple $(X', R')$ is called a subnetwork of $(X,R)$ if $X'\subseteq X, R'\subseteq R$- A 
 catalyzed network We say a subnetwork $(X',R')$ is well formed if for any $r\in R': \exists x_1,x_2\in X: 
@@ -1781,7 +1793,7 @@ consequence from the set of entities $X'$ and the set of reactions $R'$.
 \end{definition}
 \vspace{6pt}
 
-An immediate question arising is then how to construct a minimal set $F$ to obtain an $F$-generated subnetwork. Clearly, we have  
+An immediate question that arises is how to construct a minimal set $F$ to obtain an $F$-generated subnetwork. Clearly, we have  
 that $F'\subseteq F$ if $(X',R')$ is $F$-generated. 
 \vspace{6pt}
 \begin{lemma}
