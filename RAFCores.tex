@@ -118,7 +118,7 @@
 %\newcommand{\F}[1]{\mathbf{#1}}
 \newcommand{\fr}[0]{\mathbf{r}}
 \newcommand{\net}[1]{\hat{#1}}
-\newcommand{\RAF}[0]{\mathbf{R'}}
+\newcommand{\RAF}[0]{\mathbf{R}'}
 \newcommand{\PO}[0]{d}
 \newcommand{\POR}[0]{\mathscr{R}}
 \newcommand{\POX}[0]{\mathscr{X}}
@@ -622,10 +622,10 @@ that share the same net reaction, the "later" can be removed.
 	if $h(\fr_1)\leq h(\fr_2)$.
 \end{lemma}
 \begin{proof}
-	Let $\mathbf{R''} \coloneqq \RAF \setminus \{r''_2\}$. Since $\RAF$ was reflexively autocatalytic, 
-	$\mathbf{R''}$ is reflexively autocatalytic. In addition, since $\hat{\feducts}(\fr_1)=\hat{\feducts}(\fr_2)$ 
+	Let $\RAF' \coloneqq \RAF \setminus \{r''_2\}$. Since $\RAF$ was reflexively autocatalytic, 
+	$\RAF'$ is reflexively autocatalytic. In addition, since $\hat{\feducts}(\fr_1)=\hat{\feducts}(\fr_2)$ 
 	and $\hat{\fproducts}(\fr_1)=\hat{\fproducts}(\fr_2)$ and $h(\fr_1)\leq h(\fr_2)$, 
-	$\closure{\RAF}{F} = \closure{\mathbf{R''}}{F}$. 
+	$\closure{\RAF}{F} = \closure{\RAF'}{F}$. 
 \end{proof}
 \vspace{6pt} 
 \noindent We may remark that the converse is not true. To see this, consider the following example:
