@@ -330,7 +330,7 @@ different or multiple synergistically acting catalysts. For example, the hydroge
 can be mediated by platinum, palladium, or nickel separately \cite{crampton_ethylene_2016}. An example 
 for co-catalysis, i.e., where the orchestrated cooperation of two catalysts is required, is the dual-catalyst 
 system of palladium and copper in the Hoechst-Wacker process, where ethene is oxidized to acetaldehyde 
-\cite{jira_acetaldehyde_2009}. We therefore define the set of catalysts as a multiset:
+\cite{jira_acetaldehyde_2009}. We therefore define the set of F-catalysts as a multiset:
 \begin{equation}
 	\cat(r)\coloneqq \{\kappa_{xr} \cdot x\ | \ x\in X\}
 \end{equation}
@@ -385,14 +385,24 @@ Moreover, we may also write $\feducts(\fr)$ and $\fproducts(\fr)$ since $\feduct
 \forall r' \in[r]_\sim$. The natural representative is the uncatalyzed reaction $\tilde{r}\in [r]_{\sim}: \cat(\tilde{r}) = \emptyset$, 
 which is the net reaction $\hat{r}$ if and only if $\feducts(r)= \net{\ceducts}(r)$ and $\fproducts(\tilde{r}) = \net{\cproducts}(r)$. 
 
-As defined in Eq.~\ref{eq:fEquivClass}, $[r]_\sim$ is of infinite size, which is an unrealistic scenario for 
-a chemical system. Given a set of F-reactions $\FR$ together with a set of species $X$, the size of each 
-$\sim$-equivalence class can be restricted to those representatives that are catalyzed by members of 
-the species set, the catalysts $\cat = \bigcup_{r\in \fr \in \FR} \cat(r)$. In this way, each F-reaction is of 
-finite size, and throughout we will consider them finite unless otherwise specified. A CRS is then the triple 
-$\Phi \coloneqq (X,\FR, \cat)$. Every $\Phi \coloneqq (X,\FR, \cat)$, thereby, has a unique corresponding 
-CRN $\Gamma(\Phi) = (X, \CR)$, where $\CR=\bigcup_{\fr \in \FR}\fr$. For clarity, we might write the 
-CRN as a triple as $(X, \CR, \cat)$.
+By definition, $[r]_\sim$ is of infinite size, which is an unrealistic scenario for 
+a chemical system. Given a set of F-reactions $\FR$ together with a set of species $X$, each 
+$\sim$-equivalence class can be restricted to representatives that are catalyzed by members 
+of the species set or are uncatalyzed. This is achieved by \emph{catalyzations}, i.e., by
+defining \emph{a priori} for each $\fr\in \FR$ the collection of catalysts $\cat(\fr)$ and collecting them
+in the set of catalyzations $\cat$. Note that if an F-reaction has no catalysts, $\cat(\fr)=\emptyset$. 
+In this case, $\fr$ contains only the natural representative, while in all other cases, the natural 
+representative is excluded from the equivalence class:
+\begin{equation}
+	\fr\coloneqq \begin{cases} 
+				\tilde{r} & \text{if } \cat(\fr)=\emptyset \\
+				\{r' \ \vert \ \cat(r')\neq \emptyset\} & \text{else}
+			   \end{cases} 
+\end{equation}
+In this way, each F-reaction is of finite size, and throughout we will consider 
+them finite unless otherwise specified. A CRS is then the triple $\Phi \coloneqq (X,\FR, \cat)$, where
+$\Phi \coloneqq (X,\FR, \cat)$, thereby, has a unique corresponding CRN $\Gamma(\Phi) = (X, \CR)$, 
+where $\CR=\bigcup_{\fr \in \FR}\fr$. For clarity, we might write the CRN as a triple as $(X, \CR, \cat)$.
 
 Analogously to the bipartite graph representation of a CRN, the bipartite graph of a CRS 
 is given as $\queen(\Phi=(X,\FR, \cat))\coloneqq (X \cup \FR, E_1\cup E_2)$ with:
@@ -403,24 +413,31 @@ is given as $\queen(\Phi=(X,\FR, \cat))\coloneqq (X \cup \FR, E_1\cup E_2)$ with
 	\end{split}
 \end{equation}
 In fact, the $\sim$-equivalence relation induces a convenient connection between the bipartite graph of 
-$\queen(\Phi)$ and the corresponding bipartite graph of the $K(\Gamma(\Phi))$.
+$\queen(\Phi)$ and the corresponding bipartite graph of the $K(\Gamma(\Phi))$. 
 \vspace{6pt}
 \begin{theorem}
 	Let $\Phi\coloneqq (X,\FR, \cat)$ be a CRS with corresponding CRN $\Gamma(\Phi)$. The bipartite
 	directed K\"onig graph graph $\queen\coloneqq \queen(\Phi)$ is the quotient graph of $\king \coloneqq \king(\Gamma(\Phi))$ w.r.t. the
-	equivalence relation $\sim$ as defined in Eq.~\ref{eq:fEquiv}. Moreover, $\queen$ is strongly connected
-	if and only if $\king$ is strongly connected.
+	equivalence relation $\sim$ as defined in Eq.~\ref{eq:fEquiv}. 
 \end{theorem}
 \begin{proof}
 	Let $(x,\fr) \in E_1(\queen)$. By definition, there is an $r'\in \fr: s^-_{xr'}>0$, thus $(x,r')\in E_1(\king)$. 
 	Let now, $(x,r)\in E_1(\king)$. By definition of $\queen$, there is an edge $(x,\fr)\in E_1(\queen)$. 
-	Similar arguments hold for edges from $E_2(\queen)$ and $E_2(\king)$. For the second statement, we note
-	that the only if direction is true in general for any quotient graph. \TODO{Mh....this is a little bit tedious 
-	since we have paths that run through catalysts, which are catalysts for different representatives of 
-	the equivalence they sandwich....}
+	Similar arguments hold for edges from $E_2(\queen)$ and $E_2(\king)$. 
 \end{proof}
 \vspace{6pt}
-
+In the monocatalyst case, where each F-reaction has exactly one catalyst, we have $\vert \fr \vert = 1, \forall \fr \in \FR$. 
+Thus, each reaction vertex of $\queen(\Phi)$ is substituted by its single representative, while all edges to adjacent 
+vertices are conserved. This yields that $\queen(\Phi)$ and $\king(\Gamma(\Phi))$ are isomorphic. In turn, if one 
+equivalence classe contains more than $1$ representative, $|V(\king(\Gamma(\Phi))|>|V(\queen(\Phi)|$:
+\vspace{6pt}
+\begin{theorem}
+	Let $\Phi\coloneqq (X, \FR, \cat)$ be a CRS with corresponding CRN $\Gamma(\Phi)$ Then 
+	$\queen(\Phi)\simeq \king(\Gamma(\Phi))$ if and only if $\vert \fr \vert = 1, \forall \fr \in \FR$.
+\end{theorem}
+\vspace{6pt}
+ A known result for quotient graphs is that $\queen(\Phi)$ is strongly-connected whenever 
+$\king(\Gamma(\Phi))$ is strongly connected. 
 
 \section{Reflexively autocatalytic sets (RAFs)}
 
