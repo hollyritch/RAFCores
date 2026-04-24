@@ -616,7 +616,7 @@ to the values of $g$ and $h$ as the generation of a reaction or metabolite.
 One important consequence of the partial order is that if a RAF contains two $\sim$~equivalence classes 
 that share the same net reaction, the "later" can be removed.
 \vspace{6pt}
-\begin{lemma}
+\begin{lemma}\label{lem:OneFReacPerRAF}
 	Let $(X,\FR,\cat)$ be a CRS with food-set $\food\subseteq X$, $\RAF\subseteq \FR$ a $\RAF$, and 
 	$\fr_1,\fr_2 \in \RAF: \fr_1\neq \fr_2, \hat{\fr}_1 = \hat{\fr}_2'$. Then $\RAF\setminus \{\fr_2\}$ is a RAF
 	if $h(\fr_1)\leq h(\fr_2)$.
@@ -639,15 +639,16 @@ Then clearly, $\fr_1\neq \fr_2$ and $h(\fr_1) = 1 < 2 = h(\fr_2)$ since $\fr_2$ 
 an F-reactant. 
 
 The partial order $\preceq$ allows us to easily observe that each species vertex for the closure of a 
-$\RAF$ is reachable from at least one food molecule in $\food$. Throughout, we denote the 
-restriction of the set $\cat$ to only those catalyzations of reactions 
-$\RAF\subseteq \FR$ by $\cat'$.
+$\RAF$ is reachable from at least one food molecule in $\food$ in the bipartite K\"onig graph, 
+which is restricted to the $\closure{\RAF}{\food}$, the reactions in $\RAF$, and to those catalyzations 
+$\cat'$ of reactions in $\RAF\subseteq \FR$. Throughout, we denote this graph as 
+$\queen'\coloneqq \queen(\closure{\RAF}{\food}, \RAF, \cat')$.
 
 \vspace{6pt}
 \begin{lemma}\label{lem:RAFPath}
 	Let $(X, \FR, \cat)$ be a CRS with $\food \subseteq X$ and a RAF $\RAF\subseteq \FR$. 
-	For any $x\in \closure{}{\food}\setminus \food$ there is an $f\in \food$ sucht that $P=(f, \ldots, x)$ 
-	is a path in $\queen'\coloneqq \queen(\closure{}{F}\cup F, \RAF, \cat)$.
+	For any $x\in \closure{}{\food}\setminus \food$ there is an $f\in \food$ such that $P=(f, \ldots, x)$ 
+	is a path in $\queen'$.
 \end{lemma}
 \begin{proof}
 	Let $x\in \closure{}{\food}\setminus \food$. By Corollary~\ref{cor:seqLimit} we have for some $n\in\mathbb{N}$ that
@@ -661,21 +662,20 @@ $\RAF\subseteq \FR$ by $\cat'$.
 
 \section{Minimal RAFs}
 
-A question, which naturally arises for a given RAF $\RAF$, is whether there is an $\RAF'\subset \RAF$ that is itself a RAF. This 
-notion has been termed \emph{irreducible} RAFs in the literature \cite{hordijk_detecting_2004, hordijk_autocatalytic_2013, 
-hordijk_autocatalytic_2010}. However, to avoid confusion with the notion of irreducibility of a matrix, we refer to them as 
-\emph{minimal RAFs}. We shall see that the minimality condition yields a number of interesting structural consequences. The
-first is an obvious but important result.
+A question that naturally arises for RAFs is whether a RAF contains a sub-RAF. Minimal sets of F-reactions w.r.t. 
+to the RAF properties have been termed \emph{irreducible} RAFs in the literature \cite{hordijk_detecting_2004, 
+hordijk_autocatalytic_2013, hordijk_autocatalytic_2010}. However, to avoid confusion with the notion of irreducibility 
+of a matrix, we refer to them as \emph{minimal RAFs}. 
 
-A direct consequence of this Lemma is that only one representative of each equivalence class can be part of a RAF:
+Throughout, we will now consider a CRS $\Phi\coloneqq (X,\FR,\cat)$ with food-set $\food\subseteq X$ and K\"onig graph 
+$\queen\coloneqq \queen(\Phi)$, a minimal RAF $\RAF\subseteq \FR$ with K\"onig graph $\queen'\coloneqq \queen(\closure{\RAF}, 
+\RAF,\cat')$. The first result is a direct consequence of Lemma~\ref{lem:OneFReacPerRAF}.
 \vspace{6pt} 
 \begin{corollary}
-	Let $(X,\FR,\cat)$ be a catalyzed RN with food-set $F$ and $\RAF$ be a minimal RAF. For $r',r'' \in[r']_{\sim}, r'\neq r''$ 
-	$r'\in \RAF\Rightarrow r''\notin \RAF$.
+	Let $\fr_r,\fr_2 \in \RAF: \fr_1\neq \fr_2, \hat{\fr}_1=\hat{\fr}_2$. Then $\fr_1\in \RAF\Rightarrow \fr_2\notin \RAF$.
 \end{corollary}
 \vspace{6pt} 
-This allows us to CRNS that contain only one representative for each equivalence class of a minimal RAF.
-Before venturing forth, we give an example of a non-minimal RAF:\\
+A minimal RAF thereby contains only one F-reaction. Before venturing forth, we give an example of a non-minimal RAF:\\
 \vspace{6pt}
 \begin{minipage}[c]{0.4\textwidth}
 	\centering
@@ -712,38 +712,38 @@ Before venturing forth, we give an example of a non-minimal RAF:\\
 	\end{tikzpicture}
 \end{minipage}
 
-Indeed, $\RAF=\{r_1\}$ is a RAF, and thus, any addition of $r_1$ or $r_2$ would violate minimality. We call any 
-RAF of size $1$ a \emph{trivial} RAF. At this point, we note that for catalyzed reaction networks, where 
-each reaction is catalyzed by at most one catalyst, we get the following statement. 
-
-\vspace{6pt}
-\begin{lemma}
-	Let $(X,R,\cat)$ be a catalyzed reaction network with food-set $F$ such that $|\cat_{r}|\leq 1, \forall r\in R$. Then every minimal
-	CAF is trivial. 
-\end{lemma}
-\begin{proof}
-	Let $\RAF$ be a CAF and assume $|\RAF|>1$. Let $r\in \POR^1_{\RAF}(F)$. Then all reactants and catalysts are for $r$ are in 
-	$F$ since $\RAF$ is a CAF. Thus $\{r\}$ is a RAF itself, contradicting the minimality of $\RAF$.
-\end{proof}
-\vspace{6pt}
-
-An example for a trivial CAF is $\{r_0\}$ in the last example. 
-
-Interestingly, the minimality condition has a series of interesting consequences on the structure of the K\"onig representation for non-trivial 
-RAF when all food molecules and all species exhibiting no outgoing edges are removed. We start with the following trivial observation, 
+Indeed, $\RAF=\{r_0\}$ is a RAF, and thus, any addition of $r_1$ or $r_2$ would violate minimality. 
+We call any RAF of size $1$ a \emph{trivial} RAF. 
+%At this point, we note that for a CRS, where each reaction is catalyzed by 
+%at most one catalyst, we get the following statement. 
+%
+%\vspace{6pt}
+%\begin{lemma}
+%	Let $(X,R,\cat)$ be a catalyzed reaction network with food-set $F$ such that $|\cat_{r}|\leq 1, \forall r\in R$. Then every minimal
+%	CAF is trivial. 
+%\end{lemma}
+%\begin{proof}
+%	Let $\RAF$ be a CAF and assume $|\RAF|>1$. Let $r\in \POR^1_{\RAF}(F)$. Then all reactants and catalysts are for $r$ are in 
+%	$F$ since $\RAF$ is a CAF. Thus $\{r\}$ is a RAF itself, contradicting the minimality of $\RAF$.
+%\end{proof}
+%\vspace{6pt}
+%
+%An example for a trivial CAF is $\{r_0\}$ in the last example. 
+The minimality condition has a series of interesting consequences on the structure of $\queen'$ for non-trivial RAFs, i.e., when all food 
+molecules and all species exhibiting no outgoing edges are removed. We start with the following trivial observation, 
 which is a direct consequence of Lemma~\ref{lem:RAFPath}.
 \vspace{6pt}
 \begin{lemma}\label{lem:weaklyConnected}
-	A $(X, \FR, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal RAF. 
-	Then $\king[\closure{\RAF}{F}, \RAF]$ is weakly-connected.
+	The graph $\queen'$ is weakly-connected.
 \end{lemma}
 \begin{proof}
-	Assume this is not the case. Then we have at least two connected components $\king', \king''$. By assumption both $X(\king')$ 
-	and $X(\king'')$ are $F$-generated. Since all reactions in $\RAF$ are catalyzed, every reaction in $R(\king')$ and every reaction 
-	in $R(\king'')$ is catalyzed. Since there is no path from any $x'\in X(\king')$ to any $r''\in R(\king'')$ and no path from 
-	any $x''\in X(\king'')$ to any $r'\in R(\king')$, every reaction $r'\in R(\king')$ is catalyzed by an entity of $x'\in X(\king')$ and every reaction
-	of $r''\in R(\king')$ is catalyzed by an entity of $x''\in X(\king'')$. Thus $R(\king')$ and $R(\king'')$ are RAFs themselves and since
-	$R(\king'), R(\king'')\subseteq \RAF$, $\RAF$ was not a minimal RAF, thus a contradiction.
+	Assume this is not the case. Then we have at least two connected components $\queen_1', \queen_2'$. By assumption both $X(\queen_1')$ 
+	and $X(\queen_2')$ are $\food$-generated. Since all F-reactions in $\RAF$ are catalyzed, every F-reaction in $R(\queen_1')$ and every F-reaction 
+	in $R(\queen_2')$ is catalyzed. Since there is no path from any $x_1\in X(\queen_1')$ to any $\fr_2\in \FR(\queen_2')$ and no path from 
+	any $x_2\in X(\queen_2')$ to any $\fr_1\in \FR(\queen_1')$, every F-reaction $\fr_1\in \FR(\queen_1')$ is catalyzed by an $x_1\in X(\queen_1')$ 
+	and every F-reaction of $\fr_2\in \FR(\queen_2')$ is catalyzed by an entity of $x_2\in X(\queen_2')$. In addition, no reaction $\fr_1\in \FR(\queen_1')$ 
+	has a species $x_2\in X(\queen_2')$ as F-reactant and no reaction $\fr_2\in \FR(\queen_2')$ has a species $x_1\in X(\queen_1)$ as an F-reactant. 
+	Thus $\FR(\queen_1')$ and $\FR(\queen_2')$ are RAFs themselves. Since $\FR(\queen_1'), \FR(\queen_1')\subseteq \RAF$, $\RAF$ was not minimal.
 \end{proof}
 \vspace{6pt}
 A minimal RAF, thereby, has a corresponding weakly-connected bipartite K\"onig graph. 
