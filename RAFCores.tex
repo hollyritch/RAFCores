@@ -413,19 +413,22 @@ $\queen(\Phi)$ and the corresponding bipartite graph of the $K(\Gamma(\Phi))$.
 	Similar arguments hold for edges from $E_2(\queen)$ and $E_2(\king)$. 
 \end{proof}
 \vspace{6pt}
-In the monocatalyst case, where each F-reaction has exactly one catalyst, we have $\vert \fr \vert = 1, \forall \fr \in \FR$. 
-Thus, each reaction vertex of $\queen(\Phi)$ is substituted by its single representative, while all edges to adjacent 
-vertices are conserved. This yields that $\queen(\Phi)$ and $\king(\Gamma(\Phi))$ are isomorphic. In turn, if one 
-equivalence classe contains more than $1$ representative, $|V(\king(\Gamma(\Phi))|>|V(\queen(\Phi)|$:
+In the monocatalyst case for example, where each F-reaction has exactly one catalyst, we have 
+$\vert \fr \vert = 1, \forall \fr \in \FR$. Thus, each reaction vertex of $\queen(\Phi)$ is substituted 
+by its single representative, while all edges to adjacent vertices are conserved. This yields that 
+$\queen(\Phi)$ and $\king(\Gamma(\Phi))$ are isomorphic. In turn, if one equivalence class
+contains more than $1$ representative, then $|V(\king(\Gamma(\Phi))|>|V(\queen(\Phi)|$, which 
+directly implies that $\king(\Gamma(\Phi))\not \simeq \king(\Gamma(\Phi))$.
+
 \vspace{6pt}
-\begin{theorem}\label{thm:IsoQK}
+\begin{corollary}\label{cor:IsoQK}
 	Let $\Phi\coloneqq (X, \FR, \cat)$ be a CRS with corresponding CRN $\Gamma(\Phi)$ Then 
 	$\queen(\Phi)\simeq \king(\Gamma(\Phi))$ if and only if $\vert \fr \vert = 1, \forall \fr \in \FR$.
-\end{theorem}
+\end{corollary}
 \vspace{6pt}
 
 A known result for quotient graphs is that $\queen(\Phi)$ is strongly-connected whenever 
-$\king(\Gamma(\Phi))$ is strongly connected. By Thm.~\ref{thm:IsoQK} The converse is 
+$\king(\Gamma(\Phi))$ is strongly connected. By Cor.~\ref{cor:IsoQK} the converse is 
 trivially true if each equivalence class is of size $1$. In general, however, this is not true, 
 in particular, if one F-reaction has two alternative catalysts, and one of them is not 
 connected by a path originating in any of the products. Such an example is depicted in 
@@ -511,7 +514,7 @@ sufficient conditions to regain this property.
 
 Catalytic reaction systems (CRS) are the fundamental structure on which the notion of reflexively autocatalytic sets 
 is built \cite{steel_emergence_2000, hordijk_detecting_2004}. In addition, they rely on the closure of a set $X' \subseteq X$ 
-w.r.t. to a set $\RAF \subseteq \FR$, denoted as $\closure{R'}{X'}$, which is the unique minimal set $Y$ containing $X'$ 
+w.r.t. to a set $\RAF \subseteq \FR$, denoted as $\closure{\RAF}{X'}$, which is the unique minimal set $Y$ containing $X'$ 
 such that for any $\fr\in \RAF: \feducts(r)\subseteq Y \Rightarrow \fproducts(r)\subseteq Y$. Thus:
 \begin{equation}\label{eq:Closure}
 	\closure{R'}{X'} \coloneqq \min \underbrace{\{ Z \subseteq X \ | \ X'\subseteq Z, \feducts(r) \subseteq Z \Rightarrow \fproducts(r) \subseteq Z \ \forall r\in \RAF'\}}_{\eqqcolon \mathfrak{C}_{\RAF}(X')}
@@ -537,21 +540,23 @@ in the $\closure{\RAF}{\food}$, thus $\fproducts(r)\subseteq \closure{\RAF}{\foo
 
 \subsection{A Partial Order on RAFs}
 
-The closure naturally induces a partial order $\preceq$ on a RAF $\RAF$. This can be 
-achieved by obtaining the set $\closure{R'}{X'}$ iteratively. Let therefore:
+The closure naturally induces an order in which the sequences of a RAF can be executed. However, 
+this order is not a total order, since some reactions, e.g., the ones requiring only food molecules as F-reactants 
+can be executed at the same time, while others, depending on molecules produced through these reactions, 
+can only happen consecutively. The easiest way to define such a partial order is by generating the set 
+$\closure{R'}{X'}$ iteratively. Let therefore:
 \begin{equation}
 	c_{\RAF}: 2^X \rightarrow 2^X, c_{\RAF}(X') \coloneqq X' \cup \{\fproducts(\fr) \subseteq X' \ \vert \ \feducts(\fr)\subseteq X'\}. 
 \end{equation}
-We will write $c(X')$ instead of $c_{\RAF}(X')$ as well as $\closure{}{X'}$ instead of $\closure{\RAF}{X'}$, whenever 
-it is appropriate.   
+We may drop the subscript $\RAF$ whenever appropriate. In particular, we write $c(X')$ instead 
+of $c_{\RAF}(X')$ as well as $\closure{}{X'}$ instead of $\closure{\RAF}{X'}$.
 
-It has been shown earlier that the repetitive iteration of $c(X')$ indeed yields $\closure{}{X'}$ 
-\cite{Stadler2018}. However, to keep this contribution self-contained, we include the proof 
-for this statement here \TODO{(Move what follows to the appendix since this is rather technical
-and keep only the interesting result on the partial order.)}. 
-To this end, recall that a CRS is composed of two finite-sized sets, i.e., $|X|<\infty$ and $\vert \FR \vert<\infty$. 
-By definition, the composition $c\circ c$ is well defined. Moreover, we let $c^n(X')\coloneqq \left(\bigcirc^n_{i=0} \ c \right)(X')$, 
-i.e., $\cl^0(X')\coloneqq X'$ and show that repetitive application of $c$ on a set $X'$ actually converges is indeed true.
+It has been shown earlier that the repetitive iteration of $c$ converges to the closure 
+in a finite number of steps for finite-sized species sets \cite{Stadler2018, bridging_golnik_2026}. 
+However, to keep this contribution self-contained, we include the proof for this statement here. 
+We consider only finite-sized CRS, i.e., $\vert X \vert<\infty$ and $\vert \FR \vert<\infty$. By definition, 
+the composition $c\circ c$ is well-defined. Moreover, we let $c^n\coloneqq \left(\bigcirc^n_{i=0} \ c \right)$, 
+i.e., $c^0(X')\coloneqq X'$.
 
 \vspace{6pt}
 \begin{lemma}\label{lem:finSize}
@@ -575,29 +580,29 @@ that $\lim_{k\rightarrow \infty} \cl^k(X')\in \mathfrak{C}(X')$. Thus by minimal
 
 \vspace{6pt}
 \begin{corollary}\label{cor:seqLimit}
-	Let $(X,\FR,\cat)$ be a catalyzed network of finite size with $X'\subseteq X, \RAF\subseteq R$. 
-	Then $\closure{\RAF}{X'}$ is the unique limit of the sequence
+	Let $(X,\FR,\cat)$ be a CRS network of finite size with $X'\subseteq X, \RAF\subseteq \FR$. 
+	Then $\closure{}{X'}$ is the unique limit of the sequence
 	\begin{equation}
-		\left(\left(\bigcirc_{i=1}^k \ c_{\RAF}\right)(X')\right)_{k\in\mathbb{N}}.
+		\left(\left(\bigcirc_{i=1}^k \ c\right)(X')\right)_{k\in\mathbb{N}}.
 	\end{equation}
-	In addition, there is an $n\in\mathbb{N}: c^n_{\RAF}(X')=c^m_{\RAF}(X'), m\geq n$.
+	In addition, there is an $n\in\mathbb{N}: c^n(X')=c^m(X'), m\geq n$.
 \end{corollary}
 \vspace{6pt}
 The sequence $(c^k(X')_{k\in\mathbb{N}}$ directly yields a sequence of reactions that can be
 executed in the $k$-th step, i.e., for which all reactants are contained in the set $\cl^k(X')$: 
 \begin{equation}
-	d_{\RAF}^k(X') \coloneqq \{r\in \RAF \ | \ \ceducts(r)\subseteq c^k_{\RAF}(X')\}
+	d^k(X') \coloneqq \{r\in \RAF \ | \ \feducts(r)\subseteq c^k(X')\}
 \end{equation}
-However, it might be to restrict the sets obtained by $c^k(X')$ and $d^k(X')$ to those species and 
-reactions that are not present in an earlier set $c^\ell(X')$ and $d^\ell(X'), \ell<k$, respectively:
+We can then restrict the sets obtained by $c^k(X')$ and $d^k(X')$ to those species and 
+reactions that are not present in an ``earlier'' set $c^\ell(X')$ and $d^\ell(X'), \ell<k$, respectively:
 \begin{equation}
 	\begin{split}
-		\POX_{\RAF}^0(X')& \coloneqq X' \qquad \POX_{\RAF}^k(X')\coloneqq c^k_{\RAF}(X)\setminus \left(\bigcup_{i=0}^{k-1} c^k_{\RAF}(X) \right)\\
-		\POR_{\RAF}^0(X') & \coloneqq \emptyset \qquad \POR_{\RAF}^k(X')\coloneqq \PO^k_{\RAF}(X) \setminus \left(\bigcup_{i=0}^{k-1} \PO^k_{R'}(X) \right)
+		\POX^0(X')& \coloneqq X' \qquad \POX^k(X')\coloneqq c^k(X)\setminus \left(\bigcup_{i=0}^{k-1} c^k(X) \right)\\
+		\POR^0(X') & \coloneqq \emptyset \qquad \POR^k(X')\coloneqq d^k(X) \setminus \left(\bigcup_{i=0}^{k-1} d^k(X) \right)
 	\end{split}
 \end{equation}
-The partial order $\preceq$ is based on the two maps that determine the $k$ of the first appearance 
-of a metabolite or a reaction: 
+These sequences naturally generate a partial order $\preceq$, which we make explicit by two maps 
+that extract for each species and reaction the iteration of their first appearance: 
 \begin{equation}\label{eq:Gen}
 	\begin{split}
 		g&: X' \rightarrow \mathbb{N}, g(x)\coloneqq k \quad \text{ s. t. } x\in \POX_{R'}^k(X') \\
@@ -618,39 +623,39 @@ that share the same net reaction, the "later" can be removed.
 \end{lemma}
 \begin{proof}
 	Let $\mathbf{R''} \coloneqq \RAF \setminus \{r''_2\}$. Since $\RAF$ was reflexively autocatalytic, 
-	$\mathbf{R''}$ is reflexively autocatalytic. In addition, since $\hat{\feducts}(\fr_1)=\hat{\feducts(\fr_2)}$ 
-	and $\hat{\fproducts}(\fr_1)=\hat{\fproducts}(\fr_2)$ we observe that $\closure{\RAF}{F} = \closure{\mathbf{R''}}{F}$. 
+	$\mathbf{R''}$ is reflexively autocatalytic. In addition, since $\hat{\feducts}(\fr_1)=\hat{\feducts}(\fr_2)$ 
+	and $\hat{\fproducts}(\fr_1)=\hat{\fproducts}(\fr_2)$ and $h(\fr_1)\leq h(\fr_2)$, 
+	$\closure{\RAF}{F} = \closure{\mathbf{R''}}{F}$. 
 \end{proof}
 \vspace{6pt} 
-We remark that the converse is not true. To see this, consider the following example:
+\noindent We may remark that the converse is not true. To see this, consider the following example:
 \begin{equation}
 	\begin{split}
-		\fr_1&: f \xrightarrow{x_1} x_1 + x_2\\
-		\fr_2&: f + x_1 \xrightarrow{X} 2x_2 + x_2
+		\fr_1&: f \hspace{22pt} \xrightarrow{x_1} x_1 + x_2\\
+		\fr_2&: f + x_1 \xrightarrow{x_1} 2x_1 + x_2
 	\end{split}
 \end{equation}
 Then clearly, $\fr_1\neq \fr_2$ and $h(\fr_1) = 1 < 2 = h(\fr_2)$ since $\fr_2$ requires an $x_1$ as 
 an F-reactant. 
-\holy{RG up to this point in rewriting.}
-We are now in the position to deduce the consequences of Def.~\ref{def:RAF}ii. to the bipartite K\"onig 
-representation of a RAF. 
+
+The partial order $\preceq$ allows us to easily observe that each species vertex for the closure of a 
+$\RAF$ is reachable from at least one food molecule in $\food$. Throughout, we denote the 
+restriction of the set $\cat$ to only those catalyzations of reactions 
+$\RAF\subseteq \FR$ by $\cat'$.
 
 \vspace{6pt}
 \begin{lemma}\label{lem:RAFPath}
-	Let $(X,R,\cat)$ be a catalyzed network with $\food \subseteq X$ and $\RAF$ an RAF. Then, 
-	for any $x\in \closure{\RAF}{F}\setminus F: \exists f\in F: P=(f, \ldots, x)$ is a path in 
-	$\king'\coloneqq \king(\closure{\RAF}{F}\cup F, R', \cat')$.
+	Let $(X, \FR, \cat)$ be a CRS with $\food \subseteq X$ and a RAF $\RAF\subseteq \FR$. 
+	For any $x\in \closure{}{\food}\setminus \food$ there is an $f\in \food$ sucht that $P=(f, \ldots, x)$ 
+	is a path in $\queen'\coloneqq \queen(\closure{}{F}\cup F, \RAF, \cat)$.
 \end{lemma}
 \begin{proof}
-	Let $x\in \closure{\RAF}{F}\setminus F$. By Corollary~\ref{cor:seqLimit} we have for some $n\in\mathbb{N}$ that
-	$\closure{\RAF}{F}\setminus F = \cl^n_{\RAF}(F) \setminus F$. Thus, there is the sequence:
-	\begin{equation}
-		(\mathscr{Z}^k_{\RAF}(F))_{n\in\mathbb{N}}\coloneqq (\cl^{k-1}_{\RAF}(F), \PO^k_{\RAF}(F))_{n\in\mathbb{N}}
-	\end{equation}
-	such that for any $r\in \PO^k_{\RAF}(F)$ there is $y\in \cl^{k-1}_{\RAF}(F), z\in\cl^{k}_{\RAF}(F): (y,r)\in E_1(\king'), (r,z)\in E_2(\king')$. 
-	Thus, starting with $x\in \cl^{n}_{\RAF}(F)$ and recursively applying the upper argument, there is a sequence of vertices $
-	(x_0, r_1, x_1, \ldots, r_n, x_n): (x_{i-1},r_i)\in E_1(\king'), (r_i,x_i)\in E_2(\king'), 1\leq i\leq n, x=x_n$ that is a path 
-	in $\king'$.
+	Let $x\in \closure{}{\food}\setminus \food$. By Corollary~\ref{cor:seqLimit} we have for some $n\in\mathbb{N}$ that
+	$\closure{}{\food} = c^n(\food)$. Thus, there is the sequence $(c^{k-1}(\food), d^k(\food))_{k\in\mathbb{N}}$
+	such that for any $r\in d^k(\food)$ there is $y\in c^{k-1}_{}(\food), z\in c^{k}_{}(\food): (y,r)\in E_1(\queen'), (r,z)\in E_2(\queen')$. 
+	Thus, starting with $x\in c^n_(\food)$ and recursively applying the upper argument, there is a sequence of vertices $
+	(x_0, r_1, x_1, \ldots, r_n, x_n): (x_{i-1},r_i)\in E_1(\queen'), (r_i,x_i)\in E_2(\queen'), 1\leq i\leq n, x=x_n$ that is a path 
+	in $\queen'$.
 \end{proof}
 \vspace{6pt}
 
@@ -665,7 +670,7 @@ first is an obvious but important result.
 A direct consequence of this Lemma is that only one representative of each equivalence class can be part of a RAF:
 \vspace{6pt} 
 \begin{corollary}
-	Let $(X,R,\cat)$ be a catalyzed RN with food-set $F$ and $\RAF$ be a minimal RAF. For $r',r'' \in[r']_{\sim}, r'\neq r''$ 
+	Let $(X,\FR,\cat)$ be a catalyzed RN with food-set $F$ and $\RAF$ be a minimal RAF. For $r',r'' \in[r']_{\sim}, r'\neq r''$ 
 	$r'\in \RAF\Rightarrow r''\notin \RAF$.
 \end{corollary}
 \vspace{6pt} 
