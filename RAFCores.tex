@@ -282,7 +282,7 @@ $x$ is also called an \emph{autocatalyst}, while in the former case, $x$ is call
 
 From a chemical perspective and the IUPAC definition, a catalyst is an entity $x\in X$ that not only satisfies 
 $s^{-}_{xr}\cdot s^{+}_{xr}\neq 0$, but also ``increases the rate of a reaction without modifying the overall 
-standard Gibbs energy change in the reaction'' \cite{gold_iupac_2025}. However, the solvent, such 
+standard Gibbs energy change in the reaction'' \cite{gold_iupac_2025}. However, a solvent, such 
 as water, can also act in such a way without being considered a catalyst \cite{marx_nature_1999}. In particular, 
 in Brønstedt/Lowry's acid-base theory, water is rather considered a reactant, proton acceptor, removing 
 environmental constraints to facilitate proton transfer between reactants \cite{eigen_proton_1964}. 
@@ -338,10 +338,6 @@ system of palladium and copper in the Hoechst-Wacker process, where ethene is ox
 	\cat(r)\coloneqq \{\kappa_{xr} \cdot x\ | \ x\in X\}
 \end{equation}
 The set of F-catalysts may be empty, i.e., for $\cat({\net{r}})=\emptyset$ by definition, or if the reaction is uncatalyzed. 
-To distinguish the F-catalysts from the F-reactants and F-products, we will write stoichiometric equations as follows:
-\begin{equation}\label{eq:Mod.SmEq.2}
-	r: \sum_{x\in X}\ \sigma^-_{xr} \cdot x \xrightarrow{x \in \cat(r)} \sum_{x\in X} \ \sigma^+_{xr}  \cdot x.
-\end{equation}
 
 In a CRN $(X,\CR)$, each reaction $r$, as specified by Eq.~\ref{eq:Mod.SmEq}, is a distinct object. Thus,
 it is possible that two reactions sharing the same net reaction are elements of $\CR$. In this case, they 
@@ -435,18 +431,21 @@ connected by a path originating in any of the products. Such an example is depic
 Fig.~\ref{fig:QScKNot}. We will however see (\TODO{hopefully}) that we can derive 
 sufficient conditions to regain this property.
 \begin{figure}[htb]
-	\begin{minipage}[c]{0.3\textwidth}
-		\begin{equation}
+\centering
+	\begin{minipage}[c]{0.5\textwidth}
+		\centering
+		\begin{equation*}
 			\begin{split}
-				r_1 &: x_3 				\xrightarrow{\{x_1,x_3\}} x_2 \\
-				r_2 &: x_2	\hspace{30pt}		\xrightarrow{x_2} x_1 \\
-				r_3 &: x_3 \hspace{30pt} 		\xrightarrow{x_3} x_4  \\
-				r_4 &: x_4 \hspace{30pt}		\xrightarrow{x_4} x_3 
+				r_1 &: x_3 + (x_1+x_3) 	\rightarrow x_2  + (x_1+x_3) \\
+				r_2 &: x_2	+ (x_2)	   	\rightarrow x_1 + (x_2) \\
+				r_3 &: x_3 + (x_3) 		\rightarrow x_4 + (x_3)  \\
+				r_4 &: x_4 + (x_4)		\rightarrow x_3 + (x_4)
 			\end{split}
-		\end{equation}
+		\end{equation*}
 	\end{minipage}%
 	\hfill%
-	\begin{minipage}[c]{0.3\textwidth}
+	\begin{minipage}[c]{0.25\textwidth}
+		\centering
 		\begin{tikzpicture}
 			\node[draw, circle] (x1) at (0,0) {$x_1$};
 			\node[draw, circle] (x2) at (2,0) {$x_2$};
@@ -475,7 +474,8 @@ sufficient conditions to regain this property.
 		\end{tikzpicture}
 	\end{minipage}%
 	\hfill%
-	\begin{minipage}[c]{0.3\textwidth}
+	\begin{minipage}[c]{0.25\textwidth}
+		\centering
 		\begin{tikzpicture}
 			\node[draw, circle] (x1) at (0,0) {$x_1$};
 			\node[draw, circle] (x2) at (2,0) {$x_2$};
@@ -738,35 +738,26 @@ which is a direct consequence of Lemma~\ref{lem:RAFPath}.
 \end{lemma}
 \begin{proof}
 	Assume this is not the case. Then we have at least two connected components $\queen_1', \queen_2'$. By assumption both $X(\queen_1')$ 
-	and $X(\queen_2')$ are $\food$-generated. Since all F-reactions in $\RAF$ are catalyzed, every F-reaction in $R(\queen_1')$ and every F-reaction 
-	in $R(\queen_2')$ is catalyzed. Since there is no path from any $x_1\in X(\queen_1')$ to any $\fr_2\in \FR(\queen_2')$ and no path from 
+	and $X(\queen_2')$ are $\food$-generated. Since all F-reactions in $\RAF$ are catalyzed, every F-reaction in $\FR(\queen_1')$ and every F-reaction 
+	in $\FR(\queen_2')$ is catalyzed. Since there is no path from any $x_1\in X(\queen_1')$ to any $\fr_2\in \FR(\queen_2')$ and no path from 
 	any $x_2\in X(\queen_2')$ to any $\fr_1\in \FR(\queen_1')$, every F-reaction $\fr_1\in \FR(\queen_1')$ is catalyzed by an $x_1\in X(\queen_1')$ 
 	and every F-reaction of $\fr_2\in \FR(\queen_2')$ is catalyzed by an entity of $x_2\in X(\queen_2')$. In addition, no reaction $\fr_1\in \FR(\queen_1')$ 
-	has a species $x_2\in X(\queen_2')$ as F-reactant and no reaction $\fr_2\in \FR(\queen_2')$ has a species $x_1\in X(\queen_1)$ as an F-reactant. 
+	has a species $x_2\in X(\queen_2')$ as F-reactant and no reaction $\fr_2\in \FR(\queen_2')$ has a species $x_1\in X(\queen_1)$ as F-reactant. 
 	Thus $\FR(\queen_1')$ and $\FR(\queen_2')$ are RAFs themselves. Since $\FR(\queen_1'), \FR(\queen_1')\subseteq \RAF$, $\RAF$ was not minimal.
 \end{proof}
 \vspace{6pt}
-A minimal RAF, thereby, has a corresponding weakly-connected bipartite K\"onig graph. 
-We note that the upper result not only holds for the graph 
-\begin{equation}\label{eq:graphG}
-	G\coloneqq \king[\closure{\RAF}{F}, \RAF],
-\end{equation}
-but also for the graph 
-\begin{equation}\label{eq:graphH}
-	H\coloneqq \king[\closure{\RAF}{F}\setminus F, \RAF]
-\end{equation} 
-where all food-vertices have been removed.
+A minimal RAF, thereby, has a corresponding weakly-connected bipartite K\"onig graph, which is also the case for the subgraph that contains only non-food 
+molecules.
 \vspace{6pt}
 \begin{lemma}\label{lem:weaklyConnected2}
-	A $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal RAF. Then 
-	$H\coloneqq \king[\closure{\RAF}{F}\setminus F, \RAF]$ is weakly-connected.
+	The subgraph $\queen' [\closure{\RAF}{F}\setminus F, \RAF]$ is weakly-connected.
 \end{lemma}
 \begin{proof}
-	By Lemma~\ref{lem:weaklyConnected} $G\coloneqq \king[\closure{\RAF}{F}, \RAF]$ is weakly-connected. 
-	Assume now there is an $f\in F$ and $u,v\in \closure{\RAF}{F}\setminus F$ and such $G[V(G)\setminus \{f\}]$
-	is composed of at least two connected components $C_1, C_2$. Then $\closure{R(C_1)}{F}\cap \closure{R(C_2)}{F} 
-	\subseteq F$, i.e., none of the species $x_1\in X(C_1)$ is a reactant, product, or catalyst for a reaction $r_2\in R(C_2)$ 
-	and vice-versa. Thus, $R(C_1), R(C_2)$ are both RAFs and $\RAF$ is not minimal,  a contradiction.
+	By Lemma~\ref{lem:weaklyConnected} $\queen'$ is weakly-connected. Assume now there is an $f\in \food$ 
+	and $u,v\in \closure{}{\food}\setminus \food$ and such $\queen'[V(\queen')\setminus \{f\}]$ is composed of 
+	at least two connected components $C_1, C_2$. Then $\closure{\FR(C_1)}{\food}\cap \closure{\FR(C_2)}{\food} 
+	\subseteq \food$, i.e., none of the species $x_1\in X(C_1)$ is a reactant, product, or catalyst for an F-reaction 
+	$\fr_2\in \FR(C_2)$ and vice versa. Thus, $\FR(C_1), \FR(C_2)$ are both RAFs and $\RAF$ was not minimal.
 \end{proof}
 \vspace{6pt}
 If a minimal RAF is non-trivial, i.e., if it is composed of more than one reaction, the graph $H$ 
