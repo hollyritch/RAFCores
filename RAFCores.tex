@@ -357,7 +357,7 @@ To distinguish the F-catalysts from the F-reactants and F-products, we will writ
 %may be distinct if $\feducts(r)\neq \feducts(r')$ or $\fproducts(r)\neq \fproducts(r')$. 
 
 In a CRN $(X,\CR)$, each reaction $r$, as specified by Eq.~\ref{eq:Mod.SmEq}, is a distinct object. Thus,
-it is possible that two reactions, sharing the same net reaction, are elements of $\CR$. In this case, they 
+it is possible that two reactions sharing the same net reaction are elements of $\CR$. In this case, they 
 appear as unique vertices in the bipartite K\"onigs representation of a CRN 
 $\king\coloneqq (X\cup \C{R}, E_1\cup E_2)$, where
 \begin{equation}
@@ -431,14 +431,95 @@ Thus, each reaction vertex of $\queen(\Phi)$ is substituted by its single repres
 vertices are conserved. This yields that $\queen(\Phi)$ and $\king(\Gamma(\Phi))$ are isomorphic. In turn, if one 
 equivalence classe contains more than $1$ representative, $|V(\king(\Gamma(\Phi))|>|V(\queen(\Phi)|$:
 \vspace{6pt}
-\begin{theorem}
+\begin{theorem}\label{thm:IsoQK}
 	Let $\Phi\coloneqq (X, \FR, \cat)$ be a CRS with corresponding CRN $\Gamma(\Phi)$ Then 
 	$\queen(\Phi)\simeq \king(\Gamma(\Phi))$ if and only if $\vert \fr \vert = 1, \forall \fr \in \FR$.
 \end{theorem}
 \vspace{6pt}
- A known result for quotient graphs is that $\queen(\Phi)$ is strongly-connected whenever 
-$\king(\Gamma(\Phi))$ is strongly connected. 
 
+A known result for quotient graphs is that $\queen(\Phi)$ is strongly-connected whenever 
+$\king(\Gamma(\Phi))$ is strongly connected. By Thm.~\ref{thm:IsoQK} The converse is 
+trivially true if each equivalence class is of size $1$. In general, however, this is not true, 
+in particular, if one F-reaction has two alternative catalysts, and one of them is not 
+connected by a path originating in any of the products. Such an example is depicted in 
+Fig.~\ref{fig:QScKNot}. We will however see (\TODO{hopefully}) that we can derive 
+sufficient conditions to regain this property.
+\begin{figure}[htb]
+	\begin{minipage}[c]{0.3\textwidth}
+		\begin{equation}
+			\begin{split}
+				r_1 &: x_3 				\xrightarrow{\{x_1,x_3\}} x_2 \\
+				r_2 &: x_2	\hspace{30pt}		\xrightarrow{x_2} x_1 \\
+				r_3 &: x_3 \hspace{30pt} 		\xrightarrow{x_3} x_4  \\
+				r_4 &: x_4 \hspace{30pt}		\xrightarrow{x_4} x_3 
+			\end{split}
+		\end{equation}
+	\end{minipage}%
+	\hfill%
+	\begin{minipage}[c]{0.3\textwidth}
+		\begin{tikzpicture}
+			\node[draw, circle] (x1) at (0,0) {$x_1$};
+			\node[draw, circle] (x2) at (2,0) {$x_2$};
+			\node[draw, circle] (x3) at (0,-2) {$x_3$};
+			\node[draw, circle] (x4) at (2,-3.5) {$x_4$};
+			
+			\node[draw, rectangle] (r1) at (1,-1) {$r_1$};
+			\node[draw, rectangle] (r2) at (1,1) {$r_2$};
+			\node[draw, rectangle] (r3) at (0,-3.5) {$r_3$};
+			\node[draw, rectangle] (r4) at (2,-2) {$r_4$};
+			
+			\draw[->] (x1) to [bend right = 30] (r1);
+			\draw[->] (r1) to [bend right = 30] (x1);
+			\draw[->] (r1) to (x2);
+			\draw[->] (x2) to [bend right = 30] (r2);
+			\draw[->] (r2) to [bend right = 30] (x2);
+			\draw[->] (r2) to [bend right = 30] (x1);
+			\draw[->] (x3) to [bend right = 30] (r1);
+			\draw[->] (r1) to [bend right = 30] (x3);
+			\draw[->] (x3) to [bend right = 30] (r3);
+			\draw[->] (r3) to [bend right = 30] (x3);			
+			\draw[->] (r3) to  (x4);
+			\draw[->] (x4) to [bend right = 30] (r4);
+			\draw[->] (r4) to [bend right = 30] (x4);
+			\draw[->] (r4) to  (x3);
+		\end{tikzpicture}
+	\end{minipage}%
+	\hfill%
+	\begin{minipage}[c]{0.3\textwidth}
+		\begin{tikzpicture}
+			\node[draw, circle] (x1) at (0,0) {$x_1$};
+			\node[draw, circle] (x2) at (2,0) {$x_2$};
+			\node[draw, circle] (x3) at (0,-3) {$x_3$};
+			\node[draw, circle] (x4) at (2,-4.5) {$x_4$};
+			
+			\node[draw, rectangle] (r1') at (1,-1) {$r_1'$};
+			\node[draw, rectangle] (r1'') at (1.75,-2) {$r_1''$};
+			\node[draw, rectangle] (r2) at (1,1) {$r_2$};
+			\node[draw, rectangle] (r3) at (0,-4.5) {$r_3$};
+			\node[draw, rectangle] (r4) at (2,-3) {$r_4$};
+			
+			\draw[->] (x1) to [bend right = 30] (r1');
+			\draw[->] (r1') to [bend right = 30] (x1);
+			\draw[->] (r1') to (x2);
+			\draw[->] (x2) to [bend right = 30] (r2);
+			\draw[->] (r2) to [bend right = 30] (x2);
+			\draw[->] (r2) to [bend right = 30] (x1);
+			\draw[->] (x3) to (r1');
+			\draw[->] (x3) to [bend right = 30] (r3);
+			\draw[->] (x3) to [bend right = 20] (r1'');
+			\draw[->] (r1'') to [bend right = 20] (x3);
+			\draw[->] (r1'') to (x2);
+			\draw[->] (r3) to [bend right = 30] (x3);			
+			\draw[->] (r3) to  (x4);
+			\draw[->] (x4) to [bend right = 30] (r4);
+			\draw[->] (r4) to [bend right = 30] (x4);
+			\draw[->] (r4) to  (x3);
+		\end{tikzpicture}
+	\end{minipage}	
+	\caption{....}
+	\label{fig:QScKNot}
+\end{figure}
+\FloatBarrier
 \section{Reflexively autocatalytic sets (RAFs)}
 
 Catalytic reaction systems (CRS) are the fundamental structure on which the notion of reflexively autocatalytic sets 
@@ -540,6 +621,29 @@ In particular, a species $x_1$ precedes a species $x_2: x_1\preceq x_2$ if and o
 and a reaction $\fr_1$ precedes a reaction $\fr_2: \fr_1\preceq \fr_2$ if and only if $h(\fr_1) \leq h(\fr_2)$. We refer 
 to the values of $g$ and $h$ as the generation of a reaction or metabolite. 
 
+One important consequence of the partial order is that if a RAF contains two $\sim$~equivalence classes 
+that share the same net reaction, the "later" can be removed.
+\vspace{6pt}
+\begin{lemma}
+	Let $(X,\FR,\cat)$ be a CRS with food-set $\food\subseteq X$, $\RAF\subseteq \FR$ a $\RAF$, and 
+	$\fr_1,\fr_2 \in \RAF: \fr_1\neq \fr_2, \hat{\fr}_1 = \hat{\fr}_2'$. Then $\RAF\setminus \{\fr_2\}$ is a RAF
+	if $h(\fr_1)\leq h(\fr_2)$.
+\end{lemma}
+\begin{proof}
+	Let $\mathbf{R''} \coloneqq \RAF \setminus \{r''_2\}$. Since $\RAF$ was reflexively autocatalytic, 
+	$\mathbf{R''}$ is reflexively autocatalytic. In addition, since $\hat{\feducts}(\fr_1)=\hat{\feducts(\fr_2)}$ 
+	and $\hat{\fproducts}(\fr_1)=\hat{\products}(\fr_2)$ we observe that $\closure{\RAF}{F} = \closure{\mathbf{R''}}{F}$. 
+\end{proof}
+\vspace{6pt} 
+We remark that the converse is not true. To see this, consider the following example:
+\begin{equation}
+	\begin{split}
+		\fr_1&: f \xrightarrow{x_1} x_1 + x_2\\
+		\fr_2&: f + x_1 \xrightarrow{X} 2x_2 + x_2\\
+	\end{split}
+\end{equation}
+Then clearly, $\fr_1\neq \fr_2$ and $h(\fr_1) = 1 < 2 = h(\fr_2)$ since $\fr_2$ requires an $x_1$ as 
+an F-reactant. 
 \holy{RG up to this point in rewriting.}
 We are now in the position to deduce the consequences of Def.~\ref{def:RAF}ii. to the bipartite K\"onig 
 representation of a RAF. 
@@ -570,17 +674,7 @@ notion has been termed \emph{irreducible} RAFs in the literature \cite{hordijk_d
 hordijk_autocatalytic_2010}. However, to avoid confusion with the notion of irreducibility of a matrix, we refer to them as 
 \emph{minimal RAFs}. We shall see that the minimality condition yields a number of interesting structural consequences. The
 first is an obvious but important result.
-\vspace{6pt}
-\begin{lemma}
-	Let $(X,R,\cat)$ be a catalyzed RN with food-set $F$ and $\RAF$ be a RAF. For $r',r'' \in \RAF$ with $r',r'' \in[r']_{\bumpeq}, r'\neq r''$ 
-	it holds that $\RAF\setminus \{r'\}$ is a RAF and $\RAF\setminus \{r''\}$ is a RAF.
-\end{lemma}
-\begin{proof}
-	Let $\RAF'\coloneqq \RAF \setminus \{r'\}$ and $\RAF''\coloneqq \RAF \setminus \{r''\}$. Since $\ceducts(r')=\ceducts(r'')$ and 
-	$\cproducts(r')=\cproducts(r'')$ we observe that $\closure{\RAF}{F}= \closure{\RAF'}{F}=\closure{\RAF''}{F}$. With $\RAF$ 
-	being a RAF, both $\RAF'$ and $\RAF''$ are RAFs.
-\end{proof}
-\vspace{6pt} 
+
 A direct consequence of this Lemma is that only one representative of each equivalence class can be part of a RAF:
 \vspace{6pt} 
 \begin{corollary}
