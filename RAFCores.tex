@@ -543,75 +543,17 @@ in the $\closure{\RAF}{\food}$, thus $\fproducts(r)\subseteq \closure{\RAF}{\foo
 The closure naturally induces an order in which the sequences of a RAF can be executed. However, 
 this order is not a total order, since some reactions, e.g., the ones requiring only food molecules as F-reactants 
 can be executed at the same time, while others, depending on molecules produced through these reactions, 
-can only happen consecutively. The easiest way to define such a partial order is by generating the set 
-$\closure{R'}{X'}$ iteratively. Let therefore:
-\begin{equation}
-	c_{\RAF}: 2^X \rightarrow 2^X, c_{\RAF}(X') \coloneqq X' \cup \{\fproducts(\fr) \subseteq X' \ \vert \ \feducts(\fr)\subseteq X'\}. 
-\end{equation}
-We may drop the subscript $\RAF$ whenever appropriate. In particular, we write $c(X')$ instead 
-of $c_{\RAF}(X')$ as well as $\closure{}{X'}$ instead of $\closure{\RAF}{X'}$.
+can only happen consecutively. We will devote the supplement to deriving the partial order in a formal way.
 
-It has been shown earlier that the repetitive iteration of $c$ converges to the closure 
-in a finite number of steps for finite-sized species sets \cite{Stadler2018, bridging_golnik_2026}. 
-However, to keep this contribution self-contained, we include the proof for this statement here. 
-We consider only finite-sized CRS, i.e., $\vert X \vert<\infty$ and $\vert \FR \vert<\infty$. By definition, 
-the composition $c\circ c$ is well-defined. Moreover, we let $c^n\coloneqq \left(\bigcirc^n_{i=0} \ c \right)$, 
-i.e., $c^0(X')\coloneqq X'$.
-
-\vspace{6pt}
-\begin{lemma}\label{lem:finSize}
-	Let $(X,\FR, \cat)$ be a CRS. For a set $X'\subseteq X$ and $\RAF\subseteq \RAF$ there 
-	is an $n\in \mathbb{N}$ such that: 
-	\begin{equation}
-		c^n(X') = c^m (X'), m\geq n, m\in \mathbb{N}
-	\end{equation}
-\end{lemma}
-\begin{proof}
-	Assume this is not the case. Then in each $k$-th step $|c^k(X')| < |c^{k+1}(X')|$,
-	which implies that $|c^k(X')| \xrightarrow{k\rightarrow\infty}\infty$. This is a 
-	contradiction, given that $|X|<\infty$.
-\end{proof}
-\vspace{6pt}
-It remains to show that $\lim_{k\rightarrow \infty} \cl^k(X') = \closure{}{X'}$. By definition, for 
-any $k\in\mathbb{N}: \cl^k(X')\subseteq \closure{}{X'}$. In addition, the convergence of $\cl^k(X')$ gurantees 
-that $\lim_{k\rightarrow \infty} \cl^k(X')\in \mathfrak{C}(X')$. Thus by minimality $\closure{}{X'}\subseteq 
-\lim_{k\rightarrow \infty} \cl^k(X')$, which yields by mutual inclusion that $\lim_{k\rightarrow \infty} \cl^k(X') 
-= \closure{}{X'}$. With the uniqueness of the limit, the subsequent corollary follows.
-
-\vspace{6pt}
-\begin{corollary}\label{cor:seqLimit}
-	Let $(X,\FR,\cat)$ be a CRS network of finite size with $X'\subseteq X, \RAF\subseteq \FR$. 
-	Then $\closure{}{X'}$ is the unique limit of the sequence
-	\begin{equation}
-		\left(\left(\bigcirc_{i=1}^k \ c\right)(X')\right)_{k\in\mathbb{N}}.
-	\end{equation}
-	In addition, there is an $n\in\mathbb{N}: c^n(X')=c^m(X'), m\geq n$.
-\end{corollary}
-\vspace{6pt}
-The sequence $(c^k(X')_{k\in\mathbb{N}}$ directly yields a sequence of reactions that can be
-executed in the $k$-th step, i.e., for which all reactants are contained in the set $\cl^k(X')$: 
-\begin{equation}
-	d^k(X') \coloneqq \{r\in \RAF \ | \ \feducts(r)\subseteq c^k(X')\}
-\end{equation}
-We can then restrict the sets obtained by $c^k(X')$ and $d^k(X')$ to those species and 
-reactions that are not present in an ``earlier'' set $c^\ell(X')$ and $d^\ell(X'), \ell<k$, respectively:
-\begin{equation}
-	\begin{split}
-		\POX^0(X')& \coloneqq X' \qquad \POX^k(X')\coloneqq c^k(X)\setminus \left(\bigcup_{i=0}^{k-1} c^k(X) \right)\\
-		\POR^0(X') & \coloneqq \emptyset \qquad \POR^k(X')\coloneqq d^k(X) \setminus \left(\bigcup_{i=0}^{k-1} d^k(X) \right)
-	\end{split}
-\end{equation}
-These sequences naturally generate a partial order $\preceq$, which we make explicit by two maps 
-that extract for each species and reaction the iteration of their first appearance: 
-\begin{equation}\label{eq:Gen}
-	\begin{split}
-		g&: X' \rightarrow \mathbb{N}, g(x)\coloneqq k \quad \text{ s. t. } x\in \POX_{R'}^k(X') \\
-		h&: R' \rightarrow \mathbb{N}, h(r)\coloneqq k \quad \text{ s. t. } r\in \POR_{R'}^k(X'). 
-	\end{split}
-\end{equation}
-In particular, a species $x_1$ precedes a species $x_2: x_1\preceq x_2$ if and only if $g(x_1) \leq g(x_2)$ 
-and a reaction $\fr_1$ precedes a reaction $\fr_2: \fr_1\preceq \fr_2$ if and only if $h(\fr_1) \leq h(\fr_2)$. We refer 
-to the values of $g$ and $h$ as the generation of a reaction or metabolite. 
+The easiest way to obtain a partial order is by generating the set $\closure{R'}{X'}$ iteratively, by applying 
+in each step, all reactions for which all F-reactants are already available. Therefore, it is only consequent to 
+assume that in a finite number of steps, all species have been reached. This naturally induces a partial order 
+$\preceq$ on the set of F-reactions and species. In particular, we denote the generation in which a species 
+$x\in X$ appears as a product for the first time by $g(x)$ and set by definition $g(f)\coloneqq 0$ for all $f\in \food$.
+In addition, we denote the generation in which all F-reactants are available for an F-reaction $\fr$ by $h(\fr)$.
+Then, a species $x_1$ precedes a species $x_2: x_1\preceq x_2$ if and only if $g(x_1) \leq g(x_2)$ 
+and a reaction $\fr_1$ precedes a reaction $\fr_2: \fr_1\preceq \fr_2$ if and only if $h(\fr_1) \leq h(\fr_2)$. 
+We refer to the values of $g$ and $h$ as the generation of a reaction or metabolite. 
 
 One important consequence of the partial order is that if a RAF contains two $\sim$~equivalence classes 
 that share the same net reaction, the "later" can be removed.
@@ -644,23 +586,7 @@ which is restricted to the $\closure{\RAF}{\food}$, the reactions in $\RAF$, and
 $\cat'$ of reactions in $\RAF\subseteq \FR$. Throughout, we denote this graph as 
 $\queen'\coloneqq \queen(\closure{\RAF}{\food}, \RAF, \cat')$.
 
-\vspace{6pt}
-\begin{lemma}\label{lem:RAFPath}
-	Let $(X, \FR, \cat)$ be a CRS with $\food \subseteq X$ and a RAF $\RAF\subseteq \FR$. 
-	For any $x\in \closure{}{\food}\setminus \food$ there is an $f\in \food$ such that $P=(f, \ldots, x)$ 
-	is a path in $\queen'$.
-\end{lemma}
-\begin{proof}
-	Let $x\in \closure{}{\food}\setminus \food$. By Corollary~\ref{cor:seqLimit} we have for some $n\in\mathbb{N}$ that
-	$\closure{}{\food} = c^n(\food)$. Thus, there is the sequence $(c^{k-1}(\food), d^k(\food))_{k\in\mathbb{N}}$
-	such that for any $r\in d^k(\food)$ there is $y\in c^{k-1}_{}(\food), z\in c^{k}_{}(\food): (y,r)\in E_1(\queen'), (r,z)\in E_2(\queen')$. 
-	Thus, starting with $x\in c^n_(\food)$ and recursively applying the upper argument, there is a sequence of vertices $
-	(x_0, r_1, x_1, \ldots, r_n, x_n): (x_{i-1},r_i)\in E_1(\queen'), (r_i,x_i)\in E_2(\queen'), 1\leq i\leq n, x=x_n$ that is a path 
-	in $\queen'$.
-\end{proof}
-\vspace{6pt}
-
-\section{Minimal RAFs}
+\subsection{Minimal RAFs}
 
 A question that naturally arises for RAFs is whether a RAF contains a sub-RAF. Minimal sets of F-reactions w.r.t. 
 to the RAF properties have been termed \emph{irreducible} RAFs in the literature \cite{hordijk_detecting_2004, 
@@ -668,14 +594,60 @@ hordijk_autocatalytic_2013, hordijk_autocatalytic_2010}. However, to avoid confu
 of a matrix, we refer to them as \emph{minimal RAFs}. 
 
 Throughout, we will now consider a CRS $\Phi\coloneqq (X,\FR,\cat)$ with food-set $\food\subseteq X$ and K\"onig graph 
-$\queen\coloneqq \queen(\Phi)$, a minimal RAF $\RAF\subseteq \FR$ with K\"onig graph $\queen'\coloneqq \queen(\closure{\RAF}, 
-\RAF,\cat')$. The first result is a direct consequence of Lemma~\ref{lem:OneFReacPerRAF}.
+$\queen\coloneqq \queen(\Phi)$, a minimal RAF $\RAF\subseteq \FR$ with K\"onig graph $\queen'\coloneqq \queen(\closure{\RAF}{\food} 
+,\RAF, \cat')$. The first result is a direct consequence of Lemma~\ref{lem:OneFReacPerRAF}.
 \vspace{6pt} 
 \begin{corollary}
 	Let $\fr_r,\fr_2 \in \RAF: \fr_1\neq \fr_2, \hat{\fr}_1=\hat{\fr}_2$. Then $\fr_1\in \RAF\Rightarrow \fr_2\notin \RAF$.
 \end{corollary}
 \vspace{6pt} 
-A minimal RAF thereby contains only one F-reaction. Before venturing forth, we give an example of a non-minimal RAF:\\
+For each net reaction, a minimal RAF contains only one F-reaction. 
+%At this point, we note that for a CRS, where each reaction is catalyzed by 
+%at most one catalyst, we get the following statement. 
+%
+%\vspace{6pt}
+%\begin{lemma}
+%	Let $(X,R,\cat)$ be a catalyzed reaction network with food-set $F$ such that $|\cat_{r}|\leq 1, \forall r\in R$. Then every minimal
+%	CAF is trivial. 
+%\end{lemma}
+%\begin{proof}
+%	Let $\RAF$ be a CAF and assume $|\RAF|>1$. Let $r\in \POR^1_{\RAF}(F)$. Then all reactants and catalysts are for $r$ are in 
+%	$F$ since $\RAF$ is a CAF. Thus $\{r\}$ is a RAF itself, contradicting the minimality of $\RAF$.
+%\end{proof}
+%\vspace{6pt}
+%
+%An example for a trivial CAF is $\{r_0\}$ in the last example. 
+The minimality condition has a series of interesting consequences on the structure of $\queen'$ for minimal RAFs. 
+We start with the following trivial observation, which is a direct consequence of Lemma~\ref{lem:RAFPath}.
+\vspace{6pt}
+\begin{lemma}\label{lem:weaklyConnected}
+	The graph $\queen'$ is weakly-connected.
+\end{lemma}
+\begin{proof}
+	Assume this is not the case. Then we have at least two connected components $\queen_1', \queen_2'$. By assumption both $X(\queen_1')$ 
+	and $X(\queen_2')$ are $\food$-generated. Since all F-reactions in $\RAF$ are catalyzed, every F-reaction in $\FR(\queen_1')$ and every F-reaction 
+	in $\FR(\queen_2')$ is catalyzed. Since there is no path from any $x_1\in X(\queen_1')$ to any $\fr_2\in \FR(\queen_2')$ and no path from 
+	any $x_2\in X(\queen_2')$ to any $\fr_1\in \FR(\queen_1')$, every F-reaction $\fr_1\in \FR(\queen_1')$ is catalyzed by an $x_1\in X(\queen_1')$ 
+	and every F-reaction of $\fr_2\in \FR(\queen_2')$ is catalyzed by an entity of $x_2\in X(\queen_2')$. In addition, no reaction $\fr_1\in \FR(\queen_1')$ 
+	has a species $x_2\in X(\queen_2')$ as F-reactant and no reaction $\fr_2\in \FR(\queen_2')$ has a species $x_1\in X(\queen_1)$ as F-reactant. 
+	Thus $\FR(\queen_1')$ and $\FR(\queen_2')$ are RAFs themselves. Since $\FR(\queen_1'), \FR(\queen_1')\subseteq \RAF$, $\RAF$ was not minimal.
+\end{proof}
+\vspace{6pt}
+A minimal RAF, thereby, has a corresponding weakly-connected bipartite K\"onig graph, which is also the case for the 
+subgraph that contains only non-food molecules.
+\vspace{6pt}
+\begin{lemma}\label{lem:weaklyConnected2}
+	The subgraph $\queen'' \coloneqq \queen'[\closure{}{\food}\setminus \food, \RAF]$ is weakly-connected.
+\end{lemma}
+\begin{proof}
+	By Lemma~\ref{lem:weaklyConnected}, $\queen'$ is weakly-connected. Assume now there is an $f\in \food$ 
+	such that $\queen'[V(\queen')\setminus \{f\}]$ is composed of at least two connected components $C_1, C_2$. Then 
+	$\closure{\FR(C_1)}{\food}\cap \closure{\FR(C_2)}{\food} \subseteq \food$, i.e., none of the species $x_1\in X(C_1)$ 
+	is a reactant, product, or catalyst for an F-reaction $\fr_2\in \FR(C_2)$ and vice versa. Thus, $\FR(C_1), \FR(C_2)$ 
+	are both RAFs and $\RAF$ was not minimal.
+\end{proof}
+\vspace{6pt}
+Before venturing forth, we give an example of a non-minimal RAF:\\
 \vspace{6pt}
 \begin{minipage}[c]{0.4\textwidth}
 	\centering
@@ -711,87 +683,38 @@ A minimal RAF thereby contains only one F-reaction. Before venturing forth, we g
 		\draw[->] (r2) to (x1);
 	\end{tikzpicture}
 \end{minipage}
-
 Indeed, $\RAF=\{r_0\}$ is a RAF, and thus, any addition of $r_1$ or $r_2$ would violate minimality. 
-We call any RAF of size $1$ a \emph{trivial} RAF. 
-%At this point, we note that for a CRS, where each reaction is catalyzed by 
-%at most one catalyst, we get the following statement. 
-%
-%\vspace{6pt}
-%\begin{lemma}
-%	Let $(X,R,\cat)$ be a catalyzed reaction network with food-set $F$ such that $|\cat_{r}|\leq 1, \forall r\in R$. Then every minimal
-%	CAF is trivial. 
-%\end{lemma}
-%\begin{proof}
-%	Let $\RAF$ be a CAF and assume $|\RAF|>1$. Let $r\in \POR^1_{\RAF}(F)$. Then all reactants and catalysts are for $r$ are in 
-%	$F$ since $\RAF$ is a CAF. Thus $\{r\}$ is a RAF itself, contradicting the minimality of $\RAF$.
-%\end{proof}
-%\vspace{6pt}
-%
-%An example for a trivial CAF is $\{r_0\}$ in the last example. 
-The minimality condition has a series of interesting consequences on the structure of $\queen'$ for non-trivial RAFs, i.e., when all food 
-molecules and all species exhibiting no outgoing edges are removed. We start with the following trivial observation, 
-which is a direct consequence of Lemma~\ref{lem:RAFPath}.
-\vspace{6pt}
-\begin{lemma}\label{lem:weaklyConnected}
-	The graph $\queen'$ is weakly-connected.
-\end{lemma}
-\begin{proof}
-	Assume this is not the case. Then we have at least two connected components $\queen_1', \queen_2'$. By assumption both $X(\queen_1')$ 
-	and $X(\queen_2')$ are $\food$-generated. Since all F-reactions in $\RAF$ are catalyzed, every F-reaction in $\FR(\queen_1')$ and every F-reaction 
-	in $\FR(\queen_2')$ is catalyzed. Since there is no path from any $x_1\in X(\queen_1')$ to any $\fr_2\in \FR(\queen_2')$ and no path from 
-	any $x_2\in X(\queen_2')$ to any $\fr_1\in \FR(\queen_1')$, every F-reaction $\fr_1\in \FR(\queen_1')$ is catalyzed by an $x_1\in X(\queen_1')$ 
-	and every F-reaction of $\fr_2\in \FR(\queen_2')$ is catalyzed by an entity of $x_2\in X(\queen_2')$. In addition, no reaction $\fr_1\in \FR(\queen_1')$ 
-	has a species $x_2\in X(\queen_2')$ as F-reactant and no reaction $\fr_2\in \FR(\queen_2')$ has a species $x_1\in X(\queen_1)$ as F-reactant. 
-	Thus $\FR(\queen_1')$ and $\FR(\queen_2')$ are RAFs themselves. Since $\FR(\queen_1'), \FR(\queen_1')\subseteq \RAF$, $\RAF$ was not minimal.
-\end{proof}
-\vspace{6pt}
-A minimal RAF, thereby, has a corresponding weakly-connected bipartite K\"onig graph, which is also the case for the subgraph that contains only non-food 
-molecules.
-\vspace{6pt}
-\begin{lemma}\label{lem:weaklyConnected2}
-	The subgraph $\queen' [\closure{\RAF}{F}\setminus F, \RAF]$ is weakly-connected.
-\end{lemma}
-\begin{proof}
-	By Lemma~\ref{lem:weaklyConnected} $\queen'$ is weakly-connected. Assume now there is an $f\in \food$ 
-	and $u,v\in \closure{}{\food}\setminus \food$ and such $\queen'[V(\queen')\setminus \{f\}]$ is composed of 
-	at least two connected components $C_1, C_2$. Then $\closure{\FR(C_1)}{\food}\cap \closure{\FR(C_2)}{\food} 
-	\subseteq \food$, i.e., none of the species $x_1\in X(C_1)$ is a reactant, product, or catalyst for an F-reaction 
-	$\fr_2\in \FR(C_2)$ and vice versa. Thus, $\FR(C_1), \FR(C_2)$ are both RAFs and $\RAF$ was not minimal.
-\end{proof}
-\vspace{6pt}
-If a minimal RAF is non-trivial, i.e., if it is composed of more than one reaction, the graph $H$ 
-as defined in Lemma~\ref{lem:weaklyConnected2}, is more than a sequence of reactions. The following 
-lemmata allow us to gain more insight into the organization of minimal, non-trivial RAFs.
+We call a RAF of size $1$ a \emph{trivial} RAF. If a minimal RAF is non-trivial, i.e., if it is composed 
+of more than one reaction, the graph $\queen''$, is more than a sequence of reactions. From now on, 
+we consider only minimal RAFs that are non-trivial. 
 \vspace{6pt}
 \begin{lemma}
-	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal, non-trivial RAF. Then 
-	for every $r\in \RAF$ there is an $x\in \closure{\RAF}{F}\setminus F: s^-_{xr}>0$.
+	For every $\fr$ of a non-trivial, minimal RAF $\RAF$ there is an $x\in \closure{}{F}\setminus F: s^-_{xr}>0$.
 \end{lemma}
 \begin{proof}
-	Assume this is not the case for an $r\in \RAF$. Then $\{r\}$ is a RAF and thus $\RAF$ was not minimal.
+	Assume this is not the case for an $\fr\in \RAF$. Then all F-reactants and F-catalysts of $\fr$ are contained 
+	in the food set and thereby $\{\fr\}$ is a RAF, which contradicts the minimality of $\RAF$.
 \end{proof}
 
-We next investigate the cyclicity of $G$ and $H$. Since all food-molecules are absent in $G$ and $H$, we first 
-obtain that all vertices in $H$ have an in-degree greater than $0$. A simple result from 
-\cite{bang-jensen_digraphs_2002} then yields:
-
+We next investigate the cyclicity of $\queen'$ and $\queen''$. Since all food molecules are absent in $\queen''$, we 
+first obtain that all vertices in $\queen[\closure{}{\food}\setminus \food, \RAF]$ have an in-degree greater than $0$. 
+A simple result from \cite{bang-jensen_digraphs_2002} then yields:
 \vspace{6pt}
 \begin{corollary}
-	$H$ contains an elementary circuit. 
+	$\queen''$ contains an elementary circuit. 
 \end{corollary}
 \vspace{6pt}
 
-This was already shown in \cite{steel_minimal_2013}, however, not for the bipartite but for the R-graph. Since addition 
-of the food molecules does not destroy this property, we also obtain:
+In \cite{steel_minimal_2013} this was already shown for the reaction graph, but not for the bipartite graph. 
+Since the addition of the food molecules does not destroy this property, we also obtain:
 
 \vspace{6pt}
 \begin{corollary}
-	$G$ contains an elementary circuit. 
+	$\queen'$ contains an elementary circuit. 
 \end{corollary}
 \vspace{6pt}
 
-For minimal RAFs this result can be strengthened. To this end, we define the descendants and ascendants of a vertex $v$ in a graph 
+For minimal RAFs, this result can be strengthened. To this end, we define the descendants and ascendants of a vertex $v$ in a graph 
 in the following way
 
 \begin{equation}
@@ -800,6 +723,8 @@ in the following way
 		A(v) & \coloneqq \{u \in V \ | \text{ exists a path } P=(u,\ldots, v)  \} \\
 	\end{split}
 \end{equation}
+
+\holy{RG with rewriting until here}
 
 Before we can prove one of the main results of this section, we need an auxilliary Lemma.
 
@@ -1644,253 +1569,253 @@ However, they can be constructed directly, which proves the existence of at leas
 	-s^-_{xr}>0 \}$. We observe, that in this way, $r_k\in R(B)$ and $x_k\in X(B)$ for any $k$.
 \end{proof}
 
-\TODO{Construction site ahead}
-A natural extension to this statemen relies on considering not only species from 
-$\closure{\RAF}{F}\setminus F$ but from the set of food-generated entities, i.e.
-\begin{equation}
-	\mathbf{X}_{\RAF} \coloneqq \bigcup_{k=1}^n \POX^k_{\RAF}(F)
-\end{equation}
-
-However, in this case, semipositivity is not guaranteed. To see this, consider 
-the following example:
-
-\begin{equation}
-	\begin{split}
-		r_1: f_1 & \overset{f_1}{\longrightarrow} x_1\\
-		r_2: x_1 & \overset{x_1}{\longrightarrow} f_1 \\		
-	\end{split}
-\end{equation}
-
-with the RAF $\RAF\coloneqq \{r_1,r_2\}$ and food-set $F\coloneqq \{f_1\}$. Then
-$\SM[\mathbf{X}_{\RAF}, \RAF]$ reads:
-
-\begin{equation}
-	\begin{pmatrix}
-		-1 & 1 \\
-		1 & -1
-	\end{pmatrix}
-\end{equation}
-
-which is indeed not semipositiv. 
-
-Non-trivial minimal RAFs are strongly connected and can be decomposed into strong blocks. 
-The subnetwork induced by each of these strong blocks is naturally well-formed. In addition,
-any species is solely produced or consumed by a reaction within the block. Thereby, the sub-vector
-of $v$ as constructed in the proof of Thm.~\ref{thm:NonFoodSemipositiv} and restricted to the 
-reactions contained in the strong block, directly yields semipositivity on the submatrix containing
-all species and reaction vertices within the strong block.
-
-
-The semipositivity of $A\coloneqq \SM[(\closure{\RAF}{F}\setminus F,\RAF)]$ in general originates 
-from at least one of the form $x_1\rightarrow x_1 + x_2$. For example, in the following RN:
-\begin{equation}
-	\begin{split}
-		r_0: f_1 & \overset{f_2}{\longrightarrow} x_1 \\ 
-		r_i: x_i & \overset{x_i}{\longrightarrow} x_{i+1},
-	\end{split}
-\end{equation}
-reaction $r_0$ forms a non-negative column in $A$, which allows for an unrestricted input of $x_1$. 
-However, $r_0$ has no reactant in $\closure{\RAF}{F}\setminus F$, not even a catalyst. By 
-definition~\ref{def:autSubRN}, $(\closure{\RAF}{F}\setminus F,R')$ is not an autocatalytic subnetwork 
-since it is not well-formed. One way of avoiding such a situation is to require that none of the 
-catalysts is contained in the food set. Consider the following 
-RAF $\RAF={r_1,r_2}$, with food-set $F=\{f\}$ and $X\coloneqq \{f,x_1,x_2\}$.
-\begin{equation}
-	\begin{split}
-		r_1&: f  \overset{x_1}{\longrightarrow} x_2 \\ 
-		r_2&: x_2  \overset{x_2}{\longrightarrow} x_1
-	\end{split}
-\end{equation}
-The matrix $A\coloneqq \SM[(\closure{\RAF}{F}\setminus F,R')]$ then reads:
-\begin{equation}
-	A\coloneqq 
-		\begin{pmatrix}
-			0 & 1\\
-			1 & -1
-		\end{pmatrix}
-\end{equation}
-which is an autocatalytic core of size $2$ that is associated with an elementary 
-circuit in $\king(\closure{\RAF}{F},R'), R')$. This is, however, no coincidence. 
-Let us therefore consider only \emph{catalytically autonomous} RAFs $\RAF$, 
-i.e., for which $\cat(\RAF)\cap F=\emptyset$.
-\vspace{6pt}
-\begin{lemma}
-	Let $(X,R)$ be a catalyzed network with food-set $F$ and $\RAF$ a \emph{catalytically autonomous} RAFs. 
-	Then $(\closure{\RAF}{F},\RAF)$ contains an autocatalytic core $(X',R')$ that is either an explicit autocatalytic 
-	reaction or $\king(X',R')$ is an elementary circuit and the corresponding CS matrix $\SM[\child]$ has at least 
-	one strong Metzler column.
-\end{lemma}
-\begin{proof}
-	\TODO{Include and adapt proof from Overleaf}
-\end{proof}
-\vspace{6pt}
-
-Generalizing this notion, we can require that every reaction has a reactant (not necessarily a net-reactant)
-that is not an element of the food set. 
-
-\begin{lemma}
-	Let $(X,R)$ be a catalyzed network with food-set $F$ and $\RAF$ a RAF, where for each $r\in R'$ there is
-	$x\in \closure{\RAF}{F}\setminus F: s_{xr}^->0$. Then $(\closure{\RAF}{F},\RAF)$ contains an autocatalytic 
-	core $(X',R')$ that is either an explicit autocatalytic reaction or $\king(X',R')$ is an elementary circuit and the 
-	corresponding CS matrix $\SM[\child]$ has at least one strong Metzler column.
-\end{lemma}
-\begin{proof}
-	
-\end{proof}
- 
-Building on this....
-
-\begin{lemma}
-	A RAF is a CAF or it contains an autocatalytic core.
-\end{lemma}
-\TODO{Another open point here is that we can have food molecules that are produced....not entirely sure yet how to 
-deal with this case.}
-
-\vspace{6pt}
-
-\section{RAF-Subnetworks}
-
-In this subsection, we aim to generalize the framework of RAFs to a subnetwork setting.
-
-\subsection{Reflexively autocatalytic subnetworks}
-
-We start with the reflexive-autocatalytic part. We call a subnetwork $(X', R')$ partially catalyzed if $\cat(R')\neq \emptyset$. 
-\vspace{6pt}
-\begin{definition}
-	Let $(X,R)$ be a catalyzed RN. A subnetwork $(X',R')$ is called reflexive-autocatalytic if for each 
-	$r\in R': \cat_r\neq \emptyset \ (X(\cat(R')\subseteq X')$. It is called autonomously reflexive-autocatalytic 
-	if for each $r\in R': \cat_r\neq \emptyset \ and X(\cat(R')\subseteq X'$.
-\end{definition}
-\vspace{6pt}
-We denote the subgraph of a subnetwork by $\king'\coloneqq \king(X',R')$ and write $\cat'$ instead of $\cat(R')$. A direct consequence 
-is the following lemma:
-\vspace{6pt}
-\begin{lemma}\label{lem:RASubnetwork}
-	Let $(X, R, \cat)$ be a catalyzed RN. A subnetwork $(X',R')$ is (autonomously) reflexive-autocatalytic if and only if
-	for all $r\in R' \ \exists x\in X: (x,r),(r,x)\in E(\king(X\cup X(\cat'), R') \ (E(\king'))$. 
-\end{lemma}
-\begin{proof}
-	If $(X',R')$ is reflexive autocatalytic $|R'|=|\cat'|$, thus each reaction $r$ is explicitely catalyzed by an $x_r\in X(\cat_r)\subseteq X$.
-	Then $s^-_{x_rr}>0$ and $s^+_{x_rr}>0$ yields by definition $(x_r,r)$ and $(x_r,r) \in E(\king(X\cup X(\cat'), R')$, respectively.
-	If $(X',R')$ is autonomously reflexive-autocatalytic then $X(\cat'\subseteq X'\Rightarrow \king(X\cup X(\cat'), R') = \king'$ which
-	yields the second part of the claim. Conversely, if for each $r\in R': \exists x\in X$ such that $(x,r),(r,x)\in E(\king(X\cup X(\cat')), R')$, 
-	then by definition $s^-_{xr}>0,s^+_{xr}>0$, thus $x\in X(\cat_r)$. If, additionally, $(x,r),(r,x) \in E(\king')$ then $x\in X'$ and thus 
-	$X(\cat'\subseteq X'$ which yields that $(X',R')$ is autonomously reflexive-autocatalytic. 
-\end{proof}
-\vspace{6pt}
-
-\subsection{F-generated subnetworks}
-
-In theory, for an RN $(X,R,\cat)$, $F$ could be chosen arbitrarily. Depending on the network structure and the RAF $R'$, 
-$F$ might be identical to its own closure. To see this, consider the following example network: 
-\begin{equation}
-	\begin{split}
-		r_1: x_1 \overset{x_1}{\longrightarrow} x_2 \\
-		r_2: x_2 \overset{x_2}{\longrightarrow} x_1 \\
-	\end{split}
-\end{equation}
-with $F=\cat=X=\{x_1,x_2\}$ and RAF $\RAF = \{r_1,r_2\}$. Then $F=\closure{\RAF}{F}$. However, $F$ could also contain reactions 
-that are not connected to the rest, depending on the RAF. For example
-\begin{equation}
-	\begin{split}
-		r_1: x_1 &\overset{x_1}{\longrightarrow} x_2 \\
-		r_2: x_2 &\overset{x_2}{\longrightarrow} x_1 \\
-		r_3: x_3 &\overset{x_3}{\longrightarrow} x_1 
-	\end{split}
-\end{equation}
-with $F=\cat=X=\{x_1,x_2,x_3\}$ and RAF $\RAF=\{r_1,r_2\}$, we have $x_3\in F\Rightarrow F\subseteq \closure{\RAF}{F}$ but $x_3$ is disconnected
-in the graph $\king(X(\RAF) \cup F, \RAF, \cat(\RAF))$. In contrast, a food-set $F'$ for a subnetwork $(X', R')$ as defined in Eq.~\ref{eq:FoodWaste} is a direct 
-consequence from the set of entities $X'$ and the set of reactions $R'$. 
-
-\vspace{6pt}
-\begin{definition}[F-generated subnetwork]
-	Let $(X, R, \cat)$ be a catalyzed RN. A subnetwork $(X',R')$ is called $F$-generated, if $X'\subseteq \closure{R'}{F}$.
-\end{definition}
-\vspace{6pt}
-
-An immediate question that arises is how to construct a minimal set $F$ to obtain an $F$-generated subnetwork. Clearly, we have  
-that $F'\subseteq F$ if $(X',R')$ is $F$-generated. 
-\vspace{6pt}
-\begin{lemma}
-	Let $(X, R, \cat)$ be a catalyzed RN and $(X',R')$ a subnetwork. If $\king[X'\cup R']$ is a fluffle, then $(X',R')$  
-	is an $F$-generated subnetwork for any of the sets $F_x\coloneqq F'\cup\{x\}, x\in X'$.
-\end{lemma}
-\begin{proof}
-	If $\king[X'\cup R']$ is a fluffle, then any reaction has a single reactant in $(X',R')$. In addition, there is a unique CS $\child$ 
-	defined by the reactant-to-product edges. For an arbitrary $x'\in X'$ and the set $F'$ we have $E(\kappa(x))\subseteq 
-	F_x\coloneqq F'\cup\{x\}$, which yields that $P(\kappa(x))\subseteq \cl_{R'}(F_x)$. For all $y\in P(\kappa(x))$, the same 
-	argument applies as well as for all any $z\in \POX^k_{R'}(F), k\leq n$. Since $\king[X'\cup R']$ is a fluffle, it is strongly 
-	connected. Thus, for each $r\in R'$ there is path $(x, \kappa(x), \ldots, r)$, and thereby an $k\leq n: r\in \POR_{R'}(F)$. 
-	Hence, $X'\subseteq \closure{R'}{F}$.
-\end{proof}
-\vspace{6pt}
-Since irreducible Metzler CS matrices have a bipartite graph representation as a fluffle, 
-the following statement is a direct consequence from the former lemma.
-\vspace{6pt}
-\begin{corollary}
-	Let $(X',R')$ be a subnetwork that has an associated autocatalytic, irreducible 
-	Metzler CS matrix $\SM[\child]$. Then $(X',R')$ is an $F$-generated
-	subnetwork for any $F_x\coloneqq F'\cup \{x\}, x\in X'$.
-\end{corollary}
-\vspace{6pt}
-Any autocatalytic core $(X',R')$ can then be generated by the union of $F'$ and a single species from $X'$. 
-\vspace{6pt}
-\begin{corollary}
-	Let $(X',R')$ be an autocatalytic core. Then $(X',R')$ is an $F$-generated subnetwork for any $F_x\coloneqq F'\cup \{x\}, x\in X'$.
-\end{corollary}
-\vspace{6pt}
-For irreducible non-Metzler matrices, such a result cannot be obtained. In the worst case, 
-all but one species might have to be added to $F'$ to obtain an $F$-generated subnetwork. 
-To see this, consider the following subnetwork $(X',R')$: 
-\begin{equation}
-	\begin{split}
-		r_1&: x_1 + \epsilon x_3 \rightarrow x_2 \\
-		r_2&: x_2 + \epsilon x_1 \rightarrow x_3 \\
-		r_3&: x_3 + \epsilon x_2 \rightarrow x_1
-	\end{split}
-\end{equation}
-with corresponding CS matrix:
-\begin{equation}
-	\SM[\child]=\begin{pmatrix}
-				-1 & -\epsilon & 2 \\
-				1 & -1 & -\epsilon \\
-				-\epsilon & 1 & -1 
-			\end{pmatrix}
-\end{equation}
-which is autocatalytic for epsilon small enough with $v=\begin{pmatrix}5 & 4 & 3\end{pmatrix}^T$. 
-In \cite{golnik_enumeration_2025}, it has been shown that any CS matrix with irreducible Metzler has a 
-spanning fluffle $\king(\child)$. Although still strongly connected the induced subgraph $\king[\child]$ 
-might contain additional reactant-to-reaction edges that are not encoded by the CS-bijection $\kappa$.
-However, it is sufficient to add all species with an off-diagonal entry.
-\vspace{6pt}
-\begin{lemma}
-	Let $(X', R')$ be a subnetwork with a non-Metzler CS matrix with irreducible Metzler part. Then $(X',R')$
-	is $F$-generated for $F= F' \cup N, N=\{x\in X' | \exists r \neq \kappa(x), \SM^-_{xr}>0\}$.
-\end{lemma}
-\begin{proof}
-	Since $\SM[\child]$ has irreducible Metzler part, $\king(\child)$ is strongly-connected, which implies that
-	also $\king[\child]$ is strongly connected. Then for any $x\in N: E(\kappa(x))\in F$, thus $\kappa(x)\in \POR_{R'}(F)$ 
-	and $P(\kappa(x))\in \cl_{R'}(F)$. We can now recursively apply this argument to all $y\in P(\kappa(x))$
-	and obtain with the strong-connectedness of $\king[\child]$ that $X'\subseteq \closure{R'}(F)$.
-\end{proof}
-\vspace{6pt}
-%\subsection{Reflexively autocatalytic and $F$-generated subnetworks}
+%\TODO{Construction site ahead}
+%A natural extension to this statemen relies on considering not only species from 
+%$\closure{\RAF}{F}\setminus F$ but from the set of food-generated entities, i.e.
+%\begin{equation}
+%	\mathbf{X}_{\RAF} \coloneqq \bigcup_{k=1}^n \POX^k_{\RAF}(F)
+%\end{equation}
 %
-%We now combine the two definitions above. 
+%However, in this case, semipositivity is not guaranteed. To see this, consider 
+%the following example:
 %
+%\begin{equation}
+%	\begin{split}
+%		r_1: f_1 & \overset{f_1}{\longrightarrow} x_1\\
+%		r_2: x_1 & \overset{x_1}{\longrightarrow} f_1 \\		
+%	\end{split}
+%\end{equation}
+%
+%with the RAF $\RAF\coloneqq \{r_1,r_2\}$ and food-set $F\coloneqq \{f_1\}$. Then
+%$\SM[\mathbf{X}_{\RAF}, \RAF]$ reads:
+%
+%\begin{equation}
+%	\begin{pmatrix}
+%		-1 & 1 \\
+%		1 & -1
+%	\end{pmatrix}
+%\end{equation}
+%
+%which is indeed not semipositiv. 
+%
+%Non-trivial minimal RAFs are strongly connected and can be decomposed into strong blocks. 
+%The subnetwork induced by each of these strong blocks is naturally well-formed. In addition,
+%any species is solely produced or consumed by a reaction within the block. Thereby, the sub-vector
+%of $v$ as constructed in the proof of Thm.~\ref{thm:NonFoodSemipositiv} and restricted to the 
+%reactions contained in the strong block, directly yields semipositivity on the submatrix containing
+%all species and reaction vertices within the strong block.
+%
+%
+%The semipositivity of $A\coloneqq \SM[(\closure{\RAF}{F}\setminus F,\RAF)]$ in general originates 
+%from at least one of the form $x_1\rightarrow x_1 + x_2$. For example, in the following RN:
+%\begin{equation}
+%	\begin{split}
+%		r_0: f_1 & \overset{f_2}{\longrightarrow} x_1 \\ 
+%		r_i: x_i & \overset{x_i}{\longrightarrow} x_{i+1},
+%	\end{split}
+%\end{equation}
+%reaction $r_0$ forms a non-negative column in $A$, which allows for an unrestricted input of $x_1$. 
+%However, $r_0$ has no reactant in $\closure{\RAF}{F}\setminus F$, not even a catalyst. By 
+%definition~\ref{def:autSubRN}, $(\closure{\RAF}{F}\setminus F,R')$ is not an autocatalytic subnetwork 
+%since it is not well-formed. One way of avoiding such a situation is to require that none of the 
+%catalysts is contained in the food set. Consider the following 
+%RAF $\RAF={r_1,r_2}$, with food-set $F=\{f\}$ and $X\coloneqq \{f,x_1,x_2\}$.
+%\begin{equation}
+%	\begin{split}
+%		r_1&: f  \overset{x_1}{\longrightarrow} x_2 \\ 
+%		r_2&: x_2  \overset{x_2}{\longrightarrow} x_1
+%	\end{split}
+%\end{equation}
+%The matrix $A\coloneqq \SM[(\closure{\RAF}{F}\setminus F,R')]$ then reads:
+%\begin{equation}
+%	A\coloneqq 
+%		\begin{pmatrix}
+%			0 & 1\\
+%			1 & -1
+%		\end{pmatrix}
+%\end{equation}
+%which is an autocatalytic core of size $2$ that is associated with an elementary 
+%circuit in $\king(\closure{\RAF}{F},R'), R')$. This is, however, no coincidence. 
+%Let us therefore consider only \emph{catalytically autonomous} RAFs $\RAF$, 
+%i.e., for which $\cat(\RAF)\cap F=\emptyset$.
+%\vspace{6pt}
+%\begin{lemma}
+%	Let $(X,R)$ be a catalyzed network with food-set $F$ and $\RAF$ a \emph{catalytically autonomous} RAFs. 
+%	Then $(\closure{\RAF}{F},\RAF)$ contains an autocatalytic core $(X',R')$ that is either an explicit autocatalytic 
+%	reaction or $\king(X',R')$ is an elementary circuit and the corresponding CS matrix $\SM[\child]$ has at least 
+%	one strong Metzler column.
+%\end{lemma}
+%\begin{proof}
+%	\TODO{Include and adapt proof from Overleaf}
+%\end{proof}
+%\vspace{6pt}
+%
+%Generalizing this notion, we can require that every reaction has a reactant (not necessarily a net-reactant)
+%that is not an element of the food set. 
+%
+%\begin{lemma}
+%	Let $(X,R)$ be a catalyzed network with food-set $F$ and $\RAF$ a RAF, where for each $r\in R'$ there is
+%	$x\in \closure{\RAF}{F}\setminus F: s_{xr}^->0$. Then $(\closure{\RAF}{F},\RAF)$ contains an autocatalytic 
+%	core $(X',R')$ that is either an explicit autocatalytic reaction or $\king(X',R')$ is an elementary circuit and the 
+%	corresponding CS matrix $\SM[\child]$ has at least one strong Metzler column.
+%\end{lemma}
+%\begin{proof}
+%	
+%\end{proof}
+% 
+%Building on this....
+%
+%\begin{lemma}
+%	A RAF is a CAF or it contains an autocatalytic core.
+%\end{lemma}
+%\TODO{Another open point here is that we can have food molecules that are produced....not entirely sure yet how to 
+%deal with this case.}
+%
+%\vspace{6pt}
+%
+%\section{RAF-Subnetworks}
+%
+%In this subsection, we aim to generalize the framework of RAFs to a subnetwork setting.
+%
+%\subsection{Reflexively autocatalytic subnetworks}
+%
+%We start with the reflexive-autocatalytic part. We call a subnetwork $(X', R')$ partially catalyzed if $\cat(R')\neq \emptyset$. 
+%\vspace{6pt}
 %\begin{definition}
-%	Let $(X, R, \cat)$ be a catalyzed RN and $(X',R')$ a subnetwork. A reflexive autocatalytic subnetwork $(X',R')$ 
-%	is called a RAF-subnetwork if there is a set $Y'\subseteq X'$ such that $(X',R')$ is $F$-generated for $F\coloneqq F'\cup Y'$.
+%	Let $(X,R)$ be a catalyzed RN. A subnetwork $(X',R')$ is called reflexive-autocatalytic if for each 
+%	$r\in R': \cat_r\neq \emptyset \ (X(\cat(R')\subseteq X')$. It is called autonomously reflexive-autocatalytic 
+%	if for each $r\in R': \cat_r\neq \emptyset \ and X(\cat(R')\subseteq X'$.
 %\end{definition}
+%\vspace{6pt}
+%We denote the subgraph of a subnetwork by $\king'\coloneqq \king(X',R')$ and write $\cat'$ instead of $\cat(R')$. A direct consequence 
+%is the following lemma:
+%\vspace{6pt}
+%\begin{lemma}\label{lem:RASubnetwork}
+%	Let $(X, R, \cat)$ be a catalyzed RN. A subnetwork $(X',R')$ is (autonomously) reflexive-autocatalytic if and only if
+%	for all $r\in R' \ \exists x\in X: (x,r),(r,x)\in E(\king(X\cup X(\cat'), R') \ (E(\king'))$. 
+%\end{lemma}
+%\begin{proof}
+%	If $(X',R')$ is reflexive autocatalytic $|R'|=|\cat'|$, thus each reaction $r$ is explicitely catalyzed by an $x_r\in X(\cat_r)\subseteq X$.
+%	Then $s^-_{x_rr}>0$ and $s^+_{x_rr}>0$ yields by definition $(x_r,r)$ and $(x_r,r) \in E(\king(X\cup X(\cat'), R')$, respectively.
+%	If $(X',R')$ is autonomously reflexive-autocatalytic then $X(\cat'\subseteq X'\Rightarrow \king(X\cup X(\cat'), R') = \king'$ which
+%	yields the second part of the claim. Conversely, if for each $r\in R': \exists x\in X$ such that $(x,r),(r,x)\in E(\king(X\cup X(\cat')), R')$, 
+%	then by definition $s^-_{xr}>0,s^+_{xr}>0$, thus $x\in X(\cat_r)$. If, additionally, $(x,r),(r,x) \in E(\king')$ then $x\in X'$ and thus 
+%	$X(\cat'\subseteq X'$ which yields that $(X',R')$ is autonomously reflexive-autocatalytic. 
+%\end{proof}
+%\vspace{6pt}
 %
-%A trivial statement that follows directly from the definition is that for any RAF subnetwork
-
-\vspace{6pt}
-The definition of the food-set $F'$ in Eq.~\ref{eq:FoodWaste} does not include catalysts. We may additionally define the catalyst 
-specific food-set for $(X',R')$ as follows:
-\begin{equation}
-	F'_{\cat'}\coloneqq \{x\in X(\cat') \ | \ x\notin X'\} 
-\end{equation}
+%\subsection{F-generated subnetworks}
+%
+%In theory, for an RN $(X,R,\cat)$, $F$ could be chosen arbitrarily. Depending on the network structure and the RAF $R'$, 
+%$F$ might be identical to its own closure. To see this, consider the following example network: 
+%\begin{equation}
+%	\begin{split}
+%		r_1: x_1 \overset{x_1}{\longrightarrow} x_2 \\
+%		r_2: x_2 \overset{x_2}{\longrightarrow} x_1 \\
+%	\end{split}
+%\end{equation}
+%with $F=\cat=X=\{x_1,x_2\}$ and RAF $\RAF = \{r_1,r_2\}$. Then $F=\closure{\RAF}{F}$. However, $F$ could also contain reactions 
+%that are not connected to the rest, depending on the RAF. For example
+%\begin{equation}
+%	\begin{split}
+%		r_1: x_1 &\overset{x_1}{\longrightarrow} x_2 \\
+%		r_2: x_2 &\overset{x_2}{\longrightarrow} x_1 \\
+%		r_3: x_3 &\overset{x_3}{\longrightarrow} x_1 
+%	\end{split}
+%\end{equation}
+%with $F=\cat=X=\{x_1,x_2,x_3\}$ and RAF $\RAF=\{r_1,r_2\}$, we have $x_3\in F\Rightarrow F\subseteq \closure{\RAF}{F}$ but $x_3$ is disconnected
+%in the graph $\king(X(\RAF) \cup F, \RAF, \cat(\RAF))$. In contrast, a food-set $F'$ for a subnetwork $(X', R')$ as defined in Eq.~\ref{eq:FoodWaste} is a direct 
+%consequence from the set of entities $X'$ and the set of reactions $R'$. 
+%
+%\vspace{6pt}
+%\begin{definition}[F-generated subnetwork]
+%	Let $(X, R, \cat)$ be a catalyzed RN. A subnetwork $(X',R')$ is called $F$-generated, if $X'\subseteq \closure{R'}{F}$.
+%\end{definition}
+%\vspace{6pt}
+%
+%An immediate question that arises is how to construct a minimal set $F$ to obtain an $F$-generated subnetwork. Clearly, we have  
+%that $F'\subseteq F$ if $(X',R')$ is $F$-generated. 
+%\vspace{6pt}
+%\begin{lemma}
+%	Let $(X, R, \cat)$ be a catalyzed RN and $(X',R')$ a subnetwork. If $\king[X'\cup R']$ is a fluffle, then $(X',R')$  
+%	is an $F$-generated subnetwork for any of the sets $F_x\coloneqq F'\cup\{x\}, x\in X'$.
+%\end{lemma}
+%\begin{proof}
+%	If $\king[X'\cup R']$ is a fluffle, then any reaction has a single reactant in $(X',R')$. In addition, there is a unique CS $\child$ 
+%	defined by the reactant-to-product edges. For an arbitrary $x'\in X'$ and the set $F'$ we have $E(\kappa(x))\subseteq 
+%	F_x\coloneqq F'\cup\{x\}$, which yields that $P(\kappa(x))\subseteq \cl_{R'}(F_x)$. For all $y\in P(\kappa(x))$, the same 
+%	argument applies as well as for all any $z\in \POX^k_{R'}(F), k\leq n$. Since $\king[X'\cup R']$ is a fluffle, it is strongly 
+%	connected. Thus, for each $r\in R'$ there is path $(x, \kappa(x), \ldots, r)$, and thereby an $k\leq n: r\in \POR_{R'}(F)$. 
+%	Hence, $X'\subseteq \closure{R'}{F}$.
+%\end{proof}
+%\vspace{6pt}
+%Since irreducible Metzler CS matrices have a bipartite graph representation as a fluffle, 
+%the following statement is a direct consequence from the former lemma.
+%\vspace{6pt}
+%\begin{corollary}
+%	Let $(X',R')$ be a subnetwork that has an associated autocatalytic, irreducible 
+%	Metzler CS matrix $\SM[\child]$. Then $(X',R')$ is an $F$-generated
+%	subnetwork for any $F_x\coloneqq F'\cup \{x\}, x\in X'$.
+%\end{corollary}
+%\vspace{6pt}
+%Any autocatalytic core $(X',R')$ can then be generated by the union of $F'$ and a single species from $X'$. 
+%\vspace{6pt}
+%\begin{corollary}
+%	Let $(X',R')$ be an autocatalytic core. Then $(X',R')$ is an $F$-generated subnetwork for any $F_x\coloneqq F'\cup \{x\}, x\in X'$.
+%\end{corollary}
+%\vspace{6pt}
+%For irreducible non-Metzler matrices, such a result cannot be obtained. In the worst case, 
+%all but one species might have to be added to $F'$ to obtain an $F$-generated subnetwork. 
+%To see this, consider the following subnetwork $(X',R')$: 
+%\begin{equation}
+%	\begin{split}
+%		r_1&: x_1 + \epsilon x_3 \rightarrow x_2 \\
+%		r_2&: x_2 + \epsilon x_1 \rightarrow x_3 \\
+%		r_3&: x_3 + \epsilon x_2 \rightarrow x_1
+%	\end{split}
+%\end{equation}
+%with corresponding CS matrix:
+%\begin{equation}
+%	\SM[\child]=\begin{pmatrix}
+%				-1 & -\epsilon & 2 \\
+%				1 & -1 & -\epsilon \\
+%				-\epsilon & 1 & -1 
+%			\end{pmatrix}
+%\end{equation}
+%which is autocatalytic for epsilon small enough with $v=\begin{pmatrix}5 & 4 & 3\end{pmatrix}^T$. 
+%In \cite{golnik_enumeration_2025}, it has been shown that any CS matrix with irreducible Metzler has a 
+%spanning fluffle $\king(\child)$. Although still strongly connected the induced subgraph $\king[\child]$ 
+%might contain additional reactant-to-reaction edges that are not encoded by the CS-bijection $\kappa$.
+%However, it is sufficient to add all species with an off-diagonal entry.
+%\vspace{6pt}
+%\begin{lemma}
+%	Let $(X', R')$ be a subnetwork with a non-Metzler CS matrix with irreducible Metzler part. Then $(X',R')$
+%	is $F$-generated for $F= F' \cup N, N=\{x\in X' | \exists r \neq \kappa(x), \SM^-_{xr}>0\}$.
+%\end{lemma}
+%\begin{proof}
+%	Since $\SM[\child]$ has irreducible Metzler part, $\king(\child)$ is strongly-connected, which implies that
+%	also $\king[\child]$ is strongly connected. Then for any $x\in N: E(\kappa(x))\in F$, thus $\kappa(x)\in \POR_{R'}(F)$ 
+%	and $P(\kappa(x))\in \cl_{R'}(F)$. We can now recursively apply this argument to all $y\in P(\kappa(x))$
+%	and obtain with the strong-connectedness of $\king[\child]$ that $X'\subseteq \closure{R'}(F)$.
+%\end{proof}
+%\vspace{6pt}
+%%\subsection{Reflexively autocatalytic and $F$-generated subnetworks}
+%%
+%%We now combine the two definitions above. 
+%%
+%%\begin{definition}
+%%	Let $(X, R, \cat)$ be a catalyzed RN and $(X',R')$ a subnetwork. A reflexive autocatalytic subnetwork $(X',R')$ 
+%%	is called a RAF-subnetwork if there is a set $Y'\subseteq X'$ such that $(X',R')$ is $F$-generated for $F\coloneqq F'\cup Y'$.
+%%\end{definition}
+%%
+%%%A trivial statement that follows directly from the definition is that for any RAF subnetwork
+%
+%\vspace{6pt}
+%The definition of the food-set $F'$ in Eq.~\ref{eq:FoodWaste} does not include catalysts. We may additionally define the catalyst 
+%specific food-set for $(X',R')$ as follows:
+%\begin{equation}
+%	F'_{\cat'}\coloneqq \{x\in X(\cat') \ | \ x\notin X'\} 
+%\end{equation}
 
 \vspace{6pt}
 \bibliography{RAFCores}

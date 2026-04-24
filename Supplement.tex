@@ -1,0 +1,322 @@
+\documentclass[pdflatex]{sn-jnl}
+ \renewcommand{\textfraction}{.002}
+\renewcommand{\floatpagefraction}{.995}
+\setcounter{totalnumber}{5}
+\renewcommand{\topfraction}{.995}
+
+\usepackage[numbers,square]{natbib}
+\bibliographystyle{spbasic_u}
+
+\usepackage[noend,ruled,vlined]{algorithm2e}
+\newcommand\mycommfont[1]{\footnotesize\ttfamily{#1}}
+\SetCommentSty{mycommfont}
+
+
+\usepackage{graphicx}%
+\usepackage{multirow}%
+\usepackage{amsmath,amssymb,amsfonts}%
+\usepackage{amsthm}%
+\usepackage{mathrsfs}%
+\usepackage[title]{appendix}%
+\usepackage{xcolor}%
+\usepackage{textcomp}%
+\usepackage{manyfoot}%
+\usepackage{booktabs}%
+\usepackage{placeins}
+\usepackage{listings}%
+\usepackage{mathtools}
+\usepackage{subcaption}
+\usepackage{xr}
+\usepackage{bm}
+%% CUSTOM PACKAGES
+%\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage{hyperref}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+%\usetikzlibrary{3d,perspective}
+%\usetikzlibrary{shapes.geometric, arrows.meta, positioning}
+\usepackage{booktabs} % For better table lines
+\usepackage[version=4]{mhchem} 
+\usepackage{enumitem}
+\usepackage{algorithm2e}
+%\usepackage{arydshln}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% as per the requirement new theorem styles can be included as shown below
+\theoremstyle{thmstyleone}%
+\newtheorem{theorem}{Theorem}%  meant for continuous numbers
+\newtheorem{corollary}[theorem]{Corollary}% 
+\newtheorem{proposition}[theorem]{Proposition}%
+\newtheorem{lemma}[theorem]{Lemma}% 
+\newtheorem{conjecture}[theorem]{Conjecture}%
+\newtheorem{observation}[theorem]{Observation}%
+%
+\makeatletter
+\newtheoremstyle{examplesty}% Numbered
+{18pt plus2pt minus1pt}% Space above
+{18pt plus2pt minus1pt}% Space below
+{\normalfont}% Body font
+{0pt}% Indent amount
+{\bfseries}% Theorem head font
+{.}% Punctuation after theorem head
+{.5em}% Space after theorem headi
+{\thmname{#1}\thmnumber{\@ifnotempty{#1}{ }{#2}}%
+  \thmnote{ {\the\thm@notefont(#3)}}}% Theorem head spec (can be left empty, meaning `normal')
+\makeatother
+\theoremstyle{examplesty}%
+\newtheorem{example}{Example}%
+%\newtheorem{remark}{Remark}%
+%
+\theoremstyle{thmstylethree}%
+\newtheorem{definition}[theorem]{Definition}%
+
+\newenvironment{mainitem}[2]{\medskip\par\noindent%
+  \textbf{#1~M\ref{#2}.}}{\par}
+
+
+%%%%% SOME LOW LEVEL STUFF NEEDED FOR SPECIAL SYMBOLS
+\makeatletter
+\def\moverlay{\mathpalette\mov@rlay}
+\def\mov@rlay#1#2{\leavevmode\vtop{%
+    \baselineskip\z@skip \lineskiplimit-\maxdimen
+    \ialign{\hfil$\m@th#1##$\hfil\cr#2\crcr}}}
+\newcommand{\charfusion}[3][\mathord]{
+  #1{\ifx#1\mathop\vphantom{#2}\fi
+    \mathpalette\mov@rlay{#2\cr#3}
+  }
+  \ifx#1\mathop\expandafter\displaylimits\fi}
+\DeclareRobustCommand\bigop[1]{%
+  \mathop{\vphantom{\sum}\mathpalette\bigop@{#1}}\slimits@
+}
+\newcommand{\bigop@}[2]{%
+  \vcenter{%
+    \sbox\z@{$#1\sum$}%
+    \hbox{\resizebox{\ifx#1\displaystyle.9\fi\dimexpr\ht\z@+\dp\z@}{!}{$\m@th#2$
+}}%
+  }%
+}
+\makeatother
+%%%%% END LOWLEVEL USER DEFINITION
+
+\newcommand{\cupdot}{\charfusion[\mathbin]{\cup}{\cdot}}
+\DeclareMathOperator{\bigcupdot}{\charfusion[\mathop]{\bigcup}{\cdot}}
+% \DeclareMathOperator{\Aut}{Aut}
+% \DeclareMathOperator{\orb}{orb}
+\newcommand{\whatever}{\mbox{\,.\,}}
+\newcommand{\king}{K}
+\newcommand{\queen}{\mathbf{Q}}
+\newcommand{\food}{\ensuremath{\mathbf{F}}}
+\newcommand{\SM}{\mathbb{S}}
+\newcommand{\closure}[2]{\mathscr{C}_{#1}(#2)}
+\newcommand{\cl}[0]{c}
+\newcommand{\CR}[0]{\mathcal{R}}
+\newcommand{\C}[1]{\mathit{#1}}
+\newcommand{\FR}[0]{\mathbf{R}}
+%\newcommand{\F}[1]{\mathbf{#1}}
+\newcommand{\fr}[0]{\mathbf{r}}
+\newcommand{\net}[1]{\hat{#1}}
+\newcommand{\RAF}[0]{\mathbf{R}'}
+\newcommand{\PO}[0]{d}
+\newcommand{\POR}[0]{\mathscr{R}}
+\newcommand{\POX}[0]{\mathscr{X}}
+\newcommand{\cat}{\mathbf{C}}
+\newcommand{\ceducts}{\mathcal{E}}
+\newcommand{\cproducts}{\mathcal{P}}
+\newcommand{\feducts}{\mathbf{E}}
+\newcommand{\fproducts}{\mathbf{P}}
+\newcommand{\ORCID}[1]{}
+\DeclareMathOperator{\suck}{succ}
+\newcommand{\Code}[1]{\texttt{\upshape{#1}}}
+\newcommand{\pfad}[0]{\ensuremath{\mathbf{P}}}
+\newcommand{\stack}[0]{\ensuremath{\mathbf{T}}}
+\newcommand{\child}{\pmb{\kappa}}
+
+\definecolor{middlegreen}{RGB}{0,128,0}
+\definecolor{royalpurple}{RGB}{85,26,139}
+\newcommand{\NEW}[1]{\begingroup\color{blue}#1\endgroup}
+\newcommand{\TODO}[1]{\begingroup\color{red}#1\endgroup}
+\newcommand{\PFS}[1]{\begingroup\color{blue}#1\endgroup}
+\newcommand{\holy}[1]{\begingroup\color{royalpurple}#1\endgroup}
+\newcommand{\TG}[1]{\begingroup\color{green}#1\endgroup}
+\newcommand{\NV}[1]{\begingroup\color{teal}#1\endgroup}
+\newcommand{\OLD}[1]{\begingroup\tiny\color{gray}#1\endgroup}
+
+% Linenumbers for debugging
+\usepackage{lineno}
+\linenumbers
+\raggedbottom
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\title{RAF-Cores - Supplement} 
+
+%% comment: 
+
+\author*[1,4]{\fnm{Richard} \sur{Golnik}}\email{richard@bioinf.uni-leipzig.de}
+\ORCID{0000-0002-8582-5006} 
+
+\author[1]{\fnm{Thomas} \sur{Gatter}}\email{thomas@bioinf.uni-leipzig.de}
+\ORCID{0000-0002-5016-5191} 
+
+\author[1]{\fnm{Wim} \sur{Hordijk}}\email{wim@worldwidewanderings.net}
+\ORCID{0000-0002-0223-6194} 
+
+\author[1,2]{\fnm{Nicola} \sur{Vassena}}\email{nicola.vassena@uni-leipzig.de}
+\ORCID{0000-0001-5411-4976} 
+
+\author[1,2,3,4,5,6,7,8,9]{\fnm{Peter F.}\sur{Stadler}}\email{studla@bioinf.uni-leipzig.de}
+\ORCID{0000-0001-5567-3016}
+
+\affil[1]{\orgdiv{Bioinformatics Group, Department of Computer Science}
+  \orgname{Leipzig University}, \orgaddress{\street{H{\"a}rtelstra{\ss}e 16–18},
+    \postcode{D-04107} \city{Leipzig}, \country{Germany}}} 
+
+\affil[2]{\orgdiv{Interdisciplinary Center for Bioinformatics}
+	\orgaddress{\orgname{Leipzig University}, \postcode{D-04107}
+	 \city{Leipzig}, \country{Germany}}}  
+	 
+\affil[3]{\orgdiv{Center for Scalabale Data Analytics and Artificial Intelligence},
+  \orgaddress{\orgname{Leipzig University}, \postcode{D-04107}
+    \city{Leipzig}, \country{Germany}}} 
+
+\affil[4]{\orgdiv{Zuse School for Embedded and Composite Artificial Intelligence (SECAI)}
+   \orgaddress{\orgname{Leipzig University}, \postcode{D-04107}
+    \city{Leipzig}, \country{Germany}}}
+
+\affil[5]{\orgname{Max Planck Institute for Mathematics in the Sciences},
+  \orgaddress{\street{Inselstra{\ss}e 22}, \postcode{D-04103}
+    \city{Leipzig}, \country{Germany}}}
+
+\affil[6]{\orgdiv{Department of Theoretical Chemistry}, \orgname{University
+    of Vienna}, \orgaddress{\street{W{\"a}hringerstra{\ss}e 17},
+    \postcode{A-1090} \city{Wien}, \country{Austria}}}
+
+\affil[7]{\orgdiv{Facultad de Ciencias}, \orgname{Universidad National de
+    Colombia}, \orgaddress{\city{Bogot{\'a}}, \country{Colombia}}}
+
+\affil[8]{\orgdiv{Center for non-coding RNA in Technology and Health},
+  \orgname{University of Copenhagen}, \orgaddress{\street{Ridebanevej 9},
+    \postcode{DK-1870} \city{Frederiksberg}, \country{Denmark}}}
+
+\affil[9]{\orgname{Santa Fe Institute}, \orgaddress{\street{1399 Hyde Park
+      Rd.}, \city{Santa Fe}, \state{NM} \postcode{87501}, \country{USA}}}
+
+
+% Contact information of the corresponding author
+%\corr{Correspondence:
+%  Richard Golnik, richard@bioinf.uni-leipzig.de; Tel.: +49-341-97-16626}
+
+
+
+%\abstract{
+%}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\maketitle
+
+\holy{}
+
+\subsection{A Partial Order on RAFs}
+
+The easiest way to define such a partial order is by generating the set $\closure{R'}{X'}$ iteratively. Let therefore:
+\begin{equation}
+	c_{\RAF}: 2^X \rightarrow 2^X, c_{\RAF}(X') \coloneqq X' \cup \{\fproducts(\fr) \subseteq X' \ \vert \ \feducts(\fr)\subseteq X'\}. 
+\end{equation}
+We may drop the subscript $\RAF$ whenever appropriate. In particular, we write $c(X')$ instead 
+of $c_{\RAF}(X')$ as well as $\closure{}{X'}$ instead of $\closure{\RAF}{X'}$.
+
+It has been shown earlier that the repetitive iteration of $c$ converges to the closure 
+in a finite number of steps for finite-sized species sets \cite{Stadler2018, bridging_golnik_2026}. 
+However, to keep this contribution self-contained, we include the proof for this statement here. 
+We consider only finite-sized CRS, i.e., $\vert X \vert<\infty$ and $\vert \FR \vert<\infty$. By definition, 
+the composition $c\circ c$ is well-defined. Moreover, we let $c^n\coloneqq \left(\bigcirc^n_{i=0} \ c \right)$, 
+i.e., $c^0(X')\coloneqq X'$.
+
+\vspace{6pt}
+\begin{lemma}\label{lem:finSize}
+	Let $(X,\FR, \cat)$ be a CRS. For a set $X'\subseteq X$ and $\RAF\subseteq \RAF$ there 
+	is an $n\in \mathbb{N}$ such that: 
+	\begin{equation}
+		c^n(X') = c^m (X'), m\geq n, m\in \mathbb{N}
+	\end{equation}
+\end{lemma}
+\begin{proof}
+	Assume this is not the case. Then in each $k$-th step $|c^k(X')| < |c^{k+1}(X')|$,
+	which implies that $|c^k(X')| \xrightarrow{k\rightarrow\infty}\infty$. This is a 
+	contradiction, given that $|X|<\infty$.
+\end{proof}
+\vspace{6pt}
+It remains to show that $\lim_{k\rightarrow \infty} \cl^k(X') = \closure{}{X'}$. By definition, for 
+any $k\in\mathbb{N}: \cl^k(X')\subseteq \closure{}{X'}$. In addition, the convergence of $\cl^k(X')$ gurantees 
+that $\lim_{k\rightarrow \infty} \cl^k(X')\in \mathfrak{C}(X')$. Thus by minimality $\closure{}{X'}\subseteq 
+\lim_{k\rightarrow \infty} \cl^k(X')$, which yields by mutual inclusion that $\lim_{k\rightarrow \infty} \cl^k(X') 
+= \closure{}{X'}$. With the uniqueness of the limit, the subsequent corollary follows.
+
+\vspace{6pt}
+\begin{corollary}\label{cor:seqLimit}
+	Let $(X,\FR,\cat)$ be a CRS network of finite size with $X'\subseteq X, \RAF\subseteq \FR$. 
+	Then $\closure{}{X'}$ is the unique limit of the sequence
+	\begin{equation}
+		\left(\left(\bigcirc_{i=1}^k \ c\right)(X')\right)_{k\in\mathbb{N}}.
+	\end{equation}
+	In addition, there is an $n\in\mathbb{N}: c^n(X')=c^m(X'), m\geq n$.
+\end{corollary}
+\vspace{6pt}
+The sequence $(c^k(X')_{k\in\mathbb{N}}$ directly yields a sequence of reactions that can be
+executed in the $k$-th step, i.e., for which all reactants are contained in the set $\cl^k(X')$: 
+\begin{equation}
+	d^k(X') \coloneqq \{r\in \RAF \ | \ \feducts(r)\subseteq c^k(X')\}
+\end{equation}
+We can then restrict the sets obtained by $c^k(X')$ and $d^k(X')$ to those species and 
+reactions that are not present in an ``earlier'' set $c^\ell(X')$ and $d^\ell(X'), \ell<k$, respectively:
+\begin{equation}
+	\begin{split}
+		\POX^0(X')& \coloneqq X' \qquad \POX^k(X')\coloneqq c^k(X)\setminus \left(\bigcup_{i=0}^{k-1} c^k(X) \right)\\
+		\POR^0(X') & \coloneqq \emptyset \qquad \POR^k(X')\coloneqq d^k(X) \setminus \left(\bigcup_{i=0}^{k-1} d^k(X) \right)
+	\end{split}
+\end{equation}
+These sequences naturally generate a partial order $\preceq$, which we make explicit by two maps 
+that extract for each species and reaction the iteration of their first appearance: 
+\begin{equation}\label{eq:Gen}
+	\begin{split}
+		g&: X' \rightarrow \mathbb{N}, g(x)\coloneqq k \quad \text{ s. t. } x\in \POX_{R'}^k(X') \\
+		h&: R' \rightarrow \mathbb{N}, h(r)\coloneqq k \quad \text{ s. t. } r\in \POR_{R'}^k(X'). 
+	\end{split}
+\end{equation}
+In particular, a species $x_1$ precedes a species $x_2: x_1\preceq x_2$ if and only if $g(x_1) \leq g(x_2)$ 
+and a reaction $\fr_1$ precedes a reaction $\fr_2: \fr_1\preceq \fr_2$ if and only if $h(\fr_1) \leq h(\fr_2)$. We refer 
+to the values of $g$ and $h$ as the generation of a reaction or metabolite. 
+
+The partial order $\preceq$ allows us to easily observe that each species vertex for the closure of a 
+$\RAF$ is reachable from at least one food molecule in $\food$ in the bipartite K\"onig graph, 
+which is restricted to the $\closure{\RAF}{\food}$, the reactions in $\RAF$, and to those catalyzations 
+$\cat'$ of reactions in $\RAF\subseteq \FR$. Throughout, we denote this graph as 
+$\queen'\coloneqq \queen(\closure{\RAF}{\food}, \RAF, \cat')$.
+
+\vspace{6pt}
+\begin{lemma}\label{lem:RAFPath}
+	Let $(X, \FR, \cat)$ be a CRS with $\food \subseteq X$ and a RAF $\RAF\subseteq \FR$. 
+	For any $x\in \closure{}{\food}\setminus \food$ there is an $f\in \food$ such that $P=(f, \ldots, x)$ 
+	is a path in $\queen'$.
+\end{lemma}
+\begin{proof}
+	Let $x\in \closure{}{\food}\setminus \food$. By Corollary~\ref{cor:seqLimit} we have for some $n\in\mathbb{N}$ that
+	$\closure{}{\food} = c^n(\food)$. Thus, there is the sequence $(c^{k-1}(\food), d^k(\food))_{k\in\mathbb{N}}$
+	such that for any $r\in d^k(\food)$ there is $y\in c^{k-1}_{}(\food), z\in c^{k}_{}(\food): (y,r)\in E_1(\queen'), (r,z)\in E_2(\queen')$. 
+	Thus, starting with $x\in c^n_(\food)$ and recursively applying the upper argument, there is a sequence of vertices $
+	(x_0, r_1, x_1, \ldots, r_n, x_n): (x_{i-1},r_i)\in E_1(\queen'), (r_i,x_i)\in E_2(\queen'), 1\leq i\leq n, x=x_n$ that is a path 
+	in $\queen'$.
+\end{proof}
+\vspace{6pt}
+
+\vspace{6pt}
+\bibliography{RAFCores}
+
+\end{document}
