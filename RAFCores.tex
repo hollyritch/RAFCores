@@ -280,11 +280,16 @@ equation of $r$. In case $s^-_{xr}>s^+_{xr}>0$, we say $x$ is both reactant and 
 $r$, while in case $s^+_{xr}>s^-_{xr}>0$, $x$ is both product and catalyst of reaction $r$. In the latter 
 $x$ is also called an \emph{autocatalyst}, while in the former case, $x$ is called an \emph{autoinhibitor}. 
 
-From a chemical perspective, a catalyst is an entity $x\in X$ that not only satisfies $s^{-}_{xr}\cdot 
-s^{+}_{xr}\neq 0$, but also increases the speed of a reaction. However, not only can catalysts act in this way, 
-but also the solvent, such as water. Consider the reaction of water-free sulfuric acid with sodium hydroxide 
-pellets, which is in general initiated at those sites where water is extracted from the surrounding gas phase 
-due to the high hygroscopy of sulfuric acid and sodium hydroxide on some localized surface moisture. Thus in:
+From a chemical perspective and the IUPAC definition, a catalyst is an entity $x\in X$ that not only satisfies 
+$s^{-}_{xr}\cdot s^{+}_{xr}\neq 0$, but also ``increases the rate of a reaction without modifying the overall 
+standard Gibbs energy change in the reaction'' \cite{gold_iupac_2025}. However, the solvent, such 
+as water, can also act in such a way without being considered a catalyst \cite{marx_nature_1999}. In particular, 
+in Brønstedt/Lowry's acid-base theory, water is rather considered a reactant, proton acceptor, removing 
+environmental constraints to facilitate proton transfer between reactants \cite{eigen_proton_1964}. 
+
+Consider the reaction of water-free sulfuric acid with sodium hydroxide pellets, which is in general initiated at those sites where 
+water is extracted from the surrounding gas phase due to the high hygroscopy of sulfuric acid and sodium 
+hydroxide on some localized surface moisture. Thus in:
 \begin{equation}
 	\text{H}_2\text{SO}_4 + 2\text{H}_2\text{O} \leftrightharpoons 2\text{H}_3\text{O}^+ + \text{SO}_4^{2-} 
 \end{equation}
@@ -302,13 +307,11 @@ which yields the overall reaction:
 	\text{H}_2{SO}_4 + 2\text{H}_2\text{O} + 2\text{NaOH} \leftrightharpoons 4\text{H}_2\text{O} + 2\text{Na}^+ + \text{SO}_4^{2-}. 
 \end{equation}
 In this case, $2=s_{xr}^-\neq \net{s}_{xr}^-=0$, and $4=s_{xr}^+\neq \net{s}^+_{xr}=2$ for H$_2$O.
-Although a complete absence of water is unachievable under realistic laboratory conditions, it is not considered
-to act as a catalyst since it does not fundamentally change the reaction mechanism, but rather removes environmental
-constraints by facilitating proton transfer via hydronium ion formation, stabilizing hydroxide ions through hydrate shells,
-and forming chains of hydrogen bonds.
-
-To account for the different roles an entity can play within a chemical reaction, we partition  
-stoichiometries as done in \cite{bridging_Golnik_2026} in the following way: 
+A complete absence of water is unachievable under realistic laboratory conditions, making it impossible to 
+verify if the reaction takes place without H$_2$O. Nevertheless, even authors who dealt in depth with the 
+role of water in acid-base reactions did not even mention catalysis in the context of water molecules 
+\cite{eigen_proton_1964}. To account for the different roles an entity can play within a chemical 
+reaction, we partition stoichiometries as done in \cite{bridging_Golnik_2026} in the following way: 
 \begin{equation}
 	s^{\pm}_{xr} \coloneqq \sigma^{\pm}_{xr} + \kappa_{xr}.
 \end{equation}
@@ -339,22 +342,6 @@ To distinguish the F-catalysts from the F-reactants and F-products, we will writ
 \begin{equation}\label{eq:Mod.SmEq.2}
 	r: \sum_{x\in X}\ \sigma^-_{xr} \cdot x \xrightarrow{x \in \cat(r)} \sum_{x\in X} \ \sigma^+_{xr}  \cdot x.
 \end{equation}
-%We may, additionally, observe that $\net{\feducts}(r) = \feducts(\net{r}) = \ceducts(\net{r}) = \net{\ceducts}(r)$ and 
-%$\net{\fproducts}(r) = \fproducts(\net{r}) = \cproducts(\net{r}) = \net{\cproducts}(r)$, which motivates to 
-%introduce the following relation:
-%\begin{equation}
-%	r_1\bumpeq r_2 \Leftrightarrow \SM_{xr_1}=\SM_{xr_2}, \forall x\in X
-%\end{equation}
-%It is readily verified that $\bumpeq$ is indeed an equivalence relationship. Each equivalence class $[r]_{\bumpeq}$ thereby collects 
-%all stoichiometric equations that share the same net reaction $\net{r}$, which is, in particular, the natural representative of 
-%$[r]_\bumpeq$:
-%\begin{equation}\label{eq:CEquivClass}
-%	[r]_{\bumpeq} = \left\{r': \sum_{x\in X}\ (\sigma^-_{xr} + \kappa_{xr}) \cdot x)\rightarrow \sum_{x\in X} \ (\sigma^+_{xr} + \kappa_{xr} \cdot x)  \ \middle\vert \  \net{s}^{\pm}_{xr'} = \net{s}^{\pm}_{xr}, \forall x\in X\right\}
-%\end{equation}
-%Note that, in general, each $\bumpeq$-equivalence class is of infinite size. However, we may restrict the relation to 
-%$\mathcal{R}$ simply by writing $\bumpeq_{\CR}$. A consequence from Eq.~\ref{eq:CEquivClass} then is that 
-%$\cat(r) \neq \cat(r') \Rightarrow r\neq r'$. However, in general, the converse is not true, since $r,r'\in [r]_{\bumpeq}$ 
-%may be distinct if $\feducts(r)\neq \feducts(r')$ or $\fproducts(r)\neq \fproducts(r')$. 
 
 In a CRN $(X,\CR)$, each reaction $r$, as specified by Eq.~\ref{eq:Mod.SmEq}, is a distinct object. Thus,
 it is possible that two reactions sharing the same net reaction are elements of $\CR$. In this case, they 
@@ -562,7 +549,7 @@ It has been shown earlier that the repetitive iteration of $c(X')$ indeed yields
 \cite{Stadler2018}. However, to keep this contribution self-contained, we include the proof 
 for this statement here \TODO{(Move what follows to the appendix since this is rather technical
 and keep only the interesting result on the partial order.)}. 
-To this end, recall that a CRS is composed of two finite-sized sets, i.e., $|X|<\infty$ and $\FR|<\infty$. 
+To this end, recall that a CRS is composed of two finite-sized sets, i.e., $|X|<\infty$ and $\vert \FR \vert<\infty$. 
 By definition, the composition $c\circ c$ is well defined. Moreover, we let $c^n(X')\coloneqq \left(\bigcirc^n_{i=0} \ c \right)(X')$, 
 i.e., $\cl^0(X')\coloneqq X'$ and show that repetitive application of $c$ on a set $X'$ actually converges is indeed true.
 
