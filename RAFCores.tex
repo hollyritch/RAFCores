@@ -686,7 +686,9 @@ of a matrix, we refer to them as \emph{minimal RAFs}.
 
 Throughout, we will now consider a CRS $\Phi\coloneqq (X,\FR,\cat)$ with food-set $\food\subseteq X$ and K\"onig graph 
 $\queen\coloneqq \queen(\Phi)$, a minimal RAF $\RAF\subseteq \FR$ with K\"onig graph $\queen'\coloneqq \queen(\closure{\RAF}{\food} 
-,\RAF, \cat')$. We again devote all technicalities to the supplement. The first result is a direct consequence of Lemma~\ref{lem:OneFReacPerRAF}.
+,\RAF, \cat')$. In addition, we consider the R-graph of $\queen'$ as the graph $G(\RAF)$ with vertex set $\RAF$ and edge set
+$E\coloneqq \{(\fr_1,\fr_2) \ \vert \ \exists x\in X: s^+_{x\fr_1}>0, s^-_{x\fr_2}>0\}$.The first result is a direct consequence of 
+Lemma~\ref{lem:OneFReacPerRAF}.
 \vspace{6pt} 
 \begin{corollary}
 	Let $\fr_r,\fr_2 \in \RAF: \fr_1\neq \fr_2, \hat{\fr}_1=\hat{\fr}_2$. Then $\fr_1\in \RAF\Rightarrow \fr_2\notin \RAF$.
@@ -765,16 +767,33 @@ where
 \begin{equation}\label{eq:Waste}
 	W\coloneqq \{x\in \closure{\RAF}{F} \ | \ \nexists r \in \RAF \text{ s.t. } s^-_{xr}>0\},
 \end{equation}
-is strongly connected. The key observation is the following:
+is strongly connected. A key to proving this statement will be that the R-graph $G(\RAF)$ of 
+a non-trivial minimal RAF is strongly connected.
 \vspace{6pt}
 \begin{lemma}
-	Every $\fr\in \RAF$ has at least one reactant (F-reactant or F-catalyst) that is not in $\food$. For 
-	$\fr\in \RAF: \rgen(\fr)=1$, this is an F-catalyst.
+	Let $\RAF$ be a non-trivial, minimal RAF. Then $G(\RAF)$ is strongly connected.
 \end{lemma}
 \begin{proof}
-	 Assume this is not the case for an $\fr\in \RAF$. Then $\{\fr\}$ is a RAF which contradicts minimality
-	 and non-triviality of $\RAF$.
+	Assume this is not the case. Then there are at least two strongly connected components
+	$\RAF_1$ and $\RAF_2$. Assume w.l.o.g. that there is no path from any $r_2\in \RAF_2$ 
+	to any $r_1\in \RAF_1$. Then all F-reactants and F-catalysts of all F-reactions in $\RAF_1$
+	are in the closure $\closure{\RAF_2}{\food}$, in symbols $\feducts\cup \cat(\RAF_1)\subseteq 
+	\closure{\RAF_2}{\food}$. With $\RAF_1\subseteq \RAF$ and $\RAF$ being a $\RAF$, this 
+	implies that $\RAF_1$ is itself a $\RAF$ which contradicts the minimality of $\RAF$.
 \end{proof}
+\vspace{6pt}
+An immediate consequence of this statement is that the subgraph of $\queen'$ containing
+only vertices that have an incoming and an outgoing edge is also strongly connected. However,
+this graph could still contain food molecules. 
+%\vspace{6pt}
+%\begin{lemma}
+%	Every $\fr\in \RAF$ has at least one reactant (F-reactant or F-catalyst) that is not in $\food$. For 
+%	$\fr\in \RAF: \rgen(\fr)=1$, this is an F-catalyst.
+%\end{lemma}
+%\begin{proof}
+%	 Assume this is not the case for an $\fr\in \RAF$. Then $\{\fr\}$ is a RAF which contradicts minimality
+%	 and non-triviality of $\RAF$.
+%\end{proof}
 
 Since all food molecules are absent in $\queen''$, it contains an elementary circuit since all vertices have an 
 in-degree greater than zero \cite{bang-jensen_digraphs_2002}. Since $\queen''\subseteq \queen'$ we obtain:
@@ -806,7 +825,7 @@ of a vertex $v$ in a graph in the following way
 	in $\food$. Then $\{\fr_1\}$ is a RAF which directly contradicts that $\RAF$ is a non-trivial 
 	and minimal RAF. Then $\fr_1$ has an incoming edge, and since $\rgen(\fr_1)=1$ all 
 	F-reactants are in $\food$, which implies that there is $c_1\in X(\cat(\fr_1)): c_1\notin \food$
-	and there by $(c_1,\fr_1),(fr_1,c_1) \in E(\queen')$. However, this is a digon and if $c_1\notin 
+	and there by $(c_1,\fr_1),(\fr_1,c_1) \in E(\queen')$. However, this is a digon and if $c_1\notin 
 	D(\fr_1)$ then $c_1\in D(\fr_2)$ for some $\fr_2: \rgen(\fr_2)=1$, thus $\fr_1\in D(\fr_2)$. Now, we apply 
 	the same argument as above for $\fr_2$, i.e., there has to be a $c_2 \in X(\cat(\fr_2)): c_2\notin \food$
 	otherwise $\{\fr_2\}$ is a RAF contradicting the minimality and non-triviality of $\RAF$. 
