@@ -223,6 +223,8 @@
 
 \holy{}
 
+\section{RAFs}
+
 \subsection{A Partial Order on RAFs}
 
 The easiest way to define such a partial order is by generating the set $\closure{R'}{X'}$ iteratively. Let therefore:
@@ -300,6 +302,8 @@ which is restricted to the $\closure{\RAF}{\food}$, the reactions in $\RAF$, and
 $\cat'$ of reactions in $\RAF\subseteq \FR$. Throughout, we denote this graph as 
 $\queen'\coloneqq \queen(\closure{\RAF}{\food}, \RAF, \cat')$.
 
+\subsection{Minimal RAFs}
+
 \vspace{6pt}
 \begin{lemma}\label{lem:RAFPath}
 	Let $(X, \FR, \cat)$ be a CRS with $\food \subseteq X$ and a RAF $\RAF\subseteq \FR$. 
@@ -315,6 +319,72 @@ $\queen'\coloneqq \queen(\closure{\RAF}{\food}, \RAF, \cat')$.
 	in $\queen'$.
 \end{proof}
 \vspace{6pt}
+
+\vspace{6pt}
+\begin{lemma}\label{lem:weaklyConnected}
+	The graph $\queen'$ is weakly-connected.
+\end{lemma}
+\begin{proof}
+	Assume this is not the case. Then we have at least two connected components $\queen_1', \queen_2'$. By assumption both $X(\queen_1')$ 
+	and $X(\queen_2')$ are $\food$-generated. Since all F-reactions in $\RAF$ are catalyzed, every F-reaction in $\FR(\queen_1')$ and every F-reaction 
+	in $\FR(\queen_2')$ is catalyzed. Since there is no path from any $x_1\in X(\queen_1')$ to any $\fr_2\in \FR(\queen_2')$ and no path from 
+	any $x_2\in X(\queen_2')$ to any $\fr_1\in \FR(\queen_1')$, every F-reaction $\fr_1\in \FR(\queen_1')$ is catalyzed by an $x_1\in X(\queen_1')$ 
+	and every F-reaction of $\fr_2\in \FR(\queen_2')$ is catalyzed by an entity of $x_2\in X(\queen_2')$. In addition, no reaction $\fr_1\in \FR(\queen_1')$ 
+	has a species $x_2\in X(\queen_2')$ as F-reactant and no reaction $\fr_2\in \FR(\queen_2')$ has a species $x_1\in X(\queen_1)$ as F-reactant. 
+	Thus $\FR(\queen_1')$ and $\FR(\queen_2')$ are RAFs themselves. Since $\FR(\queen_1'), \FR(\queen_1')\subseteq \RAF$, $\RAF$ was not minimal.
+\end{proof}
+\vspace{6pt}
+A minimal RAF, thereby, has a corresponding weakly-connected bipartite K\"onig graph, which is also the case for the 
+subgraph that contains only non-food molecules.
+\vspace{6pt}
+\begin{lemma}\label{lem:weaklyConnected2}
+	The subgraph $\queen'' \coloneqq \queen'[\closure{}{\food}\setminus \food, \RAF]$ is weakly-connected.
+\end{lemma}
+\begin{proof}
+	By Lemma~\ref{lem:weaklyConnected}, $\queen'$ is weakly-connected. Assume now there is an $f\in \food$ 
+	such that $\queen'[V(\queen')\setminus \{f\}]$ is composed of at least two connected components $C_1, C_2$. Then 
+	$\closure{\FR(C_1)}{\food}\cap \closure{\FR(C_2)}{\food} \subseteq \food$, i.e., none of the species $x_1\in X(C_1)$ 
+	is a reactant, product, or catalyst for an F-reaction $\fr_2\in \FR(C_2)$ and vice versa. Thus, $\FR(C_1), \FR(C_2)$ 
+	are both RAFs and $\RAF$ was not minimal.
+\end{proof}
+\vspace{6pt}
+
+%\begin{lemma}\label{lem:elemCirc1}
+%	Let $\RAF$ be a minimal, non-trivial RAF, with $|\POR^1_{\RAF}(F)|=1$. 
+%	Then $r\in \POR^1_{\RAF}(F)$ is located on an elementary circuit that is 
+%	not a digon in $G$ and $H$.
+%\end{lemma}
+%\begin{proof}
+%	We show this for $H$ first. Since $\RAF$ is non-trivial $|\RAF|>1$. If $\cat_{r}\subseteq F$ then $\{r\}$ is a minimal RAF.
+%	Thus, there is $c\in \cat_r: c\not in F$. Then $c\in D(r)$. If $c\in \cproducts(r)$, then $\{r\}$ again
+%	is minimal $\RAF$. With the edge $(c,r)$, $(r,\ldots, c, r)$ is an elementary circuit that is not 
+%	a digon. Addition of the food-molecules does not disrupt this argument; thus, the statement 
+%	also holds for $G$.	
+%\end{proof}
+%
+%
+%\vspace{6pt}
+%We now extend this result.
+%\vspace{6pt}
+%
+%\begin{lemma}
+%	Let $\RAF$ be a minimal, non-trivial RAF, with $|\POR^1_{\RAF}(F)|=1$. 
+%	Then any $r\in \RAF$ is located on an elementary circuit that is 
+%	not a digon in $G$ and $H$.
+%\end{lemma}
+%\begin{proof}
+%	Again, we start with the graph $H$. We know that $r_1\in \POR^1_{\RAF}(F)$ is located on 
+%	an elementary circuit. Assume now there is a reaction $r\in \RAF$ that is not located on an 
+%	elementary circuit. We now show that $\RAF' \coloneqq \RAF\setminus (R(D(r))\cup \{r\}$ 
+%	is a RAF. First, we observe that $\RAF'\neq \emptyset$, since $r_1\notin \RAF'$. Otherwise,
+%	$r$ would be located on an elementary circuit. Therefore, 	assume $\RAF'$ is not a $\RAF$. 
+%	Since $\RAF$ is reflexively autocatalytic and $\RAF'\subseteq \RAF$, $\RAF'$ is reflexively 
+%	autocatalytic. Then, there is a reaction $r'\in \RAF'$ for which a reactant or a catalyst $x\in 
+%	X(H)$ with $s^-_{xr'}>0$ it holds that $x\notin \closure{\RAF'}(F)$. Since $x\in \closure{\RAF}(F)$ 
+%	is a product of some reaction $r''\in R(D(R'))\cup \{r'\}$. However, then $r''\in R(D(R'))\cup \{r'\}$, 
+%	which is a contradiction. Thus, $\RAF'$ is a RAF and therefore $\RAF$ was not minimal. Adding
+%	the food molecules to $H$ does not change the arguments, thus the result also holds for $G$. 	
+%\end{proof}
 
 \vspace{6pt}
 \bibliography{RAFCores}
