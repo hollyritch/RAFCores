@@ -803,25 +803,29 @@ of a vertex $v$ in a graph in the following way
 \begin{proof}
 	We start with $\queen''$ and assume this is not the case. Then there is a first-generation 
 	reaction $\fr_1$, that has no incoming edges. Thus, all F-reactants and all F-catalysts are 
-	in $\food$. Then $\{\fr_1\}$ is a RAF which directly contradicts that $\RAF$ is a non-trivial and minimal RAF. 
-	
-	Since $\rgen(\fr_1)=1$ all F-reactants are in $\food$. Then there is $c_1\in X(\cat(\fr_1)): c_1\notin \food$. 
-	Then $c_1\in D(\fr_2)$ for some $\fr_2: \rgen(\fr_2)=1$, thus $\fr_1\in D(\fr_2)$. Now, we apply the 
-	same argument as above for $\fr_2$, i.e., there has to be a $c_2 \in X(\cat(\fr_2)): c_2\notin \food$
+	in $\food$. Then $\{\fr_1\}$ is a RAF which directly contradicts that $\RAF$ is a non-trivial 
+	and minimal RAF. Then $\fr_1$ has an incoming edge, and since $\rgen(\fr_1)=1$ all 
+	F-reactants are in $\food$, which implies that there is $c_1\in X(\cat(\fr_1)): c_1\notin \food$
+	and there by $(c_1,\fr_1),(fr_1,c_1) \in E(\queen')$. However, this is a digon and if $c_1\notin 
+	D(\fr_1)$ then $c_1\in D(\fr_2)$ for some $\fr_2: \rgen(\fr_2)=1$, thus $\fr_1\in D(\fr_2)$. Now, we apply 
+	the same argument as above for $\fr_2$, i.e., there has to be a $c_2 \in X(\cat(\fr_2)): c_2\notin \food$
 	otherwise $\{\fr_2\}$ is a RAF contradicting the minimality and non-triviality of $\RAF$. 
 	Thus there is $c_2\in \cat_{\fr_2}: c_2\notin F$. Then there is an $\fr_3: \rgen(\fr_3)=1: c_2\in D(\fr_3)$ 
 	We repeat the arguments until we reach an $\fr_l$ such that $\fr_l=\fr_k$ for some $k<l$, thus we reach 
 	an F-reaction again, which is guaranteed since $\RAF$ is finite. Then all reactions $r_k, \ldots, r_{l-1}$ 
-	are located on an elementary circuit. If $l>1$ then $\RAF'\coloneqq \RAF\setminus (D(r_1)\cup\{\fr_1\})$ 
-	is non-empty RAF since it contains the reactions $\fr_k,\ldots, \fr_{l-1}$ and a RAF.
-	Assume this is not the case. Since $\RAF'\subseteq \RAF$, it is reflexively autocatalytic. Then 
+	are located on an elementary circuit. If $l>1$ then $\RAF'\coloneqq \RAF\setminus (D(\fr_1)\cup\{\fr_1\})$ 
+	is non-empty since it contains the reactions $\fr_k,\ldots, \fr_{l-1}$ and on top a RAF.
+	To see this, assume it is not the case. First, $\RAF'\subseteq \RAF$ implies that is reflexively autocatalytic. Then 
 	there is again a reaction $\fr'\in \RAF'$ for which a reactant or a catalyst $x$ is not in $\closure{\RAF'}{\food}$. 
-	Since $x\in \closure{\RAF}{\food}$ then $x\in D(\fr_1)$. Then $\fr'\in D(\fr_1)$ a contradiction. Thus, $\RAF'$ is
-	a RAF, and $\RAF$ was not minimal. Adding the food molecules, thus it also holds for $\queen''$.
+	Since $x\in \closure{\RAF}{\food}$ then $x\in D(\fr_1)$. Then $\fr'\in D(\fr_1)$, a contradiction. Thus, $\RAF'$ is
+	a RAF, and $\RAF$ was not minimal. Adding the food molecules does not change the argument, thus the 
+	statement also holds for $\queen''$.
 \end{proof}
 \vspace{6pt}
-\holy{RG rewriting upto here...not satisified with upper proof}
-We are now in a position to prove an important result of this section.
+
+\holy{RG rewriting upto here}
+
+We now extend this result to all residual reaction vertices.
 
 \vspace{6pt}
 \begin{lemma}\label{lem:elemCirc}
