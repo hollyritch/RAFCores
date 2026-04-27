@@ -698,19 +698,20 @@ $\queen'\coloneqq \queen(\closure{\RAF}{\food}, \RAF, \cat')$.
 
 \subsection{Minimal RAFs}
 
-Minimal stoichiometric autocatalytic subnetworks are termed autocatalytic cores. Their characterization and 
-computational identification have gained reasonable attention in reaction networks with and without explicit 
+Minimal stoichiometrically autocatalytic subnetworks are termed autocatalytic cores. Their characterization and 
+computational enumeration has gained reasonable attention in chemical reaction networks with and without explicit 
 catalysis \cite{blokhuis_Universal_2020, golnik_birne_2025, golnik_using_2026, golnik_autocatalytic_2026}. 
-In \cite{bridging_golnik_2026}, we have shown that each RAF that is not a CAF carries a stoichiometrical 
-autocatalytic subnetwork. They thereby contain an autocatalytic core. It is therefore reasonable to raise the 
-question of what kind of substructures of a RAF carry the structure of autocatalytic cores. 
+In \cite{bridging_golnik_2026}, we have shown that each RAF that is not a CAF contains a stoichiometrical 
+autocatalytic subnetwork and thereby an autocatalytic core. It is therefore reasonable to ask for the 
+substructures of a RAF that carry autocatalytic cores. 
 
 The most natural starting point for this endeavour are RAFs that contain no proper subset that is also
 a RAF. Minimal sets of F-reactions w.r.t. the RAF properties have been termed \emph{irreducible} RAFs 
 in the literature \cite{hordijk_detecting_2004, hordijk_autocatalytic_2013, hordijk_autocatalytic_2010}. 
 However, to avoid confusion with the notion of irreducibility of a matrix, we refer to them as \emph{minimal RAFs}. 
-The most intriguing property of minimal RAFs is that they are not a CAF unless they are composed of a single 
-reaction, in which case we call them trivial
+According to Theorem 3.1 of \cite{bridging_golnik_2026}, an autocatalytic elementary circuit can be found 
+in a RAF as long as it is not a CAF. Minimal RAFs exhibit the convenient property that they are CAFs if and only
+if they are trivial, i.e., if they are composed of a single reaction.
 \vspace{6pt}
 \begin{lemma}
 	Let $(X,\RAF,\cat)$ be a CRS with food-set $\food$ and $\RAF$ a minimal RAF. Then $\RAF$ is a CAF if and only
@@ -724,8 +725,8 @@ reaction, in which case we call them trivial
 \end{proof}
 \vspace{6pt}
 
-
-The first result for minimal RAFs is a direct consequence of Lemma~\ref{lem:OneFReacPerRAF}.
+It thereby makes sense to consider only non-trivial, minimal RAFs. Before we proceed, we may collect another usefull result for 
+minimal RAFs that is a direct consequence of Lemma~\ref{lem:OneFReacPerRAF}.
 
 \vspace{6pt} 
 \begin{corollary}
@@ -733,99 +734,75 @@ The first result for minimal RAFs is a direct consequence of Lemma~\ref{lem:OneF
 \end{corollary}
 \vspace{6pt} 
 For each net reaction, a minimal RAF thereby contains only one F-reaction. However, a minimal RAF can still contain
-F-reactions that have more than $1$ representative.
-
+F-reactions that have more than $1$ representative, as the following example shows.
 \begin{equation}
 	\begin{split}
 		r'_1&: f + (x_1) \rightarrow x_3 + (x_1)\\
 		r''_1&: f + (x_2) \rightarrow x_3 + (x_3)\\
-		r''_2&:  x_3 + (x_3) \rightarrow x_1 + x_2 + (x_3)
+		r_2&:  x_3 + (x_3) \rightarrow x_1 + x_2 + (x_3)
 	\end{split}
 \end{equation}
+The only minimal RAF here is $\{\fr_1=\{r_1',r_1''\}, \fr_2=\{r_2\}\}$. 
 
 Throughout, we will now consider a CRS $\Phi\coloneqq (X,\FR,\cat)$ with food-set $\food\subseteq X$ and K\"onig 
-graph $\queen\coloneqq \queen(\Phi)$, a minimal RAF $\RAF\subseteq \FR$ with K\"onig graph $\queen'\coloneqq \queen(\closure{\RAF}{\food} ,\RAF, \cat')$. 
-In addition, we consider the R-graph of $\queen'$ as the graph $\mathcal{R}(\queen)$ with vertex set $\RAF$ and edge set
-$E\coloneqq \{(\fr_1,\fr_2) \ \vert \ \exists x\in X: s^+_{x\fr_1}>0, s^-_{x\fr_2}>0\}$. 
+graph $\queen\coloneqq \queen(\Phi)$, a non-trivial, minimal RAF $\RAF\subseteq \FR$ with K\"onig graph 
+$\queen'\coloneqq \queen(\closure{\RAF}{\food} ,\RAF, \cat')$. In addition, we consider the R-graph of $\queen'$ 
+as the graph $\mathcal{R}(\queen)$ with vertex set $\RAF$ and edge set $E\coloneqq \{(\fr_1,\fr_2) \ \vert \ \exists x\in X: s^+_{x\fr_1}>0, s^-_{x\fr_2}>0\}$. 
 
-
-%At this point, we note that for a CRS, where each reaction is catalyzed by 
-%at most one catalyst, we get the following statement. 
-%
+%The minimality condition has a series of interesting consequences on the structure of the graph $\queen'$.  
+%The next one follows from Lemma~\ref{lem:RAFPath}.
 %\vspace{6pt}
-%\begin{lemma}
-%	Let $(X,R,\cat)$ be a catalyzed reaction network with food-set $F$ such that $|\cat_{r}|\leq 1, \forall r\in R$. Then every minimal
-%	CAF is trivial. 
+%\begin{lemma}[Proof: SI]\label{lem:weaklyConnected}
+%	The graph $\queen'$ is weakly-connected.
 %\end{lemma}
-%\begin{proof}
-%	Let $\RAF$ be a CAF and assume $|\RAF|>1$. Let $r\in \POR^1_{\RAF}(F)$. Then all reactants and catalysts are for $r$ are in 
-%	$F$ since $\RAF$ is a CAF. Thus $\{r\}$ is a RAF itself, contradicting the minimality of $\RAF$.
-%\end{proof}
 %\vspace{6pt}
-%
-%An example for a trivial CAF is $\{r_0\}$ in the last example. 
-The minimality condition has a series of interesting consequences on the structure of the graph $\queen'$.  
-The next one follows from Lemma~\ref{lem:RAFPath}.
-\vspace{6pt}
-\begin{lemma}[Proof: SI]\label{lem:weaklyConnected}
-	The graph $\queen'$ is weakly-connected.
-\end{lemma}
-\vspace{6pt}
 
-The easiest example of a minimal RAF is a single reaction, which we call a trivial RAF. The following example shows a 
-non-minimal RAF containing a trivial RAF.\\
-\vspace{6pt}
-\begin{minipage}[c]{0.4\textwidth}
-	\centering
-	\begin{equation}
-		\begin{split}
-			r_0&: f_2 + (f_1)\rightarrow x_1 + (f_1)\\
-			r_1&: x_1+ (x_1) \rightarrow x_2 + (x_1)\\
-			r_2&: x_1 + (x_1) \rightarrow x_2 + (x_1)
-		\end{split}
-	\end{equation}
-\end{minipage}%
-\hfill%
-\begin{minipage}[c]{0.55\textwidth}
-	\begin{tikzpicture}
-		\node[draw,circle] (f1) at (0,0) {$f_1$};
-		\node[draw,circle] (f2) at (0,-2) {$f_2$};
-		\node[draw,circle] (x1) at (2,-1) {$x_1$};
-		\node[draw,circle] (x2) at (4,-1) {$x_2$};
-		
-		\node[draw,rectangle] (r0) at (1,-1) {$r_0$};
-		\node[draw,rectangle] (r1) at (3,0) {$r_1$};
-		\node[draw,rectangle] (r2) at (3,-2) {$r_2$};
-		
-		\draw[->] (f1) to [bend left =30] (r0);
-		\draw[->] (f2) to  (r0);
-		\draw[->] (r0) to [bend left =30] (f1);
-		\draw[->] (r0) to (x1);
-		\draw[->] (x1) to [bend right =30] (r1);
-		\draw[->] (r1) to [bend right =30] (x1);
-		\draw[->] (r1) to (x2);
-		\draw[->] (x2) to [bend right =30] (r2);
-		\draw[->] (r2) to [bend right =30] (x2);
-		\draw[->] (r2) to (x1);
-	\end{tikzpicture}
-\end{minipage}
-Indeed, $\RAF=\{\fr_0\}$ is a RAF, and thus, addition of $\fr_1$ or $\fr_2$ would violate minimality. 
+%The easiest example of a minimal RAF is a single reaction, which we call a trivial RAF. The following example shows a 
+%non-minimal RAF containing a trivial RAF.\\
+%\vspace{6pt}
+%\begin{minipage}[c]{0.4\textwidth}
+%	\centering
+%	\begin{equation}
+%		\begin{split}
+%			r_0&: f_2 + (f_1)\rightarrow x_1 + (f_1)\\
+%			r_1&: x_1+ (x_1) \rightarrow x_2 + (x_1)\\
+%			r_2&: x_1 + (x_1) \rightarrow x_2 + (x_1)
+%		\end{split}
+%	\end{equation}
+%\end{minipage}%
+%\hfill%
+%\begin{minipage}[c]{0.55\textwidth}
+%	\begin{tikzpicture}
+%		\node[draw,circle] (f1) at (0,0) {$f_1$};
+%		\node[draw,circle] (f2) at (0,-2) {$f_2$};
+%		\node[draw,circle] (x1) at (2,-1) {$x_1$};
+%		\node[draw,circle] (x2) at (4,-1) {$x_2$};
+%		
+%		\node[draw,rectangle] (r0) at (1,-1) {$r_0$};
+%		\node[draw,rectangle] (r1) at (3,0) {$r_1$};
+%		\node[draw,rectangle] (r2) at (3,-2) {$r_2$};
+%		
+%		\draw[->] (f1) to [bend left =30] (r0);
+%		\draw[->] (f2) to  (r0);
+%		\draw[->] (r0) to [bend left =30] (f1);
+%		\draw[->] (r0) to (x1);
+%		\draw[->] (x1) to [bend right =30] (r1);
+%		\draw[->] (r1) to [bend right =30] (x1);
+%		\draw[->] (r1) to (x2);
+%		\draw[->] (x2) to [bend right =30] (r2);
+%		\draw[->] (r2) to [bend right =30] (x2);
+%		\draw[->] (r2) to (x1);
+%	\end{tikzpicture}
+%\end{minipage}
+%Indeed, $\RAF=\{\fr_0\}$ is a RAF, and thus, addition of $\fr_1$ or $\fr_2$ would violate minimality. 
+\subsection{The R-graph of minimal RAFs}
 
-Minimal and non-triviality of a RAF together imply structural consequences for its bipartite K\"onig 
-representation. The main result of this section is that the subgraph of $\queen'$, of which not only 
-all food but also all molecules that have no outgoing edges have been removed, i.e., the graph:
-\begin{equation}\label{eq:PrinceGraph}
-	\prince'\coloneqq \prince (X, \RAF, \cat') \coloneqq \queen'[\closure{\RAF}{F}\setminus (\food\cup W), \RAF]
-\end{equation}
-where 
-\begin{equation}\label{eq:Waste}
-	W\coloneqq \{x\in \closure{\RAF}{F} \ | \ \nexists r \in \RAF \text{ s.t. } s^-_{xr}>0\},
-\end{equation}
-is strongly connected. A key to proving this statement will be that the R-graph $G(\RAF)$ of 
-a non-trivial minimal RAF is strongly connected.
+Minimal and non-triviality of a RAF together imply structural consequences for its bipartite 
+K\"onig representation. A key to showing these properties will be that the R-graph 
+$\mathcal{R}(Q)$ of a non-trivial, minimal RAF is strongly connected.
 \vspace{6pt}
 \begin{lemma}
-	Let $\RAF$ be a non-trivial, minimal RAF. Then $G(\RAF)$ is strongly connected.
+	Let $\RAF$ be a non-trivial, minimal RAF. Then $\mathcal{R}(Q)$ is strongly connected.
 \end{lemma}
 \begin{proof}
 	Assume this is not the case. Then there are at least two strongly connected components
@@ -838,11 +815,19 @@ a non-trivial minimal RAF is strongly connected.
 \vspace{6pt}
 An immediate consequence of this statement is that the subgraph of $\queen'$ containing
 only vertices that have at least one incoming and one outgoing edge is also strongly 
-connected. This subgraph might still contain food molecules. However, the next statement
-shows that the removal of these additional food molecules does not destroy strong connectivity.
+connected. This subgraph, however, might still contain food molecules. The next statement
+shows that their removal does not destroy strong connectivity.
 \vspace{6pt}
 \begin{lemma}
-	Let $\RAF$ be a non-trivial, minimal RAF. Then $\prince'$ is strongly connected. 
+	Let $\RAF$ be a non-trivial, minimal RAF. Then 
+		\begin{equation}\label{eq:PrinceGraph}
+			\prince'\coloneqq \prince (X, \RAF, \cat') \coloneqq \queen'[\closure{\RAF}{\food}\setminus (\food\cup W), \RAF]
+		\end{equation}
+	where 
+	\begin{equation}\label{eq:Waste}
+		W\coloneqq \{x\in \closure{\RAF}{F} \ | \ \nexists r \in \RAF \text{ s.t. } s^-_{xr}>0\},
+	\end{equation}
+	is strongly connected.
 \end{lemma}
 \begin{proof}
 	Assume this is not the case. Then there are two strongly connected components $\prince'_1,\prince'_2$.
