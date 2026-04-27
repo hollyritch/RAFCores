@@ -110,10 +110,10 @@
 \newcommand{\queen}{\mathbf{Q}}
 \newcommand{\prince}{\mathbf{P}}
 \newcommand{\food}{\ensuremath{\mathbf{F}}}
-\newcommand{\SM}{\mathbb{S}}
+\newcommand{\SM}{S}
 \newcommand{\closure}[2]{\mathscr{C}_{#1}(#2)}
 \newcommand{\cl}[0]{c}
-\newcommand{\CR}[0]{\mathcal{R}}
+\newcommand{\CR}[0]{R}
 \newcommand{\C}[1]{\mathit{#1}}
 \newcommand{\FR}[0]{\mathbf{R}}
 %\newcommand{\F}[1]{\mathbf{#1}}
@@ -126,10 +126,12 @@
 \newcommand{\cat}{\mathbf{C}}
 \newcommand{\sgen}{g}
 \newcommand{\rgen}{\gamma}
-\newcommand{\ceducts}{\mathcal{E}}
-\newcommand{\cproducts}{\mathcal{P}}
-\newcommand{\feducts}{\mathbf{E}}
-\newcommand{\fproducts}{\mathbf{P}}
+\newcommand{\ceducts}{\rho}
+\newcommand{\cproducts}{\pi}
+\newcommand{\feducts}{\rho_F}
+\newcommand{\nfeducts}{\hat{\rho}_F}
+\newcommand{\fproducts}{\pi_F}
+\newcommand{\nfproducts}{\hat{\pi}_F}
 \newcommand{\ORCID}[1]{}
 \DeclareMathOperator{\suck}{succ}
 \newcommand{\Code}[1]{\texttt{\upshape{#1}}}
@@ -171,11 +173,11 @@
 \author[1]{\fnm{Wim} \sur{Hordijk}}\email{wim@worldwidewanderings.net}
 \ORCID{0000-0002-0223-6194} 
 
-\author[1,2]{\fnm{Nicola} \sur{Vassena}}\email{nicola.vassena@uni-leipzig.de}
-\ORCID{0000-0001-5411-4976} 
-
 \author[1,2,3,4,5,6,7,8,9]{\fnm{Peter F.}\sur{Stadler}}\email{studla@bioinf.uni-leipzig.de}
 \ORCID{0000-0001-5567-3016}
+
+\author[1,2]{\fnm{Nicola} \sur{Vassena}}\email{nicola.vassena@uni-leipzig.de}
+\ORCID{0000-0001-5411-4976} 
 
 \affil[1]{\orgdiv{Bioinformatics Group, Department of Computer Science}
   \orgname{Leipzig University}, \orgaddress{\street{H{\"a}rtelstra{\ss}e 16–18},
@@ -234,6 +236,8 @@ reactions \cite{muller_what_2022}. We will therefore take advantage of different
 and $\FR$, to highlight sets of reactions that are derived from chemical reaction networks 
 \cite{muller_what_2022} and from catalytic reaction systems \cite{lohn_evolving_1998}, 
 respectively. We will see that both sets do not contain the same mathematical objects. 
+
+\subsection{Chemical Reaction Networks (CRNs)}
 
 The most general setting is given by the framework of a chemical reaction network (CRN). 
 A CRN $\Gamma \coloneqq (X,\CR)$ is a tuple of two finite sets, a set of metabolites $X$ 
@@ -314,16 +318,16 @@ A complete absence of water is unachievable under realistic laboratory condition
 verify if the reaction takes place without H$_2$O. Nevertheless, even authors who dealt in depth with the 
 role of water in acid-base reactions did not even mention catalysis in the context of water molecules 
 \cite{eigen_proton_1964}. To account for the different roles an entity can play within a chemical 
-reaction, we partition stoichiometries as done in \cite{bridging_Golnik_2026} in the following way: 
+reaction, we partition stoichiometries as done in \cite{bridging_golnik_2026} such that: 
 \begin{equation}
-	s^{\pm}_{xr} \coloneqq \sigma^{\pm}_{xr} + \kappa_{xr}.
+	\sigma^{\pm}_{xr} + k_{xr} = s^{\pm}_{xr}.
 \end{equation}
 By this definition, it is readily verified that $\SM_{xr} = s^+_{xr}-s^-_{xr} = \sigma^+_{xr} - \sigma^-_{xr}$, thus the net stoichiometries
 remain unchanged. The stoichiometric Eq.~\ref{eq:reaction} can then be rewritten as:
 \begin{equation}\label{eq:Mod.SmEq}
-	r: \sum_{x\in X}\ \sigma^-_{xr} \cdot x + \left(\sum_{x\in X}\ \kappa_{xr} \cdot x\right)\rightarrow \sum_{x\in X} \ \sigma^+_{xr}  \cdot x + \left(\sum_{x\in X}\ \kappa_{xr} \cdot x\right).
+	r: \sum_{x\in X}\ \sigma^-_{xr} \cdot x + \left(\sum_{x\in X}\ k_{xr} \cdot x\right)\rightarrow \sum_{x\in X} \ \sigma^+_{xr}  \cdot x + \left(\sum_{x\in X}\ k_{xr} \cdot x\right).
 \end{equation}
-We refer to species appearing in Eq.~\ref{eq:Mod.SmEq} with $\sigma^{-}_{xr}>0$, $\sigma^{+}_{xr}>0$, and $\kappa_{xr}>0$ as 
+We refer to species appearing in Eq.~\ref{eq:Mod.SmEq} with $\sigma^{-}_{xr}>0$, $\sigma^{+}_{xr}>0$, and $k_{xr}>0$ as 
 F-reactants, F-products, and F-catalysts, respectively. We collect F-reactants and F-products in the following sets:
 \begin{equation}
 	\begin{split}
@@ -351,7 +355,11 @@ $\king\coloneqq (X\cup \C{R}, E_1\cup E_2)$, where
 		E_1\coloneqq \{(x,r) \ | \ s^-_{xr}>0\} \quad \text{ and } \quad E_2\coloneqq \{(x,r) \ | \ s^+_{xr}>0 \}. 
 	\end{split}
 \end{equation}
-We will refer to these kinds of reactions as C-reactions and denote them in normal font. 
+We will refer to these kinds of reactions as C-reactions and denote them in normal font. The reaction or R-graph
+of a CRN is the directed graph $\mathcal{R}(\Gamma)$ with vertex set $R$ and edge set 
+$E\coloneqq \{(r_1,r_2) \ \vert \ \exists x\in X: s^+_{xr_1}>0,s^-_{xr_2}>0\}$.
+
+\subsection{Catalytic Reaction Systems (CRS)}
 
 Catalytic reaction systems (CRS) sensu Lohn \cite{lohn_evolving_1998} take a different approach. 
 In particular, two C-reactions $r_1, r_2$ are considered indistinguishable if they differ only in their 
@@ -398,6 +406,9 @@ is given as $\queen(\Phi=(X,\FR, \cat))\coloneqq (X \cup \FR, E_1\cup E_2)$ with
 		E_2\coloneqq \{(x,\fr) \ | \ x\in X, \fr\in \FR: s^+_{xr}>0 \text{ for some } r \in \fr \}
 	\end{split}
 \end{equation}
+
+\subsection{Relationship between CRN and CRS}
+
 In fact, the $\sim$-equivalence relation induces a convenient connection between the bipartite graph of 
 $\queen(\Phi)$ and the corresponding bipartite graph of the $K(\Gamma(\Phi))$. 
 \vspace{6pt}
@@ -414,25 +425,30 @@ $\queen(\Phi)$ and the corresponding bipartite graph of the $K(\Gamma(\Phi))$.
 \vspace{6pt}
 In the monocatalyst case for example, where each F-reaction has exactly one catalyst, we have 
 $\vert \fr \vert = 1, \forall \fr \in \FR$. Thus, each reaction vertex of $\queen(\Phi)$ is substituted 
-by its single representative, while all edges to adjacent vertices are conserved. This yields that 
-$\queen(\Phi)$ and $\king(\Gamma(\Phi))$ are isomorphic. In turn, if one equivalence class
-contains more than $1$ representative, then $|V(\king(\Gamma(\Phi))|>|V(\queen(\Phi)|$, which 
-directly implies that $\king(\Gamma(\Phi))\not \simeq \king(\Gamma(\Phi))$.
+in $\queen(\Gamma(\Phi))$ by its single representative, while all edges to adjacent vertices are 
+conserved. This yields that $\queen(\Phi)$ and $\king(\Gamma(\Phi))$ are isomorphic. In turn, 
+if one equivalence class contains more than $1$ representative, then 
+$|V(\king(\Gamma(\Phi))|>|V(\queen(\Phi)|$, which directly implies that 
+$\king(\Gamma(\Phi))\not \simeq \king(\Gamma(\Phi))$.
 
 \vspace{6pt}
-\begin{corollary}\label{cor:IsoQK}
+\begin{lemma}\label{lem:IsoQK}
 	Let $\Phi\coloneqq (X, \FR, \cat)$ be a CRS with corresponding CRN $\Gamma(\Phi)$. Then 
 	$\queen(\Phi)\simeq \king(\Gamma(\Phi))$ if and only if $\vert \fr \vert = 1, \forall \fr \in \FR$.
-\end{corollary}
+\end{lemma}
 \vspace{6pt}
 
+As a remark, we might note that Lemma~\ref{lem:IsoQK} not only holds in the monocatalytic case,
+but for every CRS that exhibits only trivial equivalence classes, in particular also for the uncatalyzed 
+case.
+
 A known result for quotient graphs is that $\queen(\Phi)$ is strongly-connected whenever 
-$\king(\Gamma(\Phi))$ is strongly connected \TODO{\cite{}}. By Cor.~\ref{cor:IsoQK} the converse is 
-trivially true if each equivalence class is of size $1$. In general, however, this is not true, 
-in particular, if one F-reaction has two alternative catalysts, and one of them is not 
+$\king(\Gamma(\Phi))$ is strongly connected \TODO{\cite{}}. By Lemma~\ref{lem:IsoQK}, the 
+converse also holds if each equivalence class is of size $1$. In general, however, this 
+is not true, in particular, if one F-reaction has two alternative catalysts, and one of them is not 
 connected by a path originating in any of the products. Such an example is depicted in 
-Fig.~\ref{fig:QScKNot}. We will however see (\TODO{hopefully}) that we can derive 
-sufficient conditions to regain this property.
+Fig.~\ref{fig:QScKNot}. We will see that we regain this property by requiring minimality
+on the set of reflexively autocatalytic sets (RAFs).
 \begin{figure}[htb]
 \centering
 	\begin{minipage}[c]{0.4\textwidth}
@@ -581,6 +597,7 @@ sufficient conditions to regain this property.
 %	\end{minipage}
 %\end{figure}
 %\FloatBarrier
+
 \section{Reflexively autocatalytic sets (RAFs)}
 
 Catalytic reaction systems (CRS) are the fundamental structure on which the notion of reflexively autocatalytic sets 
@@ -588,7 +605,7 @@ is built \cite{steel_emergence_2000, hordijk_detecting_2004}. In addition, they 
 w.r.t. to a set $\RAF \subseteq \FR$, denoted as $\closure{\RAF}{X'}$, which is the unique minimal set $Y$ containing $X'$ 
 such that for any $\fr\in \RAF: \feducts(r)\subseteq Y \Rightarrow \fproducts(r)\subseteq Y$. Thus:
 \begin{equation}\label{eq:Closure}
-	\closure{R'}{X'} \coloneqq \min Z \subseteq X \ | \ X'\subseteq Z, \feducts(r) \subseteq Z \Rightarrow \fproducts(r) \subseteq Z \ \forall r\in \RAF'\}%}_{\eqqcolon \mathfrak{C}_{\RAF}(X')}
+	\closure{R'}{X'} \coloneqq \min \{Z \subseteq X \ | \ X'\subseteq Z, \feducts(r) \subseteq Z \Rightarrow \fproducts(r) \subseteq Z \ \forall r\in \RAF'\}%}_{\eqqcolon \mathfrak{C}_{\RAF}(X')}
 \end{equation}
 
 A reflexively autocatalytic set (RAF) is then defined as follows:
@@ -615,14 +632,14 @@ thus $\fproducts(r)\subseteq \closure{\RAF}{\food}$.
 \subsection{A Partial Order on RAFs}
 
 The closure naturally induces an order, a sequence in which the F-reactions of a RAF can be executed. This 
-order is not total since some reactions, e.g., the ones requiring only food molecules as F-reactants 
+is not a total order since some reactions, e.g., the ones requiring only food molecules as F-reactants 
 can be executed at the same time, while others, depending on molecules produced by these food-dependent reactions, 
 can only take place consecutively. Here, we briefly explain the main idea and its consequences, while we will devote 
 the supplement to formally deriving the partial order. 
 
 A convenient way to construct an order on the F-reactions of a RAF $\RAF$ is by generating the set $\closure{\RAF}{\food}$ 
 iteratively, in particular, by applying in each step all F-reactions for which all F-reactants are already available. Therefore, 
-it is only consequent to assume that this iterative process converges against the $\closure{\RAF}{\food}$ in a finite number of 
+it is only consequent to assume that this iterative process converges against $\closure{\RAF}{\food}$ in a finite number of 
 steps, all species of $\closure{\RAF}{\food}$ as long as $\vert \RAF\vert <\infty$.
 
 The sequences specifying when an F-reaction can happen for the first time and when a non-food species is produced for the
@@ -637,7 +654,9 @@ and a reaction $\fr_1$ precedes a reaction $\fr_2$, i.e.:
 \begin{equation}
 	\fr_1\preceq \fr_2 \Leftrightarrow \rgen(\fr_1) \leq \rgen(\fr_2)
 \end{equation}
-We refer to the values of $\sgen$ and $\rgen$ as the generation of a reaction or metabolite. 
+We refer to the values of $\sgen$ and $\rgen$ as the generation of a reaction or metabolite. A \emph{constructive
+reflexively autocatalytic} set (CAF) is a RAF such that for each F-reaction $\fr$ all $x\in \feducts(x)$ satisfy 
+$\sgen(x)<\rgen(\fr)$ and there is at least one $r\in \fr$ such that all catalyst $x\in \cat(r)$ satisfy $\sgen(x)< \rgen(\fr)$.
 
 One important consequence of the partial order is that if a RAF contains two $\sim$~equivalence classes 
 that share the same net reaction, the "later" can be removed.
@@ -649,8 +668,8 @@ that share the same net reaction, the "later" can be removed.
 \end{lemma}
 \begin{proof}
 	Let $\RAF' \coloneqq \RAF \setminus \{r''_2\}$. Since $\RAF$ was reflexively autocatalytic, 
-	$\RAF'$ is reflexively autocatalytic. In addition, since $\hat{\feducts}(\fr_1)=\hat{\feducts}(\fr_2)$ 
-	and $\hat{\fproducts}(\fr_1)=\hat{\fproducts}(\fr_2)$ and $\rgen(\fr_1)\leq \rgen(\fr_2)$, 
+	$\RAF'$ is reflexively autocatalytic. In addition, since $\nfeducts(\fr_1)=\nfeducts(\fr_2)$ 
+	and $\nfproducts(\fr_1)=\nfproducts(\fr_2)$ and $\rgen(\fr_1)\leq \rgen(\fr_2)$, 
 	$\closure{\RAF}{F} = \closure{\RAF'}{F}$. 
 \end{proof}
 \vspace{6pt} 
@@ -679,22 +698,57 @@ $\queen'\coloneqq \queen(\closure{\RAF}{\food}, \RAF, \cat')$.
 
 \subsection{Minimal RAFs}
 
-A question that naturally arises for RAFs is whether a RAF contains a strictly smaller RAF. Minimal sets of F-reactions w.r.t. 
-to the RAF properties have been termed \emph{irreducible} RAFs in the literature \cite{hordijk_detecting_2004, 
-hordijk_autocatalytic_2013, hordijk_autocatalytic_2010}. However, to avoid confusion with the notion of irreducibility 
-of a matrix, we refer to them as \emph{minimal RAFs}. 
+Minimal stoichiometric autocatalytic subnetworks are termed autocatalytic cores. Their characterization and 
+computational identification have gained reasonable attention in reaction networks with and without explicit 
+catalysis \cite{blokhuis_Universal_2020, golnik_birne_2025, golnik_using_2026, golnik_autocatalytic_2026}. 
+In \cite{bridging_golnik_2026}, we have shown that each RAF that is not a CAF carries a stoichiometrical 
+autocatalytic subnetwork. They thereby contain an autocatalytic core. It is therefore reasonable to raise the 
+question of what kind of substructures of a RAF carry the structure of autocatalytic cores. 
 
-Throughout, we will now consider a CRS $\Phi\coloneqq (X,\FR,\cat)$ with food-set $\food\subseteq X$ and K\"onig graph 
-$\queen\coloneqq \queen(\Phi)$, a minimal RAF $\RAF\subseteq \FR$ with K\"onig graph $\queen'\coloneqq \queen(\closure{\RAF}{\food} 
-,\RAF, \cat')$. In addition, we consider the R-graph of $\queen'$ as the graph $G(\RAF)$ with vertex set $\RAF$ and edge set
-$E\coloneqq \{(\fr_1,\fr_2) \ \vert \ \exists x\in X: s^+_{x\fr_1}>0, s^-_{x\fr_2}>0\}$.The first result is a direct consequence of 
-Lemma~\ref{lem:OneFReacPerRAF}.
+The most natural starting point for this endeavour are RAFs that contain no proper subset that is also
+a RAF. Minimal sets of F-reactions w.r.t. the RAF properties have been termed \emph{irreducible} RAFs 
+in the literature \cite{hordijk_detecting_2004, hordijk_autocatalytic_2013, hordijk_autocatalytic_2010}. 
+However, to avoid confusion with the notion of irreducibility of a matrix, we refer to them as \emph{minimal RAFs}. 
+The most intriguing property of minimal RAFs is that they are not a CAF unless they are composed of a single 
+reaction, in which case we call them trivial
+\vspace{6pt}
+\begin{lemma}
+	Let $(X,\RAF,\cat)$ be a CRS with food-set $\food$ and $\RAF$ a minimal RAF. Then $\RAF$ is a CAF if and only
+	if it is trivial. 
+\end{lemma}
+\begin{proof}
+	Let $\RAF$ be a CAF and assume $|\RAF|>1$. Let $r\in \RAF: \rgen(r)=1$. Then all F-reactants and all F-catalysts for at 
+	least one $r\in \fr$ are in $\food$ since $\RAF$ is a CAF. Thus $\{r\}$ is a RAF itself, contradicting the minimality of $\RAF$. 
+	Conversely, assume that $|\RAF|=1$. Then all F-reactants and the all F-reactants and all F-catalysts for at least one $r\in \fr$ 
+	are in $\food$ since $\RAF$ would not be a RAF. Thus, $\RAF$ is a CAF.
+\end{proof}
+\vspace{6pt}
+
+
+The first result for minimal RAFs is a direct consequence of Lemma~\ref{lem:OneFReacPerRAF}.
+
 \vspace{6pt} 
 \begin{corollary}
 	Let $\fr_r,\fr_2 \in \RAF: \fr_1\neq \fr_2, \hat{\fr}_1=\hat{\fr}_2$. Then $\fr_1\in \RAF\Rightarrow \fr_2\notin \RAF$.
 \end{corollary}
 \vspace{6pt} 
-For each net reaction, a minimal RAF contains only one F-reaction. 
+For each net reaction, a minimal RAF thereby contains only one F-reaction. However, a minimal RAF can still contain
+F-reactions that have more than $1$ representative.
+
+\begin{equation}
+	\begin{split}
+		r'_1&: f + (x_1) \rightarrow x_3 + (x_1)\\
+		r''_1&: f + (x_2) \rightarrow x_3 + (x_3)\\
+		r''_2&:  x_3 + (x_3) \rightarrow x_1 + x_2 + (x_3)
+	\end{split}
+\end{equation}
+
+Throughout, we will now consider a CRS $\Phi\coloneqq (X,\FR,\cat)$ with food-set $\food\subseteq X$ and K\"onig 
+graph $\queen\coloneqq \queen(\Phi)$, a minimal RAF $\RAF\subseteq \FR$ with K\"onig graph $\queen'\coloneqq \queen(\closure{\RAF}{\food} ,\RAF, \cat')$. 
+In addition, we consider the R-graph of $\queen'$ as the graph $\mathcal{R}(\queen)$ with vertex set $\RAF$ and edge set
+$E\coloneqq \{(\fr_1,\fr_2) \ \vert \ \exists x\in X: s^+_{x\fr_1}>0, s^-_{x\fr_2}>0\}$. 
+
+
 %At this point, we note that for a CRS, where each reaction is catalyzed by 
 %at most one catalyst, we get the following statement. 
 %
