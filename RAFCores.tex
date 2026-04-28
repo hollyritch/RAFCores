@@ -108,7 +108,8 @@
 \newcommand{\whatever}{\mbox{\,.\,}}
 \newcommand{\king}{K}
 \newcommand{\queen}{\mathbf{Q}}
-\newcommand{\prince}{\mathbf{P}}
+\newcommand{\princess}{\mathbf{P}}
+\newcommand{\prince}{L}
 \newcommand{\food}{\ensuremath{\mathbf{F}}}
 \newcommand{\SM}{S}
 \newcommand{\closure}[2]{\mathscr{C}_{#1}(#2)}
@@ -116,6 +117,7 @@
 \newcommand{\CR}[0]{R}
 \newcommand{\C}[1]{\mathit{#1}}
 \newcommand{\FR}[0]{\mathbf{R}}
+\newcommand{\RGraph}[0]{\mathcal{R}}
 %\newcommand{\F}[1]{\mathbf{#1}}
 \newcommand{\fr}[0]{\mathbf{r}}
 \newcommand{\net}[1]{\hat{#1}}
@@ -157,6 +159,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\externaldocument[S-]{Supplement}
 
 \begin{document}
 
@@ -367,8 +371,13 @@ F-catalysts but share the same F-reactants and F-products:
 \begin{equation}\label{eq:fEquiv}
 	r_1\sim r_2 \Leftrightarrow \feducts(r_1)=\feducts(r_2), \fproducts(r_1)=\fproducts(r_2), 
 \end{equation}
-Indeed, $\sim$ is an equivalence relation. We call a $\sim$-equivalence class an F-reaction, 
-and, for consistency, denote them in bold, i.e., $\fr\coloneqq [r]_\sim$ for:
+Indeed, $\sim$ is an equivalence relation. For convenience, we define for a given set of C-reactions and 
+F-reactions $R$ and $\FR\coloneqq \{[r]_{\sim} \ | \ r\in R\}$
+\begin{equation}
+	\varphi: R\rightarrow \FR: \varphi(r)=[r]_{\sim}
+\end{equation}
+In this way, $\varphi^{-1}(\FR)$ allows us to obtain the pre-image of a set of F-reactions. We call a 
+$\sim$-equivalence class an F-reaction, and, for consistency, denote them in bold, i.e., $\fr\coloneqq [r]_\sim$ for:
 \begin{equation}\label{eq:fEquivClass}
 	\begin{split}
 		\fr= \left\{r': \sum_{x\in X}\ (\sigma^-_{xr'} + \kappa_{xr'}) \cdot x)\rightarrow \sum_{x\in X} \ (\sigma^+_{xr'} + \kappa_{xr'} \cdot x) \ \middle\vert \ \sigma_{xr'}^{\pm} = \sigma_{xr}^\pm, \forall x\in X \right\}
@@ -383,10 +392,11 @@ By definition, $[r]_\sim$ is of infinite size, which is an unrealistic scenario 
 a chemical system. Given a set of F-reactions $\FR$ together with a set of species $X$, each 
 $\sim$-equivalence class can be restricted to representatives that are catalyzed by members 
 of the species set or are uncatalyzed. This is achieved by \emph{catalyzations}, i.e., by
-defining \emph{a priori} for each $\fr\in \FR$ the collection of catalysts $\cat(\fr)$ and collecting them
-in the set of catalyzations $\cat$. Note that if an F-reaction has no catalysts, $\cat(\fr)=\emptyset$. 
-In this case, $\fr$ contains only the natural representative, while in all other cases, the natural 
-representative is excluded from the equivalence class:
+defining \emph{a priori} for each $\fr\in \FR$ pairs $(\cat(r), r)$ and storing the collection of 
+catalysts $\cat(\fr)\coloneqq \{\cat(r) \ \vert \ r\in \fr\}$ in the set of catalyzations $\cat(\FR)$. 
+Note that if an F-reaction has no catalyzations, $\cat(\fr)=\emptyset$. In this case, $\fr$ contains 
+only the natural representative, while in all other cases, the natural representative is excluded 
+from the equivalence class:
 \begin{equation}
 	\fr\coloneqq \begin{cases} 
 				\tilde{r} & \text{if } \cat(\fr)=\emptyset \\
@@ -412,7 +422,7 @@ is given as $\queen(\Phi=(X,\FR, \cat))\coloneqq (X \cup \FR, E_1\cup E_2)$ with
 In fact, the $\sim$-equivalence relation induces a convenient connection between the bipartite graph of 
 $\queen(\Phi)$ and the corresponding bipartite graph of the $K(\Gamma(\Phi))$. 
 \vspace{6pt}
-\begin{lemma}
+\begin{lemma}{lem:QuotGraph}
 	Let $\Phi\coloneqq (X,\FR, \cat)$ be a CRS with corresponding CRN $\Gamma(\Phi)$. The bipartite
 	directed K\"onig graph graph $\queen\coloneqq \queen(\Phi)$ is the quotient graph of $\king \coloneqq \king(\Gamma(\Phi))$ w.r.t. the
 	equivalence relation $\sim$ as defined in Eq.~\ref{eq:fEquiv}. 
@@ -532,72 +542,6 @@ on the set of reflexively autocatalytic sets (RAFs).
 \end{figure}
 \FloatBarrier
 
-%\begin{figure}
-%	\begin{minipage}[c]{0.5\textwidth}
-%		\centering
-%		\begin{equation*}
-%			\begin{split}
-%				r'_0 &: f + (x_1) 		\rightarrow x_2  + (x_1) \\
-%				r''_0 &: f + (y_1) 		\rightarrow x_2  + (y_3) \\
-%				r_1 &: x_2	+ (x_2)	   	\rightarrow x_1 + y_1 + (x_2) \\
-%			\end{split}
-%		\end{equation*}
-%	\end{minipage}%
-%	\hfill%
-%	\begin{minipage}[c]{0.49\textwidth}
-%		\begin{minipage}[c]{\textwidth}
-%			\centering
-%			\begin{tikzpicture}
-%				\node[draw, circle] (f) at (0,0) {$f$};
-%				\node[draw, circle] (x1) at (2,1) {$x_1$};
-%				\node[draw, circle] (x2) at (2,0) {$x_2$};
-%				\node[draw, circle] (y1) at (2,-1) {$y_1$};
-%						
-%				\node[draw, rectangle] (r'0) at (1,1) {$r'_0$};
-%				\node[draw, rectangle] (r''0) at (1,-1) {$r''_0$};
-%				\node[draw, rectangle] (r1) at (3,0) {$r_1$};
-%			
-%				\draw[->] (f) to (r'0);
-%				\draw[->] (f) to (r''0);
-%				\draw[->] (x1) to [bend right = 30] (r'0);
-%				\draw[->] (r'0) to [bend right = 30] (x1);
-%				\draw[->] (y1) to [bend right = 30] (r''0);
-%				\draw[->] (r''0) to [bend right = 30] (y1);
-%				\draw[->] (r'0) to (x2);
-%				\draw[->] (r''0) to (x2);
-%				\draw[->] (x2) to [bend right = 30] (r1);
-%				\draw[->] (r1) to [bend right = 30] (x2);
-%				\draw[->] (r1) to [bend right = 30] (x1);
-%				\draw[->] (r1) to [bend left = 30] (y1);			
-%			\end{tikzpicture}
-%		\end{minipage}
-%		\begin{minipage}[c]{\textwidth}
-%			\centering
-%			\begin{tikzpicture}
-%				\node[draw, circle] (f) at (-1,0) {$f$};
-%				\node[draw, circle] (x1) at (0,1) {$x_1$};
-%				\node[draw, circle] (x2) at (2,0) {$x_2$};
-%				\node[draw, circle] (y1) at (0,-1) {$y_1$};
-%						
-%				\node[draw, rectangle] (r0) at (1,0) {$\fr_0$};
-%				\node[draw, rectangle] (r1) at (3,0) {$\fr_1$};
-%			
-%				\draw[->] (f) to (r0);
-%				\draw[->] (x1) to [bend right = 30] (r0);
-%				\draw[->] (r0) to [bend right = 30] (x1);
-%				\draw[->] (y1) to [bend right = 30] (r0);
-%				\draw[->] (r0) to [bend right = 30] (y1);
-%				\draw[->] (r0) to (x2);
-%				\draw[->] (x2) to [bend right = 30] (r1);
-%				\draw[->] (r1) to [bend right = 30] (x2);
-%				\draw[->] (r1) to [bend right = 30] (x1);
-%				\draw[->] (r1) to [bend left = 30] (y1);			
-%			\end{tikzpicture}
-%		\end{minipage}
-%	\end{minipage}
-%\end{figure}
-%\FloatBarrier
-
 \section{Reflexively autocatalytic sets (RAFs)}
 
 Catalytic reaction systems (CRS) are the fundamental structure on which the notion of reflexively autocatalytic sets 
@@ -690,7 +634,7 @@ $\cat'$ of reactions in $\RAF\subseteq \FR$. Throughout, we denote this graph as
 $\queen'\coloneqq \queen(\closure{\RAF}{\food}, \RAF, \cat')$.
 
 \vspace{6pt}
-\begin{lemma}\label{lem:RAFPath}
+\begin{lemma}[Proof: SI]\label{lem:RAFPath}
 	Let $(X, \FR, \cat)$ be a CRS with $\food \subseteq X$ and a RAF $\RAF\subseteq \FR$. 
 	For any $x\in \closure{}{\food}\setminus \food$ there is an $f\in \food$ such that $P=(f, \ldots, x)$ 
 	is a path in $\queen'$.
@@ -709,6 +653,24 @@ The most natural starting point for this endeavour are RAFs that contain no prop
 a RAF. Minimal sets of F-reactions w.r.t. the RAF properties have been termed \emph{irreducible} RAFs 
 in the literature \cite{hordijk_detecting_2004, hordijk_autocatalytic_2013, hordijk_autocatalytic_2010}. 
 However, to avoid confusion with the notion of irreducibility of a matrix, we refer to them as \emph{minimal RAFs}. 
+A direct consequence of Lemma~\ref{lem:OneFReacPerRAF} is that minimal RAFs contain, for each net reaction, 
+only one F-reaction. 
+\vspace{6pt} 
+\begin{corollary}
+	Let $\fr_r,\fr_2 \in \RAF: \fr_1\neq \fr_2, \hat{\fr}_1=\hat{\fr}_2$. Then $\fr_1\in \RAF\Rightarrow \fr_2\notin \RAF$.
+\end{corollary}
+\vspace{6pt} 
+Still, they might contain F-reactions that have more than $1$ representative, as the following example shows.
+\begin{equation}
+	\begin{split}
+		r'_1&: f + (x_1) \rightarrow x_3 + (x_1)\\
+		r''_1&: f + (x_2) \rightarrow x_3 + (x_3)\\
+		r_2&:  x_3 + (x_3) \rightarrow x_1 + x_2 + (x_3)
+	\end{split}
+\end{equation}
+The only minimal RAF here is $\{\fr_1=\{r_1',r_1''\}, \fr_2=\{r_2\}\}$, which implies that Lemma~\ref{lem:IsoQK} does not
+hold for minimal RAFs.
+
 According to Theorem 3.1 of \cite{bridging_golnik_2026}, an autocatalytic elementary circuit can be found 
 in a RAF as long as it is not a CAF. Minimal RAFs exhibit the convenient property that they are CAFs if and only
 if they are trivial, i.e., if they are composed of a single reaction.
@@ -718,91 +680,36 @@ if they are trivial, i.e., if they are composed of a single reaction.
 	if it is trivial. 
 \end{lemma}
 \begin{proof}
-	Let $\RAF$ be a CAF and assume $|\RAF|>1$. Let $r\in \RAF: \rgen(r)=1$. Then all F-reactants and all F-catalysts for at 
-	least one $r\in \fr$ are in $\food$ since $\RAF$ is a CAF. Thus $\{r\}$ is a RAF itself, contradicting the minimality of $\RAF$. 
-	Conversely, assume that $|\RAF|=1$. Then all F-reactants and the all F-reactants and all F-catalysts for at least one $r\in \fr$ 
-	are in $\food$ since $\RAF$ would not be a RAF. Thus, $\RAF$ is a CAF.
+	Let $\RAF$ be a CAF and assume $|\RAF|>1$. Let $r\in \RAF: \rgen(r)=1$. Then all F-reactants and all F-catalysts for one 
+	\emph{catalyzation} are in $\food$ since $\RAF$ is a CAF. Thus $\{r\}$ is a RAF itself, contradicting the minimality of $\RAF$. 
+	Conversely, assume that $|\RAF|=1$. Then all F-reactants and all F-catalysts for at least one \emph{catalyzation} are in $\food$ 
+	since otherwise $\RAF$ would not be a RAF. Thus, $\RAF$ is a CAF.
 \end{proof}
 \vspace{6pt}
-
-It thereby makes sense to consider only non-trivial, minimal RAFs. Before we proceed, we may collect another usefull result for 
-minimal RAFs that is a direct consequence of Lemma~\ref{lem:OneFReacPerRAF}.
-
-\vspace{6pt} 
-\begin{corollary}
-	Let $\fr_r,\fr_2 \in \RAF: \fr_1\neq \fr_2, \hat{\fr}_1=\hat{\fr}_2$. Then $\fr_1\in \RAF\Rightarrow \fr_2\notin \RAF$.
-\end{corollary}
-\vspace{6pt} 
-For each net reaction, a minimal RAF thereby contains only one F-reaction. However, a minimal RAF can still contain
-F-reactions that have more than $1$ representative, as the following example shows.
+This Lemma justifies focusing only on minimal, non-trivial RAFs. Throughout, we will therefore 
+consider a CRS $\Phi\coloneqq (X,\FR,\cat)$ with food-set $\food\subseteq X$ and 
+K\"onig graph $\queen\coloneqq \queen(\Phi)$. In addition, we assume a non-trivial, 
+minimal RAF $\RAF\subseteq \FR$ with sub-CRS 
+\begin{equation}
+	\Phi'= (\closure{\RAF}{\food}, \RAF, \cat')\\
+\end{equation}
+and K\"onig graph $\queen'\coloneqq \queen(\Phi')$ as well as its CRN representation 
+$\king'\coloneqq \king(\Gamma(\Phi'))$. We denote both R-graphs of $\queen'$ and $\king'$ 
+as the graphs 
 \begin{equation}
 	\begin{split}
-		r'_1&: f + (x_1) \rightarrow x_3 + (x_1)\\
-		r''_1&: f + (x_2) \rightarrow x_3 + (x_3)\\
-		r_2&:  x_3 + (x_3) \rightarrow x_1 + x_2 + (x_3)
+		\RGraph(\queen')&\coloneqq (\RAF, E), \hspace{24pt} E\coloneqq \{(\fr_1,\fr_2) \ \vert \ \exists x\in X: s^+_{x\fr_1}>0, s^-_{x\fr_2}>0\} \\
+		\RGraph(\king') &\coloneqq (\varphi^{-1}(\RAF), E), E\coloneqq \{(r_1,r_2) \ \vert \ (\fr_1,\fr_2)\in E(\RGraph(\queen')\},
 	\end{split}
 \end{equation}
-The only minimal RAF here is $\{\fr_1=\{r_1',r_1''\}, \fr_2=\{r_2\}\}$. 
+respectively.
 
-Throughout, we will now consider a CRS $\Phi\coloneqq (X,\FR,\cat)$ with food-set $\food\subseteq X$ and K\"onig 
-graph $\queen\coloneqq \queen(\Phi)$, a non-trivial, minimal RAF $\RAF\subseteq \FR$ with K\"onig graph 
-$\queen'\coloneqq \queen(\closure{\RAF}{\food} ,\RAF, \cat')$. In addition, we consider the R-graph of $\queen'$ 
-as the graph $\mathcal{R}(\queen)$ with vertex set $\RAF$ and edge set $E\coloneqq \{(\fr_1,\fr_2) \ \vert \ \exists x\in X: s^+_{x\fr_1}>0, s^-_{x\fr_2}>0\}$. 
+Minimal and non-triviality of a RAF $\RAF$ together imply structural consequences for its bipartite K\"onig representation. 
+A key to showing these properties will be the R-graph $\RGraph(\queen')$.
 
-%The minimality condition has a series of interesting consequences on the structure of the graph $\queen'$.  
-%The next one follows from Lemma~\ref{lem:RAFPath}.
-%\vspace{6pt}
-%\begin{lemma}[Proof: SI]\label{lem:weaklyConnected}
-%	The graph $\queen'$ is weakly-connected.
-%\end{lemma}
-%\vspace{6pt}
-
-%The easiest example of a minimal RAF is a single reaction, which we call a trivial RAF. The following example shows a 
-%non-minimal RAF containing a trivial RAF.\\
-%\vspace{6pt}
-%\begin{minipage}[c]{0.4\textwidth}
-%	\centering
-%	\begin{equation}
-%		\begin{split}
-%			r_0&: f_2 + (f_1)\rightarrow x_1 + (f_1)\\
-%			r_1&: x_1+ (x_1) \rightarrow x_2 + (x_1)\\
-%			r_2&: x_1 + (x_1) \rightarrow x_2 + (x_1)
-%		\end{split}
-%	\end{equation}
-%\end{minipage}%
-%\hfill%
-%\begin{minipage}[c]{0.55\textwidth}
-%	\begin{tikzpicture}
-%		\node[draw,circle] (f1) at (0,0) {$f_1$};
-%		\node[draw,circle] (f2) at (0,-2) {$f_2$};
-%		\node[draw,circle] (x1) at (2,-1) {$x_1$};
-%		\node[draw,circle] (x2) at (4,-1) {$x_2$};
-%		
-%		\node[draw,rectangle] (r0) at (1,-1) {$r_0$};
-%		\node[draw,rectangle] (r1) at (3,0) {$r_1$};
-%		\node[draw,rectangle] (r2) at (3,-2) {$r_2$};
-%		
-%		\draw[->] (f1) to [bend left =30] (r0);
-%		\draw[->] (f2) to  (r0);
-%		\draw[->] (r0) to [bend left =30] (f1);
-%		\draw[->] (r0) to (x1);
-%		\draw[->] (x1) to [bend right =30] (r1);
-%		\draw[->] (r1) to [bend right =30] (x1);
-%		\draw[->] (r1) to (x2);
-%		\draw[->] (x2) to [bend right =30] (r2);
-%		\draw[->] (r2) to [bend right =30] (x2);
-%		\draw[->] (r2) to (x1);
-%	\end{tikzpicture}
-%\end{minipage}
-%Indeed, $\RAF=\{\fr_0\}$ is a RAF, and thus, addition of $\fr_1$ or $\fr_2$ would violate minimality. 
-\subsection{The R-graph of minimal RAFs}
-
-Minimal and non-triviality of a RAF together imply structural consequences for its bipartite 
-K\"onig representation. A key to showing these properties will be that the R-graph 
-$\mathcal{R}(Q)$ of a non-trivial, minimal RAF is strongly connected.
 \vspace{6pt}
-\begin{lemma}
-	Let $\RAF$ be a non-trivial, minimal RAF. Then $\mathcal{R}(Q)$ is strongly connected.
+\begin{lemma}\label{lem:RGQSC}
+	Let $\RAF$ be a non-trivial, minimal RAF. Then $\RGraph(\queen')$ is strongly connected.
 \end{lemma}
 \begin{proof}
 	Assume this is not the case. Then there are at least two strongly connected components
@@ -813,51 +720,79 @@ $\mathcal{R}(Q)$ of a non-trivial, minimal RAF is strongly connected.
 	implies that $\RAF_1$ is itself a $\RAF$ which contradicts the minimality of $\RAF$.
 \end{proof}
 \vspace{6pt}
-An immediate consequence of this statement is that the subgraph of $\queen'$ containing
-only vertices that have at least one incoming and one outgoing edge is also strongly 
-connected. This subgraph, however, might still contain food molecules. The next statement
-shows that their removal does not destroy strong connectivity.
+We summarize the results of this subsection so far in the following statement.
+\vspace{6pt}
+\begin{theorem}\label{thm:RAFStrCon}
+	Let $\RAF$ be a minimal RAF. Then $\RAF$ is non-trivial if and only if the graph $\RGraph(\queen')$ 
+	is not a single F-reaction and strongly connected.
+\end{theorem}
+\vspace{6pt}
+
+We have seen that the strong connectivity of a quotient graph does not guarantee strong connectivity
+of the original graph (Fig.~\ref{fig:QScKNot}). It is not hard to see that $\RGraph(\queen')$ is indeed the 
+quotient graph for $\RGraph(\king')$. Moreover, for non-trivial, minimal RAFs, $\RGraph(\king')$ is also 
+strongly connected. 
 \vspace{6pt}
 \begin{lemma}
+	Let $\RAF$ be a non-trivial, minimal RAF. Then $\RGraph(\king')$ is strongly connected.
+\end{lemma}
+\begin{proof}
+	Lemma~\ref{lem:RGQSC} has shown that $\RGraph(\queen')$ is strongly connected for a non-trivial 
+	minimal RAF. Assume now that $\RGraph(\king')$ is not strongly connected, which implies the existence 
+	of two strongly connected components of $R'\coloneqq \varphi^{-1}(\RAF), R'_1, R'_2$. Then either $R'_1$ 
+	and $R'_2$ partition $R$ such that all representatives of an equivalence class are contained in the same 
+	component, or not. The first case, $\varphi^{-1}(R'_1)\cap \varphi^{-1}(R'_2)=\emptyset$, implies that 
+	$\RGraph(\queen')$ is not strongly connected, which contradicts that $\RAF$ is a non-trivial, minimal RAF. 
+	Thus, $\varphi^{-1}(R'_1)\cap \varphi^{-1}(R'_2)=\emptyset$ and there are $r'\in R'_1, r''\in R'_2$. W.l.o.g.
+	we assume that there is no path from any $r_2\in R'_2$ to any $r_1\in R'_1$. Then, however, there is also
+	no edge $(r', r_1)$ for any $r_1\in R'_1$ since there would otherwise also be an edge $(r'', r_1)$. Hence,
+	$r'\notin R'_1$, a contradiction.
+\end{proof}
+The subgraph of $\queen'$ containing only vertices that have at least one incoming and one outgoing edge is 
+also strongly connected. This subgraph, however, might still contain food molecules. The next statement
+shows that their removal does not destroy strong connectivity.
+\vspace{6pt}
+\begin{lemma}\label{lem:PSC}
 	Let $\RAF$ be a non-trivial, minimal RAF. Then 
 		\begin{equation}\label{eq:PrinceGraph}
-			\prince'\coloneqq \prince (X, \RAF, \cat') \coloneqq \queen'[\closure{\RAF}{\food}\setminus (\food\cup W), \RAF]
+			\princess \coloneqq \princess (X, \RAF, \cat') \coloneqq \queen'[\closure{\RAF}{\food}\setminus (\food\cup W) \cup \RAF]
 		\end{equation}
 	where 
 	\begin{equation}\label{eq:Waste}
-		W\coloneqq \{x\in \closure{\RAF}{F} \ | \ \nexists r \in \RAF \text{ s.t. } s^-_{xr}>0\},
+		W\coloneqq \{x\in \closure{\RAF}{\food} \ | \ \nexists \fr \in \RAF \text{ s.t. } s^-_{xr}>0\},
 	\end{equation}
 	is strongly connected.
 \end{lemma}
 \begin{proof}
-	Assume this is not the case. Then there are two strongly connected components $\prince'_1,\prince'_2$.
-	W.l.o.g., we assume that there is no path from any $u\in \prince'_2$ to any $v\in \prince'_1$. Then
-	all paths from $\prince'_2$ to $\prince'_1$ pass through $\food$ in $\queen'$. Thus, however, implies
-	that all F-catalysts and F-reactants for all F-reactions in $\prince'_1$ are contained in $\food\cup 
-	\prince'_1$. Then $\mathbf{R}(\prince'_1)$ is a non-empty RAF which contradicts minimality of $\RAF$.	
+	Assume this is not the case. Then there are two strongly connected components $\princess_1,\princess_2$.
+	W.l.o.g., we assume that there is no path from any $u\in \princess_2$ to any $v\in \princess_1$. Then
+	all paths from $\princess_2$ to $\princess_1$ pass through $\food$ in $\queen'$. This, however, implies
+	that all F-catalysts and F-reactants for all F-reactions in $\princess'_1$ are contained in $\food\cup 
+	\princess_1$. Then $\mathbf{R}(\princess_1)$ is a non-empty RAF which contradicts the minimality of $\RAF$.	
 \end{proof}	
 \vspace{6pt}
 
-We may then conclude.
-
-\vspace{6pt}
-\begin{theorem}\label{thm:RAFStrCon}
-	Let $(X,R, \cat)$ be a catalyzed network with food-set $F$, and $\RAF$ be a minimal RAF. Then $\RAF$ is non-trivial 
-	if and only if the graph $P'$ is not a single reaction entity and strongly connected.
-\end{theorem}
-\vspace{6pt}
-
-One important consequence of Thm.~\ref{thm:RAFStrCon} is that the R-Graph of $L$, thus of a RAF, is also strongly connected.
+In line with calling elements of $\food$ food-molecules, we kindly refer to molecules from $W$ as waste molecules. 
+Following the same argument as in Lemma~\ref{lem:PSC}, we obtain an analogous result for the subgraph of $\king'$ 
+that contains no food and waste molecules.
 \vspace{6pt}
 \begin{corollary}
-	Let $\RAF$ be a non-trivial, minimal RAF. Then the R-Graph graph of $L$, $\mathcal{R}\coloneqq \{\RAF, E\}$ with 
-	$E\coloneqq \{(r_1,r_2) \ | \ \exists x X(L): s^+_{xr_1}>0, s^-_{xr_2}>0\}$  is strongly connected.
+	Let $\RAF$ be a non-trivial, minimal RAF. Then 
+		\begin{equation}\label{eq:PrinceGraph}
+			\prince \coloneqq \prince (X, \varphi^{-1}(\RAF), \cat') \coloneqq \king'[\closure{\RAF}{\food}\setminus (\food\cup W) \cup \varphi^{-1}(\RAF)]
+		\end{equation}
+	where 
+	\begin{equation}\label{eq:Waste}
+		W\coloneqq \{x\in \closure{\RAF}{\food} \ | \ \nexists \fr \in \RAF \text{ s.t. } s^-_{xr}>0\},
+	\end{equation}
+	is strongly connected.
 \end{corollary}
 \vspace{6pt}
 
 In general, \emph{minimal} RAFs are not necessarily strong blocks, as is captured in the following example.
 In addition, two RAFs, of which one is minimal while the other is not, can give rise to the same 
-R-Graph, but not the same M-graph. 
+R-Graph. %, but not the same metabolite graph, in particular, the graph with vertex set 
+%$\closure{\RAF}{\food}\setminus (\food\cup W)$ and edge-set $\{(x,y) \ | \exists \fr\in \RAF, s^-_{xr}>0, s^+_{yr}>0\}$.
 
 \begin{figure}[h]
 	\centering
@@ -865,9 +800,10 @@ R-Graph, but not the same M-graph.
 		\centering
 		\begin{equation}
 			\begin{split}
-				r_0&: f\overset{ x_1, y_1}{\longrightarrow} x_2 + y_2 \\
-				r_1&: x_2\overset{x_2}{\longrightarrow} x_1 \\
-				r_2&: x_2\overset{y_2}{\longrightarrow} y_1 
+				r'_0&: f + (x_1) \longrightarrow x_2 + y_2 + (x_1)\\
+				r''_0&: f + (y_1) \longrightarrow x_2 + y_2 + (y_1)\\
+				r_1&: x_2 + (x_2)\longrightarrow x_1 + (x_2) \\
+				r_2&: y_2 + (y_2) \longrightarrow y_1 + (y_2)
 			\end{split}
 		\end{equation}
 	\end{minipage}%
@@ -876,9 +812,9 @@ R-Graph, but not the same M-graph.
 		\centering
 		\begin{equation}
 			\begin{split}
-				r_1&: f \overset{ x_1}{\longrightarrow} x_2 + x_3 \\
-				r_2&: x_2\overset{x_2}{\longrightarrow} x_1 \\
-				r_3&: x_3\overset{x_3}{\longrightarrow} x_1 				
+				r_1&: f + (x_1) \longrightarrow x_2 + x_3 + (x_1)\\
+				r_2&: x_2 + (x_2) \longrightarrow  x_1 + (x_2)\\
+				r_3&: x_3 + (x_2) \longrightarrow x_1 + (x_2)
 			\end{split}
 		\end{equation}
 	\end{minipage}
@@ -892,9 +828,9 @@ R-Graph, but not the same M-graph.
 			\node[draw, circle] (y1) at (0,-1) {$y_1$};
 			\node[draw, circle] (y2) at (2,-1) {$y_2$};
 						
-			\node[draw, rectangle] (r0) at (1,0) {$r_0$};
-			\node[draw, rectangle] (r1) at (1,2) {$r_1$};
-			\node[draw, rectangle] (r2) at (1,-2) {$r_2$};
+			\node[draw, rectangle] (r0) at (1,0) {$\fr_0$};
+			\node[draw, rectangle] (r1) at (1,2) {$\fr_1$};
+			\node[draw, rectangle] (r2) at (1,-2) {$\fr_2$};
 			
 			\draw[->] (f) to (r0);
 			\draw[->] (x1) to [bend right = 30] (r0);
@@ -920,9 +856,9 @@ R-Graph, but not the same M-graph.
 			\node[draw, circle] (x2) at (2,1) {$x_2$};
 			\node[draw, circle] (x3) at (2,-1) {$y_1$};
 						
-			\node[draw, rectangle] (r1) at (1,0) {$r_1$};
-			\node[draw, rectangle] (r2) at (1,2) {$r_2$};
-			\node[draw, rectangle] (r3) at (1,-2) {$r_3$};
+			\node[draw, rectangle] (r1) at (1,0) {$\fr_1$};
+			\node[draw, rectangle] (r2) at (1,2) {$\fr_2$};
+			\node[draw, rectangle] (r3) at (1,-2) {$\fr_3$};
 			
 			\draw[->] (f) to (r1);
 			\draw[->] (x1) to [bend right = 30] (r1);
@@ -974,36 +910,36 @@ R-Graph, but not the same M-graph.
 
 	\end{minipage}
 	\par\bigskip
-	\begin{minipage}[c]{0.49\textwidth}
-		\centering
-		\begin{tikzpicture}
-			\node[draw, circle] (x1) at (0,0) {$x_1$};
-			\node[draw, circle] (x2) at (2,0) {$x_2$};
-			\node[draw, circle] (y1) at (0,-2) {$y_1$};
-			\node[draw, circle] (y2) at (2,-2) {$y_2$};
-						
-			\draw[->] (x1) to [bend right = 30] (y1);
-			\draw[->] (y1) to [bend right = 30] (x1);
-			\draw[->] (x1) to (y2);
-			\draw[->] (x2) to (x1);
-			\draw[->] (y1) to (x2);
-			\draw[->] (y2) to (y1);
-		\end{tikzpicture}
-	\end{minipage}%
-	\hfill%
-	\begin{minipage}[c]{0.49\textwidth}
-		\centering
-		\begin{tikzpicture}
-			\node[draw, circle] (x1) at (1,0) {$x_1$};
-			\node[draw, circle] (x2) at (0,0) {$x_2$};
-			\node[draw, circle] (x3) at (2,0) {$x_3$};
-						
-			\draw[->] (x1) to [bend right = 30] (x2);
-			\draw[->] (x2) to [bend right = 30] (x1);
-			\draw[->] (x1) to [bend right = 30] (x3);
-			\draw[->] (x3) to [bend right = 30] (x1);
-		\end{tikzpicture}
-	\end{minipage}%
+%	\begin{minipage}[c]{0.49\textwidth}
+%		\centering
+%		\begin{tikzpicture}
+%			\node[draw, circle] (x1) at (0,0) {$x_1$};
+%			\node[draw, circle] (x2) at (2,0) {$x_2$};
+%			\node[draw, circle] (y1) at (0,-2) {$y_1$};
+%			\node[draw, circle] (y2) at (2,-2) {$y_2$};
+%						
+%			\draw[->] (x1) to [bend right = 30] (y1);
+%			\draw[->] (y1) to [bend right = 30] (x1);
+%			\draw[->] (x1) to (y2);
+%			\draw[->] (x2) to (x1);
+%			\draw[->] (y1) to (x2);
+%			\draw[->] (y2) to (y1);
+%		\end{tikzpicture}
+%	\end{minipage}%
+%	\hfill%
+%	\begin{minipage}[c]{0.49\textwidth}
+%		\centering
+%		\begin{tikzpicture}
+%			\node[draw, circle] (x1) at (1,0) {$x_1$};
+%			\node[draw, circle] (x2) at (0,0) {$x_2$};
+%			\node[draw, circle] (x3) at (2,0) {$x_3$};
+%						
+%			\draw[->] (x1) to [bend right = 30] (x2);
+%			\draw[->] (x2) to [bend right = 30] (x1);
+%			\draw[->] (x1) to [bend right = 30] (x3);
+%			\draw[->] (x3) to [bend right = 30] (x1);
+%		\end{tikzpicture}
+%	\end{minipage}%
 	
 	\caption{A minimal RAF \textbf{left} and a non-minimal RAF \textbf{right}, 
 	with its bipartite K\"onig, R-, and M-graph from top to bottom.}
@@ -1011,16 +947,56 @@ R-Graph, but not the same M-graph.
 \end{figure}
 \FloatBarrier
 
-Indeed, $r_0$ is a cut-vertex, since it has two catalysts, which is part of two different strong blocks 
-$\king[\{x_1,x_2\} \cup \{r_1,r_2\}]$ and $\king[\{y_1,y_2\} \cup \{r_1,r_3\}]$. 
+Indeed, $\fr_0$ is a cut-vertex, since it has two catalysts, which is part of two different strong blocks 
+$\queen[\{x_1,x_2\} \cup \{r_1,r_2\}]$ and $\queen[\{y_1,y_2\} \cup \{r_1,r_3\}]$. 
 \vspace{6pt}
 \begin{corollary}
 	A minimal, non-trivial RAF is either a strong block or contains a cut-vertex.
 \end{corollary}
 \vspace{6pt}
-If the bipartite graph has a cut-vertex, then the R-graph also has a cut-vertex. This is not the case
-for the M-Graph. In particular, the M-graph of a minimal RAF is actually a strong block since the
-reaction vertices vanish
+If the bipartite graph has a cut-vertex, then the R-graph also has a cut-vertex and not vice versa. 
+The existence of a cut-vertex in $\prince$ does not necessarily imply the existence a cut-vertex in 
+$\princess$. This can be seen from the left example in Fig.~\ref{ex:CutVertex} whose bipartite K\"onig 
+graph for the corresponding CRN has the following appearance:
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+		\node[draw, circle] (f) at (-1,0) {$f$};
+		\node[draw, circle] (x1) at (0,1) {$x_1$};
+		\node[draw, circle] (x2) at (2,1) {$x_2$};
+		\node[draw, circle] (y1) at (0,-1) {$y_1$};
+		\node[draw, circle] (y2) at (2,-1) {$y_2$};
+						
+		\node[draw, rectangle] (r'0) at (1,0.5) {$r'_0$};
+		\node[draw, rectangle] (r''0) at (1,-0.5) {$r''_0$};
+		\node[draw, rectangle] (r1) at (1,2) {$r_1$};
+		\node[draw, rectangle] (r2) at (1,-2) {$r_2$};
+			
+		\draw[->] (f) to (r'0);
+		\draw[->] (f) to (r''0);
+		\draw[->] (x1) to [bend right = 30] (r'0);
+		\draw[->] (r'0) to [bend right = 30] (x1);
+		\draw[->] (y1) to [bend right = 30] (r''0);
+		\draw[->] (r''0) to [bend right = 30] (y1);
+		\draw[->] (r'0) to (x2);
+		\draw[->] (r''0) to (x2);
+		\draw[->] (r'0) to (y2);
+		\draw[->] (r''0) to (y2);
+		\draw[->] (x2) to [bend right = 30] (r1);
+		\draw[->] (r1) to [bend right = 30] (x2);
+		\draw[->] (y2) to [bend right = 30] (r2);
+		\draw[->] (r2) to [bend right = 30] (y2);
+		\draw[->] (r1) to (x1);
+		\draw[->] (r2) to (y1);			
+	\end{tikzpicture}
+
+\end{figure}
+\FloatBarrier
+
+
+
+This is not the case for the M-Graph. In particular, the M-graph of a minimal RAF is actually a strong block 
+since the reaction vertices vanish
 
 \vspace{6pt}
 \begin{lemma}
