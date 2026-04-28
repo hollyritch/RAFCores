@@ -125,7 +125,7 @@
 \newcommand{\PO}[0]{d}
 \newcommand{\POR}[0]{\mathscr{R}}
 \newcommand{\POX}[0]{\mathscr{X}}
-\newcommand{\cat}{\mathbf{C}}
+\newcommand{\cat}{\kappa_F}
 \newcommand{\sgen}{g}
 \newcommand{\rgen}{\gamma}
 \newcommand{\ceducts}{\rho}
@@ -371,22 +371,28 @@ F-catalysts but share the same F-reactants and F-products:
 \begin{equation}\label{eq:fEquiv}
 	r_1\sim r_2 \Leftrightarrow \feducts(r_1)=\feducts(r_2), \fproducts(r_1)=\fproducts(r_2), 
 \end{equation}
-Indeed, $\sim$ is an equivalence relation. For convenience, we define for a given set of C-reactions and 
-F-reactions $R$ and $\FR\coloneqq \{[r]_{\sim} \ | \ r\in R\}$
-\begin{equation}
-	\varphi: R\rightarrow \FR: \varphi(r) \coloneqq \fr \coloneqq [r]_{\sim}
-\end{equation}
-In this way, $\varphi^{-1}(\FR)$ allows us to obtain the pre-image of a set of F-reactions. We call a 
-$\sim$-equivalence class an F-reaction, and, for consistency, denote them in bold, i.e., $\fr\coloneqq [r]_\sim$ for:
+Indeed, $\sim$ is an equivalence relation, and we call a $\sim$-equivalence class an F-reaction. 
+For consistency, we denote them in bold, i.e., $\fr\coloneqq [r]_\sim$ for:
 \begin{equation}\label{eq:fEquivClass}
 	\begin{split}
-		\fr= \left\{r': \sum_{x\in X}\ (\sigma^-_{xr'} + \kappa_{xr'}) \cdot x)\rightarrow \sum_{x\in X} \ (\sigma^+_{xr'} + \kappa_{xr'} \cdot x) \ \middle\vert \ \sigma_{xr'}^{\pm} = \sigma_{xr}^\pm, \forall x\in X \right\}
+		\fr= \left\{r': \sum_{x\in X}\ (\sigma^-_{xr'} + \kappa_{xr'}) \cdot x)\rightarrow \sum_{x\in X} \ (\sigma^+_{xr'} + \kappa_{xr'} \cdot x) \ \middle\vert \ \sigma_{xr'}^{\pm} = \sigma_{xr}^\pm, 	
+			\forall x\in X \right\}
 	\end{split}
 \end{equation}
-With a slight abuse of notation, we write $r\in \fr$ for $r\in [r]_\sim$, and $\FR$ for sets of F-reactions. 
-Moreover, we may also write $\feducts(\fr)$ and $\fproducts(\fr)$ since $\feducts(r') =\feducts(r), \fproducts(r') =\fproducts(r), 
-\forall r' \in[r]_\sim$. The natural representative is the uncatalyzed reaction $\tilde{r}\in [r]_{\sim}: \cat(\tilde{r}) = \emptyset$, 
-which is the net reaction $\hat{r}$ if and only if $\feducts(r)= \net{\ceducts}(r)$ and $\fproducts(\tilde{r}) = \net{\cproducts}(r)$. 
+With a slight abuse of notation, we write $r\in \fr$ for $r\in [r]_\sim$, and $\FR$ for sets of 
+F-reactions. Moreover, we may also write $\feducts(\fr)$ and $\fproducts(\fr)$ since 
+$\feducts(r') =\feducts(r), \fproducts(r') =\fproducts(r), \forall r' \in[r]_\sim$. The natural 
+representative is the uncatalyzed reaction $\tilde{r}\in [r]_{\sim}: \cat(\tilde{r}) = \emptyset$, 
+which coincides with the net reaction $\hat{r}$ if and only if $\feducts(r)= \net{\ceducts}(r)$ and 
+$\fproducts(\tilde{r}) = \net{\cproducts}(r)$. 
+
+We may conveniently obtain for a given set of C-reactions $R$ the corresponding F-reactions 
+via:
+\begin{equation}
+	\varphi: R\rightarrow \FR: \varphi(r) \coloneqq \fr, 
+\end{equation}
+where $\FR\coloneqq \{[r]_{\sim} \ | \ r\in R\}$. This allows access to the pre-image 
+of a set of F-reactions $\FR$ by $\varphi^{-1}(\FR)$. 
 
 By definition, $[r]_\sim$ is of infinite size, which is an unrealistic scenario for 
 a chemical system. Given a set of F-reactions $\FR$ together with a set of species $X$, each 
@@ -433,7 +439,7 @@ $\queen(\Phi)$ and the corresponding bipartite graph of the $K(\Gamma(\Phi))$.
 	Similar arguments hold for edges from $E_2(\queen)$ and $E_2(\king)$. 
 \end{proof}
 \vspace{6pt}
-In the monocatalyst case for example, where each F-reaction has exactly one catalyst, we have 
+In the monocatalyst case, for example, where each F-reaction has exactly one catalyst,  
 $\vert \fr \vert = 1, \forall \fr \in \FR$. Thus, each reaction vertex of $\queen(\Phi)$ is substituted 
 in $\queen(\Gamma(\Phi))$ by its single representative, while all edges to adjacent vertices are 
 conserved. This yields that $\queen(\Phi)$ and $\king(\Gamma(\Phi))$ are isomorphic. In turn, 
@@ -453,7 +459,7 @@ but for every CRS that exhibits only trivial equivalence classes, in particular 
 case.
 
 A known result for quotient graphs is that $\queen(\Phi)$ is strongly-connected whenever 
-$\king(\Gamma(\Phi))$ is strongly connected \TODO{\cite{}}. By Lemma~\ref{lem:IsoQK}, the 
+$\king(\Gamma(\Phi))$ is strongly connected \TODO{cite TBA}. By Lemma~\ref{lem:IsoQK}, the 
 converse also holds if each equivalence class is of size $1$. In general, however, this 
 is not true, in particular, if one F-reaction has two alternative catalysts, and one of them is not 
 connected by a path originating in any of the products. Such an example is depicted in 
@@ -668,12 +674,12 @@ Still, they might contain F-reactions that have more than $1$ representative, as
 		r_2&:  x_3 + (x_3) \rightarrow x_1 + x_2 + (x_3)
 	\end{split}
 \end{equation}
-The only minimal RAF here is $\{\fr_1=\{r_1',r_1''\}, \fr_2=\{r_2\}\}$, which implies that Lemma~\ref{lem:IsoQK} does not
-hold for minimal RAFs.
+The only minimal RAF in this example is $\{\fr_1=\{r_1',r_1''\}, \fr_2=\{r_2\}\}$, which implies that 
+Lemma~\ref{lem:IsoQK} does not hold for minimal RAFs.
 
 According to Theorem 3.1 of \cite{bridging_golnik_2026}, an autocatalytic elementary circuit can be found 
-in a RAF as long as it is not a CAF. Minimal RAFs exhibit the convenient property that they are CAFs if and only
-if they are trivial, i.e., if they are composed of a single reaction.
+in a RAF as long as it is not a CAF. Minimal RAFs exhibit the convenient property that they are not CAFs 
+as long as they are non-trivial, i.e., if they are composed of more than a single reaction.
 \vspace{6pt}
 \begin{lemma}
 	Let $(X,\RAF,\cat)$ be a CRS with food-set $\food$ and $\RAF$ a minimal RAF. Then $\RAF$ is a CAF if and only
@@ -686,12 +692,30 @@ if they are trivial, i.e., if they are composed of a single reaction.
 	since otherwise $\RAF$ would not be a RAF. Thus, $\RAF$ is a CAF.
 \end{proof}
 \vspace{6pt}
-This Lemma justifies focusing only on minimal, non-trivial RAFs. In the next subsection, we will derive properties
-of two graph representations of RAFs in the CRS and the CRN setting.
+This Lemma justifies focusing only on minimal, non-trivial RAFs. In fact, for each non-trivial, 
+minimal RAF, each F-reaction has at least one reactant that is not in the food set. 
+\vspace{6pt}
+\begin{lemma}\label{lem:OneReac}
+	Let $(X,\RAF,\cat)$ be a CRS with food-set $\food$ and $\RAF$ a minimal RAF.
+	Then $\fr\in \RAF$ has at least one reactant (F-reactant or F-catalyst) that is not 
+	in $\food$. For $\fr\in \RAF: \rgen(\fr)=1$, this is an F-catalyst.
+\end{lemma}
+\begin{proof}
+	 Assume this is not the case for an $\fr\in \RAF$. Then $\{\fr\}$ is a RAF which 
+	 contradicts the minimality of $\RAF$.
+\end{proof}
+\vspace{6pt}
+
+The consequences of the result of Lemma~\ref{lem:OneReac} were already investigated 
+in \cite{steel_minimal_2013}. It was shown that the R-graph for each such 
+RAF contains an elementary circuit. In the next subsection, we will therefore turn to investigate
+more thoroughly the structural properties of two graph representations of non-trivial, minimal RAFs, 
+the bipartite and the reaction graph, in both the CRS and the CRN setting. In particular,
+we will fortify the result obtained by Steel et al. in \cite{steel_minimal_2013}.
 
 \subsection{The Bipartite and Reaction Graphs of Minimal RAFs}
 
-Throughout, we will therefore consider a CRS $\Phi\coloneqq (X,\FR,\cat)$ with food-set $\food\subseteq X$ and 
+Throughout, we will consider a CRS $\Phi\coloneqq (X,\FR,\cat)$ with food-set $\food\subseteq X$ and 
 K\"onig graph $\queen\coloneqq \queen(\Phi)$. In addition, we assume a non-trivial, 
 minimal RAF $\RAF\subseteq \FR$ with sub-CRS 
 \begin{equation}
@@ -712,8 +736,10 @@ respectively. In line with calling elements of $\food$ food-molecules, we kindly
 	W\coloneqq \{x\in \closure{\RAF}{\food} \ | \ \nexists \fr \in \RAF \text{ s.t. } s^-_{xr}>0\},		
 \end{equation}
 
-Minimal and non-triviality of a RAF $\RAF$ together imply structural consequences for its bipartite K\"onig representation. 
-A key to showing these properties will be the R-graph $\RGraph(\queen')$.
+\subsubsection{Strong-connectivity}
+
+We start this section by showing that the $\RGraph$ of a non-trivial, minimal $\RAF$ in the CRS setting, 
+$\RGraph(\queen)$, is strongly connected.
 
 \vspace{6pt}
 \begin{lemma}\label{lem:RGQSC}
@@ -728,11 +754,11 @@ A key to showing these properties will be the R-graph $\RGraph(\queen')$.
 	implies that $\RAF_1$ is itself a $\RAF$ which contradicts the minimality of $\RAF$.
 \end{proof}
 \vspace{6pt}
-We summarize the results of this subsection so far in the following statement.
+Before we proceed, we summarize the results obtained so far in the following statement.
 \vspace{6pt}
 \begin{theorem}\label{thm:RAFStrCon}
 	Let $\RAF$ be a minimal RAF. Then $\RAF$ is non-trivial if and only if the graph $\RGraph(\queen')$ 
-	is not a single F-reaction and strongly connected.
+	is not a single F-reaction and is strongly connected.
 \end{theorem}
 \vspace{6pt}
 
@@ -787,6 +813,8 @@ that contains no food and waste molecules.
 	is strongly connected.
 \end{corollary}
 \vspace{6pt}
+
+\subsubsection{Cut-vertices}
 
 In general, \emph{minimal} RAFs are not necessarily strong blocks, as is captured in the following example.
 In addition, two RAFs, of which one is minimal while the other is not, can give rise to the same 
@@ -1210,10 +1238,10 @@ circuit is defined as follows $\child(C)\coloneqq \{X(C), R(C), \kappa: \kappa(x
 \begin{proof}
 	We start with the simple case, i.e., $|R^*(B)|=1$, and show by construction. For $r_1\in R^*(B)$ we have
 	by Lemma~\ref{lem:genPureReacs} that $h(r_1)<h(r'), \forall r'\in R(B)\setminus r_1$. We may then choose 
-	a catalyst of $r_1$ as $x\in X(\cat_{r_1}): g(x)\leq g(x'), x\in X(\cat_{r_1})$ since they are the only reactants
+	a catalyst of $r_1$ as $x\in X(\cat(r_1)): g(x)\leq g(x'), x\in X(\cat(r_1))$ since they are the only reactants
 	of $r_1$. In every $k$-th step we may then choose, for $x_k$ the reaction $r_{k+1}\in P(x_k)\coloneqq \{r \in R(B) \ 
 	| \ s^+_{x_k,r}-s^-_{x_k,r}>0\}$ such that $h(r_{k+1})\leq h(r_l), r_l\in P(x_k)$ and $x_{k+1}\in \ceducts(r_{k+r}) \cup 
-	X(\cat_{r_{k+1}}): g(x_{k+1})\leq g(x_l), x_l \in \ceducts(r_{k+1}) \cup X(\cat_{r_{k+1}})$. In this way, we obtain 
+	X(\cat(r_{k+1}): g(x_{k+1})\leq g(x_l), x_l \in \ceducts(r_{k+1}) \cup X(\cat(r_{k+1}))$. In this way, we obtain 
 	\begin{equation}
 		h(x_k) \leq g(r_{k+1}) \leq h(x_k), \forall k\geq 0
 	\end{equation}
@@ -1221,14 +1249,14 @@ circuit is defined as follows $\child(C)\coloneqq \{X(C), R(C), \kappa: \kappa(x
 	vertex is visited twice, and after a maximum of $2\cdot \min(|X(B)|, |R(B)|)$ vertices, we reach $r_1$ again. Assume there 
 	is an MR-edge $(x_i,r_j)$ with $i>j$. Then $g(x_i)>h(r_j)$, which implies that $x_i$ is a pure catalysts for $r_j$.
 	Thus $\SM[\child]_{x_i, r_j}=0$. By construction, there cannot be an MR-edge if $i<j$ since this implies 
-	$g(x_i)<g(x_j), x_i,x_j\in \ceducts(r_{k+1}) \cup X(\cat_{r_{k+1}})$, a contradiction to our construction. Thus, $\SM[\child]$ is
+	$g(x_i)<g(x_j), x_i,x_j\in \ceducts(r_{k+1}) \cup X(\cat(r_{k+1}))$, a contradiction to our construction. Thus, $\SM[\child]$ is
 	Metzler. 
 	 
 	We may now treat the more complicated case and assume $|R^*(B)|>1$. Then the convergence of our construction is not 
 	easily guaranteed. \TODO{Construct now sequence of such sequences above ....}
 \end{proof}
 
-If the strong block consists of a single reaction $r$ and a single species $x \in \cat_r$, then $r$ is an explicit autocatalytic reaction.
+If the strong block consists of a single reaction $r$ and a single species $x \in \cat(r)$, then $r$ is an explicit autocatalytic reaction.
 \vspace{6pt}
 \begin{lemma}
 	Let $B$ be a strong block of $L$ that is composed of a single reaction $r$ and a single species $x$. Then $r$ is an explicit
@@ -1481,7 +1509,7 @@ However, they can be constructed directly, which proves the existence of at leas
 \vspace{6pt}
 \begin{proof}
 	We prove by construction and construct a CS inductively. For the base case, we let $r_1\in R^*(B)$ and $R_1'\coloneqq \{r_1\}$. 
-	and then choose an $x_1 \in \cat_{r^*}$ and set $\child_1\coloneqq \{\{x_1\}, \{r_1\}, \kappa(x_1)=r_1\}$. Then $\child_1$ is a CS.
+	and then choose an $x_1 \in \cat(r^*)$ and set $\child_1\coloneqq \{\{x_1\}, \{r_1\}, \kappa(x_1)=r_1\}$. Then $\child_1$ is a CS.
 	In every $k$-th step we choose $r_k\in \POR^m_{\RAF}(F): s^+_{x_{k-1}r_k}-s^-_{x_{k-1}r_k}>0$ with $m = \min_{i=1, \ldots, n} \{\POR^i_{\RAF}(F) 	\ | 
 	\ s^+_{x_{k-1}r_k}-s^-_{x_{k-1}r_k}>0 \}$ and $x_k \in POX^{\ell}_{\RAF}(F): s_{x_kr_k}<0$ with $\ell=\min_{i=1, \ldots, n} \{\POR^i_{\RAF}(F) \ | \ s^+_{xr} 
 	-s^-_{xr}>0 \}$. We observe, that in this way, $r_k\in R(B)$ and $x_k\in X(B)$ for any $k$.
