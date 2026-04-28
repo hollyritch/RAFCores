@@ -374,7 +374,7 @@ F-catalysts but share the same F-reactants and F-products:
 Indeed, $\sim$ is an equivalence relation. For convenience, we define for a given set of C-reactions and 
 F-reactions $R$ and $\FR\coloneqq \{[r]_{\sim} \ | \ r\in R\}$
 \begin{equation}
-	\varphi: R\rightarrow \FR: \varphi(r)=[r]_{\sim}
+	\varphi: R\rightarrow \FR: \varphi(r) \coloneqq \fr \coloneqq [r]_{\sim}
 \end{equation}
 In this way, $\varphi^{-1}(\FR)$ allows us to obtain the pre-image of a set of F-reactions. We call a 
 $\sim$-equivalence class an F-reaction, and, for consistency, denote them in bold, i.e., $\fr\coloneqq [r]_\sim$ for:
@@ -706,7 +706,11 @@ as the graphs
 		\RGraph(\king') &\coloneqq (\varphi^{-1}(\RAF), E), E\coloneqq \{(r_1,r_2) \ \vert \ (\fr_1,\fr_2)\in E(\RGraph(\queen')\},
 	\end{split}
 \end{equation}
-respectively.
+respectively. In line with calling elements of $\food$ food-molecules, we kindly refer to molecules from $W$ as waste molecules. 
+
+\begin{equation}\label{eq:Waste}
+	W\coloneqq \{x\in \closure{\RAF}{\food} \ | \ \nexists \fr \in \RAF \text{ s.t. } s^-_{xr}>0\},		
+\end{equation}
 
 Minimal and non-triviality of a RAF $\RAF$ together imply structural consequences for its bipartite K\"onig representation. 
 A key to showing these properties will be the R-graph $\RGraph(\queen')$.
@@ -761,10 +765,6 @@ shows that their removal does not destroy strong connectivity.
 		\begin{equation}\label{eq:PrinceGraph}
 			\princess(\RAF) \coloneqq \queen'[\closure{\RAF}{\food}\setminus (\food\cup W) \cup \RAF]
 		\end{equation}
-	where 
-	\begin{equation}\label{eq:Waste}
-		W\coloneqq \{x\in \closure{\RAF}{\food} \ | \ \nexists \fr \in \RAF \text{ s.t. } s^-_{xr}>0\},
-	\end{equation}
 	is strongly connected.
 \end{lemma}
 \begin{proof}
@@ -776,7 +776,6 @@ shows that their removal does not destroy strong connectivity.
 \end{proof}	
 \vspace{6pt}
 
-In line with calling elements of $\food$ food-molecules, we kindly refer to molecules from $W$ as waste molecules. 
 Following the same argument as in Lemma~\ref{lem:PSC}, we obtain an analogous result for the subgraph of $\king'$ 
 that contains no food and waste molecules.
 \vspace{6pt}
@@ -785,10 +784,6 @@ that contains no food and waste molecules.
 		\begin{equation}\label{eq:PrinceGraph}
 			\prince(\RAF) \coloneqq \king'[\closure{\RAF}{\food}\setminus (\food\cup W) \cup \varphi^{-1}(\RAF)]
 		\end{equation}
-	where 
-	\begin{equation}\label{eq:Waste}
-		W\coloneqq \{x\in \closure{\RAF}{\food} \ | \ \nexists \fr \in \RAF \text{ s.t. } s^-_{xr}>0\},
-	\end{equation}
 	is strongly connected.
 \end{corollary}
 \vspace{6pt}
@@ -803,8 +798,8 @@ R-Graph.
 		\centering
 		\begin{equation}
 			\begin{split}
-				r'_0&: f + (x_1) \longrightarrow x_2 + y_2 + (x_1)\\
-				r''_0&: f + (y_1) \longrightarrow x_2 + y_2 + (y_1)\\
+				r_0&: f + (x_1 + y_1) \longrightarrow x_2 + y_2 + (x_1 + y_1)\\
+				%r''_0&: f + (y_1) \longrightarrow x_2 + y_2 + (y_1)\\
 				r_1&: x_2 + (x_2)\longrightarrow x_1 + (x_2) \\
 				r_2&: y_2 + (y_2) \longrightarrow y_1 + (y_2)
 			\end{split}
@@ -951,18 +946,33 @@ R-Graph.
 \FloatBarrier
 
 Indeed, $\fr_0$ is a cut-vertex, since it has two catalysts, which are part of two different strong blocks 
-$\princess[\{x_1,x_2\} \cup \{\fr_1,\fr_2\}]$ and $\princess[\{y_1,y_2\} \cup \{\fr_1,\fr_3\}]$. 
+$\princess[\{x_1,x_2\} \cup \{\fr_1,\fr_2\}]$ and $\princess[\{y_1,y_2\} \cup \{\fr_1,\fr_3\}]$. In case  
+equivalence class contains only one representative in the left example, $\princess(\RAF)\simeq \prince(\RAF)$.
+We thereby obtain the following result.
 \vspace{6pt}
 \begin{corollary}
-	A minimal, non-trivial RAF is either a strong block or contains a cut-vertex.
+	Let $\RAF$ be a minimal, non-trivial RAF. Then $\princess(\RAF)$ and $\prince(\RAF)$ are either a strong block 
+	or contain a cut-vertex.
 \end{corollary}
 \vspace{6pt}
-The existence of a cut-vertex in $\prince$ does not necessarily imply the existence of a cut-vertex in 
-$\princess$. This can be seen from the left example in Fig.~\ref{ex:CutVertex} whose bipartite K\"onig 
-graph for the corresponding CRN has the following appearance:
-\begin{figure}
+The existence of a cut-vertex in $\princess$, however, does not necessarily imply the existence of a cut-vertex in 
+$\prince$. In case, the F-reaction $\fr_0$ of the left example in Fig.~\ref{ex:CutVertex}, has two catalyzations 
+the bipartite K\"onig graph for the corresponding CRN has a different appearance as depcited next.
+\begin{figure} 
+	\begin{minipage}[c]{0.5\textwidth}
+		\begin{equation}
+			\begin{split}
+				r'_0 &: f + (x_1) \longrightarrow x_2 + y_2 + (x_1) \\
+				r''_0 &: f + (y_1) \longrightarrow x_2 + y_2 + (y_1) \\
+				r_1&: x_2 + (x_2)\longrightarrow x_1 + (x_2) \\
+				r_2&: y_2 + (y_2) \longrightarrow y_1 + (y_2)
+			\end{split}
+		\end{equation}
+	\end{minipage}%
+	\hfill%
+	\begin{minipage}[c]{0.5\textwidth}
 	\centering
-	\begin{tikzpicture}
+		\begin{tikzpicture}
 		\node[draw, circle] (f) at (-1,0) {$f$};
 		\node[draw, circle] (x1) at (0,1) {$x_1$};
 		\node[draw, circle] (x2) at (2,1) {$x_2$};
@@ -990,8 +1000,10 @@ graph for the corresponding CRN has the following appearance:
 		\draw[->] (r2) to [bend right = 30] (y2);
 		\draw[->] (r1) to (x1);
 		\draw[->] (r2) to (y1);			
-	\end{tikzpicture}
+		\end{tikzpicture}
+	\end{minipage}	
 \end{figure}
+
 \FloatBarrier
 
 The occurrence of cut-vertices is not restricted to reactions with two catalyzations. To see this, we 
@@ -1066,27 +1078,30 @@ cut-verex.
 \vspace{6pt}
 
 \begin{lemma}
-	Let $\RAF$ be a non-trivial, minimal RAF. If $r\in R(L)$ is a cut-vertex, then $r$ has at least two incoming and two outgoing edges.
+	Let $\RAF$ be a non-trivial, minimal RAF. If $\fr\in \RAF$ is a cut-vertex in $\princess(\RAF)$, then $\fr$ has at least two 
+	incoming and two outgoing edges. 
 \end{lemma}
 \begin{proof}
-	We denote the two parts of $L$ separated by $r$ by $L_1$ and $L_2$. Assume now that $r$ has 
-	only one incoming edge. Then there can only be one catalyst $c_r$, which is also the only net reactant. 
-	Assume w.l.o.g. that $c_r \in V(L_1)$. Then, however, there is no path from any $u\in V(L_2)$ to any 
-	$v\in V(L_1)$. Thus, $L$ is not strongly connected, and thereby $\RAF$ is not minimal. Assume now 
-	that $r$ has only one outgoing edge. Then it has only one catalyst $c_r$ again, which is the net 
-	product of $r$. Assume again w.l.o.g. that $c_r\in V(L_2)$. Then, there is again no path from any 
-	$u\in V(L_2)$ to any $v\in V(L_1)$ which implies that $L$ was not strongly connected and thus $\RAF$ 
-	not minimal.
+	We denote the two blocks of $\princess(\RAF)$ separated by $\fr$ by $\princess_1$ and $\princess_2$. Assume 
+	now that $\fr$ has only one incoming edge. Then there can only be one catalyst $c_\fr$, which is also the 
+	only net reactant. Assume w.l.o.g. that $c_\fr \in V(\princess_1)$. Then, however, there is no path from any 
+	$u\in V(\princess_2)$ to any $v\in V(\princess_1)$. Thus, $\princess$ is not strongly connected, and thereby $\RAF$ 
+	is not minimal. Assume now that $\fr$ has only one outgoing edge. Then it has only one catalyst $c_\fr$ again, which is the net 
+	product of $\fr$. Assume again w.l.o.g. that $c_\fr\in V(\princess_2)$. Then, there is again no path from any 
+	$u\in V(\princess_2)$ to any $v\in V(\princess_1)$ which implies that $\princess(\RAF)$ was not strongly connected 
+	and thus $\RAF$ is not a non-trivial, minimal RAF. 
 \end{proof}
 \vspace{6pt}
-Monomolecular reaction systems, i.e., those that have only one net reactant and one net 
-product, thereby contain no cut-vertices:
+\TODO{Think about $\prince(\RAF)$}. For monomolecular catalytic reaction systems, i.e., those that have only one net reactant 
+and one net product, a non-trivial, minimal RAF $\RAF, \ \prince(\RAF)$ thereby contains no cut-vertices. Moreover, by the 
+discussion above, this also holds for $\prince(\RAF)$:
 \vspace{6pt}
 \begin{corollary}
-	Let $\RAF$ be a non-trivial minimal RAF. If each $r\in \RAF$ has only one net reactant
-	and one net product, then $L$ is a strong block.
+	Let $\RAF$ be a non-trivial, minimal RAF. If each $\fr\in \RAF$ has only one net reactant
+	and one net product, then $\princess(\RAF)$ and $\prince(\RAF)$ is a strong block. 
 \end{corollary}
 \vspace{6pt}
+
 We continue by identifying a structural property common to any strong block that warrants semipositivity. 
 \vspace{6pt}
 \begin{lemma}\label{lem:cutVertexPureCat}
