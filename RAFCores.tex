@@ -993,29 +993,15 @@ graph for the corresponding CRN has the following appearance:
 \end{figure}
 \FloatBarrier
 
-
-
-This is not the case for the M-Graph. In particular, the M-graph of a minimal RAF is actually a strong block 
-since the reaction vertices vanish
-
-\vspace{6pt}
-\begin{lemma}
-	Let $\RAF$ be a minimal non-trivial RAF. Then M-Graph of $L$ is a strong block.
-\end{lemma}
-\begin{proof}
-
-\end{proof}
-\vspace{6pt}
-
 The occurrence of cut-vertices is not restricted to reactions with two catalysts. To see this, consider 
 the following example:
 \begin{figure}[h]
 	\begin{minipage}[c]{0.49\textwidth}
 		\begin{equation}
 			\begin{split}
-				r_1&: f_1  \overset{x_1}{\longrightarrow} x_2\\
-				r_2&: f_2  \overset{x_4}{\longrightarrow} x3\\
-				r_3&: 2x_3 \overset{x_2}{\longrightarrow} x4 + x1
+				r_1&: f_1 + (x_1) \longrightarrow x_2 + (x_1)\\
+				r_2&: f_2 +(x_4) \longrightarrow x3 + (x_4)\\
+				r_3&: 2x_3 + (x_2) \longrightarrow  x4 + x1+ (x_2)
 			\end{split}
 		\end{equation}
 	\end{minipage}%
@@ -1029,9 +1015,9 @@ the following example:
 			\node[draw, circle] (x3) at (3,-1) {$x_3$};
 			\node[draw, circle] (x4) at (2,-2) {$x_4$};
 						
-			\node[draw, rectangle] (r1) at (1,0) {$r_1$};
-			\node[draw, rectangle] (r2) at (2,-1) {$r_2$};
-			\node[draw, rectangle] (r3) at (3,-2) {$r_3$};
+			\node[draw, rectangle] (r1) at (1,0) {$\fr_1$};
+			\node[draw, rectangle] (r2) at (2,-1) {$\fr_2$};
+			\node[draw, rectangle] (r3) at (3,-2) {$\fr_3$};
 			
 			\draw[->] (f1) to (r1);
 			\draw[->] (f2) to (r3);
