@@ -957,7 +957,7 @@ We thereby obtain the following result.
 \vspace{6pt}
 The existence of a cut-vertex in $\princess$, however, does not necessarily imply the existence of a cut-vertex in 
 $\prince$. In case, the F-reaction $\fr_0$ of the left example in Fig.~\ref{ex:CutVertex}, has two catalyzations 
-the bipartite K\"onig graph for the corresponding CRN has a different appearance as depcited next.
+the bipartite K\"onig graph for the corresponding CRN has a different appearance as depicted next.
 \begin{figure} 
 	\begin{minipage}[c]{0.5\textwidth}
 		\begin{equation}
@@ -1057,20 +1057,34 @@ As in Fig.~\ref{ex:CutVertex2}, both strong blocks, i.e., $\princess[\{x_1,x_2\}
 share a common cut-vertex that is a reaction vertex. Indeed, a species vertex cannot be a cut-vertex, as the next lemma shows.
 \vspace{6pt}
 \begin{lemma}\label{lem:CutVertexReac}
-	Let $\RAF$ be a non-trivial,  minimal RAF. If $\princess$ is not a strong block, then every 
-	cut-vertex is a reaction vertex.
+	Let $\RAF$ be a non-trivial, minimal RAF. If $\princess(\RAF)$ is not a strong block, then every 
+	cut-vertex is an F-reaction. Accordingly, if $\prince(\RAF)$ is not a strong block, then every 
+	cut-vertex is a reaction.
 \end{lemma}
 \begin{proof}
 	Assume there is a cut-vertex $w\in X(\princess)$. Then $\princess[V(\princess)\setminus \{w\}]$ is composed of at least two connected
 	components $\princess_1,\princess_2$. Then for any two vertices $v\in \princess_1$ and $u\in \princess_2$ we have 
 	$w\in P_{uv}$ and $w\in P_{vu}$ for arbitrary paths connecting $u$ and $v$. Therefore, there is no $x_1\in X(\princess_1)$ 
 	such that $x_1$ is an F-reactant, F-product, or F-catalyst for any reaction $r_2\in \FR(\princess_2)$, and there is no 
-	$x_2\in X(\princess_2)$ such that $x_2$ is a F-reactant, F-product, or F-catalyst for any reaction $r_1\in /FR(\princess_1)$. 
+	$x_2\in X(\princess_2)$ such that $x_2$ is a F-reactant, F-product, or F-catalyst for any reaction $r_1\in \FR(\princess_1)$. 
 	Then $\closure{\FR(\princess_1)}{\food}\neq \emptyset$, implying that $\FR(\princess_1)$ is a RAF or (not mutually exclusive) 
-	$\closure{\FR(\princess_2)}{\food}\neq \emptyset$, implying that $\FR(\princess_2)$ is a RAF,in any case, contradicting the 
-	minimality of $\RAF$.
+	$\closure{\FR(\princess_2)}{\food}\neq \emptyset$, implying that $\FR(\princess_2)$ is a RAF, in any case, contradicting that  
+	$\RAF$ is a non-trivial, minimal RAF. For $\prince(\RAF)$ the proof follows the same argument with the difference that we have 
+	$\closure{\varphi^{-1}(R(\prince))}{\food}\neq \emptyset$ implies that $\varphi^{-1}(\prince)$ is a RAF or (not mutually exclusive) 
+	$\closure{\varphi^{-1}(R(\prince_2))}{\food}\neq \emptyset$, implying that $\varphi^{-1}(\prince)$ is a RAF, and thereby $\RAF$ 
+	was not minimal.
 \end{proof}	
 \vspace{6pt}
+
+We might say something more on the relationship between cut-vertices in $\princess(\RAF)$ and $\prince(\RAF)$.
+
+\begin{lemma}
+	Let $\RAF$ be a non-trivial, minimal RAF. If $r \in \varphi^{-1}(\RAF)$ is a cut-vertex
+	in $\prince(\RAF)$ then $\fr$ is a cut-vertex in $\princess(\RAF)$.	
+\end{lemma}
+\begin{proof}
+	TBA.
+\end{proof}
 
 This result allows us to decompose $\princess$ into strong blocks. We will see in the next section that each of these strong blocks 
 indeed contains an autocatalytic core. Here, however, we continue by stating a necessary condition for a reaction to be a 
