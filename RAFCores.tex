@@ -736,12 +736,12 @@ We summarize the results of this subsection so far in the following statement.
 \end{theorem}
 \vspace{6pt}
 
-We have seen that the strong connectivity of a quotient graph does not guarantee strong connectivity
-of the original graph (Fig.~\ref{fig:QScKNot}). It is not hard to see that $\RGraph(\queen')$ is indeed the 
+The strong connectivity of a quotient graph does not guarantee strong connectivity of the original graph 
+(see Fig.~\ref{fig:QScKNot}). It is not hard to see that $\RGraph(\queen')$ is indeed the 
 quotient graph for $\RGraph(\king')$. Moreover, for non-trivial, minimal RAFs, $\RGraph(\king')$ is also 
 strongly connected. 
 \vspace{6pt}
-\begin{lemma}
+\begin{lemma}\label{lem:KSC}
 	Let $\RAF$ be a non-trivial, minimal RAF. Then $\RGraph(\king')$ is strongly connected.
 \end{lemma}
 \begin{proof}
@@ -799,7 +799,6 @@ R-Graph.
 		\begin{equation}
 			\begin{split}
 				r_0&: f + (x_1 + y_1) \longrightarrow x_2 + y_2 + (x_1 + y_1)\\
-				%r''_0&: f + (y_1) \longrightarrow x_2 + y_2 + (y_1)\\
 				r_1&: x_2 + (x_2)\longrightarrow x_1 + (x_2) \\
 				r_2&: y_2 + (y_2) \longrightarrow y_1 + (y_2)
 			\end{split}
@@ -956,7 +955,7 @@ We thereby obtain the following result.
 \end{corollary}
 \vspace{6pt}
 The existence of a cut-vertex in $\princess$, however, does not necessarily imply the existence of a cut-vertex in 
-$\prince$. In case, the F-reaction $\fr_0$ of the left example in Fig.~\ref{ex:CutVertex}, has two catalyzations 
+$\prince$. In case the F-reaction $\fr_0$ of the left example in Fig.~\ref{ex:CutVertex} has two catalyzations, 
 the bipartite K\"onig graph for the corresponding CRN has a different appearance as depicted next.
 \begin{figure} 
 	\begin{minipage}[c]{0.5\textwidth}
@@ -1076,24 +1075,48 @@ share a common cut-vertex that is a reaction vertex. Indeed, a species vertex ca
 \end{proof}	
 \vspace{6pt}
 
-We might say something more on the relationship between cut-vertices in $\princess(\RAF)$ and $\prince(\RAF)$.
+Cut-vertices in $\princess(\RAF)$ and $\prince(\RAF)$ are not unrelated from each other. In 
+particular, only equivalence classes of cut-vertices in $\prince(\RAF)$ can be cut-vertices
+in $\princess(\RAF)$. On top of that, a reaction vertex can only be a cut-vertex in $\prince(\RAF)$
+if its equivalence class is trivial.
 
-\begin{lemma}
+\begin{lemma}\label{lem:CutVertPP}
 	Let $\RAF$ be a non-trivial, minimal RAF. If $r \in \varphi^{-1}(\RAF)$ is a cut-vertex
-	in $\prince(\RAF)$ then $\fr$ is a cut-vertex in $\princess(\RAF)$.	
+	in $\prince(\RAF)$ then $|\fr|=1$ and $\fr$ is a cut-vertex in $\princess(\RAF)$.
 \end{lemma}
 \begin{proof}
-	TBA.
+	Assume $|\fr|>1$, then there is $r'\in \fr, r\neq r'$. Since $r$ is a cut-vertex, it separates 
+	$\prince(\RAF)$ in two connected components $\prince_1, \prince_2$, which both contain
+	$r$ and their induced subgraphs are strongly connected. Then any path from a vertex in 
+	$u\in \prince_1$ to a vertex $v\in \prince_2$ and vice versa passes through $r$. 	
+	This, however, implies that the preceding vertex $x$ on any such path is either an F-reactant 
+	or an F-catalyst but not an F-reactant, and the succeeding vertex $y$ is an F-product or an 
+	F-catalyst but not an F-product. Then there are four cases and we assume w.l.o.g. that $x\in \prince_1$
+	and $y\in \prince_2$. The simplest case is that $x$ is an F-reactant and $y$ is an F-product. 
+	Then there are edges $(x,r')$ and $(r',y)$, implying that each such path can be substituted by 
+	one passing through $r'$. If $x$ is an F-catalyst but not an F-reactant and $y$ is an F-product, 
+	there is again an edge $(r',y)$. If one catalyst $c$ of $r'$ is in $\prince_1$ then there is a path 
+	from $x$ to $c$, which implies that $r$ is not a cut-vertex. Thus, none of the catalysts of $r'$ 
+	is in $\prince_1$. However, then an F-reactant $x'$ has to be in $\prince_1$ since otherwise $r'$ 
+	would not have any incoming edges in the subgraph induced by $\prince_1$, which would contradict
+	its strong connectivity. This, however, implies that there is a path from $r$ to $x'$ and therefore 
+	from $r$ to $r'$, implying that $r$ is not a cut-vertex. Similar arguments can be made for the case
+	that $x$ is an F-reactant and $y$ and F-catalyst, but not an F-product. Now assume that $x$ and 
+	$y$ are F-catalyst but not an F-reactant and F-product, respectively. Then there is an F-reactant
+	$x'$ and an F-reactant $y'$. If they are not in the same strongly connected component, then the 
+	proof follows the argument of case 1. If they are in the same connected component, the argument 
+	follows case 2 or case 3, depending in which on they are located. The second statement follows 
+	directly from $|\fr|=1$.
 \end{proof}
 
-This result allows us to decompose $\princess$ into strong blocks. We will see in the next section that each of these strong blocks 
-indeed contains an autocatalytic core. Here, however, we continue by stating a necessary condition for a reaction to be a 
-cut-verex.
-\vspace{6pt}
+We can now decompose $\princess$ and $\prince$ into strong blocks. We will see in the next section that 
+each of the strong blocks of $\prince$ indeed contains an autocatalytic core. Here, however, we continue 
+by stating a necessary condition for a reaction to be a cut-vertex.
 
+\vspace{6pt}
 \begin{lemma}
-	Let $\RAF$ be a non-trivial, minimal RAF. If $\fr\in \RAF$ is a cut-vertex in $\princess(\RAF)$, then $\fr$ has at least two 
-	incoming and two outgoing edges. 
+	Let $\RAF$ be a non-trivial, minimal RAF. If $\fr\in \RAF$ is a cut-vertex in $\princess(\RAF)$, then $\fr$ 
+	has at least two incoming and two outgoing edges. 
 \end{lemma}
 \begin{proof}
 	We denote the two blocks of $\princess(\RAF)$ separated by $\fr$ by $\princess_1$ and $\princess_2$. Assume 
@@ -1106,7 +1129,7 @@ cut-verex.
 	and thus $\RAF$ is not a non-trivial, minimal RAF. 
 \end{proof}
 \vspace{6pt}
-In $\prince(\RAF)$, a reaction vertex $r$ can only be a cut-vertex if $\fr$ was a cut-vertex in $\princess$ (\TODO{Make this explicit in a statement above}). 
+In $\prince(\RAF)$, a reaction vertex $r$ can only be a cut-vertex if $\fr$ was a cut-vertex in $\princess$ (see Lemma~\ref{lem:CutVertPP}). 
 For monomolecular catalytic reaction systems, i.e., those that have only one net reactant 
 and one net product, a non-trivial, minimal RAF $\RAF, \ \princess(\RAF)$ thereby contains no cut-vertices. Moreover, by the 
 discussion above, this also holds for $\prince(\RAF)$:
@@ -1116,11 +1139,12 @@ discussion above, this also holds for $\prince(\RAF)$:
 	and one net product, then $\princess(\RAF)$ and $\prince(\RAF)$ is a strong block. 
 \end{corollary}
 \vspace{6pt}
-\holy{RG rewriting up to here}
+\holy{RG rewriting up to here. I have to check that everything really holds not only for $\princess$ but also for $\prince$}
 We continue by identifying a structural property common to any strong block that warrants semipositivity. 
 \vspace{6pt}
 \begin{lemma}\label{lem:cutVertexPureCat}
-	Any strong block of $L$ contains a reaction vertex $r\in \RAF$ that has only \emph{pure} catalysts as reactants.
+	Any strong block of $\princess$ contains a reaction vertex $r\in \RAF$ that has only reactants that are 
+	F-catalysts but not F-reactants.
 \end{lemma}
 \begin{proof}
 	We start with strong blocks $B$ which contain a reaction vertex $r\in \POR^1_{\RAF}(F)$. The net reactants of any of these 
