@@ -109,7 +109,7 @@
 \newcommand{\king}{K}
 \newcommand{\queen}{\mathbf{Q}}
 \newcommand{\princess}{\mathbf{P}}
-\newcommand{\prince}{L}
+\newcommand{\lord}{L}
 \newcommand{\food}{\ensuremath{\mathbf{F}}}
 \newcommand{\SM}{S}
 \newcommand{\closure}[2]{\mathscr{C}_{#1}(#2)}
@@ -808,7 +808,7 @@ that contains no food and waste molecules.
 \begin{corollary}
 	Let $\RAF$ be a non-trivial, minimal RAF. Then 
 		\begin{equation}\label{eq:PrinceGraph}
-			\prince(\RAF) \coloneqq \king'[\closure{\RAF}{\food}\setminus (\food\cup W) \cup \varphi^{-1}(\RAF)]
+			\lord(\RAF) \coloneqq \king'[\closure{\RAF}{\food}\setminus (\food\cup W) \cup \varphi^{-1}(\RAF)]
 		\end{equation}
 	is strongly connected.
 \end{corollary}
@@ -959,7 +959,7 @@ graphs that have been introduced so far.
 	\caption{A minimal RAF in its different representations as a CRS $\Phi$ (\textbf{left})
 	and CRN $\Gamma(\Phi)$ (\textbf{right}): the systems of stoichiometric equations \textbf{(top)},  
 	the complete bipartite graphs $\queen'$ and $\king'$ as well as the subgraph $\princess$ 
-	and $\prince$ in purple and teal, respectively (\textbf{middle}), and the R-graphs  
+	and $\lord$ in purple and teal, respectively (\textbf{middle}), and the R-graphs  
 	$\RGraph(\queen')$ and $\RGraph(\king')$.}
 	\label{ex:CutVertex}
 \end{figure}
@@ -967,11 +967,11 @@ graphs that have been introduced so far.
 Indeed, $\fr_0$ is a cut-vertex, since it has two catalysts, which are part of two different strong blocks 
 $\princess[\{x_1,x_2\} \cup \{\fr_1,\fr_2\}]$ and $\princess[\{y_1,y_2\} \cup \{\fr_1,\fr_3\}]$. The existence 
 of a cut-vertex in $\princess$, however, does not necessarily imply the existence of a cut-vertex in 
-$\prince$. In case an equivalence class contains only one representative, i.e., if $\fr_0$ was 
-co-catalyzed by $x_1$ and $y_1$, then $\princess(\RAF)\simeq \prince(\RAF)$. 
+$\lord$. In case an equivalence class contains only one representative, i.e., if $\fr_0$ was 
+co-catalyzed by $x_1$ and $y_1$, then $\princess(\RAF)\simeq \lord(\RAF)$. 
 \vspace{6pt}
 \begin{corollary}
-	Let $\RAF$ be a minimal, non-trivial RAF. Then $\princess(\RAF)$ and $\prince(\RAF)$ are either a strong block 
+	Let $\RAF$ be a minimal, non-trivial RAF. Then $\princess(\RAF)$ and $\lord(\RAF)$ are either a strong block 
 	or contain a cut-vertex.
 \end{corollary}
 \vspace{6pt}
@@ -1025,7 +1025,7 @@ share a common cut-vertex that is a reaction vertex. Indeed, a species vertex ca
 \vspace{6pt}
 \begin{lemma}\label{lem:CutVertexReac}
 	Let $\RAF$ be a non-trivial, minimal RAF. If $\princess(\RAF)$ is not a strong block, then every 
-	cut-vertex is an F-reaction. Accordingly, if $\prince(\RAF)$ is not a strong block, then every 
+	cut-vertex is an F-reaction. Accordingly, if $\lord(\RAF)$ is not a strong block, then every 
 	cut-vertex is a reaction.
 \end{lemma}
 \begin{proof}
@@ -1036,42 +1036,42 @@ share a common cut-vertex that is a reaction vertex. Indeed, a species vertex ca
 	$x_2\in X(\princess_2)$ such that $x_2$ is a F-reactant, F-product, or F-catalyst for any reaction $r_1\in \FR(\princess_1)$. 
 	Then $\closure{\FR(\princess_1)}{\food}\neq \emptyset$, implying that $\FR(\princess_1)$ is a RAF or (not mutually exclusive) 
 	$\closure{\FR(\princess_2)}{\food}\neq \emptyset$, implying that $\FR(\princess_2)$ is a RAF, in any case, contradicting that  
-	$\RAF$ is a non-trivial, minimal RAF. For $\prince(\RAF)$ the proof follows the same argument with the difference that we have 
-	$\closure{\varphi^{-1}(R(\prince))}{\food}\neq \emptyset$ implies that $\varphi^{-1}(\prince)$ is a RAF or (not mutually exclusive) 
-	$\closure{\varphi^{-1}(R(\prince_2))}{\food}\neq \emptyset$, implying that $\varphi^{-1}(\prince)$ is a RAF, and thereby $\RAF$ 
+	$\RAF$ is a non-trivial, minimal RAF. For $\lord(\RAF)$ the proof follows the same argument with the difference that we have 
+	$\closure{\varphi^{-1}(R(\lord))}{\food}\neq \emptyset$ implies that $\varphi^{-1}(\lord)$ is a RAF or (not mutually exclusive) 
+	$\closure{\varphi^{-1}(R(\lord_2))}{\food}\neq \emptyset$, implying that $\varphi^{-1}(\lord)$ is a RAF, and thereby $\RAF$ 
 	was not minimal.
 \end{proof}	
 \vspace{6pt}
 
-Cut-vertices in $\princess(\RAF)$ and $\prince(\RAF)$ are not unrelated from each other. In 
-particular, only equivalence classes of cut-vertices in $\prince(\RAF)$ can be cut-vertices
-in $\princess(\RAF)$. On top of that, a reaction vertex can only be a cut-vertex in $\prince(\RAF)$
+Cut-vertices in $\princess(\RAF)$ and $\lord(\RAF)$ are not unrelated from each other. In 
+particular, only equivalence classes of cut-vertices in $\lord(\RAF)$ can be cut-vertices
+in $\princess(\RAF)$. On top of that, a reaction vertex can only be a cut-vertex in $\lord(\RAF)$
 if its equivalence class is trivial.
 
 \begin{lemma}\label{lem:CutVertPP}
 	Let $\RAF$ be a non-trivial, minimal RAF. If $r \in \varphi^{-1}(\RAF)$ is a cut-vertex
-	in $\prince(\RAF)$ then $|\fr|=1$ and $\fr$ is a cut-vertex in $\princess(\RAF)$.
+	in $\lord(\RAF)$ then $|\fr|=1$ and $\fr$ is a cut-vertex in $\princess(\RAF)$.
 \end{lemma}
 \begin{proof}
 	Assume $|\fr|>1$, then there is $r'\in \fr, r\neq r'$. Since $r$ is a cut-vertex, it separates 
-	$\prince(\RAF)$ in two connected components $\prince_1, \prince_2$, which both contain
+	$\lord(\RAF)$ in two connected components $\lord_1, \lord_2$, which both contain
 	$r$ and their induced subgraphs are strongly connected. Then any path from a vertex in 
-	$u\in \prince_1$ to a vertex $v\in \prince_2$ and vice versa passes through $r$. We then
-	have two cases. Assume first that an F-reactant $x$ is w.l.o.g. in $\prince_1$, and there is 
-	an F-product $y\in \prince_2$. Then $(x,r',y)$ is a path connecting the two connected 
-	components $\prince_1$ and $\prince_2$, which contradicts that $r$ is a cut-vertex. Assume
+	$u\in \lord_1$ to a vertex $v\in \lord_2$ and vice versa passes through $r$. We then
+	have two cases. Assume first that an F-reactant $x$ is w.l.o.g. in $\lord_1$, and there is 
+	an F-product $y\in \lord_2$. Then $(x,r',y)$ is a path connecting the two connected 
+	components $\lord_1$ and $\lord_2$, which contradicts that $r$ is a cut-vertex. Assume
 	therefore that all F-reactants and F-products are located in one connected component, e.g.
-	$\prince_1$, which implies that one F-catalyst $c$ of $r$ that is neither an F-reactant nor an 
-	F-product is located in $\prince_2$. Clearly, then $r'\in \prince_1$, i.e., all $r''\in \fr: r'' \in 
-	\prince_1$. Since $c$ is $\food$ generated, it is a net product of some reaction $r_2\in \prince_2$, 
-	thus also $\fr_2\in \varphi^{-1}(R(\prince_2))$. Except for catalysts for $r$, no other species 
-	of $\prince_2$ are either reactants for or products of reactions in $\prince_1$. Thus, all catalysts
-	for reactions in $\prince_2$ except of $r$ are in $\prince_2$. Thus $\varphi^{-1}(R(\prince_2)
+	$\lord_1$, which implies that one F-catalyst $c$ of $r$ that is neither an F-reactant nor an 
+	F-product is located in $\lord_2$. Clearly, then $r'\in \lord_1$, i.e., all $r''\in \fr: r'' \in 
+	\lord_1$. Since $c$ is $\food$ generated, it is a net product of some reaction $r_2\in \lord_2$, 
+	thus also $\fr_2\in \varphi^{-1}(R(\lord_2))$. Except for catalysts for $r$, no other species 
+	of $\lord_2$ are either reactants for or products of reactions in $\lord_1$. Thus, all catalysts
+	for reactions in $\lord_2$ except of $r$ are in $\lord_2$. Thus $\varphi^{-1}(R(\lord_2)
 	\setminus \{r\}$ is a RAF which contradicts minimality of $\RAF$.
 \end{proof}
 
-We can now decompose $\princess$ and $\prince$ into strong blocks. We will see in the next section that 
-each of the strong blocks of $\prince$ indeed contains an autocatalytic core. Here, however, we continue 
+We can now decompose $\princess$ and $\lord$ into strong blocks. We will see in the next section that 
+each of the strong blocks of $\lord$ indeed contains an autocatalytic core. Here, however, we continue 
 by stating a necessary condition for a reaction to be a cut-vertex.
 
 \vspace{6pt}
@@ -1090,17 +1090,17 @@ by stating a necessary condition for a reaction to be a cut-vertex.
 	and thus $\RAF$ is not a non-trivial, minimal RAF. 
 \end{proof}
 \vspace{6pt}
-In $\prince(\RAF)$, a reaction vertex $r$ can only be a cut-vertex if $\fr$ was a cut-vertex in $\princess$ (see Lemma~\ref{lem:CutVertPP}). 
+In $\lord(\RAF)$, a reaction vertex $r$ can only be a cut-vertex if $\fr$ was a cut-vertex in $\princess$ (see Lemma~\ref{lem:CutVertPP}). 
 For monomolecular catalytic reaction systems, i.e., those that have only one net reactant 
 and one net product, a non-trivial, minimal RAF $\RAF, \ \princess(\RAF)$ thereby contains no cut-vertices. Moreover, by the 
-discussion above, this also holds for $\prince(\RAF)$:
+discussion above, this also holds for $\lord(\RAF)$:
 \vspace{6pt}
 \begin{corollary}
 	Let $\RAF$ be a non-trivial, minimal RAF. If each $\fr\in \RAF$ has only one net reactant
-	and one net product, then $\princess(\RAF)$ and $\prince(\RAF)$ is a strong block. 
+	and one net product, then $\princess(\RAF)$ and $\lord(\RAF)$ is a strong block. 
 \end{corollary}
 \vspace{6pt}
-\holy{RG rewriting up to here. I have to check that everything really holds not only for $\princess$ but also for $\prince$}
+\holy{RG rewriting up to here. I have to check that everything really holds not only for $\princess$ but also for $\lord$}
 We continue by identifying a structural property common to any strong block that warrants semipositivity. 
 \vspace{6pt}
 \begin{lemma}\label{lem:cutVertexPureCat}
