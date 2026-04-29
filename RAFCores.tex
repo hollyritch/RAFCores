@@ -428,7 +428,7 @@ is given as $\queen(\Phi=(X,\FR, \cat))\coloneqq (X \cup \FR, E_1\cup E_2)$ with
 In fact, the $\sim$-equivalence relation induces a convenient connection between the bipartite graph of 
 $\queen(\Phi)$ and the corresponding bipartite graph of the $K(\Gamma(\Phi))$. 
 \vspace{6pt}
-\begin{lemma}{lem:QuotGraph}
+\begin{lemma}\label{lem:QuotGraph}
 	Let $\Phi\coloneqq (X,\FR, \cat)$ be a CRS with corresponding CRN $\Gamma(\Phi)$. The bipartite
 	directed K\"onig graph graph $\queen\coloneqq \queen(\Phi)$ is the quotient graph of $\king \coloneqq \king(\Gamma(\Phi))$ w.r.t. the
 	equivalence relation $\sim$ as defined in Eq.~\ref{eq:fEquiv}. 
@@ -1056,25 +1056,18 @@ if its equivalence class is trivial.
 	Assume $|\fr|>1$, then there is $r'\in \fr, r\neq r'$. Since $r$ is a cut-vertex, it separates 
 	$\prince(\RAF)$ in two connected components $\prince_1, \prince_2$, which both contain
 	$r$ and their induced subgraphs are strongly connected. Then any path from a vertex in 
-	$u\in \prince_1$ to a vertex $v\in \prince_2$ and vice versa passes through $r$. 	
-	This, however, implies that the preceding vertex $x$ on any such path is either an F-reactant 
-	or an F-catalyst but not an F-reactant, and the succeeding vertex $y$ is an F-product or an 
-	F-catalyst but not an F-product. Then there are four cases and we assume w.l.o.g. that $x\in \prince_1$
-	and $y\in \prince_2$. The simplest case is that $x$ is an F-reactant and $y$ is an F-product. 
-	Then there are edges $(x,r')$ and $(r',y)$, implying that each such path can be substituted by 
-	one passing through $r'$. If $x$ is an F-catalyst but not an F-reactant and $y$ is an F-product, 
-	there is again an edge $(r',y)$. If one catalyst $c$ of $r'$ is in $\prince_1$ then there is a path 
-	from $x$ to $c$, which implies that $r$ is not a cut-vertex. Thus, none of the catalysts of $r'$ 
-	is in $\prince_1$. However, then an F-reactant $x'$ has to be in $\prince_1$ since otherwise $r'$ 
-	would not have any incoming edges in the subgraph induced by $\prince_1$, which would contradict
-	its strong connectivity. This, however, implies that there is a path from $r$ to $x'$ and therefore 
-	from $r$ to $r'$, implying that $r$ is not a cut-vertex. Similar arguments can be made for the case
-	that $x$ is an F-reactant and $y$ and F-catalyst, but not an F-product. Now assume that $x$ and 
-	$y$ are F-catalyst but not an F-reactant and F-product, respectively. Then there is an F-reactant
-	$x'$ and an F-reactant $y'$. If they are not in the same strongly connected component, then the 
-	proof follows the argument of case 1. If they are in the same connected component, the argument 
-	follows case 2 or case 3, depending in which on they are located. The second statement follows 
-	directly from $|\fr|=1$.
+	$u\in \prince_1$ to a vertex $v\in \prince_2$ and vice versa passes through $r$. We then
+	have two cases. Assume first that an F-reactant $x$ is w.l.o.g. in $\prince_1$, and there is 
+	an F-product $y\in \prince_2$. Then $(x,r',y)$ is a path connecting the two connected 
+	components $\prince_1$ and $\prince_2$, which contradicts that $r$ is a cut-vertex. Assume
+	therefore that all F-reactants and F-products are located in one connected component, e.g.
+	$\prince_1$, which implies that one F-catalyst $c$ of $r$ that is neither an F-reactant nor an 
+	F-product is located in $\prince_2$. Clearly, then $r'\in \prince_1$, i.e., all $r''\in \fr: r'' \in 
+	\prince_1$. Since $c$ is $\food$ generated, it is a net product of some reaction $r_2\in \prince_2$, 
+	thus also $\fr_2\in \varphi^{-1}(R(\prince_2))$. Except for catalysts for $r$, no other species 
+	of $\prince_2$ are either reactants for or products of reactions in $\prince_1$. Thus, all catalysts
+	for reactions in $\prince_2$ except of $r$ are in $\prince_2$. Thus $\varphi^{-1}(R(\prince_2)
+	\setminus \{r\}$ is a RAF which contradicts minimality of $\RAF$.
 \end{proof}
 
 We can now decompose $\princess$ and $\prince$ into strong blocks. We will see in the next section that 
