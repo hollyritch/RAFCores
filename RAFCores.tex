@@ -1057,7 +1057,7 @@ if its equivalence class is trivial.
 	$\lord(\RAF)$ in two connected components $\lord_1, \lord_2$, which both contain
 	$r$ and their induced subgraphs are strongly connected. Then any path from a vertex in 
 	$u\in \lord_1$ to a vertex $v\in \lord_2$ and vice versa passes through $r$. We then
-	have two cases. Assume first that an F-reactant $x$ is w.l.o.g. in $\lord_1$, and there is 
+	have two cases. First, assume w.l.o.g. that there is an F-reactant $x \in \lord_1$, and there is 
 	an F-product $y\in \lord_2$. Then $(x,r',y)$ is a path connecting the two connected 
 	components $\lord_1$ and $\lord_2$, which contradicts that $r$ is a cut-vertex. Assume
 	therefore that all F-reactants and F-products are located in one connected component, e.g.
@@ -1066,14 +1066,11 @@ if its equivalence class is trivial.
 	\lord_1$. Since $c$ is $\food$ generated, it is a net product of some reaction $r_2\in \lord_2$, 
 	thus also $\fr_2\in \varphi^{-1}(R(\lord_2))$. Except for catalysts for $r$, no other species 
 	of $\lord_2$ are either reactants for or products of reactions in $\lord_1$. Thus, all catalysts
-	for reactions in $\lord_2$ except of $r$ are in $\lord_2$. Thus $\varphi^{-1}(R(\lord_2)
-	\setminus \{r\}$ is a RAF which contradicts minimality of $\RAF$.
+	for reactions in $\lord_2$ except of $r$ are in $\lord_2$. Thus $\varphi^{-1}(R(\lord_2))
+	\setminus \{\fr\}$ is a RAF which contradicts minimality of $\RAF$.
 \end{proof}
 
-We can now decompose $\princess$ and $\lord$ into strong blocks. We will see in the next section that 
-each of the strong blocks of $\lord$ indeed contains an autocatalytic core. Here, however, we continue 
-by stating a necessary condition for a reaction to be a cut-vertex.
-
+Not all reaction vertices are cut-vertices. We continue by stating a necessary condition for a reaction to be a cut-vertex.
 \vspace{6pt}
 \begin{lemma}
 	Let $\RAF$ be a non-trivial, minimal RAF. If $\fr\in \RAF$ is a cut-vertex in $\princess(\RAF)$, then $\fr$ 
@@ -1090,36 +1087,37 @@ by stating a necessary condition for a reaction to be a cut-vertex.
 	and thus $\RAF$ is not a non-trivial, minimal RAF. 
 \end{proof}
 \vspace{6pt}
-In $\lord(\RAF)$, a reaction vertex $r$ can only be a cut-vertex if $\fr$ was a cut-vertex in $\princess$ (see Lemma~\ref{lem:CutVertPP}). 
-For monomolecular catalytic reaction systems, i.e., those that have only one net reactant 
-and one net product, a non-trivial, minimal RAF $\RAF, \ \princess(\RAF)$ thereby contains no cut-vertices. Moreover, by the 
-discussion above, this also holds for $\lord(\RAF)$:
-\vspace{6pt}
-\begin{corollary}
-	Let $\RAF$ be a non-trivial, minimal RAF. If each $\fr\in \RAF$ has only one net reactant
-	and one net product, then $\princess(\RAF)$ and $\lord(\RAF)$ is a strong block. 
-\end{corollary}
-\vspace{6pt}
-\holy{RG rewriting up to here. I have to check that everything really holds not only for $\princess$ but also for $\lord$}
-We continue by identifying a structural property common to any strong block that warrants semipositivity. 
+
+\subsubsection{Strong Blocks}
+
+We can now decompose $\princess$ and $\lord$ into strong blocks. We will see in the next section that 
+each of the strong blocks of $\lord$ indeed contains an autocatalytic core. We continue by identifying a 
+structural property common to any strong block that warrants semipositivity. To this end, we call a species $x$
+a pure F-catalyst for an F-reaction $\fr$ if $x$ is neither an F-reactant nor an F-product. (\TODO{Check proof
+again carefully}).
 \vspace{6pt}
 \begin{lemma}\label{lem:cutVertexPureCat}
-	Any strong block of $\princess$ contains a reaction vertex $r\in \RAF$ that has only reactants that are 
-	F-catalysts but not F-reactants.
+	For a non-trivial, minimal RAF $\RAF$ any strong block $B$ of $\princess(\RAF)$ contains an F-reaction 
+	$\fr\in \FR(B)$ such that all reactants for $\fr$ that are located in B are pure F-catalysts. 
+	\begin{equation}
+		 \forall x\in X(B): s^-_{x\fr}>0: s^-_{x\fr}=k_{x\fr}
+	\end{equation}
 \end{lemma}
 \begin{proof}
-	We start with strong blocks $B$ which contain a reaction vertex $r\in \POR^1_{\RAF}(F)$. The net reactants of any of these 
-	reactions are subsets of $F$. Since $L[B]$ is strongly-connected, it has at least one \emph{pure} catalyst as reactant. Any 
-	other strong block $B'$ contains a cut-vertex $r^*\in \RAF$. We start with the simple case in which $B'$ contains only one cut-vertex. 
-	With $h(r^*)$ as defined in Eq.~\ref{eq:Gen} we observe that $h(r^*)< h(r), \ \forall \ r\in R(B')\setminus \{r^*\}$. Since $L[B']$ is 
-	strongly connected, it has at least one reactant and one product. Assume a reactant $x\in X(B')$ 
-	is a net reactant. This, however, implies that $x$ is a product of a reaction $r\in R(S): h(r)< h(r^*)$, a contradiction. Assume 
-	now that $B'$ has cut-vertices: $r^*_1, \ldots, r^*_k$. Again, we observe, that there is an $r^*_j: h(r^*_j)< h(r), \forall \ r\in R(B')
-	\setminus \{r^*_j\}$. Assume now that every cut-vertex has a net reactant $x_i\in X(S')$. Then each $x_i$ is a product of some reaction 
-	in $r_i$, and it follows that $h(r_i)<g(r^*_i)$. This contradicts the previous observation, and the claim follows.
+	We start with strong blocks $B$ which contain a reaction vertex $\fr: \rgen(\fr)=1$. The F-reactants of any of these 
+	reactions are subsets of $\food$. Since $\princess[B]$ is strongly-connected, it has at least one F-catalyst that is 
+	not an F-reactant as a reactant. Any other strong block $B'$ contains a cut-vertex $\fr^*\in \RAF$. We start with 
+	the simple case in which $B'$ contains only one cut-vertex. We observe that $\rgen(r^*)< \rgen(r), \ \forall \ r\in 
+	\FR(B')\setminus \{r^*\}$. Since $\princess[B']$ is strongly connected, it has at least one reactant and one 
+	product. Assume a reactant $x\in X(B')$ for $\fr^*$ is als an F-reactant for $\fr^*$. This, however, implies that $x$ is 
+	an F-product of a reaction $r\in \FR(B')\Rightarrow \rgen(r)< \rgen(r^*)$, a contradiction. Assume now that $B'$ has 
+	cut-vertices: $r^*_1, \ldots, r^*_k$. Again, we observe, that there is an $r^*_j: \rgen(r^*_j)< \rgen(r), \forall \ r\in 
+	\FR(B') \setminus \{r^*_j\}$. Assume now that $r_j^*$ has an F-reactant $x_j\in X(B')$. Then $x_j$ is a product of 
+	some reaction in $r_i$, and it follows that $\rgen(r_i)<\rgen(r^*_j)$. This contradicts the previous observation, and
+	the claim follows.
 \end{proof}
 \vspace{6pt}
-
+\holy{RG up to here}
 A direct consequence of Lemma~\ref{lem:cutVertexPureCat} is that the stoichiometric submatrix reflecting the strong block $B$, 
 always contains a non-negative column. This column is induced by a reaction $r^*\in R(B)$ that has only catalysts as reactants 
 in $B$ and at least one positive entry for a product $y^*\in X(B): s^+_{yr^*}>0$:
