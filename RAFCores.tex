@@ -122,6 +122,7 @@
 \newcommand{\fr}[0]{\mathbf{r}}
 \newcommand{\net}[1]{\hat{#1}}
 \newcommand{\RAF}[0]{\mathbf{R}'}
+\newcommand{\block}[0]{\mathbf{B}}
 \newcommand{\PO}[0]{d}
 \newcommand{\POR}[0]{\mathscr{R}}
 \newcommand{\POX}[0]{\mathscr{X}}
@@ -423,7 +424,7 @@ is given as $\queen(\Phi=(X,\FR, \cat))\coloneqq (X \cup \FR, E_1\cup E_2)$ with
 	\end{split}
 \end{equation}
 
-\subsection{Relationship between CRN and CRS}
+\subsection{The Relationship between CRN and CRS}
 
 In fact, the $\sim$-equivalence relation induces a convenient connection between the bipartite graph of 
 $\queen(\Phi)$ and the corresponding bipartite graph of the $K(\Gamma(\Phi))$. 
@@ -443,7 +444,7 @@ In the monocatalyst case, for example, where each F-reaction has exactly one cat
 $\vert \fr \vert = 1, \forall \fr \in \FR$. Thus, each reaction vertex of $\queen(\Phi)$ is substituted 
 in $\queen(\Gamma(\Phi))$ by its single representative, while all edges to adjacent vertices are 
 conserved. This yields that $\queen(\Phi)$ and $\king(\Gamma(\Phi))$ are isomorphic. In turn, 
-if one equivalence class contains more than $1$ representative, then 
+if one equivalence class contains more than one representative, then 
 $|V(\king(\Gamma(\Phi))|>|V(\queen(\Phi)|$, which directly implies that 
 $\king(\Gamma(\Phi))\not \simeq \king(\Gamma(\Phi))$.
 
@@ -458,13 +459,14 @@ As a remark, we might note that Lemma~\ref{lem:IsoQK} not only holds in the mono
 but for every CRS that exhibits only trivial equivalence classes, in particular also for the uncatalyzed 
 case.
 
-A known result for quotient graphs is that $\queen(\Phi)$ is strongly-connected whenever 
-$\king(\Gamma(\Phi))$ is strongly connected \TODO{cite TBA}. By Lemma~\ref{lem:IsoQK}, the 
-converse also holds if each equivalence class is of size $1$. In general, however, this 
-is not true, in particular, if one F-reaction has two alternative catalysts, and one of them is not 
-connected by a path originating in any of the products. Such an example is depicted in 
-Fig.~\ref{fig:QScKNot}. We will see that we regain this property by requiring minimality
-on the set of reflexively autocatalytic sets (RAFs).
+An obvious result for quotient graphs is that $\queen(\Phi)$ is strongly-connected whenever 
+$\king(\Gamma(\Phi))$ is strongly connected. This follows immediately from the fact that 
+strong connectivity is preserved under surjective digraph homomorphisms \cite{hell_graphs_2026}. 
+By Lemma~\ref{lem:IsoQK}, the converse also holds if each equivalence class is of size $1$. 
+In general, however, this is not true, in particular, if one F-reaction has two alternative 
+catalysts, and one of them is not connected by a path originating in any of the products. 
+Such an example is depicted in Fig.~\ref{fig:QScKNot}. We will see that we regain this 
+property by requiring minimality on the set of reflexively autocatalytic sets (RAFs).
 \begin{figure}[htb]
 \centering
 	\begin{minipage}[c]{0.4\textwidth}
@@ -604,8 +606,14 @@ and a reaction $\fr_1$ precedes a reaction $\fr_2$, i.e.:
 \begin{equation}
 	\fr_1\preceq \fr_2 \Leftrightarrow \rgen(\fr_1) \leq \rgen(\fr_2)
 \end{equation}
-We refer to the values of $\sgen$ and $\rgen$ as the generation of a reaction or metabolite. A \emph{constructive
-reflexively autocatalytic} set (CAF) is a RAF such that for each F-reaction $\fr$ all $x\in \feducts(x)$ satisfy 
+We refer to the values of $\sgen$ and $\rgen$ as the generation of a reaction or metabolite. A simple observation is that
+since each representative of a $\sim$-equivalence class has the same F-reactants and F-products, with a slight abuse of 
+notation the following holds:
+\begin{equation}
+	\gamma(\fr)=\gamma(r), \forall r\in \fr
+\end{equation}
+
+A \emph{constructive reflexively autocatalytic} set (CAF) is a RAF such that for each F-reaction $\fr$ all $x\in \feducts(x)$ satisfy 
 $\sgen(x)<\rgen(\fr)$ and there is at least one $r\in \fr$ such that all catalyst $x\in \cat(r)$ satisfy $\sgen(x)< \rgen(\fr)$.
 
 One important consequence of the partial order is that if a RAF contains two $\sim$~equivalence classes 
@@ -666,7 +674,7 @@ only one F-reaction.
 	Let $\fr_r,\fr_2 \in \RAF: \fr_1\neq \fr_2, \hat{\fr}_1=\hat{\fr}_2$. Then $\fr_1\in \RAF\Rightarrow \fr_2\notin \RAF$.
 \end{corollary}
 \vspace{6pt} 
-Still, they might contain F-reactions that have more than $1$ representative, as the following example shows.
+Still, they might contain F-reactions that have more than one representative, as the following example shows.
 \begin{equation}
 	\begin{split}
 		r'_1&: f + (x_1) \rightarrow x_3 + (x_1)\\
@@ -681,7 +689,7 @@ According to Theorem 3.1 of \cite{bridging_golnik_2026}, an autocatalytic elemen
 in a RAF as long as it is not a CAF. Minimal RAFs exhibit the convenient property that they are not CAFs 
 as long as they are non-trivial, i.e., if they are composed of more than a single reaction.
 \vspace{6pt}
-\begin{lemma}
+\begin{lemma}\label{lem:trivRAFCAF}
 	Let $(X,\RAF,\cat)$ be a CRS with food-set $\food$ and $\RAF$ a minimal RAF. Then $\RAF$ is a CAF if and only
 	if it is trivial. 
 \end{lemma}
@@ -711,7 +719,7 @@ in \cite{steel_minimal_2013}. It was shown that the R-graph for each such
 RAF contains an elementary circuit. In the next subsection, we will therefore turn to investigate
 more thoroughly the structural properties of two graph representations of non-trivial, minimal RAFs, 
 the bipartite and the reaction graph, in both the CRS and the CRN setting. In particular,
-we will fortify the result obtained by Steel et al. in \cite{steel_minimal_2013}.
+we will strengthen the result obtained by Steel et al. in \cite{steel_minimal_2013}.
 
 \subsection{The Bipartite and Reaction Graphs of Minimal RAFs}
 
@@ -730,15 +738,15 @@ as the graphs
 		\RGraph(\king') &\coloneqq (\varphi^{-1}(\RAF), E), E\coloneqq \{(r_1,r_2) \ \vert \ (\fr_1,\fr_2)\in E(\RGraph(\queen')\},
 	\end{split}
 \end{equation}
-respectively. In line with calling elements of $\food$ food-molecules, we kindly refer to molecules from $W$ as waste molecules. 
-
+respectively. In line with calling elements of $\food$ food-molecules, we kindly refer to molecules of
 \begin{equation}\label{eq:Waste}
-	W\coloneqq \{x\in \closure{\RAF}{\food} \ | \ \nexists \fr \in \RAF \text{ s.t. } s^-_{xr}>0\},		
+	W\coloneqq \{x\in \closure{\RAF}{\food} \ | \ \nexists \fr \in \RAF \text{ s.t. } s^-_{xr}>0\}		
 \end{equation}
+as waste molecules.
 
-\subsubsection{Strong-connectivity}
+\subsubsection{Strong connectivity}
 
-We start this section by showing that the $\RGraph$ of a non-trivial, minimal $\RAF$ in the CRS setting, 
+We start this section by showing that the R-graph of a non-trivial, minimal RAF in the CRS setting, 
 $\RGraph(\queen)$, is strongly connected.
 
 \vspace{6pt}
@@ -754,37 +762,26 @@ $\RGraph(\queen)$, is strongly connected.
 	implies that $\RAF_1$ is itself a $\RAF$ which contradicts the minimality of $\RAF$.
 \end{proof}
 \vspace{6pt}
-Before we proceed, we summarize the results obtained so far in the following statement.
+Lemmata~\ref{lem:trivRAFCAF} and \ref{lem:RGQSC} can be summarized to the following statement.
 \vspace{6pt}
 \begin{theorem}\label{thm:RAFStrCon}
 	Let $\RAF$ be a minimal RAF. Then $\RAF$ is non-trivial if and only if the graph $\RGraph(\queen')$ 
-	is not a single F-reaction and is strongly connected.
+	is not a single F-reaction and strongly connected.
 \end{theorem}
 \vspace{6pt}
 
-The strong connectivity of a quotient graph does not guarantee strong connectivity of the original graph 
-(see Fig.~\ref{fig:QScKNot}). It is not hard to see that $\RGraph(\queen')$ is indeed the 
-quotient graph for $\RGraph(\king')$. Moreover, for non-trivial, minimal RAFs, $\RGraph(\king')$ is also 
-strongly connected. 
+It is not hard to see that $\RGraph(\queen')$ is also the quotient graph for $\RGraph(\king')$. 
+Fig.~\ref{fig:QScKNot} illustrates that the strong connectivity of a quotient graph does not guarantee 
+strong connectivity of the original graph. However, for non-trivial, minimal RAFs, $\RGraph(\king')$ is 
+indeed strongly connected. 
 \vspace{6pt}
-\begin{lemma}\label{lem:KSC}
+\begin{lemma}[Proof: SI]\label{lem:KSC}
 	Let $\RAF$ be a non-trivial, minimal RAF. Then $\RGraph(\king')$ is strongly connected.
 \end{lemma}
-\begin{proof}
-	Lemma~\ref{lem:RGQSC} has shown that $\RGraph(\queen')$ is strongly connected for a non-trivial 
-	minimal RAF. Assume now that $\RGraph(\king')$ is not strongly connected, which implies the existence 
-	of two strongly connected components of $R'\coloneqq \varphi^{-1}(\RAF), R'_1, R'_2$. Then either $R'_1$ 
-	and $R'_2$ partition $R$ such that all representatives of an equivalence class are contained in the same 
-	component, or not. The first case, $\varphi^{-1}(R'_1)\cap \varphi^{-1}(R'_2)=\emptyset$, implies that 
-	$\RGraph(\queen')$ is not strongly connected, which contradicts that $\RAF$ is a non-trivial, minimal RAF. 
-	Thus, $\varphi^{-1}(R'_1)\cap \varphi^{-1}(R'_2)=\emptyset$ and there are $r'\in R'_1, r''\in R'_2$. W.l.o.g.
-	we assume that there is no path from any $r_2\in R'_2$ to any $r_1\in R'_1$. Then, however, there is also
-	no edge $(r', r_1)$ for any $r_1\in R'_1$ since there would otherwise also be an edge $(r'', r_1)$. Hence,
-	$r'\notin R'_1$, a contradiction.
-\end{proof}
-The subgraph of $\queen'$ containing only vertices that have at least one incoming and one outgoing edge is 
-also strongly connected. This subgraph, however, might still contain food molecules. The next statement
-shows that their removal does not destroy strong connectivity.
+\vspace{6pt}
+It is readily verified that the subgraphs of $\queen'$ and $\king'$ containing only those vertices that have at least 
+one incoming and one outgoing edge are strongly connected as well. However, these subgraphs might still contain 
+food molecules. The next two statements show that their removal does not destroy strong connectivity.
 \vspace{6pt}
 \begin{lemma}\label{lem:PSC}
 	Let $\RAF$ be a non-trivial, minimal RAF. Then 
@@ -817,9 +814,8 @@ that contains no food and waste molecules.
 \subsubsection{Cut-vertices}
 
 In general, \emph{minimal} RAFs are not necessarily strong blocks, as is captured 
-in the example of Fig.~\ref{ex:CutVertex}. We use this example to summarize the 
-graphs that have been introduced so far.
-
+in the example of Fig.~\ref{ex:CutVertex}, which summarizes the graphs that 
+have been introduced so far.
 \begin{figure}[htb]
 	\centering
 	\begin{minipage}[c]{0.49\textwidth}
@@ -963,11 +959,10 @@ graphs that have been introduced so far.
 	$\RGraph(\queen')$ and $\RGraph(\king')$.}
 	\label{ex:CutVertex}
 \end{figure}
-
 Indeed, $\fr_0$ is a cut-vertex, since it has two catalysts, which are part of two different strong blocks 
 $\princess[\{x_1,x_2\} \cup \{\fr_1,\fr_2\}]$ and $\princess[\{y_1,y_2\} \cup \{\fr_1,\fr_3\}]$. The existence 
 of a cut-vertex in $\princess$, however, does not necessarily imply the existence of a cut-vertex in 
-$\lord$. In case an equivalence class contains only one representative, i.e., if $\fr_0$ was 
+$\lord$. In case an equivalence class contains only one representative, i.e., if $\fr_0$ were 
 co-catalyzed by $x_1$ and $y_1$, then $\princess(\RAF)\simeq \lord(\RAF)$. 
 \vspace{6pt}
 \begin{corollary}
@@ -975,8 +970,8 @@ co-catalyzed by $x_1$ and $y_1$, then $\princess(\RAF)\simeq \lord(\RAF)$.
 	or contain a cut-vertex.
 \end{corollary}
 \vspace{6pt}
-The occurrence of cut-vertices is not restricted to reactions with two catalyzations. To see this, we 
-consider the example in Fig.~\ref{ex:CutVertex2}.
+The occurrence of cut-vertices is not restricted to reactions with two catalyzations, as emphasized in the example 
+of Fig.~\ref{ex:CutVertex2}.
 \begin{figure}[bth]
 	\begin{minipage}[c]{0.49\textwidth}
 		\begin{equation}
@@ -1021,109 +1016,77 @@ consider the example in Fig.~\ref{ex:CutVertex2}.
 	\label{ex:CutVertex2}
 \end{figure}
 As in Fig.~\ref{ex:CutVertex}, both strong blocks, i.e., $\princess[\{x_1,x_2\}\cup \{\fr_1,\fr_2\}]$ and $\princess[\{x_3,x_4\}\cup \{\fr_2,\fr_3\}]$ 
-share a common cut-vertex that is a reaction vertex. Indeed, a species vertex cannot be a cut-vertex, as the next lemma shows.
+share a common cut-vertex that is a reaction vertex. Indeed, a species vertex cannot be a cut-vertex.
 \vspace{6pt}
-\begin{lemma}\label{lem:CutVertexReac}
+\begin{lemma}[Proof: SI]\label{lem:CutVertexReac}
 	Let $\RAF$ be a non-trivial, minimal RAF. If $\princess(\RAF)$ is not a strong block, then every 
 	cut-vertex is an F-reaction. Accordingly, if $\lord(\RAF)$ is not a strong block, then every 
 	cut-vertex is a reaction.
 \end{lemma}
-\begin{proof}
-	Assume there is a cut-vertex $w\in X(\princess)$. Then $\princess[V(\princess)\setminus \{w\}]$ is composed of at least two connected
-	components $\princess_1,\princess_2$. Then for any two vertices $v\in \princess_1$ and $u\in \princess_2$ we have 
-	$w\in P_{uv}$ and $w\in P_{vu}$ for arbitrary paths connecting $u$ and $v$. Therefore, there is no $x_1\in X(\princess_1)$ 
-	such that $x_1$ is an F-reactant, F-product, or F-catalyst for any reaction $r_2\in \FR(\princess_2)$, and there is no 
-	$x_2\in X(\princess_2)$ such that $x_2$ is a F-reactant, F-product, or F-catalyst for any reaction $r_1\in \FR(\princess_1)$. 
-	Then $\closure{\FR(\princess_1)}{\food}\neq \emptyset$, implying that $\FR(\princess_1)$ is a RAF or (not mutually exclusive) 
-	$\closure{\FR(\princess_2)}{\food}\neq \emptyset$, implying that $\FR(\princess_2)$ is a RAF, in any case, contradicting that  
-	$\RAF$ is a non-trivial, minimal RAF. For $\lord(\RAF)$ the proof follows the same argument with the difference that we have 
-	$\closure{\varphi^{-1}(R(\lord))}{\food}\neq \emptyset$ implies that $\varphi^{-1}(\lord)$ is a RAF or (not mutually exclusive) 
-	$\closure{\varphi^{-1}(R(\lord_2))}{\food}\neq \emptyset$, implying that $\varphi^{-1}(\lord)$ is a RAF, and thereby $\RAF$ 
-	was not minimal.
-\end{proof}	
 \vspace{6pt}
 
 Cut-vertices in $\princess(\RAF)$ and $\lord(\RAF)$ are not unrelated from each other. In 
 particular, only equivalence classes of cut-vertices in $\lord(\RAF)$ can be cut-vertices
 in $\princess(\RAF)$. On top of that, a reaction vertex can only be a cut-vertex in $\lord(\RAF)$
 if its equivalence class is trivial.
-
+\vspace{6pt}
 \begin{lemma}\label{lem:CutVertPP}
 	Let $\RAF$ be a non-trivial, minimal RAF. If $r \in \varphi^{-1}(\RAF)$ is a cut-vertex
 	in $\lord(\RAF)$ then $|\fr|=1$ and $\fr$ is a cut-vertex in $\princess(\RAF)$.
 \end{lemma}
-\begin{proof}
-	Assume $|\fr|>1$, then there is $r'\in \fr, r\neq r'$. Since $r$ is a cut-vertex, it separates 
-	$\lord(\RAF)$ in two connected components $\lord_1, \lord_2$, which both contain
-	$r$ and their induced subgraphs are strongly connected. Then any path from a vertex in 
-	$u\in \lord_1$ to a vertex $v\in \lord_2$ and vice versa passes through $r$. We then
-	have two cases. First, assume w.l.o.g. that there is an F-reactant $x \in \lord_1$, and there is 
-	an F-product $y\in \lord_2$. Then $(x,r',y)$ is a path connecting the two connected 
-	components $\lord_1$ and $\lord_2$, which contradicts that $r$ is a cut-vertex. Assume
-	therefore that all F-reactants and F-products are located in one connected component, e.g.
-	$\lord_1$, which implies that one F-catalyst $c$ of $r$ that is neither an F-reactant nor an 
-	F-product is located in $\lord_2$. Clearly, then $r'\in \lord_1$, i.e., all $r''\in \fr: r'' \in 
-	\lord_1$. Since $c$ is $\food$ generated, it is a net product of some reaction $r_2\in \lord_2$, 
-	thus also $\fr_2\in \varphi^{-1}(R(\lord_2))$. Except for catalysts for $r$, no other species 
-	of $\lord_2$ are either reactants for or products of reactions in $\lord_1$. Thus, all catalysts
-	for reactions in $\lord_2$ except of $r$ are in $\lord_2$. Thus $\varphi^{-1}(R(\lord_2))
-	\setminus \{\fr\}$ is a RAF which contradicts minimality of $\RAF$.
-\end{proof}
 
-Not all reaction vertices are cut-vertices. We continue by stating a necessary condition for a reaction to be a cut-vertex.
-\vspace{6pt}
-\begin{lemma}
-	Let $\RAF$ be a non-trivial, minimal RAF. If $\fr\in \RAF$ is a cut-vertex in $\princess(\RAF)$, then $\fr$ 
-	has at least two incoming and two outgoing edges. 
-\end{lemma}
-\begin{proof}
-	We denote the two blocks of $\princess(\RAF)$ separated by $\fr$ by $\princess_1$ and $\princess_2$. Assume 
-	now that $\fr$ has only one incoming edge. Then there can only be one catalyst $c_\fr$, which is also the 
-	only net reactant. Assume w.l.o.g. that $c_\fr \in V(\princess_1)$. Then, however, there is no path from any 
-	$u\in V(\princess_2)$ to any $v\in V(\princess_1)$. Thus, $\princess$ is not strongly connected, and thereby $\RAF$ 
-	is not minimal. Assume now that $\fr$ has only one outgoing edge. Then it has only one catalyst $c_\fr$ again, which is the net 
-	product of $\fr$. Assume again w.l.o.g. that $c_\fr\in V(\princess_2)$. Then, there is again no path from any 
-	$u\in V(\princess_2)$ to any $v\in V(\princess_1)$ which implies that $\princess(\RAF)$ was not strongly connected 
-	and thus $\RAF$ is not a non-trivial, minimal RAF. 
-\end{proof}
-\vspace{6pt}
+
+%Not all reaction vertices are cut-vertices. The following Lemma states a necessary condition for a reaction 
+%to be a cut-vertex.
+%\vspace{6pt}
+%\begin{lemma}
+%	Let $\RAF$ be a non-trivial, minimal RAF. If $\fr\in \RAF$ is a cut-vertex in $\princess(\RAF)$, then $\fr$ 
+%	has at least two incoming and two outgoing edges. 
+%\end{lemma}
+%\begin{proof}
+%	We denote the two blocks of $\princess(\RAF)$ separated by $\fr$ by $\princess_1$ and $\princess_2$. Assume 
+%	now that $\fr$ has only one incoming edge. Then there can only be one catalyst $c_\fr$, which is also the 
+%	only net reactant. Assume w.l.o.g. that $c_\fr \in V(\princess_1)$. Then, however, there is no path from any 
+%	$u\in V(\princess_2)$ to any $v\in V(\princess_1)$. Thus, $\princess$ is not strongly connected, and thereby $\RAF$ 
+%	is not minimal. Assume now that $\fr$ has only one outgoing edge. Then it has only one catalyst $c_\fr$ again, which is the net 
+%	product of $\fr$. Assume again w.l.o.g. that $c_\fr\in V(\princess_2)$. Then, there is again no path from any 
+%	$u\in V(\princess_2)$ to any $v\in V(\princess_1)$ which implies that $\princess(\RAF)$ was not strongly connected 
+%	and thus $\RAF$ is not a non-trivial, minimal RAF. 
+%\end{proof}
+%\vspace{6pt}
 
 \subsubsection{Strong Blocks}
 
-We can now decompose $\princess$ and $\lord$ into strong blocks. We will see in the next section that 
-each of the strong blocks of $\lord$ indeed contains an autocatalytic core. We continue by identifying a 
-structural property common to any strong block that warrants semipositivity. To this end, we call a species $x$
-a pure F-catalyst for an F-reaction $\fr$ if $x$ is neither an F-reactant nor an F-product. (\TODO{Check proof
-again carefully}).
+With the existence of cut-vertices that can only be reaction vertices, $\princess$ and $\lord$ can be decomposed
+ into strong blocks. Each of these strong blocks of $\lord$, indeed, contains an autocatalytic core, which is warranted
+ by a unique structural property common to any strong block that guarantees semipositivity. To this end, we 
+ call a species $x$ a pure F-catalyst for an F-reaction $\fr$ if $x$ is neither an F-reactant nor an F-product. 
 \vspace{6pt}
 \begin{lemma}\label{lem:cutVertexPureCat}
-	For a non-trivial, minimal RAF $\RAF$ any strong block $B$ of $\princess(\RAF)$ contains an F-reaction 
-	$\fr\in \FR(B)$ such that all reactants for $\fr$ that are located in B are pure F-catalysts. 
+	For a non-trivial, minimal RAF $\RAF$ any strong block $\block$ of $\princess(\RAF)$ contains an F-reaction 
+	$\fr\in \FR(\block)$ such that all reactants for $\fr$ that are located in $\block$ are pure F-catalysts, in symbols:
 	\begin{equation}
 		 \forall x\in X(B): s^-_{x\fr}>0: s^-_{x\fr}=k_{x\fr}
 	\end{equation}
 \end{lemma}
-\begin{proof}
-	We start with strong blocks $B$ which contain a reaction vertex $\fr: \rgen(\fr)=1$. The F-reactants of any of these 
-	reactions are subsets of $\food$. Since $\princess[B]$ is strongly-connected, it has at least one F-catalyst that is 
-	not an F-reactant as a reactant. Any other strong block $B'$ contains a cut-vertex $\fr^*\in \RAF$. We start with 
-	the simple case in which $B'$ contains only one cut-vertex. We observe that $\rgen(r^*)< \rgen(r), \ \forall \ r\in 
-	\FR(B')\setminus \{r^*\}$. Since $\princess[B']$ is strongly connected, it has at least one reactant and one 
-	product. Assume a reactant $x\in X(B')$ for $\fr^*$ is als an F-reactant for $\fr^*$. This, however, implies that $x$ is 
-	an F-product of a reaction $r\in \FR(B')\Rightarrow \rgen(r)< \rgen(r^*)$, a contradiction. Assume now that $B'$ has 
-	cut-vertices: $r^*_1, \ldots, r^*_k$. Again, we observe, that there is an $r^*_j: \rgen(r^*_j)< \rgen(r), \forall \ r\in 
-	\FR(B') \setminus \{r^*_j\}$. Assume now that $r_j^*$ has an F-reactant $x_j\in X(B')$. Then $x_j$ is a product of 
-	some reaction in $r_i$, and it follows that $\rgen(r_i)<\rgen(r^*_j)$. This contradicts the previous observation, and
-	the claim follows.
-\end{proof}
 \vspace{6pt}
-\holy{RG up to here}
-A direct consequence of Lemma~\ref{lem:cutVertexPureCat} is that the stoichiometric submatrix reflecting the strong block $B$, 
-always contains a non-negative column. This column is induced by a reaction $r^*\in R(B)$ that has only catalysts as reactants 
-in $B$ and at least one positive entry for a product $y^*\in X(B): s^+_{yr^*}>0$:
+The same statement holds for $\lord(\RAF)$ with the small difference that some of the cut-vertices $\fr\in \RAF$ 
+have no representatives that are cut-vertices in $\lord(\RAF)$.
+\vspace{6pt}
+\begin{corollary}\label{cor:cutVertexPureCat}
+	Every strong block $\block$ of $\lord(\RAF)$ contains a reaction $r\in (\varphi^{-1}(\FR))(\block)$ such that all reactants for 
+	$r$ that are located in $\block$ are pure F-catalysts, in symbols:
+	\begin{equation}
+		 \forall x\in X(\block): s^-_{xr}>0: s^-_{xr}=k_{xr}
+	\end{equation}
+\end{corollary}
+\vspace{6pt}
+A direct consequence of Cor~\ref{cor:cutVertexPureCat} is that the stoichiometric submatrix reflecting the strong block $\block$ 
+always contains a non-negative column. This column is induced by a reaction $r^*\in R(\block)$ that has only reactants that are
+F-catalysts but not F-reactants within $\block$ and at least one positive entry for a product $y^*\in X(\block): s^+_{yr^*}>0$:
 
 \begin{equation}
-	\SM[X(B), R(B)] = \begin{pmatrix}
+	\SM[X(\block), R(\block)] = \begin{pmatrix}
 						& 	\ldots 	& 	r^* 		& \ldots \\
 						& 	\ddots 	& 	\vdots 	& \ddots \\
 					x^* 	& 	\ldots 	& 	0 		& \ldots \\
@@ -1133,30 +1096,6 @@ in $B$ and at least one positive entry for a product $y^*\in X(B): s^+_{yr^*}>0$
 	\end{pmatrix}
 \end{equation}
 
-Cut-vertices with only catalysts as reactants play an important role in the partial order of a strong block. To this 
-end, we define the set of \emph{pure reactions} by 
-\begin{equation}\label{eq:pureReactions}
-	R^*(B)\coloneqq \{r\in R(B) \ | \ s^-_{xr}>0 \Rightarrow s^+_{xr}=s^-_{xr}, \forall x\in X(B)\}
-\end{equation}
-In particular, there is always at least one \emph{pure reaction} that has the lowest generation number of all 
-reactions within the block. 
-\vspace{6pt}
-\begin{lemma}\label{lem:genPureReacs}
-	Let $B$ be a strong block of $L$. Then there is $r^*\in R(B*): g(r^*)\leq g(r), \forall~r\in R(B)$ and 
-	$g(r^*)<g(r), \forall r\in R(B)\setminus R^*(B)$.
-\end{lemma}
-\begin{proof}
-	Let $B$ be a strong block of $L$. We choose an $r^*\in R^*(B)$ and assume $|R^*(B)|=1$. 
-	Assume now there is an $r\in R(B)\setminus \{r^*\} : h(r) < h(r^*)$. Then $r$ has a net-reactant 
-	$x \in X(B)$ since $B$. Thus, there is a reaction $r'$ that has $x$ as a net-product, which implies 
-	$h(r')< h(r)$. If $r'$ has a net-reactant $x'\in X(B)$, the same argument holds for $r'$ and, i.e., for 
-	all reactions that have a net-reactant in $B$, a contradiction since $B$ is finite. Thus $h(r*)<h(r), 
-	\forall r\in R(B)\setminus \{r*\}$. Assume now $|R^*(B)|>1$. We may then chose $r^*\in R^*(B): 
-	g(r^*)\leq g(r') \forall r'\in R^*(B)$. Assume now there is $r\in R(B): h(r)<h(r^*)$. Then $r \notin R^*(B)$ 
-	due to the choice of $r^*$. For $r\in R(B)\setminus R^*(B)$, we apply the upper argument and obtain 
-	the same contradiction as above.
-\end{proof}
-\vspace{6pt}
 Any pure reaction vertex is located on an elementary circuit. These circuits may have metabolite-to-reaction,
 so-called MR-, chords. However, in each strong block, there is always one elementary circuit containing 
 a pure reaction that is MR-chordfree. For brevity of presentation, the \emph{canonical} CS of an elementary 

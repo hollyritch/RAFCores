@@ -108,8 +108,11 @@
 \newcommand{\whatever}{\mbox{\,.\,}}
 \newcommand{\king}{K}
 \newcommand{\queen}{\mathbf{Q}}
+\newcommand{\princess}{\mathbf{P}}
+\newcommand{\lord}{L}
 \newcommand{\food}{\ensuremath{\mathbf{F}}}
 \newcommand{\SM}{\mathbb{S}}
+\newcommand{\block}[0]{\mathbf{B}}
 \newcommand{\closure}[2]{\mathscr{C}_{#1}(#2)}
 \newcommand{\cl}[0]{c}
 \newcommand{\CR}[0]{\mathcal{R}}
@@ -119,6 +122,9 @@
 \newcommand{\fr}[0]{\mathbf{r}}
 \newcommand{\net}[1]{\hat{#1}}
 \newcommand{\RAF}[0]{\mathbf{R}'}
+\newcommand{\sgen}{g}
+\newcommand{\rgen}{\gamma}
+\newcommand{\RGraph}[0]{\mathcal{R}}
 \newcommand{\PO}[0]{d}
 \newcommand{\POR}[0]{\mathscr{R}}
 \newcommand{\POX}[0]{\mathscr{X}}
@@ -152,6 +158,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\externaldocument[M-]{RAFCores}
 
 \begin{document}
 
@@ -302,10 +310,10 @@ which is restricted to the $\closure{\RAF}{\food}$, the reactions in $\RAF$, and
 $\cat'$ of reactions in $\RAF\subseteq \FR$. Throughout, we denote this graph as 
 $\queen'\coloneqq \queen(\closure{\RAF}{\food}, \RAF, \cat')$.
 
-\subsection{Minimal RAFs}
+\subsection{A partial Order on RAFs}
 
 \vspace{6pt}
-\begin{lemma}\label{lem:RAFPath}
+\begin{lemma}\label{M-lem:RAFPath}
 	Let $(X, \FR, \cat)$ be a CRS with $\food \subseteq X$ and a RAF $\RAF\subseteq \FR$. 
 	For any $x\in \closure{}{\food}\setminus \food$ there is an $f\in \food$ such that $P=(f, \ldots, x)$ 
 	is a path in $\queen'$.
@@ -320,184 +328,121 @@ $\queen'\coloneqq \queen(\closure{\RAF}{\food}, \RAF, \cat')$.
 \end{proof}
 \vspace{6pt}
 
-\vspace{6pt}
-\begin{lemma}\label{lem:weaklyConnected}
-	The graph $\queen'$ is weakly-connected.
+\subsection{Minimal RAFs}
+
+\subsubsection{Strong-connectivity}
+
+\begin{lemma}\label{lem:KSC}
+	Let $\RAF$ be a non-trivial, minimal RAF. Then $\RGraph(\king')$ is strongly connected.
 \end{lemma}
 \begin{proof}
-	Assume this is not the case. Then we have at least two connected components $\queen_1', \queen_2'$. By assumption both $X(\queen_1')$ 
-	and $X(\queen_2')$ are $\food$-generated. Since all F-reactions in $\RAF$ are catalyzed, every F-reaction in $\FR(\queen_1')$ and every F-reaction 
-	in $\FR(\queen_2')$ is catalyzed. Since there is no path from any $x_1\in X(\queen_1')$ to any $\fr_2\in \FR(\queen_2')$ and no path from 
-	any $x_2\in X(\queen_2')$ to any $\fr_1\in \FR(\queen_1')$, every F-reaction $\fr_1\in \FR(\queen_1')$ is catalyzed by an $x_1\in X(\queen_1')$ 
-	and every F-reaction of $\fr_2\in \FR(\queen_2')$ is catalyzed by an entity of $x_2\in X(\queen_2')$. In addition, no reaction $\fr_1\in \FR(\queen_1')$ 
-	has a species $x_2\in X(\queen_2')$ as F-reactant and no reaction $\fr_2\in \FR(\queen_2')$ has a species $x_1\in X(\queen_1)$ as F-reactant. 
-	Thus $\FR(\queen_1')$ and $\FR(\queen_2')$ are RAFs themselves. Since $\FR(\queen_1'), \FR(\queen_1')\subseteq \RAF$, $\RAF$ was not minimal.
+	Lemma~\ref{lem:RGQSC} has shown that $\RGraph(\queen')$ is strongly connected for a non-trivial 
+	minimal RAF. Assume now that $\RGraph(\king')$ is not strongly connected, which implies the existence 
+	of two strongly connected components of $R'\coloneqq \varphi^{-1}(\RAF), R'_1, R'_2$. Then either $R'_1$ 
+	and $R'_2$ partition $R$ such that all representatives of an equivalence class are contained in the same 
+	component, or not. The first case, $\varphi^{-1}(R'_1)\cap \varphi^{-1}(R'_2)=\emptyset$, implies that 
+	$\RGraph(\queen')$ is not strongly connected, which contradicts that $\RAF$ is a non-trivial, minimal RAF. 
+	Thus, $\varphi^{-1}(R'_1)\cap \varphi^{-1}(R'_2)=\emptyset$ and there are $r'\in R'_1, r''\in R'_2$. W.l.o.g.
+	we assume that there is no path from any $r_2\in R'_2$ to any $r_1\in R'_1$. Then, however, there is also
+	no edge $(r', r_1)$ for any $r_1\in R'_1$ since there would otherwise also be an edge $(r'', r_1)$. Hence,
+	$r'\notin R'_1$, a contradiction.
 \end{proof}
+
+\subsubsection{Cut vertices}
+
 \vspace{6pt}
-A minimal RAF, thereby, has a corresponding weakly-connected bipartite K\"onig graph, which is also the case for the 
-subgraph that contains only non-food molecules.
-\vspace{6pt}
-\begin{lemma}\label{lem:weaklyConnected2}
-	The subgraph $\queen'' \coloneqq \queen'[\closure{}{\food}\setminus \food, \RAF]$ is weakly-connected.
+\begin{lemma}\label{lem:CutVertexReac}
+	Let $\RAF$ be a non-trivial, minimal RAF. If $\princess(\RAF)$ is not a strong block, then every 
+	cut-vertex is an F-reaction. Accordingly, if $\lord(\RAF)$ is not a strong block, then every 
+	cut-vertex is a reaction.
 \end{lemma}
 \begin{proof}
-	By Lemma~\ref{lem:weaklyConnected}, $\queen'$ is weakly-connected. Assume now there is an $f\in \food$ 
-	such that $\queen'[V(\queen')\setminus \{f\}]$ is composed of at least two connected components $C_1, C_2$. Then 
-	$\closure{\FR(C_1)}{\food}\cap \closure{\FR(C_2)}{\food} \subseteq \food$, i.e., none of the species $x_1\in X(C_1)$ 
-	is a reactant, product, or catalyst for an F-reaction $\fr_2\in \FR(C_2)$ and vice versa. Thus, $\FR(C_1), \FR(C_2)$ 
-	are both RAFs and $\RAF$ was not minimal.
+	Assume there is a cut-vertex $w\in X(\princess)$. Then $\princess[V(\princess)\setminus \{w\}]$ is composed of at least two connected
+	components $\princess_1,\princess_2$. Then for any two vertices $v\in \princess_1$ and $u\in \princess_2$ we have 
+	$w\in P_{uv}$ and $w\in P_{vu}$ for arbitrary paths connecting $u$ and $v$. Therefore, there is no $x_1\in X(\princess_1)$ 
+	such that $x_1$ is an F-reactant, F-product, or F-catalyst for any reaction $r_2\in \FR(\princess_2)$, and there is no 
+	$x_2\in X(\princess_2)$ such that $x_2$ is a F-reactant, F-product, or F-catalyst for any reaction $r_1\in \FR(\princess_1)$. 
+	Then $\closure{\FR(\princess_1)}{\food}\neq \emptyset$, implying that $\FR(\princess_1)$ is a RAF or (not mutually exclusive) 
+	$\closure{\FR(\princess_2)}{\food}\neq \emptyset$, implying that $\FR(\princess_2)$ is a RAF, in any case, contradicting that  
+	$\RAF$ is a non-trivial, minimal RAF. For $\lord(\RAF)$ the proof follows the same argument with the difference that we have 
+	$\closure{\varphi^{-1}(R(\lord))}{\food}\neq \emptyset$ implies that $\varphi^{-1}(\lord)$ is a RAF or (not mutually exclusive) 
+	$\closure{\varphi^{-1}(R(\lord_2))}{\food}\neq \emptyset$, implying that $\varphi^{-1}(\lord)$ is a RAF, and thereby $\RAF$ 
+	was not minimal.
+\end{proof}	
+\vspace{6pt}
+
+\begin{lemma}\label{lem:CutVertPP}
+	Let $\RAF$ be a non-trivial, minimal RAF. If $r \in \varphi^{-1}(\RAF)$ is a cut-vertex
+	in $\lord(\RAF)$ then $|\fr|=1$ and $\fr$ is a cut-vertex in $\princess(\RAF)$.
+\end{lemma}
+\begin{proof}
+	Assume $|\fr|>1$, then there is $r'\in \fr, r\neq r'$. Since $r$ is a cut-vertex, it separates 
+	$\lord(\RAF)$ in two connected components $\lord_1, \lord_2$, which both contain
+	$r$ and their induced subgraphs are strongly connected. Then any path from a vertex in 
+	$u\in \lord_1$ to a vertex $v\in \lord_2$ and vice versa passes through $r$. We then
+	have two cases. First, assume w.l.o.g. that there is an F-reactant $x \in \lord_1$, and there is 
+	an F-product $y\in \lord_2$. Then $(x,r',y)$ is a path connecting the two connected 
+	components $\lord_1$ and $\lord_2$, which contradicts that $r$ is a cut-vertex. Assume
+	therefore that all F-reactants and F-products are located in one connected component, e.g.
+	$\lord_1$, which implies that one F-catalyst $c$ of $r$ that is neither an F-reactant nor an 
+	F-product is located in $\lord_2$. Clearly, then $r'\in \lord_1$, i.e., all $r''\in \fr: r'' \in 
+	\lord_1$. Since $c$ is $\food$ generated, it is a net product of some reaction $r_2\in \lord_2$, 
+	thus also $\fr_2\in \varphi^{-1}(R(\lord_2))$. Except for catalysts for $r$, no other species 
+	of $\lord_2$ are either reactants for or products of reactions in $\lord_1$. Thus, all catalysts
+	for reactions in $\lord_2$ except of $r$ are in $\lord_2$. Thus $\varphi^{-1}(R(\lord_2))
+	\setminus \{\fr\}$ is a RAF which contradicts minimality of $\RAF$.
+\end{proof}
+
+\subsubsection{Strong blocks}
+
+For a minimal, non-trivial RAF $\RAF$ we will write $R\coloneqq \varphi^{-1}(\RAF)$ in the following.
+We next show that cut-vertices that have only catalysts as reactants play an important role in the partial 
+order of a strong block. To this end, we first define the set of \emph{pure reactions} by 
+\begin{equation}\label{eq:pureReactions}
+	R^*(\block)\coloneqq \{r\in R(\block) \ | \ s^-_{xr}>0 \Rightarrow s^+_{x\fr}=s^-_{x\fr}, \forall x\in X(\block)\}
+\end{equation}
+In particular, there is always at least one \emph{pure reaction} that has the lowest generation number of all 
+reactions within the block, if $R^*(\block)$ is not empty.
+\vspace{6pt}
+\begin{lemma}\label{lem:genPureReacs}
+	Let $\block$ be a strong block of $\lord(\RAF)$. If $R^*(B)\neq \emptyset$, then there is $r^*\in R(B*): \rgen(r^*)\leq \rgen(r), 
+	\forall~r\in R(B)$ and $\rgen(r^*)<\rgen(r), \forall r\in R(B)\setminus R^*(B)$.
+\end{lemma}
+\begin{proof}
+	Let $B$ be a strong block of $L$. We choose an $r^*\in R^*(B)$ and assume $|R^*(B)|=1$. 
+	Assume now there is an $r\in R(B)\setminus \{r^*\} : \rgen(r) < \rgen(r^*)$. Then $r$ has a net-reactant 
+	$x \in X(B)$ since $B$. Thus, there is a reaction $r'$ that has $x$ as a net-product, which implies 
+	$\rgen(r')< \rgen(r)$. If $r'$ has a net-reactant $x'\in X(B)$, the same argument holds for $r'$ and, i.e., for 
+	all reactions that have a net-reactant in $B$, a contradiction since $B$ is finite. Thus $h(r*)<h(r), 
+	\forall r\in R(B)\setminus \{r*\}$. Assume now $|R^*(B)|>1$. We may then chose $r^*\in R^*(B): 
+	g(r^*)\leq g(r') \forall r'\in R^*(B)$. Assume now there is $r\in R(B): h(r)<h(r^*)$. Then $r \notin R^*(B)$ 
+	due to the choice of $r^*$. For $r\in R(B)\setminus R^*(B)$, we apply the upper argument and obtain 
+	the same contradiction as above.
 \end{proof}
 \vspace{6pt}
 
-%\begin{lemma}\label{lem:elemCirc1}
-%	Let $\RAF$ be a minimal, non-trivial RAF, with $|\POR^1_{\RAF}(F)|=1$. 
-%	Then $r\in \POR^1_{\RAF}(F)$ is located on an elementary circuit that is 
-%	not a digon in $G$ and $H$.
-%\end{lemma}
-%\begin{proof}
-%	We show this for $H$ first. Since $\RAF$ is non-trivial $|\RAF|>1$. If $\cat_{r}\subseteq F$ then $\{r\}$ is a minimal RAF.
-%	Thus, there is $c\in \cat_r: c\not in F$. Then $c\in D(r)$. If $c\in \cproducts(r)$, then $\{r\}$ again
-%	is minimal $\RAF$. With the edge $(c,r)$, $(r,\ldots, c, r)$ is an elementary circuit that is not 
-%	a digon. Addition of the food-molecules does not disrupt this argument; thus, the statement 
-%	also holds for $G$.	
-%\end{proof}
-%
-%
-%\vspace{6pt}
-%We now extend this result.
-%\vspace{6pt}
-%
-%\begin{lemma}
-%	Let $\RAF$ be a minimal, non-trivial RAF, with $|\POR^1_{\RAF}(F)|=1$. 
-%	Then any $r\in \RAF$ is located on an elementary circuit that is 
-%	not a digon in $G$ and $H$.
-%\end{lemma}
-%\begin{proof}
-%	Again, we start with the graph $H$. We know that $r_1\in \POR^1_{\RAF}(F)$ is located on 
-%	an elementary circuit. Assume now there is a reaction $r\in \RAF$ that is not located on an 
-%	elementary circuit. We now show that $\RAF' \coloneqq \RAF\setminus (R(D(r))\cup \{r\}$ 
-%	is a RAF. First, we observe that $\RAF'\neq \emptyset$, since $r_1\notin \RAF'$. Otherwise,
-%	$r$ would be located on an elementary circuit. Therefore, 	assume $\RAF'$ is not a $\RAF$. 
-%	Since $\RAF$ is reflexively autocatalytic and $\RAF'\subseteq \RAF$, $\RAF'$ is reflexively 
-%	autocatalytic. Then, there is a reaction $r'\in \RAF'$ for which a reactant or a catalyst $x\in 
-%	X(H)$ with $s^-_{xr'}>0$ it holds that $x\notin \closure{\RAF'}(F)$. Since $x\in \closure{\RAF}(F)$ 
-%	is a product of some reaction $r''\in R(D(R'))\cup \{r'\}$. However, then $r''\in R(D(R'))\cup \{r'\}$, 
-%	which is a contradiction. Thus, $\RAF'$ is a RAF and therefore $\RAF$ was not minimal. Adding
-%	the food molecules to $H$ does not change the arguments, thus the result also holds for $G$. 	
-%\end{proof}
-
-%\begin{figure}
-%	\begin{minipage}[c]{0.5\textwidth}
-%		\centering
-%		\begin{equation*}
-%			\begin{split}
-%				r'_0 &: f + (x_1) 		\rightarrow x_2  + (x_1) \\
-%				r''_0 &: f + (y_1) 		\rightarrow x_2  + (y_3) \\
-%				r_1 &: x_2	+ (x_2)	   	\rightarrow x_1 + y_1 + (x_2) \\
-%			\end{split}
-%		\end{equation*}
-%	\end{minipage}%
-%	\hfill%
-%	\begin{minipage}[c]{0.49\textwidth}
-%		\begin{minipage}[c]{\textwidth}
-%			\centering
-%			\begin{tikzpicture}
-%				\node[draw, circle] (f) at (0,0) {$f$};
-%				\node[draw, circle] (x1) at (2,1) {$x_1$};
-%				\node[draw, circle] (x2) at (2,0) {$x_2$};
-%				\node[draw, circle] (y1) at (2,-1) {$y_1$};
-%						
-%				\node[draw, rectangle] (r'0) at (1,1) {$r'_0$};
-%				\node[draw, rectangle] (r''0) at (1,-1) {$r''_0$};
-%				\node[draw, rectangle] (r1) at (3,0) {$r_1$};
-%			
-%				\draw[->] (f) to (r'0);
-%				\draw[->] (f) to (r''0);
-%				\draw[->] (x1) to [bend right = 30] (r'0);
-%				\draw[->] (r'0) to [bend right = 30] (x1);
-%				\draw[->] (y1) to [bend right = 30] (r''0);
-%				\draw[->] (r''0) to [bend right = 30] (y1);
-%				\draw[->] (r'0) to (x2);
-%				\draw[->] (r''0) to (x2);
-%				\draw[->] (x2) to [bend right = 30] (r1);
-%				\draw[->] (r1) to [bend right = 30] (x2);
-%				\draw[->] (r1) to [bend right = 30] (x1);
-%				\draw[->] (r1) to [bend left = 30] (y1);			
-%			\end{tikzpicture}
-%		\end{minipage}
-%		\begin{minipage}[c]{\textwidth}
-%			\centering
-%			\begin{tikzpicture}
-%				\node[draw, circle] (f) at (-1,0) {$f$};
-%				\node[draw, circle] (x1) at (0,1) {$x_1$};
-%				\node[draw, circle] (x2) at (2,0) {$x_2$};
-%				\node[draw, circle] (y1) at (0,-1) {$y_1$};
-%						
-%				\node[draw, rectangle] (r0) at (1,0) {$\fr_0$};
-%				\node[draw, rectangle] (r1) at (3,0) {$\fr_1$};
-%			
-%				\draw[->] (f) to (r0);
-%				\draw[->] (x1) to [bend right = 30] (r0);
-%				\draw[->] (r0) to [bend right = 30] (x1);
-%				\draw[->] (y1) to [bend right = 30] (r0);
-%				\draw[->] (r0) to [bend right = 30] (y1);
-%				\draw[->] (r0) to (x2);
-%				\draw[->] (x2) to [bend right = 30] (r1);
-%				\draw[->] (r1) to [bend right = 30] (x2);
-%				\draw[->] (r1) to [bend right = 30] (x1);
-%				\draw[->] (r1) to [bend left = 30] (y1);			
-%			\end{tikzpicture}
-%		\end{minipage}
-%	\end{minipage}
-%\end{figure}
-%\FloatBarrier
-
-%The minimality condition has a series of interesting consequences on the structure of the graph $\queen'$.  
-%The next one follows from Lemma~\ref{lem:RAFPath}.
-%\vspace{6pt}
-%\begin{lemma}[Proof: SI]\label{lem:weaklyConnected}
-%	The graph $\queen'$ is weakly-connected.
-%\end{lemma}
-%\vspace{6pt}
-
-%The easiest example of a minimal RAF is a single reaction, which we call a trivial RAF. The following example shows a 
-%non-minimal RAF containing a trivial RAF.\\
-%\vspace{6pt}
-%\begin{minipage}[c]{0.4\textwidth}
-%	\centering
-%	\begin{equation}
-%		\begin{split}
-%			r_0&: f_2 + (f_1)\rightarrow x_1 + (f_1)\\
-%			r_1&: x_1+ (x_1) \rightarrow x_2 + (x_1)\\
-%			r_2&: x_1 + (x_1) \rightarrow x_2 + (x_1)
-%		\end{split}
-%	\end{equation}
-%\end{minipage}%
-%\hfill%
-%\begin{minipage}[c]{0.55\textwidth}
-%	\begin{tikzpicture}
-%		\node[draw,circle] (f1) at (0,0) {$f_1$};
-%		\node[draw,circle] (f2) at (0,-2) {$f_2$};
-%		\node[draw,circle] (x1) at (2,-1) {$x_1$};
-%		\node[draw,circle] (x2) at (4,-1) {$x_2$};
-%		
-%		\node[draw,rectangle] (r0) at (1,-1) {$r_0$};
-%		\node[draw,rectangle] (r1) at (3,0) {$r_1$};
-%		\node[draw,rectangle] (r2) at (3,-2) {$r_2$};
-%		
-%		\draw[->] (f1) to [bend left =30] (r0);
-%		\draw[->] (f2) to  (r0);
-%		\draw[->] (r0) to [bend left =30] (f1);
-%		\draw[->] (r0) to (x1);
-%		\draw[->] (x1) to [bend right =30] (r1);
-%		\draw[->] (r1) to [bend right =30] (x1);
-%		\draw[->] (r1) to (x2);
-%		\draw[->] (x2) to [bend right =30] (r2);
-%		\draw[->] (r2) to [bend right =30] (x2);
-%		\draw[->] (r2) to (x1);
-%	\end{tikzpicture}
-%\end{minipage}
-%Indeed, $\RAF=\{\fr_0\}$ is a RAF, and thus, addition of $\fr_1$ or $\fr_2$ would violate minimality. 
+\vspace{6pt}
+\begin{lemma}\label{lem:cutVertexPureCat}
+	For a non-trivial, minimal RAF $\RAF$ any strong block $\block$ of $\princess(\RAF)$ contains an F-reaction 
+	$\fr\in \FR(\block)$ such that all reactants for $\fr$ that are located in $\block$ are pure F-catalysts, in symbols:
+	\begin{equation}
+		 \forall x\in X(B): s^-_{x\fr}>0: s^-_{x\fr}=k_{x\fr}
+	\end{equation}
+\end{lemma}
+\begin{proof}
+	We start with strong blocks $\block$ which contain a reaction vertex $\fr: \rgen(\fr)=1$. The F-reactants of any of these 
+	reactions are subsets of $\food$. Since $\princess[\block]$ is strongly-connected, it has at least one F-catalyst that is 
+	not an F-reactant as a reactant. Any other strong block $\block'$ contains a cut-vertex $\fr^*\in \RAF$. We start with 
+	the simple case in which $\block'$ contains only one cut-vertex. We observe that $\rgen(r^*)< \rgen(r), \ \forall \ r\in 
+	\FR(B')\setminus \{r^*\}$. Since $\princess[\block']$ is strongly connected, it has at least one reactant and one 
+	product. Assume a reactant $x\in X(B')$ for $\fr^*$ is als an F-reactant for $\fr^*$. This, however, implies that $x$ is 
+	an F-product of a reaction $r\in \FR(\block')\Rightarrow \rgen(r)< \rgen(r^*)$, a contradiction. Assume now that $\block'$ has 
+	cut-vertices: $r^*_1, \ldots, r^*_k$. Again, we observe, that there is an $r^*_j: \rgen(r^*_j)< \rgen(r), \forall \ r\in 
+	\FR(\block') \setminus \{r^*_j\}$. Assume now that $r_j^*$ has an F-reactant $x_j\in X(\block')$. Then $x_j$ is a product of 
+	some reaction in $r_i$, and it follows that $\rgen(r_i)<\rgen(r^*_j)$. This contradicts the previous observation, and
+	the claim follows.
+\end{proof}
+\vspace{6pt}
 
 \vspace{6pt}
 \bibliography{RAFCores}
