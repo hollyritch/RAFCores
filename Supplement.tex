@@ -395,29 +395,34 @@ $\queen'\coloneqq \queen(\closure{\RAF}{\food}, \RAF, \cat')$.
 
 \subsubsection{Strong blocks}
 
-For a minimal, non-trivial RAF $\RAF$ we will write $R\coloneqq \varphi^{-1}(\RAF)$ in the following.
-We next show that cut-vertices that have only catalysts as reactants play an important role in the partial 
-order of a strong block. To this end, we first define the set of \emph{pure reactions} by 
+We next show that cut-vertices in $\princess(\RAF)$ that have only F-catalysts as reactants play an
+ important role in the partial order of a strong block. To this end, we first define the set of 
+ \emph{pure reactions} as 
 \begin{equation}\label{eq:pureReactions}
-	R^*(\block)\coloneqq \{r\in R(\block) \ | \ s^-_{xr}>0 \Rightarrow s^+_{x\fr}=s^-_{x\fr}, \forall x\in X(\block)\}
+	\FR^*(\block)\coloneqq \{\fr\in \FR(\block) \ | \ s^-_{x\fr}>0 \Rightarrow s^+_{x\fr}=s^-_{x\fr}, \forall x\in X(\block)\}.
 \end{equation}
 In particular, there is always at least one \emph{pure reaction} that has the lowest generation number of all 
 reactions within the block, if $R^*(\block)$ is not empty.
 \vspace{6pt}
 \begin{lemma}\label{lem:genPureReacs}
-	Let $\block$ be a strong block of $\lord(\RAF)$. If $R^*(B)\neq \emptyset$, then there is $r^*\in R(B*): \rgen(r^*)\leq \rgen(r), 
-	\forall~r\in R(B)$ and $\rgen(r^*)<\rgen(r), \forall r\in R(B)\setminus R^*(B)$.
+	Let $\block$ be a strong block of $\princess(\RAF)$. If $\FR^*(\block)\neq \emptyset$, then there is $\fr^*\in R(B*): 
+	\rgen(\fr^*)\leq \rgen(\fr), \forall~\fr\in \FR(\block)$ and $\rgen(\fr^*)<\rgen(\fr), \forall \fr\in \FR(\block)\setminus \FR^*(\block)$.
 \end{lemma}
 \begin{proof}
-	Let $B$ be a strong block of $L$. We choose an $r^*\in R^*(B)$ and assume $|R^*(B)|=1$. 
-	Assume now there is an $r\in R(B)\setminus \{r^*\} : \rgen(r) < \rgen(r^*)$. Then $r$ has a net-reactant 
-	$x \in X(B)$ since $B$. Thus, there is a reaction $r'$ that has $x$ as a net-product, which implies 
-	$\rgen(r')< \rgen(r)$. If $r'$ has a net-reactant $x'\in X(B)$, the same argument holds for $r'$ and, i.e., for 
-	all reactions that have a net-reactant in $B$, a contradiction since $B$ is finite. Thus $h(r*)<h(r), 
-	\forall r\in R(B)\setminus \{r*\}$. Assume now $|R^*(B)|>1$. We may then chose $r^*\in R^*(B): 
-	g(r^*)\leq g(r') \forall r'\in R^*(B)$. Assume now there is $r\in R(B): h(r)<h(r^*)$. Then $r \notin R^*(B)$ 
-	due to the choice of $r^*$. For $r\in R(B)\setminus R^*(B)$, we apply the upper argument and obtain 
-	the same contradiction as above.
+	Let $\block$ be a strong block of $\princess(\RAF)$. We choose an $\fr_1\in \FR^*(\block)$ and assume 
+	$|\FR^*(\block)|=1$. Assume now there is an $\fr\in \FR(\block)\setminus \{\fr_1\} : \rgen(\fr_2) < \rgen(\fr_1)$. 
+	Then $\fr_2$ has an F-reactant $x_2 \in X(\block)$ since $\block$ is strongly connected and $\fr_2\notin \FR^*(\block)$. 
+	Thus, there is a reaction $\fr_3$ for which $x$ is an F-product. If $\fr_1=\fr_3$ then $\rgen(\fr_1)< \rgen(\fr_2)<\rgen(\fr_1)$, 
+	a contradiction. Otherwise, we simply have that $\rgen(\fr_3)<\rgen(\fr_2)<\rgen(\fr_1)$. Then $\fr_3$ has an F-reactant 
+	$x_3\in X(\block)$, since $\fr_3\notin \FR^*(\block)$. Then the same argument holds for $\fr_3$ and, by iteratively applying 
+	this argument, we obtain with the finiteness of $\block$:
+	\begin{equation}
+		\rgen(r_k)<\rgen(r_{k-1} <\ldots < \rgen(r_l)
+	\end{equation}
+	with $r_k=r_l$, which yields a contradiction and thereby $\rgen(\fr_1)<\rgen(\fr), \forall \fr\in \FR(\block)\setminus \{\fr_1\}$. 
+	Assume now $|\FR^*(\block)|>1$. We may then chose $\fr_1\in R^*(B): \rgen(\fr_1)\leq \rgen(\fr'), \forall \fr'\in \FR^*(\block)$. 
+	We can apply the same iterative argument as above and obtain the same contradiction, with the slight difference that we can
+	only deduce that $\rgen(\fr_1)\leq \rgen(\fr), \forall \fr\in \FR(\block), \rgen(\fr_1)<\rgen(\fr), \forall \fr\in \FR(\block) \setminus \FR^*(\block)$.
 \end{proof}
 \vspace{6pt}
 

@@ -295,34 +295,34 @@ $x$ is also called an \emph{autocatalyst}, while in the former case, $x$ is call
 From a chemical perspective and the IUPAC definition, a catalyst is an entity $x\in X$ that not only satisfies 
 $s^{-}_{xr}\cdot s^{+}_{xr}\neq 0$, but also ``increases the rate of a reaction without modifying the overall 
 standard Gibbs energy change in the reaction'' \cite{gold_iupac_2025}. However, a solvent, such 
-as water, can also act in such a way without being considered a catalyst \cite{marx_nature_1999}. In particular, 
-in Brønstedt/Lowry's acid-base theory, water is rather considered a reactant, proton acceptor, removing 
+as water, can also act in such a way without being considered a catalyst \cite{marx_nature_1999}. For example, 
+in Brønstedt/Lowry's acid-base theory, water is rather considered a reactant, i.e., a proton acceptor, removing 
 environmental constraints to facilitate proton transfer between reactants \cite{eigen_proton_1964}. 
-
-Consider the reaction of water-free sulfuric acid with sodium hydroxide pellets, which is in general initiated at those sites where 
-water is extracted from the surrounding gas phase due to the high hygroscopy of sulfuric acid and sodium 
-hydroxide on some localized surface moisture. Thus in:
-\begin{equation}
-	\text{H}_2\text{SO}_4 + 2\text{H}_2\text{O} \leftrightharpoons 2\text{H}_3\text{O}^+ + \text{SO}_4^{2-} 
-\end{equation}
-H$_2$O serves as the proton acceptor. It further dissolves the solid sodium hydroxide and hydrates the hydroxide 
-ions:
-\begin{equation}
-	\text{NaOH}  \leftrightharpoons \text{Na}^+ + \text{OH}^- \text{ (hydrated)}.  
-\end{equation}
-The hydronium ions consequently react with the hydroxide ions to form water molecules again:
-\begin{equation}
-	\text{H}_3\text{O}^+ + \text{OH}^-  \leftrightharpoons 2 \text{H}_2\text{O},
-\end{equation}
-which yields the overall reaction:
-\begin{equation}
-	\text{H}_2{SO}_4 + 2\text{H}_2\text{O} + 2\text{NaOH} \leftrightharpoons 4\text{H}_2\text{O} + 2\text{Na}^+ + \text{SO}_4^{2-}. 
-\end{equation}
-In this case, $2=s_{xr}^-\neq \net{s}_{xr}^-=0$, and $4=s_{xr}^+\neq \net{s}^+_{xr}=2$ for H$_2$O.
-A complete absence of water is unachievable under realistic laboratory conditions, making it impossible to 
-verify if the reaction takes place without H$_2$O. Nevertheless, even authors who dealt in depth with the 
-role of water in acid-base reactions did not even mention catalysis in the context of water molecules 
-\cite{eigen_proton_1964}. To account for the different roles an entity can play within a chemical 
+%Consider the reaction of water-free sulfuric acid with sodium hydroxide pellets, which is in general initiated at those sites where 
+%water is extracted from the surrounding gas phase due to the high hygroscopy of sulfuric acid and sodium 
+%hydroxide on some localized surface moisture. Thus in:
+%\begin{equation}
+%	\text{H}_2\text{SO}_4 + 2\text{H}_2\text{O} \leftrightharpoons 2\text{H}_3\text{O}^+ + \text{SO}_4^{2-} 
+%\end{equation}
+%H$_2$O serves as the proton acceptor. It further dissolves the solid sodium hydroxide and hydrates the hydroxide 
+%ions:
+%\begin{equation}
+%	\text{NaOH}  \leftrightharpoons \text{Na}^+ + \text{OH}^- \text{ (hydrated)}.  
+%\end{equation}
+%The hydronium ions consequently react with the hydroxide ions to form water molecules again:
+%\begin{equation}
+%	\text{H}_3\text{O}^+ + \text{OH}^-  \leftrightharpoons 2 \text{H}_2\text{O},
+%\end{equation}
+%which yields the overall reaction:
+%\begin{equation}
+%	\text{H}_2{SO}_4 + 2\text{H}_2\text{O} + 2\text{NaOH} \leftrightharpoons 4\text{H}_2\text{O} + 2\text{Na}^+ + \text{SO}_4^{2-}. 
+%\end{equation}
+%In this case, $2=s_{xr}^-\neq \net{s}_{xr}^-=0$, and $4=s_{xr}^+\neq \net{s}^+_{xr}=2$ for H$_2$O.
+%A complete absence of water is unachievable under realistic laboratory conditions, making it impossible to 
+%verify if the reaction takes place without H$_2$O. Nevertheless, even authors who dealt in depth with the 
+%role of water in acid-base reactions did not even mention catalysis in the context of water molecules 
+%\cite{eigen_proton_1964}. 
+To account for the different roles an entity can play within a chemical 
 reaction, we partition stoichiometries as done in \cite{bridging_golnik_2026} such that: 
 \begin{equation}
 	\sigma^{\pm}_{xr} + k_{xr} = s^{\pm}_{xr}.
@@ -606,14 +606,8 @@ and a reaction $\fr_1$ precedes a reaction $\fr_2$, i.e.:
 \begin{equation}
 	\fr_1\preceq \fr_2 \Leftrightarrow \rgen(\fr_1) \leq \rgen(\fr_2)
 \end{equation}
-We refer to the values of $\sgen$ and $\rgen$ as the generation of a reaction or metabolite. A simple observation is that
-since each representative of a $\sim$-equivalence class has the same F-reactants and F-products, with a slight abuse of 
-notation the following holds:
-\begin{equation}
-	\gamma(\fr)=\gamma(r), \forall r\in \fr
-\end{equation}
-
-A \emph{constructive reflexively autocatalytic} set (CAF) is a RAF such that for each F-reaction $\fr$ all $x\in \feducts(x)$ satisfy 
+We refer to the values of $\sgen$ and $\rgen$ as the generation of a reaction or metabolite. A \emph{constructive 
+reflexively autocatalytic} set (CAF) is a RAF such that for each F-reaction $\fr$ all $x\in \feducts(x)$ satisfy 
 $\sgen(x)<\rgen(\fr)$ and there is at least one $r\in \fr$ such that all catalyst $x\in \cat(r)$ satisfy $\sgen(x)< \rgen(\fr)$.
 
 One important consequence of the partial order is that if a RAF contains two $\sim$~equivalence classes 
@@ -1027,7 +1021,7 @@ share a common cut-vertex that is a reaction vertex. Indeed, a species vertex ca
 
 Cut-vertices in $\princess(\RAF)$ and $\lord(\RAF)$ are not unrelated from each other. In 
 particular, only equivalence classes of cut-vertices in $\lord(\RAF)$ can be cut-vertices
-in $\princess(\RAF)$. On top of that, a reaction vertex can only be a cut-vertex in $\lord(\RAF)$
+in $\princess(\RAF)$. In addition, a reaction vertex can only be a cut-vertex in $\lord(\RAF)$
 if its equivalence class is trivial.
 \vspace{6pt}
 \begin{lemma}\label{lem:CutVertPP}
@@ -1070,8 +1064,8 @@ With the existence of cut-vertices that can only be reaction vertices, $\princes
 	\end{equation}
 \end{lemma}
 \vspace{6pt}
-The same statement holds for $\lord(\RAF)$ with the small difference that some of the cut-vertices $\fr\in \RAF$ 
-have no representatives that are cut-vertices in $\lord(\RAF)$.
+The same statement holds for $\lord(\RAF)$ with the small difference that for some of the cut-vertices $\fr\in \RAF$ 
+all representatives that are not cut-vertices in $\lord(\RAF)$.
 \vspace{6pt}
 \begin{corollary}\label{cor:cutVertexPureCat}
 	Every strong block $\block$ of $\lord(\RAF)$ contains a reaction $r\in (\varphi^{-1}(\FR))(\block)$ such that all reactants for 
@@ -1081,21 +1075,36 @@ have no representatives that are cut-vertices in $\lord(\RAF)$.
 	\end{equation}
 \end{corollary}
 \vspace{6pt}
-A direct consequence of Cor~\ref{cor:cutVertexPureCat} is that the stoichiometric submatrix reflecting the strong block $\block$ 
-always contains a non-negative column. This column is induced by a reaction $r^*\in R(\block)$ that has only reactants that are
-F-catalysts but not F-reactants within $\block$ and at least one positive entry for a product $y^*\in X(\block): s^+_{yr^*}>0$:
+The stoichiometric matrix of a strong block $\block$ thereby always contains a non-negative column. This column represents a 
+reaction $r^*\in R(\block)$ that has only reactants that are F-catalysts but not F-reactants within $\block$ and at least one positive 
+entry for a product $y^*\in X(\block): s^+_{yr^*}>0$:
 
 \begin{equation}
-	\SM[X(\block), R(\block)] = \begin{pmatrix}
-						& 	\ldots 	& 	r^* 		& \ldots \\
-						& 	\ddots 	& 	\vdots 	& \ddots \\
-					x^* 	& 	\ldots 	& 	0 		& \ldots \\
-						& 	\ddots 	& 	\vdots 	& \ddots \\
-					y^* 	& 	\ldots 	& 	s^+_{y^*r^*} & \ldots \\
-						& 	\ddots 	& 	\vdots 	& \ddots \\
-	\end{pmatrix}
+	\SM[X(\block), R(\block)] = 
+			\begin{array}{c c}
+				& 	\begin{array}{c c c} 			
+						 	& 	r^* 		& 
+					\end{array} \\
+					\begin{array}{c} 
+						\ \\ 
+						x^* \\
+						\ \\ [0.5em]
+						y^* \\
+						\ \\
+						\ \\		
+					\end{array}
+					& \begin{pmatrix}						
+						 \ddots 	& 	\vdots 	& \ddots \\
+					 	 \ldots 	& 	0 		& \ldots \\
+						 \ddots 	& 	\vdots 	& \ddots \\
+					 	 \ldots 	& 	s^+_{y^*r^*} & \ldots \\
+						  \ldots 	& 	0 & \ldots \\
+						\ddots 	& 	\vdots 	& \ddots 
+					\end{pmatrix}
+			\end{array}
 \end{equation}
 
+\holy{RG rewriting up to here}
 Any pure reaction vertex is located on an elementary circuit. These circuits may have metabolite-to-reaction,
 so-called MR-, chords. However, in each strong block, there is always one elementary circuit containing 
 a pure reaction that is MR-chordfree. For brevity of presentation, the \emph{canonical} CS of an elementary 
