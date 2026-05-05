@@ -447,6 +447,40 @@ reactants inside the block. We will refer to them as \emph{pure F-reactions}.
 %\end{proof}
 \vspace{6pt}
 \vspace{6pt}
+
+\subsection{Autocatalytic Capacity of Minimal RAFs}
+
+\begin{theorem}[Proof: SI]\label{thm:NonFoodSemipositiv}
+	Let $\RAF$ be a non-trivial, minimal RAF. The matrix $A\coloneqq \SM[\closure{\RAF}{F}\setminus F,\RAF]$ 
+	is semi-positive.
+\end{theorem}
+\begin{proof}
+	We prove by induction. We know that for some $n\in \mathbb{N}: \cl^n_{\RAF}(F)=\closure{\RAF}{F}\eqqcolon X'$. 
+	We observe that for an $x\in \POX^k\coloneqq \POX^k_{\RAF}(F)$, $\SM_{xr}=0$ for any 
+	$r\in \POR^l \coloneqq \POR^l_{\RAF}(F), l<k \ (*)$. We initialize a map: $f: X' \rightarrow \mathbb{R}, f(x)\coloneqq 0$, 
+	that will be updated in each step. Thus, we start with the set $\POR^n$. For each an $r\in \POR^n$, we let 
+	$v_r\coloneqq 1$, and update for each $x\in X'$:
+	\begin{equation}
+		f(x) \leftarrow f(x) + \sum_{r\in \POR^n} v_r \cdot \SM_{xr}
+	\end{equation}
+	then for all $x\in \POX^n: f(x)>0$. 
+	
+	Assume now that for some $1\leq k\leq n$ it holds that $f(x)>0, \forall x\in \POX^k$. Then, for $k-1$
+	we choose an arbitrary ordering of $r\in \POR^{k-1}$, since each $x\in \POX^{k-1}$ can only be 
+	a product of reactions in $\POR^{k-1}$ but never be a reactant. We let:
+	\begin{equation}
+		v_r\coloneqq \left\vert \min_{x\in \POX^{k-1}} \left(\frac{f(x)}{s}\right)\right \vert + 1, s\coloneqq \begin{cases}\SM_{xr} & \text{if } \SM_{xr}\neq 0 \\ 1 & \text{otherwise} \end{cases}
+	\end{equation}
+	Then we update again for each $x\in X'$:
+	\begin{equation}
+		f(x) \leftarrow f(x) + \sum_{r\in \POR^n} v_r \cdot \SM_{xr}
+	\end{equation}	
+	 and obtain again that forall $x\in \POX^{k-1}: f(x)>0$ and with observation $*$ that also $f(x)>0, \in \POX^{\ell}: f(x)>0, k-1\leq \ell \leq n$.
+	 Then by construction, we obtain $v_r$ is strictly positive and $Av>0$. 
+\end{proof}
+\vspace{6pt}
+
+
 \bibliography{RAFCores}
 
 \end{document}
