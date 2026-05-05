@@ -111,7 +111,7 @@
 \newcommand{\princess}{\mathbf{P}}
 \newcommand{\lord}{L}
 \newcommand{\food}{\ensuremath{\mathbf{F}}}
-\newcommand{\SM}{\mathbb{S}}
+\newcommand{\SM}{S}
 \newcommand{\block}[0]{\mathbf{B}}
 \newcommand{\closure}[2]{\mathscr{C}_{#1}(#2)}
 \newcommand{\cl}[0]{c}
@@ -422,6 +422,86 @@ reactants inside the block. We will refer to them as \emph{pure F-reactions}.
 	and  $\rgen(\fr^*_j)< \rgen(\fr), \forall \fr\in \FR(\block)\setminus \FR^*(\block')$.
 \end{proof}
 \vspace{6pt}
+
+\vspace{6pt}
+\begin{lemma}
+	Let $B$ be a strong block of $\lord(\RAF)$. Then $B$ contains an elementary circuit $C$ with one 
+	\emph{pure reaction} vertex, and there is a reordering of the columns of $	\SM[X(C), R(C)]$ that 
+	yields Metzler matrix.
+\end{lemma}
+\begin{proof}
+	We start with the simple case, and assume there is only one \emph{pure reaction} $r_1$ in $B$.
+	By the proof  of Lemma~\ref{lem:cutVertexPureCat} $\rgen(r^*)<\rgen(r), \forall r\in R(B)\setminus 
+	\{r^*\}$. We may then construct the following elementary circuit: 
+	\begin{equation}
+		r^* \leftarrow x^* \leftarrow r_1 \leftarrow x_1 \leftarrow \ldots r_n \leftarrow x_n \leftarrow r_{n+1}
+	\end{equation}
+	where $x^*$ is an F-catalyst of $r^*$, and forall $1\leq k\leq n+1$: 
+	\begin{equation}
+		r_k =  \arg \min \{ \rgen(r) \ | r\in R(B), \hat{s}^+_{x_{k-1}>0}\}
+	\end{equation}
+	and for all $1<k\leq n$:
+	\begin{equation}
+		x_k = \arg \min \{\sgen(x) \ \vert \ x\in X(B), s^-_{xr_k}>0\}.
+	\end{equation}
+	Since all reaction vertices $r_k, 1\leq k\leq n$ are not \emph{pure reaction} vertices, 
+	each of them has an F-reactant $x_k$ for which $\sgen(x_k)<\rgen(x_k)$ and 
+	thereby:
+	\begin{equation}
+		\rgen(r_{k}) < \sgen(x_k) \leq \rgen(r_{k+1}), 1\leq k\leq n.
+	\end{equation}
+	and $\rgen(r_1) <\sgen(x^*)$. This generates a strictly monotone decreasing sequence 
+	$(\rgen(r_k)_{1\leq k\leq n+1}$,	which converge due to the finiteness of $B$ and we actually 
+	obtain that $r_{n+1}=r_1$. Thus $C\coloneqq (r_{n+1}, x_n, r_n, x_{n-1}, r_{n-1},\ldots, x_1,r_1)$ 
+	is an elementary circuit. 
+	
+	Assume now that there is an edge $(x_i,r_j)$ such that $i\neq j$, thus $s^-_{x_ir_j}>0$. If $i>j$ 
+	then $\sgen(x_i)<\sgen(x_j)$ which contradicts that $\sgen(x_j)=\min \{\sgen(x) \ \vert \ x\in X(B), 
+	s^-_{xr_k}>0\}$. Thus $i<j$, which implies that $\sgen(x_i)\geq\rgen(r_j)$ and that $x_i$ cannot 
+	be an F-reactant of $r_j$ but only an F-catalyst, thus: 
+	\begin{equation}
+		\hat{s}_{x_ir_j}=\SM_{x_ir_j}=0.
+	\end{equation} 
+	Therefore, the only positive educt stoichiometries can be of the form $s^-_{x_i,r_i}$. 
+	
+	We can then obtain $S(C)$ by reordering the columns of the submatrix $\SM[X(C), R(C)]$ such that 
+	$S(C)_{x_iy}\coloneqq \SM[X(C), R(C)]_{x_ir_i}$. Thereby, all diagonal entries of $\SM(C)$ are 
+	nonpositive, i.e., all are negative except $\SM(C)_{x_1r_1}$, and all off-diagonal entries of $\SM(C)$ 
+	are nonnegative, thus $\SM(C)$ is a Metzler matrix.
+	\vspace{6pt}
+	
+	We now turn to the general case and assume there are multiple pure reaction vertices 
+	$R^*(B)=\{r \in R(B) \ \vert \ \forall x \in X(B): s^-_{xr}>0\Rightarrow \hat{s}_{xr}=0\}$. 
+	We choose $r_1\in R^*(B): \rgen(r_1)\leq \rgen(r_j), \forall r_j\in R^*(B)$ and we have
+	$\rgen(r_1)<\rgen(r), \forall r\in R(B)\setminus R^*(B)$. We now apply the same construction 
+	as above:
+	\begin{equation}
+		r_1 \leftarrow x_1 \leftarrow r_2 \leftarrow x_2 \leftarrow \ldots r_n \leftarrow x_n \leftarrow r_{n+1}
+	\end{equation}
+	sucht $x_1$ is an F-catalyst of $r_1$, and forall $1< k\leq n+1$: 
+	\begin{equation}
+		r_k =  \arg \min \{ \rgen(r) \ | r\in R(B), \hat{s}^+_{x_{k-1}>0}\}
+	\end{equation}
+	and for all $1<k\leq n$:
+	\begin{equation}
+		x_k = \arg \min \{\sgen(x) \ \vert \ x\in X(B), s^-_{xr_k}>0\}
+	\end{equation}
+	if $r_k \notin R^*(B)$ or $x_k$ as an F-catalyst of $r_k$ otherwise. We thereby obtain the following structure:
+	\begin{equation*}
+			(r_{l_0}, \leftarrow x_{l_0} \leftarrow\ldots \leftarrow x_{l_1}) \leftarrow \ldots \leftarrow (r_{l_p} \leftarrow x_{l_p} \leftarrow \ldots \leftarrow x_{l_{p+1}}) \leftarrow r_{l_{p+1}}
+	\end{equation*}
+	where $r_{l_0} \coloneqq r_1, x_{l_0} \coloneqq x_1$ and each reaction vertex $r_{l_i+1}, 0\leq i\leq p$ is a pure reaction, 
+	and each species vertex $x_{l_i+1}, 0\leq i\leq p$ is an F-catalyst for the pure reaction $r_{l_i+1}$. Then, by the same argument 
+	as above, we obtain a strictly monotone decreasing sequence $(\rgen(r_j))_{l_i\leq j \leq _{l_{i+1}-1}}$ for each 
+	$(r_{l_i} \leftarrow x_{l_1+1} \leftarrow \ldots x_{l_{i+1}}), 0\leq i\leq p$. By finiteness of $B$, we then obtain that $r_{l_i}=r_{l_{p+1}}, 
+	0\leq i\leq p$ yields an elementary circuit 
+	\begin{equation}
+		C\coloneqq (r_{l_{p+1}}, x_{l_{p+1}}, \ldots x_{l_i},  r_{l_i})
+	\end{equation}
+	With the same argument as above, for each metabolite-to-reaction edge $(x_i,r_j),i\neq j$ such that there is a $k\in \{0,\ldots, p}: l_k\leq i,j \leql_{k+1}$ 
+	we obtain that $\hat{s}_{x_ir_j}=0$. Assume not that there is not such a $k$.
+\end{proof}
+
 %We next show that pure reactions in $\princess(\RAF)$ play an important role in the partial order of a strong block, as one of them
 %always has the lowest generation number of all reactions within the block.
 %\vspace{6pt}
