@@ -258,7 +258,8 @@ molecule $x$ in the reaction $r$. Reactants and products are collected in the se
 		\cproducts&: \CR \rightarrow X, \cproducts(r) \coloneqq \{x\in X \ \vert \ s^+_{xr}>0\} 
 	\end{split}
 \end{equation}
-
+A \emph{sub-CRN} is a tuple $(X',R')$ with $X'\subseteq X$ and $R'\subseteq R$. A \emph{sub-CRN}
+is \emph{well-formed} if for each reaction $r\in R'$ there are specis $x,y\in X': s^-_{xr}>0, s^+_{xr}>0$. 
 The \emph{stoichiometric matrix} $\SM$ encodes all net-stoichiometries:
 \begin{equation}
   \SM_{xr}\coloneqq s^+_{xr}-s^-_{xr}
@@ -1076,7 +1077,7 @@ in $\lord(\RAF)$.
 	For a non-trivial, minimal RAF $\RAF$, any strong block $B$ of $\lord(\RAF)$ contains a \emph{pure reaction}.
 \end{corollary}
 \vspace{6pt}
-The proof of Lemma~\ref{lem:cutVertexPureCat} implicates important consequences. First, it identifies 
+The proof of Lemma~\ref{lem:cutVertexPureCat} has three important consequences. First, it identifies 
 cut-vertices as \emph{pure F-reactions} (equivalently \emph{pure reactions}), although not all cut-vertices necessarily 
 are. Second, \emph{pure F-reactions} take an important role in the partial order of strong blocks of minimal RAFs, as 
 there is always one with the lowest generation number in a strong block, according to the partial order. Third, 
@@ -1107,8 +1108,9 @@ but not F-reactants within $B$ and at least one positive entry for a product $y^
 					\end{pmatrix}
 			\end{array}
 \end{equation}
+\vspace{6pt}
 
-In fact, then nonnegative column reflecting $r^*$ in $\SM(B)\coloneqq \SM[X(B), R(B)]$ renders $r^*$ as 
+In fact, the nonnegative column reflecting $r^*$ in $\SM(B)\coloneqq \SM[X(B), R(B)]$ renders $r^*$ as 
 an import reaction for the strong block $B$. In fact, this allows us to construct a strictly positive vector $v$ 
 of reaction rates which satisfies $\SM(B)v>0$. 
 
@@ -1124,21 +1126,21 @@ therefore required an extension that is based on subnetworks \cite{golnik_autoca
   An RN $(X,R)$ is \emph{autocatalytic} if it contains a sub-RN $(X',R')$ such that
 \begin{enumerate}
  \item[(i)]  $(X',R')$ is  well-formed;
- \item[(ii)]  $\mathbf{S}[X',R']$ is semi-positive.
+ \item[(ii)]  $\SM'\coloneqq \SM[X',R']$ is semi-positive, i.e., there is $v\in \mathbb{R}_{>0}^{|R'|}: \SM'v>0$.
 \end{enumerate}
 \end{definition}
 \vspace{6pt}
 
-A subnetwork $(X',R')$ that satisfies $(i.)$ and $(ii.)$, while no proper subnetwork $(X'',R'')$ with $X''\subseteq X', 
-R''\subseteq R'$ is called an autocatalytic core. With this definition, we will show that $\lord(\RAF)$ for each non-trivial, 
-minimal RAF $\RAF$ is autocatalytic.
+A sub-CRN $(X',R')$ that satisfies $(i.)$ and $(ii.)$, while no proper subnetwork $(X'',R'')$ with $X''\subseteq X', 
+R''\subseteq R'$ does, is called an \emph{autocatalytic core}. With this definition, we will show that $\lord(\RAF)$ 
+for each non-trivial, minimal RAF $\RAF$ is autocatalytic.
 
-The work in the previous section on the structure of minimal RAFs implies that each strong block $B$ of $\lord(\RAF)$ 
-for a non-trivial, minimal RAF $\RAF$ satisfies $(i.)$ of Def.~\ref{def:autSubRN}. We thereby now focus on $(ii.)$. 
-The key observation here is that all $\r \in \varphi^{1}(\RAF)$ that satisfy $\rgen(r)=1$ are \emph{pure reactions) and 
+The results on the structure of minimal RAFs imply that each strong block $B$ of $\lord(\RAF)$ for a non-trivial, 
+minimal RAF $\RAF$ satisfies $(i.)$ of Def.~\ref{def:autSubRN}. To show semi-positivity, the key 
+observation is that all $r \in \varphi^{-1}(\RAF)$ that satisfy $\rgen(r)=1$ are \emph{pure reactions} and 
 thereby generate a nonnegative column with at least one positive entry. In particular, they can be interpreted as import 
 reactions, which allow a sufficiently high inflow into the network that yields positive flows for each of the reactions. A formal 
-proof for this intuition is provide in the supplementary information.
+proof for this intuition is provided in the supplementary information.
 \vspace{6pt}
 \begin{theorem}[Proof: SI]\label{thm:NonFoodSemipositiv}
 	Let $\RAF$ be a non-trivial, minimal RAF. The matrix $A\coloneqq \SM[\closure{\RAF}{F}\setminus F,\RAF]$ 
@@ -1146,22 +1148,27 @@ proof for this intuition is provide in the supplementary information.
 \end{theorem}
 \vspace{6pt}
 
-Every species of a strong block is only produced and consumed by a reaction of that block. Thereby, the 
-vector $v|_{R(C)}$ that denotes the sub-vector of $v$ restricted to the reactions of the strong block $C$ 
-directly yields for the submatrix restricted to the species and reactions of the strong block: 
+As a remark, the proof can be applied to the sub-stoichiometric matrix representing the species and reaction vertices
+of any strong block $B$ of $\lord(\RAF)$ to show their semi-positivity. From another point of view, every species of 
+a strong block is only produced and consumed by a reaction of that block. Thereby, the vector $v_{R(B)}$ that 
+denotes the sub-vector of $v$ restricted to the reactions of the strong block $B$ directly yields for the submatrix 
+restricted to the species and reactions of the strong block $B$: 
 \begin{equation}
-  \SM[X(C), R(C)]v|_{R(C)}>0
+  \SM[X(B), R(B)]v_{R(B)}>0.
 \end{equation}
-and thereby semipositivity. In addition, any strong block is by definition well-formed, and we obtain
-the following statement.
+Thus, each block is semipositiv and also well-formed.
 \vspace{6pt}
 \begin{theorem}\label{Thm:StrBlockCore}
-	Any strong block of a minimal RAF contains an autocatalytic core. 
+	Every strong block $B$ of $\lord(\RAF)$ for a non-trivial, minimal RAF $\RAF$ contains an autocatalytic core. 
 \end{theorem}
 \vspace{6pt}
 
-Thm~\ref{Thm:StrBlockCore} provides only information on the existence, but not on the structure of the 
-subnetworks responsible for the semipositivity of the corresponding submatrix. Leveraging on the result 
+Thm.~\ref{Thm:StrBlockCore}, however, provides only information on the existence, but not on the structure of the 
+subnetworks responsible for the semipositivity of the corresponding submatrix. 
+
+\holy{RG rewriting up to here}
+
+Leveraging on the result 
 of Lemma~\ref{lem:cutVertexPureCat}. Recall, therefore, that for any strong block $B$, there is a reaction
 vertex $r^*\in R(B)$ such that for all $x\in X(B)$ with $s_{xr^*}^->0$ it holds that $s_{xr^*}^+=s_{xr^*}^->0$, i.e. 
 all reactants of $r^*$ in $B$ are pure catalysts. We will refer to these vertices as \emph{pure reactions}. As shown 
