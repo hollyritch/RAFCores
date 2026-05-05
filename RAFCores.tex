@@ -946,10 +946,10 @@ have been introduced so far.
 	\end{minipage}
 	\par\bigskip
 	
-	\caption{A minimal RAF in its different representations as a CRS $\Phi$ (\textbf{left})
+	\caption{A non-trivial, minimal RAF $\RAF$ in its different representations as a CRS $\Phi$ (\textbf{left})
 	and CRN $\Gamma(\Phi)$ (\textbf{right}): the systems of stoichiometric equations \textbf{(top)},  
-	the complete bipartite graphs $\queen'$ and $\king'$ as well as the subgraph $\princess$ 
-	and $\lord$ in purple and teal, respectively (\textbf{middle}), and the R-graphs  
+	the complete bipartite graphs $\queen'$ and $\king'$ as well as the subgraph $\princess(\RAF)$ 
+	and $\lord(\RAF)$ in purple and teal, respectively (\textbf{middle}), and the R-graphs  
 	$\RGraph(\queen')$ and $\RGraph(\king')$.}
 	\label{ex:CutVertex}
 \end{figure}
@@ -1051,36 +1051,38 @@ if its equivalence class is trivial.
 
 \subsubsection{Strong Blocks}
 
-With the existence of cut-vertices that can only be reaction vertices, $\princess$ and $\lord$ can be decomposed
- into strong blocks. Each of these strong blocks of $\lord$, indeed, contains an autocatalytic core, which is warranted
- by a unique structural property common to any strong block that guarantees semipositivity. To this end, we 
- call a species $x$ a pure F-catalyst for an F-reaction $\fr$ if $x$ is neither an F-reactant nor an F-product. 
+The existence of cut-vertices, which can only be reaction vertices, enables the decomposition of $\princess$ and $\lord$
+ into strong blocks. For the graph $\lord(\RAF)$, each of these blocks contains an autocatalytic core, which 
+ is warranted by a unique structural property common to any strong block that guarantees semipositivity. In particular, each
+ block in $\princess(\RAF)$ and $\lord(\RAF)$ contains reaction vertices for which all reactants are F-catalysts but not F-reactants. 
+ We thereby collect them in the following sets:
+ \begin{equation}
+ 	\begin{split}
+	 	\FR^*(\block)\coloneqq \{\fr\in \FR(\block) \ | \ s^-_{x\fr}>0 \Rightarrow s^+_{x\fr}=s^-_{x\fr}, \forall x\in X(\block)\} \\
+		R^*(\block)\coloneqq \{r\in \varphi^{-1}{\FR}(\block) \ | \ s^-_{xr}>0 \Rightarrow s^+_{xr}=s^-_{xr}, \forall x\in X(\block)\}.
+	\end{split}
+\end{equation}
+and refer to these vertices as \emph{pure F-reactions} and \emph{pure reactions}, respectively.
 \vspace{6pt}
 \begin{lemma}\label{lem:cutVertexPureCat}
-	For a non-trivial, minimal RAF $\RAF$ any strong block $\block$ of $\princess(\RAF)$ contains an F-reaction 
-	$\fr\in \FR(\block)$ such that all reactants for $\fr$ that are located in $\block$ are pure F-catalysts, in symbols:
-	\begin{equation}
-		 \forall x\in X(B): s^-_{x\fr}>0: s^-_{x\fr}=k_{x\fr}
-	\end{equation}
+	For a non-trivial, minimal RAF $\RAF$, any strong block $\block$ of $\princess(\RAF)$ contains a \emph{pure reaction}.
 \end{lemma}
 \vspace{6pt}
-The same statement holds for $\lord(\RAF)$ with the small difference that for some of the cut-vertices $\fr\in \RAF$ 
+The proof of Lemma~\ref{lem:cutVertexPureCat} yields two important results. First, it identifies cut-vertices as \emph{pure F-reactions} 
+although not all cut-vertices necessarily are. Second, \emph{pure F-reactions} take an important role in the partial order of strong blocks 
+of minimal RAFs, as there is always one with the lowest generation number inside a strong block according w.r.t. partial order. 
+The same statement also holds for $\lord(\RAF)$, with the small difference that for some of the cut-vertices $\fr\in \RAF$ 
 all representatives that are not cut-vertices in $\lord(\RAF)$.
 \vspace{6pt}
 \begin{corollary}\label{cor:cutVertexPureCat}
-	Every strong block $\block$ of $\lord(\RAF)$ contains a reaction $r\in (\varphi^{-1}(\FR))(\block)$ such that all reactants for 
-	$r$ that are located in $\block$ are pure F-catalysts, in symbols:
-	\begin{equation}
-		 \forall x\in X(\block): s^-_{xr}>0: s^-_{xr}=k_{xr}
-	\end{equation}
+	For a non-trivial, minimal RAF $\RAF$, any strong block $B$ of $\lord(\RAF)$ contains a \emph{pure reaction}.
 \end{corollary}
 \vspace{6pt}
-The stoichiometric matrix of a strong block $\block$ thereby always contains a non-negative column. This column represents a 
-reaction $r^*\in R(\block)$ that has only reactants that are F-catalysts but not F-reactants within $\block$ and at least one positive 
-entry for a product $y^*\in X(\block): s^+_{yr^*}>0$:
-
+One consequence of the last corollary is that the stoichiometric matrix of a strong block $B$ always contains a non-negative column. 
+This column represents a \emph{pure reaction}, i.e. it has only reactants that are F-catalysts but not F-reactants within $B$ and at least 
+one positive entry for a product $y^*\in X(\block): s^+_{yr^*}>0$:
 \begin{equation}
-	\SM[X(\block), R(\block)] = 
+	\SM[X(B), R(B)] = 
 			\begin{array}{c c}
 				& 	\begin{array}{c c c} 			
 						 	& 	r^* 		& 
