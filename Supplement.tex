@@ -451,11 +451,11 @@ reactants inside the block. We will refer to them as \emph{pure F-reactions}.
 		\rgen(r_{k}) < \sgen(x_k) \leq \rgen(r_{k+1}), 1\leq k\leq n.
 	\end{equation}
 	and $\rgen(r_1) <\sgen(x^*)$. This generates a strictly monotone decreasing sequence 
-	$(\rgen(r_k)_{1\leq k\leq n+1}$,	which converge due to the finiteness of $B$ and we actually 
+	$(\rgen(r_k))_{1\leq k\leq n+1}$, which converge due to the finiteness of $B$ and we actually 
 	obtain that $r_{n+1}=r_1$. Thus $C\coloneqq (r_{n+1}, x_n, r_n, x_{n-1}, r_{n-1},\ldots, x_1,r_1)$ 
 	is an elementary circuit. 
 	
-	Assume now that there is an edge $(x_i,r_j)$ such that $i\neq j$, thus $s^-_{x_ir_j}>0$. If $i>j$ 
+	Assume now that there is $i\neq j$, thus $s^-_{x_ir_j}>0$. If $i>j$ 
 	then $\sgen(x_i)<\sgen(x_j)$ which contradicts that $\sgen(x_j)=\min \{\sgen(x) \ \vert \ x\in X(B), 
 	s^-_{xr_k}>0\}$. Thus $i<j$, which implies that $\sgen(x_i)\geq\rgen(r_j)$ and that $x_i$ cannot 
 	be an F-reactant of $r_j$ but only an F-catalyst, thus: 
@@ -478,7 +478,7 @@ reactants inside the block. We will refer to them as \emph{pure F-reactions}.
 	\begin{equation}
 		r_1 \leftarrow x_1 \leftarrow r_2 \leftarrow x_2 \leftarrow \ldots r_n \leftarrow x_n \leftarrow r_{n+1}
 	\end{equation}
-	sucht $x_1$ is an F-catalyst of $r_1$, and forall $1< k\leq n+1$: 
+	such that $x_1$ is an F-catalyst of $r_1$, and forall $1< k\leq n+1$: 
 	\begin{equation}
 		r_k =  \arg \min \{ \rgen(r) \ | r\in R(B), \hat{s}^+_{x_{k-1}>0}\}
 	\end{equation}
@@ -495,11 +495,43 @@ reactants inside the block. We will refer to them as \emph{pure F-reactions}.
 	as above, we obtain a strictly monotone decreasing sequence $(\rgen(r_j))_{l_i\leq j \leq _{l_{i+1}-1}}$ for each 
 	$(r_{l_i} \leftarrow x_{l_1+1} \leftarrow \ldots x_{l_{i+1}}), 0\leq i\leq p$. By finiteness of $B$, we then obtain that $r_{l_i}=r_{l_{p+1}}, 
 	0\leq i\leq p$ yields an elementary circuit 
+	
 	\begin{equation}
 		C\coloneqq (r_{l_{p+1}}, x_{l_{p+1}}, \ldots x_{l_i},  r_{l_i})
 	\end{equation}
-	With the same argument as above, for each metabolite-to-reaction edge $(x_i,r_j),i\neq j$ such that there is a $k\in \{0,\ldots, p}: l_k\leq i,j \leql_{k+1}$ 
-	we obtain that $\hat{s}_{x_ir_j}=0$. Assume not that there is not such a $k$.
+	\vspace{6pt}
+	
+	With the same argument as above, for each $i\neq j: s^-_{x_ir_j}>0$ such that there is a $k\in \{0,\ldots, p\}: l_k\leq i,j \leq l_{k+1}$ 
+	we obtain that $\hat{s}_{x_ir_j}=0$. 
+	
+	Assume now that there is no such $k$. If $\sgen(x_i)>\sgen(x_j)$ then $\sgen(x_i)\geq \rgen(r_j)$ which implies that
+	$x_i$ cannot be an F-reactant for $r_j$, thus $\hat{s}_{x_ir_j}=0$. The case $\sgen(x_i)<\sgen(x_j)$ is impossible due 
+	to our choice of $x_j$. Then the only remaining case is $\sgen(x_i)=\sgen(x_j)$ which is possible since the minimum 
+	of $\{\sgen(x) \ \vert \ x\in X(B), s^-_{xr_j}>0\}$ might not be unique. This, however, implies that there is a smaller 
+	elementary circuit containing a pure reaction vertex. If $i>j$ this circuit can be obtained as $C'$ with:
+	\begin{equation}
+		\begin{split}
+			V(C')&\coloneqq V(C)\setminus \{x_i, r_i, \ldots, x_j\}\\[0.5em]
+			E(C')& \coloneqq E(C)\setminus \{(x_k, r_k) \ | \ j-1\leq k \leq i\} \cup \{(r_k, x_{k+1}) \ | \ j\leq k \leq i\}
+		\end{split}
+	\end{equation} 
+	or if $i<j$ then this circuit can be obtained as $C''$:
+	\begin{equation}
+		\begin{split}
+			V(C'') & \coloneqq \{r_j, x_{j-1}, \ldots, x_i\} \\
+			E(C'') & \coloneqq\{(x_k, r_k) \ | \ i \leq k \leq j-1\} \cup \{(x_i,r_j)\} \cup \{(r_k, x_{k-1}) \ | \ i+1\leq k \leq j\}
+		\end{split}
+	\end{equation} 
+	It holds by construction that either $r_1\in R(C')$ or that there is a pure reaction vertex $r_{l_k} \in R(C''): i<l_k<j$. We may now repeat this procedure until 
+	we can not find such a metabolite-to-reaction edge anymore and obtain a final elementary circuit $\tilde{C}$.
+	
+	We can then obtain $S(\tilde{C})$ by reordering the columns of the submatrix $\SM[X(\tilde{C}), R(\tilde{C})]$ such that 
+	\begin{equation}
+		\SM(\tilde{C})_{xy}\coloneqq \SM[X(\tilde{C}), R(\tilde{C})]_{xv^{\tilde{C}}_{out}(x)}
+	\end{equation} 
+	where $v^{\tilde{C}}_{out}(x)$ is the unique reaction $r\in R(\tilde{C}$ such that $(x,r)\in E(\tilde{C})$. Thereby, all diagonal 
+	entries of $\SM(\tilde{C})$ are nonpositive, i.e., all are negative except $\SM(\tilde{C})_{x_1r_1}$, and all off-diagonal entries 
+	of $\SM(\tilde{C})$ are nonnegative, thus $\SM(\tilde{C})$ is a Metzler matrix. 
 \end{proof}
 
 %We next show that pure reactions in $\princess(\RAF)$ play an important role in the partial order of a strong block, as one of them
