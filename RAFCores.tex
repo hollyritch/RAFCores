@@ -398,7 +398,7 @@ of a set of F-reactions $\FR$ by $\varphi^{-1}(\FR)$.
 
 By definition, $[r]_\sim$ is of infinite size, which is an unrealistic scenario for 
 a chemical system. Given a set of F-reactions $\FR$ together with a set of species $X$, each 
-$\sim$-equivalence class can be restricted to representatives that are catalyzed by members 
+$\sim$-equivalence class can be restricted to representatives that members catalyze 
 of the species set or are uncatalyzed. This is achieved by \emph{catalyzations}, i.e., by
 defining \emph{a priori} for each $\fr\in \FR$ pairs $(\cat(r), r)$ and storing the collection of 
 catalysts $\cat(\fr)\coloneqq \{\cat(r) \ \vert \ r\in \fr\}$ in the set of catalyzations $\cat(\FR)$. 
@@ -737,7 +737,7 @@ respectively. In line with calling elements of $\food$ food-molecules, we kindly
 \begin{equation}\label{eq:Waste}
 	W\coloneqq \{x\in \closure{\RAF}{\food} \ | \ \nexists \fr \in \RAF \text{ s.t. } s^-_{xr}>0\}		
 \end{equation}
-as waste molecules.
+as waste molecules. We might note that $V(\king')=\closure{\RAF}{\food})$.
 
 \subsubsection{Strong connectivity}
 
@@ -1123,7 +1123,7 @@ therefore required an extension that is based on subnetworks \cite{golnik_autoca
 
 \vspace{6pt}
 \begin{definition}\label{def:autSubRN}
-  An RN $(X,R)$ is \emph{autocatalytic} if it contains a sub-RN $(X',R')$ such that
+  A CRN $(X,R)$ is \emph{autocatalytic} if it contains a sub-CRN $(X',R')$ such that
 \begin{enumerate}
  \item[(i)]  $(X',R')$ is  well-formed;
  \item[(ii)]  $\SM'\coloneqq \SM[X',R']$ is semi-positive, i.e., there is $v\in \mathbb{R}_{>0}^{|R'|}: \SM'v>0$.
@@ -1132,19 +1132,22 @@ therefore required an extension that is based on subnetworks \cite{golnik_autoca
 \vspace{6pt}
 
 A sub-CRN $(X',R')$ that satisfies $(i.)$ and $(ii.)$, while no proper subnetwork $(X'',R'')$ with $X''\subseteq X', 
-R''\subseteq R'$ does, is called an \emph{autocatalytic core}. With this definition, we will show that $\lord(\RAF)$ 
-for each non-trivial, minimal RAF $\RAF$ is autocatalytic.
+R''\subseteq R'$ does, is called an \emph{autocatalytic core}. With this definition, we are in the position to show 
+that $\lord(\RAF)$ for each non-trivial, minimal RAF $\RAF$ is autocatalytic.
 
 The results on the structure of minimal RAFs imply that each strong block $B$ of $\lord(\RAF)$ for a non-trivial, 
-minimal RAF $\RAF$ satisfies $(i.)$ of Def.~\ref{def:autSubRN}. To show semi-positivity, the key 
-observation is that all $r \in \varphi^{-1}(\RAF)$ that satisfy $\rgen(r)=1$ are \emph{pure reactions} and 
-thereby generate a nonnegative column with at least one positive entry. In particular, they can be interpreted as import 
-reactions, which allow a sufficiently high inflow into the network that yields positive flows for each of the reactions. A formal 
-proof for this intuition is provided in the supplementary information.
+minimal RAF $\RAF$ satisfies $(i.)$ of Def.~\ref{def:autSubRN}. To show semi-positivity, the key observation 
+is that each strong block $B$ contains at least one \emph{pure reaction}, i.e., a reaction for which all reactants 
+in $B$ are F-catalysts (Lemma~\ref{lem:cutVertexPureCat} and Cor.~\ref{cor:cutVertexPureCat}). In particular, 
+all $r \in \varphi^{-1}(\RAF)$ that satisfy $\rgen(r)=1$ are \emph{pure reactions}. \emph{Pure reactions} generate a 
+nonnegative column with at least one positive entry in the corresponding stoichiometric matrices, either of the strong
+block $\SM[X(B), R(B)]$ or of the substoichiometric matrix $\SM[\closure{\RAF}{\food}\setminus \food, \varphi^{-1}(\RAF)]$ 
+of the whole RAF without food molecules. In fact, they can be interpreted as import reactions, which allow a sufficiently 
+high import into the network such that all succeeding reactions exhibit strictly positive flow values as well. 
 \vspace{6pt}
 \begin{theorem}[Proof: SI]\label{thm:NonFoodSemipositiv}
-	Let $\RAF$ be a non-trivial, minimal RAF. The matrix $A\coloneqq \SM[\closure{\RAF}{F}\setminus F,\RAF]$ 
-	is semi-positive.
+	Let $\RAF$ be a non-trivial, minimal RAF. The matrix $A\coloneqq \SM[V(\king')\setminus \food, \varphi^{-1}
+	(\RAF)]$ is semi-positive.
 \end{theorem}
 \vspace{6pt}
 
@@ -1319,7 +1322,6 @@ However, they can be constructed directly, which proves the existence of at leas
 	\ s^+_{x_{k-1}r_k}-s^-_{x_{k-1}r_k}>0 \}$ and $x_k \in POX^{\ell}_{\RAF}(F): s_{x_kr_k}<0$ with $\ell=\min_{i=1, \ldots, n} \{\POR^i_{\RAF}(F) \ | \ s^+_{xr} 
 	-s^-_{xr}>0 \}$. We observe, that in this way, $r_k\in R(B)$ and $x_k\in X(B)$ for any $k$.
 \end{proof}
-
 
 If the strong block consists of a single reaction $r$ and a single species $x \in \cat(r)$, then $r$ is an explicit autocatalytic reaction.
 \vspace{6pt}
