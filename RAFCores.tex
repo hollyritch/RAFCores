@@ -607,9 +607,11 @@ and a reaction $\fr_1$ precedes a reaction $\fr_2$, i.e.:
 \begin{equation}
 	\fr_1\preceq \fr_2 \Leftrightarrow \rgen(\fr_1) \leq \rgen(\fr_2)
 \end{equation}
-We refer to the values of $\sgen$ and $\rgen$ as the generation of a reaction or metabolite. A \emph{constructive 
-reflexively autocatalytic} set (CAF) is a RAF such that for each F-reaction $\fr$ all $x\in \feducts(x)$ satisfy 
-$\sgen(x)<\rgen(\fr)$ and there is at least one $r\in \fr$ such that all catalyst $x\in \cat(r)$ satisfy $\sgen(x)< \rgen(\fr)$.
+We refer to the values of $\sgen$ and $\rgen$ as the generation of a reaction or metabolite. Since all representatives
+of an F-reaction share the same F-reactants, we may define the generation of a C-reaction as $\delta(r)\coloneqq \rgen(\fr)$.
+A \emph{constructive reflexively autocatalytic} set (CAF) is a RAF such that for each F-reaction 
+$\fr$ all $x\in \feducts(x)$ satisfy $\sgen(x)<\rgen(\fr)$ and there is at least one $r\in \fr$ such that 
+all catalyst $x\in \cat(r)$ satisfy $\sgen(x)< \rgen(\fr)$.
 
 One important consequence of the partial order is that if a RAF contains two $\sim$~equivalence classes 
 that share the same net reaction, the "later" can be removed.
@@ -689,7 +691,7 @@ as long as they are non-trivial, i.e., if they are composed of more than a singl
 	if it is trivial. 
 \end{lemma}
 \begin{proof}
-	Let $\RAF$ be a CAF and assume $|\RAF|>1$. Let $r\in \RAF: \rgen(r)=1$. Then all F-reactants and all F-catalysts for one 
+	Let $\RAF$ be a CAF and assume $|\RAF|>1$. Let $r\in \RAF: \delta(r)=1$. Then all F-reactants and all F-catalysts for one 
 	\emph{catalyzation} are in $\food$ since $\RAF$ is a CAF. Thus $\{r\}$ is a RAF itself, contradicting the minimality of $\RAF$. 
 	Conversely, assume that $|\RAF|=1$. Then all F-reactants and all F-catalysts for at least one \emph{catalyzation} are in $\food$ 
 	since otherwise $\RAF$ would not be a RAF. Thus, $\RAF$ is a CAF.
@@ -1139,7 +1141,7 @@ The results on the structure of minimal RAFs imply that each strong block $B$ of
 minimal RAF $\RAF$ satisfies $(i.)$ of Def.~\ref{def:autSubRN}. To show semi-positivity, the key observation 
 is that each strong block $B$ contains at least one \emph{pure reaction}, i.e., a reaction for which all reactants 
 in $B$ are F-catalysts (Lemma~\ref{lem:cutVertexPureCat} and Cor.~\ref{cor:cutVertexPureCat}). In particular, 
-all $r \in \varphi^{-1}(\RAF)$ that satisfy $\rgen(r)=1$ are \emph{pure reactions}. \emph{Pure reactions} generate a 
+all $r \in \varphi^{-1}(\RAF)$ that satisfy $\delta(r)=1$ are \emph{pure reactions}. \emph{Pure reactions} generate a 
 nonnegative column with at least one positive entry in the corresponding stoichiometric matrices, either of the strong
 block $\SM[X(B), R(B)]$ or of the substoichiometric matrix $\SM[\closure{\RAF}{\food}\setminus \food, \varphi^{-1}(\RAF)]$ 
 of the whole RAF without food molecules. In fact, they can be interpreted as import reactions, which allow a sufficiently 
