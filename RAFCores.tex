@@ -1255,30 +1255,17 @@ is semipositive with $v\coloneqq \begin{pmatrix} 3 & 2 & 1 \end{pmatrix}^T$
 and $(X(C),R(C))$ an autocatalytic sub-CRN. Indeed, this is not a coincidence.
 
 \vspace{6pt}
-\begin{lemma}[Proof: SI]{lem:MetzCircAut}
+\begin{lemma}[Proof: SI]\label{lem:MetzCircAut}
 	If $C$ is a Metzler circuit containing a \emph{pure reaction}. Then $(X(C), R(C)$ 
 	is autocatalytic.
 \end{lemma}
-
-\holy{RG rewriting until here.}
-However,
-it is not an autocatalytic core, since $C'=(x_1,r_1, x_3,r_3,x_4,r_4)$ with $\child = \{X(C), R(C), \kappa: 
-\kappa(x_i)=r_i, i=1,3,4\}$ has associated CS matrix:
-\begin{equation}
-	\SM[\child] = \begin{pmatrix}
-			   	0 &  -1 & 1 \\
-				1 &  -1 & 0 \\
-				0 &   1 & -1 \\  
-			    \end{pmatrix},
-\end{equation}
-which is clearly non-semipositiv since any $v>0$ yields either $(\SM v)_1=0$ or $(\SM v)_3=0$. 
-
-Note that the statement of the Lemma allows MR-chords that emerge as digons induced by pure catalysts and thereby yield only
-$0$ as off-diagonal entries in $\SM[\child]$. A direct consequence is then the following:
+If an the subnetwork induced by an elementary circuit $C$ is autocatalytic we say that $C$ 
+is autocatalytic. Since MR-chordless elementary circuits are always Metzler circuits, we obtain the following
+corollary as a direct consequence. 
 \vspace{6pt}
 \begin{corollary}
-	Any MR-chordless elementary circuit of a strong block in $L$ containing a \emph{pure reaction} vertex has an autocatalytic
-	CS matrix.  
+	Any MR-chordless elementary circuit $C$ of a strong block in $L$ containing a \emph{pure reaction} 
+	is autocatalytic.  
 \end{corollary}
 \vspace{6pt}
 
