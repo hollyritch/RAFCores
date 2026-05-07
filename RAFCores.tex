@@ -1259,9 +1259,10 @@ and $(X(C),R(C))$ an autocatalytic sub-CRN. Indeed, this is not a coincidence.
 	If $C$ is a Metzler circuit containing a \emph{pure reaction}. Then $(X(C), R(C)$ 
 	is autocatalytic.
 \end{lemma}
-If an the subnetwork induced by an elementary circuit $C$ is autocatalytic we say that $C$ 
-is autocatalytic. Since MR-chordless elementary circuits are always Metzler circuits, we obtain the following
-corollary as a direct consequence. 
+\vspace{6pt}
+If the subnetwork induced by an elementary circuit $C$ is autocatalytic, we say that $C$ 
+is autocatalytic. Since MR-chordless elementary circuits are always Metzler circuits, we 
+obtain the following corollary as a direct consequence. 
 \vspace{6pt}
 \begin{corollary}
 	Any MR-chordless elementary circuit $C$ of a strong block in $L$ containing a \emph{pure reaction} 
@@ -1269,44 +1270,32 @@ corollary as a direct consequence.
 \end{corollary}
 \vspace{6pt}
 
+In case the strong block consists of a single reaction $r$ and a single species $x$, 
+then $x$ is an F-catalyst and an F-product. In addition, there is only one elementary 
+circuit, in particular, the digon $(x,r,x)$, which is by definition a Metzler circuit.
+\vspace{6pt}
+\begin{corollary}\label{cor:AutoCatReac}
+	Let $\RAF$ be a minimal, non-trivial RAF and $B$ be a strong block of $L(\RAF)$. 
+	If $r$ is composed of a single reaction $r$ and a single species $x$, then $r$ is 
+	an explicit autocatalytic reaction, and $x$ is an F-catalyst and an F-product of $r$.
+\end{corollary}
+%\begin{proof}
+%	Assume first that $x$ is not a catalyst. Since $B$ is strongly connected, there is an edge $(x,r)$ and $(r,x)$. Assume now that 
+%	$x$ is not a net product of $r$. Then $x$ is produced by a reaction of another block $B'$. Then there is another path connecting 
+%	$B$ to $B'$ since otherwise $x$ would be a cut-vertex, which is not possible by Lemma~\ref{lem:CutVertexReac}. Then 
+%	$r$ is an explicit autocatalytic reaction. 
+%\end{proof}
+\vspace{6pt}
 
-\vspace{6pt}
-\begin{theorem}
-	For a minimal, non-trivial RAF $\RAF$, let $B$ be a strong block in the graph of the graph $L$ from 
-	Eq.~\ref{eq:graphL}. For any \emph{pure reaction} (Eq.~\ref{eq:pureReactions}), there is an elementary 
-	circuit $C$ in $B$ such that $\SM[X(C), R(C)]$ is autocatalytic. 
-\end{theorem} 
-\vspace{6pt}
-\begin{proof}
-	We prove by construction and construct a CS inductively. For the base case, we let $r_1\in R^*(B)$ and $R_1'\coloneqq \{r_1\}$. 
-	and then choose an $x_1 \in \cat(r^*)$ and set $\child_1\coloneqq \{\{x_1\}, \{r_1\}, \kappa(x_1)=r_1\}$. Then $\child_1$ is a CS.
-	In every $k$-th step we choose $r_k\in \POR^m_{\RAF}(F): s^+_{x_{k-1}r_k}-s^-_{x_{k-1}r_k}>0$ with $m = \min_{i=1, \ldots, n} \{\POR^i_{\RAF}(F) 	\ | 
-	\ s^+_{x_{k-1}r_k}-s^-_{x_{k-1}r_k}>0 \}$ and $x_k \in POX^{\ell}_{\RAF}(F): s_{x_kr_k}<0$ with $\ell=\min_{i=1, \ldots, n} \{\POR^i_{\RAF}(F) \ | \ s^+_{xr} 
-	-s^-_{xr}>0 \}$. We observe, that in this way, $r_k\in R(B)$ and $x_k\in X(B)$ for any $k$.
-\end{proof}
-
-If the strong block consists of a single reaction $r$ and a single species $x \in \cat(r)$, then $r$ is an explicit autocatalytic reaction.
-\vspace{6pt}
-\begin{lemma}
-	Let $B$ be a strong block of $L$ that is composed of a single reaction $r$ and a single species $x$. Then $r$ is an explicit
-	autocatalytic reaction, and $x$ is a catalyst and a net product of $r$.
-\end{lemma}
-\begin{proof}
-	Assume first that $x$ is not a catalyst. Since $B$ is strongly connected, there is an edge $(x,r)$ and $(r,x)$. Assume now that 
-	$x$ is not a net product of $r$. Then $x$ is produced by a reaction of another block $B'$. Then there is another path connecting 
-	$B$ to $B'$ since otherwise $x$ would be a cut-vertex, which is not possible by Lemma~\ref{lem:CutVertexReac}. Then 
-	$r$ is an explicit autocatalytic reaction. 
-\end{proof}
-\vspace{6pt}
 The following example captures such a situation. 
 \begin{figure}[h]
 	\centering
 	\begin{minipage}[c]{0.5\textwidth}
 		\begin{equation}
 			\begin{split}
-				r_1&: f \overset{x_1}{\longrightarrow} x_2 \\
-				r_2&: 2x_2 \overset{x_3}{\longrightarrow} x_3 + x_4 \\
-				r_3&: x_4 \overset{x_4}{\longrightarrow} x_1
+				r_1&: f + (x_1) \rightarrow x_2 + (x_1) \\
+				r_2&: 2x_2 + (x_3) \rightarrow x_4 + x_3 +(x_3) \\
+				r_3&: x_4 + (x_4) \rightarrow x_1 + (x_4)
 			\end{split}
 		\end{equation}
 	\end{minipage}%
@@ -1315,14 +1304,14 @@ The following example captures such a situation.
 		\centering
 		\begin{tikzpicture}
 			\node[draw, circle] (f) at (0,0) {$f$};
-			\node[draw, circle] (x1) at (1,1) {$x1$};
-			\node[draw, circle] (x2) at (1,-1) {$x2$};
-			\node[draw, circle] (x3) at (3,-1) {$x3$};
-			\node[draw, circle] (x4) at (2,0) {$x4$};
+			\node[draw, circle] (x1) at (1,1) {$x_1$};
+			\node[draw, circle] (x2) at (1,-1) {$x_2$};
+			\node[draw, circle] (x3) at (3,-1) {$x_3$};
+			\node[draw, circle] (x4) at (2,0) {$x_4$};
 			
-			\node[draw, rectangle] (r1) at (1,0) {$r1$};
-			\node[draw, rectangle] (r2) at (2,-1) {$r2$};
-			\node[draw, rectangle] (r3) at (2, 1) {$r3$};
+			\node[draw, rectangle] (r1) at (1,0) {$r_1$};
+			\node[draw, rectangle] (r2) at (2,-1) {$r_2$};
+			\node[draw, rectangle] (r3) at (2, 1) {$r_3$};
 			
 			\draw[->] (f) to (r1);
 			\draw[->] (x1) to [bend right = 30] (r1);
@@ -1337,264 +1326,79 @@ The following example captures such a situation.
 			\draw[->] (r3) to (x1);
 		\end{tikzpicture}
 	\end{minipage}
-	\caption{Depiction of an explicit autocatalytic reaction.}
+	\caption{Depiction of non-trivial minimal RAF with an explicit autocatalytic reaction $r_2$.}
 \end{figure}
 \FloatBarrier
-Then $B=\{x_3, r_2\}$ is a strong block and $r_2$ is an explicit autocatalytic reaction. 
-This has direct consequences for the presence of autocatalytic subnetworks within a 
-minimal RAF, which we will address in the next section. 
-
-
-
-%\TODO{Construction site ahead}
-%A natural extension to this statemen relies on considering not only species from 
-%$\closure{\RAF}{F}\setminus F$ but from the set of food-generated entities, i.e.
-%\begin{equation}
-%	\mathbf{X}_{\RAF} \coloneqq \bigcup_{k=1}^n \POX^k_{\RAF}(F)
-%\end{equation}
-%
-%However, in this case, semipositivity is not guaranteed. To see this, consider 
-%the following example:
-%
-%\begin{equation}
-%	\begin{split}
-%		r_1: f_1 & \overset{f_1}{\longrightarrow} x_1\\
-%		r_2: x_1 & \overset{x_1}{\longrightarrow} f_1 \\		
-%	\end{split}
-%\end{equation}
-%
-%with the RAF $\RAF\coloneqq \{r_1,r_2\}$ and food-set $F\coloneqq \{f_1\}$. Then
-%$\SM[\mathbf{X}_{\RAF}, \RAF]$ reads:
-%
-%\begin{equation}
-%	\begin{pmatrix}
-%		-1 & 1 \\
-%		1 & -1
-%	\end{pmatrix}
-%\end{equation}
-%
-%which is indeed not semipositiv. 
-%
-%Non-trivial minimal RAFs are strongly connected and can be decomposed into strong blocks. 
-%The subnetwork induced by each of these strong blocks is naturally well-formed. In addition,
-%any species is solely produced or consumed by a reaction within the block. Thereby, the sub-vector
-%of $v$ as constructed in the proof of Thm.~\ref{thm:NonFoodSemipositiv} and restricted to the 
-%reactions contained in the strong block, directly yields semipositivity on the submatrix containing
-%all species and reaction vertices within the strong block.
-%
-%
-%The semipositivity of $A\coloneqq \SM[(\closure{\RAF}{F}\setminus F,\RAF)]$ in general originates 
-%from at least one of the form $x_1\rightarrow x_1 + x_2$. For example, in the following RN:
-%\begin{equation}
-%	\begin{split}
-%		r_0: f_1 & \overset{f_2}{\longrightarrow} x_1 \\ 
-%		r_i: x_i & \overset{x_i}{\longrightarrow} x_{i+1},
-%	\end{split}
-%\end{equation}
-%reaction $r_0$ forms a non-negative column in $A$, which allows for an unrestricted input of $x_1$. 
-%However, $r_0$ has no reactant in $\closure{\RAF}{F}\setminus F$, not even a catalyst. By 
-%definition~\ref{def:autSubRN}, $(\closure{\RAF}{F}\setminus F,R')$ is not an autocatalytic subnetwork 
-%since it is not well-formed. One way of avoiding such a situation is to require that none of the 
-%catalysts is contained in the food set. Consider the following 
-%RAF $\RAF={r_1,r_2}$, with food-set $F=\{f\}$ and $X\coloneqq \{f,x_1,x_2\}$.
-%\begin{equation}
-%	\begin{split}
-%		r_1&: f  \overset{x_1}{\longrightarrow} x_2 \\ 
-%		r_2&: x_2  \overset{x_2}{\longrightarrow} x_1
-%	\end{split}
-%\end{equation}
-%The matrix $A\coloneqq \SM[(\closure{\RAF}{F}\setminus F,R')]$ then reads:
-%\begin{equation}
-%	A\coloneqq 
-%		\begin{pmatrix}
-%			0 & 1\\
-%			1 & -1
-%		\end{pmatrix}
-%\end{equation}
-%which is an autocatalytic core of size $2$ that is associated with an elementary 
-%circuit in $\king(\closure{\RAF}{F},R'), R')$. This is, however, no coincidence. 
-%Let us therefore consider only \emph{catalytically autonomous} RAFs $\RAF$, 
-%i.e., for which $\cat(\RAF)\cap F=\emptyset$.
-%\vspace{6pt}
-%\begin{lemma}
-%	Let $(X,R)$ be a catalyzed network with food-set $F$ and $\RAF$ a \emph{catalytically autonomous} RAFs. 
-%	Then $(\closure{\RAF}{F},\RAF)$ contains an autocatalytic core $(X',R')$ that is either an explicit autocatalytic 
-%	reaction or $\king(X',R')$ is an elementary circuit and the corresponding CS matrix $\SM[\child]$ has at least 
-%	one strong Metzler column.
-%\end{lemma}
-%\begin{proof}
-%	\TODO{Include and adapt proof from Overleaf}
-%\end{proof}
-%\vspace{6pt}
-%
-%Generalizing this notion, we can require that every reaction has a reactant (not necessarily a net-reactant)
-%that is not an element of the food set. 
-%
-%\begin{lemma}
-%	Let $(X,R)$ be a catalyzed network with food-set $F$ and $\RAF$ a RAF, where for each $r\in R'$ there is
-%	$x\in \closure{\RAF}{F}\setminus F: s_{xr}^->0$. Then $(\closure{\RAF}{F},\RAF)$ contains an autocatalytic 
-%	core $(X',R')$ that is either an explicit autocatalytic reaction or $\king(X',R')$ is an elementary circuit and the 
-%	corresponding CS matrix $\SM[\child]$ has at least one strong Metzler column.
-%\end{lemma}
-%\begin{proof}
-%	
-%\end{proof}
-% 
-%Building on this....
-%
-%\begin{lemma}
-%	A RAF is a CAF or it contains an autocatalytic core.
-%\end{lemma}
-%\TODO{Another open point here is that we can have food molecules that are produced....not entirely sure yet how to 
-%deal with this case.}
-%
-%\vspace{6pt}
-%
-%\section{RAF-Subnetworks}
-%
-%In this subsection, we aim to generalize the framework of RAFs to a subnetwork setting.
-%
-%\subsection{Reflexively autocatalytic subnetworks}
-%
-%We start with the reflexive-autocatalytic part. We call a subnetwork $(X', R')$ partially catalyzed if $\cat(R')\neq \emptyset$. 
-%\vspace{6pt}
-%\begin{definition}
-%	Let $(X,R)$ be a catalyzed RN. A subnetwork $(X',R')$ is called reflexive-autocatalytic if for each 
-%	$r\in R': \cat_r\neq \emptyset \ (X(\cat(R')\subseteq X')$. It is called autonomously reflexive-autocatalytic 
-%	if for each $r\in R': \cat_r\neq \emptyset \ and X(\cat(R')\subseteq X'$.
-%\end{definition}
-%\vspace{6pt}
-%We denote the subgraph of a subnetwork by $\king'\coloneqq \king(X',R')$ and write $\cat'$ instead of $\cat(R')$. A direct consequence 
-%is the following lemma:
-%\vspace{6pt}
-%\begin{lemma}\label{lem:RASubnetwork}
-%	Let $(X, R, \cat)$ be a catalyzed RN. A subnetwork $(X',R')$ is (autonomously) reflexive-autocatalytic if and only if
-%	for all $r\in R' \ \exists x\in X: (x,r),(r,x)\in E(\king(X\cup X(\cat'), R') \ (E(\king'))$. 
-%\end{lemma}
-%\begin{proof}
-%	If $(X',R')$ is reflexive autocatalytic $|R'|=|\cat'|$, thus each reaction $r$ is explicitely catalyzed by an $x_r\in X(\cat_r)\subseteq X$.
-%	Then $s^-_{x_rr}>0$ and $s^+_{x_rr}>0$ yields by definition $(x_r,r)$ and $(x_r,r) \in E(\king(X\cup X(\cat'), R')$, respectively.
-%	If $(X',R')$ is autonomously reflexive-autocatalytic then $X(\cat'\subseteq X'\Rightarrow \king(X\cup X(\cat'), R') = \king'$ which
-%	yields the second part of the claim. Conversely, if for each $r\in R': \exists x\in X$ such that $(x,r),(r,x)\in E(\king(X\cup X(\cat')), R')$, 
-%	then by definition $s^-_{xr}>0,s^+_{xr}>0$, thus $x\in X(\cat_r)$. If, additionally, $(x,r),(r,x) \in E(\king')$ then $x\in X'$ and thus 
-%	$X(\cat'\subseteq X'$ which yields that $(X',R')$ is autonomously reflexive-autocatalytic. 
-%\end{proof}
-%\vspace{6pt}
-%
-%\subsection{F-generated subnetworks}
-%
-%In theory, for an RN $(X,R,\cat)$, $F$ could be chosen arbitrarily. Depending on the network structure and the RAF $R'$, 
-%$F$ might be identical to its own closure. To see this, consider the following example network: 
-%\begin{equation}
-%	\begin{split}
-%		r_1: x_1 \overset{x_1}{\longrightarrow} x_2 \\
-%		r_2: x_2 \overset{x_2}{\longrightarrow} x_1 \\
-%	\end{split}
-%\end{equation}
-%with $F=\cat=X=\{x_1,x_2\}$ and RAF $\RAF = \{r_1,r_2\}$. Then $F=\closure{\RAF}{F}$. However, $F$ could also contain reactions 
-%that are not connected to the rest, depending on the RAF. For example
-%\begin{equation}
-%	\begin{split}
-%		r_1: x_1 &\overset{x_1}{\longrightarrow} x_2 \\
-%		r_2: x_2 &\overset{x_2}{\longrightarrow} x_1 \\
-%		r_3: x_3 &\overset{x_3}{\longrightarrow} x_1 
-%	\end{split}
-%\end{equation}
-%with $F=\cat=X=\{x_1,x_2,x_3\}$ and RAF $\RAF=\{r_1,r_2\}$, we have $x_3\in F\Rightarrow F\subseteq \closure{\RAF}{F}$ but $x_3$ is disconnected
-%in the graph $\king(X(\RAF) \cup F, \RAF, \cat(\RAF))$. In contrast, a food-set $F'$ for a subnetwork $(X', R')$ as defined in Eq.~\ref{eq:FoodWaste} is a direct 
-%consequence from the set of entities $X'$ and the set of reactions $R'$. 
-%
-%\vspace{6pt}
-%\begin{definition}[F-generated subnetwork]
-%	Let $(X, R, \cat)$ be a catalyzed RN. A subnetwork $(X',R')$ is called $F$-generated, if $X'\subseteq \closure{R'}{F}$.
-%\end{definition}
-%\vspace{6pt}
-%
-%An immediate question that arises is how to construct a minimal set $F$ to obtain an $F$-generated subnetwork. Clearly, we have  
-%that $F'\subseteq F$ if $(X',R')$ is $F$-generated. 
-%\vspace{6pt}
-%\begin{lemma}
-%	Let $(X, R, \cat)$ be a catalyzed RN and $(X',R')$ a subnetwork. If $\king[X'\cup R']$ is a fluffle, then $(X',R')$  
-%	is an $F$-generated subnetwork for any of the sets $F_x\coloneqq F'\cup\{x\}, x\in X'$.
-%\end{lemma}
-%\begin{proof}
-%	If $\king[X'\cup R']$ is a fluffle, then any reaction has a single reactant in $(X',R')$. In addition, there is a unique CS $\child$ 
-%	defined by the reactant-to-product edges. For an arbitrary $x'\in X'$ and the set $F'$ we have $E(\kappa(x))\subseteq 
-%	F_x\coloneqq F'\cup\{x\}$, which yields that $P(\kappa(x))\subseteq \cl_{R'}(F_x)$. For all $y\in P(\kappa(x))$, the same 
-%	argument applies as well as for all any $z\in \POX^k_{R'}(F), k\leq n$. Since $\king[X'\cup R']$ is a fluffle, it is strongly 
-%	connected. Thus, for each $r\in R'$ there is path $(x, \kappa(x), \ldots, r)$, and thereby an $k\leq n: r\in \POR_{R'}(F)$. 
-%	Hence, $X'\subseteq \closure{R'}{F}$.
-%\end{proof}
-%\vspace{6pt}
-%Since irreducible Metzler CS matrices have a bipartite graph representation as a fluffle, 
-%the following statement is a direct consequence from the former lemma.
-%\vspace{6pt}
-%\begin{corollary}
-%	Let $(X',R')$ be a subnetwork that has an associated autocatalytic, irreducible 
-%	Metzler CS matrix $\SM[\child]$. Then $(X',R')$ is an $F$-generated
-%	subnetwork for any $F_x\coloneqq F'\cup \{x\}, x\in X'$.
-%\end{corollary}
-%\vspace{6pt}
-%Any autocatalytic core $(X',R')$ can then be generated by the union of $F'$ and a single species from $X'$. 
-%\vspace{6pt}
-%\begin{corollary}
-%	Let $(X',R')$ be an autocatalytic core. Then $(X',R')$ is an $F$-generated subnetwork for any $F_x\coloneqq F'\cup \{x\}, x\in X'$.
-%\end{corollary}
-%\vspace{6pt}
-%For irreducible non-Metzler matrices, such a result cannot be obtained. In the worst case, 
-%all but one species might have to be added to $F'$ to obtain an $F$-generated subnetwork. 
-%To see this, consider the following subnetwork $(X',R')$: 
-%\begin{equation}
-%	\begin{split}
-%		r_1&: x_1 + \epsilon x_3 \rightarrow x_2 \\
-%		r_2&: x_2 + \epsilon x_1 \rightarrow x_3 \\
-%		r_3&: x_3 + \epsilon x_2 \rightarrow x_1
-%	\end{split}
-%\end{equation}
-%with corresponding CS matrix:
-%\begin{equation}
-%	\SM[\child]=\begin{pmatrix}
-%				-1 & -\epsilon & 2 \\
-%				1 & -1 & -\epsilon \\
-%				-\epsilon & 1 & -1 
-%			\end{pmatrix}
-%\end{equation}
-%which is autocatalytic for epsilon small enough with $v=\begin{pmatrix}5 & 4 & 3\end{pmatrix}^T$. 
-%In \cite{golnik_enumeration_2025}, it has been shown that any CS matrix with irreducible Metzler has a 
-%spanning fluffle $\king(\child)$. Although still strongly connected the induced subgraph $\king[\child]$ 
-%might contain additional reactant-to-reaction edges that are not encoded by the CS-bijection $\kappa$.
-%However, it is sufficient to add all species with an off-diagonal entry.
-%\vspace{6pt}
-%\begin{lemma}
-%	Let $(X', R')$ be a subnetwork with a non-Metzler CS matrix with irreducible Metzler part. Then $(X',R')$
-%	is $F$-generated for $F= F' \cup N, N=\{x\in X' | \exists r \neq \kappa(x), \SM^-_{xr}>0\}$.
-%\end{lemma}
-%\begin{proof}
-%	Since $\SM[\child]$ has irreducible Metzler part, $\king(\child)$ is strongly-connected, which implies that
-%	also $\king[\child]$ is strongly connected. Then for any $x\in N: E(\kappa(x))\in F$, thus $\kappa(x)\in \POR_{R'}(F)$ 
-%	and $P(\kappa(x))\in \cl_{R'}(F)$. We can now recursively apply this argument to all $y\in P(\kappa(x))$
-%	and obtain with the strong-connectedness of $\king[\child]$ that $X'\subseteq \closure{R'}(F)$.
-%\end{proof}
-%\vspace{6pt}
-%%\subsection{Reflexively autocatalytic and $F$-generated subnetworks}
-%%
-%%We now combine the two definitions above. 
-%%
-%%\begin{definition}
-%%	Let $(X, R, \cat)$ be a catalyzed RN and $(X',R')$ a subnetwork. A reflexive autocatalytic subnetwork $(X',R')$ 
-%%	is called a RAF-subnetwork if there is a set $Y'\subseteq X'$ such that $(X',R')$ is $F$-generated for $F\coloneqq F'\cup Y'$.
-%%\end{definition}
-%%
-%%%A trivial statement that follows directly from the definition is that for any RAF subnetwork
-%
-%\vspace{6pt}
-%The definition of the food-set $F'$ in Eq.~\ref{eq:FoodWaste} does not include catalysts. We may additionally define the catalyst 
-%specific food-set for $(X',R')$ as follows:
-%\begin{equation}
-%	F'_{\cat'}\coloneqq \{x\in X(\cat') \ | \ x\notin X'\} 
-%\end{equation}
+Then $B=\{x_3, r_2\}$ is a strong block and $r_2$ is an explicit autocatalytic reaction. Summarizing 
+now Lemma~\ref{lem:MetzCircuit}, \ref{lem:MetzCircAut}, and Cor.~\ref{cor:AutoCatReac}, we 
+obtain the following main result of this contribution. 
 
 \vspace{6pt}
+\begin{theorem}
+	Let $\RAF$ be a minimal, non-trivial RAF. Then every strong block $B$ of $L(\RAF)$ contains an autocatalytic 
+	Metzler circuit. In case $B$ is composed of a single reaction $r$ and a single species $x$, then $r$ is an 
+	explicit autocatalytic reaction and $x$ is an F-catalyst and an F-product of $r$.
+\end{theorem} 
+\vspace{6pt}
+
+In general, these elementary circuits need not be autocatalytic cores as shown in the example of Fig.~\ref{} The following example depicts
+this case.
+
+\begin{figure}[htb]
+	\begin{minipage}[c]{0.5\textwidth}
+		\begin{equation}
+			\begin{split}
+				r_1&: f +(x_1) \overset{x_1}{\longrightarrow} x_2 + x_3 \\
+				r_2&: x_2 + (x_2) \rightarrow x_3 + (x_2) \\
+				r_3&: x_3 + (x_3) \rightarrow x_4 + (x_3) \\				  
+				r_4&: x_4 + (x_4) \rightarrow x_1 + (x_4) 
+			\end{split}
+		\end{equation}
+	\end{minipage}%
+	\hfill%
+	\begin{minipage}[c]{0.5\textwidth}
+		\centering
+		\begin{tikzpicture}
+			\node[draw, circle] (f) at (0,0) {$f$};
+			\node[draw, circle] (x1) at (1,1) {$x_1$};
+			\node[draw, circle] (x2) at (1,-1) {$x_2$};
+			\node[draw, circle] (x3) at (3,-1) {$x_3$};
+			\node[draw, circle] (x4) at (3,1) {$x_4$};
+			
+			\node[draw, rectangle] (r1) at (1,0) {$r_1$};
+			\node[draw, rectangle] (r2) at (2,-1) {$r_2$};
+			\node[draw, rectangle] (r3) at (3,0) {$r_3$};
+			\node[draw, rectangle] (r4) at (2,1) {$r_4$};
+			
+			\draw[->] (f) to (r1);
+			\draw[->] (x1) to [bend right = 20] (r1);
+			\draw[->] (r1) to [bend right = 20] (x1);
+			\draw[->] (r1) to (x2);
+			\draw[->] (r1) to (x3);
+			\draw[->] (x2) to [bend right = 30] (r2);
+			\draw[->] (r2) to [bend right = 30] (x2);			
+			\draw[->] (r2) to(x3);			
+			\draw[->] (x3) to [bend right = 30] (r3);
+			\draw[->] (r3) to [bend right = 30] (x3);
+			\draw[->] (r3) to(x4);
+			\draw[->] (x4) to [bend right = 30] (r4);
+			\draw[->] (r4) to [bend right = 30] (x4);
+			\draw[->] (r4) to (x1);
+		\end{tikzpicture}
+	\end{minipage}
+\end{figure}
+\FloatBarrier
+
+Indeed, the proof for Lemma~\ref{lem:MetzCircuit} would construct
+the Metzler circuit $C\coloneqq (r_1,x_3,r_3,x_4,r_4,x_1,r_1)$, whose
+substoichiometric matrix reads:
+\begin{equation}
+	\begin{pmatrix}
+		0 & -1 & 1
+		1 & 
+	\end{pmatrix}
+\end{equation}
+
 \bibliography{RAFCores}
 
 \end{document}
