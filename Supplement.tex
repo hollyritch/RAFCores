@@ -428,6 +428,39 @@ reactants inside the block. We will refer to them as \emph{pure F-reactions}.
 \end{proof}
 \vspace{6pt}
 
+\vspace{6pt}
+\begin{lemma}
+	Let $B$ be a strong block of the graph $L$ and $C$ be an elementary circuit $C$ in $B$ with 
+	associated CS $\child$ that is defined by the edges $E_1(C)$. In addition, let $C$ contain a  
+	\emph{pure reaction} (Eq.~\ref{eq:pureReactions}). Then $\SM[\child]$ is autocatalytic if it is 
+	a Metzler matrix. 
+\end{lemma}
+\begin{proof}
+	If $C$ is an elementary circuit its associated CS matrix $\SM[\child]$ of the $k$-CS 
+	$\child = (X(C), R(C), \kappa: \kappa(x) \coloneqq v^C_{out}(x)$ is irreducible, by pre-requisite 
+	Metzler, and reads by construction:
+	\begin{equation}
+			\SM[\child] = 
+				\begin{pmatrix}
+						0 	& 	 		&	 			&  			& 	p_1	\\
+						p_2	& 	-r_2  		& 				&     P''  		&		\\
+					 		& 	p_3  		& 	\ddots 		&      			&		\\
+							& 	 		& 	\ddots 		& \ddots 		&    	 	\\
+						P'	& 	 		& 				& p_k 		& -r_k     	\\
+				\end{pmatrix},
+	\end{equation}
+
+i.e., $\SM[\child]$ with $\{r_i\}\in \mathbb{R}_{\geq 0}, i=2,\ldots, k$ and $\{p_i\}\in \mathbb{R}_{>0},i=1,\ldots, k$ and non-negative
+entries in $P'$ and $P''$. We may then construct $v\in \mathbb{R}^{k}_{>0}$ as $v(r_k)\coloneqq 1$ and 
+\begin{equation}
+	v_{i}=\begin{cases}
+			\frac{v_{i+1}\cdot r_{i+1}}{p_{i+1}} +1 & \text{if } r_{i+1}>0 \\
+			\frac{v_{i+1}}{p_{i+1}} +1 & \text{if } r_{i+1}=0
+		\end{cases}
+\end{equation}
+Then $v>0$ and by construction we directly obtain $\SM[\child]v>0$ since $P'$ and $P''$ contain only non-negative entries. 
+\end{proof}
+\vspace{6pt}
 
 %We next show that pure reactions in $\princess(\RAF)$ play an important role in the partial order of a strong block, as one of them
 %always has the lowest generation number of all reactions within the block.

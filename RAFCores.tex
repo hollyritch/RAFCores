@@ -1176,8 +1176,9 @@ vertex $r^*$, i.e., all reactants of $r^*$ in $B$ are F-catalysts but not F-reac
 submatrix $\SM[X(B), R(B)]$, which allows for the construction of a strictly positive vector of reaction rates $v$ 
 that yields $\SM[X(B), R(B)]v>0$, as done in the proof of Thm.~\ref{thm:NonFoodSemipositiv}. 
 
-Although we will, due to stoichiometries, not be able to give the construction of an autocatalytic core, we can, 
-however, provide a construction elementary circuit $C$ for every strong block that gives rise to a stoichiometric 
+Since each strong block is strongly connected, each vertex is located on an elementary circuit. In particular, 
+\emph{pure reactions} are located on an elementary circuit. The next statement shows that is actually possible 
+to provide a construction of an elementary circuit $C$ for every strong block that gives rise to a stoichiometric 
 submatrix $\tilde{\SM}(C)\coloneqq \SM[X(C), R(C)]$ in which each column and row has at most one negative 
 entry, and one column is nonnegative with at least one positive entry. The columns of $\tilde{\SM}(C)$ can 
 then be reordered to obtain a matrix $\SM(C)$ with nonpositive diagonal and nonnegative off-diagonal entries. 
@@ -1186,117 +1187,91 @@ case $\tilde{\SM}(C)$ is semipositive, $\SM(C)$ is semipositive. In addition, th
 circuit $(X(C),R(C))$ is well-formed. 
 
 \vspace{6pt}
-\begin{lemma}
+\begin{lemma}[Proof: SI]\label{lem:MetzCircuit}
 	Let $B$ be a strong block of $\lord(\RAF)$. Then $B$ contains an elementary circuit $C$ with one 
 	\emph{pure reaction} vertex, and there is a reordering of the columns of $	\SM[X(C), R(C)]$ that 
 	yields Metzler matrix.
 \end{lemma}
 \vspace{6pt}
-\holy{RG rewriting until here}
-%\begin{figure}[h]
-%	\begin{minipage}[c]{0.45\textwidth}
-%		\begin{equation}
-%			\begin{split}
-%				r_1&: f +(x_1) \rightarrow x_2 +(x_1) \\
-%				r_2&: x_2 + (x_2) \rightarrow  x_1 + x_3 + (x_2) \\
-%				r_3&: x_3 + x_1 + (x_3) \rightarrow x_4 + (x_3)\\
-%				r_4&: x_4 + (x_4) \rightarrow x_1 + (x_4) 				
-%			\end{split}
-%		\end{equation}
-%	\end{minipage}%
-%	\hfill%
-%	\begin{minipage}[c]{0.49\textwidth}
-%		\centering
-%		\begin{tikzpicture}
-%			\node[draw, circle] (f) at (0,0) {$f$};
-%			\node[draw, circle] (x1) at (1,1) {$x_1$};
-%			\node[draw, circle] (x2) at (1,-1) {$x_2$};
-%			\node[draw, circle] (x3) at (3,-1) {$x_3$};
-%			\node[draw, circle] (x4) at (3,1) {$x_4$};
-%			
-%			\node[draw, rectangle] (r1) at (1,0) {$r_1$};
-%			\node[draw, rectangle] (r2) at (2,-1) {$r_2$};
-%			\node[draw, rectangle] (r3) at (3,0) {$r_3$};
-%			\node[draw, rectangle] (r4) at (2,1) {$r_4$};
-%
-%			\draw[->] (f) to (r1);
-%			\draw[->] (x1) to [bend right = 30] (r1);
-%			\draw[->] (r1) to [bend right = 30] (x1);
-%			\draw[->] (r1) to (x2);
-%			\draw[->] (r1) to [bend right = 95, looseness=2.0](x3);
-%			\draw[->] (x2) to [bend right = 30] (r2);
-%			\draw[->] (r2) to [bend right = 30] (x2);
-%			\draw[->] (r2) to (x1);
-%			\draw[->] (r2) to (x3);
-%			\draw[->] (x1) to (r3);
-%			\draw[->] (x3) to [bend right = 30] (r3);
-%			\draw[->] (r3) to [bend right = 30] (x3);
-%			\draw[->] (r3) to (x4);
-%			\draw[->] (x4) to [bend right = 30] (r4);
-%			\draw[->] (r4) to [bend right = 30] (x4);
-%			\draw[->] (r4) to (x1);
-%		\end{tikzpicture}
-%	\end{minipage}
-%	\caption{Example of a non-trivial, minimal RAF with four C-reactions and 4 species vertices}
-%	\label{fig:RAFContAutCyc}
-%\end{figure}
-%
-%Then $\RAF=\{r_1,r_2,r_3,r_4\}$ is a minimal RAF and rhe CS-matrix 
-%$\child\coloneqq \{X\setminus \{f\}, \RAF, \kappa: \kappa(x_i)=r_i, i=1,\ldots, 
-%4\}$ reads:
-%\begin{equation}
-%	\SM[\child] = \begin{pmatrix}
-%			   	0 & 1  &  -1 & 1 \\
-%				1 & -1 &  0  & 0 \\		
-%				1 & 1 &  -1  & 0 \\
-%				0 & 0 &   1  & -1 \\  
-%			    \end{pmatrix}
-%\end{equation}
-%which is semipositive with $v\coloneqq \begin{pmatrix} 4 & 3 & 2 & 1\end{pmatrix}^T$. However,
-%the elementary circuit $C=(x_1,r_1, x_3,r_3,x_4,r_4)$ with $\child = \{X(C), R(C), \kappa: 
-%\kappa(x_i)=r_i, i=1,3,4\}$ has associated CS matrix:
-%\begin{equation}
-%	\SM[\child] = \begin{pmatrix}
-%			   	0 &  -1 & 1 \\
-%				1 &  -1 & 0 \\
-%				0 &   1 & -1 \\  
-%			    \end{pmatrix},
-%\end{equation}
-%which is clearly non-semipositiv since any $v>0$ yields either $(\SM v)_1=0$ or $(\SM v)_3=0$. 
-%We start with a sufficient condition for an autocatalytic subnetwork.
-\vspace{6pt}
-\begin{lemma}
-	Let $B$ be a strong block of the graph $L$ and $C$ be an elementary circuit $C$ in $B$ with 
-	associated CS $\child$ that is defined by the edges $E_1(C)$. In addition, let $C$ contain a  
-	\emph{pure reaction} (Eq.~\ref{eq:pureReactions}). Then $\SM[\child]$ is autocatalytic if it is 
-	a Metzler matrix. 
-\end{lemma}
-\begin{proof}
-	If $C$ is an elementary circuit its associated CS matrix $\SM[\child]$ of the $k$-CS 
-	$\child = (X(C), R(C), \kappa: \kappa(x) \coloneqq v^C_{out}(x)$ is irreducible, by pre-requisite 
-	Metzler, and reads by construction:
-	\begin{equation}
-			\SM[\child] = 
-				\begin{pmatrix}
-						0 	& 	 		&	 			&  			& 	p_1	\\
-						p_2	& 	-r_2  		& 				&     P''  		&		\\
-					 		& 	p_3  		& 	\ddots 		&      			&		\\
-							& 	 		& 	\ddots 		& \ddots 		&    	 	\\
-						P'	& 	 		& 				& p_k 		& -r_k     	\\
-				\end{pmatrix},
-	\end{equation}
 
-i.e., $\SM[\child]$ with $\{r_i\}\in \mathbb{R}_{\geq 0}, i=2,\ldots, k$ and $\{p_i\}\in \mathbb{R}_{>0},i=1,\ldots, k$ and non-negative
-entries in $P'$ and $P''$. We may then construct $v\in \mathbb{R}^{k}_{>0}$ as $v(r_k)\coloneqq 1$ and 
+We call an elementary circuit as claimed in Lemma~\ref{lem:MetzCircuit} a Metzler circuit. Unfortunately, such a 
+Metzler circuit can, as shown in the proof, still contain a metabolite-to-reaction chord and is thereby not necessarily 
+an autocatalytic core. The following example depicts such a scenario. 
+
+\begin{figure}[h]
+	\begin{minipage}[c]{0.45\textwidth}
+		\begin{equation}
+			\begin{split}
+				r_1&: f +(x_1) \rightarrow x_2 +(x_1) \\
+				r_2&: x_2 + (x_1 + x_2) \rightarrow  x_3 + (x_1 + x_2) \\
+				r_3&: x_3 + (x_3) \rightarrow x_1 + (x_3)\\
+			\end{split}
+		\end{equation}
+	\end{minipage}%
+	\hfill%
+	\begin{minipage}[c]{0.49\textwidth}
+		\centering
+		\begin{tikzpicture}
+			\node[draw, circle] (f) at (0,0) {$f$};
+			\node[draw, circle] (x1) at (2,1) {$x_1$};
+			\node[draw, circle] (x2) at (1,-1) {$x_2$};
+			\node[draw, circle] (x3) at (3,-1) {$x_3$};
+			
+			\node[draw, rectangle] (r1) at (1,0) {$r_1$};
+			\node[draw, rectangle] (r2) at (2,-1) {$r_2$};
+			\node[draw, rectangle] (r3) at (3,0) {$r_3$};
+	
+			\draw[->] (f) to (r1);
+			\draw[->] (x1) to [bend right = 20] (r1);
+			\draw[->] (r1) to [bend right = 20] (x1);
+			\draw[->] (r1) to (x2);
+			\draw[->] (r2) to [bend right = 20] (x1);
+			\draw[->] (x1) to [bend right = 20] (r2);
+			\draw[->] (x2) to [bend right = 30] (r2);
+			\draw[->] (r2) to [bend right = 30] (x2);
+			\draw[->] (r2) to (x3);
+			\draw[->] (r3) to (x1);
+			\draw[->] (x3) to [bend right = 30] (r3);
+			\draw[->] (r3) to [bend right = 30] (x3);
+		\end{tikzpicture}
+	\end{minipage}
+	\caption{Example of a non-trivial, minimal RAF with four C-reactions and 4 species vertices}
+	\label{fig:RAFContAutCyc}
+\end{figure}
+\FloatBarrier
+
+Then $\RAF=\{r_1,r_2,r_3,r_4\}$ is a minimal RAF and the substoichiometric 
+elementary circuit $C\coloneqq (r_1, x_2,r_2,x_3,r_3,x_1,r_1)$ as constructed in the 
+proof of Lemma~\ref{lem:MetzCircuit} with reads:
 \begin{equation}
-	v_{i}=\begin{cases}
-			\frac{v_{i+1}\cdot r_{i+1}}{p_{i+1}} +1 & \text{if } r_{i+1}>0 \\
-			\frac{v_{i+1}}{p_{i+1}} +1 & \text{if } r_{i+1}=0
-		\end{cases}
+	\SM[(X),R(C)] = \begin{pmatrix}
+			   	0 & 0  &  1  \\
+				1 & -1 &  0   \\		
+				0 & 1 &  -1   \\
+			    \end{pmatrix}
 \end{equation}
-Then $v>0$ and by construction we directly obtain $\SM[\child]v>0$ since $P'$ and $P''$ contain only non-negative entries. 
-\end{proof}
+is a Metzler matrix, thus $C$ is a Metzler circuit. In addition, $\SM[(X),R(C)]$
+is semipositive with $v\coloneqq \begin{pmatrix} 3 & 2 & 1 \end{pmatrix}^T$
+and $(X(C),R(C))$ an autocatalytic sub-CRN. Indeed, this is not a coincidence.
+
 \vspace{6pt}
+\begin{lemma}[Proof: SI]{lem:MetzCircAut}
+	If $C$ is a Metzler circuit containing a \emph{pure reaction}. Then $(X(C), R(C)$ 
+	is autocatalytic.
+\end{lemma}
+
+\holy{RG rewriting until here.}
+However,
+it is not an autocatalytic core, since $C'=(x_1,r_1, x_3,r_3,x_4,r_4)$ with $\child = \{X(C), R(C), \kappa: 
+\kappa(x_i)=r_i, i=1,3,4\}$ has associated CS matrix:
+\begin{equation}
+	\SM[\child] = \begin{pmatrix}
+			   	0 &  -1 & 1 \\
+				1 &  -1 & 0 \\
+				0 &   1 & -1 \\  
+			    \end{pmatrix},
+\end{equation}
+which is clearly non-semipositiv since any $v>0$ yields either $(\SM v)_1=0$ or $(\SM v)_3=0$. 
 
 Note that the statement of the Lemma allows MR-chords that emerge as digons induced by pure catalysts and thereby yield only
 $0$ as off-diagonal entries in $\SM[\child]$. A direct consequence is then the following:
@@ -1307,8 +1282,6 @@ $0$ as off-diagonal entries in $\SM[\child]$. A direct consequence is then the f
 \end{corollary}
 \vspace{6pt}
 
-Such elementary circuits, MR-chordfree or not, are neither necessarily autocatalytic cores, nor is their existence guaranteed. 
-However, they can be constructed directly, which proves the existence of at least on of them in each strong block.
 
 \vspace{6pt}
 \begin{theorem}
