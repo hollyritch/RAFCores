@@ -233,7 +233,11 @@
 
 \holy{}
 
-\section{Representation of Chemical Systems}
+
+
+\section{Introduction}
+
+\section{Representation of Systems with Chemical Reactions}
 
 The literature on systems of chemical interactions is inconsistent in the way how 
 they are formalized. In particular, different authors have introduced different notions of 
@@ -1327,6 +1331,7 @@ The following example captures such a situation.
 		\end{tikzpicture}
 	\end{minipage}
 	\caption{Depiction of non-trivial minimal RAF with an explicit autocatalytic reaction $r_2$.}
+	\label{Fig:ExplAutocatReac}
 \end{figure}
 \FloatBarrier
 Then $B=\{x_3, r_2\}$ is a strong block and $r_2$ is an explicit autocatalytic reaction. Summarizing 
@@ -1341,17 +1346,16 @@ obtain the following main result of this contribution.
 \end{theorem} 
 \vspace{6pt}
 
-In general, these elementary circuits need not be autocatalytic cores as shown in the example of Fig.~\ref{} The following example depicts
-this case.
+In general, these elementary circuits need not be autocatalytic cores as shown in the example of Fig.~\ref{fig:RAFContAutCyc}. 
+An even simpler example, where this is unavoidable due to unknown stoichiometries, is depicted in the following.
 
 \begin{figure}[htb]
 	\begin{minipage}[c]{0.5\textwidth}
 		\begin{equation}
 			\begin{split}
-				r_1&: f +(x_1) \overset{x_1}{\longrightarrow} x_2 + x_3 \\
-				r_2&: x_2 + (x_2) \rightarrow x_3 + (x_2) \\
-				r_3&: x_3 + (x_3) \rightarrow x_4 + (x_3) \\				  
-				r_4&: x_4 + (x_4) \rightarrow x_1 + (x_4) 
+				r_1&: f + (x_1) \rightarrow x_2  \\
+				r_2&: x_2 + (x_3) \rightarrow x_3 + (x_3) \\
+				r_3&: x_3 + (x_3) \rightarrow x_1 + (x_3) 				  
 			\end{split}
 		\end{equation}
 	\end{minipage}%
@@ -1360,44 +1364,47 @@ this case.
 		\centering
 		\begin{tikzpicture}
 			\node[draw, circle] (f) at (0,0) {$f$};
-			\node[draw, circle] (x1) at (1,1) {$x_1$};
+			\node[draw, circle] (x1) at (2,1) {$x_1$};
 			\node[draw, circle] (x2) at (1,-1) {$x_2$};
 			\node[draw, circle] (x3) at (3,-1) {$x_3$};
-			\node[draw, circle] (x4) at (3,1) {$x_4$};
 			
 			\node[draw, rectangle] (r1) at (1,0) {$r_1$};
 			\node[draw, rectangle] (r2) at (2,-1) {$r_2$};
 			\node[draw, rectangle] (r3) at (3,0) {$r_3$};
-			\node[draw, rectangle] (r4) at (2,1) {$r_4$};
 			
 			\draw[->] (f) to (r1);
 			\draw[->] (x1) to [bend right = 20] (r1);
 			\draw[->] (r1) to [bend right = 20] (x1);
 			\draw[->] (r1) to (x2);
-			\draw[->] (r1) to (x3);
 			\draw[->] (x2) to [bend right = 30] (r2);
 			\draw[->] (r2) to [bend right = 30] (x2);			
 			\draw[->] (r2) to(x3);			
 			\draw[->] (x3) to [bend right = 30] (r3);
 			\draw[->] (r3) to [bend right = 30] (x3);
-			\draw[->] (r3) to(x4);
-			\draw[->] (x4) to [bend right = 30] (r4);
-			\draw[->] (r4) to [bend right = 30] (x4);
-			\draw[->] (r4) to (x1);
+			\draw[->] (r3) to (x1);			
 		\end{tikzpicture}
 	\end{minipage}
 \end{figure}
 \FloatBarrier
 
-Indeed, the proof for Lemma~\ref{lem:MetzCircuit} would construct
-the Metzler circuit $C\coloneqq (r_1,x_3,r_3,x_4,r_4,x_1,r_1)$, whose
+The proof for Lemma~\ref{lem:MetzCircuit} would construct
+the Metzler circuit $C\coloneqq (r_1,x_2,r_2,x_3,r_3,x_1,r_1)$, whose
 substoichiometric matrix reads:
 \begin{equation}
 	\begin{pmatrix}
-		0 & -1 & 1
-		1 & 
-	\end{pmatrix}
+		0 & 0 & 1 \\
+		1 & -1 & 0 \\
+		1 & 1 & -1
+	\end{pmatrix},
 \end{equation}
+which is Metzler and thus autocatalytic according to Lemma~\ref{lem:MetzCircAut}.
+However, in this case, the core is the autocatalytic reaction $r_2$. Since the stoichiometries
+are not encoded in the bipartite K\"onig graph, except for edge labels, we cannot hope
+to find a general construction method that identifies autocatalytic cores. Moreover,
+these structures can get more complex and contain type III autocatalytic cores,
+which are not composed of a single elementary circuit.
+
+\section{Discussion}
 
 \bibliography{RAFCores}
 
