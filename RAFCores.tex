@@ -1354,8 +1354,8 @@ An even simpler example, where this is unavoidable due to unknown stoichiometrie
 		\begin{equation}
 			\begin{split}
 				r_1&: f + (x_1) \rightarrow x_2  \\
-				r_2&: x_2 + (x_3) \rightarrow x_3 + (x_3) \\
-				r_3&: x_3 + (x_3) \rightarrow x_1 + (x_3) 				  
+				r_2&: x_2 + (x_2) \rightarrow x_3 + (x_2) \\
+				r_3&: x_3 + (x_3) \rightarrow x_1 + 2 x_2 + (x_3) 				  
 			\end{split}
 		\end{equation}
 	\end{minipage}%
@@ -1364,13 +1364,13 @@ An even simpler example, where this is unavoidable due to unknown stoichiometrie
 		\centering
 		\begin{tikzpicture}
 			\node[draw, circle] (f) at (0,0) {$f$};
-			\node[draw, circle] (x1) at (2,1) {$x_1$};
+			\node[draw, circle] (x1) at (1,1) {$x_1$};
 			\node[draw, circle] (x2) at (1,-1) {$x_2$};
-			\node[draw, circle] (x3) at (3,-1) {$x_3$};
+			\node[draw, circle] (x3) at (3,0) {$x_3$};
 			
 			\node[draw, rectangle] (r1) at (1,0) {$r_1$};
 			\node[draw, rectangle] (r2) at (2,-1) {$r_2$};
-			\node[draw, rectangle] (r3) at (3,0) {$r_3$};
+			\node[draw, rectangle] (r3) at (2,1) {$r_3$};
 			
 			\draw[->] (f) to (r1);
 			\draw[->] (x1) to [bend right = 20] (r1);
@@ -1381,28 +1381,36 @@ An even simpler example, where this is unavoidable due to unknown stoichiometrie
 			\draw[->] (r2) to(x3);			
 			\draw[->] (x3) to [bend right = 30] (r3);
 			\draw[->] (r3) to [bend right = 30] (x3);
-			\draw[->] (r3) to (x1);			
+			\draw[->] (r3) to (x1);
+			\draw[->] (r3) to (x2);			
 		\end{tikzpicture}
 	\end{minipage}
 \end{figure}
 \FloatBarrier
 
-The proof for Lemma~\ref{lem:MetzCircuit} would construct
-the Metzler circuit $C\coloneqq (r_1,x_2,r_2,x_3,r_3,x_1,r_1)$, whose
+The proof for Lemma~\ref{lem:MetzCircuit} would construct the following
+Metzler circuit $C\coloneqq (r_1,x_2,r_2,x_3,r_3,x_1,r_1)$, whose
 substoichiometric matrix reads:
 \begin{equation}
 	\begin{pmatrix}
 		0 & 0 & 1 \\
-		1 & -1 & 0 \\
-		1 & 1 & -1
+		1 & -1 & 2 \\
+		0 & 1 & -1
 	\end{pmatrix},
 \end{equation}
 which is Metzler and thus autocatalytic according to Lemma~\ref{lem:MetzCircAut}.
-However, in this case, the core is the autocatalytic reaction $r_2$. Since the stoichiometries
-are not encoded in the bipartite K\"onig graph, except for edge labels, we cannot hope
-to find a general construction method that identifies autocatalytic cores. Moreover,
-these structures can get more complex and contain type III autocatalytic cores,
-which are not composed of a single elementary circuit.
+However, in this case, the core is the Metzler circuit $C'=(x_2,r_2,x_3,r_3,x_2)$ and 
+has the following substoichiometric matrix matrix reads:
+\begin{equation}
+	\SM[X(C'),R(C')]=
+	\begin{pmatrix}		
+		-1 & 2 \\
+		1 & -1
+	\end{pmatrix},
+\end{equation}
+Since the stoichiometries are not encoded in the bipartite K\"onig graph, except for edge 
+labels, we cannot hope to find a general construction method that identifies autocatalytic 
+cores. 
 
 \section{Discussion}
 
