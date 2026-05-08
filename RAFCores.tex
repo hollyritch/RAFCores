@@ -655,7 +655,7 @@ $\queen'\coloneqq \queen(\closure{\RAF}{\food}, \RAF, \cat')$.
 	is a path in $\queen'$.
 \end{lemma}
 
-\subsection{Minimal RAFs}
+\subsection{irreducible RAFs}
 
 Minimal stoichiometrically autocatalytic subnetworks are termed autocatalytic cores. Their characterization and 
 computational enumeration has gained reasonable attention in chemical reaction networks with and without explicit 
@@ -666,10 +666,8 @@ substructures of a RAF that carry autocatalytic cores.
 
 The most natural starting point for this endeavour are RAFs that contain no proper subset that is also
 a RAF. Minimal sets of F-reactions w.r.t. the RAF properties have been termed \emph{irreducible} RAFs 
-in the literature \cite{hordijk_detecting_2004, hordijk_autocatalytic_2013, hordijk_autocatalytic_2010}. 
-However, to avoid confusion with the notion of irreducibility of a matrix, we refer to them as \emph{minimal RAFs}. 
-A direct consequence of Lemma~\ref{lem:OneFReacPerRAF} is that minimal RAFs contain, for each net reaction, 
-only one F-reaction. 
+in the literature \cite{steel_minimal_2013, vasas...}. A direct consequence of Lemma~\ref{lem:OneFReacPerRAF} 
+is that irreducible RAFs contain, for each net reaction, only one F-reaction. 
 \vspace{6pt} 
 \begin{corollary}
 	Let $\fr_r,\fr_2 \in \RAF: \fr_1\neq \fr_2, \hat{\fr}_1=\hat{\fr}_2$. Then $\fr_1\in \RAF\Rightarrow \fr_2\notin \RAF$.
@@ -683,15 +681,15 @@ Still, they might contain F-reactions that have more than one representative, as
 		r_2&:  x_3 + (x_3) \rightarrow x_1 + x_2 + (x_3)
 	\end{split}
 \end{equation}
-The only minimal RAF in this example is $\{\fr_1=\{r_1',r_1''\}, \fr_2=\{r_2\}\}$, which implies that 
-Lemma~\ref{lem:IsoQK} does not hold for minimal RAFs.
+The only irreducible RAF in this example is $\{\fr_1=\{r_1',r_1''\}, \fr_2=\{r_2\}\}$, which implies that 
+Lemma~\ref{lem:IsoQK} does not hold for irreducible RAFs.
 
 According to Theorem 3.1 of \cite{bridging_golnik_2026}, an autocatalytic elementary circuit can be found 
-in a RAF as long as it is not a CAF. Minimal RAFs exhibit the convenient property that they are not CAFs 
+in a RAF as long as it is not a CAF. irreducible RAFs exhibit the convenient property that they are not CAFs 
 as long as they are non-trivial, i.e., if they are composed of more than a single reaction.
 \vspace{6pt}
 \begin{lemma}\label{lem:trivRAFCAF}
-	Let $(X,\RAF,\cat)$ be a CRS with food-set $\food$ and $\RAF$ a minimal RAF. Then $\RAF$ is a CAF if and only
+	Let $(X,\RAF,\cat)$ be a CRS with food-set $\food$ and $\RAF$ a irreducible RAF. Then $\RAF$ is a CAF if and only
 	if it is trivial. 
 \end{lemma}
 \begin{proof}
@@ -701,11 +699,11 @@ as long as they are non-trivial, i.e., if they are composed of more than a singl
 	since otherwise $\RAF$ would not be a RAF. Thus, $\RAF$ is a CAF.
 \end{proof}
 \vspace{6pt}
-This Lemma justifies focusing only on minimal, non-trivial RAFs. In fact, for each non-trivial, 
-minimal RAF, each F-reaction has at least one reactant that is not in the food set. 
+This Lemma justifies focusing only on non-trivial, irreducible RAFs. In fact, for each non-trivial, 
+irreducible RAF, each F-reaction has at least one reactant that is not in the food set. 
 \vspace{6pt}
 \begin{lemma}\label{lem:OneReac}
-	Let $(X,\RAF,\cat)$ be a CRS with food-set $\food$ and $\RAF$ a minimal RAF.
+	Let $(X,\RAF,\cat)$ be a CRS with food-set $\food$ and $\RAF$ a irreducible RAF.
 	Then $\fr\in \RAF$ has at least one reactant (F-reactant or F-catalyst) that is not 
 	in $\food$. For $\fr\in \RAF: \rgen(\fr)=1$, this is an F-catalyst.
 \end{lemma}
@@ -718,15 +716,15 @@ minimal RAF, each F-reaction has at least one reactant that is not in the food s
 The consequences of the result of Lemma~\ref{lem:OneReac} were already investigated 
 in \cite{steel_minimal_2013}. It was shown that the R-graph for each such 
 RAF contains an elementary circuit. In the next subsection, we will therefore turn to investigate
-more thoroughly the structural properties of two graph representations of non-trivial, minimal RAFs, 
+more thoroughly the structural properties of two graph representations of non-trivial, irreducible RAFs, 
 the bipartite and the reaction graph, in both the CRS and the CRN setting. In particular,
 we will strengthen the result obtained by Steel et al. in \cite{steel_minimal_2013}.
 
-\subsection{The Bipartite and Reaction Graphs of Minimal RAFs}
+\subsection{The Bipartite and Reaction Graphs of irreducible RAFs}
 
 Throughout, we will consider a CRS $\Phi\coloneqq (X,\FR,\cat)$ with food-set $\food\subseteq X$ and 
 K\"onig graph $\queen\coloneqq \queen(\Phi)$. In addition, we assume a non-trivial, 
-minimal RAF $\RAF\subseteq \FR$ with sub-CRS 
+irreducible RAF $\RAF\subseteq \FR$ with sub-CRS 
 \begin{equation}
 	\Phi'= (\closure{\RAF}{\food}, \RAF, \cat')\\
 \end{equation}
@@ -747,12 +745,12 @@ as waste molecules. We might note that $V(\king')=\closure{\RAF}{\food})$.
 
 \subsubsection{Strong connectivity}
 
-We start this section by showing that the R-graph of a non-trivial, minimal RAF in the CRS setting, 
+We start this section by showing that the R-graph of a non-trivial, irreducible RAF in the CRS setting, 
 $\RGraph(\queen)$, is strongly connected.
 
 \vspace{6pt}
 \begin{lemma}\label{lem:RGQSC}
-	Let $\RAF$ be a non-trivial, minimal RAF. Then $\RGraph(\queen')$ is strongly connected.
+	Let $\RAF$ be a non-trivial, irreducible RAF. Then $\RGraph(\queen')$ is strongly connected.
 \end{lemma}
 \begin{proof}
 	Assume this is not the case. Then there are at least two strongly connected components
@@ -766,18 +764,18 @@ $\RGraph(\queen)$, is strongly connected.
 Lemmata~\ref{lem:trivRAFCAF} and \ref{lem:RGQSC} can be summarized to the following statement.
 \vspace{6pt}
 \begin{theorem}\label{thm:RAFStrCon}
-	Let $\RAF$ be a minimal RAF. Then $\RAF$ is non-trivial if and only if the graph $\RGraph(\queen')$ 
+	Let $\RAF$ be a irreducible RAF. Then $\RAF$ is non-trivial if and only if the graph $\RGraph(\queen')$ 
 	is not a single F-reaction and strongly connected.
 \end{theorem}
 \vspace{6pt}
 
 It is not hard to see that $\RGraph(\queen')$ is also the quotient graph for $\RGraph(\king')$. 
 Fig.~\ref{fig:QScKNot} illustrates that the strong connectivity of a quotient graph does not guarantee 
-strong connectivity of the original graph. However, for non-trivial, minimal RAFs, $\RGraph(\king')$ is 
+strong connectivity of the original graph. However, for non-trivial, irreducible RAFs, $\RGraph(\king')$ is 
 indeed strongly connected. 
 \vspace{6pt}
 \begin{lemma}[Proof: SI]\label{lem:KSC}
-	Let $\RAF$ be a non-trivial, minimal RAF. Then $\RGraph(\king')$ is strongly connected.
+	Let $\RAF$ be a non-trivial, irreducible RAF. Then $\RGraph(\king')$ is strongly connected.
 \end{lemma}
 \vspace{6pt}
 It is readily verified that the subgraphs of $\queen'$ and $\king'$ containing only those vertices that have at least 
@@ -785,7 +783,7 @@ one incoming and one outgoing edge are strongly connected as well. However, thes
 food molecules. The next two statements show that their removal does not destroy strong connectivity.
 \vspace{6pt}
 \begin{lemma}\label{lem:PSC}
-	Let $\RAF$ be a non-trivial, minimal RAF. Then 
+	Let $\RAF$ be a non-trivial, irreducible RAF. Then 
 		\begin{equation}\label{eq:PrinceGraph}
 			\princess(\RAF) \coloneqq \queen'[\closure{\RAF}{\food}\setminus (\food\cup W) \cup \RAF]
 		\end{equation}
@@ -804,7 +802,7 @@ Following the same argument as in Lemma~\ref{lem:PSC}, we obtain an analogous re
 that contains no food and waste molecules.
 \vspace{6pt}
 \begin{corollary}
-	Let $\RAF$ be a non-trivial, minimal RAF. Then 
+	Let $\RAF$ be a non-trivial, irreducible RAF. Then 
 		\begin{equation}\label{eq:PrinceGraph}
 			\lord(\RAF) \coloneqq \king'[\closure{\RAF}{\food}\setminus (\food\cup W) \cup \varphi^{-1}(\RAF)]
 		\end{equation}
@@ -814,7 +812,7 @@ that contains no food and waste molecules.
 
 \subsubsection{Cut-vertices}
 
-In general, \emph{minimal} RAFs are not necessarily strong blocks, as is captured 
+In general, non-trivial, irreducible RAFs are not necessarily strong blocks, as is captured 
 in the example of Fig.~\ref{ex:CutVertex}, which summarizes the graphs that 
 have been introduced so far.
 \begin{figure}[htb]
@@ -953,7 +951,7 @@ have been introduced so far.
 	\end{minipage}
 	\par\bigskip
 	
-	\caption{A non-trivial, minimal RAF $\RAF$ in its different representations as a CRS $\Phi$ (\textbf{left})
+	\caption{A non-trivial, irreducible RAF $\RAF$ in its different representations as a CRS $\Phi$ (\textbf{left})
 	and CRN $\Gamma(\Phi)$ (\textbf{right}): the systems of stoichiometric equations \textbf{(top)},  
 	the complete bipartite graphs $\queen'$ and $\king'$ as well as the subgraph $\princess(\RAF)$ 
 	and $\lord(\RAF)$ in purple and teal, respectively (\textbf{middle}), and the R-graphs  
@@ -967,7 +965,7 @@ $\lord$. In case an equivalence class contains only one representative, i.e., if
 co-catalyzed by $x_1$ and $y_1$, then $\princess(\RAF)\simeq \lord(\RAF)$. 
 \vspace{6pt}
 \begin{corollary}
-	Let $\RAF$ be a minimal, non-trivial RAF. Then $\princess(\RAF)$ and $\lord(\RAF)$ are either a strong block 
+	Let $\RAF$ be a non-trivial, irreducible RAF. Then $\princess(\RAF)$ and $\lord(\RAF)$ are either a strong block 
 	or contain a cut-vertex.
 \end{corollary}
 \vspace{6pt}
@@ -1020,7 +1018,7 @@ As in Fig.~\ref{ex:CutVertex}, both strong blocks, i.e., $\princess[\{x_1,x_2\}\
 share a common cut-vertex that is a reaction vertex. Indeed, a species vertex cannot be a cut-vertex.
 \vspace{6pt}
 \begin{lemma}[Proof: SI]\label{lem:CutVertexReac}
-	Let $\RAF$ be a non-trivial, minimal RAF. If $\princess(\RAF)$ is not a strong block, then every 
+	Let $\RAF$ be a non-trivial, irreducible RAF. If $\princess(\RAF)$ is not a strong block, then every 
 	cut-vertex is an F-reaction. Accordingly, if $\lord(\RAF)$ is not a strong block, then every 
 	cut-vertex is a reaction.
 \end{lemma}
@@ -1032,7 +1030,7 @@ in $\princess(\RAF)$. In addition, a reaction vertex can only be a cut-vertex in
 if its equivalence class is trivial.
 \vspace{6pt}
 \begin{lemma}\label{lem:CutVertPP}
-	Let $\RAF$ be a non-trivial, minimal RAF. If $r \in \varphi^{-1}(\RAF)$ is a cut-vertex
+	Let $\RAF$ be a non-trivial, irreducible RAF. If $r \in \varphi^{-1}(\RAF)$ is a cut-vertex
 	in $\lord(\RAF)$ then $|\fr|=1$ and $\fr$ is a cut-vertex in $\princess(\RAF)$.
 \end{lemma}
 
@@ -1041,7 +1039,7 @@ if its equivalence class is trivial.
 %to be a cut-vertex.
 %\vspace{6pt}
 %\begin{lemma}
-%	Let $\RAF$ be a non-trivial, minimal RAF. If $\fr\in \RAF$ is a cut-vertex in $\princess(\RAF)$, then $\fr$ 
+%	Let $\RAF$ be a non-trivial, irreducible RAF. If $\fr\in \RAF$ is a cut-vertex in $\princess(\RAF)$, then $\fr$ 
 %	has at least two incoming and two outgoing edges. 
 %\end{lemma}
 %\begin{proof}
@@ -1052,7 +1050,7 @@ if its equivalence class is trivial.
 %	is not minimal. Assume now that $\fr$ has only one outgoing edge. Then it has only one catalyst $c_\fr$ again, which is the net 
 %	product of $\fr$. Assume again w.l.o.g. that $c_\fr\in V(\princess_2)$. Then, there is again no path from any 
 %	$u\in V(\princess_2)$ to any $v\in V(\princess_1)$ which implies that $\princess(\RAF)$ was not strongly connected 
-%	and thus $\RAF$ is not a non-trivial, minimal RAF. 
+%	and thus $\RAF$ is not a non-trivial, irreducible RAF. 
 %\end{proof}
 %\vspace{6pt}
 
@@ -1072,7 +1070,7 @@ The existence of cut-vertices, which can only be reaction vertices, enables the 
 and refer to these vertices as \emph{pure F-reactions} and \emph{pure reactions}, respectively.
 \vspace{6pt}
 \begin{lemma}\label{lem:cutVertexPureCat}
-	For a non-trivial, minimal RAF $\RAF$, any strong block $\block$ of $\princess(\RAF)$ contains a \emph{pure reaction}.
+	For a non-trivial, irreducible RAF $\RAF$, any strong block $\block$ of $\princess(\RAF)$ contains a \emph{pure reaction}.
 \end{lemma}
 \vspace{6pt}
 Following the same line of argument as in the proof of Lemma~\ref{lem:cutVertexPureCat}, the same statement also holds for 
@@ -1080,12 +1078,12 @@ $\lord(\RAF)$, with the small difference that for some of the cut-vertices $\fr\
 in $\lord(\RAF)$.
 \vspace{6pt}
 \begin{corollary}\label{cor:cutVertexPureCat}
-	For a non-trivial, minimal RAF $\RAF$, any strong block $B$ of $\lord(\RAF)$ contains a \emph{pure reaction}.
+	For a non-trivial, irreducible RAF $\RAF$, any strong block $B$ of $\lord(\RAF)$ contains a \emph{pure reaction}.
 \end{corollary}
 \vspace{6pt}
 The proof of Lemma~\ref{lem:cutVertexPureCat} has three important consequences. First, it identifies 
 cut-vertices as \emph{pure F-reactions} (equivalently \emph{pure reactions}), although not all cut-vertices necessarily 
-are. Second, \emph{pure F-reactions} take an important role in the partial order of strong blocks of minimal RAFs, as 
+are. Second, \emph{pure F-reactions} take an important role in the partial order of strong blocks of irreducible RAFs, as 
 there is always one with the lowest generation number in a strong block, according to the partial order. Third, 
 Cor.~\ref{cor:cutVertexPureCat} implies that the stoichiometric matrix of a strong block $B$ always contains a 
 non-negative column. This column represents a \emph{pure reaction}, i.e., it has only reactants that are F-catalysts 
@@ -1120,7 +1118,7 @@ In fact, the nonnegative column reflecting $r^*$ in $\SM(B)\coloneqq \SM[X(B), R
 an import reaction for the strong block $B$. In fact, this allows us to construct a strictly positive vector $v$ 
 of reaction rates which satisfies $\SM(B)v>0$. 
 
-\subsection{Autocatalytic Capacity of Minimal RAFs}
+\subsection{Autocatalytic Capacity of irreducible RAFs}
 
 CRNs with explicitly catalyzed reactions suffer from the fact that the stoichiometric matrix does 
 not uniquely identify the underlying network. The matrix-centered definition of autocatalysis as 
@@ -1139,10 +1137,10 @@ therefore required an extension that is based on subnetworks \cite{golnik_autoca
 
 A sub-CRN $(X',R')$ that satisfies $(i.)$ and $(ii.)$, while no proper subnetwork $(X'',R'')$ with $X''\subseteq X', 
 R''\subseteq R'$ does, is called an \emph{autocatalytic core}. With this definition, we are in the position to show 
-that $\lord(\RAF)$ for each non-trivial, minimal RAF $\RAF$ is autocatalytic.
+that $\lord(\RAF)$ for each non-trivial, irreducible RAF $\RAF$ is autocatalytic.
 
-The results on the structure of minimal RAFs imply that each strong block $B$ of $\lord(\RAF)$ for a non-trivial, 
-minimal RAF $\RAF$ satisfies $(i.)$ of Def.~\ref{def:autSubRN}. To show semi-positivity, the key observation 
+The results on the structure of irreducible RAFs imply that each strong block $B$ of $\lord(\RAF)$ for a non-trivial, 
+irreducible RAF $\RAF$ satisfies $(i.)$ of Def.~\ref{def:autSubRN}. To show semi-positivity, the key observation 
 is that each strong block $B$ contains at least one \emph{pure reaction}, i.e., a reaction for which all reactants 
 in $B$ are F-catalysts (Lemma~\ref{lem:cutVertexPureCat} and Cor.~\ref{cor:cutVertexPureCat}). In particular, 
 all $r \in \varphi^{-1}(\RAF)$ that satisfy $\delta(r)=1$ are \emph{pure reactions}. \emph{Pure reactions} generate a 
@@ -1152,7 +1150,7 @@ of the whole RAF without food molecules. In fact, they can be interpreted as imp
 high import into the network such that all succeeding reactions exhibit strictly positive flow values as well. 
 \vspace{6pt}
 \begin{theorem}[Proof: SI]\label{thm:NonFoodSemipositiv}
-	Let $\RAF$ be a non-trivial, minimal RAF. The matrix $A\coloneqq \SM[V(\king')\setminus \food, \varphi^{-1}
+	Let $\RAF$ be a non-trivial, irreducible RAF. The matrix $A\coloneqq \SM[V(\king')\setminus \food, \varphi^{-1}
 	(\RAF)]$ is semi-positive.
 \end{theorem}
 \vspace{6pt}
@@ -1168,7 +1166,7 @@ restricted to the species and reactions of the strong block $B$:
 Thus, each block is semipositiv and also well-formed.
 \vspace{6pt}
 \begin{theorem}\label{Thm:StrBlockCore}
-	Every strong block $B$ of $\lord(\RAF)$ for a non-trivial, minimal RAF $\RAF$ contains an autocatalytic core. 
+	Every strong block $B$ of $\lord(\RAF)$ for a non-trivial, irreducible RAF $\RAF$ contains an autocatalytic core. 
 \end{theorem}
 \vspace{6pt}
 
@@ -1239,12 +1237,12 @@ an autocatalytic core. The following example depicts such a scenario.
 			\draw[->] (r3) to [bend right = 30] (x3);
 		\end{tikzpicture}
 	\end{minipage}
-	\caption{Example of a non-trivial, minimal RAF with four C-reactions and 4 species vertices}
+	\caption{Example of a non-trivial, irreducible RAF with four C-reactions and 4 species vertices}
 	\label{fig:RAFContAutCyc}
 \end{figure}
 \FloatBarrier
 
-Then $\RAF=\{r_1,r_2,r_3,r_4\}$ is a minimal RAF and the substoichiometric 
+Then $\RAF=\{r_1,r_2,r_3,r_4\}$ is a irreducible RAF and the substoichiometric 
 elementary circuit $C\coloneqq (r_1, x_2,r_2,x_3,r_3,x_1,r_1)$ as constructed in the 
 proof of Lemma~\ref{lem:MetzCircuit} with reads:
 \begin{equation}
@@ -1279,7 +1277,7 @@ then $x$ is an F-catalyst and an F-product. In addition, there is only one eleme
 circuit, in particular, the digon $(x,r,x)$, which is by definition a Metzler circuit.
 \vspace{6pt}
 \begin{corollary}\label{cor:AutoCatReac}
-	Let $\RAF$ be a minimal, non-trivial RAF and $B$ be a strong block of $L(\RAF)$. 
+	Let $\RAF$ be a non-trivial, irreducible RAF and $B$ be a strong block of $L(\RAF)$. 
 	If $r$ is composed of a single reaction $r$ and a single species $x$, then $r$ is 
 	an explicit autocatalytic reaction, and $x$ is an F-catalyst and an F-product of $r$.
 \end{corollary}
@@ -1330,7 +1328,7 @@ The following example captures such a situation.
 			\draw[->] (r3) to (x1);
 		\end{tikzpicture}
 	\end{minipage}
-	\caption{Depiction of non-trivial minimal RAF with an explicit autocatalytic reaction $r_2$.}
+	\caption{Depiction of non-trivial irreducible RAF with an explicit autocatalytic reaction $r_2$.}
 	\label{Fig:ExplAutocatReac}
 \end{figure}
 \FloatBarrier
@@ -1340,7 +1338,7 @@ obtain the following main result of this contribution.
 
 \vspace{6pt}
 \begin{theorem}
-	Let $\RAF$ be a minimal, non-trivial RAF. Then every strong block $B$ of $L(\RAF)$ contains an autocatalytic 
+	Let $\RAF$ be a non-trivial, irreducible RAF. Then every strong block $B$ of $L(\RAF)$ contains an autocatalytic 
 	Metzler circuit. In case $B$ is composed of a single reaction $r$ and a single species $x$, then $r$ is an 
 	explicit autocatalytic reaction and $x$ is an F-catalyst and an F-product of $r$.
 \end{theorem} 
@@ -1422,18 +1420,45 @@ developed in accordance with the IUPAC definition of an autocatalytic reaction \
 from chemical reaction networks (CRN), where reactions can but don't have to be catalyzed. Although 
 inherently distinct, it was recently shown that each \textsc{RAF} that is not a \textsc{CAF} is stoichiometrically 
 autocatalytic \cite{bridging_golnik_2026}. Here, we take a closer look and focus on the investigation 
-of the interrelation between minimal structures of both concepts. 
+of the interrelation between minimal structures of both frameworks. 
 
-The main obstacle for a direct comparison between both frameworks so far was the use of different 
-mathematical notions of reactions. Reactions in CRNs are derived from their stoichiometric 
-equation \cite{muller_what_2022}. Therefore, each distinct equation reflects a different chemical 
-reaction and we call them C-reaction. In particular, reactions that share the same net stoichiometries 
-but engage a different set of catalysts or involve species that appear on both sides of the reaction 
-with identical stoichiometry without being considered as catalysts are unique mathematical objects. 
-In contrast, reactions in CRS \cite{lohn_evolving_1998}, also refered to as F-reactions, consider 
-C-reactions that differ only in the use of their catalysts as the same reaction. In this sense, F-reactions
-can be described as equivalence classes of C-reactions that share the same non-catalyst reactants, 
-so-called F-reactants, and the same non-catalyst products, so-called F-products. 
+The main obstacle for a direct comparison between both frameworks so far is their different 
+interpretation of a chemical reaction. Reactions in CRNs are derived from their corresponding 
+stoichiometric equation \cite{muller_what_2022}. Therefore, each distinct equation reflects a 
+different chemical reaction and we call them C-reaction. In particular, reactions that share the 
+same net stoichiometries but engage a different set of catalysts or involve species that appear 
+on both sides of the reaction with identical stoichiometry without being considered catalysts 
+are unique mathematical objects. In contrast, reactions in CRS \cite{lohn_evolving_1998}, also 
+referred to as F-reactions here, consider C-reactions that differ only in the use of their catalysts as the 
+same reaction. In this sense, F-reactions can be described as equivalence classes of C-reactions 
+that share the same non-catalyst reactants (F-reactants), and the same non-catalyst products 
+(F-products). 
+
+Leveraging on this observation, we derived an equivalence relation, denoted as $\sim$, on the set 
+of C-reactions that is solely defined on the set of F-reactants and F-products. Accordingly, C-reactions 
+are mapped into the set of F-reactions and identifiable as representatives of their $\sim$-equivalence 
+classes, i.e., their F-reaction image. As a convenient consequence, we obtained the directed bipartite 
+K\"onig representation of a CRS $\Phi$, denoted as $\queen(\Phi)$, as the quotient graph K\"onig graph 
+of the underlying CRN $\king(\Gamma(\Phi))$ and established a formal mathematical correspondence 
+between CRS and CRNs. This result was not only crucial for the subsequent results in this contribution,
+but also enables future research to investigate further the relationship between these two interpretations 
+of chemical reaction systems and allows for the translation of results obtained for one framework into the 
+other one and vice versa.
+
+Commencing at the result of Thm.~3.1 in \cite{bridging_golnik_2026}, in this contribution we were mainly 
+concerned with identifying the minimal structures in RAFs that are stoichiometrically autocatalytic.
+If any RAF that is not a CAF is autocatalytic, then RAFs that contain no proper sub-RAFs, denoted 
+as \emph{irreducible RAFs} in the literature \cite{vasas_evolution_2012, steel_minimal_2013}, are 
+also autocatalytic as long as they are not CAFs. In particular, irreducible RAFs are CAFs if and only 
+if they are trivial (Lem.~\ref{lem:trivRAFCAF}), which justified focusing on non-trivial, irreducible RAFs. 
+
+The minimality of non-trivial, irreducible RAFs is a very strong property as it imposes several interesting 
+structural consequences, which explain their autocatalytic capacity. In particular, the minimality condition 
+enforces the R-graph to be strongly connected, yielding that each reaction vertex is located on an elementary 
+circuit, not only in the R-graph but also in the corresponding bipartite graph that is, however, free of any food 
+molecules. It is therefore not surprising that autocatalytic cores reside inside those structures as autocatalytic 
+cores exhibit a \emph{fluffle} representation in the bipartite K\"onig graph of CRNs with explicit catalysis 
+\cite{golnik_autocatalytic_2026} 
 
 
 
