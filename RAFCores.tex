@@ -666,7 +666,7 @@ substructures of a RAF that carry autocatalytic cores.
 
 The most natural starting point for this endeavour are RAFs that contain no proper subset that is also
 a RAF. Minimal sets of F-reactions w.r.t. the RAF properties have been termed \emph{irreducible} RAFs 
-in the literature \cite{steel_minimal_2013, vasas...}. A direct consequence of Lemma~\ref{lem:OneFReacPerRAF} 
+in the literature \cite{steel_minimal_2013}. A direct consequence of Lemma~\ref{lem:OneFReacPerRAF} 
 is that irreducible RAFs contain, for each net reaction, only one F-reaction. 
 \vspace{6pt} 
 \begin{corollary}
@@ -1351,9 +1351,9 @@ An even simpler example, where this is unavoidable due to unknown stoichiometrie
 	\begin{minipage}[c]{0.5\textwidth}
 		\begin{equation}
 			\begin{split}
-				r_1&: f + (x_1) \rightarrow x_2  \\
+				r_1&: f + (x_1) \rightarrow x_2 + (x_1) \\
 				r_2&: x_2 + (x_2) \rightarrow x_3 + (x_2) \\
-				r_3&: x_3 + (x_3) \rightarrow x_1 + 2 x_2 + (x_3) 				  
+				r_3&: x_3 + (x_3) \rightarrow x_1 + 2x_2 + (x_3) 				  
 			\end{split}
 		\end{equation}
 	\end{minipage}%
@@ -1383,6 +1383,8 @@ An even simpler example, where this is unavoidable due to unknown stoichiometrie
 			\draw[->] (r3) to (x2);			
 		\end{tikzpicture}
 	\end{minipage}
+	\caption{}
+	\label{fig:AutCircNotCore}
 \end{figure}
 \FloatBarrier
 
@@ -1398,7 +1400,7 @@ substoichiometric matrix reads:
 \end{equation}
 which is Metzler and thus autocatalytic according to Lemma~\ref{lem:MetzCircAut}.
 However, in this case, the core is the Metzler circuit $C'=(x_2,r_2,x_3,r_3,x_2)$ and 
-has the following substoichiometric matrix matrix reads:
+has the following substoichiometric matrix:
 \begin{equation}
 	\SM[X(C'),R(C')]=
 	\begin{pmatrix}		
@@ -1415,17 +1417,17 @@ we cannot hope to find a general construction method that identifies autocatalyt
 and stoichiometric autocatalysis \cite{blokhuis_Universal_2020} represent two different 
 interpretations of the concept of an explicit autocatalytic reaction, which was first discussed
 in 1890 by Wilhelm Ostwald \cite{Ostwald:90}. While RAFs were developed from catalytic
-reactions systems (CRS) in which each reaction is explicitly catalyzed, stoichiometric autocatalysis
+reaction systems (CRS) in which each reaction is explicitly catalyzed, stoichiometric autocatalysis
 developed in accordance with the IUPAC definition of an autocatalytic reaction \cite{gold_iupac_2025} 
 from chemical reaction networks (CRN), where reactions can but don't have to be catalyzed. Although 
 inherently distinct, it was recently shown that each \textsc{RAF} that is not a \textsc{CAF} is stoichiometrically 
 autocatalytic \cite{bridging_golnik_2026}. Here, we take a closer look and focus on the investigation 
-of the interrelation between minimal structures of both frameworks. 
+of the interrelation between the minimal structures of both frameworks. 
 
-The main obstacle for a direct comparison between both frameworks so far is their different 
+The main obstacle for a direct comparison between the two frameworks so far is their different 
 interpretation of a chemical reaction. Reactions in CRNs are derived from their corresponding 
 stoichiometric equation \cite{muller_what_2022}. Therefore, each distinct equation reflects a 
-different chemical reaction and we call them C-reaction. In particular, reactions that share the 
+different chemical reaction, and we call them C-reaction. In particular, reactions that share the 
 same net stoichiometries but engage a different set of catalysts or involve species that appear 
 on both sides of the reaction with identical stoichiometry without being considered catalysts 
 are unique mathematical objects. In contrast, reactions in CRS \cite{lohn_evolving_1998}, also 
@@ -1445,21 +1447,95 @@ but also enables future research to investigate further the relationship between
 of chemical reaction systems and allows for the translation of results obtained for one framework into the 
 other one and vice versa.
 
-Commencing at the result of Thm.~3.1 in \cite{bridging_golnik_2026}, in this contribution we were mainly 
+Starting from the result of Thm.~3.1 in \cite{bridging_golnik_2026}, in this contribution, we were mainly 
 concerned with identifying the minimal structures in RAFs that are stoichiometrically autocatalytic.
-If any RAF that is not a CAF is autocatalytic, then RAFs that contain no proper sub-RAFs, denoted 
-as \emph{irreducible RAFs} in the literature \cite{vasas_evolution_2012, steel_minimal_2013}, are 
-also autocatalytic as long as they are not CAFs. In particular, irreducible RAFs are CAFs if and only 
-if they are trivial (Lem.~\ref{lem:trivRAFCAF}), which justified focusing on non-trivial, irreducible RAFs. 
+Since any RAF that is itself not a CAF is autocatalytic, then RAFs that contain no proper sub-RAFs, denoted 
+as \emph{irreducible RAFs} in the literature \cite{steel_minimal_2013}, are autocatalytic as well, as 
+long as they are not CAFs. In particular, irreducible RAFs are CAFs if and only if they are trivial 
+(Lemma~\ref{lem:trivRAFCAF}), which justified our focus on non-trivial, irreducible RAFs. 
 
-The minimality of non-trivial, irreducible RAFs is a very strong property as it imposes several interesting 
-structural consequences, which explain their autocatalytic capacity. In particular, the minimality condition 
-enforces the R-graph to be strongly connected, yielding that each reaction vertex is located on an elementary 
-circuit, not only in the R-graph but also in the corresponding bipartite graph that is, however, free of any food 
-molecules. It is therefore not surprising that autocatalytic cores reside inside those structures as autocatalytic 
-cores exhibit a \emph{fluffle} representation in the bipartite K\"onig graph of CRNs with explicit catalysis 
-\cite{golnik_autocatalytic_2026} 
+The minimality of non-trivial, irreducible RAFs is a particularly strong property, as it gives rise to several 
+noteworthy structural consequences that are also characteristic of autocatalytic CRNs. In particular, the 
+minimality requirement implies strong connectivity in both the R-graph of the CRS and the underlying 
+CRN associated with non-trivial, irreducible RAFs. Consequently, every F- and C-reaction lies on an 
+elementary circuit, not only within the corresponding R-graphs, but also within the associated bipartite 
+graphs excluding food molecules. It is therefore not surprising that autocatalytic cores reside inside 
+those structures, as they exhibit a \emph{fluffle} representation in the bipartite K\"onig 
+graph of CRNs with explicit catalysis \cite{golnik_autocatalytic_2026}, and are themselves strongly
+connected blocks. 
 
+Similar structures can be found in irreducible RAFs. The bipartite K\"onigs graph of non-trivial, irreducible RAFs, 
+reflecting the underlying CRN without food and waste molecules, is not only strongly connected but 
+composed of strongly connected blocks that are separated by reaction vertices. Strong blocks are necessarily
+well-formed, and some of their cut vertices can act as import reactions as they induce a non-negative column 
+substoichiometric matrix $\SM(B)$ of the corresponding block $B$. 
+
+In theory, this would allow for an infinitely high inflow such that all species inside the block are net-produced. 
+In fact, $\SM(B)$ is semipositive for any strong block $B$, such that each block is indeed stoichiometrically 
+autocatalytic. We can further provide a general construction of an autocatalytic Metzler circuit, carrying such 
+an import reaction. However, as Fig.~\ref{fig:AutCircNotCore} shows, they do not necessarily need to be 
+autocatalytic cores, as non-trivial stoichiometries can give rise to strictly smaller elementary circuits that can 
+be contained inside. Furthermore, an irreducible RAF can contain multiple autocatalytic cores as demonstrated 
+in Example~\ref{subsec:OneRAFManyCores}. In turn, one core can be contained in different irreducible RAFs 
+(see Fig.~\ref{}) or the construction in Lemma~\ref{lem:MetzCircuit} can yield two equivalent autocatalytic cores. 
+We might also find autocatalytic reactions in trivial, irreducible RAFs (see Eq.~4.18, \cite{bridging_golnik_2026}).
+
+\section{Examples}
+
+The following example depicts a non-trivial, irreducible RAF that 
+
+\subsection{One irreducible RAF, many cores}\label{subsec:OneRAFManyCores}
+\begin{minipage}[c]{0.5\textwidth}
+	\begin{equation}
+		\begin{split}
+			r_1&: f + (x_1) \rightarrow x_2 +(x_1) \\
+			r_2&: x_2 + (x_2) \rightarrow x_3 + (x_2) \\
+			r_3&: x_3 + (x_3) \rightarrow 2x_2 + x_4 + (x_3)\\
+			r_4&: x_4 + (x_4) \rightarrow x_1 + 2x_3 + (x_3)				  
+		\end{split}
+	\end{equation}
+\end{minipage}%
+\hfill%
+\begin{minipage}[c]{0.5\textwidth}
+	\begin{equation}
+		\SM[X(C),R(C)=\begin{pmatrix} 
+						0  &  0  &  0  & 1 \\
+						1  & -1  &  2  & 0 \\
+						0  &  1  & -1  & 2 \\
+						0  &  0  &  1  & -1
+ 					\end{pmatrix}
+	\end{equation}
+\end{minipage}
+\par\bigskip
+\centering
+\begin{tikzpicture}
+	\node[draw, circle] (f) at (0,0) {$f$};
+	\node[draw, circle] (x1) at (1,1) {$x_1$};
+	\node[draw, circle] (x2) at (1,-1) {$x_2$};
+	\node[draw, circle] (x3) at (3,-1) {$x_3$};
+	\node[draw, circle] (x4) at (3,1) {$x_4$};
+			
+	\node[draw, rectangle] (r1) at (1,0) {$r_1$};
+	\node[draw, rectangle] (r2) at (2,-1) {$r_2$};
+	\node[draw, rectangle] (r3) at (3,0) {$r_3$};
+	\node[draw, rectangle] (r4) at (2,1) {$r_4$};
+			
+	\draw[->] (f) to (r1);
+	\draw[->] (x1) to [bend right = 20] (r1);
+	\draw[->] (r1) to [bend right = 20] (x1);
+	\draw[->] (r1) to (x2);
+	\draw[->] (x2) to [bend right = 30] (r2);
+	\draw[->] (r2) to [bend right = 30] (x2);			
+	\draw[->] (r2) to(x3);			
+	\draw[->] (x3) to [bend right = 30] (r3);
+	\draw[->] (r3) to [bend right = 30] (x3);
+	\draw[->] (r3) to (x4);
+	\draw[->] (r3) to (x2);
+	\draw[->] (x4) to [bend right = 30] (r4);
+	\draw[->] (r4) to [bend right = 30](x4);
+	\draw[->] (r4) to [bend left = 110, looseness=2.5](x3);	
+	\draw[->] (r4) to (x1);	
+\end{tikzpicture}
 
 
 \bibliography{RAFCores}
