@@ -1482,9 +1482,9 @@ We might also find autocatalytic reactions in trivial, irreducible RAFs (see Eq.
 
 \section{Examples}
 
-The following example depicts a non-trivial, irreducible RAF that 
+\subsection{One irreducible RAF, many autocatalytic cores}\label{subsec:OneRAFManyCores}
 
-\subsection{One irreducible RAF, many cores}\label{subsec:OneRAFManyCores}
+The following example depicts a non-trivial, irreducible RAF that contains two autocatalytic cores. 
 \begin{minipage}[c]{0.5\textwidth}
 	\begin{equation}
 		\begin{split}
@@ -1537,6 +1537,17 @@ The following example depicts a non-trivial, irreducible RAF that
 	\draw[->] (r4) to (x1);	
 \end{tikzpicture}
 
+The construction of Lemma~\ref{lem:MetzCircuit} would yield a spanning circuit as $C=(x_1,r_1,x_2,r_2,x_3,r_3,x_4,
+r_4)$ but contains two autocatalytic cores, i.e., $({x_2,x_3},{r_2,r_3})$ and $({x_3,x_4}, {r_3,r_4})$. Both have a 
+corresponding submatrix that reads:
+\begin{equation}
+	\begin{pmatrix}
+		-1 & 2 \\
+		1  & -1
+	\end{pmatrix}
+\end{equation}
+
+\subsection{One autocatalytic core in many irreducible RAFs}\label{subsec:OneRAFManyCores}
 
 \bibliography{RAFCores}
 
