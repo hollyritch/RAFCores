@@ -1260,7 +1260,7 @@ and $(X(C),R(C))$ an autocatalytic sub-CRN. Indeed, this is not a coincidence.
 
 \vspace{6pt}
 \begin{lemma}[Proof: SI]\label{lem:MetzCircAut}
-	If $C$ is a Metzler circuit containing a \emph{pure reaction}. Then $(X(C), R(C)$ 
+	If $C$ is a Metzler circuit containing a \emph{pure reaction}, then $(X(C), R(C)$ 
 	is autocatalytic.
 \end{lemma}
 \vspace{6pt}
@@ -1408,11 +1408,34 @@ has the following substoichiometric matrix matrix reads:
 		1 & -1
 	\end{pmatrix},
 \end{equation}
-Since the stoichiometries are not encoded in the bipartite K\"onig graph, except for edge 
-labels, we cannot hope to find a general construction method that identifies autocatalytic 
-cores. 
+Since stoichiometries are not encoded in the bipartite K\"onig graph, besides edge labels, 
+we cannot hope to find a general construction method that identifies autocatalytic cores. 
 
 \section{Discussion}
+
+\textsc{Reflexively autocatalytic sets (RAFs)} \cite{kauffman_autocatalytic_1986, steel_emergence_2000} 
+and stoichiometric autocatalysis \cite{blokhuis_Universal_2020} represent two different 
+interpretations of the concept of an explicit autocatalytic reaction, which was first discussed
+in 1890 by Wilhelm Ostwald \cite{Ostwald:90}. While RAFs were developed from catalytic
+reactions systems (CRS) in which each reaction is explicitly catalyzed, stoichiometric autocatalysis
+developed in accordance with the IUPAC definition of an autocatalytic reaction \cite{gold_iupac_2025} 
+from chemical reaction networks (CRN), where reactions can but don't have to be catalyzed. Although 
+inherently distinct, it was recently shown that each \textsc{RAF} that is not a \textsc{CAF} is stoichiometrically 
+autocatalytic \cite{bridging_golnik_2026}. Here, we take a closer look and focus on the investigation 
+of the interrelation between minimal structures of both concepts. 
+
+The main obstacle for a direct comparison between both frameworks so far was the use of different 
+mathematical notions of reactions. Reactions in CRNs are derived from their stoichiometric 
+equation \cite{muller_what_2022}. Therefore, each distinct equation reflects a different chemical 
+reaction and we call them C-reaction. In particular, reactions that share the same net stoichiometries 
+but engage a different set of catalysts or involve species that appear on both sides of the reaction 
+with identical stoichiometry without being considered as catalysts are unique mathematical objects. 
+In contrast, reactions in CRS \cite{lohn_evolving_1998}, also refered to as F-reactions, consider 
+C-reactions that differ only in the use of their catalysts as the same reaction. In this sense, F-reactions
+can be described as equivalence classes of C-reactions that share the same non-catalyst reactants, 
+so-called F-reactants, and the same non-catalyst products, so-called F-products. 
+
+
 
 \bibliography{RAFCores}
 
