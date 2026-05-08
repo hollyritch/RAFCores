@@ -1485,6 +1485,7 @@ We might also find autocatalytic reactions in trivial, irreducible RAFs (see Eq.
 \subsection{One irreducible RAF, many autocatalytic cores}\label{subsec:OneRAFManyCores}
 
 The following example depicts a non-trivial, irreducible RAF that contains two autocatalytic cores. 
+
 \begin{minipage}[c]{0.5\textwidth}
 	\begin{equation}
 		\begin{split}
@@ -1530,10 +1531,10 @@ The following example depicts a non-trivial, irreducible RAF that contains two a
 	\draw[->] (x3) to [bend right = 30] (r3);
 	\draw[->] (r3) to [bend right = 30] (x3);
 	\draw[->] (r3) to (x4);
-	\draw[->] (r3) to (x2);
+	\draw[->] (r3) to [bend right = 10] (x2);
 	\draw[->] (x4) to [bend right = 30] (r4);
 	\draw[->] (r4) to [bend right = 30](x4);
-	\draw[->] (r4) to [bend left = 110, looseness=2.5](x3);	
+	\draw[->] (r4) to [bend right =10](x3);	
 	\draw[->] (r4) to (x1);	
 \end{tikzpicture}
 
