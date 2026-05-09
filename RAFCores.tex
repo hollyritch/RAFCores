@@ -842,7 +842,7 @@ have been introduced so far.
 		\begin{equation}
 			\begin{split}
 				r'_0&: f + (x_1) \longrightarrow x_2 + y_2 +(x_1)\\
-				r''_0&: f + (x_1) \longrightarrow x_2 + y_2 +(x_1)\\
+				r''_0&: f + (y_1) \longrightarrow x_2 + y_2 +(y_1)\\
 				r_1&: x_2 + (x_2)\longrightarrow x_1 + (x_2) \\
 				r_2&: y_2 + (y_2) \longrightarrow y_1 + y_3 + (y_2)
 			\end{split}
@@ -1416,69 +1416,90 @@ we cannot hope to find a general construction method that identifies autocatalyt
 \textsc{Reflexively autocatalytic sets (RAFs)} \cite{kauffman_autocatalytic_1986, steel_emergence_2000} 
 and stoichiometric autocatalysis \cite{blokhuis_Universal_2020} represent two different 
 interpretations of the concept of an explicit autocatalytic reaction, which was first discussed
-in 1890 by Wilhelm Ostwald \cite{Ostwald:90}. While RAFs were developed from catalytic
-reaction systems (CRS) in which each reaction is explicitly catalyzed, stoichiometric autocatalysis
-developed in accordance with the IUPAC definition of an autocatalytic reaction \cite{gold_iupac_2025} 
+in 1890 by Wilhelm Ostwald \cite{Ostwald:90}. While RAFs are defined in catalytic
+reaction systems (CRS), in which each reaction is explicitly catalyzed, stoichiometric autocatalysis
+developed, in accordance with the IUPAC definition of an autocatalytic reaction \cite{gold_iupac_2025}, 
 from chemical reaction networks (CRN), where reactions can but don't have to be catalyzed. Although 
-inherently distinct, it was recently shown that each \textsc{RAF} that is not a \textsc{CAF} is stoichiometrically 
-autocatalytic \cite{bridging_golnik_2026}. Here, we take a closer look and focus on the investigation 
-of the interrelation between the minimal structures of both frameworks. 
+inherently distinct, it was recently demonstrated that every \textsc{RAF} that is not a \textsc{CAF} is 
+nevertheless stoichiometrically autocatalytic \cite{bridging_golnik_2026}. Here, we continued 
+examining this relationship in greater detail, focusing in particular on the interplay between the minimal 
+structures arising in both frameworks.
 
-The main obstacle for a direct comparison between the two frameworks so far is their different 
-interpretation of a chemical reaction. Reactions in CRNs are derived from their corresponding 
-stoichiometric equation \cite{muller_what_2022}. Therefore, each distinct equation reflects a 
-different chemical reaction, and we call them C-reaction. In particular, reactions that share the 
+The principal obstacle to a direct comparison between the two frameworks lies in their differing 
+interpretations of chemical reactions. In CRNs, reactions are defined via their associated 
+stoichiometric equations \cite{muller_what_2022}. Therefore, each equation reflects a 
+different chemical reaction, which we call a \emph{C-reaction}. In particular, reactions that share the 
 same net stoichiometries but engage a different set of catalysts or involve species that appear 
-on both sides of the reaction with identical stoichiometry without being considered catalysts 
-are unique mathematical objects. In contrast, reactions in CRS \cite{lohn_evolving_1998}, also 
-referred to as F-reactions here, consider C-reactions that differ only in the use of their catalysts as the 
-same reaction. In this sense, F-reactions can be described as equivalence classes of C-reactions 
-that share the same non-catalyst reactants (F-reactants), and the same non-catalyst products 
-(F-products). 
+on both sides of the reaction with identical stoichiometry, albeit being considered catalysts, 
+are unique mathematical objects. In contrast, reactions in CRS \cite{lohn_evolving_1998}, 
+referred to here as \emph{F-reactions}, treat C-reactions that differ solely in their catalysts 
+as identical. Accordingly, an F-reaction can be viewed as an equivalence class of C-reactions 
+that share the same non-catalyst reactants (F-reactants) and the same non-catalyst products 
+(F-products).
 
-Leveraging on this observation, we derived an equivalence relation, denoted as $\sim$, on the set 
-of C-reactions that is solely defined on the set of F-reactants and F-products. Accordingly, C-reactions 
-are mapped into the set of F-reactions and identifiable as representatives of their $\sim$-equivalence 
-classes, i.e., their F-reaction image. As a convenient consequence, we obtained the directed bipartite 
-K\"onig representation of a CRS $\Phi$, denoted as $\queen(\Phi)$, as the quotient graph K\"onig graph 
-of the underlying CRN $\king(\Gamma(\Phi))$ and established a formal mathematical correspondence 
-between CRS and CRNs. This result was not only crucial for the subsequent results in this contribution,
-but also enables future research to investigate further the relationship between these two interpretations 
-of chemical reaction systems and allows for the translation of results obtained for one framework into the 
-other one and vice versa.
+Building on this observation, we defined an equivalence relation, denoted by $\sim$, on the set 
+of C-reactions based exclusively on their F-reactants and F-products. Under this relation, 
+C-reactions are mapped to the set of F-reactions and can be identified as representatives of 
+their corresponding $\sim$-equivalence classes, that is, their associated F-reaction images. 
+As a convenient consequence, we obtained the directed bipartite K\"onig representation of a CRS 
+$\queen(\Phi)$, as the quotient graph of the K\"onig graph associated with its underlying CRN, 
+$\king(\Gamma(\Phi))$, thereby establishing a formal mathematical correspondence between 
+CRSs and CRNs. This result was not only essential for the results presented in this 
+contribution, but also provides a foundation for future research aimed at further exploring the 
+relationship between these two interpretations of chemical reaction systems. Moreover, it 
+facilitates the transfer of results obtained in one framework to the other, and vice versa.
 
-Starting from the result of Thm.~3.1 in \cite{bridging_golnik_2026}, in this contribution, we were mainly 
-concerned with identifying the minimal structures in RAFs that are stoichiometrically autocatalytic.
-Since any RAF that is itself not a CAF is autocatalytic, then RAFs that contain no proper sub-RAFs, denoted 
-as \emph{irreducible RAFs} in the literature \cite{steel_minimal_2013}, are autocatalytic as well, as 
-long as they are not CAFs. In particular, irreducible RAFs are CAFs if and only if they are trivial 
-(Lemma~\ref{lem:trivRAFCAF}), which justified our focus on non-trivial, irreducible RAFs. 
+Setting out from the result of Thm.~3.1 in \cite{bridging_golnik_2026}, this contribution primarily focused 
+on identifying the minimal structures within RAFs that exhibit stoichiometric autocatalysis. 
+Since any RAF that is itself not a CAF is stoichiometrically autocatalytic, RAFs that contain no proper 
+sub-RAFs, denoted as \emph{irreducible RAFs} in the literature \cite{steel_minimal_2013}, 
+are stoichiometrically autocatalytic as well, as long as they are not CAFs. In fact, irreducible 
+RAFs are CAFs if and only if they are trivial (Lemma~\ref{lem:trivRAFCAF}), thus composed of a 
+single reaction, which justified our focus on non-trivial, irreducible RAFs. 
 
 The minimality of non-trivial, irreducible RAFs is a particularly strong property, as it gives rise to several 
-noteworthy structural consequences that are also characteristic of autocatalytic CRNs. In particular, the 
-minimality requirement implies strong connectivity in both the R-graph of the CRS and the underlying 
-CRN associated with non-trivial, irreducible RAFs. Consequently, every F- and C-reaction lies on an 
-elementary circuit, not only within the corresponding R-graphs, but also within the associated bipartite 
-graphs excluding food molecules. It is therefore not surprising that autocatalytic cores reside inside 
-those structures, as they exhibit a \emph{fluffle} representation in the bipartite K\"onig 
-graph of CRNs with explicit catalysis \cite{golnik_autocatalytic_2026}, and are themselves strongly
-connected blocks. 
+noteworthy structural consequences that are also characteristic of stoichiometrically autocatalytic CRNs. 
+In particular, it imposes strong connectivity on both the R-graph of the CRS and the underlying CRN. Since strong 
+connectivity is a prerequisite for autocatalytic cores, it is not surprising that they reside within these subgraphs. 
+In fact, their bipartite digraph representation in CRNs with explicit catalysis are\emph{fluffles}, and thus themselves 
+strong blocks\cite{golnik_autocatalytic_2026}. The bipartite K\"onig graph of non-trivial, irreducible RAFs, reflecting 
+the underlying CRN without food and waste molecules, $\lord(\RAF)$, is not only strongly connected but composed 
+of strongly connected blocks that are separated by reaction vertices, but not by metabolite vertices 
+(Lemma~\ref{lem:CutVertexReac}). See also Fig.~\ref{ex:CutVertex} for an example. 
 
-Similar structures can be found in irreducible RAFs. The bipartite K\"onigs graph of non-trivial, irreducible RAFs, 
-reflecting the underlying CRN without food and waste molecules, is not only strongly connected but 
-composed of strongly connected blocks that are separated by reaction vertices. Strong blocks are necessarily
-well-formed, and some of their cut vertices can act as import reactions as they induce a non-negative column 
-substoichiometric matrix $\SM(B)$ of the corresponding block $B$. 
+Strong blocks are, by definition, well-formed. In addition, some of their cut vertices, so-called \emph{pure reactions}, 
+which have only F-catalysts as reactants inside the corresponding block $B$, can act as import reactions as they 
+induce a non-negative column in the stoichiometric submatrix $\SM(B)$. In theory, this would allow for an infinitely 
+high inflow such that all species inside the block are net-produced. Indeed, $\SM(B)$ is semipositive for any strong 
+block $B$, such that each block is stoichiometrically autocatalytic (Thm.~\ref{Thm:StrBlockCore}). 
 
-In theory, this would allow for an infinitely high inflow such that all species inside the block are net-produced. 
-In fact, $\SM(B)$ is semipositive for any strong block $B$, such that each block is indeed stoichiometrically 
-autocatalytic. We can further provide a general construction of an autocatalytic Metzler circuit, carrying such 
-an import reaction. However, as Fig.~\ref{fig:AutCircNotCore} shows, they do not necessarily need to be 
-autocatalytic cores, as non-trivial stoichiometries can give rise to strictly smaller elementary circuits that can 
-be contained inside. Furthermore, an irreducible RAF can contain multiple autocatalytic cores as demonstrated 
-in Example~\ref{subsec:OneRAFManyCores}. In turn, one core can be contained in different irreducible RAFs 
-(see Fig.~\ref{}) or the construction in Lemma~\ref{lem:MetzCircuit} can yield two equivalent autocatalytic cores. 
-We might also find autocatalytic reactions in trivial, irreducible RAFs (see Eq.~4.18, \cite{bridging_golnik_2026}).
+The structures responsible for each strong block being stoichiometrically autocatalytic are \emph{Metzler circuits};  
+elementary circuits that allow for a column-reordering of their associated stoichiometric submatrix such that the resulting Matrix 
+is a Metzler matrix (Lemma~\ref{lem:MetzCircuit}). Such an ordering can be obtained by arranging the columns 
+according to the direction of the circuit. In the proof of Lemma~\ref{lem:MetzCircuit}, we provided a construction 
+of a Metzler circuit that always contains a pure reaction. 
+
+The existence of a Metzler circuit with a pure reaction has already been shown to exist for any RAF that is itself not 
+a CAF \cite{bridging_golnik_2026}. However, in the proof of Thm.~3.1 of \cite{bridging_golnik_2026}, the construction 
+follows the F-catalysts as reactants for each reaction, and thereby not necessarily the reactant with the lowest generation 
+number. Non-trivial minimal RAFs exist, where this construction would not yield a stoichiometrically autocatalytic Metzler 
+circuit for each strong block $B$. Such an example is depicted in Fig.~\ref{ex:CutVertex2}. Indeed, the block 
+$(\{x_1,x_2\}, \{r_1,r_2\}$ does not contain an elementary circuit, where each species vertex is the F-catalyst of its 
+appurtenant reaction. Nevertheless, $C\coloneqq (x_1,r_1,x_2,r_2,x_1)$ is still a Metzler circuit with a pure reaction ($r_1$), 
+and thereby stoichiometrically autocatalytic (Lemma.~\ref{lem:MetzCircAut}). In addition, $(x_3,r_2,x_4,r_3, x_3)$ satisfies
+the construction of Thm.~3.1 of \cite{bridging_golnik_2026}.
+
+Unfortunately, the example depicted in Fig.~\ref{fig:AutCircNotCore} clearly illustrates that these stoichiometrically autocatalytic 
+Metzler circuits are not necessarily autocatalytic cores. On the one hand, non-trivial stoichiometries can give rise to strictly 
+smaller cores that can be contained inside the constructed circuits. An example of this case is shown in
+Sec.~\ref{subsec:OneRAFManyCores}. In turn, one core can be contained in different irreducible RAFs 
+(see Sec.~\ref{subsec:OneRAFManyCores} \TODO{TBA}) or the construction in Lemma~\ref{lem:MetzCircuit} 
+can yield two equivalent autocatalytic cores (see \TODO{TBA}). We might also find autocatalytic reactions in trivial and non-trivial 
+irreducible RAFs (see Eq.~4.18, \cite{bridging_golnik_2026} and Fig.~\ref{Fig:ExplAutocatReac}).
+
+\section{Concluding Remarks}
+
+\TODO{TBA}
 
 \section{Examples}
 
@@ -1548,7 +1569,7 @@ corresponding submatrix that reads:
 	\end{pmatrix}
 \end{equation}
 
-\subsection{One autocatalytic core in many irreducible RAFs}\label{subsec:OneRAFManyCores}
+\subsection{One autocatalytic core in many irreducible RAFs}\label{subsec:ManyRAFsOneCore}
 
 \bibliography{RAFCores}
 
