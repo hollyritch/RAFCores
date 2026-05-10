@@ -237,15 +237,40 @@
 
 
 \section{Introduction}
+The concept of autocatalysis is not new. As early as 1890, Wilhelm Ostwald 
+already posed the question of whether a chemical reaction could be catalyzed 
+by one of its own products \cite{Ostwald:90}. Such \emph{autocatalytic reactions} 
+appeared over the years implicitly or explicitly in the literature in various types of 
+reaction networks such as chemistry, ecology, population dynamics, and 
+epidemiology \cite{lotka_contribution_1910, lotka_analytical_1920, lotka1925elements, 
+volterra1926variazioni, kermack_contributions_1991}. An explicitly autocatalytic 
+reaction can be written as:
+\begin{equation}
+	\sum_{f\in F} f + x_1 \rightarrow 2x_1 + \left(\sum_{w\in W} w\right),
+\end{equation}
+where $F$ denotes a set of food molecules an $W$ a potentially empty set of molecules
+that are, next to $x_1$, additionally produced, so-called waste. \TODO{Include Eigen Schuster}
+
+From the simple idea of an autocatalytic reaction, a growing field of research has developed 
+over the past decades, with the result of different concepts of autocatalysis 
+\cite{andersen_defining_2021}. One of the most straightforward generalizations is considering 
+a sequence of reactions such that the overall net reaction again yields an autocatalytic reaction 
+\cite{barenholz_design_2017}. These autocatalytic cycles and a similar concept of 
+\emph{autocatalytic replicators}, subsystems collectively ensures its own reproduction 
+have been described as predominant in the central carbon metabolism of Escherichia Coli 
+\cite{barenholz_design_2017, kun_computational_2008}.
+
 
 \section{Representation of Systems with Chemical Reactions}
 
-The literature on systems of chemical interactions is inconsistent in the way how 
-they are formalized. In particular, different authors have introduced different notions of 
-reactions \cite{muller_what_2022}. We will therefore take advantage of different style formats, i.e., $\CR$ 
-and $\FR$, to highlight sets of reactions that are derived from chemical reaction networks 
-\cite{muller_what_2022} and from catalytic reaction systems \cite{lohn_evolving_1998}, 
-respectively. We will see that both sets do not contain the same mathematical objects. 
+Research on systems of chemical interactions has recently attracted considerable attention,
+Unfortunately, their formalization lacks consistency among the various frameworks 
+\cite{lohn_evolving_1998, steel_emergence_2000, feinberg_foundations_2019}. In particular, 
+different authors have introduced different notions of reactions \cite{muller_what_2022}. We 
+will therefore take advantage of different style formats, i.e., $\CR$ and $\FR$, to highlight 
+sets of reactions that are derived from chemical reaction networks \cite{muller_what_2022} 
+and from catalytic reaction systems \cite{lohn_evolving_1998}, respectively. We will see that 
+both sets do not contain the same mathematical objects. 
 
 \subsection{Chemical Reaction Networks (CRNs)}
 
@@ -1625,6 +1650,67 @@ $(\{x_1,r_5\}\{x_2,r_6,x_1\})$ with stoichiometric matrix:
 	\end{pmatrix}
 \end{equation}
 
+\subsection{One irreducible RAF and two equivalent autocatalytic cores}\label{subsec:IrrEquivCores}
+
+\begin{minipage}[c]{0.5\textwidth}
+\begin{equation}
+	\begin{split}
+		r_1&: f_1  + (x_1) \rightarrow x_2 + (x_1) \\
+		r_2&: x_2  + (x_2) \rightarrow x_3 + x_4 + (x_2) \\
+		r_3&: x_3 +  (x_3) \rightarrow x_1 + (x_3) \\			
+		r_4&: x_4  + (x_4) \rightarrow x_1 + (x_4) \\
+	\end{split}
+\end{equation}
+\end{minipage}%
+\hfill%
+\begin{minipage}[c]{0.5\textwidth}
+\begin{equation}
+	\begin{pmatrix}
+		0 &  0 & 1 & 1 \\
+		1 & -1 & 0 & 0 \\
+		0 & 1 & -1 & 0 \\
+		0 & 1 & 0 & -1 \\
+	\end{pmatrix}
+\end{equation}
+\end{minipage}%
+
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}
+		\node[draw, circle] (f) at (0,1.5) {$f$};
+		\node[draw, circle] (x1) at (3,1.5) {$x_1$};
+		\node[draw, circle] (x2) at (1,-2) {$x_2$};
+		\node[draw, circle] (x3) at (2,-0.5) {$x_3$};
+		\node[draw, circle] (x4) at (4,-0.5) {$x_4$};
+			
+		\node[draw, rectangle] (r1) at (1,1.5) {$r_1$};
+		\node[draw, rectangle] (r2) at (3,-2) {$r_2$};
+		\node[draw, rectangle] (r3) at (2,0.5) {$r_3$};
+		\node[draw, rectangle] (r4) at (4,0.5) {$r_4$};
+		
+		\draw[->] (f) to (r1);
+		\draw[->] (x1) to [bend right = 20] (r1);
+		\draw[->] (r1) to [bend right = 20] (x1);
+		\draw[->] (r1) to (x2);
+		\draw[->] (x2) to [bend right = 30] (r2);
+		\draw[->] (r2) to [bend right = 30] (x2);			
+		\draw[->] (r2) to(x3);
+		\draw[->] (r2) to(x4);			
+		\draw[->] (x3) to [bend right = 30] (r3);
+		\draw[->] (r3) to [bend right = 30] (x3);
+		\draw[->] (r3) to (x1);
+		
+		\draw[->] (x4) to [bend right = 30] (r4);
+		\draw[->] (r4) to [bend right = 30](x4);
+		\draw[->] (r4) to  (x1);	
+		
+	\end{tikzpicture}
+\end{figure}
+\FloatBarrier
+
+Indeed, the construction of Lemma~\ref{lem:MetzCircuit} inherits some arbitrarieness as both 
+elementary circuits $C_1=(x_1,r_1,x_2,r_2,x_3,r_3,x_1)$ and $C_2=(x_1,r_1,x_2,r_2,x_4,r_4,x_1)$ 
+could be obtained, and both are autocatalytic cores. 
 
 \section{Discussion}
 
@@ -1706,10 +1792,10 @@ the construction of Thm.~3.1 of \cite{bridging_golnik_2026}.
 
 Unfortunately, the example depicted in Fig.~\ref{fig:AutCircNotCore} clearly illustrates that these stoichiometrically autocatalytic 
 Metzler circuits are not necessarily autocatalytic cores. On the one hand, non-trivial stoichiometries can give rise to strictly 
-smaller cores that can be contained inside the constructed circuits. An example of this case is shown in
+smaller cores that can be contained inside the constructed circuits. An example of this case is shown in 
 Sec.~\ref{subsec:OneRAFManyCores}. In turn, one core can be contained in different irreducible RAFs 
-(see Sec.~\ref{subsec:ManyRAFsOneCore}) or the construction in Lemma~\ref{lem:MetzCircuit} 
-can yield two equivalent autocatalytic cores (see \TODO{TBA}). We might also find autocatalytic reactions in trivial and non-trivial 
+(see Sec.~\ref{subsec:ManyRAFsOneCore}) or the construction in Lemma~\ref{lem:MetzCircuit} can yield two equivalent 
+autocatalytic cores (see Sec.~\ref{subsec:IrrEquivCores}). We might also find autocatalytic reactions in trivial and non-trivial 
 irreducible RAFs (see Eq.~4.18, \cite{bridging_golnik_2026} and Fig.~\ref{Fig:ExplAutocatReac}).
 
 \section{Concluding Remarks}
