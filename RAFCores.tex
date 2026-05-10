@@ -73,10 +73,6 @@
 \theoremstyle{thmstylethree}%
 \newtheorem{definition}[theorem]{Definition}%
 
-\newenvironment{mainitem}[2]{\medskip\par\noindent%
-  \textbf{#1~M\ref{#2}.}}{\par}
-
-
 %%%%% SOME LOW LEVEL STUFF NEEDED FOR SPECIAL SYMBOLS
 \makeatletter
 \def\moverlay{\mathpalette\mov@rlay}
@@ -249,16 +245,28 @@ reaction can be written as:
 	\sum_{f\in F} f + x_1 \rightarrow 2x_1 + \left(\sum_{w\in W} w\right),
 \end{equation}
 where $F$ denotes a set of food molecules an $W$ a potentially empty set of molecules
-that are, next to $x_1$, additionally produced, so-called waste. \TODO{Include Eigen Schuster}
+that are, next to $x_1$, additionally produced, so-called waste. 
 
 From the simple idea of an autocatalytic reaction, a growing field of research has developed 
-over the past decades, with the result of different concepts of autocatalysis 
-\cite{andersen_defining_2021}. One of the most straightforward generalizations is considering 
-a sequence of reactions such that the overall net reaction again yields an autocatalytic reaction 
-\cite{barenholz_design_2017}. These autocatalytic cycles and a similar concept of 
-\emph{autocatalytic replicators}, subsystems collectively ensures its own reproduction 
-have been described as predominant in the central carbon metabolism of Escherichia Coli 
-\cite{barenholz_design_2017, kun_computational_2008}.
+over the past decades, resulting in different concepts of autocatalysis \cite{andersen_defining_2021}. 
+A first line of research focused on entities driving their own reproduction in complex networks, so-called 
+replicators, such as Eigen's quasi-species that encompasses an ensemble of genotypes that arrange
+themselves around a common species of which they differ by a series of mutations \cite{eigen_selforganization_1971}. 
+Subsequent research, which applied this concept to metabolic networks, has identified ATP as an 
+important metabolic \emph{autocatalytic replicator} \cite{kun_computational_2008}. 
+
+A very natural generalization considered sequences of reactions whose combined net reaction is autocatalytic 
+\cite{barenholz_design_2017}. Autocatalytic cycles of this kind are prevalent in the central carbon metabolism 
+of Escherichia coli \cite{barenholz_design_2017} and relate closely to the hypercycle concept originally proposed 
+by Eigen and Schuster \cite{eigen_principle_1977}. Building upon this notion, Blokhuis et al. \cite{blokhuis_Universal_2020} 
+derived a matrix-focused definition of \emph{stoichiometric autocatalysis} in chemical reaction networks (CRNs) void of explicitly 
+catalytic reactions, which aligns with the IUPAC definition of an autocatalytic reaction \cite{gold_iupac_2025}. This concept 
+has recently received increasing attention as, on the one hand, it allowed computational enumeration of minimal and irreducible 
+autocatalytic subsystems up to large CRNs such as metabolic networks \cite{honegger_efficient_2022, 
+gagrani_polyhedral_2024, kosc_thermodynamic_2025, golnik_birne_2025, golnik_enumeration_2026, golnik_using_2026}, and 
+was, on the other hand, extended to CRNs with explicit catalysis \cite{golnik_autocatalytic_2026}.
+
+\TODO{\textsc{Autocatalytic Sets} Kauffmann, Hordij, Steel}
 
 
 \section{Representation of Systems with Chemical Reactions}
@@ -685,7 +693,7 @@ $\queen'\coloneqq \queen(\closure{\RAF}{\food}, \RAF, \cat')$.
 
 \subsection{Irreducible RAFs}\label{sec:IrrRAF}
 
-Minimal stoichiometrically autocatalytic subnetworks, formally introduced in Sec.~\ref{sec:AutoCatIrrRAF}, 
+Minimal \emph{stoichiometrically autocatalytic} subnetworks, formally introduced in Sec.~\ref{sec:AutoCatIrrRAF}, 
 are termed \emph{autocatalytic cores} \cite{blokhuis_Universal_2020}. Their characterization and 
 computational enumeration have gained reasonable attention in chemical reaction networks with and without explicit 
 catalysis \cite{blokhuis_Universal_2020, golnik_birne_2025, golnik_using_2026, golnik_autocatalytic_2026}. 
@@ -794,8 +802,8 @@ $\RGraph(\queen)$, is strongly connected.
 Lemmata~\ref{lem:trivRAFCAF} and \ref{lem:RGQSC} can be summarized to the following statement.
 \vspace{6pt}
 \begin{theorem}\label{thm:RAFStrCon}
-	Let $\RAF$ be a irreducible RAF. Then $\RAF$ is non-trivial if and only if the graph $\RGraph(\queen')$ 
-	is not a single F-reaction and strongly connected.
+	Let $\RAF$ be an irreducible RAF. Then $\RAF$ is non-trivial if and only if the graph $\RGraph(\queen')$ 
+	is not a single F-reaction and is strongly connected.
 \end{theorem}
 \vspace{6pt}
 
@@ -1167,7 +1175,7 @@ a modification that is based on the network and the matrix \cite{golnik_autocata
 
 A sub-CRN $(X',R')$ that satisfies $(i.)$ and $(ii.)$, while no proper subnetwork $(X'',R'')$ with $X''\subseteq X', 
 R''\subseteq R'$ does, is called an \emph{autocatalytic core}. We are now in the position to show 
-that $\lord(\RAF)$ for each non-trivial, irreducible RAF $\RAF$ is stoichiometrically autocatalytic. 
+that $\lord(\RAF)$ for each non-trivial, irreducible RAF $\RAF$ is \emph{stoichiometrically autocatalytic}. 
 
 The results on the structure of irreducible RAFs imply that each strong block $B$ of $\lord(\RAF)$ satisfies $(i.)$ 
 of Def.~\ref{def:autSubRN}. To show semi-positivity, the key observation is that $B$ contains at least one 
@@ -1230,16 +1238,16 @@ circuit $(X(C),R(C))$ is well-formed.
 
 We call an elementary circuit as claimed in Lemma~\ref{lem:MetzCircuit} a Metzler circuit. Unfortunately, such a 
 Metzler circuit can, as shown in the proof, still contain a metabolite-to-reaction (MR-) chord. The example in 
-Sec.~\ref{sec:MetzNotCore} depicts such a scenario. Nevertheless, they are always stoichiometrically autocatalytic.
+Sec.~\ref{sec:MetzNotCore} depicts such a scenario. Nevertheless, they are always \emph{stoichiometrically autocatalytic}.
 
 \vspace{6pt}
 \begin{lemma}[Proof: SI]\label{lem:MetzCircAut}
 	If $C$ is a Metzler circuit containing a \emph{pure reaction}, then $(X(C), R(C)$ 
-	is stoichiometrically autocatalytic.
+	is \emph{stoichiometrically autocatalytic}.
 \end{lemma}
 \vspace{6pt}
-If the subnetwork induced by an elementary circuit $C$ is stoichiometrically autocatalytic, 
-we say that $C$ is stoichiometrically autocatalytic. Elementary circuits free of MR-chords
+If the subnetwork induced by an elementary circuit $C$ is \emph{stoichiometrically autocatalytic}, 
+we say that $C$ is \emph{stoichiometrically autocatalytic}. Elementary circuits free of MR-chords
 play an important role in enumerating autocatalytic cores \cite{golnik_using_2026}. 
 Since they are always Metzler circuits, we obtain the following corollary as a direct consequence. 
 \vspace{6pt}
@@ -1326,7 +1334,7 @@ As noted, these elementary circuits need not be autocatalytic cores, for various
 One is digons, i.e., elementary circuits of length $2$ where the metabolite-to-reaction edge
 is not located along the original Metzler circuit. An example for this situation is shown in Sec.~\ref{sec:MetzNotCore}. 
 Another reason is non-unit stoichiometries, which can give rise to strictly smaller circuits inside
-the constructed stoichiometrically autocatalytic Metzler circuit. The example in 
+the constructed \emph{stoichiometrically autocatalytic} Metzler circuit. The example in 
 Sec.~\ref{sec:NonUnStoich} captures such a scenario. As the K\"onig graph is a simple digraph, stoichiometries 
 are naturally not encoded besides being specified as edge labels. We can, therefore, not hope to find a 
 general construction method that identifies autocatalytic cores immediately. 
@@ -1715,14 +1723,14 @@ could be obtained, and both are autocatalytic cores.
 \section{Discussion}
 
 \textsc{Reflexively autocatalytic sets (RAFs)} \cite{kauffman_autocatalytic_1986, steel_emergence_2000} 
-and stoichiometric autocatalysis \cite{blokhuis_Universal_2020} represent two different 
+and \emph{stoichiometric autocatalysis} \cite{blokhuis_Universal_2020} represent two different 
 interpretations of the concept of an explicit autocatalytic reaction, which was first discussed
 in 1890 by Wilhelm Ostwald \cite{Ostwald:90}. While RAFs are defined in catalytic
-reaction systems (CRS), in which each reaction is explicitly catalyzed, stoichiometric autocatalysis
+reaction systems (CRS), in which each reaction is explicitly catalyzed, \emph{stoichiometric autocatalysis}
 developed, in accordance with the IUPAC definition of an autocatalytic reaction \cite{gold_iupac_2025}, 
 from chemical reaction networks (CRN), where reactions can but don't have to be catalyzed. Although 
 inherently distinct, it was recently demonstrated that every \textsc{RAF} that is not a \textsc{CAF} is 
-nevertheless stoichiometrically autocatalytic \cite{bridging_golnik_2026}. Here, we continued 
+nevertheless \emph{stoichiometrically autocatalytic} \cite{bridging_golnik_2026}. Here, we continued 
 examining this relationship in greater detail, focusing in particular on the interplay between the minimal 
 structures arising in both frameworks.
 
@@ -1751,15 +1759,15 @@ relationship between these two interpretations of chemical reaction systems. Mor
 facilitates the transfer of results obtained in one framework to the other, and vice versa.
 
 Setting out from the result of Thm.~3.1 in \cite{bridging_golnik_2026}, this contribution primarily focused 
-on identifying the minimal structures within RAFs that exhibit stoichiometric autocatalysis. 
-Since any RAF that is itself not a CAF is stoichiometrically autocatalytic, RAFs that contain no proper 
+on identifying the minimal structures within RAFs that exhibit \emph{stoichiometric autocatalysis}. 
+Since any RAF that is itself not a CAF is \emph{stoichiometrically autocatalytic}, RAFs that contain no proper 
 sub-RAFs, denoted as \emph{irreducible RAFs} in the literature \cite{steel_minimal_2013}, 
-are stoichiometrically autocatalytic as well, as long as they are not CAFs. In fact, irreducible 
+are \emph{stoichiometrically autocatalytic} as well, as long as they are not CAFs. In fact, irreducible 
 RAFs are CAFs if and only if they are trivial (Lemma~\ref{lem:trivRAFCAF}), thus composed of a 
 single reaction, which justified our focus on non-trivial, irreducible RAFs. 
 
 The minimality of non-trivial, irreducible RAFs is a particularly strong property, as it gives rise to several 
-noteworthy structural consequences that are also characteristic of stoichiometrically autocatalytic CRNs. 
+noteworthy structural consequences that are also characteristic of \emph{stoichiometrically autocatalytic} CRNs. 
 In particular, it imposes strong connectivity on both the R-graph of the CRS and the underlying CRN. Since strong 
 connectivity is a prerequisite for autocatalytic cores, it is not surprising that they reside within these subgraphs. 
 In fact, their bipartite digraph representation in CRNs with explicit catalysis are\emph{fluffles}, and thus themselves 
@@ -1772,9 +1780,9 @@ Strong blocks are, by definition, well-formed. In addition, some of their cut ve
 which have only F-catalysts as reactants inside the corresponding block $B$, can act as import reactions as they 
 induce a non-negative column in the stoichiometric submatrix $\SM(B)$. In theory, this would allow for an infinitely 
 high inflow such that all species inside the block are net-produced. Indeed, $\SM(B)$ is semi-positive for any strong 
-block $B$, such that each block is stoichiometrically autocatalytic (Thm.~\ref{Thm:StrBlockCore}). 
+block $B$, such that each block is \emph{stoichiometrically autocatalytic} (Thm.~\ref{Thm:StrBlockCore}). 
 
-The structures responsible for each strong block being stoichiometrically autocatalytic are \emph{Metzler circuits};  
+The structures responsible for each strong block being \emph{stoichiometrically autocatalytic} are \emph{Metzler circuits};  
 elementary circuits that allow for a column-reordering of their associated stoichiometric submatrix such that the resulting Matrix 
 is a Metzler matrix (Lemma~\ref{lem:MetzCircuit}). Such an ordering can be obtained by arranging the columns 
 according to the direction of the circuit. In the proof of Lemma~\ref{lem:MetzCircuit}, we provided a construction 
@@ -1783,14 +1791,14 @@ of a Metzler circuit that always contains a pure reaction.
 The existence of a Metzler circuit with a pure reaction has already been shown to exist for any RAF that is itself not 
 a CAF \cite{bridging_golnik_2026}. However, in the proof of Thm.~3.1 of \cite{bridging_golnik_2026}, the construction 
 follows the F-catalysts as reactants for each reaction, and thereby not necessarily the reactant with the lowest generation 
-number. Non-trivial minimal RAFs exist, where this construction would not yield a stoichiometrically autocatalytic Metzler 
+number. Non-trivial minimal RAFs exist, where this construction would not yield a \emph{stoichiometrically autocatalytic} Metzler 
 circuit for each strong block $B$. Such an example is depicted in Fig.~\ref{ex:CutVertex2}. Indeed, the block 
 $(\{x_1,x_2\}, \{r_1,r_2\}$ does not contain an elementary circuit, where each species vertex is the F-catalyst of its 
 appurtenant reaction. Nevertheless, $C\coloneqq (x_1,r_1,x_2,r_2,x_1)$ is still a Metzler circuit with a pure reaction ($r_1$), 
-and thereby stoichiometrically autocatalytic (Lemma.~\ref{lem:MetzCircAut}). In addition, $(x_3,r_2,x_4,r_3, x_3)$ satisfies
+and thereby \emph{stoichiometrically autocatalytic} (Lemma.~\ref{lem:MetzCircAut}). In addition, $(x_3,r_2,x_4,r_3, x_3)$ satisfies
 the construction of Thm.~3.1 of \cite{bridging_golnik_2026}.
 
-Unfortunately, the example depicted in Fig.~\ref{fig:AutCircNotCore} clearly illustrates that these stoichiometrically autocatalytic 
+Unfortunately, the example depicted in Fig.~\ref{fig:AutCircNotCore} clearly illustrates that these \emph{stoichiometrically autocatalytic} 
 Metzler circuits are not necessarily autocatalytic cores. On the one hand, non-trivial stoichiometries can give rise to strictly 
 smaller cores that can be contained inside the constructed circuits. An example of this case is shown in 
 Sec.~\ref{subsec:OneRAFManyCores}. In turn, one core can be contained in different irreducible RAFs 
