@@ -233,14 +233,13 @@
 
 
 \section{Introduction}
-The concept of autocatalysis is not new. As early as 1890, Wilhelm Ostwald 
-already posed the question of whether a chemical reaction could be catalyzed 
-by one of its own products \cite{Ostwald:90}. Such \emph{autocatalytic reactions} 
-appeared over the years implicitly or explicitly in the literature in various types of 
-reaction networks such as chemistry, ecology, population dynamics, and 
-epidemiology \cite{lotka_contribution_1910, lotka_analytical_1920, lotka1925elements, 
-volterra1926variazioni, kermack_contributions_1991}. An explicitly autocatalytic 
-reaction can be written as:
+As early as 1890, Wilhelm Ostwald posed the question of whether a chemical 
+reaction could be catalyzed by one of its own products \cite{Ostwald:90}. 
+Subsequently, \emph{autocatalytic reactions} appeared, either explicitly or implicitly, 
+in the literature across a wide range of reaction-network settings, including chemistry, 
+ecology, population dynamics, and epidemiology \cite{lotka_contribution_1910, 
+lotka_analytical_1920, lotka1925elements, volterra1926variazioni, kermack_contributions_1991}. 
+An explicitly autocatalytic reaction can be written as:
 \begin{equation}
 	\sum_{f\in F} f + x_1 \rightarrow 2x_1 + \left(\sum_{w\in W} w\right),
 \end{equation}
@@ -255,7 +254,7 @@ themselves around a common species of which they differ by a series of mutations
 Subsequent research, which applied this concept to metabolic networks, has identified ATP as an 
 important metabolic \emph{autocatalytic replicator} \cite{kun_computational_2008}. 
 
-A very natural generalization considered sequences of reactions whose combined net reaction is autocatalytic 
+A very natural generalization is to consider sequences of reactions whose combined net reaction is autocatalytic 
 \cite{barenholz_design_2017}. Autocatalytic cycles of this kind are prevalent in the central carbon metabolism 
 of Escherichia coli \cite{barenholz_design_2017} and relate closely to the hypercycle concept originally proposed 
 by Eigen and Schuster \cite{eigen_principle_1977}. Building upon this notion, Blokhuis et al. \cite{blokhuis_Universal_2020} 
@@ -266,10 +265,19 @@ autocatalytic subsystems up to large CRNs such as metabolic networks \cite{honeg
 gagrani_polyhedral_2024, kosc_thermodynamic_2025, golnik_birne_2025, golnik_enumeration_2026, golnik_using_2026}, and 
 was, on the other hand, extended to CRNs with explicit catalysis \cite{golnik_autocatalytic_2026}.
 
-\TODO{\textsc{Autocatalytic Sets} Kauffmann, Hordij, Steel}
+An alternative approach was concerned with systems of chemical reactions in which 
+each reaction is catalyzed \cite{lohn_evolving_1998, steel_emergence_2000}. The 
+original idea dates back to Kauffmann's considerations about how life on Earth emerged. 
+As questions on the \emph{RNA-first} hypothesis arose, Kauffman explored the idea of
+whether sets of polypeptide complexes that were generated via reactions that are exclusively 
+catalyzed by members could have preceded the appearance of RNA \cite{kauffman_autocatalytic_1986}. 
+Under reasonable assumptions, i.e., a fixed probability for each member to catalyze the formation 
+of another member of the set, and a sufficient supply of amino-acid monomers, surprisingly, their 
+existence becomes guaranteed if the polymers are sufficiently long. His ideas laid the foundation 
+for later work on \textsc{reflexively autocatalytic F-generated sets (RAFs)}.
 
 
-\section{Representation of Systems with Chemical Reactions}
+\section{Representation of Chemical Systems}
 
 Research on systems of chemical interactions has recently attracted considerable attention,
 Unfortunately, their formalization lacks consistency among the various frameworks 
@@ -1242,7 +1250,7 @@ Sec.~\ref{sec:MetzNotCore} depicts such a scenario. Nevertheless, they are alway
 
 \vspace{6pt}
 \begin{lemma}[Proof: SI]\label{lem:MetzCircAut}
-	If $C$ is a Metzler circuit containing a \emph{pure reaction}, then $(X(C), R(C)$ 
+	If $C$ is a Metzler circuit containing a \emph{pure reaction}, then $(X(C), R(C))$ 
 	is \emph{stoichiometrically autocatalytic}.
 \end{lemma}
 \vspace{6pt}
