@@ -269,31 +269,29 @@ reactions \cite{golnik_autocatalytic_2026}.
 
 An alternative approach focused on systems of chemical reactions in which every reaction 
 is, in general, catalyzed \cite{lohn_evolving_1998, steel_emergence_2000}. The original idea 
-dates back to Kauffmann's considerations about how life on Earth emerged when doubt arose on the 
-\emph{RNA-first} hypothesis. Kauffman explored the idea of whether sets of polypeptide 
+dates back to Kauffman's considerations about how life on Earth \Wim{may have emerged as a metabolism-first event rather than a genetics-first one}. Kauffman explored the idea of whether sets of polypeptide 
 complexes that were generated via reactions that are exclusively catalyzed by members of 
-the set could have preceded the appearance of RNA \cite{kauffman_autocatalytic_1986}. 
+the set could have \Wim{led to collectively self-reproducing systems} \cite{kauffman_autocatalytic_1986}. 
 Under reasonable assumptions and a sufficient supply of amino acid monomers, surprisingly, 
 their existence becomes almost guaranteed as long as polypeptide chains exceed a certain 
 length. His ideas built the foundation for later work on \textsc{reflexively autocatalytic F-generated 
 sets}, which have been extensively studied in many variations ever since 
-\cite{steel_emergence_2000, mossel05CAF, steel13minimal, smith_autocatalytic_2014, 
-steel20}. 
+\cite{steel_emergence_2000, mossel05CAF, steel13minimal, smith_autocatalytic_2014,hordijk19,steel20}. 
 
-Related to different approaches to think about the problem of how life has emerged on a 
+Related to different approaches to thinking about the problem of how life has emerged on a 
 primordial Earth \cite{kauffman_autocatalytic_1986, unterberger_stoechiometric_2022}, \textsc{reflexively 
 autocatalytic F-generated sets} and \emph{stoichiometric autocatalysis} are very distinct 
 in their motivation, setting, and mathematical formalization. It was therefore surprising that 
 just recently, a meaningful connection between these two frameworks has been discovered 
 \cite{bridging_golnik_2026}. Notably, the RAF framework, in its original formulation, allows 
-reactions to occur also uncatalyzed, to some extent, which seems reasonable from a chemical 
+reactions to also occur uncatalyzed, \Wim{at least initially}, which seems reasonable from a chemical 
 perspective and considering the time life required to develop. In a more restrictive setting, i.e., 
 in constructively autocatalytic F-generated sets (CAFs), reactions can only be executed if all catalysts  
 have been generated beforehand. Interestingly, a RAF that is itself not entirely constrained in 
 such a manner is always \emph{stoichiometrically autocatalytic} \cite{bridging_golnik_2026}.
 
 In this contribution, we extend the theory and set out to identify the underlying structures 
-carrying the autocatalytic capacity of RAF that is itself not a CAF. Since \textsc{RAFs} are 
+carrying the autocatalytic capacity of a RAF that is itself not a CAF. Since \textsc{RAFs} are 
 embedded in catalytic reaction systems (CRS), while \emph{stoichiometric autocatalysis} 
 was derived from chemical reaction networks (CRNs), we initially developed a concept that 
 allows translating both systems into one another. It turns out that the set of reactions of a 
@@ -642,7 +640,7 @@ A reflexively autocatalytic set (RAF) is then defined as follows:
 	Let $(X,\FR,\cat)$ be a CRS with $\food\subseteq X$. A set $\RAF\subseteq \FR$ is called  
 		\vspace{6pt}
 		\begin{itemize} 
-			\item[i.]{\emph{reflexive autocatalytic} (RA) if $\forall r\in \RAF: \emptyset \neq \cat(r), \exists c\in \cat(r): c \subseteq \feducts(\RAF)\cup \fproducts(\RAF)$}\\[-1.0em]
+			\item[i.]{\emph{reflexively autocatalytic} (RA) if $\forall r\in \RAF: \emptyset \neq \cat(r), \exists c\in \cat(r): c \subseteq \feducts(\RAF)\cup \fproducts(\RAF)$}\\[-1.0em]
 			\item[ii.]{\emph{\food-generated} if $\feducts(\RAF)\subseteq \closure{\RAF}{\food}$}\\[-1.0em]
 			\item[iii.]{\emph{reflexive autocatalytic} and \emph{\food-generated} (RAF) if both i. and ii. hold}
 		\end{itemize}
@@ -683,7 +681,7 @@ and a reaction $\fr_1$ precedes a reaction $\fr_2$, i.e.:
 \end{equation}
 We refer to the values of $\sgen$ and $\rgen$ as the generation of a reaction or metabolite. Since all representatives
 of an F-reaction share the same F-reactants, we may define the generation of a reaction as $\delta(r)\coloneqq \rgen(\fr)$.
-A \emph{constructive reflexively autocatalytic} set (CAF) is a RAF such that for each F-reaction 
+A \emph{constructively autocatalytic and food-generated} set (CAF) is a RAF such that for each F-reaction 
 $\fr$ all $x\in \feducts(x)$ satisfy $\sgen(x)<\rgen(\fr)$ and there is at least one $r\in \fr$ such that 
 all catalyst $x\in \cat(r)$ satisfy $\sgen(x)< \rgen(\fr)$.
 
@@ -770,7 +768,7 @@ as long as they are non-trivial, i.e., if they are composed of more than a singl
 	since otherwise $\RAF$ would not be a RAF. Thus, $\RAF$ is a CAF.
 \end{proof}
 \vspace{6pt}
-This Lemma justifies focusing only on non-trivial, irreducible RAFs. In fact, for each non-trivial, 
+This Lemma justifies focusing only on non-trivial irreducible RAFs. In fact, for each non-trivial 
 irreducible RAF, each F-reaction has at least one reactant that is not in the food set. 
 \vspace{6pt}
 \begin{lemma}\label{lem:OneReac}
