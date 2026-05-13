@@ -232,51 +232,54 @@
 
 \section{Introduction}
 
-As early as 1890, Wilhelm Ostwald posed the question of whether a chemical 
-reaction could be catalyzed by one of its own products \cite{Ostwald:90}. As 
-simple as the idea is, an autocatalytic reaction could be written as:
-\begin{equation}
-	\sum_{f\in F} f + x_1 \rightarrow 2x_1 + \left(\sum_{w\in W} w\right),
-\end{equation}
-where $F$ denotes a set of food molecules an $W$ a potentially empty set of molecules
-that are, next to $x_1$, additionally produced, so-called waste. Importantly, 
-\emph{autocatalytic reactions} appeared, either explicitly or implicitly, in the literature 
+Wilhelm Ostwald's considerations in 1890 on whether chemical reactions could be catalyzed 
+by one of their own products \cite{Ostwald:90} marked the provenance of autocatalysis. In its 
+simplest form, Autocatalysis appears as an autocatalytic reaction where one participating 
+species drives its own formation, fueled by a sufficient supply of food molecules. In subsequent 
+decades, \emph{autocatalytic reactions} appeared, either explicitly or implicitly, in the literature 
 across a wide range of reaction-network settings, including chemistry, ecology, population 
 dynamics, and epidemiology \cite{lotka_contribution_1910, lotka_analytical_1920, 
-lotka1925elements, volterra1926variazioni, kermack_contributions_1991}. 
+lotka1925elements, volterra1926variazioni, kermack_contributions_1991}. One of the most 
+convincing examples is, for sure, the transmission of viral infections from one individual 
+to another \cite{kermack_contributions_1991}, resulting in an exponential explosion of 
+numbers of infected individuals, e.g., as observed during the COVID-19 pandemic 
+\cite{saxena_propagation_2021}.  
 
 From the simple idea of an autocatalytic reaction, a growing field of research has developed 
 over the past decades, resulting in different concepts of autocatalysis \cite{andersen_defining_2021}. 
-A first line of research focused on entities driving their own reproduction in complex networks, so-called 
-replicators, such as Eigen's quasi-species, an ensemble of genotypes that arrange themselves around 
+A first line of studies focused on entities driving their own reproduction in complex networks, so-called 
+\emph{replicators}, such as Eigen's quasi-species, an ensemble of genotypes that arrange themselves around 
 a common species of which they differ by a series of mutations \cite{eigen_selforganization_1971}. 
 Subsequent research applied this concept to metabolic networks to identify important metabolic 
-\emph{autocatalytic replicators} such as ATP \cite{kun_computational_2008}. 
+\emph{autocatalytic replicators} such as ATP \cite{kun_computational_2008}. In a more general way,
+sequences of reactions whose combined net reaction is autocatalytic have been termed autocatalytic 
+cycles, and shown to be prevalent in the central carbon metabolism of Escherichia coli \cite{barenholz_design_2017, 
+smith_universality_2004}. Similar ideas have been studied subsequently \cite{joshi_autocatalytic_2021}, 
+as they relate closely to the hypercycle concept originally proposed by Eigen and 
+Schuster \cite{eigen_principle_1977}. 
 
-A very natural generalization of an autocatalytic reaction is to consider sequences of reactions whose 
-combined net reaction is autocatalytic \cite{barenholz_design_2017}. Autocatalytic cycles of this 
-kind are prevalent in the central carbon metabolism of Escherichia coli \cite{barenholz_design_2017, 
-smith_universality_2004} and relate closely to the hypercycle concept originally proposed by Eigen 
-and Schuster \cite{eigen_principle_1977}. Extending this idea further, the notion of \emph{stoichiometric 
-autocatalysis} was developed for chemical reaction networks (CRNs) that lack explicitly catalytic 
-reactions \cite{blokhuis_Universal_2020}, in accordance with the IUPAC definition of autocatalytic 
-reactions \cite{gold_iupac_2025}. This concept has recently received increasing attention, as it 
-triggered the development of algorithms enumerating minimal and irreducible autocatalytic 
-subsystems in reversible \cite{kosc_thermodynamic_2025} and CRNs with both reversible and 
-irreversible reactions \cite{golnik_birne_2025, golnik_enumeration_2026, golnik_using_2026}. 
-In addition, the theory has recently been extended to CRNs comprising also explicitly catalyzed 
-reactions \cite{golnik_autocatalytic_2026}.
+In 2020, Blokhuis et al. generalized the idea of an autocatalytic cycle to develop a formal definition 
+of \emph{stoichiometric autocatalysis} from chemical reaction networks (CRNs) \cite{blokhuis_Universal_2020}, 
+in accordance with the IUPAC definition of autocatalytic reactions \cite{gold_iupac_2025}. This concept 
+has recently received increasing attention, as it triggered the development of algorithms enumerating 
+minimal and irreducible autocatalytic subsystems in fully reversible \cite{kosc_thermodynamic_2025} 
+CRNs and CRNs with reversible and irreversible reactions \cite{gagrani_polyhedral_2024, golnik_birne_2025, 
+golnik_enumeration_2026, golnik_using_2026}. As \emph{stoichiometric autocatalysis} was developed 
+in fully reversible CRNs, lacking explicit catalysis, the theory has recently been extended to CRNs 
+containing both reversible and irreversible as well as explicitly catalyzed reactions \cite{golnik_autocatalytic_2026}.
 
 An alternative approach focused on systems of chemical reactions in which every reaction 
 is, in general, catalyzed \cite{lohn_evolving_1998, steel_emergence_2000}. The original idea 
-dates back to Kauffman's considerations about how life on Earth \Wim{may have emerged as a metabolism-first event rather than a genetics-first one}. Kauffman explored the idea of whether sets of polypeptide 
-complexes that were generated via reactions that are exclusively catalyzed by members of 
+dates back to Kauffman's considerations about how life on Earth \Wim{may have emerged as 
+a metabolism-first event rather than a genetics-first one}. Kauffman explored the idea of whether 
+sets of polypeptide complexes that were generated via reactions that are exclusively catalyzed by members of 
 the set could have \Wim{led to collectively self-reproducing systems} \cite{kauffman_autocatalytic_1986}. 
 Under reasonable assumptions and a sufficient supply of amino acid monomers, surprisingly, 
 their existence becomes almost guaranteed as long as polypeptide chains exceed a certain 
 length. His ideas built the foundation for later work on \textsc{reflexively autocatalytic F-generated 
 sets}, which have been extensively studied in many variations ever since 
-\cite{steel_emergence_2000, mossel05CAF, steel13minimal, smith_autocatalytic_2014,hordijk19,steel20}. 
+\cite{steel_emergence_2000, mossel05CAF, steel_minimal_2013, smith_autocatalytic_2014,
+hordijk_history_2019, steel20}. 
 
 Related to different approaches to thinking about the problem of how life has emerged on a 
 primordial Earth \cite{kauffman_autocatalytic_1986, unterberger_stoechiometric_2022}, \textsc{reflexively 
@@ -290,13 +293,13 @@ in constructively autocatalytic F-generated sets (CAFs), reactions can only be e
 have been generated beforehand. Interestingly, a RAF that is itself not entirely constrained in 
 such a manner is always \emph{stoichiometrically autocatalytic} \cite{bridging_golnik_2026}.
 
-In this contribution, we extend the theory and set out to identify the underlying structures 
-carrying the autocatalytic capacity of a RAF that is itself not a CAF. Since \textsc{RAFs} are 
-embedded in catalytic reaction systems (CRS), while \emph{stoichiometric autocatalysis} 
-was derived from chemical reaction networks (CRNs), we initially developed a concept that 
-allows translating both systems into one another. It turns out that the set of reactions of a 
-CRS can be obtained as the quotient set of the reactions in the underlying CRN. In addition, 
-we show that requiring minimality, with respect to the RAF property, imposes remarkable 
+In this contribution, we extend this theory and set out to identify the underlying structures 
+carrying the autocatalytic capacity of a RAF that is itself not a CAF. As an initial step, we 
+overcome the menacing obstacle that \textsc{RAFs} are embedded in catalytic reaction 
+systems (CRS), while \emph{stoichiometric autocatalysis} was derived from chemical 
+reaction networks (CRNs). It turns out that the set of reactions of a CRS can be obtained 
+as the quotient set of the reactions in the underlying CRN. In addition, we show that 
+requiring minimality, with respect to the RAF property, imposes remarkable 
 constraints on the emerging graph structures. Finally, we explore how these consequences 
 impact on the correspondence between the two notions of minimality: \textsc{irreducible 
 RAFs} and \emph{autocatalytic cores}. 
