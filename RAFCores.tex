@@ -494,7 +494,7 @@ is given as $\queen(\Phi=(X,\FR, \cat))\coloneqq (X \cup \FR, E_1\cup E_2)$ with
 \begin{equation}
 	\begin{split}
 		E_1\coloneqq \{(x,\fr) \ | \ x\in X, \fr\in \FR: s^-_{xr}>0 \text{ for some } r \in \fr \} \\
-		E_2\coloneqq \{(x,\fr) \ | \ x\in X, \fr\in \FR: s^+_{xr}>0 \text{ for some } r \in \fr \}
+		E_2\coloneqq \{(\fr, x) \ | \ x\in X, \fr\in \FR: s^+_{xr}>0 \text{ for some } r \in \fr \}
 	\end{split}
 \end{equation}
 
@@ -520,7 +520,7 @@ in $\queen(\Gamma(\Phi))$ by its single representative, while all edges to adjac
 conserved. This yields that $\queen(\Phi)$ and $\king(\Gamma(\Phi))$ are isomorphic. In turn, 
 if one equivalence class contains more than one representative, then 
 $|V(\king(\Gamma(\Phi))|>|V(\queen(\Phi)|$, which directly implies that 
-$\king(\Gamma(\Phi))\not \simeq \king(\Gamma(\Phi))$.
+$\queen(\Phi)\not \simeq \king(\Gamma(\Phi))$.
 
 \vspace{6pt}
 \begin{lemma}\label{lem:IsoQK}
@@ -633,7 +633,7 @@ is built \cite{steel_emergence_2000, hordijk_detecting_2004}. In addition, they 
 w.r.t. to a set $\RAF \subseteq \FR$, denoted as $\closure{\RAF}{X'}$, which is the unique minimal set $Y$ containing $X'$ 
 such that for any $\fr\in \RAF: \feducts(r)\subseteq Y \Rightarrow \fproducts(r)\subseteq Y$. Thus:
 \begin{equation}\label{eq:Closure}
-	\closure{R'}{X'} \coloneqq \min \{Z \subseteq X \ | \ X'\subseteq Z, \feducts(r) \subseteq Z \Rightarrow \fproducts(r) \subseteq Z \ \forall r\in \RAF'\}%}_{\eqqcolon \mathfrak{C}_{\RAF}(X')}
+	\closure{R'}{X'} \coloneqq \min \{Z \subseteq X \ | \ X'\subseteq Z, \feducts(r) \subseteq Z \Rightarrow \fproducts(r) \subseteq Z \ \forall r\in \RAF\}%}_{\eqqcolon \mathfrak{C}_{\RAF}(X')}
 \end{equation}
 
 A reflexively autocatalytic set (RAF) is then defined as follows:
@@ -692,7 +692,7 @@ One important consequence of the partial order is that if a RAF contains two $\s
 that share the same net reaction, the "later" can be removed.
 \vspace{6pt}
 \begin{lemma}\label{lem:OneFReacPerRAF}
-	Let $(X,\FR,\cat)$ be a CRS with food-set $\food\subseteq X$, $\RAF\subseteq \FR$ a $\RAF$, and 
+	Let $(X,\FR,\cat)$ be a CRS with food-set $\food\subseteq X$, $\RAF\subseteq \FR$ a RAF, and 
 	$\fr_1,\fr_2 \in \RAF: \fr_1\neq \fr_2, \hat{\fr}_1 = \hat{\fr}_2'$. Then $\RAF\setminus \{\fr_2\}$ is a RAF
 	if $\rgen(\fr_1)\leq \rgen(\fr_2)$.
 \end{lemma}
@@ -742,7 +742,8 @@ in the literature \cite{steel_minimal_2013}. A direct consequence of Lemma~\ref{
 is that irreducible RAFs contain, for each net reaction, only one F-reaction. 
 \vspace{6pt} 
 \begin{corollary}
-	Let $\fr_r,\fr_2 \in \RAF: \fr_1\neq \fr_2, \hat{\fr}_1=\hat{\fr}_2$. Then $\fr_1\in \RAF\Rightarrow \fr_2\notin \RAF$.
+	Let $(X,\mathbf{R}, \cat)$ be a CRS with food-set $\food\subseteq X$ and $\RAF$ an irreducible RAF. 
+	For $\fr_r,\fr_2 \in \mathbf{R}: \fr_1\neq \fr_2, \hat{\fr}_1=\hat{\fr}_2$, $\fr_1\in \RAF$ implies $\fr_2\notin \RAF$.
 \end{corollary}
 \vspace{6pt} 
 Still, they might contain F-reactions that have more than one representative, as the following example shows.
@@ -761,7 +762,7 @@ in a RAF as long as it is not a CAF. irreducible RAFs exhibit the convenient pro
 as long as they are non-trivial, i.e., if they are composed of more than a single reaction.
 \vspace{6pt}
 \begin{lemma}\label{lem:trivRAFCAF}
-	Let $(X,\RAF,\cat)$ be a CRS with food-set $\food$ and $\RAF$ a irreducible RAF. Then $\RAF$ is a CAF if and only
+	Let $(X,\mathbf{R},\cat)$ be a CRS with food-set $\food$ and $\RAF$ a irreducible RAF. Then $\RAF$ is a CAF if and only
 	if it is trivial. 
 \end{lemma}
 \begin{proof}
