@@ -442,9 +442,10 @@ $E\coloneqq \{(r_1,r_2) \ \vert \ \exists x\in X: s^+_{xr_1}>0,s^-_{xr_2}>0\}$.
 
 Catalytic reaction systems (CRS) sensu Lohn \cite{lohn_evolving_1998} take a different approach. 
 In particular, two reactions $r_1, r_2$ are considered indistinguishable if they differ only in their 
-F-catalysts but share the same F-reactants and F-products:
+F-catalysts but share the same F-reactants and F-products, including their respective stoichiometric
+multiplicities:
 \begin{equation}\label{eq:fEquiv}
-	r_1\sim r_2 \Leftrightarrow \feducts(r_1)=\feducts(r_2), \fproducts(r_1)=\fproducts(r_2), 
+	r_1\sim r_2 \Leftrightarrow \sigma^{\pm}_{xr_1}= \sigma^{\pm}_{xr_2}, 
 \end{equation}
 Indeed, $\sim$ is an equivalence relation, and we call a $\sim$-equivalence class an F-reaction. 
 For consistency, we denote them in bold, i.e., $\fr\coloneqq [r]_\sim$ for:
