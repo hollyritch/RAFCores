@@ -1262,74 +1262,91 @@ equivalence class is trivial.
   $\fr$ is a cut-vertex in $\princess(\RAF)$.
 \end{lemma}
 
-
 \TODO{PFS to here} 
 
 \subsubsection{Strong Blocks}
 
-The existence of cut-vertices, which can only be reaction vertices, enables the decomposition of $\princess$ and $\lord$
- into strong blocks. For the graph $\lord(\RAF)$, each of these blocks contains an autocatalytic core, which 
- is warranted by a unique structural property common to any strong block that guarantees semipositivity. In particular, each
- block in $\princess(\RAF)$ and $\lord(\RAF)$ contains reaction vertices for which all reactants are F-catalysts but not F-reactants. 
- We thereby collect them in the following sets:
- \begin{equation}
- 	\begin{split}
-	 	\FR^*(\block)\coloneqq \{\fr\in \FR(\block) \ | \ s^-_{x\fr}>0 \Rightarrow s^+_{x\fr}=s^-_{x\fr}, \forall x\in X(\block)\} \\
-		R^*(\block)\coloneqq \{r\in \varphi^{-1}{\FR}(\block) \ | \ s^-_{xr}>0 \Rightarrow s^+_{xr}=s^-_{xr}, \forall x\in X(\block)\}.
-	\end{split}
+The existence of cut-vertices, which can only be reaction vertices, enables
+the decomposition of $\princess$ and $\lord$ into strong blocks. For the
+graph $\lord(\RAF)$, each of these blocks contains an autocatalytic core,
+which is warranted by a unique structural property common to any strong
+block that guarantees semipositivity. In particular, each block in
+$\princess(\RAF)$ and $\lord(\RAF)$ contains reaction vertices for which
+all reactants are F-catalysts but not F-reactants.  We thereby collect them
+in the following sets:
+\begin{equation}
+  \begin{split}
+    \FR^*(\block)\coloneqq \{\fr\in \FR(\block) \ | \ s^-_{x\fr}>0
+    \Rightarrow s^+_{x\fr}=s^-_{x\fr}, \forall x\in X(\block)\}
+    \\ R^*(\block)\coloneqq \{r\in \varphi^{-1}{\FR}(\block) \ |
+    \ s^-_{xr}>0 \Rightarrow s^+_{xr}=s^-_{xr}, \forall x\in X(\block)\}.
+  \end{split}
 \end{equation}
-and refer to these vertices as \emph{pure F-reactions} and \emph{pure reactions}, respectively.
+and refer to these vertices as \emph{pure F-reactions} and \emph{pure
+reactions}, respectively.
 \vspace{6pt}
 \begin{lemma}\label{lem:cutVertexPureCat}
-	For a non-trivial, irreducible RAF $\RAF$, any strong block $\block$ of $\princess(\RAF)$ contains a pure reaction.
+  For a non-trivial, irreducible RAF $\RAF$, any strong block $\block$ of
+  $\princess(\RAF)$ contains a pure reaction.
 \end{lemma}
 \vspace{6pt}
-Following the same line of argument as in the proof of Lemma~\ref{lem:cutVertexPureCat}, the same statement also holds for 
-$\lord(\RAF)$, with the small difference that for some of the cut-vertices $\fr\in \RAF$ all representatives that are not cut-vertices 
-in $\lord(\RAF)$.
+%
+Following the same line of argument as in the proof of
+Lemma~\ref{lem:cutVertexPureCat}, the same statement also holds for
+$\lord(\RAF)$, with the small difference that for some of the cut-vertices
+$\fr\in \RAF$ all representatives that are not cut-vertices in
+$\lord(\RAF)$.
 \vspace{6pt}
 \begin{corollary}\label{cor:cutVertexPureCat}
-	For a non-trivial, irreducible RAF $\RAF$, any strong block $B$ of $\lord(\RAF)$ contains a pure reaction.
+  For a non-trivial, irreducible RAF $\RAF$, any strong block $B$ of
+  $\lord(\RAF)$ contains a pure reaction.
 \end{corollary}
 \vspace{6pt}
-The proof of Lemma~\ref{lem:cutVertexPureCat} has three important consequences. First, it identifies 
-cut-vertices as pure F-reactions (equivalently pure reactions), although not all cut-vertices necessarily 
-are. Second, pure F-reactions take an important role in the partial order of strong blocks of irreducible RAFs, as 
-there is always one with the lowest generation number in a strong block, according to the partial order. Third, 
-Cor.~\ref{cor:cutVertexPureCat} implies that the stoichiometric matrix of a strong block $B$ always contains a 
-non-negative column. This column represents a pure reaction, i.e., it has only reactants that are F-catalysts 
-but not F-reactants within $B$ and at least one positive entry for a product $y^*\in X(\block): s^+_{yr^*}>0$:
+%
+The proof of Lemma~\ref{lem:cutVertexPureCat} has three important
+consequences. First, it identifies cut-vertices as pure F-reactions
+(equivalently pure reactions), although not all cut-vertices necessarily
+are. Second, pure F-reactions take an important role in the partial order
+of strong blocks of irreducible RAFs, as there is always one with the
+lowest generation number in a strong block, according to the partial
+order. Third, Cor.~\ref{cor:cutVertexPureCat} implies that the
+stoichiometric matrix of a strong block $B$ always contains a non-negative
+column. This column represents a pure reaction, i.e., it has only reactants
+that are F-catalysts but not F-reactants within $B$ and at least one
+positive entry for a product $y^*\in X(\block): s^+_{yr^*}>0$:
 \begin{equation}
-	\SM[X(B), R(B)] = 
-			\begin{array}{c c}
-				& 	\begin{array}{c c c} 			
-						 	& 	r^* 		& 
-					\end{array} \\
-					\begin{array}{c} 
-						\ \\ 
-						x^* \\
-						\ \\ [0.5em]
-						y^* \\
-						\ \\
-						\ \\		
-					\end{array}
-					& \begin{pmatrix}						
-						 \ddots 	& 	\vdots 	& \ddots \\
-					 	 \ldots 	& 	0 		& \ldots \\
-						 \ddots 	& 	\vdots 	& \ddots \\
-					 	 \ldots 	& 	s^+_{y^*r^*} & \ldots \\
-						  \ldots 	& 	0 & \ldots \\
-						\ddots 	& 	\vdots 	& \ddots 
-					\end{pmatrix}
-			\end{array}
+  \SM[X(B), R(B)] = 
+  \begin{array}{c c}
+    & 	\begin{array}{c c c} 			
+	  & 	r^* 		& 
+	\end{array} \\
+    \begin{array}{c} 
+      \ \\ 
+      x^* \\
+      \ \\ [0.5em]
+      y^* \\
+      \ \\
+      \ \\		
+    \end{array}
+    & \begin{pmatrix}						
+	\ddots 	& 	\vdots 	& \ddots \\
+	\ldots 	& 	0 		& \ldots \\
+	\ddots 	& 	\vdots 	& \ddots \\
+	\ldots 	& 	s^+_{y^*r^*} & \ldots \\
+	\ldots 	& 	0 & \ldots \\
+	\ddots 	& 	\vdots 	& \ddots 
+      \end{pmatrix}
+  \end{array}
 \end{equation}
 \vspace{6pt}
 
-The nonnegative column reflecting $r^*$ in $\SM(B)\coloneqq \SM[X(B), R(B)]$ renders $r^*$ as 
-an import reaction for the strong block $B$. In fact, this allows us to construct a strictly positive vector $v$ 
-of reaction rates which satisfies $\SM(B)v>0$. 
+The nonnegative column reflecting $r^*$ in $\SM(B)\coloneqq \SM[X(B),
+  R(B)]$ renders $r^*$ as an import reaction for the strong block $B$. In
+fact, this allows us to construct a strictly positive vector $v$ of
+reaction rates which satisfies $\SM(B)v>0$.
 
-\subsection{Autocatalytic Capacity of irreducible RAFs}\label{sec:AutoCatIrrRAF}
+\subsection{Autocatalytic Capacity of irreducible RAFs}
+\label{sec:AutoCatIrrRAF}
 
 In chemically reaction networks (CRNs) with explicit catalysis, the underlying network cannot be uniquely 
 inferred from the stoichiometric matrix. The matrix-centered definition of autocatalysis as introduced by Blokhuis 
@@ -1338,7 +1355,8 @@ a modification that is based on the network and the matrix \cite{golnik_autocata
 
 \vspace{6pt}
 \begin{definition}\label{def:autSubRN}
-  A CRN $(X,R)$ is \emph{autocatalytic} if it contains a sub-CRN $(X',R')$ such that
+  A CRN $(X,R)$ is \emph{autocatalytic} if it contains a sub-CRN $(X',R')$
+  such that
 \begin{enumerate}
  \item[(i)]  $(X',R')$ is  well-formed;
  \item[(ii)]  $\SM'\coloneqq \SM[X',R']$ is semi-positive, i.e., there is $v\in \mathbb{R}_{>0}^{|R'|}: \SM'v>0$.
@@ -1346,98 +1364,120 @@ a modification that is based on the network and the matrix \cite{golnik_autocata
 \end{definition}
 \vspace{6pt}
 
-A sub-CRN $(X',R')$ that satisfies $(i.)$ and $(ii.)$, while no proper subnetwork $(X'',R'')$ with $X''\subseteq X', 
-R''\subseteq R'$ does, is called an \emph{autocatalytic core}. We are now in the position to show 
-that $\lord(\RAF)$ for each non-trivial, irreducible RAF $\RAF$ is \emph{stoichiometrically autocatalytic}. 
+A sub-CRN $(X',R')$ that satisfies \textit{(i.)} and \textit{(ii.)}, while
+no proper subnetwork $(X'',R'')$ with $X''\subseteq X', R''\subseteq R'$
+does, is called an \emph{autocatalytic core}. We are now in the position to
+show that $\lord(\RAF)$ for each non-trivial, irreducible RAF $\RAF$ is
+\emph{stoichiometrically autocatalytic}.
 
-The results on the structure of irreducible RAFs imply that each strong block $B$ of $\lord(\RAF)$ satisfies $(i.)$ 
-of Def.~\ref{def:autSubRN}. To show semi-positivity, the key observation is that $B$ contains at least one 
-pure reaction, i.e., a reaction for which all reactants in $B$ are F-catalysts (Lemma~\ref{lem:cutVertexPureCat} 
-and Cor.~\ref{cor:cutVertexPureCat}). In particular, all $r \in \varphi^{-1}(\RAF)$ that satisfy $\delta(r)=1$ are 
-pure reactions. 
+The results on the structure of irreducible RAFs imply that each strong
+block $B$ of $\lord(\RAF)$ satisfies $(i.)$ of Def.~\ref{def:autSubRN}. To
+show semi-positivity, the key observation is that $B$ contains at least one
+pure reaction, i.e., a reaction for which all reactants in $B$ are
+F-catalysts (Lemma~\ref{lem:cutVertexPureCat} and
+Cor.~\ref{cor:cutVertexPureCat}). In particular, all $r \in
+\varphi^{-1}(\RAF)$ that satisfy $\delta(r)=1$ are pure reactions.
 
-Pure reactions induce a nonnegative column with at least one positive entry in the corresponding 
-stoichiometric matrices, such as the matrices $\SM[X(B), R(B)]$ for a strong block $B$ and 
-$\SM[\closure{\RAF}{\food}\setminus \food, \varphi^{-1}(\RAF)]$ of the whole RAF without food 
-molecules. They can therefore be viewed as import reactions, which allow a sufficiently high import 
-into the subnetwork such that all succeeding reactions exhibit strictly positive flow values that yield 
-a net increase for all subnetwork species.
+Pure reactions induce a nonnegative column with at least one positive entry
+in the corresponding stoichiometric matrices, such as the matrices
+$\SM[X(B), R(B)]$ for a strong block $B$ and
+$\SM[\closure{\RAF}{\food}\setminus \food, \varphi^{-1}(\RAF)]$ of the
+whole RAF without food molecules. They can therefore be viewed as import
+reactions, which allow a sufficiently high import into the subnetwork such
+that all succeeding reactions exhibit strictly positive flow values that
+yield a net increase for all subnetwork species.
 \vspace{6pt}
 \begin{theorem}[Proof: SI]\label{thm:NonFoodSemipositiv}
-	Let $\RAF$ be a non-trivial, irreducible RAF. The matrix $A\coloneqq \SM[V(\king')\setminus \food, \varphi^{-1}
-	(\RAF)]$ is semi-positive.
+  Let $\RAF$ be a non-trivial, irreducible RAF. The matrix $A\coloneqq
+  \SM[V(\king')\setminus \food, \varphi^{-1} (\RAF)]$ is semi-positive.
 \end{theorem}
 \vspace{6pt}
 
-As a remark, the proof can be applied to the sub-stoichiometric matrix representing the species and reaction vertices
-of any strong block $B$ of $\lord(\RAF)$ to show their semi-positivity. Equivalently, every species of $B$ is 
-produced and consumed only by reactions belonging to that block. Thereby, the vector $v_{R(B)}$ that 
-denotes the sub-vector of $v$ restricted to the reactions of $B$ directly yields for the submatrix restricted to the 
-species and reactions of $B$: 
+As a remark, the proof can be applied to the sub-stoichiometric matrix
+representing the species and reaction vertices of any strong block $B$ of
+$\lord(\RAF)$ to show their semi-positivity. Equivalently, every species of
+$B$ is produced and consumed only by reactions belonging to that
+block. Thereby, the vector $v_{R(B)}$ that denotes the sub-vector of $v$
+restricted to the reactions of $B$ directly yields for the submatrix
+restricted to the species and reactions of $B$:
 \begin{equation}
   \SM[X(B), R(B)]v_{R(B)}>0.
 \end{equation}
-
-Thus, each block has a semipositiv stoichiometric submatrix and is also well-formed. 
-
+Thus, each block has a semipositiv stoichiometric submatrix and is also
+well-formed.
+%
 \vspace{6pt}
 \begin{theorem}\label{Thm:StrBlockCore}
-	Every strong block $B$ of $\lord(\RAF)$ for a non-trivial, irreducible RAF $\RAF$ contains an autocatalytic core. 
+  Every strong block $B$ of $\lord(\RAF)$ for a non-trivial, irreducible
+  RAF $\RAF$ contains an autocatalytic core.
 \end{theorem}
 \vspace{6pt}
 
-Thm.~\ref{Thm:StrBlockCore} provides only information on the existence, but not on the structure of the 
-subnetworks responsible for the semipositivity of the corresponding submatrix. In the proof of Thm.~3.1 
-\cite{bridging_golnik_2026}, it was shown that each RAF that is itself not a CAF contains an autocatalytic 
-elementary circuit. We will adapt this construction to obtain such a circuit for each strong block. 
+Thm.~\ref{Thm:StrBlockCore} provides only information on the existence, but
+not on the structure of the subnetworks responsible for the semipositivity
+of the corresponding submatrix. In the proof of Thm.~3.1
+\cite{bridging_golnik_2026}, it was shown that each RAF that is itself not
+a CAF contains an autocatalytic elementary circuit. We will adapt this
+construction to obtain such a circuit for each strong block.
 
-Since strong blocks are strongly connected, each vertex, and thus, also each pure reaction, is located on 
-an elementary circuit. Together with the partial order, this observation can be engaged to construct an 
-elementary circuit $C$ for every strong block that gives rise to a stoichiometric submatrix 
-$\tilde{\SM}(C)\coloneqq \SM[X(C), R(C)]$ in which each column and row has at most one negative 
-entry, and one column is nonnegative with at least one positive entry. The columns of $\tilde{\SM}(C)$ can 
-then be reordered to obtain a matrix $\SM(C)$ with nonpositive diagonal and nonnegative off-diagonal entries. 
-A matrix with nonnegative off-diagonal entries is called a \emph{Metzler} matrix. It is not hard to see that, in 
-case $\tilde{\SM}(C)$ is semi-positive, $\SM(C)$ is semi-positive. In addition, the subnetwork of an elementary 
-circuit $(X(C),R(C))$ is well-formed. 
+Since strong blocks are strongly connected, each vertex, and thus, also
+each pure reaction, is located on an elementary circuit. Together with the
+partial order, this observation can be engaged to construct an elementary
+circuit $C$ for every strong block that gives rise to a stoichiometric
+submatrix $\tilde{\SM}(C)\coloneqq \SM[X(C), R(C)]$ in which each column
+and row has at most one negative entry, and one column is nonnegative with
+at least one positive entry. The columns of $\tilde{\SM}(C)$ can then be
+reordered to obtain a matrix $\SM(C)$ with nonpositive diagonal and
+nonnegative off-diagonal entries.  A matrix with nonnegative off-diagonal
+entries is called a \emph{Metzler} matrix. It is not hard to see that, in
+case $\tilde{\SM}(C)$ is semi-positive, $\SM(C)$ is semi-positive. In
+addition, the subnetwork of an elementary circuit $(X(C),R(C))$ is
+well-formed.
 
 \vspace{6pt}
 \begin{lemma}[Proof: SI]\label{lem:MetzCircuit}
-	Let $B$ be a strong block of $\lord(\RAF)$. Then $B$ contains an elementary circuit $C$ with one 
-	pure reaction vertex, and there is a reordering of the columns of $ \SM[X(C), R(C)]$ that 
-	yields Metzler matrix.
+  Let $B$ be a strong block of $\lord(\RAF)$. Then $B$ contains an
+  elementary circuit $C$ with one pure reaction vertex, and there is a
+  reordering of the columns of $ \SM[X(C), R(C)]$ that yields Metzler
+  matrix.
 \end{lemma}
 \vspace{6pt}
 
-We call an elementary circuit as claimed in Lemma~\ref{lem:MetzCircuit} a Metzler circuit. Unfortunately, such a 
-Metzler circuit can, as shown in the proof, still contain a metabolite-to-reaction (MR-) chord. The example in 
-Sec.~\ref{sec:MetzNotCore} depicts such a scenario. Nevertheless, they are always \emph{stoichiometrically autocatalytic}.
+We call an elementary circuit with the properties defined in
+Lemma~\ref{lem:MetzCircuit} a Metzler circuit. Unfortunately, such a
+Metzler circuit can, as shown in the proof, still contain a
+metabolite-to-reaction (MR-) chord. The example in
+Sec.~\ref{sec:MetzNotCore} depicts such a scenario. Nevertheless, they are
+always \emph{stoichiometrically autocatalytic}.
 
 \vspace{6pt}
 \begin{lemma}[Proof: SI]\label{lem:MetzCircAut}
-	If $C$ is a Metzler circuit containing a \emph{pure reaction}, then $(X(C), R(C))$ 
-	is \emph{stoichiometrically autocatalytic}.
+  If $C$ is a Metzler circuit containing a \emph{pure reaction}, then
+  $(X(C), R(C))$ is \emph{stoichiometrically autocatalytic}.
 \end{lemma}
-\vspace{6pt}
-If the subnetwork induced by an elementary circuit $C$ is \emph{stoichiometrically autocatalytic}, 
-we say that $C$ is \emph{stoichiometrically autocatalytic}. Elementary circuits free of MR-chords
-play an important role in enumerating autocatalytic cores \cite{golnik_using_2026}. 
-Since they are always Metzler circuits, we obtain the following corollary as a direct consequence. 
+\vspace{6pt} If the subnetwork induced by an elementary circuit $C$ is
+\emph{stoichiometrically autocatalytic}, we say that $C$ is
+\emph{stoichiometrically autocatalytic}. Elementary circuits free of
+MR-chords play an important role in enumerating autocatalytic cores
+\cite{golnik_using_2026}.  Since they are always Metzler circuits, we
+obtain the following corollary as a direct consequence.
 \vspace{6pt}
 \begin{corollary}
-	Any MR-chordless elementary circuit $C$ of a strong block in $L$ containing a \emph{pure reaction} 
-	is autocatalytic.  
+  Any MR-chordless elementary circuit $C$ of a strong block in $L$
+  containing a \emph{pure reaction} is autocatalytic.
 \end{corollary}
 \vspace{6pt}
 
-In case the strong block consists of a single reaction $r$ and a single species $x$, 
-then $x$ is an F-catalyst and an F-product. In addition, there is only one elementary 
-circuit, in particular, the digon $(x,r,x)$, which is by definition a Metzler circuit.
+In case the strong block consists of a single reaction $r$ and a single
+species $x$, then $x$ is an F-catalyst and an F-product. In addition, there
+is only one elementary circuit, in particular, the digon $(x,r,x)$, which
+is by definition a Metzler circuit.
 \vspace{6pt}
 \begin{corollary}\label{cor:AutoCatReac}
-	Let $\RAF$ be a non-trivial, irreducible RAF and $B$ be a strong block of $L(\RAF)$. 
-	If $r$ is composed of a single reaction $r$ and a single species $x$, then $r$ is 
-	an explicit autocatalytic reaction, and $x$ is an F-catalyst and an F-product of $r$.
+  Let $\RAF$ be a non-trivial, irreducible RAF and $B$ be a strong block of
+  $L(\RAF)$.  If $r$ is composed of a single reaction $r$ and a single
+  species $x$, then $r$ is an explicit autocatalytic reaction, and $x$ is
+  an F-catalyst and an F-product of $r$.
 \end{corollary}
 %\begin{proof}
 %	Assume first that $x$ is not a catalyst. Since $B$ is strongly connected, there is an edge $(x,r)$ and $(r,x)$. Assume now that 
@@ -1449,180 +1489,191 @@ circuit, in particular, the digon $(x,r,x)$, which is by definition a Metzler ci
 
 The following example illustrates such a situation. 
 \begin{figure}[h]
-	\centering
-	\begin{minipage}[c]{0.5\textwidth}
-		\begin{equation}
-			\begin{split}
-				r_1&: f + (x_1) \rightarrow x_2 + (x_1) \\
-				r_2&: 2x_2 + (x_3) \rightarrow x_4 + x_3 +(x_3) \\
-				r_3&: x_4 + (x_4) \rightarrow x_1 + (x_4)
-			\end{split}
-		\end{equation}
-	\end{minipage}%
-	\hfill%
-	\begin{minipage}[c]{0.5\textwidth}
-		\centering
-		\begin{tikzpicture}
-			\node[draw, circle] (f) at (0,0) {$f$};
-			\node[draw, circle] (x1) at (1,1) {$x_1$};
-			\node[draw, circle] (x2) at (1,-1) {$x_2$};
-			\node[draw, circle] (x3) at (3,-1) {$x_3$};
-			\node[draw, circle] (x4) at (2,0) {$x_4$};
-			
-			\node[draw, rectangle] (r1) at (1,0) {$r_1$};
-			\node[draw, rectangle] (r2) at (2,-1) {$r_2$};
-			\node[draw, rectangle] (r3) at (2, 1) {$r_3$};
-			
-			\draw[->] (f) to (r1);
-			\draw[->] (x1) to [bend right = 30] (r1);
-			\draw[->] (r1) to [bend right = 30] (x1);
-			\draw[->] (r1) to (x2);
-			\draw[->] (x2) to (r2);			
-			\draw[->] (x4) to [bend right = 30] (r3);
-			\draw[->] (r3) to [bend right = 30] (x4);
-			\draw[->] (r2) to (x4);
-			\draw[->] (x3) to [bend right = 30] (r2);
-			\draw[->] (r2) to [bend right = 30] (x3);
-			\draw[->] (r3) to (x1);
-		\end{tikzpicture}
-	\end{minipage}
-	\caption{Depiction of non-trivial irreducible RAF with an autocatalytic reaction $r_2$.}
-	\label{Fig:ExplAutocatReac}
+  \centering
+  \begin{minipage}[c]{0.5\textwidth}
+    \begin{equation}
+      \begin{split}
+	r_1&: f + (x_1) \rightarrow x_2 + (x_1) \\
+	r_2&: 2x_2 + (x_3) \rightarrow x_4 + x_3 +(x_3) \\
+	r_3&: x_4 + (x_4) \rightarrow x_1 + (x_4)
+      \end{split}
+    \end{equation}
+  \end{minipage}%
+  \hfill%
+  \begin{minipage}[c]{0.5\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[draw, circle] (f) at (0,0) {$f$};
+      \node[draw, circle] (x1) at (1,1) {$x_1$};
+      \node[draw, circle] (x2) at (1,-1) {$x_2$};
+      \node[draw, circle] (x3) at (3,-1) {$x_3$};
+      \node[draw, circle] (x4) at (2,0) {$x_4$};
+      
+      \node[draw, rectangle] (r1) at (1,0) {$r_1$};
+      \node[draw, rectangle] (r2) at (2,-1) {$r_2$};
+      \node[draw, rectangle] (r3) at (2, 1) {$r_3$};
+      
+      \draw[->] (f) to (r1);
+      \draw[->] (x1) to [bend right = 30] (r1);
+      \draw[->] (r1) to [bend right = 30] (x1);
+      \draw[->] (r1) to (x2);
+      \draw[->] (x2) to (r2);			
+      \draw[->] (x4) to [bend right = 30] (r3);
+      \draw[->] (r3) to [bend right = 30] (x4);
+      \draw[->] (r2) to (x4);
+      \draw[->] (x3) to [bend right = 30] (r2);
+      \draw[->] (r2) to [bend right = 30] (x3);
+      \draw[->] (r3) to (x1);
+    \end{tikzpicture}
+  \end{minipage}
+  \caption{Non-trivial irreducible RAF with an autocatalytic reaction
+    $r_2$.}
+  \label{Fig:ExplAutocatReac}
 \end{figure}
-\FloatBarrier
-Indeed, $B=\{x_3, r_2\}$ is a strong block and $r_2$ is an explicit autocatalytic reaction. 
+\FloatBarrier Indeed, $B=\{x_3, r_2\}$ is a strong block and $r_2$ is an
+explicit autocatalytic reaction.
 
-Summarizing now Lemma~\ref{lem:MetzCircuit}, \ref{lem:MetzCircAut}, and Cor.~\ref{cor:AutoCatReac}, 
-we obtain the following main result of this contribution. 
+Lemma~\ref{lem:MetzCircuit}, \ref{lem:MetzCircAut}, and
+Cor.~\ref{cor:AutoCatReac}, together yield the main result of this
+contribution.
 
 \vspace{6pt}
 \begin{theorem}
-	Let $\RAF$ be a non-trivial, irreducible RAF. Then every strong block $B$ of $L(\RAF)$ contains an autocatalytic 
-	Metzler circuit. In case $B$ is composed of a single reaction $r$ and a single species $x$, then $r$ is an 
-	explicit autocatalytic reaction and $x$ is an F-catalyst and an F-product of $r$.
+  Let $\RAF$ be a non-trivial, irreducible RAF. Then every strong block $B$
+  of $L(\RAF)$ contains an autocatalytic Metzler circuit. In case $B$ is
+  composed of a single reaction $r$ and a single species $x$, then $r$ is
+  an explicit autocatalytic reaction and $x$ is an F-catalyst and an
+  F-product of $r$.
 \end{theorem} 
 \vspace{6pt}
 
-As noted, these elementary circuits need not be autocatalytic cores, for various reasons. 
-One is digons, i.e., elementary circuits of length $2$ where the metabolite-to-reaction edge
-is not located along the original Metzler circuit. An example for this situation is shown in Sec.~\ref{sec:MetzNotCore}. 
-Another reason is non-unit stoichiometries, which can give rise to strictly smaller circuits inside
-the constructed \emph{stoichiometrically autocatalytic} Metzler circuit. The example in 
-Sec.~\ref{sec:NonUnStoich} captures such a scenario. As the K\"onig graph is a simple digraph, stoichiometries 
-are naturally not encoded besides being specified as edge labels. We can, therefore, not hope to find a 
-general construction method that identifies autocatalytic cores immediately. 
+As noted, these elementary circuits need not be autocatalytic cores, for
+various reasons.  One is digons, i.e., elementary circuits of length $2$
+where the metabolite-to-reaction edge is not located along the original
+Metzler circuit. An example for this situation is shown in
+Sec.~\ref{sec:MetzNotCore}.  Another reason is non-unit stoichiometries,
+which can give rise to strictly smaller circuits inside the constructed
+\emph{stoichiometrically autocatalytic} Metzler circuit. The example in
+Sec.~\ref{sec:NonUnStoich} captures such a scenario. As the K\"onig graph
+is a simple digraph, stoichiometries are naturally not encoded besides
+being specified as edge labels. We can, therefore, not hope to find a
+general construction method that identifies autocatalytic cores
+immediately.
 
 \section{Examples}
 
 \subsection{Autocatalytic Metzler circuits, but not autocatalytic cores}\label{sec:MetzNotCore}
 
-The first two examples capture the situation where an autocalytic Metzler circuit, as constructed in 
-the proof of Lemma~\ref{lem:MetzCircuit}, inside a non-trivial, irreducible RAF, is not an autocatalytic
-core. 
+The first two examples capture the situation where an autocalytic Metzler
+circuit, as constructed in the proof of Lemma~\ref{lem:MetzCircuit}, inside
+a non-trivial, irreducible RAF, is not an autocatalytic core.
 
 \subsubsection{Metabolite-to-reaction chords}\label{sec:MRChords}
 
-In the first, an additional catalyzation, cutting through the circuit, is destroying the core property.
+In the first, an additional catalyzation, cutting through the circuit, is
+destroying the core property.
 
 \begin{figure}[h]
-	\begin{minipage}[c]{0.55\textwidth}
-		\begin{equation}
-			\begin{split}
-				r_1&: f +(x_1) \rightarrow x_2 +(x_1) \\
-				r_2&: x_2 + (x_1 + x_2) \rightarrow  x_3 + (x_1 + x_2) \\
-				r_3&: x_3 + (x_3) \rightarrow x_1 + (x_3)\\
-			\end{split}
-		\end{equation}
-	\end{minipage}%
-	\hfill%
-	\begin{minipage}[c]{0.45\textwidth}
-		\centering
-		\begin{tikzpicture}
-			\node[draw, circle] (f) at (0,0) {$f$};
-			\node[draw, circle] (x1) at (2,1) {$x_1$};
-			\node[draw, circle] (x2) at (1,-1) {$x_2$};
-			\node[draw, circle] (x3) at (3,-1) {$x_3$};
-			
-			\node[draw, rectangle] (r1) at (1,0) {$r_1$};
-			\node[draw, rectangle] (r2) at (2,-1) {$r_2$};
-			\node[draw, rectangle] (r3) at (3,0) {$r_3$};
-	
-			\draw[->] (f) to (r1);
-			\draw[->] (x1) to [bend right = 20] (r1);
-			\draw[->] (r1) to [bend right = 20] (x1);
-			\draw[->] (r1) to (x2);
-			\draw[->] (r2) to [bend right = 20] (x1);
-			\draw[->] (x1) to [bend right = 20] (r2);
-			\draw[->] (x2) to [bend right = 30] (r2);
-			\draw[->] (r2) to [bend right = 30] (x2);
-			\draw[->] (r2) to (x3);
-			\draw[->] (r3) to (x1);
-			\draw[->] (x3) to [bend right = 30] (r3);
-			\draw[->] (r3) to [bend right = 30] (x3);
-		\end{tikzpicture}
-	\end{minipage}
-	\caption{Example of a non-trivial, irreducible RAF with four reactions on 4 species vertices,
-	where the spanning autocatalytic Metzler circuit as constructed by the proof of 
-	Lemma~\ref{lem:MetzCircuit} is not an autocatalytic core.}
-	\label{fig:RAFContAutCyc}
+  \begin{minipage}[c]{0.55\textwidth}
+    \begin{equation}
+      \begin{split}
+	r_1&: f +(x_1) \rightarrow x_2 +(x_1) \\
+	r_2&: x_2 + (x_1 + x_2) \rightarrow  x_3 + (x_1 + x_2) \\
+	r_3&: x_3 + (x_3) \rightarrow x_1 + (x_3)\\
+      \end{split}
+    \end{equation}
+  \end{minipage}%
+  \hfill%
+  \begin{minipage}[c]{0.45\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[draw, circle] (f) at (0,0) {$f$};
+      \node[draw, circle] (x1) at (2,1) {$x_1$};
+      \node[draw, circle] (x2) at (1,-1) {$x_2$};
+      \node[draw, circle] (x3) at (3,-1) {$x_3$};
+      
+      \node[draw, rectangle] (r1) at (1,0) {$r_1$};
+      \node[draw, rectangle] (r2) at (2,-1) {$r_2$};
+      \node[draw, rectangle] (r3) at (3,0) {$r_3$};
+      
+      \draw[->] (f) to (r1);
+      \draw[->] (x1) to [bend right = 20] (r1);
+      \draw[->] (r1) to [bend right = 20] (x1);
+      \draw[->] (r1) to (x2);
+      \draw[->] (r2) to [bend right = 20] (x1);
+      \draw[->] (x1) to [bend right = 20] (r2);
+      \draw[->] (x2) to [bend right = 30] (r2);
+      \draw[->] (r2) to [bend right = 30] (x2);
+      \draw[->] (r2) to (x3);
+      \draw[->] (r3) to (x1);
+      \draw[->] (x3) to [bend right = 30] (r3);
+      \draw[->] (r3) to [bend right = 30] (x3);
+    \end{tikzpicture}
+  \end{minipage}
+  \caption{Example of a non-trivial, irreducible RAF with four reactions on
+    4 species vertices, where the spanning autocatalytic Metzler circuit as
+    constructed by the proof of Lemma~\ref{lem:MetzCircuit} is not an
+    autocatalytic core.}
+  \label{fig:RAFContAutCyc}
 \end{figure}
 \FloatBarrier
 
-$\RAF=\{r_1,r_2,r_3,r_4\}$ is a non-trivial, irreducible RAF. The elementary circuit 
-$C\coloneqq (r_1, x_2,r_2,x_3,r_3,x_1,r_1)$, as constructed in the proof of 
-Lemma~\ref{lem:MetzCircuit}, has the following stoichiometric submatrix:
+$\RAF=\{r_1,r_2,r_3,r_4\}$ is a non-trivial, irreducible RAF. The
+elementary circuit $C\coloneqq (r_1, x_2,r_2,x_3,r_3,x_1,r_1)$, as
+constructed in the proof of Lemma~\ref{lem:MetzCircuit}, has the following
+stoichiometric submatrix:
 \begin{equation}
-	\SM[(X),R(C)] = \begin{pmatrix}
-			   	0 & 0  &  1  \\
-				1 & -1 &  0   \\		
-				0 & 1 &  -1   \\
-			    \end{pmatrix},
+  \SM[(X),R(C)] = \begin{pmatrix}
+    0 & 0  &  1  \\
+    1 & -1 &  0   \\		
+    0 & 1 &  -1   \\
+  \end{pmatrix},
 \end{equation}
-which is a Metzler matrix, thus $C$ is a Metzler circuit. In addition, $\SM[(X),R(C)]$
-is semi-positive with $v\coloneqq \begin{pmatrix} 3 & 2 & 1 \end{pmatrix}^T$
-and $(X(C),R(C))$ an autocatalytic sub-CRN. 
+which is a Metzler matrix, thus $C$ is a Metzler circuit. In addition,
+$\SM[(X),R(C)]$ is semi-positive with $v\coloneqq \begin{pmatrix} 3 & 2 &
+  1 \end{pmatrix}^T$ and $(X(C),R(C))$ an autocatalytic sub-CRN.
 
 \subsubsection{Non-unit stoichiometries}\label{sec:NonUnStoich}
 
-An even simpler example, where this is unavoidable due to unknown stoichiometries, 
-is depicted in the following.
+An even simpler example, where this is unavoidable due to unknown
+stoichiometries, is depicted in the following.
 
 \begin{figure}[htb]
-	\begin{minipage}[c]{0.5\textwidth}
-		\begin{equation}
-			\begin{split}
-				r_1&: f + (x_1) \rightarrow x_2 + (x_1) \\
-				r_2&: x_2 + (x_2) \rightarrow x_3 + (x_2) \\
-				r_3&: x_3 + (x_3) \rightarrow x_1 + 2x_2 + (x_3) 				  
-			\end{split}
-		\end{equation}
-	\end{minipage}%
-	\hfill%
-	\begin{minipage}[c]{0.5\textwidth}
-		\centering
-		\begin{tikzpicture}
-			\node[draw, circle] (f) at (0,0) {$f$};
-			\node[draw, circle] (x1) at (1,1) {$x_1$};
-			\node[draw, circle] (x2) at (1,-1) {$x_2$};
-			\node[draw, circle] (x3) at (3,0) {$x_3$};
+  \begin{minipage}[c]{0.5\textwidth}
+    \begin{equation}
+      \begin{split}
+	r_1&: f + (x_1) \rightarrow x_2 + (x_1) \\
+	r_2&: x_2 + (x_2) \rightarrow x_3 + (x_2) \\
+	r_3&: x_3 + (x_3) \rightarrow x_1 + 2x_2 + (x_3) 				  
+      \end{split}
+    \end{equation}
+  \end{minipage}%
+  \hfill%
+  \begin{minipage}[c]{0.5\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[draw, circle] (f) at (0,0) {$f$};
+      \node[draw, circle] (x1) at (1,1) {$x_1$};
+      \node[draw, circle] (x2) at (1,-1) {$x_2$};
+      \node[draw, circle] (x3) at (3,0) {$x_3$};
 			
-			\node[draw, rectangle] (r1) at (1,0) {$r_1$};
-			\node[draw, rectangle] (r2) at (2,-1) {$r_2$};
-			\node[draw, rectangle] (r3) at (2,1) {$r_3$};
+      \node[draw, rectangle] (r1) at (1,0) {$r_1$};
+      \node[draw, rectangle] (r2) at (2,-1) {$r_2$};
+      \node[draw, rectangle] (r3) at (2,1) {$r_3$};
 			
-			\draw[->] (f) to (r1);
-			\draw[->] (x1) to [bend right = 20] (r1);
-			\draw[->] (r1) to [bend right = 20] (x1);
-			\draw[->] (r1) to (x2);
-			\draw[->] (x2) to [bend right = 30] (r2);
-			\draw[->] (r2) to [bend right = 30] (x2);			
-			\draw[->] (r2) to(x3);			
-			\draw[->] (x3) to [bend right = 30] (r3);
-			\draw[->] (r3) to [bend right = 30] (x3);
-			\draw[->] (r3) to (x1);
-			\draw[->] (r3) to (x2);			
-		\end{tikzpicture}
-	\end{minipage}
+      \draw[->] (f) to (r1);
+      \draw[->] (x1) to [bend right = 20] (r1);
+      \draw[->] (r1) to [bend right = 20] (x1);
+      \draw[->] (r1) to (x2);
+      \draw[->] (x2) to [bend right = 30] (r2);
+      \draw[->] (r2) to [bend right = 30] (x2);			
+      \draw[->] (r2) to(x3);			
+      \draw[->] (x3) to [bend right = 30] (r3);
+      \draw[->] (r3) to [bend right = 30] (x3);
+      \draw[->] (r3) to (x1);
+      \draw[->] (r3) to (x2);			
+    \end{tikzpicture}
+  \end{minipage}
 \end{figure}
 \FloatBarrier
 
@@ -1630,268 +1681,279 @@ The proof for Lemma~\ref{lem:MetzCircuit} would construct the following
 Metzler circuit $C\coloneqq (r_1,x_2,r_2,x_3,r_3,x_1,r_1)$, whose
 substoichiometric matrix reads:
 \begin{equation}
-	\begin{pmatrix}
-		0 & 0 & 1 \\
-		1 & -1 & 2 \\
-		0 & 1 & -1
-	\end{pmatrix},
+  \begin{pmatrix}
+    0 & 0 & 1 \\
+    1 & -1 & 2 \\
+    0 & 1 & -1
+  \end{pmatrix},
 \end{equation}
-which is Metzler and thus stoichimetrially autocatalytic according to Lemma~\ref{lem:MetzCircAut}.
-However, in this case, the core is the Metzler circuit $C'=(x_2,r_2,x_3,r_3,x_2)$ and 
-has the following substoichiometric matrix:
+which is Metzler and thus stoichimetrially autocatalytic according to
+Lemma~\ref{lem:MetzCircAut}.  However, in this case, the core is the
+Metzler circuit $C'=(x_2,r_2,x_3,r_3,x_2)$ and has the following
+substoichiometric matrix:
 \begin{equation}
-	\SM[X(C'),R(C')]=
-	\begin{pmatrix}		
-		-1 & 2 \\
-		1 & -1
-	\end{pmatrix},
+  \SM[X(C'),R(C')]=
+  \begin{pmatrix}		
+    -1 & 2 \\
+    1 & -1
+  \end{pmatrix},
 \end{equation}
 
 \subsection{One irreducible RAF, many autocatalytic cores}\label{subsec:OneRAFManyCores}
 
-The following example depicts a non-trivial, irreducible RAF that contains two autocatalytic cores. 
+The following example depicts a non-trivial, irreducible RAF that contains
+two autocatalytic cores.
 \begin{figure}[h]
 \begin{minipage}[c]{\textwidth}
-	\begin{equation}
-		\begin{split}
-			r_1&: f + (x_1) \rightarrow x_2 +(x_1) \\
-			r_2&: x_2 + (x_2) \rightarrow x_3 + (x_2) \\
-			r_3&: x_3 + (x_3) \rightarrow 2x_2 + x_4 + (x_3)\\
-			r_4&: x_4 + (x_4) \rightarrow x_1 + 2x_3 + (x_3)				  
-		\end{split}
-	\end{equation}
+  \begin{equation}
+    \begin{split}
+      r_1&: f + (x_1) \rightarrow x_2 +(x_1) \\
+      r_2&: x_2 + (x_2) \rightarrow x_3 + (x_2) \\
+      r_3&: x_3 + (x_3) \rightarrow 2x_2 + x_4 + (x_3)\\
+      r_4&: x_4 + (x_4) \rightarrow x_1 + 2x_3 + (x_3)		  
+    \end{split}
+  \end{equation}
 \end{minipage}
 \par\bigskip
 \begin{minipage}[c]{0.5\textwidth}
-	\begin{equation}
-		\SM[X(C),R(C)=\begin{pmatrix} 
-						0  &  0  &  0  & 1 \\
-						1  & -1  &  2  & 0 \\
-						0  &  1  & -1  & 2 \\
-						0  &  0  &  1  & -1
- 					\end{pmatrix}
-	\end{equation}
+  \begin{equation}
+    \SM[X(C),R(C)=\begin{pmatrix} 
+      0  &  0  &  0  & 1 \\
+      1  & -1  &  2  & 0 \\
+      0  &  1  & -1  & 2 \\
+      0  &  0  &  1  & -1
+      \end{pmatrix}
+  \end{equation}
 \end{minipage}%
 \hfill%
 \begin{minipage}[c]{0.5\textwidth}
-	\centering
-	\begin{tikzpicture}
-
-		\node[draw, circle] (f) at (0,0) {$f$};
-		\node[draw, circle] (x1) at (1,1) {$x_1$};
-		\node[draw, circle] (x2) at (1,-1) {$x_2$};
-		\node[draw, circle] (x3) at (3,-1) {$x_3$};
-		\node[draw, circle] (x4) at (3,1) {$x_4$};
-			
-		\node[draw, rectangle] (r1) at (1,0) {$r_1$};
-		\node[draw, rectangle] (r2) at (2,-1) {$r_2$};
-		\node[draw, rectangle] (r3) at (3,0) {$r_3$};
-		\node[draw, rectangle] (r4) at (2,1) {$r_4$};
-			
-		\draw[->] (f) to (r1);
-		\draw[->] (x1) to [bend right = 20] (r1);
-		\draw[->] (r1) to [bend right = 20] (x1);
-		\draw[->] (r1) to (x2);
-		\draw[->] (x2) to [bend right = 30] (r2);
-		\draw[->] (r2) to [bend right = 30] (x2);			
-		\draw[->] (r2) to(x3);			
-		\draw[->] (x3) to [bend right = 30] (r3);
-		\draw[->] (r3) to [bend right = 30] (x3);
-		\draw[->] (r3) to (x4);
-		\draw[->] (r3) to [bend right = 10] (x2);
-		\draw[->] (x4) to [bend right = 30] (r4);
-		\draw[->] (r4) to [bend right = 30](x4);
-		\draw[->] (r4) to [bend right =10](x3);	
-		\draw[->] (r4) to (x1);	
-	\end{tikzpicture}
-	\end{minipage}
-	\caption{}
-	\label{}
+  \centering
+  \begin{tikzpicture}
+    
+    \node[draw, circle] (f) at (0,0) {$f$};
+    \node[draw, circle] (x1) at (1,1) {$x_1$};
+    \node[draw, circle] (x2) at (1,-1) {$x_2$};
+    \node[draw, circle] (x3) at (3,-1) {$x_3$};
+    \node[draw, circle] (x4) at (3,1) {$x_4$};
+    
+    \node[draw, rectangle] (r1) at (1,0) {$r_1$};
+    \node[draw, rectangle] (r2) at (2,-1) {$r_2$};
+    \node[draw, rectangle] (r3) at (3,0) {$r_3$};
+    \node[draw, rectangle] (r4) at (2,1) {$r_4$};
+    
+    \draw[->] (f) to (r1);
+    \draw[->] (x1) to [bend right = 20] (r1);
+    \draw[->] (r1) to [bend right = 20] (x1);
+    \draw[->] (r1) to (x2);
+    \draw[->] (x2) to [bend right = 30] (r2);
+    \draw[->] (r2) to [bend right = 30] (x2);			
+    \draw[->] (r2) to(x3);			
+    \draw[->] (x3) to [bend right = 30] (r3);
+    \draw[->] (r3) to [bend right = 30] (x3);
+    \draw[->] (r3) to (x4);
+    \draw[->] (r3) to [bend right = 10] (x2);
+    \draw[->] (x4) to [bend right = 30] (r4);
+    \draw[->] (r4) to [bend right = 30](x4);
+    \draw[->] (r4) to [bend right =10](x3);	
+    \draw[->] (r4) to (x1);	
+  \end{tikzpicture}
+\end{minipage}
+\caption{}
+\label{}
 \end{figure}
 \FloatBarrier
-The construction of Lemma~\ref{lem:MetzCircuit} would yield a spanning circuit as $C=(x_1,r_1,x_2,r_2,x_3,r_3,x_4,
-r_4)$ but contains two autocatalytic cores, i.e., $({x_2,x_3},{r_2,r_3})$ and $({x_3,x_4}, {r_3,r_4})$. Both have a 
-corresponding submatrix that reads:
+
+The construction of Lemma~\ref{lem:MetzCircuit} would yield a spanning
+circuit as $C=(x_1,r_1,x_2,r_2,x_3,r_3,x_4, r_4)$ but contains two
+autocatalytic cores, i.e., $({x_2,x_3},{r_2,r_3})$ and $({x_3,x_4},
+{r_3,r_4})$. Both have a corresponding submatrix that reads:
 \begin{equation}
-	\begin{pmatrix}
-		-1 & 2 \\
-		1  & -1
-	\end{pmatrix}
+  \begin{pmatrix}
+    -1 & 2 \\
+    1  & -1
+  \end{pmatrix}
 \end{equation}
 
-\subsection{One autocatalytic core in many irreducible RAFs}\label{subsec:ManyRAFsOneCore}
+\subsection{One autocatalytic core in many irreducible RAFs}
+\label{subsec:ManyRAFsOneCore}
 
-The following example depicts the situation where one RAF $\RAF=\{\fr_1,f\fr_2,\fr_3,\fr_4,\fr_5,\fr_6\}$ 
-with $\food\coloneqq \{f_1,f_2,f_3,f_4\}$ contains one autocatalytic core but multiple irreducible RAFs. 
-In addition, the corresponding stoichiometric submatrix $\SM[\closure{\RAF}{\food}\setminus \food,\RAF$ 
-on the non-food molecules and the bipartite K\"onig graph $\king(\RAF)$ are shown. 
+The following example depicts the situation where one RAF
+$\RAF=\{\fr_1,f\fr_2,\fr_3,\fr_4,\fr_5,\fr_6\}$ with $\food\coloneqq
+\{f_1,f_2,f_3,f_4\}$ contains one autocatalytic core but multiple
+irreducible RAFs.  In addition, the corresponding stoichiometric submatrix
+$\SM[\closure{\RAF}{\food}\setminus \food,\RAF$ on the non-food molecules
+  and the bipartite K\"onig graph $\king(\RAF)$ are shown.
 
 \begin{minipage}[c]{0.5\textwidth}
-	\begin{equation}
-		\begin{split}
-			r_1&: f_1  + (x_2) \rightarrow x_3 + (x_2) \\
-			r_2&: f_2  + (x_2) \rightarrow x_3 + (x_2) \\
-			r_3&: f_3  + (x_1) \rightarrow x_2 + (x_1) \\			
-			r_4&: f_4  + (x_1) \rightarrow x_2 + (x_1) \\
-			r_5&: x_3 + (x_2) \rightarrow x_1 + (x_4) \\
-			r_6&: x_2 + (x_3) \rightarrow x_4 + (x_3) 
-		\end{split}
-	\end{equation}
+  \begin{equation}
+    \begin{split}
+      r_1&: f_1  + (x_2) \rightarrow x_3 + (x_2) \\
+      r_2&: f_2  + (x_2) \rightarrow x_3 + (x_2) \\
+      r_3&: f_3  + (x_1) \rightarrow x_2 + (x_1) \\			
+      r_4&: f_4  + (x_1) \rightarrow x_2 + (x_1) \\
+      r_5&: x_3 + (x_2) \rightarrow x_1 + (x_4) \\
+      r_6&: x_2 + (x_3) \rightarrow x_4 + (x_3) 
+    \end{split}
+  \end{equation}
 \end{minipage}%
 \hfill%
 \begin{minipage}[c]{0.5\textwidth}
-	\begin{equation*}
-		\SM=
-			\begin{pmatrix}
-				0 & 0  &  0 & 0 & 1  & 0 \\
-				0 & 0  &  0 & 0 & 0  & 1 \\
-				1 & 1  &  0 & 0 & -1 & 0 \\
-				0 & 0  &  1 & 1 & 0  & -1 
-			\end{pmatrix}
-	\end{equation*}	
+  \begin{equation*}
+    \SM=
+    \begin{pmatrix}
+      0 & 0  &  0 & 0 & 1  & 0 \\
+      0 & 0  &  0 & 0 & 0  & 1 \\
+      1 & 1  &  0 & 0 & -1 & 0 \\
+      0 & 0  &  1 & 1 & 0  & -1 
+    \end{pmatrix}
+  \end{equation*}	
 \end{minipage}
 
 \begin{figure}[h]
-	\centering
-	\begin{tikzpicture}
-			\node[draw, circle] (f1) at (0,0) {$f_1$};
-			\node[draw, circle] (f2) at (2,0) {$f_2$};
-			\node[draw, circle] (f3) at (4,0) {$f_3$};
-			\node[draw, circle] (f4) at (6,0) {$f_4$};
-		
-			\node[draw, circle] (x1) at (1,4) {$x_1$};
-			\node[draw, circle] (x2) at (5,4) {$x_2$};
-			\node[draw, circle] (x3) at (1,2) {$x_3$};
-			\node[draw, circle] (x4) at (5,2) {$x_4$};
-		
-			\node[draw, rectangle] (r1) at (0,1) {$r_1$};
-			\node[draw, rectangle] (r2) at (2,1) {$r_2$};
-			\node[draw, rectangle] (r3) at (4,1) {$r_3$};
-			\node[draw, rectangle] (r4) at (6,1) {$r_4$};
-		
-			\node[draw, rectangle] (r5) at (1,3) {$r_5$};
-			\node[draw, rectangle] (r6) at (5,3) {$r_6$};
-		
-			\draw[->] (f1) to (r1);
-			\draw[->] (f2) to (r2);
-			\draw[->] (f3) to (r3);
-			\draw[->] (f4) to (r4);
-			\draw[-, dashed] (x1) to (1.6, 3.3);
-			\draw[->, dashed] (1.7, 3.4) to (x1);
-			\draw[-, dashed] (x1) to (1.8, 3.55);
-			\draw[->, dashed] (1.85, 3.6) to (x1);
-			\draw[-, dashed] (x1) to (2.0, 3.7);
-			\draw[->, dashed] (2.05, 3.75) to (x1);						
-			
-			\draw[->, dashed] (0.8,1.4) to (r1);			
-			\draw[-, dashed] (r1) to (0.8,1.5);
-			
-			\draw[-, dashed] (r2) to (2.7,1.8);			
-			\draw[->, dashed] (2.7,1.7) to (r2);		
-				
-			\draw[->, dashed] (3.5,1.5) to (r3);			
-			\draw[-, dashed] (r3) to (3.6,1.5);
-			
-			\draw[->, dashed] (5.0,1.5) to [bend right = 2.5] (r4);
-			\draw[-, dashed] (r4) to [bend right = 2.5] (5.2,1.6);
-			
-			\draw[->, dashed] (2.0,3.2) to [bend right = 2.5] (r5);
-			\draw[-, dashed] (r5) to [bend right = 2.5] (2.1,3.3);
-				
-			\draw[->, dashed] (4.2,3.1) to [bend right = 2.5] (r6);
-			\draw[-, dashed] (r6) to [bend right = 2.5] (4.3,3.2);						
-			
-			
-			\draw[-, dashed] (x2) to (4.1, 3.2);
-			\draw[->, dashed] (4.1, 3.3) to (x2);
-			\draw[-, dashed] (x2) to (3.9, 3.4);
-			\draw[->, dashed] (3.9, 3.5) to (x2);
-			\draw[-, dashed] (x2) to (3.9, 3.7);
-			\draw[->, dashed] (3.9, 3.8) to (x2);	
-			
-			\draw[->] (x3) to (r5);
-			\draw[->] (x4) to (r6);
-		
-			\draw[->] (r1) to (x3);
-			\draw[->] (r2) to (x3);
-			\draw[->] (r3) to (x4);
-			\draw[->] (r4) to (x4);
-			\draw[->] (r5) to (x1);
-			\draw[->] (r6) to (x2);
-		\end{tikzpicture}
+  \centering
+  \begin{tikzpicture}
+    \node[draw, circle] (f1) at (0,0) {$f_1$};
+    \node[draw, circle] (f2) at (2,0) {$f_2$};
+    \node[draw, circle] (f3) at (4,0) {$f_3$};
+    \node[draw, circle] (f4) at (6,0) {$f_4$};
+    
+    \node[draw, circle] (x1) at (1,4) {$x_1$};
+    \node[draw, circle] (x2) at (5,4) {$x_2$};
+    \node[draw, circle] (x3) at (1,2) {$x_3$};
+    \node[draw, circle] (x4) at (5,2) {$x_4$};
+    
+    \node[draw, rectangle] (r1) at (0,1) {$r_1$};
+    \node[draw, rectangle] (r2) at (2,1) {$r_2$};
+    \node[draw, rectangle] (r3) at (4,1) {$r_3$};
+    \node[draw, rectangle] (r4) at (6,1) {$r_4$};
+    
+    \node[draw, rectangle] (r5) at (1,3) {$r_5$};
+    \node[draw, rectangle] (r6) at (5,3) {$r_6$};
+    
+    \draw[->] (f1) to (r1);
+    \draw[->] (f2) to (r2);
+    \draw[->] (f3) to (r3);
+    \draw[->] (f4) to (r4);
+    \draw[-, dashed] (x1) to (1.6, 3.3);
+    \draw[->, dashed] (1.7, 3.4) to (x1);
+    \draw[-, dashed] (x1) to (1.8, 3.55);
+    \draw[->, dashed] (1.85, 3.6) to (x1);
+    \draw[-, dashed] (x1) to (2.0, 3.7);
+    \draw[->, dashed] (2.05, 3.75) to (x1);						
+    
+    \draw[->, dashed] (0.8,1.4) to (r1);			
+    \draw[-, dashed] (r1) to (0.8,1.5);
+    
+    \draw[-, dashed] (r2) to (2.7,1.8);			
+    \draw[->, dashed] (2.7,1.7) to (r2);		
+    
+    \draw[->, dashed] (3.5,1.5) to (r3);			
+    \draw[-, dashed] (r3) to (3.6,1.5);
+    
+    \draw[->, dashed] (5.0,1.5) to [bend right = 2.5] (r4);
+    \draw[-, dashed] (r4) to [bend right = 2.5] (5.2,1.6);
+    
+    \draw[->, dashed] (2.0,3.2) to [bend right = 2.5] (r5);
+    \draw[-, dashed] (r5) to [bend right = 2.5] (2.1,3.3);
+    
+    \draw[->, dashed] (4.2,3.1) to [bend right = 2.5] (r6);
+    \draw[-, dashed] (r6) to [bend right = 2.5] (4.3,3.2);
+    
+    \draw[-, dashed] (x2) to (4.1, 3.2);
+    \draw[->, dashed] (4.1, 3.3) to (x2);
+    \draw[-, dashed] (x2) to (3.9, 3.4);
+    \draw[->, dashed] (3.9, 3.5) to (x2);
+    \draw[-, dashed] (x2) to (3.9, 3.7);
+    \draw[->, dashed] (3.9, 3.8) to (x2);	
+    
+    \draw[->] (x3) to (r5);
+    \draw[->] (x4) to (r6);
+    
+    \draw[->] (r1) to (x3);
+    \draw[->] (r2) to (x3);
+    \draw[->] (r3) to (x4);
+    \draw[->] (r4) to (x4);
+    \draw[->] (r5) to (x1);
+    \draw[->] (r6) to (x2);
+  \end{tikzpicture}
 \end{figure}
 \FloatBarrier
-This example consists of $4$ irreducible RAFs, $\RAF_1\coloneqq \{r_1,r_3,r_5,r_6\}, \RAF_2\coloneqq \{r_1,r_4,r_5,r_6\},
-\RAF_1\coloneqq \{r_2,r_3,r_5,r_6\}$, and $\RAF_1\coloneqq \{r_2,r_4,r_5,r_6\}$, but only one autocatalytic core, i.e.,
-$(\{x_1,r_5\}\{x_2,r_6,x_1\})$ with stoichiometric matrix:
+%
+This example consists of $4$ irreducible RAFs, $\RAF_1\coloneqq
+\{r_1,r_3,r_5,r_6\}, \RAF_2\coloneqq \{r_1,r_4,r_5,r_6\}, \RAF_1\coloneqq
+\{r_2,r_3,r_5,r_6\}$, and $\RAF_1\coloneqq \{r_2,r_4,r_5,r_6\}$, but only
+one autocatalytic core, i.e., $(\{x_1,r_5\}\{x_2,r_6,x_1\})$ with
+stoichiometric matrix:
 \begin{equation}
-	\begin{pmatrix}
-		0 & 1\\
-		1 & 0
-	\end{pmatrix}
+  \begin{pmatrix}
+    0 & 1\\
+    1 & 0
+  \end{pmatrix}
 \end{equation}
 
-\subsection{One irreducible RAF and two equivalent autocatalytic cores}\label{subsec:IrrEquivCores}
+\subsection{One irreducible RAF and two equivalent autocatalytic cores}
+\label{subsec:IrrEquivCores}
 
 \begin{minipage}[c]{0.5\textwidth}
 \begin{equation}
-	\begin{split}
-		r_1&: f_1  + (x_1) \rightarrow x_2 + (x_1) \\
-		r_2&: x_2  + (x_2) \rightarrow x_3 + x_4 + (x_2) \\
-		r_3&: x_3 +  (x_3) \rightarrow x_1 + (x_3) \\			
-		r_4&: x_4  + (x_4) \rightarrow x_1 + (x_4) \\
-	\end{split}
+  \begin{split}
+    r_1&: f_1 + (x_1) \rightarrow x_2 + (x_1) \\ r_2&: x_2 +
+    (x_2) \rightarrow x_3 + x_4 + (x_2) \\ r_3&: x_3 + (x_3)
+    \rightarrow x_1 + (x_3) \\ r_4&: x_4 + (x_4) \rightarrow
+    x_1 + (x_4) \\
+  \end{split}
 \end{equation}
 \end{minipage}%
 \hfill%
 \begin{minipage}[c]{0.5\textwidth}
-\begin{equation}
-	\begin{pmatrix}
-		0 &  0 & 1 & 1 \\
-		1 & -1 & 0 & 0 \\
-		0 & 1 & -1 & 0 \\
-		0 & 1 & 0 & -1 \\
-	\end{pmatrix}
-\end{equation}
+  \begin{equation}
+    \begin{pmatrix}
+      0 &  0 & 1 & 1 \\
+      1 & -1 & 0 & 0 \\
+      0 & 1 & -1 & 0 \\
+      0 & 1 & 0 & -1 \\
+    \end{pmatrix}
+  \end{equation}
 \end{minipage}%
 
 \begin{figure}[h]
-	\centering
-	\begin{tikzpicture}
-		\node[draw, circle] (f) at (0,1.5) {$f$};
-		\node[draw, circle] (x1) at (3,1.5) {$x_1$};
-		\node[draw, circle] (x2) at (1,-2) {$x_2$};
-		\node[draw, circle] (x3) at (2,-0.5) {$x_3$};
-		\node[draw, circle] (x4) at (4,-0.5) {$x_4$};
-			
-		\node[draw, rectangle] (r1) at (1,1.5) {$r_1$};
-		\node[draw, rectangle] (r2) at (3,-2) {$r_2$};
-		\node[draw, rectangle] (r3) at (2,0.5) {$r_3$};
-		\node[draw, rectangle] (r4) at (4,0.5) {$r_4$};
-		
-		\draw[->] (f) to (r1);
-		\draw[->] (x1) to [bend right = 20] (r1);
-		\draw[->] (r1) to [bend right = 20] (x1);
-		\draw[->] (r1) to (x2);
-		\draw[->] (x2) to [bend right = 30] (r2);
-		\draw[->] (r2) to [bend right = 30] (x2);			
-		\draw[->] (r2) to(x3);
-		\draw[->] (r2) to(x4);			
-		\draw[->] (x3) to [bend right = 30] (r3);
-		\draw[->] (r3) to [bend right = 30] (x3);
-		\draw[->] (r3) to (x1);
-		
-		\draw[->] (x4) to [bend right = 30] (r4);
-		\draw[->] (r4) to [bend right = 30](x4);
-		\draw[->] (r4) to  (x1);	
-		
-	\end{tikzpicture}
+  \centering
+  \begin{tikzpicture}
+    \node[draw, circle] (f) at (0,1.5) {$f$};
+    \node[draw, circle] (x1) at (3,1.5) {$x_1$};
+    \node[draw, circle] (x2) at (1,-2) {$x_2$};
+    \node[draw, circle] (x3) at (2,-0.5) {$x_3$};
+    \node[draw, circle] (x4) at (4,-0.5) {$x_4$};
+    
+    \node[draw, rectangle] (r1) at (1,1.5) {$r_1$};
+    \node[draw, rectangle] (r2) at (3,-2) {$r_2$};
+    \node[draw, rectangle] (r3) at (2,0.5) {$r_3$};
+    \node[draw, rectangle] (r4) at (4,0.5) {$r_4$};
+    
+    \draw[->] (f) to (r1);
+    \draw[->] (x1) to [bend right = 20] (r1);
+    \draw[->] (r1) to [bend right = 20] (x1);
+    \draw[->] (r1) to (x2);
+    \draw[->] (x2) to [bend right = 30] (r2);
+    \draw[->] (r2) to [bend right = 30] (x2);			
+    \draw[->] (r2) to(x3);
+    \draw[->] (r2) to(x4);			
+    \draw[->] (x3) to [bend right = 30] (r3);
+    \draw[->] (r3) to [bend right = 30] (x3);
+    \draw[->] (r3) to (x1);
+    
+    \draw[->] (x4) to [bend right = 30] (r4);
+    \draw[->] (r4) to [bend right = 30](x4);
+    \draw[->] (r4) to  (x1);	
+    
+  \end{tikzpicture}
 \end{figure}
 \FloatBarrier
 
-Indeed, the construction of Lemma~\ref{lem:MetzCircuit} inherits some arbitrarieness as both 
-elementary circuits $C_1=(x_1,r_1,x_2,r_2,x_3,r_3,x_1)$ and $C_2=(x_1,r_1,x_2,r_2,x_4,r_4,x_1)$ 
-could be obtained, and both are autocatalytic cores. 
+Indeed, the construction of Lemma~\ref{lem:MetzCircuit} inherits some
+arbitrarieness as both elementary circuits
+$C_1=(x_1,r_1,x_2,r_2,x_3,r_3,x_1)$ and $C_2=(x_1,r_1,x_2,r_2,x_4,r_4,x_1)$
+could be obtained, and both are autocatalytic cores.
 
 \section{Discussion}
 
