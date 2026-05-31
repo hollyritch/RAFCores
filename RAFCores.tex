@@ -1,5 +1,5 @@
 \documentclass[pdflatex]{sn-jnl}
- \renewcommand{\textfraction}{.002}
+\renewcommand{\textfraction}{.002}
 \renewcommand{\floatpagefraction}{.995}
 \setcounter{totalnumber}{5}
 \renewcommand{\topfraction}{.995}
@@ -394,9 +394,6 @@ as the net reactants (educts) and net products of reaction $r$,
 respectively. Note, we thereby have $\net{\ceducts}(r) = \ceducts(\net{r})$
 and $\net{\cproducts}(r) = \cproducts(\net{r})$.
 
-\TODO{PFS to here} 
-
-
 \PFS{There are multiple reasons for the case} $s^{\pm}_{xr}\neq
 \net{s}^{\pm}_{xr}$; one is catalysts. In the original CRN setting, a
 catalyst for a reaction $r$ is an entity $x\in X$ such that
@@ -688,13 +685,13 @@ sets (RAFs).
 Catalytic reaction systems (CRS) are the fundamental structure on which the
 notion of reflexively autocatalytic sets is built
 \cite{steel_emergence_2000, hordijk_detecting_2004}. In addition, they rely
-on the closure of a set $X' \subseteq X$ w.r.t. to a set $\RAF \subseteq
+on the closure of a set $X' \subseteq X$ w.r.t.\ to a set $\RAF \subseteq
 \FR$, denoted as $\closure{\RAF}{X'}$, which is the unique minimal set $Y$
 containing $X'$ such that for any $\fr\in \RAF: \feducts(r)\subseteq Y
 \Rightarrow \fproducts(r)\subseteq Y$. Thus:
 \begin{equation}\label{eq:Closure}
-  \closure{R'}{X'} \coloneqq \min \{Z \subseteq X \ | \ X'\subseteq Z,
-  \feducts(r) \subseteq Z \Rightarrow \fproducts(r) \subseteq Z \ \forall
+  \closure{R'}{X'} \coloneqq \min \{\PFS{Y} \subseteq X \ | \ X'\subseteq \PFS{Y},
+  \feducts(r) \subseteq \PFS{Y} \Rightarrow \fproducts(r) \subseteq \PFS{Y} \ \forall
   r\in \RAF\}
 %%  %}_{\eqqcolon \mathfrak{C}_{\RAF}(X')}
 \end{equation}
@@ -702,12 +699,17 @@ A reflexively autocatalytic set (RAF) is then defined as follows:
 
 \vspace{6pt}
 \begin{definition}[RAF]\label{def:RAF}
-  Let $(X,\FR,\cat)$ be a CRS with $\food\subseteq X$. A set $\RAF\subseteq \FR$ is called  
+  Let $(X,\FR,\cat)$ be a CRS with $\food\subseteq X$. A set $\RAF\subseteq
+  \FR$ is called
   \vspace{6pt}
   \begin{itemize} 
-  \item[i.]{\emph{reflexively autocatalytic} (RA) if $\forall r\in \RAF: \emptyset \neq \cat(r), \exists c\in \cat(r): c \subseteq \feducts(\RAF)\cup \fproducts(\RAF)$}\\[-1.0em]
-  \item[ii.]{\emph{\food-generated} if $\feducts(\RAF)\subseteq \closure{\RAF}{\food}$}\\[-1.0em]
-  \item[iii.]{\emph{reflexive autocatalytic} and \emph{\food-generated} (RAF) if both i. and ii. hold}
+  \item[i.]{\emph{reflexively autocatalytic} (RA) if $\forall r\in \RAF:
+    \emptyset \neq \cat(r), \exists c\in \cat(r): c \subseteq
+    \feducts(\RAF)\cup \fproducts(\RAF)$}\\[-1.0em]
+  \item[ii.]{\emph{\food-generated} if $\feducts(\RAF)\subseteq
+    \closure{\RAF}{\food}$}\\[-1.0em]
+  \item[iii.]{\emph{reflexive autocatalytic} and \emph{\food-generated}
+    (RAF) if both i. and ii. hold}
   \end{itemize}
 \end{definition}
 \vspace{6pt}
@@ -720,483 +722,548 @@ implies that all F-products for any reaction $\fr\in \RAF$ are also
 contained in the $\closure{\RAF}{\food}$, thus $\fproducts(r)\subseteq
 \closure{\RAF}{\food}$.
 
-\TODO{PFS to here ...} 
-
 \subsection{A Partial Order on RAFs}
 
-The closure naturally induces an order, a sequence in which the F-reactions
-of a RAF can be executed. This is not a total order since some reactions,
-e.g., the ones requiring only food molecules as F-reactants can be executed
-at the same time, while others, depending on molecules produced by these
-food-dependent reactions, can only take place consecutively. Here, we
-briefly explain the main idea and its consequences, while we will devote
-the supplement to formally deriving the partial order.
+\TODO{The closure naturally induces an order, a sequence in which the F-reactions
+  of a RAF can be executed. -- I don't think we can say ``induces'' here. }
 
-A convenient way to construct an order on the F-reactions of a RAF $\RAF$
-is by generating the set $\closure{\RAF}{\food}$ iteratively, in
-particular, by applying in each step all F-reactions for which all
-F-reactants are already available. Therefore, it is only consequent to
-assume that this iterative process converges against
-$\closure{\RAF}{\food}$ in a finite number of steps, all species of
-$\closure{\RAF}{\food}$ as long as $\vert \RAF\vert <\infty$.
+\PFS{The reactions of RAF can be partially ordered such that for each
+  $x\in\feducts(r)$ we have $x\in\food$ or there is a reaction $r'\prec r$
+  such that $x\in\fproducts(r')$. While there are many such partial orders,
+  we construct a specific one that is reminiscent of a breadth-first
+  research. Another way of viewing this partial order is an interative
+  procedure to generate  the set $\closure{\RAF}{\food}$:
+%%
+%%
+%% This is not a total order since some reactions,
+%% e.g., the ones requiring only food molecules as F-reactants can be executed
+%% at the same time, while others, depending on molecules produced by these
+%% food-dependent reactions, can only take place consecutively. Here, we
+%% briefly explain the main idea and its consequences, while we will devote
+%% the supplement to formally deriving the partial order.
+%%
+%% A convenient way to construct an order on the F-reactions of a RAF $\RAF$
+%% is by generating the set $\closure{\RAF}{\food}$ iteratively, in
+%% particular, by
+  To this end, we} apply in each step all F-reactions for which all
+F-reactants are already available.
+%% Therefore, it is only consequent to
+%% assume that
+This iterative process converges against $\closure{\RAF}{\food}$ in a
+finite number of steps, all species of $\closure{\RAF}{\food}$ as long as
+$\vert \RAF\vert <\infty$. \PFS{A fully formal account of this procedure is
+  given in the Supplemental Material.}
 
-The sequences specifying when an F-reaction can happen for the first time and when a non-food species is produced for the
-first time provide an order $\preceq$ on the set of F-reactions $\FR$ and on the set of species $X$. The generation in 
-which a species $x\in X$ appears as a product for the first time will be denoted by $\sgen(x)$ and set by definition 
-$\sgen(f)\coloneqq 0$ for all $f\in \food$. In addition, we denote the generation in which all F-reactants are available for 
-an F-reaction $\fr$ by $\rgen(\fr)$. A species $x_1$ precedes a species $x_2$, i.e.: 
-	\begin{equation}
-		x_1\preccurlyeq x_2 \Leftrightarrow \sgen(x_1) \leq \sgen(x_2)
-	\end{equation} 
+The sequences specifying when an F-reaction can happen for the first time
+and when a non-food species is produced for the first time provide an order
+$\preceq$ on the set of F-reactions $\FR$ and on the set of species
+$X$. The generation in which a species $x\in X$ appears as a product for
+the first time will be denoted by $\sgen(x)$ and set by definition
+$\sgen(f)\coloneqq 0$ for all $f\in \food$. In addition, we denote the
+generation in which all F-reactants are available for an F-reaction $\fr$
+by $\rgen(\fr)$. A species $x_1$ precedes a species $x_2$, i.e.:
+\begin{equation}
+  x_1\preccurlyeq x_2 \Leftrightarrow \sgen(x_1) \leq \sgen(x_2)
+\end{equation} 
 and a reaction $\fr_1$ precedes a reaction $\fr_2$, i.e.: 
 \begin{equation}
-	\fr_1\preceq \fr_2 \Leftrightarrow \rgen(\fr_1) \leq \rgen(\fr_2)
+  \fr_1\preceq \fr_2 \Leftrightarrow \rgen(\fr_1) \leq \rgen(\fr_2)
 \end{equation}
 We refer to the values of $\sgen$ and $\rgen$ as the generation of a reaction or metabolite. Since all representatives
 of an F-reaction share the same F-reactants, we may define the generation of a reaction as $\delta(r)\coloneqq \rgen(\fr)$.
-A \emph{constructively autocatalytic and food-generated} set (CAF) is a RAF such that for each F-reaction 
-$\fr$ all $x\in \feducts(x)$ satisfy $\sgen(x)<\rgen(\fr)$ and there is at least one $r\in \fr$ such that 
-all catalyst $x\in \cat(r)$ satisfy $\sgen(x)< \rgen(\fr)$.
 
-One important consequence of the partial order is that if a RAF contains two $\sim$~equivalence classes 
-that share the same net reaction, the "later" can be removed.
+\begin{definition}
+  A \emph{constructively autocatalytic and food-generated} set (CAF) is a
+  RAF such that for each F-reaction $\fr$ all $x\in \feducts(x)$ satisfy
+  $\sgen(x)<\rgen(\fr)$ and there is at least one $r\in \fr$ such that all
+  catalyst $x\in \cat(r)$ satisfy $\sgen(x)< \rgen(\fr)$.
+\end{definition}
+One important consequence of the partial order is that if a RAF contains
+two $\sim$~equivalence classes that share the same net reaction, the
+''later'' one w.r.t.\ $\prec$ can be removed.
 \vspace{6pt}
 \begin{lemma}\label{lem:OneFReacPerRAF}
-	Let $(X,\FR,\cat)$ be a CRS with food-set $\food\subseteq X$, $\RAF\subseteq \FR$ a RAF, and 
-	$\fr_1,\fr_2 \in \RAF: \fr_1\neq \fr_2, \hat{\fr}_1 = \hat{\fr}_2'$. Then $\RAF\setminus \{\fr_2\}$ is a RAF
-	if $\rgen(\fr_1)\leq \rgen(\fr_2)$.
+  Let $(X,\FR,\cat)$ be a CRS with food-set $\food\subseteq X$,
+  $\RAF\subseteq \FR$ a RAF, and $\fr_1,\fr_2 \in \RAF: \fr_1\neq \fr_2,
+  \hat{\fr}_1 = \hat{\fr}_2'$. Then $\RAF\setminus \{\fr_2\}$ is a RAF if
+  $\rgen(\fr_1)\leq \rgen(\fr_2)$.
 \end{lemma}
 \begin{proof}
-	Let $\RAF' \coloneqq \RAF \setminus \{r''_2\}$. Since $\RAF$ was reflexively autocatalytic, 
-	$\RAF'$ is reflexively autocatalytic. In addition, since $\nfeducts(\fr_1)=\nfeducts(\fr_2)$ 
-	and $\nfproducts(\fr_1)=\nfproducts(\fr_2)$ and $\rgen(\fr_1)\leq \rgen(\fr_2)$, 
-	$\closure{\RAF}{F} = \closure{\RAF'}{F}$. 
+  Let $\RAF' \coloneqq \RAF \setminus \{r''_2\}$. Since $\RAF$ was
+  reflexively autocatalytic, $\RAF'$ is reflexively autocatalytic. In
+  addition, since $\nfeducts(\fr_1)=\nfeducts(\fr_2)$ and
+  $\nfproducts(\fr_1)=\nfproducts(\fr_2)$ and $\rgen(\fr_1)\leq
+  \rgen(\fr_2)$, $\closure{\RAF}{F} = \closure{\RAF'}{F}$.
 \end{proof}
 \vspace{6pt} 
 \noindent We may remark that the converse is not true. To see this, consider the following CRN example:
 \begin{equation}
-	\begin{split}
-		r_1&: f + (x_1) \hspace{22pt} \rightarrow x_1 + x_2 + (x_1)\\
-		r_2&: f + x_1 + (x_1) \rightarrow 2x_1 + x_2 + (x_1)
-	\end{split}
+  \begin{split}
+    r_1&: f + (x_1) \hspace{22pt} \rightarrow x_1 + x_2 + (x_1)\\
+    r_2&: f + x_1 + (x_1) \rightarrow 2x_1 + x_2 + (x_1)
+  \end{split}
 \end{equation}
-Then clearly, $\fr_1\neq \fr_2$ and $\rgen(\fr_1) = 1 < 2 = \rgen(\fr_2)$ since $\fr_2$ requires an $x_1$ as 
-an F-reactant. 
+Then clearly, $\fr_1\neq \fr_2$ and $\rgen(\fr_1) = 1 < 2 = \rgen(\fr_2)$
+since $\fr_2$ requires an $x_1$ as an F-reactant.
 
-The partial order $\preceq$ allows us to observe that each species vertex of the $\closure{\RAF}{\food}$ 
-is reachable from at least one food molecule in $\food$ in the bipartite K\"onig graph, 
-which is restricted to $\closure{\RAF}{\food}$, the reactions in $\RAF$, and to those catalyzations 
-$\cat'$ of reactions in $\RAF\subseteq \FR$. Throughout, we denote this graph as 
-$\queen'\coloneqq \queen(\closure{\RAF}{\food}, \RAF, \cat')$.
+The partial order $\preceq$ allows us to observe that each species vertex
+of the $\closure{\RAF}{\food}$ is reachable from at least one food molecule
+in $\food$ in the bipartite K\"onig graph, which is restricted to
+$\closure{\RAF}{\food}$, the reactions in $\RAF$, and to those
+catalyzations $\cat'$ of reactions in $\RAF\subseteq \FR$. Throughout, we
+denote this graph as $\queen'\coloneqq \queen(\closure{\RAF}{\food}, \RAF,
+\cat')$.
 
 \vspace{6pt}
 \begin{lemma}[Proof: SI]\label{lem:RAFPath}
-	Let $(X, \FR, \cat)$ be a CRS with $\food \subseteq X$ and a RAF $\RAF\subseteq \FR$. 
-	For any $x\in \closure{}{\food}\setminus \food$ there is an $f\in \food$ such that $P=(f, \ldots, x)$ 
-	is a path in $\queen'$.
+  Let $(X, \FR, \cat)$ be a CRS with $\food \subseteq X$ and a RAF
+  $\RAF\subseteq \FR$.  For any $x\in \closure{}{\food}\setminus \food$
+  there is an $f\in \food$ such that $P=(f, \ldots, x)$ is a path in
+  $\queen'$.
 \end{lemma}
 
 \subsection{Irreducible RAFs}\label{sec:IrrRAF}
 
-Minimal \emph{stoichiometrically autocatalytic} subnetworks, formally introduced in Sec.~\ref{sec:AutoCatIrrRAF}, 
-are termed \emph{autocatalytic cores} \cite{blokhuis_Universal_2020}. Their characterization and 
-computational enumeration have gained reasonable attention in chemical reaction networks with and without explicit 
-catalysis \cite{blokhuis_Universal_2020, golnik_birne_2025, golnik_using_2026, golnik_autocatalytic_2026}. 
-In \cite{bridging_golnik_2026}, we have shown that each RAF that is not a CAF contains a stoichiometrical 
-autocatalytic subnetwork and thereby an autocatalytic core. It is therefore reasonable to ask for the 
-substructures of a RAF that carry autocatalytic cores. 
+Minimal \emph{stoichiometrically autocatalytic} subnetworks, formally
+introduced in Sec.~\ref{sec:AutoCatIrrRAF}, are termed \emph{autocatalytic
+cores} \cite{blokhuis_Universal_2020}. Their characterization and
+computational enumeration have gained reasonable attention in chemical
+reaction networks with and without explicit catalysis
+\cite{blokhuis_Universal_2020, golnik_birne_2025, golnik_using_2026,
+  golnik_autocatalytic_2026}.  In \cite{bridging_golnik_2026}, we have
+shown that each RAF that is not a CAF contains a stoichiometrical
+autocatalytic subnetwork and thereby an autocatalytic core. It is therefore
+of immediate interest to ask for the substructures of a RAF that carry
+autocatalytic cores.
 
-The most natural starting point for this endeavour are RAFs that contain no proper subset that is also
-a RAF. Minimal sets of F-reactions w.r.t. the RAF properties have been termed \emph{irreducible} RAFs 
-in the literature \cite{steel_minimal_2013}. A direct consequence of Lemma~\ref{lem:OneFReacPerRAF} 
-is that irreducible RAFs contain, for each net reaction, only one F-reaction. 
+The most natural starting point for this endeavour are RAFs that contain no
+proper subset that is also a RAF.
+\PFS{
+\begin{definition}\cite{steel_minimal_2013}.
+  A RAF is irreducible if no subset of its set of F-reactions determine a RAF. 
+\end{definition}
+}
+%% Minimal sets of F-reactions w.r.t.\ the
+% RAF properties have been termed \emph{irreducible} RAFs in the literature
+%% \cite{steel_minimal_2013}.
+A direct consequence of
+Lemma~\ref{lem:OneFReacPerRAF} is that irreducible RAFs contain, for each
+net reaction, only one F-reaction.
 \vspace{6pt} 
 \begin{corollary}
-	Let $(X,\mathbf{R}, \cat)$ be a CRS with food-set $\food\subseteq X$ and $\RAF$ an irreducible RAF. 
-	For $\fr_r,\fr_2 \in \mathbf{R}: \fr_1\neq \fr_2, \hat{\fr}_1=\hat{\fr}_2$, $\fr_1\in \RAF$ implies $\fr_2\notin \RAF$.
+  Let $(X,\mathbf{R}, \cat)$ be a CRS with food-set $\food\subseteq X$ and
+  $\RAF$ an irreducible RAF.  For $\fr_r,\fr_2 \in \mathbf{R}: \fr_1\neq
+  \fr_2, \hat{\fr}_1=\hat{\fr}_2$, $\fr_1\in \RAF$ implies $\fr_2\notin
+  \RAF$.
 \end{corollary}
-\vspace{6pt} 
-Still, they might contain F-reactions that have more than one representative, as the following example shows.
+\vspace{6pt}
+%
+Still, they might contain F-reactions that have more than one
+representative, as the following example shows.
 \begin{equation}
-	\begin{split}
-		r'_1&: f + (x_1) \rightarrow x_3 + (x_1)\\
-		r''_1&: f + (x_2) \rightarrow x_3 + (x_3)\\
-		r_2&:  x_3 + (x_3) \rightarrow x_1 + x_2 + (x_3)
-	\end{split}
+  \begin{split}
+    r'_1&: f + (x_1) \rightarrow x_3 + (x_1)\\
+    r''_1&: f + (x_2) \rightarrow x_3 + (x_3)\\
+    r_2&:  x_3 + (x_3) \rightarrow x_1 + x_2 + (x_3)
+  \end{split}
 \end{equation}
-The only irreducible RAF in this example is $\{\fr_1=\{r_1',r_1''\}, \fr_2=\{r_2\}\}$, which implies that 
-Lemma~\ref{lem:IsoQK} does not hold for irreducible RAFs.
+The only irreducible RAF in this example is $\{\fr_1=\{r_1',r_1''\},
+\fr_2=\{r_2\}\}$, which implies that Lemma~\ref{lem:IsoQK} does not
+\PFS{apply to} irreducible RAFs.
 
-According to Theorem 3.1 of \cite{bridging_golnik_2026}, an autocatalytic elementary circuit can be found 
-in a RAF as long as it is not a CAF. irreducible RAFs exhibit the convenient property that they are not CAFs 
-as long as they are non-trivial, i.e., if they are composed of more than a single reaction.
+According to Theorem 3.1 of \cite{bridging_golnik_2026}, an autocatalytic
+elementary circuit can be found in a RAF as long as it is not a
+CAF. Irreducible RAFs exhibit the convenient property that they are not
+CAFs as long as they are non-trivial, i.e., if they are composed of more
+than a single reaction.
 \vspace{6pt}
 \begin{lemma}\label{lem:trivRAFCAF}
-	Let $(X,\mathbf{R},\cat)$ be a CRS with food-set $\food$ and $\RAF$ a irreducible RAF. Then $\RAF$ is a CAF if and only
-	if it is trivial. 
+  Let $(X,\mathbf{R},\cat)$ be a CRS with food-set $\food$ and suppose
+  $\RAF$ is an irreducible RAF. Then $\RAF$ is a CAF if and only if it is
+  trivial.
 \end{lemma}
 \begin{proof}
-	Let $\RAF$ be a CAF and assume $|\RAF|>1$. Let $r\in \RAF: \delta(r)=1$. Then all F-reactants and all F-catalysts for one 
-	\emph{catalyzation} are in $\food$ since $\RAF$ is a CAF. Thus $\{r\}$ is a RAF itself, contradicting the minimality of $\RAF$. 
-	Conversely, assume that $|\RAF|=1$. Then all F-reactants and all F-catalysts for at least one \emph{catalyzation} are in $\food$ 
-	since otherwise $\RAF$ would not be a RAF. Thus, $\RAF$ is a CAF.
+  Let $\RAF$ be a CAF and assume $|\RAF|>1$. Let $r\in \RAF:
+  \delta(r)=1$. Then all F-reactants and all F-catalysts for one
+  \emph{catalyzation} are in $\food$ since $\RAF$ is a CAF. Thus $\{r\}$ is
+  a RAF itself, contradicting the minimality of $\RAF$.  Conversely, assume
+  that $|\RAF|=1$. Then all F-reactants and all F-catalysts for at least
+  one \emph{catalyzation} are in $\food$ since otherwise $\RAF$ would not
+  be a RAF. Thus, $\RAF$ is a CAF.
 \end{proof}
 \vspace{6pt}
-This Lemma justifies focusing only on non-trivial irreducible RAFs. In fact, for each non-trivial 
-irreducible RAF, each F-reaction has at least one reactant that is not in the food set. 
+%
+This Lemma justifies \PFS{restricting attention to} non-trivial irreducible
+RAFs. In fact, for each non-trivial irreducible RAF, each F-reaction has at
+least one reactant that is not in the food set.
 \vspace{6pt}
 \begin{lemma}\label{lem:OneReac}
-	Let $(X,\RAF,\cat)$ be a CRS with food-set $\food$ and $\RAF$ a irreducible RAF.
-	Then $\fr\in \RAF$ has at least one reactant (F-reactant or F-catalyst) that is not 
-	in $\food$. For $\fr\in \RAF: \rgen(\fr)=1$, this is an F-catalyst.
+  Let $(X,\RAF,\cat)$ be a CRS with food-set $\food$ and $\RAF$ a
+  irreducible RAF.  Then $\fr\in \RAF$ has at least one reactant
+  (F-reactant or F-catalyst) that is not in $\food$. For $\fr\in \RAF:
+  \rgen(\fr)=1$, this is an F-catalyst.
 \end{lemma}
 \begin{proof}
-	 Assume this is not the case for an $\fr\in \RAF$. Then $\{\fr\}$ is a RAF which 
-	 contradicts the minimality of $\RAF$.
+  Assume this is not the case for an $\fr\in \RAF$. Then $\{\fr\}$ is a RAF
+  which contradicts the minimality of $\RAF$.
 \end{proof}
 \vspace{6pt}
 
-The consequences of the result of Lemma~\ref{lem:OneReac} were already investigated 
-in \cite{steel_minimal_2013}. It was shown that the R-graph for each such 
-RAF contains an elementary circuit. In the next subsection, we will therefore turn to investigate
-more thoroughly the structural properties of two graph representations of non-trivial, irreducible RAFs, 
-the bipartite and the reaction graph, in both the CRS and the CRN setting. In particular,
-we will strengthen the result obtained by Steel et al. in \cite{steel_minimal_2013}.
+The consequences of the result of Lemma~\ref{lem:OneReac} were already
+investigated in \cite{steel_minimal_2013}. It was shown that the R-graph
+for each such RAF contains an elementary circuit. In the next subsection,
+we will therefore turn to investigate more thoroughly the structural
+properties of two graph representations of non-trivial, irreducible RAFs,
+the bipartite and the reaction graph, in both the CRS and the CRN
+setting. In particular, we will strengthen a result by Steel et
+al.\ \cite{steel_minimal_2013}.
 
 \subsection{The Bipartite and Reaction Graphs of irreducible RAFs}
 
-Throughout, we will consider a CRS $\Phi\coloneqq (X,\FR,\cat)$ with food-set $\food\subseteq X$ and 
-K\"onig graph $\queen\coloneqq \queen(\Phi)$. In addition, we assume a non-trivial, 
-irreducible RAF $\RAF\subseteq \FR$ with sub-CRS 
+Throughout, we will consider a CRS $\Phi\coloneqq (X,\FR,\cat)$ with
+food-set $\food\subseteq X$ and K\"onig graph $\queen\coloneqq
+\queen(\Phi)$. In addition, we assume a non-trivial, irreducible RAF
+$\RAF\subseteq \FR$ with sub-CRS
 \begin{equation}
-	\Phi'= (\closure{\RAF}{\food}, \RAF, \cat')\\
+  \Phi'= (\closure{\RAF}{\food}, \RAF, \cat')\\
 \end{equation}
-and K\"onig graph $\queen'\coloneqq \queen(\Phi')$ as well as its CRN representation 
-$\king'\coloneqq \king(\Gamma(\Phi'))$. We denote both R-graphs of $\queen'$ and $\king'$ 
-as the graphs 
-
+and K\"onig graph $\queen'\coloneqq \queen(\Phi')$ as well as its CRN
+representation $\king'\coloneqq \king(\Gamma(\Phi'))$. We denote both
+R-graphs of $\queen'$ and $\king'$ as the graphs
 \begin{equation}
-	\begin{split}
-		\RGraph(\queen')&\coloneqq (\RAF, E), \hspace{25pt} \quad E\coloneqq \{(\fr_1,\fr_2) \ \vert \ \exists x\in X: s^+_{x\fr_1}>0, s^-_{x\fr_2}>0\} \\
-		\RGraph(\king') &\coloneqq (\varphi^{-1}(\RAF), E), \quad E\coloneqq \{(r_1,r_2) \ \vert \ (\fr_1,\fr_2)\in E(\RGraph(\queen')\},
-	\end{split}
+  \begin{split}
+    \RGraph(\queen')&\coloneqq (\RAF, E), \hspace{25pt} \quad E\coloneqq \{(\fr_1,\fr_2) \ \vert \ \exists x\in X: s^+_{x\fr_1}>0, s^-_{x\fr_2}>0\} \\
+    \RGraph(\king') &\coloneqq (\varphi^{-1}(\RAF), E), \quad E\coloneqq \{(r_1,r_2) \ \vert \ (\fr_1,\fr_2)\in E(\RGraph(\queen')\},
+  \end{split}
 \end{equation}
 respectively. In line with calling elements of $\food$ food-molecules, we kindly refer to molecules of
 \begin{equation}\label{eq:Waste}
-	W\coloneqq \{x\in \closure{\RAF}{\food} \ | \ \nexists \fr \in \RAF \text{ s.t. } s^-_{xr}>0\}		
+  W\coloneqq \{x\in \closure{\RAF}{\food} \ | \ \nexists \fr \in \RAF \text{ s.t. } s^-_{xr}>0\}		
 \end{equation}
-as waste molecules. We might note that $V(\king')=\closure{\RAF}{\food})$.
+as waste molecules. We note that $V(\king')=\closure{\RAF}{\food})$.
 
 \subsubsection{Strong connectivity}
 
-We start this section by showing that the R-graph of a non-trivial, irreducible RAF in the CRS setting, 
-$\RGraph(\queen)$, is strongly connected.
+We start this section by showing that the R-graph of a non-trivial,
+irreducible RAF in the CRS setting, $\RGraph(\queen)$, is strongly
+connected.
 
 \vspace{6pt}
 \begin{lemma}\label{lem:RGQSC}
-	Let $\RAF$ be a non-trivial, irreducible RAF. Then $\RGraph(\queen')$ is strongly connected.
+  Let $\RAF$ be a non-trivial, irreducible RAF. Then $\RGraph(\queen')$ is
+  strongly connected.
 \end{lemma}
 \begin{proof}
-	Assume this is not the case. Then there are at least two strongly connected components
-	$\RAF_1$ and $\RAF_2$. Assume w.l.o.g. that there is no path from any $r_2\in \RAF_2$ 
-	to any $r_1\in \RAF_1$. Then all F-reactants and F-catalysts of all F-reactions in $\RAF_1$
-	are in the closure $\closure{\RAF_2}{\food}$, in symbols $\feducts\cup \cat(\RAF_1)\subseteq 
-	\closure{\RAF_2}{\food}$. With $\RAF_1\subseteq \RAF$ and $\RAF$ being a $\RAF$, this 
-	implies that $\RAF_1$ is itself a $\RAF$ which contradicts the minimality of $\RAF$.
+  Assume this is not the case. Then there are at least two strongly
+  connected components $\RAF_1$ and $\RAF_2$. Assume w.l.o.g. that there is
+  no path from any $r_2\in \RAF_2$ to any $r_1\in \RAF_1$. Then all
+  F-reactants and F-catalysts of all F-reactions in $\RAF_1$ are in the
+  closure $\closure{\RAF_2}{\food}$, in symbols $\feducts\cup
+  \cat(\RAF_1)\subseteq \closure{\RAF_2}{\food}$. With $\RAF_1\subseteq
+  \RAF$ and $\RAF$ being a $\RAF$, this implies that $\RAF_1$ is itself a
+  $\RAF$ which contradicts the minimality of $\RAF$.
 \end{proof}
 \vspace{6pt}
-Lemmata~\ref{lem:trivRAFCAF} and \ref{lem:RGQSC} can be summarized to the following statement.
+Lemmata~\ref{lem:trivRAFCAF} and \ref{lem:RGQSC} can be
+summarized to the following statement.
 \vspace{6pt}
 \begin{theorem}\label{thm:RAFStrCon}
-	Let $\RAF$ be an irreducible RAF. Then $\RAF$ is non-trivial if and only if the graph $\RGraph(\queen')$ 
-	is not a single F-reaction and is strongly connected.
+  Let $\RAF$ be an irreducible RAF. Then $\RAF$ is non-trivial if and only
+  if the graph $\RGraph(\queen')$ is not a single F-reaction and is
+  strongly connected.
 \end{theorem}
 \vspace{6pt}
 
-It is not hard to see that $\RGraph(\queen')$ is also the quotient graph for $\RGraph(\king')$. 
-Fig.~\ref{fig:QScKNot} illustrates that the strong connectivity of a quotient graph does not guarantee 
-strong connectivity of the original graph. However, for non-trivial, irreducible RAFs, $\RGraph(\king')$ is 
-indeed strongly connected. 
+It is not hard to see that $\RGraph(\queen')$ is also the quotient graph
+for $\RGraph(\king')$. \TODO{quotient w.r.t.\ which relation}
+Fig.~\ref{fig:QScKNot} illustrates that the strong
+connectivity of a quotient graph does not guarantee strong connectivity of
+the original graph. However, for non-trivial, irreducible RAFs,
+$\RGraph(\king')$ is indeed strongly connected.
 \vspace{6pt}
 \begin{lemma}[Proof: SI]\label{lem:KSC}
-	Let $\RAF$ be a non-trivial, irreducible RAF. Then $\RGraph(\king')$ is strongly connected.
+  Let $\RAF$ be a non-trivial, irreducible RAF. Then $\RGraph(\king')$ is
+  strongly connected.
 \end{lemma}
 \vspace{6pt}
-It is readily verified that the subgraphs of $\queen'$ and $\king'$ containing only those vertices that have at least 
-one incoming and one outgoing edge are strongly connected as well. However, these subgraphs might still contain 
-food molecules. The next two statements show that their removal does not destroy strong connectivity.
+%
+It is readily verified that the subgraphs of $\queen'$ and $\king'$
+containing only those vertices that have at least one incoming and one
+outgoing edge are strongly connected as well. However, these subgraphs
+might still contain food molecules. The next two statements show that their
+removal does not destroy strong connectivity.
 \vspace{6pt}
 \begin{lemma}\label{lem:PSC}
-	Let $\RAF$ be a non-trivial, irreducible RAF. Then 
-		\begin{equation}\label{eq:PrinceGraph}
-			\princess(\RAF) \coloneqq \queen'[\closure{\RAF}{\food}\setminus (\food\cup W) \cup \RAF]
-		\end{equation}
-	is strongly connected.
+  Let $\RAF$ be a non-trivial, irreducible RAF. Then 
+  \begin{equation}\label{eq:PrinceGraph}
+    \princess(\RAF) \coloneqq
+    \queen'[\closure{\RAF}{\food}\setminus (\food\cup W) \cup \RAF]
+  \end{equation}
+  is strongly connected.
 \end{lemma}
 \begin{proof}
-	Assume this is not the case. Then there are two strongly connected components $\princess_1,\princess_2$.
-	W.l.o.g., we assume that there is no path from any $u\in \princess_2$ to any $v\in \princess_1$. Then
-	all paths from $\princess_2$ to $\princess_1$ pass through $\food$ in $\queen'$. This, however, implies
-	that all F-catalysts and F-reactants for all F-reactions in $\princess_1$ are contained in $\food\cup 
-	\princess_1$. Then $\FR(\princess_1)$ is a non-empty RAF which contradicts the minimality of $\RAF$.	
+  Assume this is not the case. Then there are two strongly connected
+  components $\princess_1,\princess_2$.  W.l.o.g., we assume that there is
+  no path from any $u\in \princess_2$ to any $v\in \princess_1$. Then all
+  paths from $\princess_2$ to $\princess_1$ pass through $\food$ in
+  $\queen'$. This, however, implies that all F-catalysts and F-reactants
+  for all F-reactions in $\princess_1$ are contained in $\food\cup
+  \princess_1$. Then $\FR(\princess_1)$ is a non-empty RAF which
+  contradicts the minimality of $\RAF$.
 \end{proof}	
 \vspace{6pt}
 
-Following the same argument as in Lemma~\ref{lem:PSC}, we obtain an analogous result for the subgraph of $\king'$ 
-that contains no food and waste molecules.
+Following the same argument as in Lemma~\ref{lem:PSC}, we obtain an
+analogous result for the subgraph of $\king'$ that contains no food and
+waste molecules.
 \vspace{6pt}
 \begin{corollary}
-	Let $\RAF$ be a non-trivial, irreducible RAF. Then 
-		\begin{equation}\label{eq:PrinceGraph}
-			\lord(\RAF) \coloneqq \king'[\closure{\RAF}{\food}\setminus (\food\cup W) \cup \varphi^{-1}(\RAF)]
-		\end{equation}
-	is strongly connected.
+  Let $\RAF$ be a non-trivial, irreducible RAF. Then 
+  \begin{equation}\label{eq:PrinceGraph}
+    \lord(\RAF) \coloneqq
+    \king'[\closure{\RAF}{\food}\setminus
+      (\food\cup W) \cup \varphi^{-1}(\RAF)]
+  \end{equation}
+  is strongly connected.
 \end{corollary}
 \vspace{6pt}
 
 \subsubsection{Cut-vertices}
 
-In general, non-trivial, irreducible RAFs are not necessarily strong blocks, as is captured 
-in the example of Fig.~\ref{ex:CutVertex}, which summarizes the graphs that 
-have been introduced so far.
+In general, non-trivial, irreducible RAFs are not necessarily strong
+blocks, as is captured in the example of Fig.~\ref{ex:CutVertex}, which
+summarizes the graphs that have been introduced so far.
 \begin{figure}[htb]
-	\centering
-	\begin{minipage}[c]{0.49\textwidth}
-		\centering	
-		\textbf{Catalytic Reaction Systems}
-	\end{minipage}%
-	\hfill%
-	\begin{minipage}[c]{0.49\textwidth}	
-		\centering
-		\textbf{Chemical Reaction Networks}
-	\end{minipage}
-	\begin{minipage}[c]{0.49\textwidth}	
-		\centering
-		\begin{equation}
-			\begin{split}
-				\fr_0&: f  \xrightarrow{x_1,y_1} x_2 + y_2 \\
-				\fr_1&: x_2 \xrightarrow{x2} x_1 \\
-				\fr_2&: y_2   \xrightarrow{y_2} y_1 + y_3
-			\end{split}
-		\end{equation}
-	\end{minipage}%
-	\hfill%
-	\begin{minipage}[c]{0.49\textwidth}
-		\centering
-		\begin{equation}
-			\begin{split}
-				r'_0&: f + (x_1) \longrightarrow x_2 + y_2 +(x_1)\\
-				r''_0&: f + (y_1) \longrightarrow x_2 + y_2 +(y_1)\\
-				r_1&: x_2 + (x_2)\longrightarrow x_1 + (x_2) \\
-				r_2&: y_2 + (y_2) \longrightarrow y_1 + y_3 + (y_2)
-			\end{split}
-		\end{equation}
-	\end{minipage}
-	\par\bigskip	
-	\begin{minipage}[c]{0.49\textwidth}
-		\centering
-		\begin{tikzpicture}
-			\node[draw, circle] (f) at (-1,0) {$f$};
-			\node[draw, purple, circle] (x1) at (0,1) {$x_1$};
-			\node[draw, purple, circle] (x2) at (2,1) {$x_2$};
-			\node[draw, purple, circle] (y1) at (0,-1) {$y_1$};
-			\node[draw, purple, circle] (y2) at (2,-1) {$y_2$};
-			\node[draw, circle] (y3) at (0,-2) {$y_3$};
-						
-			\node[draw, purple, rectangle] (r0) at (1,0) {$\fr_0$};
-			\node[draw, purple, rectangle] (r1) at (1,2) {$\fr_1$};
-			\node[draw, purple, rectangle] (r2) at (1,-2) {$\fr_2$};
-			
-			\draw[->] (f) to (r0);
-			\draw[->, purple] (x1) to [bend right = 30] (r0);
-			\draw[->, purple] (r0) to [bend right = 30] (x1);
-			\draw[->, purple] (y1) to [bend right = 30] (r0);
-			\draw[->, purple] (r0) to [bend right = 30] (y1);
-			\draw[->, purple] (r0) to (x2);
-			\draw[->, purple] (r0) to (y2);
-			\draw[->, purple] (x2) to [bend right = 30] (r1);
-			\draw[->, purple] (r1) to [bend right = 30] (x2);
-			\draw[->, purple] (y2) to [bend right = 30] (r2);
-			\draw[->, purple] (r2) to [bend right = 30] (y2);
-			\draw[->, purple] (r1) to (x1);
-			\draw[->, purple] (r2) to (y1);
-			\draw[->] (r2) to (y3);			
-		\end{tikzpicture}
-	\end{minipage}%
-	\hfill%
-	\begin{minipage}[c]{0.49\textwidth}
-	\centering
-		\begin{tikzpicture}
-		\node[draw, circle] (f) at (-1,0) {$f$};
-		\node[draw, teal, circle] (x1) at (0,1) {$x_1$};
-		\node[draw, teal, circle] (x2) at (2,1) {$x_2$};
-		\node[draw, teal, circle] (y1) at (0,-1) {$y_1$};
-		\node[draw, teal, circle] (y2) at (2,-1) {$y_2$};
-		\node[draw, circle] (y3) at (0,-2) {$y_3$};
-						
-		\node[draw, teal, rectangle] (r'0) at (1,0.5) {$r'_0$};
-		\node[draw, teal, rectangle] (r''0) at (1,-0.5) {$r''_0$};
-		\node[draw, teal, rectangle] (r1) at (1,2) {$r_1$};
-		\node[draw, teal, rectangle] (r2) at (1,-2) {$r_2$};
-			
-		\draw[->] (f) to (r'0);
-		\draw[->] (f) to (r''0);
-		\draw[->, teal] (x1) to [bend right = 30] (r'0);
-		\draw[->, teal] (r'0) to [bend right = 30] (x1);
-		\draw[->, teal] (y1) to [bend right = 30] (r''0);
-		\draw[->, teal] (r''0) to [bend right = 30] (y1);
-		\draw[->, teal] (r'0) to (x2);
-		\draw[->, teal] (r''0) to (x2);
-		\draw[->, teal] (r'0) to (y2);
-		\draw[->, teal] (r''0) to (y2);
-		\draw[->, teal] (x2) to [bend right = 30] (r1);
-		\draw[->, teal] (r1) to [bend right = 30] (x2);
-		\draw[->, teal] (y2) to [bend right = 30] (r2);
-		\draw[->, teal] (r2) to [bend right = 30] (y2);
-		\draw[->, teal] (r1) to (x1);
-		\draw[->, teal] (r2) to (y1);	
-		\draw[->] (r2) to (y3);		
-		\end{tikzpicture}
-	\end{minipage}	
-
-	\par\bigskip
-	\begin{minipage}[c]{0.49\textwidth}
-		\centering
-		\begin{tikzpicture}
-						
-			\node[draw, rectangle] (r0) at (0,0) {$r_0$};
-			\node[draw, rectangle] (r1) at (1,0) {$r_1$};
-			\node[draw, rectangle] (r2) at (2,0) {$r_2$};
-			
-			
-			\draw[->] (r0) to [bend right = 30] (r1);
-			\draw[->] (r1) to [bend right = 30] (r0);
-			\draw[->] (r1) to [bend right = 30] (r2);
-			\draw[->] (r2) to [bend right = 30] (r1);
-		\end{tikzpicture}
-
-	\end{minipage}%
-	\hfill%	
-	\begin{minipage}[c]{0.49\textwidth}
-		\centering
-		\begin{tikzpicture}
-			\node[draw, rectangle] (r0) at (0,0) {$r_0$};
-			\node[draw, rectangle] (r1) at (1,0) {$r_1$};
-			\node[draw, rectangle] (r2) at (2,0) {$r_2$};
-			
-			
-			\draw[->] (r0) to [bend right = 30] (r1);
-			\draw[->] (r1) to [bend right = 30] (r0);
-			\draw[->] (r1) to [bend right = 30] (r2);
-			\draw[->] (r2) to [bend right = 30] (r1);
-			
-		\end{tikzpicture}
-
-	\end{minipage}
-	\par\bigskip
-	
-	\caption{A non-trivial, irreducible RAF $\RAF$ in its different representations as a CRS $\Phi$ (\textbf{left})
-	and CRN $\Gamma(\Phi)$ (\textbf{right}): the systems of stoichiometric equations \textbf{(top)},  
-	the complete bipartite graphs $\queen'$ and $\king'$ as well as the subgraph $\princess(\RAF)$ 
-	and $\lord(\RAF)$ in purple and teal, respectively (\textbf{middle}), and the R-graphs  
-	$\RGraph(\queen')$ and $\RGraph(\king')$.}
-	\label{ex:CutVertex}
+  \centering
+  \begin{minipage}[c]{0.49\textwidth}
+    \centering	
+    \textbf{Catalytic Reaction Systems}
+  \end{minipage}%
+  \hfill%
+  \begin{minipage}[c]{0.49\textwidth}	
+    \centering
+    \textbf{Chemical Reaction Networks}
+  \end{minipage}
+  \begin{minipage}[c]{0.49\textwidth}	
+    \centering
+    \begin{equation}
+      \begin{split}
+	\fr_0&: f  \xrightarrow{x_1,y_1} x_2 + y_2 \\
+	\fr_1&: x_2 \xrightarrow{x2} x_1 \\
+	\fr_2&: y_2   \xrightarrow{y_2} y_1 + y_3
+      \end{split}
+    \end{equation}
+  \end{minipage}%
+  \hfill%
+  \begin{minipage}[c]{0.49\textwidth}
+    \centering
+    \begin{equation}
+      \begin{split}
+	r'_0&: f + (x_1) \longrightarrow x_2 + y_2 +(x_1)\\
+	r''_0&: f + (y_1) \longrightarrow x_2 + y_2 +(y_1)\\
+	r_1&: x_2 + (x_2)\longrightarrow x_1 + (x_2) \\
+	r_2&: y_2 + (y_2) \longrightarrow y_1 + y_3 + (y_2)
+      \end{split}
+    \end{equation}
+  \end{minipage}
+  \par\bigskip	
+  \begin{minipage}[c]{0.49\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[draw, circle] (f) at (-1,0) {$f$};
+      \node[draw, purple, circle] (x1) at (0,1) {$x_1$};
+      \node[draw, purple, circle] (x2) at (2,1) {$x_2$};
+      \node[draw, purple, circle] (y1) at (0,-1) {$y_1$};
+      \node[draw, purple, circle] (y2) at (2,-1) {$y_2$};
+      \node[draw, circle] (y3) at (0,-2) {$y_3$};
+      
+      \node[draw, purple, rectangle] (r0) at (1,0) {$\fr_0$};
+      \node[draw, purple, rectangle] (r1) at (1,2) {$\fr_1$};
+      \node[draw, purple, rectangle] (r2) at (1,-2) {$\fr_2$};
+      
+      \draw[->] (f) to (r0);
+      \draw[->, purple] (x1) to [bend right = 30] (r0);
+      \draw[->, purple] (r0) to [bend right = 30] (x1);
+      \draw[->, purple] (y1) to [bend right = 30] (r0);
+      \draw[->, purple] (r0) to [bend right = 30] (y1);
+      \draw[->, purple] (r0) to (x2);
+      \draw[->, purple] (r0) to (y2);
+      \draw[->, purple] (x2) to [bend right = 30] (r1);
+      \draw[->, purple] (r1) to [bend right = 30] (x2);
+      \draw[->, purple] (y2) to [bend right = 30] (r2);
+      \draw[->, purple] (r2) to [bend right = 30] (y2);
+      \draw[->, purple] (r1) to (x1);
+      \draw[->, purple] (r2) to (y1);
+      \draw[->] (r2) to (y3);			
+    \end{tikzpicture}
+  \end{minipage}%
+  \hfill%
+  \begin{minipage}[c]{0.49\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[draw, circle] (f) at (-1,0) {$f$};
+      \node[draw, teal, circle] (x1) at (0,1) {$x_1$};
+      \node[draw, teal, circle] (x2) at (2,1) {$x_2$};
+      \node[draw, teal, circle] (y1) at (0,-1) {$y_1$};
+      \node[draw, teal, circle] (y2) at (2,-1) {$y_2$};
+      \node[draw, circle] (y3) at (0,-2) {$y_3$};
+      
+      \node[draw, teal, rectangle] (r'0) at (1,0.5) {$r'_0$};
+      \node[draw, teal, rectangle] (r''0) at (1,-0.5) {$r''_0$};
+      \node[draw, teal, rectangle] (r1) at (1,2) {$r_1$};
+      \node[draw, teal, rectangle] (r2) at (1,-2) {$r_2$};
+      
+      \draw[->] (f) to (r'0);
+      \draw[->] (f) to (r''0);
+      \draw[->, teal] (x1) to [bend right = 30] (r'0);
+      \draw[->, teal] (r'0) to [bend right = 30] (x1);
+      \draw[->, teal] (y1) to [bend right = 30] (r''0);
+      \draw[->, teal] (r''0) to [bend right = 30] (y1);
+      \draw[->, teal] (r'0) to (x2);
+      \draw[->, teal] (r''0) to (x2);
+      \draw[->, teal] (r'0) to (y2);
+      \draw[->, teal] (r''0) to (y2);
+      \draw[->, teal] (x2) to [bend right = 30] (r1);
+      \draw[->, teal] (r1) to [bend right = 30] (x2);
+      \draw[->, teal] (y2) to [bend right = 30] (r2);
+      \draw[->, teal] (r2) to [bend right = 30] (y2);
+      \draw[->, teal] (r1) to (x1);
+      \draw[->, teal] (r2) to (y1);	
+      \draw[->] (r2) to (y3);		
+    \end{tikzpicture}
+  \end{minipage}	
+  
+  \par\bigskip
+  \begin{minipage}[c]{0.49\textwidth}
+    \centering
+    \begin{tikzpicture}
+      
+      \node[draw, rectangle] (r0) at (0,0) {$r_0$};
+      \node[draw, rectangle] (r1) at (1,0) {$r_1$};
+      \node[draw, rectangle] (r2) at (2,0) {$r_2$};
+      
+      
+      \draw[->] (r0) to [bend right = 30] (r1);
+      \draw[->] (r1) to [bend right = 30] (r0);
+      \draw[->] (r1) to [bend right = 30] (r2);
+      \draw[->] (r2) to [bend right = 30] (r1);
+    \end{tikzpicture}
+    
+  \end{minipage}%
+  \hfill%	
+  \begin{minipage}[c]{0.49\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[draw, rectangle] (r0) at (0,0) {$r_0$};
+      \node[draw, rectangle] (r1) at (1,0) {$r_1$};
+      \node[draw, rectangle] (r2) at (2,0) {$r_2$};
+      
+      
+      \draw[->] (r0) to [bend right = 30] (r1);
+      \draw[->] (r1) to [bend right = 30] (r0);
+      \draw[->] (r1) to [bend right = 30] (r2);
+      \draw[->] (r2) to [bend right = 30] (r1);
+      
+    \end{tikzpicture}
+    
+  \end{minipage}
+  \par\bigskip
+  
+  \caption{A non-trivial, irreducible RAF $\RAF$ in its different
+    representations as a CRS $\Phi$ (\textbf{left}) and CRN $\Gamma(\Phi)$
+    (\textbf{right}): the systems of stoichiometric equations
+    \textbf{(top)}, the complete bipartite graphs $\queen'$ and $\king'$ as
+    well as the subgraph $\princess(\RAF)$ and $\lord(\RAF)$ in purple and
+    teal, respectively (\textbf{middle}), and the R-graphs
+    $\RGraph(\queen')$ and $\RGraph(\king')$.}
+  \label{ex:CutVertex}
 \end{figure}
-Indeed, $\fr_0$ is a cut-vertex, since it has two catalysts, which are part of two different strong blocks 
-$\princess[\{x_1,x_2\} \cup \{\fr_1,\fr_2\}]$ and $\princess[\{y_1,y_2\} \cup \{\fr_1,\fr_3\}]$. The existence 
-of a cut-vertex in $\princess$, however, does not necessarily imply the existence of a cut-vertex in 
-$\lord$. In case an equivalence class contains only one representative, i.e., if $\fr_0$ were 
-co-catalyzed by $x_1$ and $y_1$, then $\princess(\RAF)\simeq \lord(\RAF)$. 
+Indeed, $\fr_0$ is a cut-vertex, since it has two catalysts, which are part
+of two different strong blocks $\princess[\{x_1,x_2\} \cup
+  \{\fr_1,\fr_2\}]$ and $\princess[\{y_1,y_2\} \cup \{\fr_1,\fr_3\}]$. The
+existence of a cut-vertex in $\princess$, however, does not necessarily
+imply the existence of a cut-vertex in $\lord$. In case an equivalence
+class contains only one representative, i.e., if $\fr_0$ were co-catalyzed
+by $x_1$ and $y_1$, then $\princess(\RAF)\simeq \lord(\RAF)$.
 \vspace{6pt}
 \begin{corollary}
-	Let $\RAF$ be a non-trivial, irreducible RAF. Then $\princess(\RAF)$ and $\lord(\RAF)$ are either a strong block 
-	or contain a cut-vertex.
+  Let $\RAF$ be a non-trivial, irreducible RAF. Then $\princess(\RAF)$ and
+  $\lord(\RAF)$ are either a strong block or contain a cut-vertex.
 \end{corollary}
 \vspace{6pt}
-The occurrence of cut-vertices is not restricted to reactions with two catalyzations, as emphasized in the example 
-of Fig.~\ref{ex:CutVertex2}.
+%
+The occurrence of cut-vertices is not restricted to reactions with two
+catalyzations, as emphasized in the example of Fig.~\ref{ex:CutVertex2}.
 \begin{figure}[bth]
-	\begin{minipage}[c]{0.49\textwidth}
-		\begin{equation}
-			\begin{split}
-				r_1&: f_1 + (x_1) \longrightarrow x_2 + (x_1)\\
-				r_2&: f_2 +(x_4) \longrightarrow x3 + (x_4)\\
-				r_3&: 2x_3 + (x_2) \longrightarrow  x4 + x1+ (x_2)
-			\end{split}
-		\end{equation}
-	\end{minipage}%
-	\hfill%
-	\begin{minipage}[c]{0.49\textwidth}
-		\begin{tikzpicture}
-			\node[draw, circle] (f1) at (0,0) {$f_1$};
-			\node[draw, circle] (f2) at (4,-2) {$f_2$};
-			\node[draw, circle] (x1) at (2,0) {$x_1$};			
-			\node[draw, circle] (x2) at (1,-1) {$x_2$};
-			\node[draw, circle] (x3) at (3,-1) {$x_3$};
-			\node[draw, circle] (x4) at (2,-2) {$x_4$};
-						
-			\node[draw, rectangle] (r1) at (1,0) {$\fr_1$};
-			\node[draw, rectangle] (r2) at (2,-1) {$\fr_2$};
-			\node[draw, rectangle] (r3) at (3,-2) {$\fr_3$};
-			
-			\draw[->] (f1) to (r1);
-			\draw[->] (f2) to (r3);
-			\draw[->] (x1) to [bend right = 30] (r1);
-			\draw[->] (r1) to [bend right = 30] (x1);
-			\draw[->] (r1) to (x2);			
-			\draw[->] (x2) to (r2);
-			\draw[->] (x3) to [bend right] (r2);
-			\draw[->] (r2) to [bend right] (x3);
-			\draw[->] (r2) to (x1);
-			\draw[->] (r2) to (x4);
-			\draw[->] (x4) to [bend right = 30] (r3);
-			\draw[->] (r3) to [bend right = 30] (x4);
-			\draw[->] (r3) to (x3);
-		\end{tikzpicture}
-	\end{minipage}
-	\caption{Example of a RAF with a cut-vertex that has a single catalyst \textit{(left)} with depiction of the corresponding 
-	König graph \textit{(right)}.}
-	\label{ex:CutVertex2}
+  \begin{minipage}[c]{0.49\textwidth}
+    \begin{equation}
+      \begin{split}
+	r_1&: f_1 + (x_1) \longrightarrow x_2 + (x_1)\\
+	r_2&: f_2 +(x_4) \longrightarrow x3 + (x_4)\\
+	r_3&: 2x_3 + (x_2) \longrightarrow  x4 + x1+ (x_2)
+      \end{split}
+    \end{equation}
+  \end{minipage}%
+  \hfill%
+  \begin{minipage}[c]{0.49\textwidth}
+    \begin{tikzpicture}
+      \node[draw, circle] (f1) at (0,0) {$f_1$};
+      \node[draw, circle] (f2) at (4,-2) {$f_2$};
+      \node[draw, circle] (x1) at (2,0) {$x_1$};			
+      \node[draw, circle] (x2) at (1,-1) {$x_2$};
+      \node[draw, circle] (x3) at (3,-1) {$x_3$};
+      \node[draw, circle] (x4) at (2,-2) {$x_4$};
+      
+      \node[draw, rectangle] (r1) at (1,0) {$\fr_1$};
+      \node[draw, rectangle] (r2) at (2,-1) {$\fr_2$};
+      \node[draw, rectangle] (r3) at (3,-2) {$\fr_3$};
+      
+      \draw[->] (f1) to (r1);
+      \draw[->] (f2) to (r3);
+      \draw[->] (x1) to [bend right = 30] (r1);
+      \draw[->] (r1) to [bend right = 30] (x1);
+      \draw[->] (r1) to (x2);			
+      \draw[->] (x2) to (r2);
+      \draw[->] (x3) to [bend right] (r2);
+      \draw[->] (r2) to [bend right] (x3);
+      \draw[->] (r2) to (x1);
+      \draw[->] (r2) to (x4);
+      \draw[->] (x4) to [bend right = 30] (r3);
+      \draw[->] (r3) to [bend right = 30] (x4);
+      \draw[->] (r3) to (x3);
+    \end{tikzpicture}
+  \end{minipage}
+  \caption{Example of a RAF with a cut-vertex that has a single catalyst
+    \textit{(left)} with depiction of the corresponding König graph
+    \textit{(right)}.}
+  \label{ex:CutVertex2}
 \end{figure}
-As in Fig.~\ref{ex:CutVertex}, both strong blocks, i.e., $\princess[\{x_1,x_2\}\cup \{\fr_1,\fr_2\}]$ and $\princess[\{x_3,x_4\}\cup \{\fr_2,\fr_3\}]$ 
-share a common cut-vertex that is a reaction vertex. Indeed, a species vertex cannot be a cut-vertex.
+As in Fig.~\ref{ex:CutVertex}, both strong blocks, i.e.,
+$\princess[\{x_1,x_2\}\cup \{\fr_1,\fr_2\}]$ and $\princess[\{x_3,x_4\}\cup
+  \{\fr_2,\fr_3\}]$ share a common cut-vertex that is a reaction
+vertex. Indeed, a species vertex cannot be a cut-vertex.
 \vspace{6pt}
 \begin{lemma}[Proof: SI]\label{lem:CutVertexReac}
-	Let $\RAF$ be a non-trivial, irreducible RAF. If $\princess(\RAF)$ is not a strong block, then every 
-	cut-vertex is an F-reaction. Accordingly, if $\lord(\RAF)$ is not a strong block, then every 
-	cut-vertex is a reaction.
+  Let $\RAF$ be a non-trivial, irreducible RAF. If $\princess(\RAF)$ is not
+  a strong block, then every cut-vertex is an F-reaction. Accordingly, if
+  $\lord(\RAF)$ is not a strong block, then every cut-vertex is a reaction.
 \end{lemma}
 \vspace{6pt}
 
-Cut-vertices in $\princess(\RAF)$ and $\lord(\RAF)$ are not unrelated from each other. In 
-particular, only equivalence classes of cut-vertices in $\lord(\RAF)$ can be cut-vertices
-in $\princess(\RAF)$. In addition, a reaction vertex can only be a cut-vertex in $\lord(\RAF)$
-if its equivalence class is trivial.
+Cut-vertices in $\princess(\RAF)$ and $\lord(\RAF)$ are not unrelated from
+each other. In particular, only equivalence classes of cut-vertices in
+$\lord(\RAF)$ can be cut-vertices in $\princess(\RAF)$. In addition, a
+reaction vertex can only be a cut-vertex in $\lord(\RAF)$ if its
+equivalence class is trivial.
 \vspace{6pt}
 \begin{lemma}\label{lem:CutVertPP}
-	Let $\RAF$ be a non-trivial, irreducible RAF. If $r \in \varphi^{-1}(\RAF)$ is a cut-vertex
-	in $\lord(\RAF)$ then $|\fr|=1$ and $\fr$ is a cut-vertex in $\princess(\RAF)$.
+  Let $\RAF$ be a non-trivial, irreducible RAF. If $r \in
+  \varphi^{-1}(\RAF)$ is a cut-vertex in $\lord(\RAF)$ then $|\fr|=1$ and
+  $\fr$ is a cut-vertex in $\princess(\RAF)$.
 \end{lemma}
 
 
-%Not all reaction vertices are cut-vertices. The following Lemma states a necessary condition for a reaction 
-%to be a cut-vertex.
-%\vspace{6pt}
-%\begin{lemma}
-%	Let $\RAF$ be a non-trivial, irreducible RAF. If $\fr\in \RAF$ is a cut-vertex in $\princess(\RAF)$, then $\fr$ 
-%	has at least two incoming and two outgoing edges. 
-%\end{lemma}
-%\begin{proof}
-%	We denote the two blocks of $\princess(\RAF)$ separated by $\fr$ by $\princess_1$ and $\princess_2$. Assume 
-%	now that $\fr$ has only one incoming edge. Then there can only be one catalyst $c_\fr$, which is also the 
-%	only net reactant. Assume w.l.o.g. that $c_\fr \in V(\princess_1)$. Then, however, there is no path from any 
-%	$u\in V(\princess_2)$ to any $v\in V(\princess_1)$. Thus, $\princess$ is not strongly connected, and thereby $\RAF$ 
-%	is not minimal. Assume now that $\fr$ has only one outgoing edge. Then it has only one catalyst $c_\fr$ again, which is the net 
-%	product of $\fr$. Assume again w.l.o.g. that $c_\fr\in V(\princess_2)$. Then, there is again no path from any 
-%	$u\in V(\princess_2)$ to any $v\in V(\princess_1)$ which implies that $\princess(\RAF)$ was not strongly connected 
-%	and thus $\RAF$ is not a non-trivial, irreducible RAF. 
-%\end{proof}
-%\vspace{6pt}
+\TODO{PFS to here} 
 
 \subsubsection{Strong Blocks}
 
