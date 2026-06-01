@@ -1957,29 +1957,40 @@ could be obtained, and both are autocatalytic cores.
 
 \section{Discussion}
 
-\textsc{Reflexively autocatalytic sets (RAFs)} \cite{kauffman_autocatalytic_1986, steel_emergence_2000} 
-and \emph{stoichiometric autocatalysis} \cite{blokhuis_Universal_2020} represent two different 
-interpretations of the concept of an explicit autocatalytic reaction, which was first discussed
-in 1890 by Wilhelm Ostwald \cite{Ostwald:90}. While RAFs are defined in catalytic
-reaction systems (CRS), in which each reaction is explicitly catalyzed, \emph{stoichiometric autocatalysis}
-developed, in accordance with the IUPAC definition of an autocatalytic reaction \cite{gold_iupac_2025}, 
-from chemical reaction networks (CRN), where reactions can but don't have to be catalyzed. Although 
-inherently distinct, it was recently demonstrated that every \textsc{RAF} that is not a \textsc{CAF} is 
-nevertheless \emph{stoichiometrically autocatalytic} \cite{bridging_golnik_2026}. Here, we continued 
-examining this relationship in greater detail, focusing in particular on the interplay between the minimal 
-structures arising in both frameworks.
+\TODO{this seems a bit redundant with the intro. we should streamline this
+  ...} 
 
-The principal obstacle to a direct comparison between the two frameworks lies in their differing 
-interpretations of chemical reactions. In CRNs, reactions are defined via their associated 
-stoichiometric equations \cite{muller_what_2022}. Therefore, each equation reflects a 
-different chemical reaction, which we call a \emph{reaction}. In particular, reactions that share the 
-same net stoichiometries but engage a different set of catalysts or involve species that appear 
-on both sides of the reaction with identical stoichiometry, albeit being considered catalysts, 
-are unique mathematical objects. In contrast, reactions in CRS \cite{lohn_evolving_1998}, 
-referred to here as \emph{F-reactions}, treat reactions that differ solely in their catalysts 
-as identical. Accordingly, an F-reaction can be viewed as an equivalence class of reactions 
-that share the same non-catalyst reactants (F-reactants) and the same non-catalyst products 
-(F-products).
+\textsc{Reflexively autocatalytic sets (RAFs)}
+\cite{kauffman_autocatalytic_1986, steel_emergence_2000} and
+\emph{stoichiometric autocatalysis} \cite{blokhuis_Universal_2020}
+represent two different interpretations of the concept of an explicit
+autocatalytic reaction, which was first discussed in 1890 by Wilhelm
+Ostwald \cite{Ostwald:90}. While RAFs are defined in catalytic reaction
+systems (CRS), in which each reaction is explicitly catalyzed,
+\emph{stoichiometric autocatalysis} developed, in accordance with the IUPAC
+definition of an autocatalytic reaction \cite{gold_iupac_2025}, from
+chemical reaction networks (CRN), where reactions can but don't have to be
+catalyzed. Although inherently distinct, it was recently demonstrated that
+every \textsc{RAF} that is not a \textsc{CAF} is nevertheless
+\emph{stoichiometrically autocatalytic} \cite{bridging_golnik_2026}. Here,
+we continued examining this relationship in greater detail, focusing in
+particular on the interplay between the minimal structures arising in both
+frameworks.
+
+The principal obstacle to a direct comparison between the two frameworks
+lies in their divergent interpretations of chemical reactions. In CRNs,
+reactions are defined via their associated stoichiometric equations
+\cite{muller_what_2022}. Therefore, each equation reflects a different
+chemical reaction, which we call a \emph{reaction}. In particular,
+reactions that share the same net stoichiometries but engage a different
+set of catalysts or involve species that appear on both sides of the
+reaction with identical stoichiometry, albeit being considered catalysts,
+are unique mathematical objects. In contrast, reactions in CRS
+\cite{lohn_evolving_1998}, referred to here as \emph{F-reactions}, treat
+reactions that differ solely in their catalysts as identical. Accordingly,
+an F-reaction can be viewed as an equivalence class of reactions that share
+the same non-catalyst reactants (F-reactants) and the same non-catalyst
+products (F-products).
 
 Building on this observation, we defined an equivalence relation, denoted by $\sim$, on the set 
 of reactions based exclusively on their F-reactants and F-products. Under this relation, 
