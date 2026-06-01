@@ -235,12 +235,18 @@
 
 \subsection{A Partial Order on RAFs}
 
-The easiest way to define such a partial order is by generating the set $\closure{R'}{X'}$ iteratively. Let therefore:
+The easiest way to define such a partial order is by generating the set
+$\closure{R'}{X'}$ iteratively. Let therefore:
 \begin{equation}
-	c_{\RAF}: 2^X \rightarrow 2^X, c_{\RAF}(X') \coloneqq X' \cup \{\fproducts(\fr) \subseteq X' \ \vert \ \feducts(\fr)\subseteq X'\}. 
+  c_{\RAF}: 2^X \rightarrow 2^X, c_{\RAF}(X') \coloneqq X' \cup \{\fproducts(\fr) \subseteq X' \ \vert \ \feducts(\fr)\subseteq X'\}. 
 \end{equation}
-We may drop the subscript $\RAF$ whenever appropriate. In particular, we write $c(X')$ instead 
-of $c_{\RAF}(X')$ as well as $\closure{}{X'}$ instead of $\closure{\RAF}{X'}$.
+We may drop the subscript $\RAF$ whenever appropriate. In particular, we
+write $c(X')$ instead of $c_{\RAF}(X')$ as well as $\closure{}{X'}$ instead
+of $\closure{\RAF}{X'}$. \PFS{By construction, $c:2^X \rightarrow 2^X$ is a
+  generalized closure operator, i.e., it satisfies
+  \begin{itemize}
+  \item $c(\emptyset)=\emptyset$,
+  \end{itemize}
 
 It has been shown earlier that the repetitive iteration of $c$ converges to the closure 
 in a finite number of steps for finite-sized species sets \cite{Stadler2018, bridging_golnik_2026}. 
