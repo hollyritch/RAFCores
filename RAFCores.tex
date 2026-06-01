@@ -2041,49 +2041,72 @@ structures arising in both frameworks.  \PFS{To this end we started from
   not CAFs.} Lemma~\ref{lem:trivRAFCAF} show that irreducible RAFs are CAFs
 if and only if they are trivial, i.e., consisting of a single reaction.
 
+The minimality of non-trivial, irreducible RAFs
+%% is a particularly strong property, as it gives rise to several 
+%%noteworthy structural consequences that are also characteristic of \emph{stoichiometrically autocatalytic} CRNs. 
+%%In particular, it imposes
+implies strong connectivity on both the R-graph of the CRS and the
+underlying CRN. 
+
+Since strong connectivity is a also prerequisite for autocatalytic cores.
+Their bipartite digraph representation in CRNs with explicit catalysis are
+\emph{fluffles}, and thus in particular strong blocks
+\cite{golnik_autocatalytic_2026}. The bipartite K\"onig graph of
+non-trivial, irreducible RAFs, reflecting the underlying CRN without food
+and waste molecules, $\lord(\RAF)$, \PFS{is not only strongly connected but
+  composed of strong blocks that are separated by cut vertices that are
+  always reaction vertices and never metabolite vertices
+  (Lemma~\ref{lem:CutVertexReac}).}
+%See also Fig.~\ref{ex:CutVertex} for an example. 
+
+Strong blocks are, by definition, well-formed. In addition, some of their
+cut vertices, so-called \emph{pure reactions}, which have only F-catalysts
+as reactants inside the corresponding block $B$, can act as import
+reactions as they induce a non-negative column in the stoichiometric
+submatrix $\SM(B)$. In theory, this would allow for an infinitely high
+in-flow such that all species inside the block are net-produced. Indeed,
+$\SM(B)$ is semi-positive for any strong block $B$, such that each block is
+\emph{stoichiometrically autocatalytic} (Thm.~\ref{Thm:StrBlockCore}).
+
+The structures responsible for each strong block being
+\emph{stoichiometrically autocatalytic} are \emph{Metzler circuits};
+elementary circuits that allow for a column-reordering of their associated
+stoichiometric submatrix such that the resulting Matrix is a Metzler matrix
+(Lemma~\ref{lem:MetzCircuit}). Such an ordering can be obtained by
+arranging the columns according to the direction of the circuit. In the
+proof of Lemma~\ref{lem:MetzCircuit}, we provided a construction of a
+Metzler circuit that always contains a pure reaction.
+
+The existence of a Metzler circuit with a pure reaction has already been
+shown to exist for any RAF that is itself not a CAF
+\cite{bridging_golnik_2026}. However, in the proof of Thm.~3.1 of
+\cite{bridging_golnik_2026}, the construction follows the F-catalysts as
+reactants for each reaction, and thereby not necessarily the reactant with
+the lowest generation number. Non-trivial minimal RAFs exist, where this
+construction would not yield a \emph{stoichiometrically autocatalytic}
+Metzler circuit for each strong block $B$. Such an example is depicted in
+Fig.~\ref{ex:CutVertex2}. Indeed, the block $(\{x_1,x_2\}, \{r_1,r_2\}$
+does not contain an elementary circuit, where each species vertex is the
+F-catalyst of its appurtenant reaction. Nevertheless, $C\coloneqq
+(x_1,r_1,x_2,r_2,x_1)$ is still a Metzler circuit with a pure reaction
+($r_1$), and thereby \emph{stoichiometrically autocatalytic}
+(Lemma.~\ref{lem:MetzCircAut}). In addition, $(x_3,r_2,x_4,r_3, x_3)$
+satisfies the construction of Thm.~3.1 of \cite{bridging_golnik_2026}.
+
+The example depicted in Fig.~\ref{fig:AutCircNotCore} clearly illustrates,
+however, that these \emph{stoichiometrically autocatalytic} Metzler
+circuits are not necessarily autocatalytic cores. On the one hand,
+non-trivial stoichiometries can give rise to strictly smaller cores that
+can be contained inside the constructed circuits. An example of this case
+is shown in Sec.~\ref{subsec:OneRAFManyCores}. In turn, \PFS{the same} core
+can be contained in \PFS{more than one} irreducible RAFs (see
+Sec.~\ref{subsec:ManyRAFsOneCore}) or the construction in
+Lemma~\ref{lem:MetzCircuit} can yield two equivalent autocatalytic cores
+(see Sec.~\ref{subsec:IrrEquivCores}). We might also find autocatalytic
+reactions in trivial and non-trivial irreducible RAFs (see Eq.~4.18,
+\cite{bridging_golnik_2026} and Fig.~\ref{Fig:ExplAutocatReac}).
+
 \TODO{**** PFS to here ****}
-
-
-
-The minimality of non-trivial, irreducible RAFs is a particularly strong property, as it gives rise to several 
-noteworthy structural consequences that are also characteristic of \emph{stoichiometrically autocatalytic} CRNs. 
-In particular, it imposes strong connectivity on both the R-graph of the CRS and the underlying CRN. Since strong 
-connectivity is a prerequisite for autocatalytic cores, it is not surprising that they reside within these subgraphs. 
-In fact, their bipartite digraph representation in CRNs with explicit catalysis are\emph{fluffles}, and thus themselves 
-strong blocks\cite{golnik_autocatalytic_2026}. The bipartite K\"onig graph of non-trivial, irreducible RAFs, reflecting 
-the underlying CRN without food and waste molecules, $\lord(\RAF)$, is not only strongly connected but composed 
-of strongly connected blocks that are separated by reaction vertices, but not by metabolite vertices 
-(Lemma~\ref{lem:CutVertexReac}). See also Fig.~\ref{ex:CutVertex} for an example. 
-
-Strong blocks are, by definition, well-formed. In addition, some of their cut vertices, so-called \emph{pure reactions}, 
-which have only F-catalysts as reactants inside the corresponding block $B$, can act as import reactions as they 
-induce a non-negative column in the stoichiometric submatrix $\SM(B)$. In theory, this would allow for an infinitely 
-high inflow such that all species inside the block are net-produced. Indeed, $\SM(B)$ is semi-positive for any strong 
-block $B$, such that each block is \emph{stoichiometrically autocatalytic} (Thm.~\ref{Thm:StrBlockCore}). 
-
-The structures responsible for each strong block being \emph{stoichiometrically autocatalytic} are \emph{Metzler circuits};  
-elementary circuits that allow for a column-reordering of their associated stoichiometric submatrix such that the resulting Matrix 
-is a Metzler matrix (Lemma~\ref{lem:MetzCircuit}). Such an ordering can be obtained by arranging the columns 
-according to the direction of the circuit. In the proof of Lemma~\ref{lem:MetzCircuit}, we provided a construction 
-of a Metzler circuit that always contains a pure reaction. 
-
-The existence of a Metzler circuit with a pure reaction has already been shown to exist for any RAF that is itself not 
-a CAF \cite{bridging_golnik_2026}. However, in the proof of Thm.~3.1 of \cite{bridging_golnik_2026}, the construction 
-follows the F-catalysts as reactants for each reaction, and thereby not necessarily the reactant with the lowest generation 
-number. Non-trivial minimal RAFs exist, where this construction would not yield a \emph{stoichiometrically autocatalytic} Metzler 
-circuit for each strong block $B$. Such an example is depicted in Fig.~\ref{ex:CutVertex2}. Indeed, the block 
-$(\{x_1,x_2\}, \{r_1,r_2\}$ does not contain an elementary circuit, where each species vertex is the F-catalyst of its 
-appurtenant reaction. Nevertheless, $C\coloneqq (x_1,r_1,x_2,r_2,x_1)$ is still a Metzler circuit with a pure reaction ($r_1$), 
-and thereby \emph{stoichiometrically autocatalytic} (Lemma.~\ref{lem:MetzCircAut}). In addition, $(x_3,r_2,x_4,r_3, x_3)$ satisfies
-the construction of Thm.~3.1 of \cite{bridging_golnik_2026}.
-
-Unfortunately, the example depicted in Fig.~\ref{fig:AutCircNotCore} clearly illustrates that these \emph{stoichiometrically autocatalytic} 
-Metzler circuits are not necessarily autocatalytic cores. On the one hand, non-trivial stoichiometries can give rise to strictly 
-smaller cores that can be contained inside the constructed circuits. An example of this case is shown in 
-Sec.~\ref{subsec:OneRAFManyCores}. In turn, one core can be contained in different irreducible RAFs 
-(see Sec.~\ref{subsec:ManyRAFsOneCore}) or the construction in Lemma~\ref{lem:MetzCircuit} can yield two equivalent 
-autocatalytic cores (see Sec.~\ref{subsec:IrrEquivCores}). We might also find autocatalytic reactions in trivial and non-trivial 
-irreducible RAFs (see Eq.~4.18, \cite{bridging_golnik_2026} and Fig.~\ref{Fig:ExplAutocatReac}).
 
 \section{Concluding Remarks}
 
