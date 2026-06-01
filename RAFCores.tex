@@ -541,6 +541,7 @@ graph of a CRS is given as $\queen(\Phi=(X,\FR, \cat))\coloneqq (X \cup
 \end{equation}
 
 \subsection{The Relationship between CRN and CRS}
+\label{ssect:CRNCRS}
 
 In fact, the $\sim$-equivalence relation induces a convenient connection
 between the bipartite graph of $\queen(\Phi)$ and the corresponding
@@ -1953,64 +1954,96 @@ arbitrarieness as both elementary circuits
 $C_1=(x_1,r_1,x_2,r_2,x_3,r_3,x_1)$ and $C_2=(x_1,r_1,x_2,r_2,x_4,r_4,x_1)$
 could be obtained, and both are autocatalytic cores.
 
-\TODO{PFS to here} 
-
 \section{Discussion}
 
-\TODO{this seems a bit redundant with the intro. we should streamline this
-  ...} 
+\PFS{\textsc{Reflexively autocatalytic sets (RAFs)} and
+  \emph{stoichiometric autocatalysis} are grounded in different
+  formalizations of chemical reaction networks that lead to inequivalent
+  concepts of reactions, distinguished by the manner in which catalysis is
+  handled. While in the CRNs underlying the theory of \emph{stoichiometric
+  autocatalysis} catalysts are not formally distinguished from other
+  reactants and products, the CRS framework focuses on net F-reactions
+  considering catalysts as external to the F-reactions. As a consequence,
+  F-reactions are equivalence classes of (CRN) reactions with respect to
+  the equivalence relation $\sim$ describing reactions that share the same
+  non-catalyst reactants (F-reactants), the same non-catalyst products
+  (F-products) and the same net stoichiometry, see
+  Sect.~\ref{ssect:CRNCRS}.  This observation also implies that graph
+  representations of reaction systems in CRS are quotient graphs of
+  corresponding constructions for CRN. Most importantly, the directed
+  bipartite K\"onig representation of a CRS $\queen(\Phi)$ is the quotient
+  graph of the K\"onig graph associated with its underlying CRN,
+  $\king(\Gamma(\Phi))$. The equation
+  \begin{equation*}
+    \queen(\Phi) = \king(\Gamma(\Phi))/\sim
+  \end{equation*}
+  establishing the formal mathematical correspondence between CRSs and CRNs
+  that we then leveraged to analyse autocatalytic substructures.}
+  
+%% \textsc{Reflexively autocatalytic sets (RAFs)}
+%% \cite{kauffman_autocatalytic_1986, steel_emergence_2000} and
+%% \emph{stoichiometric autocatalysis} \cite{blokhuis_Universal_2020}
+%% represent two different interpretations of the concept of an explicit
+%% autocatalytic reaction, which was first discussed in 1890 by Wilhelm
+%% Ostwald \cite{Ostwald:90}. While RAFs are defined in catalytic reaction
+%% systems (CRS), in which each reaction is explicitly catalyzed,
+%% \emph{stoichiometric autocatalysis} developed, in accordance with the IUPAC
+%% definition of an autocatalytic reaction \cite{gold_iupac_2025}, from
+%% chemical reaction networks (CRN), where reactions can but don't have to be
+%% catalyzed.
 
-\textsc{Reflexively autocatalytic sets (RAFs)}
-\cite{kauffman_autocatalytic_1986, steel_emergence_2000} and
-\emph{stoichiometric autocatalysis} \cite{blokhuis_Universal_2020}
-represent two different interpretations of the concept of an explicit
-autocatalytic reaction, which was first discussed in 1890 by Wilhelm
-Ostwald \cite{Ostwald:90}. While RAFs are defined in catalytic reaction
-systems (CRS), in which each reaction is explicitly catalyzed,
-\emph{stoichiometric autocatalysis} developed, in accordance with the IUPAC
-definition of an autocatalytic reaction \cite{gold_iupac_2025}, from
-chemical reaction networks (CRN), where reactions can but don't have to be
-catalyzed. Although inherently distinct, it was recently demonstrated that
+
+Although inherently distinct, it was recently demonstrated that
 every \textsc{RAF} that is not a \textsc{CAF} is nevertheless
 \emph{stoichiometrically autocatalytic} \cite{bridging_golnik_2026}. Here,
 we continued examining this relationship in greater detail, focusing in
 particular on the interplay between the minimal structures arising in both
 frameworks.
 
-The principal obstacle to a direct comparison between the two frameworks
-lies in their divergent interpretations of chemical reactions. In CRNs,
-reactions are defined via their associated stoichiometric equations
-\cite{muller_what_2022}. Therefore, each equation reflects a different
-chemical reaction, which we call a \emph{reaction}. In particular,
-reactions that share the same net stoichiometries but engage a different
-set of catalysts or involve species that appear on both sides of the
-reaction with identical stoichiometry, albeit being considered catalysts,
-are unique mathematical objects. In contrast, reactions in CRS
-\cite{lohn_evolving_1998}, referred to here as \emph{F-reactions}, treat
-reactions that differ solely in their catalysts as identical. Accordingly,
-an F-reaction can be viewed as an equivalence class of reactions that share
-the same non-catalyst reactants (F-reactants) and the same non-catalyst
-products (F-products).
+%% The principal obstacle to a direct comparison between the two frameworks
+%% lies in their divergent interpretations of chemical reactions. In CRNs,
+%% reactions are defined via their associated stoichiometric equations
+%% \cite{muller_what_2022}. Therefore, each equation reflects a different
+%% chemical reaction, which we call a \emph{reaction}. In particular,
+%% reactions that share the same net stoichiometries but engage a different
+%% set of catalysts or involve species that appear on both sides of the
+%% reaction with identical stoichiometry, albeit being considered catalysts,
+%% are unique mathematical objects. In contrast, reactions in CRS
+%% \cite{lohn_evolving_1998}, referred to here as \emph{F-reactions}, treat
+%% reactions that differ solely in their catalysts as identical. Accordingly,
+%% an F-reaction can be viewed as an equivalence class of reactions that share
+%% the same non-catalyst reactants (F-reactants) and the same non-catalyst
+%% products (F-products).
 
-Building on this observation, we defined an equivalence relation, denoted by $\sim$, on the set 
-of reactions based exclusively on their F-reactants and F-products. Under this relation, 
-reactions are mapped to the set of F-reactions and can be identified as representatives of 
-their corresponding $\sim$-equivalence classes, that is, their associated F-reaction images. 
-As a convenient consequence, we obtained the directed bipartite K\"onig representation of a CRS 
-$\queen(\Phi)$, as the quotient graph of the K\"onig graph associated with its underlying CRN, 
-$\king(\Gamma(\Phi))$, thereby establishing a formal mathematical correspondence between 
-CRSs and CRNs. This result was not only essential for the results presented in this 
-contribution, but also provides a foundation for future research aimed at further exploring the 
-relationship between these two interpretations of chemical reaction systems. Moreover, it 
-facilitates the transfer of results obtained in one framework to the other, and vice versa.
+%% Building on this observation, we defined an equivalence relation, denoted
+%% by $\sim$, on the set of reactions based exclusively on their F-reactants
+%% and F-products. Under this relation, reactions are mapped to the set of
+%% F-reactions and can be identified as representatives of their corresponding
+%% $\sim$-equivalence classes, that is, their associated F-reaction images.
+%% As a convenient consequence, we obtained the directed bipartite K\"onig
+%% representation of a CRS $\queen(\Phi)$, as the quotient graph of the
+%% K\"onig graph associated with its underlying CRN, $\king(\Gamma(\Phi))$,
+%% thereby establishing a formal mathematical correspondence between CRSs and
+%% CRNs. This result was not only essential for the results presented in this
+%% contribution, but also provides a foundation for future research aimed at
+%% further exploring the relationship between these two interpretations of
+%% chemical reaction systems. Moreover, it facilitates the transfer of results
+%% obtained in one framework to the other, and vice versa.
 
-Setting out from the result of Thm.~3.1 in \cite{bridging_golnik_2026}, this contribution primarily focused 
-on identifying the minimal structures within RAFs that exhibit \emph{stoichiometric autocatalysis}. 
-Since any RAF that is itself not a CAF is \emph{stoichiometrically autocatalytic}, RAFs that contain no proper 
-sub-RAFs, denoted as \emph{irreducible RAFs} in the literature \cite{steel_minimal_2013}, 
-are \emph{stoichiometrically autocatalytic} as well, as long as they are not CAFs. In fact, irreducible 
-RAFs are CAFs if and only if they are trivial (Lemma~\ref{lem:trivRAFCAF}), thus composed of a 
-single reaction, which justified our focus on non-trivial, irreducible RAFs. 
+In the present contribution we examine this relationship in greater
+detail, focusing in particular on the interplay between the minimal
+structures arising in both frameworks.  \PFS{To this end we started from
+  Thm.~3.1 in \cite{bridging_golnik_2026}, which asserts that every
+  \textsc{RAF} that is not a \textsc{CAF} is \emph{stoichiometrically
+  autocatalytic}. As an immediate consequence, \emph{irreducible RAFs}
+  \cite{steel_minimal_2013}, i.e., \textsc{RAF}s that do not contain proper
+  sub-RAFs, are \emph{stoichiometrically autocatalytic} as long as they are
+  not CAFs.} Lemma~\ref{lem:trivRAFCAF} show that irreducible RAFs are CAFs
+if and only if they are trivial, i.e., consisting of a single reaction.
+
+\TODO{**** PFS to here ****}
+
+
 
 The minimality of non-trivial, irreducible RAFs is a particularly strong property, as it gives rise to several 
 noteworthy structural consequences that are also characteristic of \emph{stoichiometrically autocatalytic} CRNs. 
