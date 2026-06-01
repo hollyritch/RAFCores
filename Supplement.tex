@@ -271,7 +271,7 @@ $\lim_{k\rightarrow \infty} \cl^k(\food) = \closure{}{\food}$. With the uniquene
 corollary follows.
 
 \vspace{6pt}
-\begin{corollary}\label{cor:seqLimit}
+\begin{corollary}{cor:seqLimit}
 	Let $(X,\FR,\cat)$ be a CRS network of finite size with $\food\subseteq X, \RAF\subseteq \FR$. 
 	Then $\closure{}{X'}$ is the unique limit of the sequence
 	\begin{equation}
@@ -304,7 +304,7 @@ that extract for each species and reaction, the iteration of their first appeara
 In particular, a species $x_1$ precedes a species $x_2: x_1\preceq x_2$ if and only if $\sgen(x_1) \leq \sgen(x_2)$ 
 and a reaction $\fr_1$ precedes a reaction $\fr_2: \fr_1\preceq \fr_2$ if and only if $\rgen(\fr_1) \leq \rgen(\fr_2)$. We refer 
 to the values of $\sgen$ and $\rgen$ as the generation of an F-reaction or metabolite. Since for some$\fr\in \FR$ all $r\in \fr$ 
-share the same F-reactants, we might also define for $C-reactions$:
+share the same F-reactants, we might also define for $reactions$:
 \begin{equation}
 	\delta: \varphi^{-1}(\RAF)\rightarrow \mathbb{N}, \delta(r)\coloneqq \rgen(\fr)
 \end{equation}
@@ -318,11 +318,11 @@ $\queen'\coloneqq \queen(\closure{\RAF}{\food}, \RAF, \cat')$.
 \subsection{A partial Order on RAFs}
 
 \vspace{6pt}
-\begin{lemma}\label{M-lem:RAFPath}
+\begin{mainitem}{Lemma}{M-lem:RAFPath}
 	Let $(X, \FR, \cat)$ be a CRS with $\food \subseteq X$ and a RAF $\RAF\subseteq \FR$. 
 	For any $x\in \closure{}{\food}\setminus \food$ there is an $f\in \food$ such that $P=(f, \ldots, x)$ 
 	is a path in $\queen'$.
-\end{lemma}
+\end{mainitem}
 \begin{proof}
 	Let $x\in \closure{}{\food}\setminus \food$. By Corollary~\ref{cor:seqLimit} we have for some $n\in\mathbb{N}$ that
 	$\closure{}{\food} = c^n(\food)$. Thus, there is the sequence $(c^{k-1}(\food), d^k(\food))_{k\in\mathbb{N}}$
@@ -337,9 +337,9 @@ $\queen'\coloneqq \queen(\closure{\RAF}{\food}, \RAF, \cat')$.
 
 \subsubsection{Strong-connectivity}
 
-\begin{lemma}\label{lem:KSC}
+\begin{mainitem}{Lemma}{M-lem:KSC}
 	Let $\RAF$ be a non-trivial, minimal RAF. Then $\RGraph(\king')$ is strongly connected.
-\end{lemma}
+\end{mainitem}
 \begin{proof}
 	Lemma~\ref{M-lem:RGQSC} has shown that $\RGraph(\queen')$ is strongly connected for a non-trivial 
 	minimal RAF. Assume now that $\RGraph(\king')$ is not strongly connected, which implies the existence 
@@ -356,11 +356,11 @@ $\queen'\coloneqq \queen(\closure{\RAF}{\food}, \RAF, \cat')$.
 \subsubsection{Cut vertices}
 
 \vspace{6pt}
-\begin{lemma}\label{lem:CutVertexReac}
+\begin{mainitem}{Lemma}{M-lem:CutVertexReac}
 	Let $\RAF$ be a non-trivial, minimal RAF. If $\princess(\RAF)$ is not a strong block, then every 
 	cut-vertex is an F-reaction. Accordingly, if $\lord(\RAF)$ is not a strong block, then every 
 	cut-vertex is a reaction.
-\end{lemma}
+\end{mainitem}
 \begin{proof}
 	Assume there is a cut-vertex $w\in X(\princess)$. Then $\princess[V(\princess)\setminus \{w\}]$ is composed of at least two connected
 	components $\princess_1,\princess_2$. Then for any two vertices $v\in \princess_1$ and $u\in \princess_2$ we have 
@@ -376,10 +376,10 @@ $\queen'\coloneqq \queen(\closure{\RAF}{\food}, \RAF, \cat')$.
 \end{proof}	
 \vspace{6pt}
 
-\begin{lemma}\label{lem:CutVertPP}
+\begin{mainitem}{Lemma}{M-lem:CutVertPP}
 	Let $\RAF$ be a non-trivial, minimal RAF. If $r \in \varphi^{-1}(\RAF)$ is a cut-vertex
 	in $\lord(\RAF)$ then $|\fr|=1$ and $\fr$ is a cut-vertex in $\princess(\RAF)$.
-\end{lemma}
+\end{mainitem}
 \begin{proof}
 	Assume $|\fr|>1$, then there is $r'\in \fr, r\neq r'$. Since $r$ is a cut-vertex, it separates 
 	$\lord(\RAF)$ in two connected components $\lord_1, \lord_2$, which both contain
@@ -402,9 +402,9 @@ $\queen'\coloneqq \queen(\closure{\RAF}{\food}, \RAF, \cat')$.
 The following statement guarantees the existence of F-reactions in a strong block that have only F-catalysts as 
 reactants inside the block. We will refer to them as \emph{pure F-reactions}.
 \vspace{6pt}
-\begin{lemma}\label{lem:cutVertexPureCat}
+\begin{mainitem}{Lemma}{M-lem:cutVertexPureCat}
 	For a non-trivial, minimal RAF $\RAF$, any strong block $\block$ of $\princess(\RAF)$ contains a pure F-reaction.
-\end{lemma}
+\end{mainitem}
 \begin{proof}
 	We start with strong blocks $\block$ that contain an F-reaction $\fr: \rgen(\fr)=1$. The F-reactants of any of these 
 	F-reactions are subsets of $\food$. Since $\princess[\block]$ is strongly-connected, it has at least one F-catalyst that is 
@@ -428,39 +428,7 @@ reactants inside the block. We will refer to them as \emph{pure F-reactions}.
 \end{proof}
 \vspace{6pt}
 
-\vspace{6pt}
-\begin{lemma}
-	Let $B$ be a strong block of the graph $L$ and $C$ be an elementary circuit $C$ in $B$ with 
-	associated CS $\child$ that is defined by the edges $E_1(C)$. In addition, let $C$ contain a  
-	\emph{pure reaction} (Eq.~\ref{eq:pureReactions}). Then $\SM[\child]$ is autocatalytic if it is 
-	a Metzler matrix. 
-\end{lemma}
-\begin{proof}
-	If $C$ is an elementary circuit its associated CS matrix $\SM[\child]$ of the $k$-CS 
-	$\child = (X(C), R(C), \kappa: \kappa(x) \coloneqq v^C_{out}(x)$ is irreducible, by pre-requisite 
-	Metzler, and reads by construction:
-	\begin{equation}
-			\SM[\child] = 
-				\begin{pmatrix}
-						0 	& 	 		&	 			&  			& 	p_1	\\
-						p_2	& 	-r_2  		& 				&     P''  		&		\\
-					 		& 	p_3  		& 	\ddots 		&      			&		\\
-							& 	 		& 	\ddots 		& \ddots 		&    	 	\\
-						P'	& 	 		& 				& p_k 		& -r_k     	\\
-				\end{pmatrix},
-	\end{equation}
 
-i.e., $\SM[\child]$ with $\{r_i\}\in \mathbb{R}_{\geq 0}, i=2,\ldots, k$ and $\{p_i\}\in \mathbb{R}_{>0},i=1,\ldots, k$ and non-negative
-entries in $P'$ and $P''$. We may then construct $v\in \mathbb{R}^{k}_{>0}$ as $v(r_k)\coloneqq 1$ and 
-\begin{equation}
-	v_{i}=\begin{cases}
-			\frac{v_{i+1}\cdot r_{i+1}}{p_{i+1}} +1 & \text{if } r_{i+1}>0 \\
-			\frac{v_{i+1}}{p_{i+1}} +1 & \text{if } r_{i+1}=0
-		\end{cases}
-\end{equation}
-Then $v>0$ and by construction we directly obtain $\SM[\child]v>0$ since $P'$ and $P''$ contain only non-negative entries. 
-\end{proof}
-\vspace{6pt}
 
 %We next show that pure reactions in $\princess(\RAF)$ play an important role in the partial order of a strong block, as one of them
 %always has the lowest generation number of all reactions within the block.
@@ -490,10 +458,10 @@ Then $v>0$ and by construction we directly obtain $\SM[\child]v>0$ since $P'$ an
 
 \subsection{Autocatalytic Capacity of Minimal RAFs}
 
-\begin{theorem}[Proof: SI]\label{thm:NonFoodSemipositiv}
+\begin{mainitem}{Theorem}{M-thm:NonFoodSemipositiv}
 	Let $\RAF$ be a non-trivial, minimal RAF. The matrix $A\coloneqq \SM[V(\king')\setminus \food, \varphi^{-1}
 	(\RAF)]$ is semi-positive.
-\end{theorem}
+\end{mainitem}
 \begin{proof}
 	We prove by induction. We know that for some $n\in \mathbb{N}: c^n(\food)=\closure{\RAF}{\food}\eqqcolon X'$. 
 	We observe that for an $x\in X', r\in R'\coloneqq \varphi^{-1}(\RAF): \delta(r)<\sgen(x)$, $\SM_{xr}=0$ since $x$ 
@@ -524,11 +492,11 @@ Then $v>0$ and by construction we directly obtain $\SM[\child]v>0$ since $P'$ an
 \vspace{6pt}
 
 \vspace{6pt}
-\begin{lemma}
+\begin{mainitem}{Lemma}{M-lem:MetzCircuit}
 	Let $B$ be a strong block of $\lord(\RAF)$. Then $B$ contains an elementary circuit $C$ with one 
 	\emph{pure reaction} vertex, and there is a reordering of the columns of $	\SM[X(C), R(C)]$ that 
 	yields Metzler matrix.
-\end{lemma}
+\end{mainitem}
 \begin{proof}
 	We start with the simple case, and assume there is only one \emph{pure reaction} $r_1$ in $B$.
 	By the proof  of Lemma~\ref{lem:cutVertexPureCat} we have $\delta(r_1)<\delta(r), \forall r\in R(B)
@@ -633,6 +601,38 @@ Then $v>0$ and by construction we directly obtain $\SM[\child]v>0$ since $P'$ an
 	entries of $\SM(\tilde{C})$ are nonpositive, i.e., all are negative except $\SM(\tilde{C})_{x_1r_1}$, and all off-diagonal entries 
 	of $\SM(\tilde{C})$ are nonnegative, thus $\SM(\tilde{C})$ is a Metzler matrix. 
 \end{proof}
+
+\vspace{6pt}
+\begin{mainitem}{Lemma}{M-lem:MetzCircAut}
+	If $C$ is a Metzler circuit containing a pure reaction, then $(X(C), R(C)$ 
+	is stoichiometrically autocatalytic.
+\end{mainitem}
+\begin{proof}
+	If $C$ is a Metzler circuit that contains a pure reaction, then there is a reordering of the columns of 
+	the stoichiometric submatrix $\SM[X(C),R(C)]$ that reads
+	\begin{equation}
+			\SM(C) = 
+				\begin{pmatrix}
+						0 	& 	 		&	 			&  			& 	p_1	\\
+						p_2	& 	-r_2  		& 				&     P''  		&		\\
+					 		& 	p_3  		& 	\ddots 		&      			&		\\
+							& 	 		& 	\ddots 		& \ddots 		&    	 	\\
+						P'	& 	 		& 				& p_k 		& -r_k     	\\
+				\end{pmatrix},
+	\end{equation}
+
+i.e., $\SM(C)$ with $\{r_i\}\in \mathbb{R}_{\geq 0}, i=2,\ldots, k$ and $\{p_i\}\in \mathbb{R}_{>0},i=1,\ldots, k$ 
+and non-negative entries in $P'$ and $P''$. We may then construct $v\in \mathbb{R}^{k}_{>0}$ as $v(r_k)\coloneqq 1$ 
+and 
+\begin{equation}
+	v_{i}=\begin{cases}
+			\frac{v_{i+1}\cdot r_{i+1}}{p_{i+1}} +1 & \text{if } r_{i+1}>0 \\
+			\frac{v_{i+1}}{p_{i+1}} +1 & \text{if } r_{i+1}=0
+		\end{cases}
+\end{equation}
+Then $v>0$ and by construction we directly obtain $\SM(C)v>0$ since $P'$ and $P''$ contain only non-negative entries. 
+\end{proof}
+\vspace{6pt}
 
 
 \bibliography{RAFCores}
