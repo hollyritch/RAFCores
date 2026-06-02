@@ -460,8 +460,9 @@ denote this graph as $\queen'\coloneqq \queen(\closure{\RAF}{\food}, \RAF,
 
 \subsubsection{Strong blocks}
 
-The following statement guarantees the existence of F-reactions in a strong block that have only F-catalysts as 
-reactants inside the block. We will refer to them as \emph{pure F-reactions}.
+The following statement guarantees the existence of F-reactions in a strong
+block that have only F-catalysts as reactants inside the block. We will
+refer to them as \emph{pure F-reactions}.
 \vspace{6pt}
 \begin{mainitem}{Lemma}{M-lem:cutVertexPureCat}
   For a non-trivial minimal RAF $\RAF$, any strong block $\block$ of
@@ -505,8 +506,6 @@ reactants inside the block. We will refer to them as \emph{pure F-reactions}.
 \end{proof}
 \vspace{6pt}
 
-\TODO{*** PFS to here ***}
-
 %We next show that pure reactions in $\princess(\RAF)$ play an important role in the partial order of a strong block, as one of them
 %always has the lowest generation number of all reactions within the block.
 %\vspace{6pt}
@@ -536,147 +535,196 @@ reactants inside the block. We will refer to them as \emph{pure F-reactions}.
 \subsection{Autocatalytic Capacity of Minimal RAFs}
 
 \begin{mainitem}{Theorem}{M-thm:NonFoodSemipositiv}
-	Let $\RAF$ be a non-trivial, minimal RAF. The matrix $A\coloneqq \SM[V(\king')\setminus \food, \varphi^{-1}
-	(\RAF)]$ is semi-positive.
+  Let $\RAF$ be a non-trivial, minimal RAF. The matrix $A\coloneqq
+  \SM[V(\king')\setminus \food, \varphi^{-1} (\RAF)]$ is semi-positive.
 \end{mainitem}
 \begin{proof}
-	We prove by induction. We know that for some $n\in \mathbb{N}: c^n(\food)=\closure{\RAF}{\food}\eqqcolon X'$. 
-	We observe that for an $x\in X', r\in R'\coloneqq \varphi^{-1}(\RAF): \delta(r)<\sgen(x)$, $\SM_{xr}=0$ since $x$ 
-	can only be an F-catalyst for $r$, but not an F-reactant $(*)$. We initialize a map: $f: X' \rightarrow R', f(x)\coloneqq 0$, 
-	which will be updated in each step. We will use the notation $R^k\coloneqq \{r\in R' \ \vert \ \delta(r)=k\}, 1\leq k\leq n$, 
-	which collects all reactions with generation number $k$, and $X^k\coloneqq \{x\in X' \ \vert \ \sgen(x)=k\}, 0\leq k \leq n$,
-	which analogously collects all reactions with generation number $k$. 
+  We proceed by induction. We know that for some $n\in \mathbb{N}:
+  c^n(\food)=\closure{\RAF}{\food}\eqqcolon X'$. \PFS{First, we observe for
+    $x\in X'$, $r\in R'\coloneqq \varphi^{-1}(\RAF)$:
+    \begin{itemize}
+    \item[$(*)$] $\delta(r)<\sgen(x)$ implies  $\SM_{xr}=0$ 
+    \end{itemize}
+    since $x$ can only be an F-catalyst for $r$, but not an F-reactant.}
+  \TODO{check that this is what you mean!}
+
+  We now initialize a map: $f: X' \rightarrow R'$, $f(x)\coloneqq 0$, which
+  will be updated in each step. We will use the notation $R^k\coloneqq
+  \{r\in R' \ \vert \ \delta(r)=k\}$, $1\leq k\leq n$, which collects all
+  reactions with generation number $k$, and $X^k\coloneqq \{x\in X' \ \vert
+  \ \sgen(x)=k\}$, $0\leq k \leq n$, which analogously collects all
+  reactions with generation number $k$.
 	
-	We start with the set $R^n$. For each an $r\in R^n$, we let $v_r\coloneqq 1$, and update for each $x\in X'$:
-	\begin{equation}
-		f(x) \leftarrow f(x) + \sum_{r\in R^n} v_r \cdot \SM_{xr}
-	\end{equation}
-	which yields for all $x\in X^n: f(x)>0$. 
-	
-	Assume now that for some $1\leq k\leq n$ it holds that $f(x)>0, \forall x\in X^k$. Then, for $k-1$
-	we choose an arbitrary ordering of $r\in R^{k-1}$, since each $x\in X^{k-1}$ can only be 
-	a product of reactions in $R^{k-1}$ but never be a reactant. We let:
-	\begin{equation}
-		v_r\coloneqq \left\vert \min_{x\in X^{k-1}} \left(\frac{f(x)}{s}\right)\right \vert + 1, s\coloneqq \begin{cases}\SM_{xr} & \text{if } \SM_{xr}\neq 0 \\ 1 & \text{otherwise} \end{cases}
-	\end{equation}
-	Then we update again for each $x\in X'$:
-	\begin{equation}
-		f(x) \leftarrow f(x) + \sum_{r\in R^n} v_r \cdot \SM_{xr}
-	\end{equation}	
-	 and obtain again that forall $x\in X^{k-1}: f(x)>0$ and with observation $*$ that also $f(x)>0, \in X^{\ell}: f(x)>0, k-1\leq \ell \leq n$.
-	 Then by construction, we obtain $v_r$ is strictly positive and $Av>0$. 
+  We start with the set $R^n$. For each an $r\in R^n$, we let $v_r\coloneqq
+  1$, and update for each $x\in X'$:
+  \begin{equation}
+    \label{eq:update-f}
+    f(x) \leftarrow f(x) + \sum_{r\in R^n} \SM_{xr} v_r,
+  \end{equation}
+  which yields $f(x)>0$ for all $x\in X^n$.  Assume now that for some
+  $1\leq k\leq n$ it holds that $f(x)>0$, for all $x\in X^k$. Then, for
+  $k-1$ we choose an arbitrary ordering of $r\in R^{k-1}$, since each $x\in
+  X^{k-1}$ can only be a product of reactions in $R^{k-1}$ but never be a
+  reactant. We set:
+  \begin{equation}
+    v_r\coloneqq \left\vert \min_{x\in X^{k-1}}
+    \left(\frac{f(x)}{s_{\PFS{r}}}\right)\right \vert + 1,\qquad
+    s_{\PFS{r}}\coloneqq \begin{cases}\SM_{xr} & \text{if } \SM_{xr}\neq 0 \\ 1 &
+      \text{otherwise} \end{cases}
+  \end{equation}
+  Then we update again for each $x\in X'$ \PFS{according to
+    equ.(\ref{eq:update-f}). A short computation \TODO{to be on the save
+      side, check!} shows that
+%%  \begin{equation}
+%%    f(x) \leftarrow f(x) + \sum_{r\in R^n} v_r \cdot \SM_{xr}
+%%  \end{equation}	
+    we again have $f(x)>0$ for all $x\in X^{k-1}$. Using observation $(*)$
+    we obtain also $f(x)>0$ for $x \in X^{\ell}$ and $k-1\leq \ell \leq
+    n$. We therefore conclude \TODO{we should be more explicit here!! It
+      seems you construct $v$ and the sum of the $v'$ in each step. I think
+      we should rewrite this so that we have different $f()$ in each step
+      and similarly vectors $v$ in each interation.}
+    that} we obtain $v_r$ is strictly positive and $Av>0$.
 \end{proof}
 \vspace{6pt}
 
+\TODO{*** PFS to here ***}
+
+
 \vspace{6pt}
 \begin{mainitem}{Lemma}{M-lem:MetzCircuit}
-	Let $B$ be a strong block of $\lord(\RAF)$. Then $B$ contains an elementary circuit $C$ with one 
-	\emph{pure reaction} vertex, and there is a reordering of the columns of $	\SM[X(C), R(C)]$ that 
-	yields Metzler matrix.
+  Let $B$ be a strong block of $\lord(\RAF)$. Then $B$ contains an
+  elementary circuit $C$ with one \emph{pure reaction} vertex, and there is
+  a reordering of the columns of $ \SM[X(C),R(C)]$ that yields a Metzler
+  matrix.
 \end{mainitem}
 \begin{proof}
-	We start with the simple case, and assume there is only one \emph{pure reaction} $r_1$ in $B$.
-	By the proof  of Lemma~\ref{lem:cutVertexPureCat} we have $\delta(r_1)<\delta(r), \forall r\in R(B)
-	\setminus \{r_1\}$. We may then construct the following elementary circuit: 
-	\begin{equation}
-		r_1 \leftarrow x_1 \leftarrow r_2 \leftarrow x_2 \leftarrow \ldots r_n \leftarrow x_m \leftarrow r_{m+1}
-	\end{equation}
-	where $x_1$ is an F-catalyst of $r_1$, and forall $1< k\leq m+1$: 
-	\begin{equation}
-		r_k =  \arg \min \{ \delta(r) \ | r\in R(B), \hat{s}_{x_{k-1}r}>0\}
-	\end{equation}
-	and for all $1<k\leq m$:
-	\begin{equation}
-		x_k = \arg \min \{\sgen(x) \ \vert \ x\in X(B), s^-_{xr_k}>0\}.
-	\end{equation}
-	Since all reaction vertices $r_k, 1< k\leq m$ are not \emph{pure reaction} vertices, 
-	each of them has an F-reactant $x_k$ for which $\sgen(x_k)<\delta(r_k)$ and 
-	thereby:
-	\begin{equation}
-		\delta(r_k) < \sgen(x_k) \leq \delta(r_{k+1}), \quad 1\leq k < m.
-	\end{equation}
-	This generates a strictly monotone decreasing sequence $(\rgen(r_k))_{1\leq k\leq m+1}$, 
-	which converge due to the finiteness of $B$ and we actually obtain that $r_{m+1}=r_1$. 
-	Thus $C\coloneqq (r_{m+1}, x_m, r_m, x_{m-1}, r_{m-1},\ldots, x_1,r_1)$ is an elementary 
-	circuit. 
+  We start with the simple case, and assume there is only one \emph{pure
+  reaction} $r_1$ in $B$.  By the proof of Lemma~\ref{lem:cutVertexPureCat}
+  we have $\delta(r_1)<\delta(r)$ for all $r\in R(B) \setminus \{r_1\}$. We
+  may then construct the following elementary circuit:
+  \begin{equation}
+    r_1 \leftarrow x_1 \leftarrow r_2 \leftarrow x_2 \leftarrow \ldots r_n
+    \leftarrow x_m \leftarrow r_{m+1}
+  \end{equation}
+  where $x_1$ is an F-catalyst of $r_1$, and forall $1< k\leq m+1$: 
+  \begin{equation}
+    r_k =  \arg \min \{ \delta(r) \ | r\in R(B), \hat{s}_{x_{k-1}r}>0\}
+  \end{equation}
+  and for all $1<k\leq m$:
+  \begin{equation}
+    x_k = \arg \min \{\sgen(x) \ \vert \ x\in X(B), s^-_{xr_k}>0\}.
+  \end{equation}
+  Since all reaction vertices $r_k, 1< k\leq m$ are not \emph{pure
+  reaction} vertices, each of them has an F-reactant $x_k$ for which
+  $\sgen(x_k)<\delta(r_k)$ and thereby:
+  \begin{equation}
+    \delta(r_k) < \sgen(x_k) \leq \delta(r_{k+1}), \quad 1\leq k < m.
+  \end{equation}
+  This generates a strictly monotone decreasing sequence
+  $(\rgen(r_k))_{1\leq k\leq m+1}$, which converge due to the finiteness of
+  $B$ and we actually obtain that $r_{m+1}=r_1$.  Thus $C\coloneqq
+  (r_{m+1}, x_m, r_m, x_{m-1}, r_{m-1},\ldots, x_1,r_1)$ is an elementary
+  circuit.
 	
-	Assume now that there is $i\neq j$, thus $s^-_{x_ir_j}>0$. If $i>j$ then $\sgen(x_i)<\sgen(x_j)$ 
-	which contradicts that $\sgen(x_j)=\min \{\sgen(x) \ \vert \ x\in X(B), s^-_{xr_k}>0\}$. Thus $i<j$, 
-	which implies that $\sgen(x_i)\geq\delta(r_j)$ and that $x_i$ cannot be an F-reactant of $r_j$ 
-	but only an F-catalyst, thus: 
-	\begin{equation}
-		\hat{s}_{x_ir_j}=\SM_{x_ir_j}=0.
-	\end{equation} 
-	Therefore, the only positive educt stoichiometries can be of the form $s^-_{x_i,r_i}$. 
+  Assume now that there is $i\neq j$, thus $s^-_{x_ir_j}>0$. If $i>j$ then
+  $\sgen(x_i)<\sgen(x_j)$ which contradicts that $\sgen(x_j)=\min
+  \{\sgen(x) \ \vert \ x\in X(B), s^-_{xr_k}>0\}$. Thus $i<j$, which
+  implies that $\sgen(x_i)\geq\delta(r_j)$ and that $x_i$ cannot be an
+  F-reactant of $r_j$ but only an F-catalyst, thus:
+  \begin{equation}
+    \hat{s}_{x_ir_j}=\SM_{x_ir_j}=0.
+  \end{equation} 
+  Therefore, the only positive educt stoichiometries can be of the form
+  $s^-_{x_i,r_i}$.
 	
-	We can then obtain $S(C)$ by reordering the columns of the submatrix $\SM[X(C), R(C)]$ such that 
-	$S(C)_{x_iy}\coloneqq \SM[X(C), R(C)]_{x_ir_i}$. Thereby, all diagonal entries of $\SM(C)$ are 
-	nonpositive, i.e., all are negative except $\SM(C)_{x_1r_1}$, and all off-diagonal entries of $\SM(C)$ 
-	are nonnegative, thus $\SM(C)$ is a Metzler matrix.
-	\vspace{6pt}
+  We can then obtain $S(C)$ by reordering the columns of the submatrix
+  $\SM[X(C), R(C)]$ such that $S(C)_{x_iy}\coloneqq \SM[X(C),
+    R(C)]_{x_ir_i}$. Thereby, all diagonal entries of $\SM(C)$ are
+  nonpositive, i.e., all are negative except $\SM(C)_{x_1r_1}$, and all
+  off-diagonal entries of $\SM(C)$ are nonnegative, thus $\SM(C)$ is a
+  Metzler matrix.
+  \vspace{6pt}
 	
-	We now turn to the general case and assume there are multiple pure reaction vertices 
-	$R^*(B)=\{r \in R(B) \ \vert \ \forall x \in X(B): s^-_{xr}>0\Rightarrow \hat{s}_{xr}=0\}$. 
-	We choose $r_1\in R^*(B): \delta(r_1)\leq \delta(r_j), \forall r_j\in R^*(B)$ and we have
-	$\delta(r_1)<\delta(r), \forall r\in R(B)\setminus R^*(B)$. We now apply the same construction 
-	as above:
-	\begin{equation}
-		r_1 \leftarrow x_1 \leftarrow r_2 \leftarrow x_2 \leftarrow \ldots r_n \leftarrow x_m \leftarrow r_{m+1}
-	\end{equation}
-	such that $x_1$ is an F-catalyst of $r_1$, and forall $1< k\leq m+1$: 
-	\begin{equation}
-		r_k =  \arg \min \{ \delta(r) \ | r\in R(B), \hat{s}^+_{x_{k-1}>0}\}
-	\end{equation}
-	and for all $1<k\leq m$:
-	\begin{equation}
-		x_k = \arg \min \{\delta (x) \ \vert \ x\in X(B), s^-_{xr_k}>0\}
-	\end{equation}
-	if $r_k \notin R^*(B)$ or $x_k$ as an F-catalyst of $r_k$ otherwise. We thereby obtain the following structure:
-	\begin{equation*}
-			(r_{l_0}, \leftarrow x_{l_0} \leftarrow\ldots \leftarrow x_{l_1}) \leftarrow \ldots \leftarrow (r_{l_p} \leftarrow x_{l_p} \leftarrow \ldots \leftarrow x_{l_{p+1}}) \leftarrow r_{l_{p+1}}
-	\end{equation*}
-	where $r_{l_0} \coloneqq r_1, x_{l_0} \coloneqq x_1$ and each reaction vertex $r_{l_i+1}, 0\leq i\leq p$ is a pure reaction, 
-	and each species vertex $x_{l_i+1}, 0\leq i\leq p$ is an F-catalyst for the pure reaction $r_{l_i+1}$. Then, by the same argument 
-	as above, we obtain a strictly monotone decreasing sequence $(\delta(r_j))_{l_i\leq j \leq _{l_{i+1}-1}}$ for each 
-	$(r_{l_i} \leftarrow x_{l_1+1} \leftarrow \ldots x_{l_{i+1}}), 0\leq i\leq p$. By finiteness of $B$, we then obtain that $r_{l_i}=r_{l_{p+1}}, 
-	0\leq i\leq p$ yields an elementary circuit 
+  We now turn to the general case and assume there are multiple pure
+  reaction vertices $R^*(B)=\{r \in R(B) \ \vert \ \forall x \in X(B):
+  s^-_{xr}>0\Rightarrow \hat{s}_{xr}=0\}$.  We choose $r_1\in R^*(B):
+  \delta(r_1)\leq \delta(r_j), \forall r_j\in R^*(B)$ and we have
+  $\delta(r_1)<\delta(r), \forall r\in R(B)\setminus R^*(B)$. We now apply
+  the same construction as above:
+  \begin{equation}
+    r_1 \leftarrow x_1 \leftarrow r_2 \leftarrow x_2 \leftarrow \ldots r_n \leftarrow x_m \leftarrow r_{m+1}
+  \end{equation}
+  such that $x_1$ is an F-catalyst of $r_1$, and forall $1< k\leq m+1$:
+  \begin{equation}
+    r_k = \arg \min \{ \delta(r) \ | r\in R(B), \hat{s}^+_{x_{k-1}>0}\}
+  \end{equation}
+  and for all $1<k\leq m$:
+  \begin{equation}
+    x_k = \arg \min \{\delta (x) \ \vert \ x\in X(B), s^-_{xr_k}>0\}
+  \end{equation}
+  if $r_k \notin R^*(B)$ or $x_k$ as an F-catalyst of $r_k$ otherwise. We
+  thereby obtain the following structure:
+  \begin{equation*}
+    (r_{l_0}, \leftarrow x_{l_0} \leftarrow\ldots \leftarrow x_{l_1})
+    \leftarrow \ldots \leftarrow (r_{l_p} \leftarrow x_{l_p} \leftarrow
+    \ldots \leftarrow x_{l_{p+1}}) \leftarrow r_{l_{p+1}}
+  \end{equation*}
+  where $r_{l_0} \coloneqq r_1, x_{l_0} \coloneqq x_1$ and each reaction
+  vertex $r_{l_i+1}, 0\leq i\leq p$ is a pure reaction, and each species
+  vertex $x_{l_i+1}, 0\leq i\leq p$ is an F-catalyst for the pure reaction
+  $r_{l_i+1}$. Then, by the same argument as above, we obtain a strictly
+  monotone decreasing sequence $(\delta(r_j))_{l_i\leq j \leq
+    _{l_{i+1}-1}}$ for each $(r_{l_i} \leftarrow x_{l_1+1} \leftarrow
+  \ldots x_{l_{i+1}}), 0\leq i\leq p$. By finiteness of $B$, we then obtain
+  that $r_{l_i}=r_{l_{p+1}}, 0\leq i\leq p$ yields an elementary circuit
+  \begin{equation}
+    C\coloneqq (r_{l_{p+1}}, x_{l_{p+1}}, \ldots x_{l_i},  r_{l_i})
+  \end{equation}
+  \vspace{6pt}
+  
+  With the same argument as above, for each $i\neq j: s^-_{x_ir_j}>0$ such
+  that there is a $k\in \{0,\ldots, p\}: l_k\leq i,j \leq l_{k+1}$ we
+  obtain that $\hat{s}_{x_ir_j}=0$.
 	
-	\begin{equation}
-		C\coloneqq (r_{l_{p+1}}, x_{l_{p+1}}, \ldots x_{l_i},  r_{l_i})
-	\end{equation}
-	\vspace{6pt}
+  Assume now that there is no such $k$. If $\sgen(x_i)>\sgen(x_j)$ then
+  $\sgen(x_i)\geq \delta(r_j)$ which implies that $x_i$ cannot be an
+  F-reactant for $r_j$, thus $\hat{s}_{x_ir_j}=0$. The case
+  $\sgen(x_i)<\sgen(x_j)$ is impossible due to our choice of $x_j$. Then
+  the only remaining case is $\sgen(x_i)=\sgen(x_j)$ which is possible
+  since the minimum of $\{\sgen(x) \ \vert \ x\in X(B), s^-_{xr_j}>0\}$
+  might not be unique. This, however, implies that there is a smaller
+  elementary circuit containing a pure reaction vertex. If $i>j$ this
+  circuit can be obtained as $C'$ with:
+  \begin{equation}
+    \begin{split}
+      V(C')&\coloneqq V(C)\setminus \{x_i, r_i, \ldots, x_j\}\\[0.5em]
+      E(C')& \coloneqq E(C)\setminus \{(x_k, r_k) \ | \ j-1\leq k \leq i\} \cup \{(r_k, x_{k+1}) \ | \ j\leq k \leq i\}
+    \end{split}
+  \end{equation} 
+  or if $i<j$ then this circuit can be obtained as $C''$:
+  \begin{equation}
+    \begin{split}
+      V(C'') & \coloneqq \{r_j, x_{j-1}, \ldots, x_i\} \\
+      E(C'') & \coloneqq\{(x_k, r_k) \ | \ i \leq k \leq j-1\} \cup \{(x_i,r_j)\} \cup \{(r_k, x_{k-1}) \ | \ i+1\leq k \leq j\}
+    \end{split}
+  \end{equation} 
+  It holds by construction that either $r_1\in R(C')$ or that there is a
+  pure reaction vertex $r_{l_k} \in R(C''): i<l_k<j$. We may now repeat
+  this procedure until we can not find such a metabolite-to-reaction edge
+  anymore and obtain a final elementary circuit $\tilde{C}$.
 	
-	With the same argument as above, for each $i\neq j: s^-_{x_ir_j}>0$ such that there is a $k\in \{0,\ldots, p\}: l_k\leq i,j \leq l_{k+1}$ 
-	we obtain that $\hat{s}_{x_ir_j}=0$. 
-	
-	Assume now that there is no such $k$. If $\sgen(x_i)>\sgen(x_j)$ then $\sgen(x_i)\geq \delta(r_j)$ which implies that
-	$x_i$ cannot be an F-reactant for $r_j$, thus $\hat{s}_{x_ir_j}=0$. The case $\sgen(x_i)<\sgen(x_j)$ is impossible due 
-	to our choice of $x_j$. Then the only remaining case is $\sgen(x_i)=\sgen(x_j)$ which is possible since the minimum 
-	of $\{\sgen(x) \ \vert \ x\in X(B), s^-_{xr_j}>0\}$ might not be unique. This, however, implies that there is a smaller 
-	elementary circuit containing a pure reaction vertex. If $i>j$ this circuit can be obtained as $C'$ with:
-	\begin{equation}
-		\begin{split}
-			V(C')&\coloneqq V(C)\setminus \{x_i, r_i, \ldots, x_j\}\\[0.5em]
-			E(C')& \coloneqq E(C)\setminus \{(x_k, r_k) \ | \ j-1\leq k \leq i\} \cup \{(r_k, x_{k+1}) \ | \ j\leq k \leq i\}
-		\end{split}
-	\end{equation} 
-	or if $i<j$ then this circuit can be obtained as $C''$:
-	\begin{equation}
-		\begin{split}
-			V(C'') & \coloneqq \{r_j, x_{j-1}, \ldots, x_i\} \\
-			E(C'') & \coloneqq\{(x_k, r_k) \ | \ i \leq k \leq j-1\} \cup \{(x_i,r_j)\} \cup \{(r_k, x_{k-1}) \ | \ i+1\leq k \leq j\}
-		\end{split}
-	\end{equation} 
-	It holds by construction that either $r_1\in R(C')$ or that there is a pure reaction vertex $r_{l_k} \in R(C''): i<l_k<j$. We may now repeat this procedure until 
-	we can not find such a metabolite-to-reaction edge anymore and obtain a final elementary circuit $\tilde{C}$.
-	
-	We can then obtain $S(\tilde{C})$ by reordering the columns of the submatrix $\SM[X(\tilde{C}), R(\tilde{C})]$ such that 
-	\begin{equation}
-		\SM(\tilde{C})_{xy}\coloneqq \SM[X(\tilde{C}), R(\tilde{C})]_{xv^{\tilde{C}}_{out}(x)}
-	\end{equation} 
-	where $v^{\tilde{C}}_{out}(x)$ is the unique reaction $r\in R(\tilde{C}$ such that $(x,r)\in E(\tilde{C})$. Thereby, all diagonal 
-	entries of $\SM(\tilde{C})$ are nonpositive, i.e., all are negative except $\SM(\tilde{C})_{x_1r_1}$, and all off-diagonal entries 
-	of $\SM(\tilde{C})$ are nonnegative, thus $\SM(\tilde{C})$ is a Metzler matrix. 
+  We can then obtain $S(\tilde{C})$ by reordering the columns of the
+  submatrix $\SM[X(\tilde{C}), R(\tilde{C})]$ such that
+  \begin{equation}
+    \SM(\tilde{C})_{xy}\coloneqq \SM[X(\tilde{C}), R(\tilde{C})]_{xv^{\tilde{C}}_{out}(x)}
+  \end{equation} 
+  where $v^{\tilde{C}}_{out}(x)$ is the unique reaction $r\in R(\tilde{C}$
+  such that $(x,r)\in E(\tilde{C})$. Thereby, all diagonal entries of
+  $\SM(\tilde{C})$ are nonpositive, i.e., all are negative except
+  $\SM(\tilde{C})_{x_1r_1}$, and all off-diagonal entries of
+  $\SM(\tilde{C})$ are nonnegative, thus $\SM(\tilde{C})$ is a Metzler
+  matrix.
 \end{proof}
 
 \vspace{6pt}
@@ -707,7 +755,9 @@ and
 			\frac{v_{i+1}}{p_{i+1}} +1 & \text{if } r_{i+1}=0
 		\end{cases}
 \end{equation}
-Then $v>0$ and by construction we directly obtain $\SM(C)v>0$ since $P'$ and $P''$ contain only non-negative entries. 
+Then $v>0$ and by construction we directly obtain $\SM(C)v>0$ since $P'$
+and $P''$ contain only non-negative entries \PFS{and very row of $S(C)$
+  contains a strictly positive entry}.
 \end{proof}
 \vspace{6pt}
 
