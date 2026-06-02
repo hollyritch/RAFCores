@@ -355,7 +355,7 @@ sets, a set of metabolites $X$ and a set of reactions $\CR$. For any $r\in
 \begin{equation}\label{eq:reaction}
   \sum_{x\in X}\ s^-_{xr} \cdot x \rightarrow \sum_{x\in X} \ s^+_{xr}\cdot x
 \end{equation}
-where $s^{\pm}_{xr}$ are the ed`uct and product stoichiometry of the
+where $s^{\pm}_{xr}$ are the educt and product stoichiometry of the
 molecule $x$ in the reaction $r$. Reactants and products are collected in
 the sets:
 \begin{equation}
@@ -366,7 +366,7 @@ the sets:
 \end{equation}
 A \emph{sub-CRN} is a tuple $(X',R')$ with $X'\subseteq X$ and $R'\subseteq
 R$. A \emph{sub-CRN} is \emph{well-formed} if for each reaction $r\in R'$
-there are specis $x,y\in X': s^-_{xr}>0, s^+_{xr}>0$.  The
+there are species $x,y\in X': s^-_{xr}>0, s^+_{xr}>0$.  The
 \emph{stoichiometric matrix} $\SM$ encodes all net-stoichiometries:
 \begin{equation}
   \SM_{xr}\coloneqq s^+_{xr}-s^-_{xr}
@@ -456,7 +456,7 @@ by definition, or if the reaction is uncatalyzed.
 
 In a CRN $(X,\CR)$, each reaction $r$, as specified by
 Eq.~\ref{eq:Mod.SmEq}, is a distinct object. Thus, it is possible that two
-reactions sharing the same net reaction are elements of $\CR$. In this
+reactions sharing the same net reactants are elements of $\CR$. In this
 case, they appear as unique vertices in the bipartite K\"onigs
 representation of a CRN $\king\coloneqq (X\cup \C{R}, E_1\cup E_2)$, where
 \begin{equation}
@@ -467,7 +467,7 @@ representation of a CRN $\king\coloneqq (X\cup \C{R}, E_1\cup E_2)$, where
 We will refer to these kinds of reactions simply as reactions and denote
 them in normal font. The reaction or R-graph of a CRN is the directed graph
 $\mathcal{R}(\Gamma)$ with vertex set $R$ and edge set $E\coloneqq
-\{(r_1,r_2) \ \vert \ \exists x\in X: s^+_{xr_1}>0,s^-_{xr_2}>0\}$.
+\{(r_1,r_2) \ \vert \ \exists x\in X: s^+_{xr_1}>0,s^-_{xr_2}>0\}$, \Wim{i.e., there is a directed edge from $r_1$ to $r_2$ if a product of $r_1$ is a reactant of $r_2$.}
 
 \subsection{Catalytic Reaction Systems (CRS)}
 
@@ -525,8 +525,7 @@ representative is excluded from the equivalence class:
 \end{equation}
 In this way, each F-reaction is of finite size, and throughout we will
 consider them finite unless otherwise specified. A CRS is then the triple
-$\Phi \coloneqq (X,\FR, \cat)$, where $\Phi \coloneqq (X,\FR, \cat)$,
-thereby, has a unique corresponding CRN $\Gamma(\Phi) = (X, \CR)$, where
+$\Phi \coloneqq (X,\FR, \cat)$, which has a unique corresponding CRN $\Gamma(\Phi) = (X, \CR)$, where
 $\CR=\bigcup_{\fr \in \FR}\fr$. For clarity, we might write the CRN as a
 triple as $(X, \CR, \cat)$.
 
@@ -727,11 +726,11 @@ contained in the $\closure{\RAF}{\food}$, thus $\fproducts(r)\subseteq
 \TODO{The closure naturally induces an order, a sequence in which the F-reactions
   of a RAF can be executed. -- I don't think we can say ``induces'' here. }
 
-\PFS{The reactions of RAF can be partially ordered such that for each
+\PFS{The reactions of a RAF can be partially ordered such that for each
   $x\in\feducts(r)$ we have $x\in\food$ or there is a reaction $r'\prec r$
   such that $x\in\fproducts(r')$. While there are many such partial orders,
   we construct a specific one that is reminiscent of a breadth-first
-  research. Another way of viewing this partial order is an interative
+  search. Another way of viewing this partial order is an interative
   procedure to generate  the set $\closure{\RAF}{\food}$:
 %%
 %%
@@ -789,7 +788,7 @@ two $\sim$~equivalence classes that share the same net reaction, the
   $\rgen(\fr_1)\leq \rgen(\fr_2)$.
 \end{lemma}
 \begin{proof}
-  Let $\RAF' \coloneqq \RAF \setminus \{r''_2\}$. Since $\RAF$ was
+  Let $\RAF' \coloneqq \RAF \setminus \{r_2\}$. Since $\RAF$ was
   reflexively autocatalytic, $\RAF'$ is reflexively autocatalytic. In
   addition, since $\nfeducts(\fr_1)=\nfeducts(\fr_2)$ and
   $\nfproducts(\fr_1)=\nfproducts(\fr_2)$ and $\rgen(\fr_1)\leq
@@ -863,7 +862,7 @@ representative, as the following example shows.
 \begin{equation}
   \begin{split}
     r'_1&: f + (x_1) \rightarrow x_3 + (x_1)\\
-    r''_1&: f + (x_2) \rightarrow x_3 + (x_3)\\
+    r''_1&: f + (x_2) \rightarrow x_3 + (x_2)\\
     r_2&:  x_3 + (x_3) \rightarrow x_1 + x_2 + (x_3)
   \end{split}
 \end{equation}
@@ -960,8 +959,8 @@ connected.
   F-reactants and F-catalysts of all F-reactions in $\RAF_1$ are in the
   closure $\closure{\RAF_2}{\food}$, in symbols $\feducts\cup
   \cat(\RAF_1)\subseteq \closure{\RAF_2}{\food}$. With $\RAF_1\subseteq
-  \RAF$ and $\RAF$ being a $\RAF$, this implies that $\RAF_1$ is itself a
-  $\RAF$ which contradicts the minimality of $\RAF$.
+  \RAF$ and $\RAF$ being a RAF, this implies that $\RAF_1$ is itself a
+  RAF which contradicts the minimality of $\RAF$.
 \end{proof}
 \vspace{6pt}
 Lemmata~\ref{lem:trivRAFCAF} and \ref{lem:RGQSC} can be
@@ -1347,7 +1346,7 @@ reaction rates which satisfies $\SM(B)v>0$.
 \subsection{Autocatalytic Capacity of irreducible RAFs}
 \label{sec:AutoCatIrrRAF}
 
-In chemically reaction networks (CRNs) with explicit catalysis, the underlying network cannot be uniquely 
+In chemical reaction networks (CRNs) with explicit catalysis, the underlying network cannot be uniquely 
 inferred from the stoichiometric matrix. The matrix-centered definition of autocatalysis as introduced by Blokhuis 
 \cite{blokhuis_Universal_2020} and Vassena \cite{vassena_unstable_2024} therefore required 
 a modification that is based on the network and the matrix \cite{golnik_autocatalytic_2026}.
@@ -1402,7 +1401,7 @@ restricted to the species and reactions of $B$:
 \begin{equation}
   \SM[X(B), R(B)]v_{R(B)}>0.
 \end{equation}
-Thus, each block has a semipositiv stoichiometric submatrix and is also
+Thus, each block has a semipositive stoichiometric submatrix and is also
 well-formed.
 %
 \vspace{6pt}
@@ -1437,7 +1436,7 @@ well-formed.
 \begin{lemma}[Proof: SI]\label{lem:MetzCircuit}
   Let $B$ be a strong block of $\lord(\RAF)$. Then $B$ contains an
   elementary circuit $C$ with one pure reaction vertex, and there is a
-  reordering of the columns of $ \SM[X(C), R(C)]$ that yields Metzler
+  reordering of the columns of $ \SM[X(C), R(C)]$ that yields a Metzler
   matrix.
 \end{lemma}
 \vspace{6pt}
@@ -1569,7 +1568,7 @@ a non-trivial, irreducible RAF, is not an autocatalytic core.
 
 \subsubsection{Metabolite-to-reaction chords}\label{sec:MRChords}
 
-In the first, an additional catalyzation, cutting through the circuit, is
+In the first example, an additional catalyzation, cutting through the circuit, is
 destroying the core property.
 
 \begin{figure}[h]
@@ -1777,7 +1776,7 @@ autocatalytic cores, i.e., $({x_2,x_3},{r_2,r_3})$ and $({x_3,x_4},
 \label{subsec:ManyRAFsOneCore}
 
 The following example depicts the situation where one RAF
-$\RAF=\{\fr_1,f\fr_2,\fr_3,\fr_4,\fr_5,\fr_6\}$ with $\food\coloneqq
+$\RAF=\{\fr_1,\fr_2,\fr_3,\fr_4,\fr_5,\fr_6\}$ with $\food\coloneqq
 \{f_1,f_2,f_3,f_4\}$ contains one autocatalytic core but multiple
 irreducible RAFs.  In addition, the corresponding stoichiometric submatrix
 $\SM[\closure{\RAF}{\food}\setminus \food,\RAF$ on the non-food molecules
@@ -1978,7 +1977,7 @@ could be obtained, and both are autocatalytic cores.
     \queen(\Phi) = \king(\Gamma(\Phi))/\sim
   \end{equation*}
   establishing the formal mathematical correspondence between CRSs and CRNs
-  that we then leveraged to analyse autocatalytic substructures.}
+  that we then leveraged to analyze autocatalytic substructures.}
   
 %% \textsc{Reflexively autocatalytic sets (RAFs)}
 %% \cite{kauffman_autocatalytic_1986, steel_emergence_2000} and
@@ -2085,7 +2084,7 @@ reactants for each reaction, and thereby not necessarily the reactant with
 the lowest generation number. Non-trivial minimal RAFs exist, where this
 construction would not yield a \emph{stoichiometrically autocatalytic}
 Metzler circuit for each strong block $B$. Such an example is depicted in
-Fig.~\ref{ex:CutVertex2}. Indeed, the block $(\{x_1,x_2\}, \{r_1,r_2\}$
+Fig.~\ref{ex:CutVertex2}. Indeed, the block $(\{x_1,x_2\}, \{r_1,r_2\})$
 does not contain an elementary circuit, where each species vertex is the
 F-catalyst of its appurtenant reaction. Nevertheless, $C\coloneqq
 (x_1,r_1,x_2,r_2,x_1)$ is still a Metzler circuit with a pure reaction
