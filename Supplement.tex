@@ -247,15 +247,23 @@ of $\closure{\RAF}{X'}$. \PFS{By construction, $c:2^X \rightarrow 2^X$ is a
   \begin{itemize}
   \item[(c0)] $c(\emptyset)=\emptyset$,
   \item[(c1)] $X'\subseteq X''$ implies $c(X')\subseteq c(X'')$ (isotone)
-  \item[(c2)] $X\subseteq c(X')$ (enlarging)
+  \item[(c2)] $X\subseteq c(X')$ (extensive)
   \end{itemize}
-  }
-\TODO{limits are not really necessary here since everything is finite, and
-  we really really don't want to go into the meaning of limits for general
-  set systems. Anyway, if follows from finiteness and the axioms above that
-  there is $n\ge 0$ such that $c^n(X')=c(c^n(X'))$ and the definition of
-  the closure yields $c(X')=X'$ if and only if
-  $X'=\mathscr{C}(X')$. }
+  A set $X\subseteq X'$ is closed (w.r.t.\ $c$) if $X'=c(X')$.  Since $X$
+  is finite, iterated application $c$ eventually yields a close set: to see
+  this is suffices to note that by (c1) and (c2) we have $X'\subseteq
+  c^k(X')\subseteq c^{k+1}(X')$ for all $k\ge 1$. Thus for every $X'\in X$,
+  there is $n\in\mathbb{N}$ such that $c^{n+1}(X')=c^{n}(X')$. Moreover,
+  comparison of the definitions of $c$ and $\mathscr{C}$ implies that
+  $c(\mathscr{C}(X'))=\mathscr{C}(X')$, and conversely $c(X')=X'$ implies
+  $X'=\mathscr{C}(X')$. Considering a finite CRS network $(X,\FR,\cat)$
+  with $\food\subseteq X, \RAF\subseteq \FR$, there is $n\in\mathbb{N}$
+  such that
+  \begin{equation}
+    \label{eq:seqLimit}
+    \closure{\food} = c^k(\food) \qquad\text{for all } k\ge n 
+  \end{equation}
+}
 
 \begin{tiny} 
 It has been shown earlier that the repetitive iteration of $c$ converges to the closure 
@@ -299,39 +307,44 @@ corollary follows.
 \end{tiny}
 
 
-The sequence $(c^k(\food))_{k\in\mathbb{N}}$ directly yields a sequence of reactions that can be
-executed in the $k$-th step, i.e., for which all reactants are contained in the set $\cl^k(\food)$: 
+
+
+The sequence $(c^k(\food))_{k\in\mathbb{N}}$ therefore defines a sequence
+of reactions that can be executed in the $k$-th step, i.e., for which all
+reactants are contained in the set $\cl^k(\food)$:
 \begin{equation}
 	d^k(X') \coloneqq \{\fr\in \RAF \ | \ \feducts(\fr)\subseteq c^k(\food)\}
 \end{equation}
 We can then restrict the sets obtained by $c^k(\food)$ and $d^k(\food)$ to those species and 
 reactions that are not present in an ``earlier'' set $c^\ell(\food)$ and $d^\ell(\food), \ell<k$, respectively:
 \begin{equation}
-	\begin{split}
-		X^0(\food')& \coloneqq \food \qquad X^k(\food)\coloneqq c^k(\food)\setminus \left(\bigcup_{i=0}^{k-1} c^k(\food) \right)\\
-		\FR^0(\food) & \coloneqq \emptyset \qquad \FR^k(\food)\coloneqq d^k(\food) \setminus \left(\bigcup_{i=0}^{k-1} d^k(\food) \right)
-	\end{split}
+  \begin{split}
+    X^0(\food')& \coloneqq \food \qquad X^k(\food)\coloneqq c^k(\food)\setminus \left(\bigcup_{i=0}^{k-1} c^k(\food) \right)\\
+    \FR^0(\food) & \coloneqq \emptyset \qquad \FR^k(\food)\coloneqq d^k(\food) \setminus \left(\bigcup_{i=0}^{k-1} d^k(\food) \right)
+  \end{split}
 \end{equation}
-These sequences naturally generate a partial order $\preceq$, which we make explicit by two maps 
-that extract for each species and reaction, the iteration of their first appearance: 
+These sequences naturally generate a partial order $\preceq$, which we make
+explicit by two maps that extract for each species and reaction, the
+iteration of their first appearance:
 \begin{equation}\label{eq:Gen}
-	\begin{split}
-		\sgen&: \closure{\RAF}{\food} \rightarrow \mathbb{N}, \sgen(x)\coloneqq k \quad \text{ s. t. } x\in X^k(X') \\
-		\rgen&: \RAF \rightarrow \mathbb{N}, \rgen(r)\coloneqq k \quad \text{ s. t. } r\in \FR^k(X'). 
-	\end{split}
+  \begin{split}
+    \sgen&: \closure{\RAF}{\food} \rightarrow \mathbb{N}, \sgen(x)\coloneqq k \quad \text{ s. t. } x\in X^k(\PFS{\food}) \\
+    \rgen&: \RAF \rightarrow \mathbb{N}, \rgen(r)\coloneqq k \quad \text{ s. t. } r\in \FR^k(\PFS{\food}). 
+  \end{split}
 \end{equation}
 In particular, a species $x_1$ precedes a species $x_2: x_1\preceq x_2$ if and only if $\sgen(x_1) \leq \sgen(x_2)$ 
 and a reaction $\fr_1$ precedes a reaction $\fr_2: \fr_1\preceq \fr_2$ if and only if $\rgen(\fr_1) \leq \rgen(\fr_2)$. We refer 
 to the values of $\sgen$ and $\rgen$ as the generation of an F-reaction or metabolite. Since for some$\fr\in \FR$ all $r\in \fr$ 
 share the same F-reactants, we might also define for $reactions$:
 \begin{equation}
-	\delta: \varphi^{-1}(\RAF)\rightarrow \mathbb{N}, \delta(r)\coloneqq \rgen(\fr)
+  \delta: \varphi^{-1}(\RAF)\rightarrow \mathbb{N}, \delta(r)\coloneqq
+  \rgen(\fr)
 \end{equation}
 
 The partial order $\preceq$ allows us to easily observe that each species
 vertex for the closure of a $\RAF$ is reachable from at least one food
-molecule in $\food$ in the bipartite K\"onig graph, which is restricted to
-the $\closure{\RAF}{\food}$, the reactions in $\RAF$, and to those
+molecule in $\food$ in the bipartite K{\"o}nig graph, which is restricted
+to the $\closure{\RAF}{\food}$, the reactions in $\RAF$, and to those
 catalyzations $\cat'$ of reactions in $\RAF\subseteq \FR$. Throughout, we
 denote this graph as $\queen'\coloneqq \queen(\closure{\RAF}{\food}, \RAF,
 \cat')$.
