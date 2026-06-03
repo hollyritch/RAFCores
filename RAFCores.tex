@@ -234,7 +234,7 @@
 
 Wilhelm Ostwald's considerations in 1890 on whether chemical reactions
 could be catalyzed by one of their own products \cite{Ostwald:90} marked
-the provenance of autocatalysis. In its simplest form, Autocatalysis
+the provenance of autocatalysis. In its simplest form, \NV{a}utocatalysis
 appears as an autocatalytic reaction where one participating species drives
 its own formation, fueled by a sufficient supply of food molecules. In
 subsequent decades, \emph{autocatalytic reactions} appeared, either
@@ -350,12 +350,12 @@ will see that both sets do not contain the same mathematical objects.
 
 The most general setting is given by the framework of a chemical reaction
 network (CRN).  A CRN $\Gamma \coloneqq (X,\CR)$ is a tuple of two finite
-sets, a set of metabolites $X$ and a set of reactions $\CR$. For any $r\in
+sets, a set of metabolites \NV{[NV thinks that `metabolites' restricts  this to metabolism, and also - as usual :P - that it is better to choose one word and stick with it (or at least mention here the variants) because we have a lot of different nuances and objects under similar words, so using in turn different words for the same object increases confusion and does not help: next page `molecule', `species', and `entity' all appear.]} $X$ and a set of reactions $\CR$. For any $r\in
 \CR$, we can write a stoichiometric equation as:
 \begin{equation}\label{eq:reaction}
   \sum_{x\in X}\ s^-_{xr} \cdot x \rightarrow \sum_{x\in X} \ s^+_{xr}\cdot x
 \end{equation}
-where $s^{\pm}_{xr}$ are the educt and product stoichiometry of the
+where $s^{\pm}_{xr}$ are the educt \NV{[Similarly, educt vs reactant, and set is $\rho$ suggesting reactant.]} and product stoichiometry of the
 molecule $x$ in the reaction $r$. Reactants and products are collected in
 the sets:
 \begin{equation}
@@ -395,21 +395,21 @@ respectively. Note, we thereby have $\net{\ceducts}(r) = \ceducts(\net{r})$
 and $\net{\cproducts}(r) = \cproducts(\net{r})$.
 
 \PFS{There are multiple reasons for the case} $s^{\pm}_{xr}\neq
-\net{s}^{\pm}_{xr}$; one is catalysts. In the original CRN setting, a
+\net{s}^{\pm}_{xr}$; one is \NV{catalysis}. In the original CRN setting, a
 catalyst for a reaction $r$ is an entity $x\in X$ such that
 $s^{-}_{xr}\cdot s^{+}_{xr}\neq 0$, thus it appears on both sides of the
 stoichiometric equation of $r$. In case $s^-_{xr}>s^+_{xr}>0$, we say $x$
 is both reactant and catalyst of reaction $r$, while in case
-$s^+_{xr}>s^-_{xr}>0$, $x$ is both product and catalyst of reaction $r$. In
-the latter $x$ is also called an \emph{autocatalyst}, while in the former
-case, $x$ is called an \emph{autoinhibitor}.
+$s^+_{xr}>s^-_{xr}>0$, $x$ is both product and catalyst of reaction $r$. \NV{[I do not understand the previous two sentences, catalyst is by definition both a product and a reactant, or you mean `net-reactant' and `net-product'? still, it is not `we say' but all follows from previous definitions.]} In
+the latter \NV{case, we call }$x$ an \emph{autocatalyst}, while in the former
+case, \NV{we call $x$ }an \emph{autoinhibitor}.
 
-From a chemical perspective and the IUPAC definition, a catalyst is an
+From a chemical perspective and the IUPAC definition \NV{[The IUPAC definition is not necessarily for elementary reactions, though! so using that here is tricky.]}, a catalyst is an
 entity $x\in X$ that not only satisfies $s^{-}_{xr}\cdot s^{+}_{xr}\neq 0$,
 but also ``increases the rate of a reaction without modifying the overall
 standard Gibbs energy change in the reaction''
 \cite{gold_iupac_2025}. However, a solvent, such as water, can also act in
-such a way without being considered a catalyst \cite{marx_nature_1999}. For
+such a way \NV{[Which way? I think we shall be clearer here, I do not understand which are the `different roles' at this stage]} without being considered a catalyst \cite{marx_nature_1999}. For
 example, in Br{\o}nstedt/Lowry's acid-base theory, water is rather
 considered a reactant, i.e., a proton acceptor, removing environmental
 constraints to facilitate proton transfer between reactants
@@ -449,15 +449,15 @@ is oxidized to acetaldehyde \cite{jira_acetaldehyde_2009}. \PFS{To account
   for such situations, we} therefore define the set of F-catalysts as a
 multiset:
 \begin{equation}
-  \cat(r)\coloneqq \{\kappa_{xr} \cdot x\ | \ x\in X\}
+  \cat(r)\coloneqq \{\kappa_{xr} \cdot x\ | \ x\in X\}.
 \end{equation}
 The set of F-catalysts may be empty, i.e., for $\cat({\net{r}})=\emptyset$
-by definition, or if the reaction is uncatalyzed.
+by definition, or if the reaction is uncatalyzed. \NV{[I do not understand (10), but I discuss this directly with Richard.]}
 
 In a CRN $(X,\CR)$, each reaction $r$, as specified by
 Eq.~\ref{eq:Mod.SmEq}, is a distinct object. Thus, it is possible that two
 reactions sharing the same net reactants are elements of $\CR$. In this
-case, they appear as unique vertices in the bipartite K\"onigs
+case, they appear as \NV{distinct} vertices in the bipartite K\"onigs
 representation of a CRN $\king\coloneqq (X\cup \C{R}, E_1\cup E_2)$, where
 \begin{equation}
   \begin{split}
@@ -465,7 +465,7 @@ representation of a CRN $\king\coloneqq (X\cup \C{R}, E_1\cup E_2)$, where
   \end{split}
 \end{equation}
 We will refer to these kinds of reactions simply as reactions and denote
-them in normal font. The reaction or R-graph of a CRN is the directed graph
+them in normal font. \NV{[NV till here]} The reaction or R-graph of a CRN is the directed graph
 $\mathcal{R}(\Gamma)$ with vertex set $R$ and edge set $E\coloneqq
 \{(r_1,r_2) \ \vert \ \exists x\in X: s^+_{xr_1}>0,s^-_{xr_2}>0\}$, \Wim{i.e., there is a directed edge from $r_1$ to $r_2$ if a product of $r_1$ is a reactant of $r_2$.}
 
