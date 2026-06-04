@@ -449,7 +449,7 @@ is oxidized to acetaldehyde \cite{jira_acetaldehyde_2009}. \PFS{To account
   for such situations, we} therefore define the set of F-catalysts as a
 multiset:
 \begin{equation}
-  \cat(r)\coloneqq \{\kappa_{xr} \cdot x\ | \ x\in X\}.
+  \cat(r)\coloneqq \{\TG{k}_{xr} \cdot x\ | \ x\in X\}.
 \end{equation}
 The set of F-catalysts may be empty, i.e., for $\cat({\net{r}})=\emptyset$
 by definition, or if the reaction is uncatalyzed. \NV{[I do not understand (10), but I discuss this directly with Richard.]}
@@ -509,8 +509,8 @@ pre-image of a set of F-reactions $\FR$ by $\varphi^{-1}(\FR)$.
 By definition, $[r]_\sim$ is of infinite size, which is an unrealistic
 scenario for a chemical system. Given a set of F-reactions $\FR$ together
 with a set of species $X$, each $\sim$-equivalence class can be restricted
-to representatives that members catalyze of the species set or are
-uncatalyzed. This is achieved by \emph{catalyzations}, i.e., by defining
+to representatives \TG{of the species set that members catalyze or are
+uncatalyzed}. This is achieved by \emph{catalyzations}, i.e., by defining
 \emph{a priori} for each $\fr\in \FR$ pairs $(\cat(r), r)$ and storing the
 collection of catalysts $\cat(\fr)\coloneqq \{\cat(r) \ \vert \ r\in \fr\}$
 in the set of catalyzations $\cat(\FR)$.  Note that if an F-reaction has no
@@ -770,7 +770,7 @@ and a reaction $\fr_1$ precedes a reaction $\fr_2$, i.e.:
 \end{equation}
 We refer to the values of $\sgen$ and $\rgen$ as the generation of a 
 reaction or species. Since all representatives of an F-reaction share 
-the same F-reactants, we may define the generation of a reaction as $\delta(r)\coloneqq \rgen(\fr)$.
+the same F-reactants, we may define the generation of a reaction as $\delta(\TG{\fr})\coloneqq \rgen(\fr)$.
 
 \begin{definition}
   A \emph{constructively autocatalytic and food-generated} set (CAF) is a
@@ -883,9 +883,9 @@ than a single reaction.
   trivial.
 \end{lemma}
 \begin{proof}
-  Let $\RAF$ be a CAF and assume $|\RAF|>1$. Let $r\in \RAF:
-  \delta(r)=1$. Then all F-reactants and all F-catalysts for one
-  \emph{catalyzation} are in $\food$ since $\RAF$ is a CAF. Thus $\{r\}$ is
+  Let $\RAF$ be a CAF and assume $|\RAF|>1$. Let $\TG{\fr}\in \RAF:
+  \delta(\TG{\fr})=1$. Then all F-reactants and all F-catalysts for one
+  \emph{catalyzation} are in $\food$ since $\RAF$ is a CAF. Thus $\{\TG{\fr}\}$ is
   a RAF itself, contradicting the minimality of $\RAF$.  Conversely, assume
   that $|\RAF|=1$. Then all F-reactants and all F-catalysts for at least
   one \emph{catalyzation} are in $\food$ since otherwise $\RAF$ would not
@@ -1302,7 +1302,7 @@ $\lord(\RAF)$.
 \end{corollary}
 \vspace{6pt}
 %
-The proof of Lemma~\ref{lem:cutVertexPureCat} has three important
+The proof of Lemma~\ref{lem:cutVertexPureCat} has three important
 consequences. First, it identifies cut-vertices as pure F-reactions
 (equivalently pure reactions), although not all cut-vertices necessarily
 are. Second, pure F-reactions take an important role in the partial order
