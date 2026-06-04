@@ -473,43 +473,40 @@ Catalytic Reaction Systems (CRS) \textit{sensu} Lohn
 \cite{lohn_evolving_1998} take a different approach, \NV{which we overview here in our notation}. 
 \holy{From the perspective of a CRS, for a given set of species $X$ and a set of stoichiometric equations:
 	\begin{equation}
-		R\coloneqq \left\{r: \sum_{x\in X}\ (\sigma^-_{xr} + \kappa_{xr}) \cdot x\underset{r}\rightarrow \sum_{x\in X} \ (\sigma^+_{xr} + \kappa_{xr} )\cdot x \ \middle\vert \ \sigma_{xr}^{\pm} = \sigma_{xr}^\pm, \forall x\in X \right\}
+		R\coloneqq \left\{r: \sum_{x\in X}\ (\sigma^-_{xr} + \kappa_{xr}) \cdot x\underset{r}\rightarrow \sum_{x\in X} \ (\sigma^+_{xr} + \kappa_{xr} )\cdot x \  \right\}
 	\end{equation}
 two reactions $r_1, r_2\in R$ are considered indistinguishable if they differ
 only in their F-catalysts but share the same F-reactants and F-products
 with the same respective stoichiometric multiplicities. We thus assign to 
-every such set:
+every such set the set of uncatalyzed reactions for all reactions: 
 \begin{equation}
-	R'\coloneqq R\cup \{\net{r} \ | \vert \forall r\in R\},
-\end{equation}
-with $\net{r}$ being the net-reaction as defined in Eq.~\ref{eq:NetReaction}. 
-This allows us to introduce the following map:
+	\tilde{R}\coloneqq \{\tilde{r} \ | \ r\in R, \sigma^{\pm}_{xr}=\sigma^{\pm}_{x\tilde{r}}, 
+	k_{x\tilde{r}}=0, \forall x\in X\}
+\end{equation} 
+and with $\bar{R}\coloneqq R\cup \tilde{R}$ the following map:
 \begin{equation}\label{eq:fEquiv}
-  \chi: R' \rightarrow R', r\mapsto \net{r},
+  \chi: \bar{R} \rightarrow \bar{R}, r\mapsto \tilde{r}.
 \end{equation}
-by which we obtain an equivalence relation $\sim$:
+In this way, we obtain the relation $\sim$:
 \begin{equation}
-	\sim: R' \times R', r_1\sim r_2\Leftarrow \hat{r_1}=\hat{r_2}
+	\sim: R' \times R', r_1\sim r_2\Leftrightarrow \chi(r)_1=\chi(r_2) \Leftrightarrow 
 \end{equation}
 or equivalently $r_1\sim r_2\Leftrightarrow \sigma^\pm_{xr_1}=\sigma^\pm_{xr_2}, \forall x\in X$.}
 Indeed, $\sim$ is an equivalence relation, and we call a $\sim$-equivalence
 class an \emph{F-reaction}.  For consistency, we denote them in bold, i.e.,
 $\fr\coloneqq [r]_\sim$ for:
-\NV{[From now on, I would then use only $\fr$ whenever not confusing and specifying $\fr=[r]_\sim$ otherwise. I did not implement this.]}
 \begin{equation}\label{eq:fEquivClass}
   \begin{split}
-    \fr= \left\{r': \sum_{x\in X}\ (\sigma^-_{xr'} + \kappa_{xr'}) \cdot x\underset{r'}\rightarrow \sum_{x\in X} \ (\sigma^+_{xr'} + \kappa_{xr'} )\cdot x \ \middle\vert \ \sigma_{xr'}^{\pm} = \sigma_{xr}^\pm, 	
+    \fr= \left\{r': \sum_{x\in X}\ (\sigma^-_{xr'} + \kappa_{xr'}) \cdot x \rightarrow \sum_{x\in X} \ (\sigma^+_{xr'} + \kappa_{xr'} )\cdot x \ \middle\vert \ \sigma_{xr'}^{\pm} = \sigma_{xr}^\pm, 	
     \forall x\in X \right\}
   \end{split}
 \end{equation}
-\NV{W}e write %$r\in \fr$ for $r\in [r]_\sim$,
-$\FR$ for sets of F-reactions. Moreover, we may also write
-$\feducts(\fr)$ and $\fproducts(\fr)$ since $\feducts(r') =\feducts(r),$ $\fproducts(r') =\fproducts(r),$ $\forall r' \in[r]_\sim$. \NV{[Unless you really need this specification, it could be good to remove, because in CRN you may or may not even have the uncatalyzed reaction]}{\tiny The natural
-representative is the uncatalyzed reaction $\tilde{r}\in [r]_{\sim}:
-\cat(\tilde{r}) = \emptyset$, which coincides with the net reaction
-$\hat{r}$ if and only if $\feducts(r)= \net{\ceducts}(r)$ and
-$\fproducts(\tilde{r}) = \net{\cproducts}(r)$.}
-
+\NV{W}e write $\FR$ for sets of F-reactions. Moreover, we may also write
+$\feducts(\fr)$ and $\fproducts(\fr)$ since $\feducts(r') =\feducts(r),$ $\fproducts(r') =\fproducts(r),$ $\forall r' \in[r]_\sim$. 
+\holy{By definition the natural representative of each equivalence class is the uncatalyzed reaction $\tilde{r}\in [r]_{\sim}:
+\cat(\tilde{r}) = \emptyset$, which coincides with the net reaction $\net{r}$ if and only if $\feducts(r)= \net{\ceducts}(r)$ and
+$\fproducts(\tilde{r}) = \net{\cproducts}(r)$. The natural represenative is primarily added to aid understanding of the 
+equivalence relation $\sim$. However, a CRN $(X,R)$ might contain $r\in R: \tilde{r}\notin R$.}
 
 \PFS{For a given set of reactions $R$, we introduce a map $\varphi$ to conveniently obtain the corresponding F-reactions:}
 \begin{equation}
@@ -518,29 +515,17 @@ $\fproducts(\tilde{r}) = \net{\cproducts}(r)$.}
 where $\FR\coloneqq \{[r]_{\sim} \ | \ r\in R\}$. This allows access to the
 pre-image of a set of F-reactions $\FR$ by $\varphi^{-1}(\FR)$.
 
-\NV{[Next paragraph will discuss with R]}
-By definition, $[r]_\sim$ is of infinite size, which is an unrealistic
-scenario for a chemical system. Given a set of F-reactions $\FR$ together
-with a set of species $X$, each $\sim$-equivalence class can be restricted
-to representatives \TG{of the species set that members catalyze or are
-uncatalyzed}. This is achieved by \emph{catalyzations}, i.e., by defining
-\emph{a priori} for each $\fr\in \FR$ pairs $(\cat(r), r)$ and storing the
-collection of catalysts $\cat(\fr)\coloneqq \{\cat(r) \ \vert \ r\in \fr\}$
-in the set of catalyzations $\cat(\FR)$.  Note that if an F-reaction has no
-catalyzations, $\cat(\fr)=\emptyset$. In this case, $\fr$ contains only the
-natural representative, while in all other cases, the natural
-representative is excluded from the equivalence class:
-\begin{equation}
-  \fr\coloneqq \begin{cases} 
-    \tilde{r} & \text{if } \cat(\fr)=\emptyset \\
-    \{r' \ \vert \ \cat(r')\neq \emptyset\} & \text{else}
-  \end{cases} 
-\end{equation}
-In this way, each F-reaction is of finite size, and throughout we will
-consider them finite unless otherwise specified. A CRS is then the triple
-$\Phi \coloneqq (X,\FR, \cat)$, which has a unique corresponding CRN $\Gamma(\Phi) = (X, \CR)$, where
-$\CR=\bigcup_{\fr \in \FR}\fr$. For clarity, we might write the CRN as a
-triple as $(X, \CR, \cat)$.
+\holy{Given a set of reactions $R$ together with a set of species $X$, 
+for each $\sim$-equivalence class the set of \emph{catalyzations} is obtained 
+as the set of pairs $(\cat(r), r): r\in \fr$, evoking sets of catalysts $\cat(\fr)\coloneqq 
+\{\cat(r) \ \vert \ r\in \fr\}$ stored in the collection $\cat(\FR)$ for $\FR=\varphi^{-1}(R)$.  
+Thereby, if an F-reaction $\fr\in \FR$ has no catalyzations, then $\cat(\fr)=\emptyset$, 
+which implies that $\fr$ contains only the natural representative, in particular, 
+the uncatalyzed reaction $\tilde{r}\in \fr$.}
+
+ A CRS is then the triple $\Phi \coloneqq (X,\FR, \cat)$, which has a unique corresponding 
+ CRN $\Gamma(\Phi) = (X, \CR)$, where $\CR=\bigcup_{\fr \in \FR}\fr$. For clarity, we might 
+ write the CRN as a triple as $(X, \CR, \cat)$.
 
 Analogously to the bipartite graph representation of a CRN, the bipartite
 graph of a CRS is given as $\queen(\Phi=(X,\FR, \cat))\coloneqq (X \cup
@@ -576,14 +561,14 @@ bipartite graph of the $K(\Gamma(\Phi))$.
 \end{proof}
 \vspace{6pt}
 
-In the monocatalyst case, for example, where each F-reaction has exactly
-one catalyst, $\vert \fr \vert = 1, \forall \fr \in \FR$. \NV{[Catalyst vs catalyzation?]} Thus, each
-reaction vertex of $\queen(\Phi)$ is substituted in $\queen(\Gamma(\Phi))$
-by its single representative, while all edges to adjacent vertices are
-conserved. This yields that $\queen(\Phi)$ and $\king(\Gamma(\Phi))$ are
-isomorphic. In turn, if one equivalence class contains more than one
-representative, then $|V(\king(\Gamma(\Phi))|>|V(\queen(\Phi)|$, which
-directly implies that $\queen(\Phi)\not \simeq \king(\Gamma(\Phi))$.
+\holy{In the monocatalyst case, for example, where each F-reaction has exactly
+one catalyst - in this case also only one catalyzation - we have 
+$\vert \fr \vert = 1, \forall \fr \in \FR$.} Thus, each reaction vertex of $\queen(\Phi)$ 
+is substituted in $\queen(\Gamma(\Phi))$ by its single representative, while all 
+edges to adjacent vertices are conserved. This yields that $\queen(\Phi)$ 
+and $\king(\Gamma(\Phi))$ are isomorphic. In turn, if one equivalence class 
+contains more than one representative, then $|V(\king(\Gamma(\Phi))|>|V(\queen(\Phi)|$, 
+which directly implies that $\queen(\Phi)\not \simeq \king(\Gamma(\Phi))$.
 
 \vspace{6pt}
 \begin{lemma}\label{lem:IsoQK}
