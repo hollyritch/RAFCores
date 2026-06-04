@@ -308,9 +308,9 @@ motivation, setting, and mathematical formalization. \PFS{Notably,
   (CRS) \textit{sensu} Lohn \cite{lohn_evolving_1998}, while
   \emph{stoichiometric autocatalysis} is grounded in the tradition of
   chemical reaction network theory, tracing back to Rutherford Aris
-  \cite{Aris:64}. A meaningful connection between these two frameworks has
-  been investigated} only very recently
-\cite{bridging_golnik_2026}. Notably, the RAF framework, in its original
+  \cite{aris_prolegomena_1965}. A meaningful connection between these 
+  two frameworks has been investigated} only very recently
+\cite{golnik_bridging_2026}. Notably, the RAF framework, in its original
 formulation, allows reactions to also occur uncatalyzed, at least
 initially, which seems reasonable from a chemical perspective and
 considering the time life required to develop. In a more restrictive
@@ -318,7 +318,7 @@ setting, i.e., in \textsc{Constructively Autocatalytic F-generated sets}
 (CAFs), reactions can only be executed if all catalysts have been generated
 beforehand. Interestingly, a RAF that is itself not entirely constrained in
 such a manner is always \emph{stoichiometrically autocatalytic}
-\cite{bridging_golnik_2026}.
+\cite{golnik_bridging_2026}.
 
 In this contribution, we extend this theory and set out to identify the
 underlying structures carrying the autocatalytic capacity of a RAF that is
@@ -365,14 +365,15 @@ the sets:
   \end{split}
 \end{equation}
 A \emph{sub-CRN} is a tuple $(X',R')$ with $X'\subseteq X$ and $R'\subseteq
-R$, \NV{where $r\in R'$ omits the reference to species $x\not\in X'$}. A \emph{sub-CRN} is \emph{well-formed} if for each reaction $r\in R'$
+R$, \NV{where $r\in R'$ omits the reference to species $x\not\in X'$}. A 
+\emph{sub-CRN} is \emph{well-formed} if for each reaction $r\in R'$
 there are species $x,y\in X': s^-_{xr}>0, s^+_{xr}>0$.  The $|X|\times|R|$
 \emph{stoichiometric matrix} $\SM$ encodes all \emph{net-stoichiometries}:
 \begin{equation}
   \SM_{xr}\coloneqq s^+_{xr}-s^-_{xr}
 \end{equation}
 For a reaction $r$ we can define its \emph{net reaction} $\net{r}$ as
-\begin{equation}
+\begin{equation}\label{eq:NetReaction}
   \sum_{x\in X}\ \net{s}^-_{xr} \cdot x\quad\underset{\net{r}} \quad \rightarrow \sum_{x\in X}
   \ \net{s}^+_{xr}\cdot x 
 \end{equation}
@@ -394,16 +395,14 @@ as the sets of \emph{net-reactants} and \emph{net-products} of reaction $r$,
 respectively. Note, we thereby have $\net{\ceducts}(r) = \ceducts(\net{r})$
 and $\net{\cproducts}(r) = \cproducts(\net{r})$.
 
-\PFS{There are multiple reasons for the case} where stoichiometry and net-stoichiometry are different, i.e. $s^{\pm}_{xr}\neq
-\net{s}^{\pm}_{xr}$; one is \NV{catalysis}. In the original CRN \NV{mathematical} setting, a
+\PFS{There are multiple reasons for the case} where stoichiometry and 
+net-stoichiometry are different, i.e. $s^{\pm}_{xr}\neq \net{s}^{\pm}_{xr}$; 
+one is \NV{catalysis}. In the original CRN \NV{mathematical} setting, a
 catalyst for a reaction $r$ is \NV{simply} a species $x\in X$ such that
 $s^{-}_{xr}\cdot s^{+}_{xr}\neq 0$, thus it appears on both sides of the
 stoichiometric equation \eqref{eq:reaction} of $r$. In case $s^-_{xr}>s^+_{xr}>0$, $x$
 is both \holy{net-reactant} and catalyst of reaction $r$, while in case
 $s^+_{xr}>s^-_{xr}>0$, $x$ is both \holy{net-product} and catalyst of reaction $r$. 
-\NV{[We do not use this anywhere, I suggest removal, because it also confuses on autocatalysis meaning.]}
-{\tiny In the latter \NV{case, we call }$x$ an \emph{autocatalyst}, while in the former
-case, \NV{we call $x$ }an \emph{autoinhibitor}.}
 
 \holy{From a chemical perspective, in turn,} a catalyst is a species $x\in X$ that not only satisfies 
 $s^{-}_{xr}\cdot s^{+}_{xr}\neq 0$, but also ``increases the rate of a reaction without 
@@ -411,8 +410,10 @@ modifying the overall standard Gibbs energy change in the reaction'' \cite{gold_
 However, a solvent, such as water, can also \holy{exert the same effect on a chemical reaction} 
 without being considered a catalyst \cite{marx_nature_1999}. For example, in Br{\o}nstedt/Lowry's 
 acid-base theory, water is rather considered a reactant, i.e., a proton acceptor, removing environmental
-constraints to facilitate proton transfer between reactants \cite{eigen_proton_1964}. \NV{To be specific on the `chemically' catalytic role} that a species plays within a chemical reaction, we partition stoichiometries $s^{\pm}_{xr}$ as in
-\cite{bridging_golnik_2026} by:
+constraints to facilitate proton transfer between reactants \cite{eigen_proton_1964}. \NV{To be specific 
+on the `chemically' catalytic role} that a species plays within a chemical reaction, we partition 
+stoichiometries $s^{\pm}_{xr}$ as in
+\cite{golnik_bridging_2026} by:
 \begin{equation}
 	 s^{\pm}_{xr}=\sigma^{\pm}_{xr} + k_{xr}.
 \end{equation}
@@ -469,13 +470,28 @@ $\mathcal{R}(\Gamma)$ with vertex set $R$ and edge set $E\coloneqq
 \subsection{Catalytic Reaction Systems (CRS)}
 
 Catalytic Reaction Systems (CRS) \textit{sensu} Lohn
-\cite{lohn_evolving_1998} take a different approach, \NV{which we overview here in our notation}.  In CRS, two
-reactions $r_1$ and $r_2$, \NV{defined through \eqref{eq:Mod.SmEq}}, are considered indistinguishable if they differ
+\cite{lohn_evolving_1998} take a different approach, \NV{which we overview here in our notation}. 
+\holy{From the perspective of a CRS, for a given set of species $X$ and a set of stoichiometric equations:
+	\begin{equation}
+		R\coloneqq \left\{r: \sum_{x\in X}\ (\sigma^-_{xr} + \kappa_{xr}) \cdot x\underset{r}\rightarrow \sum_{x\in X} \ (\sigma^+_{xr} + \kappa_{xr} )\cdot x \ \middle\vert \ \sigma_{xr}^{\pm} = \sigma_{xr}^\pm, \forall x\in X \right\}
+	\end{equation}
+two reactions $r_1, r_2\in R$ are considered indistinguishable if they differ
 only in their F-catalysts but share the same F-reactants and F-products
-\NV{with the same respective} stoichiometric multiplicities:
-\begin{equation}\label{eq:fEquiv}
-  r_1\sim r_2 \Leftrightarrow \sigma^{\pm}_{xr_1}= \sigma^{\pm}_{xr_2}.
+with the same respective stoichiometric multiplicities. We thus assign to 
+every such set:
+\begin{equation}
+	R'\coloneqq R\cup \{\net{r} \ | \vert \forall r\in R\},
 \end{equation}
+with $\net{r}$ being the net-reaction as defined in Eq.~\ref{eq:NetReaction}. 
+This allows us to introduce the following map:
+\begin{equation}\label{eq:fEquiv}
+  \chi: R' \rightarrow R', r\mapsto \net{r},
+\end{equation}
+by which we obtain an equivalence relation $\sim$:
+\begin{equation}
+	\sim: R' \times R', r_1\sim r_2\Leftarrow \hat{r_1}=\hat{r_2}
+\end{equation}
+or equivalently $r_1\sim r_2\Leftrightarrow \sigma^\pm_{xr_1}=\sigma^\pm_{xr_2}, \forall x\in X$.}
 Indeed, $\sim$ is an equivalence relation, and we call a $\sim$-equivalence
 class an \emph{F-reaction}.  For consistency, we denote them in bold, i.e.,
 $\fr\coloneqq [r]_\sim$ for:
@@ -828,7 +844,7 @@ cores} \cite{blokhuis_Universal_2020}. Their characterization and
 computational enumeration have gained reasonable attention in chemical
 reaction networks with and without explicit catalysis
 \cite{blokhuis_Universal_2020, golnik_birne_2025, golnik_using_2026,
-  golnik_autocatalytic_2026}.  In \cite{bridging_golnik_2026}, we have
+  golnik_autocatalytic_2026}.  In \cite{golnik_bridging_2026}, we have
 shown that each RAF that is not a CAF contains a stoichiometrical
 autocatalytic subnetwork and thereby an autocatalytic core. It is therefore
 of immediate interest to ask for the substructures of a RAF that carry
@@ -869,7 +885,7 @@ The only irreducible RAF in this example is $\{\fr_1=\{r_1',r_1''\},
 \fr_2=\{r_2\}\}$, which implies that Lemma~\ref{lem:IsoQK} does not
 \PFS{apply to} irreducible RAFs.
 
-According to Theorem 3.1 of \cite{bridging_golnik_2026}, an autocatalytic
+According to Theorem 3.1 of \cite{golnik_bridging_2026}, an autocatalytic
 elementary circuit can be found in a RAF as long as it is not a
 CAF. Irreducible RAFs exhibit the convenient property that they are not
 CAFs as long as they are non-trivial, i.e., if they are composed of more
@@ -1413,7 +1429,7 @@ well-formed.
 Thm.~\ref{Thm:StrBlockCore} provides only information on the existence, but
 not on the structure of the subnetworks responsible for the semipositivity
 of the corresponding submatrix. In the proof of Thm.~3.1
-\cite{bridging_golnik_2026}, it was shown that each RAF that is itself not
+\cite{golnik_bridging_2026}, it was shown that each RAF that is itself not
 a CAF contains an autocatalytic elementary circuit. We will adapt this
 construction to obtain such a circuit for each strong block.
 
@@ -1993,7 +2009,7 @@ could be obtained, and both are autocatalytic cores.
 
 Although inherently distinct, it was recently demonstrated that
 every \textsc{RAF} that is not a \textsc{CAF} is nevertheless
-\emph{stoichiometrically autocatalytic} \cite{bridging_golnik_2026}. Here,
+\emph{stoichiometrically autocatalytic} \cite{golnik_bridging_2026}. Here,
 we continued examining this relationship in greater detail, focusing in
 particular on the interplay between the minimal structures arising in both
 frameworks.
@@ -2031,7 +2047,7 @@ frameworks.
 In the present contribution we examine this relationship in greater
 detail, focusing in particular on the interplay between the minimal
 structures arising in both frameworks.  \PFS{To this end we started from
-  Thm.~3.1 in \cite{bridging_golnik_2026}, which asserts that every
+  Thm.~3.1 in \cite{golnik_bridging_2026}, which asserts that every
   \textsc{RAF} that is not a \textsc{CAF} is \emph{stoichiometrically
   autocatalytic}. As an immediate consequence, \emph{irreducible RAFs}
   \cite{steel_minimal_2013}, i.e., \textsc{RAF}s that do not contain proper
@@ -2077,8 +2093,8 @@ Metzler circuit that always contains a pure reaction.
 
 The existence of a Metzler circuit with a pure reaction has already been
 shown to exist for any RAF that is itself not a CAF
-\cite{bridging_golnik_2026}. However, in the proof of Thm.~3.1 of
-\cite{bridging_golnik_2026}, the construction follows the F-catalysts as
+\cite{golnik_bridging_2026}. However, in the proof of Thm.~3.1 of
+\cite{golnik_bridging_2026}, the construction follows the F-catalysts as
 reactants for each reaction, and thereby not necessarily the reactant with
 the lowest generation number. Non-trivial minimal RAFs exist, where this
 construction would not yield a \emph{stoichiometrically autocatalytic}
@@ -2089,7 +2105,7 @@ F-catalyst of its appurtenant reaction. Nevertheless, $C\coloneqq
 (x_1,r_1,x_2,r_2,x_1)$ is still a Metzler circuit with a pure reaction
 ($r_1$), and thereby \emph{stoichiometrically autocatalytic}
 (Lemma.~\ref{lem:MetzCircAut}). In addition, $(x_3,r_2,x_4,r_3, x_3)$
-satisfies the construction of Thm.~3.1 of \cite{bridging_golnik_2026}.
+satisfies the construction of Thm.~3.1 of \cite{golnik_bridging_2026}.
 
 The example depicted in Fig.~\ref{fig:AutCircNotCore} clearly illustrates,
 however, that these \emph{stoichiometrically autocatalytic} Metzler
@@ -2102,7 +2118,7 @@ Sec.~\ref{subsec:ManyRAFsOneCore}) or the construction in
 Lemma~\ref{lem:MetzCircuit} can yield two equivalent autocatalytic cores
 (see Sec.~\ref{subsec:IrrEquivCores}). We might also find autocatalytic
 reactions in trivial and non-trivial irreducible RAFs (see Eq.~4.18,
-\cite{bridging_golnik_2026} and Fig.~\ref{Fig:ExplAutocatReac}).
+\cite{golnik_bridging_2026} and Fig.~\ref{Fig:ExplAutocatReac}).
 
 %\section{Concluding Remarks}
 
