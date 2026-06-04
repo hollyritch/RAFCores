@@ -446,7 +446,7 @@ is oxidized to acetaldehyde \cite{jira_acetaldehyde_2009}. \PFS{To account
   for such situations, we} therefore define the set of F-catalysts as a
 multiset:
 \begin{equation}
-  \cat(r)\coloneqq \{\TG{k}_{xr} \cdot x\ | \ x\in X\}.
+  \cat(r)\coloneqq \{\TG{k}_{xr} \cdot x\ | \ x\in X,\; \NV{k_{xr}}>0\}.
 \end{equation}
 The set of F-catalysts may be empty, i.e., for $\cat({\net{r}})=\emptyset$
 by definition, or if the reaction is uncatalyzed. \NV{[I do not understand (10), but I discuss this directly with Richard.]}
@@ -468,41 +468,41 @@ $\mathcal{R}(\Gamma)$ with vertex set $R$ and edge set $E\coloneqq
 
 \subsection{Catalytic Reaction Systems (CRS)}
 
-Catalytic reaction systems (CRS) \textit{sensu} Lohn
-\cite{lohn_evolving_1998} take a different approach.  In particular, two
-reactions $r_1$ and $r_2$ are considered indistinguishable if they differ
-only in their F-catalysts but share the same F-reactants and F-products,
-including their respective stoichiometric multiplicities:
+Catalytic Reaction Systems (CRS) \textit{sensu} Lohn
+\cite{lohn_evolving_1998} take a different approach, \NV{which we overview here in our notation}.  In CRS, two
+reactions $r_1$ and $r_2$, \NV{defined through \eqref{eq:Mod.SmEq}}, are considered indistinguishable if they differ
+only in their F-catalysts but share the same F-reactants and F-products
+\NV{with the same respective} stoichiometric multiplicities:
 \begin{equation}\label{eq:fEquiv}
-  r_1\sim r_2 \Leftrightarrow \sigma^{\pm}_{xr_1}= \sigma^{\pm}_{xr_2}, 
+  r_1\sim r_2 \Leftrightarrow \sigma^{\pm}_{xr_1}= \sigma^{\pm}_{xr_2}.
 \end{equation}
 Indeed, $\sim$ is an equivalence relation, and we call a $\sim$-equivalence
-class an F-reaction.  For consistency, we denote them in bold, i.e.,
+class an \emph{F-reaction}.  For consistency, we denote them in bold, i.e.,
 $\fr\coloneqq [r]_\sim$ for:
+\NV{[From now on, I would then use only $\fr$ whenever not confusing and specifying $\fr=[r]_\sim$ otherwise. I did not implement this.]}
 \begin{equation}\label{eq:fEquivClass}
   \begin{split}
-    \fr= \left\{r': \sum_{x\in X}\ (\sigma^-_{xr'} + \kappa_{xr'}) \cdot x)\rightarrow \sum_{x\in X} \ (\sigma^+_{xr'} + \kappa_{xr'} \cdot x) \ \middle\vert \ \sigma_{xr'}^{\pm} = \sigma_{xr}^\pm, 	
+    \fr= \left\{r': \sum_{x\in X}\ (\sigma^-_{xr'} + \kappa_{xr'}) \cdot x\underset{r'}\rightarrow \sum_{x\in X} \ (\sigma^+_{xr'} + \kappa_{xr'} )\cdot x \ \middle\vert \ \sigma_{xr'}^{\pm} = \sigma_{xr}^\pm, 	
     \forall x\in X \right\}
   \end{split}
 \end{equation}
-With a slight abuse of notation, we write $r\in \fr$ for $r\in [r]_\sim$,
-and $\FR$ for sets of F-reactions. Moreover, we may also write
-$\feducts(\fr)$ and $\fproducts(\fr)$ since $\feducts(r') =\feducts(r),
-\fproducts(r') =\fproducts(r), \forall r' \in[r]_\sim$. The natural
+\NV{W}e write %$r\in \fr$ for $r\in [r]_\sim$,
+$\FR$ for sets of F-reactions. Moreover, we may also write
+$\feducts(\fr)$ and $\fproducts(\fr)$ since $\feducts(r') =\feducts(r),$ $\fproducts(r') =\fproducts(r),$ $\forall r' \in[r]_\sim$. \NV{[Unless you really need this specification, it could be good to remove, because in CRN you may or may not even have the uncatalyzed reaction]}{\tiny The natural
 representative is the uncatalyzed reaction $\tilde{r}\in [r]_{\sim}:
 \cat(\tilde{r}) = \emptyset$, which coincides with the net reaction
 $\hat{r}$ if and only if $\feducts(r)= \net{\ceducts}(r)$ and
-$\fproducts(\tilde{r}) = \net{\cproducts}(r)$.
+$\fproducts(\tilde{r}) = \net{\cproducts}(r)$.}
 
 
-\PFS{For a given set of reactions $R$ the corresponding F-reactions are
-  conveniently obtained as follows:}
+\PFS{For a given set of reactions $R$, we introduce a map $\varphi$ to conveniently obtain the corresponding F-reactions:}
 \begin{equation}
-  \varphi: R\rightarrow \FR: \varphi(r) \coloneqq \fr, 
+  \varphi: R\mapsto \FR\quad\quad \varphi(r) \coloneqq \fr, 
 \end{equation}
 where $\FR\coloneqq \{[r]_{\sim} \ | \ r\in R\}$. This allows access to the
 pre-image of a set of F-reactions $\FR$ by $\varphi^{-1}(\FR)$.
 
+\NV{[NV till here]}
 By definition, $[r]_\sim$ is of infinite size, which is an unrealistic
 scenario for a chemical system. Given a set of F-reactions $\FR$ together
 with a set of species $X$, each $\sim$-equivalence class can be restricted
