@@ -770,7 +770,7 @@ and a reaction $\fr_1$ precedes a reaction $\fr_2$, i.e.:
 \end{equation}
 We refer to the values of $\sgen$ and $\rgen$ as the generation of a 
 reaction or species. Since all representatives of an F-reaction share 
-the same F-reactants, we may define the generation of a reaction as $\delta(\TG{\fr})\coloneqq \rgen(\fr)$.
+the same F-reactants, we may define the generation of a reaction as $\delta(r)\coloneqq \rgen(\fr)$.
 
 \begin{definition}
   A \emph{constructively autocatalytic and food-generated} set (CAF) is a
@@ -884,7 +884,7 @@ than a single reaction.
 \end{lemma}
 \begin{proof}
   Let $\RAF$ be a CAF and assume $|\RAF|>1$. Let $\TG{\fr}\in \RAF:
-  \delta(\TG{\fr})=1$. Then all F-reactants and all F-catalysts for one
+  \TG{\rgen(\fr)}=1$. Then all F-reactants and all F-catalysts for one
   \emph{catalyzation} are in $\food$ since $\RAF$ is a CAF. Thus $\{\TG{\fr}\}$ is
   a RAF itself, contradicting the minimality of $\RAF$.  Conversely, assume
   that $|\RAF|=1$. Then all F-reactants and all F-catalysts for at least
@@ -940,7 +940,7 @@ respectively. In line with calling elements of $\food$ food-molecules, we kindly
 \begin{equation}\label{eq:Waste}
   W\coloneqq \{x\in \closure{\RAF}{\food} \ | \ \nexists \fr \in \RAF \text{ s.t. } s^-_{xr}>0\}		
 \end{equation}
-as waste molecules. We note that $V(\king')=\closure{\RAF}{\food})$.
+as waste molecules. We note that $V(\king')=\closure{\RAF}{\food}$.
 
 \subsubsection{Strong connectivity}
 
