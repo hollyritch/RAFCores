@@ -465,7 +465,9 @@ representation of a CRN $\king\coloneqq (X\cup \C{R}, E_1\cup E_2)$, where
 We will refer to these kinds of reactions simply as reactions and denote
 them in normal font. The reaction or R-graph of a CRN is the directed graph
 $\mathcal{R}(\Gamma)$ with vertex set $R$ and edge set $E\coloneqq
-\{(r_1,r_2) \ \vert \ \exists x\in X: s^+_{xr_1}>0,s^-_{xr_2}>0\}$, \Wim{i.e., there is a directed edge from $r_1$ to $r_2$ if a species $x$ is both a product of $r_1$ and a reactant of $r_2$.}
+\{(r_1,r_2) \ \vert \ \exists x\in X: s^+_{xr_1}>0,s^-_{xr_2}>0\}$, \Wim{i.e., 
+there is a directed edge from $r_1$ to $r_2$ if a species $x$ is both a 
+product of $r_1$ and a reactant of $r_2$.}
 
 \subsection{Catalytic Reaction Systems (CRS)}
 
@@ -503,10 +505,10 @@ $\fr\coloneqq [r]_\sim$ for:
 \end{equation}
 \NV{W}e write $\FR$ for sets of F-reactions. Moreover, we may also write
 $\feducts(\fr)$ and $\fproducts(\fr)$ since $\feducts(r') =\feducts(r),$ $\fproducts(r') =\fproducts(r),$ $\forall r' \in[r]_\sim$. 
-\holy{By definition the natural representative of each equivalence class is the uncatalyzed reaction $\tilde{r}\in [r]_{\sim}:
+\holy{By definition, the natural representative of each equivalence class is the uncatalyzed reaction $\tilde{r}\in [r]_{\sim}:
 \cat(\tilde{r}) = \emptyset$, which coincides with the net reaction $\net{r}$ if and only if $\feducts(r)= \net{\ceducts}(r)$ and
-$\fproducts(\tilde{r}) = \net{\cproducts}(r)$. The natural represenative is primarily added to aid understanding of the 
-equivalence relation $\sim$. However, a CRN $(X,R)$ might contain $r\in R: \tilde{r}\notin R$.}
+$\fproducts(\tilde{r}) = \net{\cproducts}(r)$. It is primarily added to aid understanding of the equivalence relation $\sim$, as
+a CRN $(X,R)$ might contain $r\in R: \tilde{r}\notin R$.}
 
 \PFS{For a given set of reactions $R$, we introduce a map $\varphi$ to conveniently obtain the corresponding F-reactions:}
 \begin{equation}
@@ -515,13 +517,15 @@ equivalence relation $\sim$. However, a CRN $(X,R)$ might contain $r\in R: \tild
 where $\FR\coloneqq \{[r]_{\sim} \ | \ r\in R\}$. This allows access to the
 pre-image of a set of F-reactions $\FR$ by $\varphi^{-1}(\FR)$.
 
-\holy{Given a set of reactions $R$ together with a set of species $X$, 
-for each $\sim$-equivalence class the set of \emph{catalyzations} is obtained 
-as the set of pairs $(\cat(r), r): r\in \fr$, evoking sets of catalysts $\cat(\fr)\coloneqq 
-\{\cat(r) \ \vert \ r\in \fr\}$ stored in the collection $\cat(\FR)$ for $\FR=\varphi^{-1}(R)$.  
-Thereby, if an F-reaction $\fr\in \FR$ has no catalyzations, then $\cat(\fr)=\emptyset$, 
-which implies that $\fr$ contains only the natural representative, in particular, 
-the uncatalyzed reaction $\tilde{r}\in \fr$.}
+\holy{For a set of reactions $R$ together with a set of species $X$, 
+each $\sim$-equivalence class is associated to pairs $(\cat(r), r): r\in \fr$,
+which are called \emph{catalyzations}. \emph{Catalyzations} evoke sets 
+of catalysts $\cat(\fr)\coloneqq \{\cat(r) \ \vert \ r\in \fr\}$ that can be stored 
+in a collection $\cat(\FR)$ for $\FR=\varphi^{-1}(R)$. Thereby, if an F-reaction 
+$\fr\in \FR$ has no catalyzations, then $\cat(\fr)=\emptyset$, which implies 
+that $\fr$ contains only the natural representative, in particular, the uncatalyzed 
+reaction $\tilde{r}\in \fr$. In general, the \emph{catalyzations} are predefined, also 
+for sets of F-reactions \cite{hordijk_detecting_2004}.}
 
  A CRS is then the triple $\Phi \coloneqq (X,\FR, \cat)$, which has a unique corresponding 
  CRN $\Gamma(\Phi) = (X, \CR)$, where $\CR=\bigcup_{\fr \in \FR}\fr$. For clarity, we might 
