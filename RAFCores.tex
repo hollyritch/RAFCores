@@ -445,12 +445,12 @@ orchestrated cooperation of two catalysts is required, is the dual-catalyst
 system of palladium and copper in the Hoechst-Wacker process, where ethene
 is oxidized to acetaldehyde \cite{jira_acetaldehyde_2009}. \PFS{To account
   for such situations, we} therefore define the set of F-catalysts as a
-multiset:
+\NV{set of nonzero pairs}:
 \begin{equation}
   \cat(r)\coloneqq \{\TG{k}_{xr} \cdot x\ | \ x\in X,\; \NV{k_{xr}}>0\}.
 \end{equation}
 The set of F-catalysts may be empty, i.e., for $\cat({\net{r}})=\emptyset$
-by definition, or if the reaction is uncatalyzed. \NV{[I do not understand (10), but I discuss this directly with Richard.]}
+by definition, or if the reaction is uncatalyzed. 
 
 In a CRN $(X,\CR)$, each reaction $r$, as specified by
 Eq.~\ref{eq:Mod.SmEq}, is a distinct object. Thus, it is possible that two
@@ -463,138 +463,62 @@ representation of a CRN $\king\coloneqq (X\cup \C{R}, E_1\cup E_2)$, where
   \end{split}
 \end{equation}
 We will refer to these kinds of reactions simply as reactions and denote
-them in normal font. The reaction or R-graph of a CRN is the directed graph
-$\mathcal{R}(\Gamma)$ with vertex set $R$ and edge set $E\coloneqq
-\{(r_1,r_2) \ \vert \ \exists x\in X: s^+_{xr_1}>0,s^-_{xr_2}>0\}$, \Wim{i.e., 
-there is a directed edge from $r_1$ to $r_2$ if a species $x$ is both a 
-product of $r_1$ and a reactant of $r_2$.}
+them in normal font. 
 
 \subsection{Catalytic Reaction Systems (CRS)}
 
 Catalytic Reaction Systems (CRS) \textit{sensu} Lohn
-\cite{lohn_evolving_1998} take a different approach, \NV{which we overview here in our notation}. 
-\holy{From the perspective of a CRS, for a given set of species $X$ and a set of stoichiometric equations:
-	\begin{equation}
-		R\coloneqq \left\{r: \sum_{x\in X}\ (\sigma^-_{xr} + \kappa_{xr}) \cdot x\underset{r}\rightarrow \sum_{x\in X} \ (\sigma^+_{xr} + \kappa_{xr} )\cdot x \  \right\}
-	\end{equation}
-two reactions $r_1, r_2\in R$ are considered indistinguishable if they differ
+\cite{lohn_evolving_1998} take a different approach, \NV{which we overview here in our notation. 
+From the perspective of a CRS, two reactions
+$r_1, r_2 \in R$ are considered indistinguishable if  they differ
 only in their F-catalysts but share the same F-reactants and F-products
-with the same respective stoichiometric multiplicities. We thus assign to 
-every such set the set of uncatalyzed reactions for all reactions: 
+with the same respective stoichiometric multiplicities. To account for this, we introduce the following equivalence relation $\sim$ for two reactions $r_1$ and $r_2$ in the form \eqref{eq:Mod.SmEq}:
 \begin{equation}
-	\tilde{R}\coloneqq \{\tilde{r} \ | \ r\in R, \sigma^{\pm}_{xr}=\sigma^{\pm}_{x\tilde{r}}, 
-	k_{x\tilde{r}}=0, \forall x\in X\}
-\end{equation} 
-and with $\bar{R}\coloneqq R\cup \tilde{R}$ the following map:
-\begin{equation}\label{eq:fEquiv}
-  \chi: \bar{R} \rightarrow \bar{R}, r\mapsto \tilde{r}.
+    r_1\sim r_2\quad \text{if}\quad \sigma^\pm_{xr_1}=\sigma^\pm_{xr_2} \quad \text{for every $x\in X$}.
 \end{equation}
-In this way, we obtain the relation $\sim$:
+We call any equivalence class $[\cdot]_{\sim}$ of this relation on $R$ an \emph{F-reaction}. For simplicity, we formally use the uncatalyzed reaction $\tilde{r}$
 \begin{equation}
-	\sim: R' \times R', r_1\sim r_2\Leftrightarrow \chi(r)_1=\chi(r_2) \Leftrightarrow 
+  \sum_{x\in X}\ \sigma^-_{xr}  \cdot x\quad \underset{\tilde{r
+  }}\rightarrow \quad \sum_{x\in X} \ \sigma^+_{xr} \cdot x  ,
 \end{equation}
-or equivalently $r_1\sim r_2\Leftrightarrow \sigma^\pm_{xr_1}=\sigma^\pm_{xr_2}, \forall x\in X$.}
-Indeed, $\sim$ is an equivalence relation, and we call a $\sim$-equivalence
-class an \emph{F-reaction}.  For consistency, we denote them in bold, i.e.,
-$\fr\coloneqq [r]_\sim$ for:
-\begin{equation}\label{eq:fEquivClass}
-  \begin{split}
-    \fr= \left\{r': \sum_{x\in X}\ (\sigma^-_{xr'} + \kappa_{xr'}) \cdot x \rightarrow \sum_{x\in X} \ (\sigma^+_{xr'} + \kappa_{xr'} )\cdot x \ \middle\vert \ \sigma_{xr'}^{\pm} = \sigma_{xr}^\pm, 	
-    \forall x\in X \right\}
-  \end{split}
+with $\kappa_{x\tilde{r}}=0$ for all $x\in X$
+as the natural representative for the associated F-reaction, and we use the bold notation $\mathbf{\tilde{\mathbf{r}}}$ for such F-reaction, i.e.,
+\begin{equation}
+  \mathbf{\tilde{\mathbf{r}}}:=\{r\in R, \quad r\sim \tilde{r}\},  
 \end{equation}
-\NV{W}e write $\FR$ for sets of F-reactions. Moreover, we may also write
-$\feducts(\fr)$ and $\fproducts(\fr)$ since $\feducts(r') =\feducts(r),$ $\fproducts(r') =\fproducts(r),$ $\forall r' \in[r]_\sim$. 
-\holy{By definition, the natural representative of each equivalence class is the uncatalyzed reaction $\tilde{r}\in [r]_{\sim}:
-\cat(\tilde{r}) = \emptyset$, which coincides with the net reaction $\net{r}$ if and only if $\feducts(r)= \net{\ceducts}(r)$ and
-$\fproducts(\tilde{r}) = \net{\cproducts}(r)$. It is primarily added to aid understanding of the equivalence relation $\sim$, as
-a CRN $(X,R)$ might contain $r\in R: \tilde{r}\notin R$.}
+even if the uncatalyzed reaction $\tilde{r}$ itself may also not be in $R$.} 
 
-\PFS{For a given set of reactions $R$, we introduce a map $\varphi$ to conveniently obtain the corresponding F-reactions:}
-\begin{equation}
+
+\NV{Moreover, we may write $\feducts(\tilde{\fr}):=\feducts(\tilde{r})$ and $\fproducts(\tilde{\fr}):=\fproducts(\tilde{r})$, since $\feducts(r) =\feducts(\tilde{r}),$ $\fproducts(r) =\fproducts(\tilde{r}),$ $\forall r \in \mathbf{\tilde{r}}$, and we use the capital $\FR$ for sets of F-reactions. By construction $\FR=R/\sim$ is the quotient set of $R$ over the equivalence relation $\sim$. For a given set of reactions $R$, we introduce a map $\varphi$ to conveniently obtain the corresponding F-reactions:
+\begin{equation}\label{eq:phimap}
   \varphi: R\mapsto \FR\quad\quad \varphi(r) \coloneqq \fr, 
 \end{equation}
 where $\FR\coloneqq \{[r]_{\sim} \ | \ r\in R\}$. This allows access to the
-pre-image of a set of F-reactions $\FR$ by $\varphi^{-1}(\FR)$.
+pre-image of a set of F-reactions $\FR$ by $\varphi^{-1}(\FR)$. In particular, we call \emph{catalyzation} any nonempty species set $c\coloneqq \kappa_F(r)\neq\emptyset$ for $r\in \varphi^{-1}(\mathbf{r})$. For an F-reaction $\mathbf{r}$ the set of catalyzations is denoted by \begin{equation}
+\kappa_F(\mathbf{r})\coloneqq \bigcup_{r\in \varphi^{-1}(\mathbf{r})} \kappa_F(r).
+\end{equation}
+A \emph{Catalytic Reaction System} (CRS) is then the quotient structure $\mathbf{\Phi}=(X,\mathbf{R})$ of a CRN $(X,R)$ induced by the   relation $\sim$. It is clear that reactions $r\in R$ are in bijection with F-reactions $\mathbf{r}\in \mathbf{R}$ if, and only if, any F-reaction $\mathbf{r}$ contains as an equivalence class a unique reaction $r$, i.e. there are no two reactions $r_1,r_2\in R$ with $r_1\sim r_2$ and thus $|\phi^{-1}(\mathbf{r})|=1$ for all $\mathbf{r}$. In this case, a CRN and a CRS correspond essentially to the same network object.}
 
-\holy{For a set of reactions $R$ together with a set of species $X$, 
-each $\sim$-equivalence class is associated to pairs $(\cat(r), r): r\in \fr$,
-which are called \emph{catalyzations}. \emph{Catalyzations} evoke sets 
-of catalysts $\cat(\fr)\coloneqq \{\cat(r) \ \vert \ r\in \fr\}$ that can be stored 
-in a collection $\cat(\FR)$ for $\FR=\varphi^{-1}(R)$. Thereby, if an F-reaction 
-$\fr\in \FR$ has no catalyzations, then $\cat(\fr)=\emptyset$, which implies 
-that $\fr$ contains only the natural representative, in particular, the uncatalyzed 
-reaction $\tilde{r}\in \fr$. In general, the \emph{catalyzations} are predefined, also 
-for sets of F-reactions \cite{hordijk_detecting_2004}.}
+\NV{We also stress that a CRS may be fully defined over the formal pair $(X,\mathbf{R)}$ by specifying explicitly the catalyzations $\kappa_F(\mathbf{R}):=\{\kappa_F(\mathbf{r}) \;|\; \mathbf{r}\in \mathbf{R}\}$. This way, a CRS is a triple $\Phi=(X, \mathbf{R},\kappa_F(\mathbf{R}))$ and the reference to its lift CRN may be omitted. The set $R$ may be then retrieved via the catalyzations explicitly, as any pair $(\mathbf{r},c)$  uniquely identify a reaction $r$ in CRN setting Eq.~\eqref{eq:Mod.SmEq}. In this case, for a CRS $\mathbf\Phi=(X, \mathbf{R},\kappa_F(\mathbf{R}))$ we will speak of $\Gamma(\mathbf{\Phi}):=(X,R)$ as the \emph{CRN representation} of $\mathbf{\Phi}$.} 
 
- A CRS is then the triple $\Phi \coloneqq (X,\FR, \cat)$, which has a unique corresponding 
- CRN $\Gamma(\Phi) = (X, \CR)$, where $\CR=\bigcup_{\fr \in \FR}\fr$. For clarity, we might 
- write the CRN as a triple as $(X, \CR, \cat)$.
 
-Analogously to the bipartite graph representation of a CRN, the bipartite
-graph of a CRS is given as $\queen(\Phi=(X,\FR, \cat))\coloneqq (X \cup
+
+\NV{Analogously to the bipartite graph representation of a CRN, the bipartite
+graph of a CRS is given as $\queen(X,\mathbf{R})\coloneqq (X \cup
 \FR, E_1\cup E_2)$ with:
-
 \begin{equation}
   \begin{split}
     E_1\coloneqq \{(x,\fr) \ | \ x\in X, \fr\in \FR: s^-_{xr}>0 \text{ for some } r \in \fr \} \\
     E_2\coloneqq \{(\fr, x) \ | \ x\in X, \fr\in \FR: s^+_{xr}>0 \text{ for some } r \in \fr \}
   \end{split}
 \end{equation}
-
-\subsection{The Relationship between CRN and CRS}
-\label{ssect:CRNCRS}
-
-In fact, the $\sim$-equivalence relation induces a convenient connection
-between the bipartite graph of $\queen(\Phi)$ and the corresponding
-bipartite graph of the $K(\Gamma(\Phi))$.
-\vspace{6pt}
-\begin{lemma}\label{lem:QuotGraph}
-  Let $\Phi\coloneqq (X,\FR, \cat)$ be a CRS with corresponding CRN
-  $\Gamma(\Phi)$. The bipartite directed K\"onig graph 
-  $\queen\coloneqq \queen(\Phi)$ is the quotient graph of $\king \coloneqq
-  \king(\Gamma(\Phi))$ w.r.t. the equivalence relation $\sim$ as defined in
-  Eq.~\ref{eq:fEquiv}.
-\end{lemma}
-\begin{proof}
-  Let $(x,\fr) \in E_1(\queen)$. By definition, there is an $r'\in \fr:
-  s^-_{xr'}>0$, thus $(x,r')\in E_1(\king)$.  Let now, $(x,r)\in
-  E_1(\king)$. By definition of $\queen$, there is an edge $(x,\fr)\in
-  E_1(\queen)$.  Similar arguments hold for edges from $E_2(\queen)$ and
-  $E_2(\king)$.
-\end{proof}
-\vspace{6pt}
-
-\holy{In the monocatalyst case, for example, where each F-reaction has exactly
-one catalyst - in this case also only one catalyzation - we have 
-$\vert \fr \vert = 1, \forall \fr \in \FR$.} Thus, each reaction vertex of $\queen(\Phi)$ 
-is substituted in $\queen(\Gamma(\Phi))$ by its single representative, while all 
-edges to adjacent vertices are conserved. This yields that $\queen(\Phi)$ 
-and $\king(\Gamma(\Phi))$ are isomorphic. In turn, if one equivalence class 
-contains more than one representative, then $|V(\king(\Gamma(\Phi))|>|V(\queen(\Phi)|$, 
-which directly implies that $\queen(\Phi)\not \simeq \king(\Gamma(\Phi))$.
-
-\vspace{6pt}
-\begin{lemma}\label{lem:IsoQK}
-  Let $\Phi\coloneqq (X, \FR, \cat)$ be a CRS with corresponding CRN
-  $\Gamma(\Phi)$. Then $\queen(\Phi)\simeq \king(\Gamma(\Phi))$ if and only
-  if $\vert \fr \vert = 1, \forall \fr \in \FR$.
-\end{lemma}
-\vspace{6pt}
-
-We remark that Lemma~\ref{lem:IsoQK} not only holds in the monocatalytic
-case, but for every CRS that exhibits only trivial equivalence classes, in
-particular also for the uncatalyzed case.
-
-An obvious result for quotient graphs is that $\queen(\Phi)$ is
-strongly-connected whenever $\king(\Gamma(\Phi))$ is strongly
-connected. This follows immediately from the fact that strong connectivity
+As a CRS is a quotient structure of a CRN, it follows that $\queen(X,\mathbf{R})$ is the \emph{quotient} graph of $K(X,R)$ induced by the equivalence relation $\sim$ on the reaction vertices. In particular, $\queen(X,\mathbf{R})$ is
+strongly connected whenever $\king(X,R)$ is strongly
+connected. 
+This follows immediately from the fact that strong connectivity
 is preserved under surjective digraph homomorphisms
-\cite{hell_graphs_2026}.  By Lemma~\ref{lem:IsoQK}, the converse also holds
-if each equivalence class is of size $1$.  In general, however, this is not
-true, in particular, if one F-reaction has two alternative catalysts, and
-one of them is not connected by a path originating in any of the products.
-As example consider the following system:
+\cite{hell_graphs_2026}. Besides the trivial case of $|\phi^{-1}(\mathbf{r})|=1$ for all $\mathbf{r}$, the converse is in general not true: if $\queen(X,\mathbf{R})$ is strongly connected, $\king(X,R)$ needs not be. 
+As an example consider the following system:
 \begin{equation}
 	\begin{split}
 		r'_1 &: x_3 + (x_1) 		\rightarrow x_2  + (x_1) \\
@@ -605,8 +529,6 @@ As example consider the following system:
 	\end{split}
 \end{equation}
 The corresponding graphs are shown in Fig.~\ref{fig:QScKNot}.
-
-
 \begin{figure}[htb]
   \begin{minipage}[c]{0.5\textwidth}
     \centering
@@ -615,14 +537,12 @@ The corresponding graphs are shown in Fig.~\ref{fig:QScKNot}.
       \node[draw, cyan, circle] (x2) at (2,0) {$x_2$};
       \node[draw, magenta, circle] (x3) at (0,-3) {$x_3$};
       \node[draw, magenta, circle] (x4) at (2,-4.5) {$x_4$};
-      
       \node[draw, cyan, rectangle] (r1') at (1,-1) {$r_1'$};
       \node[draw, magenta, rectangle] (r1'') at (1.75,-2) {$r_1''$};
       \node[draw, cyan, rectangle] (r2) at (1,1) {$r_2$};
       \node[draw, magenta, rectangle] (r3) at (0,-4.5) {$r_3$};
       \node[draw, magenta, rectangle] (r4) at (2,-3) {$r_4$};
-      
-      \draw[->, cyan] (x1) to [bend right = 30] (r1');
+       \draw[->, cyan] (x1) to [bend right = 30] (r1');
       \draw[->, cyan] (r1') to [bend right = 30] (x1);
       \draw[->, cyan] (r1') to (x2);
       \draw[->, cyan] (x2) to [bend right = 30] (r2);
@@ -633,8 +553,7 @@ The corresponding graphs are shown in Fig.~\ref{fig:QScKNot}.
       \draw[->, magenta] (x3) to [bend right = 20] (r1'');
       \draw[->, magenta] (r1'') to [bend right = 20] (x3);
       \draw[->] (r1'') to (x2);
-      \draw[->, magenta] (r3) to [bend right = 30] (x3);			
-      \draw[->, magenta] (r3) to  (x4);
+      \draw[->, magenta] (r3) to [bend right = 30] (x3);			   \draw[->, magenta] (r3) to  (x4);
       \draw[->, magenta] (x4) to [bend right = 30] (r4);
       \draw[->, magenta] (r4) to [bend right = 30] (x4);
       \draw[->, magenta] (r4) to  (x3);
@@ -648,13 +567,11 @@ The corresponding graphs are shown in Fig.~\ref{fig:QScKNot}.
       \node[draw, circle] (x2) at (2,0) {$x_2$};
       \node[draw, circle] (x3) at (0,-2) {$x_3$};
       \node[draw, circle] (x4) at (2,-3.5) {$x_4$};
-      
-      \node[draw, rectangle] (r1) at (1,-1) {$r_1$};
+        \node[draw, rectangle] (r1) at (1,-1) {$r_1$};
       \node[draw, rectangle] (r2) at (1,1) {$r_2$};
       \node[draw, rectangle] (r3) at (0,-3.5) {$r_3$};
       \node[draw, rectangle] (r4) at (2,-2) {$r_4$};
-      
-      \draw[->] (x1) to [bend right = 30] (r1);
+       \draw[->] (x1) to [bend right = 30] (r1);
       \draw[->] (r1) to [bend right = 30] (x1);
       \draw[->] (r1) to (x2);
       \draw[->] (x2) to [bend right = 30] (r2);
@@ -678,63 +595,62 @@ The corresponding graphs are shown in Fig.~\ref{fig:QScKNot}.
   \label{fig:QScKNot}
 \end{figure}
 \FloatBarrier
+We will see that we regain strong connectedness by requiring minimality 
+on the set of reflexively autocatalytic sets (RAFs).}
 
-We will see that we regain \holy{strong connectedness} by requiring minimality 
-on the set of reflexively autocatalytic sets (RAFs).
+
+
+
+
 
 \section{Reflexively autocatalytic sets (RAFs)}
 
 Catalytic reaction systems (CRS) are the fundamental structure on which the
-notion of reflexively autocatalytic sets is built
-\cite{steel_emergence_2000, hordijk_detecting_2004}. In addition, they rely
-on the closure of a set $X' \subseteq X$ w.r.t.\ to a set $\RAF \subseteq
+notion of \emph{Reflexively Autocatalytic Sets} is built
+\cite{steel_emergence_2000, hordijk_detecting_2004}. In addition, their definition relies
+on the \emph{closure} of a set $X' \subseteq X$ w.r.t.\ to a set $\RAF \subseteq
 \FR$, denoted as $\closure{\RAF}{X'}$, which is the unique minimal set $Y$
-containing $X'$ such that for any $\fr\in \RAF: \feducts(r)\subseteq Y
-\Rightarrow \fproducts(r)\subseteq Y$. Thus:
+containing $X'$ such that for any $\fr\in \RAF: \feducts(\NV{\mathbf{r}})\subseteq Y
+\Rightarrow \fproducts(\NV{\mathbf{r}})\subseteq Y$. Thus:
 \begin{equation}\label{eq:Closure}
   \closure{R'}{X'} \coloneqq \min \{\PFS{Y} \subseteq X \ | \ X'\subseteq \PFS{Y},
-  \feducts(r) \subseteq \PFS{Y} \Rightarrow \fproducts(r) \subseteq \PFS{Y} \ \forall
-  r\in \RAF\}
+  \feducts(\NV{\mathbf{r}}) \subseteq \PFS{Y} \Rightarrow \fproducts(\NV{\mathbf{r}}) \subseteq \PFS{Y} \ \forall
+  \NV{\mathbf{r}}\in \RAF\}
 %%  %}_{\eqqcolon \mathfrak{C}_{\RAF}(X')}
 \end{equation}
 A reflexively autocatalytic set (RAF) is then defined as follows:
 
 \vspace{6pt}
 \begin{definition}[RAF]\label{def:RAF}
-  Let $(X,\FR,\cat)$ be a CRS with $\food\subseteq X$. A set $\RAF\subseteq
+  Let $(X,\FR,\cat(\FR))$ be a CRS \NV{with specified \emph{food set}} $\food\subseteq X$. A set $\RAF\subseteq
   \FR$ is called
   \vspace{6pt}
   \begin{itemize} 
-  \item[i.]{\emph{reflexively autocatalytic} (RA) if $\forall r\in \RAF:
-    \emptyset \neq \cat(r), \exists c\in \cat(r): c \subseteq
-    \feducts(\RAF)\cup \fproducts(\RAF)$}\\[-1.0em]
-  \item[ii.]{\emph{\food-generated} if $\feducts(\RAF)\subseteq
-    \closure{\RAF}{\food}$}\\[-1.0em]
-  \item[iii.]{\emph{reflexive autocatalytic} and \emph{\food-generated}
-    (RAF) if both i. and ii. hold}
+  \item[i.]{\emph{reflexively autocatalytic} (RA) if $\forall \NV{\mathbf{r}}\in \RAF$,  \NV{there exists one catalyzation} $c\in \cat(\NV{\mathbf{r}})$ such that $c \subseteq
+    \feducts(\RAF)\cup \fproducts(\RAF)$;}\\[-1.0em]
+  \item[ii.]{\emph{\food-generated} (F) if $\feducts(\RAF)\subseteq
+    \closure{\RAF}{\food}$;}\\[-1.0em]
+  \item[iii.]{\emph{reflexive\NV{ly} autocatalytic and food-generated}
+    (RAF) if both i. and ii. hold.}
   \end{itemize}
 \end{definition}
 \vspace{6pt}
 
-We remark that Property $i.$ requires each F-reaction to be catalyzed, and
-for each F-reaction, all catalysts for at least one catalyzation are in the
-support of $\RAF$, i.e. in $\feducts(\RAF)\cup \fproducts(\RAF)$. Property
-$ii.$ of Def.~\ref{def:RAF}, together with Eq.~\ref{eq:Closure}, directly
-implies that all F-products for any reaction $\fr\in \RAF$ are also
+We remark that \NV{Property $i.$ requires, for each F-reaction $\mathbf{r}$, a nonempty set of catalyzations $\kappa_F(\mathbf{r})\neq \emptyset$ and that at least one catalyzation $c$ is supported on $\RAF$, i.e. $c \subseteq  \feducts(\RAF)\cup \fproducts(\RAF)$. Further,} Property
+$ii.$ together with Eq.~\ref{eq:Closure}, directly
+implies that all F-products of any reaction $\fr\in \RAF$ are also
 contained in the $\closure{\RAF}{\food}$, thus $\fproducts(r)\subseteq
 \closure{\RAF}{\food}$.
 
 \subsection{A Partial Order on RAFs}
 
-\TODO{The closure naturally induces an order, a sequence in which the F-reactions
-  of a RAF can be executed. -- I don't think we can say ``induces'' here. }
 
 \PFS{The reactions of a RAF can be partially ordered such that for each
-  $x\in\feducts(r)$ we have $x\in\food$ or there is a reaction $r'\prec r$
-  such that $x\in\fproducts(r')$. While there are many such partial orders,
+  $x\in\feducts(\mathbf{r})$ we have $x\in\food$ or there is a reaction $\mathbf{r}'\prec \mathbf{r}$
+  such that $x\in\fproducts(\mathbf{r}')$. While there are many such partial orders,
   we construct a specific one that is reminiscent of a breadth-first
-  search. Another way of viewing this partial order is an interative
-  procedure to generate  the set $\closure{\RAF}{\food}$:
+  search. Another way of viewing this partial order is an iterative
+  procedure to generate  the set $\closure{\RAF}{\food}$:}
 %%
 %%
 %% This is not a total order since some reactions,
@@ -747,83 +663,86 @@ contained in the $\closure{\RAF}{\food}$, thus $\fproducts(r)\subseteq
 %% A convenient way to construct an order on the F-reactions of a RAF $\RAF$
 %% is by generating the set $\closure{\RAF}{\food}$ iteratively, in
 %% particular, by
-  To this end, we} apply in each step all F-reactions for which all
-F-reactants are already available.
-%% Therefore, it is only consequent to
-%% assume that
-This iterative process converges against $\closure{\RAF}{\food}$ in a
-finite number of steps, all species of $\closure{\RAF}{\food}$ as long as
-$\vert \RAF\vert <\infty$. \PFS{A fully formal account of this procedure is
+ \NV{ To this end, we define sequences of nested species subsets $(X'_0, ..., X'_n)$ where $X'_0=\food$ and $X'_i= X'_{i-1}\cup \{ \fproducts(\mathbf{r}) \; | \; \feducts{(\mathbf{r})\subseteq X'_{i-1}}\}$.} This iterative process \NV{builds} $\closure{\RAF}{\food}$ in a
+finite number of steps as long as
+$\vert \RAF\vert <\infty$. \PFS{A formal account of this procedure is
   given in the Supplemental Material.}
 
-The sequences specifying when an F-reaction can happen for the first time
-and when a non-food species is produced for the first time provide an order
-$\preceq$ on the set of F-reactions $\FR$ and on the set of species
-$X$. The generation in which a species $x\in X$ appears as a product for
-the first time will be denoted by $\sgen(x)$ and set by definition
-$\sgen(f)\coloneqq 0$ for all $f\in \food$. In addition, we denote the
-generation in which all F-reactants are available for an F-reaction $\fr$
-by $\rgen(\fr)$. A species $x_1$ precedes a species $x_2$, i.e.:
+\NV{These ordered sequences define a \emph{generation reaction-index} $\gamma(\mathbf{r})$ where an F-reaction $\mathbf{r}$ happens for the first time, i.e. 
 \begin{equation}
-  x_1\preccurlyeq x_2 \Leftrightarrow \sgen(x_1) \leq \sgen(x_2)
+    \gamma(\mathbf{r})\coloneqq \operatorname{min} \{i \; | \; \feducts(\mathbf{r})\subseteq X'_i\} + 1,
 \end{equation} 
-and a reaction $\fr_1$ precedes a reaction $\fr_2$, i.e.: 
+where the index is shifted by one for normalization, so that the \emph{first} generation corresponds to index $\gamma(\mathbf{r})=1$. Similarly, the sequences define a \emph{generation species-index} $g(x)$
+ where a non-food species $x\not\in \food$ is produced for the first time, i.e.
 \begin{equation}
-  \fr_1\preceq \fr_2 \Leftrightarrow \rgen(\fr_1) \leq \rgen(\fr_2)
+   g(x)= \operatorname{min} \{i \; | \; x\in X'_i\}.
 \end{equation}
-We refer to the values of $\sgen$ and $\rgen$ as the generation of a 
-reaction or species. Since all representatives of an F-reaction share 
-the same F-reactants, we may define the generation of a reaction as $\delta(r)\coloneqq \rgen(\fr)$.
-
-\begin{definition}
-  A \emph{constructively autocatalytic and food-generated} set (CAF) is a
-  RAF such that for each F-reaction $\fr$ all $x\in \feducts(x)$ satisfy
-  $\sgen(x)<\rgen(\fr)$ and there is at least one $r\in \fr$ such that all
-  catalyst $x\in \cat(r)$ satisfy $\sgen(x)< \rgen(\fr)$.
-\end{definition}
-One important consequence of the partial order is that if a RAF contains
-two $\sim$~equivalence classes that share the same net reaction, the
-''later'' one w.r.t.\ $\prec$ can be removed.
+Clearly, the total order $\le$ on the natural numbers induces a preorder $\preccurlyeq$ on $X\setminus \food$ and a preorder $\preceq$ on $\mathbf{R}$ as:
+\begin{equation}
+\begin{cases}
+  x_1\preccurlyeq x_2 \quad&\text{if}\quad \sgen(x_1) \leq \sgen(x_2)\\
+  \fr_1\preceq \fr_2 \quad &\text{if}\quad \rgen(\fr_1) \leq \rgen(\fr_2)
+\end{cases},
+\end{equation}
+which we refer to as \emph{generation order} on species and reactions, respectively.
+One consequence of the presence of the generation order is the following Lemma. 
 \vspace{6pt}
 \begin{lemma}\label{lem:OneFReacPerRAF}
-  Let $(X,\FR,\cat)$ be a CRS with food-set $\food\subseteq X$,
-  $\RAF\subseteq \FR$ a RAF, and $\fr_1,\fr_2 \in \RAF: \fr_1\neq \fr_2,
-  \hat{\fr}_1 = \hat{\fr}_2'$. Then $\RAF\setminus \{\fr_2\}$ is a RAF if
-  $\rgen(\fr_1)\leq \rgen(\fr_2)$.
+  Let $(X,\FR,\cat)$ be a CRS with food-set $\food\subseteq X$. If a RAF $\mathbf{R}'$ contains
+two F-reactions $\mathbf{r}_1 \preceq \mathbf{r}_2$ that share the same net reaction, i.e. $\hat{\mathbf{r}}_1=\hat{\mathbf{r}}_2$, then $\RAF'_1 \coloneqq \mathbf{R}'\setminus \mathbf{r}_2$ is a RAF.
 \end{lemma}
 \begin{proof}
-  Let $\RAF' \coloneqq \RAF \setminus \{r_2\}$. Since $\RAF$ was
-  reflexively autocatalytic, $\RAF'$ is reflexively autocatalytic. In
+Since $\RAF$ is
+  reflexively autocatalytic, in particular each reaction $\mathbf{r}\in \RAF'_1$ has a nonempty catalyzation $c(\mathbf{r}) \subseteq
+    \feducts(\RAF)\cup \fproducts(\RAF)$. In
   addition, since $\nfeducts(\fr_1)=\nfeducts(\fr_2)$ and
-  $\nfproducts(\fr_1)=\nfproducts(\fr_2)$ and $\rgen(\fr_1)\leq
-  \rgen(\fr_2)$, $\closure{\RAF}{F} = \closure{\RAF'}{F}$.
+$\nfproducts(\fr_1)=\nfproducts(\fr_2)$ and $\rgen(\fr_1)\leq
+  \rgen(\fr_2)$, $\closure{\RAF}{F} = \closure{\RAF'}{F}$. Thus, $\RAF'_1$ is food-generated, and for any above catalyzation $c$ it holds$c(\mathbf{r}) \subseteq
+    \feducts(\RAF'_1)\cup \fproducts(\RAF'_1)$, yielding that $\RAF'_1$  is also reflexively autocatalytic.
 \end{proof}
 \vspace{6pt} 
-\noindent We may remark that the converse is not true. To see this, consider the following CRN example:
+\noindent In the setting of Lemma \ref{lem:OneFReacPerRAF}, in turn, it does not follow that $\RAF'_2\coloneqq \RAF \setminus \mathbf{r}_1$  is a RAF, as shown in the following example:
 \begin{equation}
   \begin{split}
     r_1&: f + (x_1) \hspace{22pt} \rightarrow x_1 + x_2 + (x_1)\\
-    r_2&: f + x_1 + (x_1) \rightarrow 2x_1 + x_2 + (x_1)
+    r_2&: f + x_1 + (x_1) \rightarrow 2x_1 + x_2 + (x_1),
   \end{split}
 \end{equation}
-Then clearly, $\fr_1\neq \fr_2$ and $\rgen(\fr_1) = 1 < 2 = \rgen(\fr_2)$
-since $\fr_2$ requires an $x_1$ as an F-reactant.
+where $\RAF=\{\fr_1,\fr_2\}$ is a RAF with net-reactions $\hat\fr_1=\hat\fr_2$ and $\rgen(\fr_1) = 1 < 2 = \rgen(\fr_2)$., The singleton set $\{\fr_2\}$ in not a RAF since 
+since $\fr_2$ requires $x_1$ as an F-reactant.}
 
-The partial order $\preceq$ allows us to observe that each species vertex
-of the $\closure{\RAF}{\food}$ is reachable from at least one food molecule
-in $\food$ in the bipartite K\"onig graph, which is restricted to
-$\closure{\RAF}{\food}$, the reactions in $\RAF$, and to those
-catalyzations $\cat'$ of reactions in $\RAF\subseteq \FR$. Throughout, we
-denote this graph as $\queen'\coloneqq \queen(\closure{\RAF}{\food}, \RAF,
-\cat')$.
+%The \NV{generation} order $\preceq$ allows us to observe that each species vertex of the $\closure{\RAF}{\food}$ is reachable from at least one food molecule  in $\food$ in the bipartite K\"onig graph, which is restricted to  $\closure{\RAF}{\food}$, the reactions in $\RAF$, and to those catalyzations $\cat'$ of reactions in $\RAF\subseteq \FR$. Throughout, we denote this graph as $\queen'\coloneqq \queen(\closure{\RAF}{\food}, \RAF,\cat')$.
 
+%\vspace{6pt}
+%\begin{lemma}[Proof: SI]\label{lem:RAFPath}
+ % Let $(X, \FR, \cat)$ be a CRS with $\food \subseteq X$ and a RAF   $\RAF\subseteq \FR$.  For any $x\in \closure{}{\food}\setminus \food$   there is an $f\in \food$ such that $P=(f, \ldots, x)$ is a path in   $\queen'$.
+%\end{lemma}
+%provide an order
+%$\preceq$ on the set of F-reactions $\FR$ and on the set of species
+%$X$. The generation in which a species $x\in X$ appears as a product for
+%the first time will be denoted by $\sgen(x)$ and set by definition
+%$\sgen(f)\coloneqq 0$ for all $f\in \food$. In addition, we denote the
+%generation in which all F-reactants are available for an F-reaction $\fr$
+%by $\rgen(\fr)$. A species $x_1$ precedes a species $x_2$, i.e.:
+%\begin{equation}
+%  x_1\preccurlyeq x_2 \Leftrightarrow \sgen(x_1) \leq \sgen(x_2)
+%\end{equation} 
+%and a reaction $\fr_1$ precedes a reaction $\fr_2$, i.e.: 
+%\begin{equation}
+ % \fr_1\preceq \fr_2 \Leftrightarrow %\rgen(\fr_1) \leq \rgen(\fr_2)
+%\end{equation}
+%We refer to the values of $\sgen$ and $\rgen$ as the generation of a 
+%reaction or species. Since all representatives of an F-reaction share 
+%the same F-reactants, we may define the generation of a reaction as $\delta(r)\coloneqq \rgen(\fr)$.
+\NV{We conclude this section with a further definition.}
 \vspace{6pt}
-\begin{lemma}[Proof: SI]\label{lem:RAFPath}
-  Let $(X, \FR, \cat)$ be a CRS with $\food \subseteq X$ and a RAF
-  $\RAF\subseteq \FR$.  For any $x\in \closure{}{\food}\setminus \food$
-  there is an $f\in \food$ such that $P=(f, \ldots, x)$ is a path in
-  $\queen'$.
-\end{lemma}
+\begin{definition}
+  A \emph{constructively autocatalytic and food-generated} set (CAF) is a
+  RAF such that for each F-reaction $\fr$ all $x\in \feducts(x)$ satisfy
+  $\sgen(x)<\rgen(\fr)$ and there is at least one \NV{catalyzation $c\in \cat(\mathbf{r})$} such that all
+  F-catalysts \NV{$x\in c \setminus \food$} satisfy $\sgen(x)< \rgen(\fr)$.
+\end{definition}
+
 
 \subsection{Irreducible RAFs}\label{sec:IrrRAF}
 
@@ -836,128 +755,135 @@ reaction networks with and without explicit catalysis
   golnik_autocatalytic_2026}.  In \cite{golnik_bridging_2026}, we have
 shown that each RAF that is not a CAF contains a stoichiometrical
 autocatalytic subnetwork and thereby an autocatalytic core. It is therefore
-of immediate interest to ask for the substructures of a RAF that carry
+of immediate interest to investigate the substructures of a RAF that carry
 autocatalytic cores.
 
-The most natural starting point for this endeavour are RAFs that contain no
+The natural starting point for this endeavour are RAFs that contain no
 proper subset that is also a RAF.
+\vspace{3mm}
 \PFS{
 \begin{definition}\cite{steel_minimal_2013}.
-  A RAF is irreducible if no subset of its set of F-reactions determine a RAF. 
+  A RAF is irreducible if no subset of its set of F-reactions determines a RAF. 
 \end{definition}
 }
 %% Minimal sets of F-reactions w.r.t.\ the
 % RAF properties have been termed \emph{irreducible} RAFs in the literature
 %% \cite{steel_minimal_2013}.
 A direct consequence of
-Lemma~\ref{lem:OneFReacPerRAF} is that irreducible RAFs contain, for each
-net reaction, only one F-reaction.
+Lemma~\ref{lem:OneFReacPerRAF} is that irreducible RAFs never  contains two F-reactions $\mathbf{r}_1$ and $\mathbf{r}_2$
+with the same net reaction $\hat{\mathbf{r}}_1 = \hat{\mathbf{r}}_2$:
 \vspace{6pt} 
 \begin{corollary}
-  Let $(X,\mathbf{R}, \cat)$ be a CRS with food-set $\food\subseteq X$ and
-  $\RAF$ an irreducible RAF.  For $\fr_r,\fr_2 \in \mathbf{R}: \fr_1\neq
-  \fr_2, \hat{\fr}_1=\hat{\fr}_2$, $\fr_1\in \RAF$ implies $\fr_2\notin
+  Let $(X,\mathbf{R}, \cat(\mathbf{R}))$ be a CRS with food-set $\food\subseteq X$ and let
+  $\RAF\subseteq \mathbf{R}$ be an irreducible RAF. \NV{For two F-reactions $\fr_r,\fr_2 \in \mathbf{R}$ with same net reaction }$\hat{\fr}_1=\hat{\fr}_2$, if $\fr_1\in \RAF$ then $\fr_2\notin
   \RAF$.
 \end{corollary}
 \vspace{6pt}
 %
-Still, they might contain F-reactions that have more than one
-representative, as the following example shows.
-\begin{equation}
-  \begin{split}
-    r'_1&: f + (x_1) \rightarrow x_3 + (x_1)\\
-    r''_1&: f + (x_2) \rightarrow x_3 + (x_2)\\
-    r_2&:  x_3 + (x_3) \rightarrow x_1 + x_2 + (x_3)
-  \end{split}
-\end{equation}
-The only irreducible RAF in this example is $\{\fr_1=\{r_1',r_1''\},
-\fr_2=\{r_2\}\}$, which implies that Lemma~\ref{lem:IsoQK} does not
-\PFS{apply to} irreducible RAFs.
+%Still, they might contain F-reactions that have more than one representative, as the following example shows. \begin{equation}
+  %\begin{split}
+  %  r'_1&: f + (x_1) \rightarrow x_3 + (x_1)\\
+  %  r''_1&: f + (x_2) \rightarrow x_3 + (x_2)\\
+  %  r_2&:  x_3 + (x_3) \rightarrow x_1 + x_2 + (x_3)
+%  \end{split}
+%\end{equation}
+%The only irreducible RAF in this example is $\{\fr_1=\{r_1',r_1''\},
+%\fr_2=\{r_2\}\}$, which implies that Lemma~\ref{lem:IsoQK} does not
+%\PFS{apply to} irreducible RAFs.
 
 According to Theorem 3.1 of \cite{golnik_bridging_2026}, an autocatalytic
 elementary circuit can be found in a RAF as long as it is not a
-CAF. Irreducible RAFs exhibit the convenient property that they are not
-CAFs as long as they are non-trivial, i.e., if they are composed of more
-than a single reaction.
+CAF. \NV{We call a RAF \emph{trivial} if it is composed by  a single F-reaction.} Irreducible RAFs exhibit the convenient property that they are never
+CAFs as long as they are non-trivial.
 \vspace{6pt}
 \begin{lemma}\label{lem:trivRAFCAF}
-  Let $(X,\mathbf{R},\cat)$ be a CRS with food-set $\food$ and suppose
-  $\RAF$ is an irreducible RAF. Then $\RAF$ is a CAF if and only if it is
-  trivial.
+  Let $(X,\mathbf{R},\cat(\mathbf{R}))$ be a CRS with food-set $\food\subseteq X$ and let
+  $\RAF\subseteq \mathbf{R}$ be an irreducible RAF. \NV{If $\RAF$ is a CAF, then it is trivial. [the converse, which was previously also stated, is wrong: $x_1+(x_2)\rightarrow x_2 + (x_2) $ is a trivial RAF but not a CAF.]}
 \end{lemma}
 \begin{proof}
   Let $\RAF$ be a CAF and assume $|\RAF|>1$. Let $\TG{\fr}\in \RAF:
   \TG{\rgen(\fr)}=1$. Then all F-reactants and all F-catalysts for one
   \emph{catalyzation} are in $\food$ since $\RAF$ is a CAF. Thus $\{\TG{\fr}\}$ is
-  a RAF itself, contradicting the minimality of $\RAF$.  Conversely, assume
-  that $|\RAF|=1$. Then all F-reactants and all F-catalysts for at least
-  one \emph{catalyzation} are in $\food$ since otherwise $\RAF$ would not
-  be a RAF. Thus, $\RAF$ is a CAF.
+  a CAF, and thus a RAF itself, contradicting the minimality of $\RAF$.
 \end{proof}
 \vspace{6pt}
 %
-This Lemma justifies \PFS{restricting attention to} non-trivial irreducible
+This Lemma justifies \PFS{restricting the attention to} non-trivial irreducible
 RAFs. In fact, for each non-trivial irreducible RAF, each F-reaction has at
 least one reactant that is not in the food set.
 \vspace{6pt}
 \begin{lemma}\label{lem:OneReac}
-  Let $(X,\RAF,\cat)$ be a CRS with food-set $\food$ and $\RAF$ a
-  irreducible RAF.  Then $\fr\in \RAF$ has at least one reactant
-  (F-reactant or F-catalyst) that is not in $\food$. For $\fr\in \RAF:
-  \rgen(\fr)=1$, this is an F-catalyst.
+  Let $(X,\mathbf{R},\cat(\mathbf{R})$ be a CRS with food-set $\food\subseteq X$ and let $\RAF$ be a \NV{non-trivial}
+  irreducible RAF. Then \NV{any} $\fr\in \RAF$ has at least \NV{either one F-reactant not in the food set $\food$ or for each catalyzation $c\in\cat(\fr)$ there exists $x\in c \setminus \food$. Moreover, if $\rgen(\fr)=1$, for each catalyzation in $c=\cat(\fr)$ there exists $x\in c \setminus \food$.}
 \end{lemma}
+
 \begin{proof}
-  Assume this is not the case for an $\fr\in \RAF$. Then $\{\fr\}$ is a RAF
-  which contradicts the minimality of $\RAF$.
+  \NV{Indirectly assume the existence of an F-reaction $\fr\in\RAF$ such that all F-reactants are in the food-set $\food$, and at least one catalyzation $c\in \cat(\mathbf{r})$ has support in $\food$. Then $\{\fr\}$ is a trivial CAF, and thus a RAF. This contradicts either the non-triviality or the irreducibility of $\RAF$. Finally, $\gamma(\fr)=1$ implies that all F-reactants of $\fr$ are in the food set, thus for each catalyzation in $c=\cat(\fr)$ there exists $x\in c \setminus \food$.}
 \end{proof}
 \vspace{6pt}
 
-The consequences of the result of Lemma~\ref{lem:OneReac} were already
-investigated in \cite{steel_minimal_2013}. It was shown that the R-graph
-for each such RAF contains an elementary circuit. In the next subsection,
-we will therefore turn to investigate more thoroughly the structural
+%The consequences of the result of Lemma~\ref{lem:OneReac} were already investigated in \cite{steel_minimal_2013}. It was shown that the R-graph \NV{[It has been only defined for CRN]}for each such RAF contains an elementary circuit. 
+In the next subsection,
+we turn to investigate the structural
 properties of two graph representations of non-trivial, irreducible RAFs,
 the bipartite and the reaction graph, in both the CRS and the CRN
-setting. In particular, we will strengthen a result by Steel et
-al.\ \cite{steel_minimal_2013}.
+setting. % In particular, we will strengthen a result by Steel et al.\ \cite{steel_minimal_2013}.
 
 \subsection{The Bipartite and Reaction Graphs of irreducible RAFs}
 
-Throughout, we will consider a CRS $\Phi\coloneqq (X,\FR,\cat)$ with
-food-set $\food\subseteq X$ and K\"onig graph $\queen\coloneqq
-\queen(\Phi)$. In addition, we assume a non-trivial, irreducible RAF
+Throughout this section, we will consider a CRS $\Phi\coloneqq (X,\FR,\cat)$ with
+food-set $\food\subseteq X$. %and K\"onig graph $\queen\coloneqq\queen(\Phi)$. 
+In addition, we assume a non-trivial, irreducible RAF
 $\RAF\subseteq \FR$ with sub-CRS
 \begin{equation}
-  \Phi'= (\closure{\RAF}{\food}, \RAF, \cat')\\
+  \mathbf{\Phi}':= (\closure{\RAF}{\food}, \RAF, \cat')
 \end{equation}
-and K\"onig graph $\queen'\coloneqq \queen(\Phi')$ as well as its CRN
-representation $\king'\coloneqq \king(\Gamma(\Phi'))$. We denote both
-R-graphs of $\queen'$ and $\king'$ as the graphs
-\begin{equation}
-  \begin{split}
-    \RGraph(\queen')&\coloneqq (\RAF, E), \hspace{25pt} \quad E\coloneqq \{(\fr_1,\fr_2) \ \vert \ \exists x\in X: s^+_{x\fr_1}>0, s^-_{x\fr_2}>0\} \\
-    \RGraph(\king') &\coloneqq (\varphi^{-1}(\RAF), E), \quad E\coloneqq \{(r_1,r_2) \ \vert \ (\fr_1,\fr_2)\in E(\RGraph(\queen')\},
-  \end{split}
-\end{equation}
-respectively. In line with calling elements of $\food$ food-molecules, we kindly refer to molecules of
+and \NV{consider} the K\"onig graph $\queen'\coloneqq \queen(\mathbf{\Phi}')$ of the CRS $ \mathbf{\Phi}'$ as well as the K\"onig graph  $\king'\coloneqq \king(\Gamma(\mathbf{\Phi}'))$ \NV{of its CRN representation $\Gamma(\mathbf{\Phi})$}.
+
+
+
+\NV{We introduce a directed graph, so-called \emph{R-graph} (or \emph{reaction graph)} [Citation?], of both the CRN and CRS representations as follows. For a CRN $\Gamma$, the R-graph $\RGraph (\Gamma)$ is the directed graph
+ with vertex set $R$ and edge set \begin{equation}
+  E\coloneqq
+\{(r_1,r_2) \ \vert \ \exists x\in X: s^+_{xr_1}>0,s^-_{xr_2}>0\}, 
+ \end{equation} 
+ i.e., there is a directed edge from $r_1$ to $r_2$ if a species $x$ is both a product of $r_1$ and a reactant of $r_2$. For a CRS $\Phi$, after recalling the $\varphi$ map \eqref{eq:phimap},  the R-graph $\RGraph(\mathbf{\Phi})=(\mathbf{R},E)$ is defined as the directed graph 
+ with vertex set $\mathbf{R}$ and edge set 
+\begin{equation}E\coloneqq \{(\fr_1,\fr_2) \ \vert \ \exists x\in X, r_1\in \varphi^{-1}(\mathbf{r_1}), r_2\in \varphi^{-1} (\mathbf{r_2}): s^+_{xr_1}>0, s^-_{xr_2}>0\}
+ \end{equation}
+  i.e., the R-graph for a CRS $(X,\mathbf{R})$ is the quotient graph, over the equivalence relation $\sim$, of the R-graph of its associated CRN $(X,R)$.}
+
+
+In line with calling elements of $\food$ food-molecules, we kindly refer to molecules of
 \begin{equation}\label{eq:Waste}
-  W\coloneqq \{x\in \closure{\RAF}{\food} \ | \ \nexists \fr \in \RAF \text{ s.t. } s^-_{xr}>0\}		
+  \mathbf{W}\coloneqq \{x\in \closure{\RAF}{\food} \ | \ \nexists \fr \in \RAF \text{ s.t. } s^-_{xr}>0\}		
 \end{equation}
-as waste molecules. We note that $V(\king')=\closure{\RAF}{\food}$.
+as waste molecules. %We note that $V(\king')=\closure{\RAF}{\food}$.
 
 \subsubsection{Strong connectivity}
 
-We start this section by showing that the R-graph of a non-trivial,
-irreducible RAF in the CRS setting, $\RGraph(\queen)$, is strongly
-connected.
+\NV{We recall that a directed graph $(V,E)$ is \emph{strongly connected} if, for any pair of vertices $v_1,v_2\in V$, there exists a directed path from $v_1$ to $v_2$. Here, we establish the strong-connectedness of the R-graph of a non-trivial, irreducible RAF both for CRN and CRS representation.} 
+
 
 \vspace{6pt}
 \begin{lemma}\label{lem:RGQSC}
-  Let $\RAF$ be a non-trivial, irreducible RAF. Then $\RGraph(\queen')$ is
+  Let $\RAF$ be a non-trivial, irreducible RAF with associated CRS $\mathbf{\Phi'}$ and CRN $\Gamma(\mathbf{\Phi})$. Then both $\RGraph(\mathbf{\Phi}')$ and $\RGraph(\Gamma(\mathbf{\Phi}'))$ are
   strongly connected.
 \end{lemma}
 \begin{proof}
-  Assume this is not the case. Then there are at least two strongly
+ \NV{The strong connectedness of $\RGraph(\mathbf{\Phi}')$ follows automatically from the strong connectedness of $\RGraph(\Gamma(\mathbf{\Phi}'))$ as a quotient graph, so we prove that $\RGraph(\Gamma(\mathbf{\Phi}'))$ is strongly connected. [what about:
+ \begin{equation}\label{crnconnected}
+     \begin{cases}
+       r_1:\quad &\mathbf{x}_1+(x_2)\rightarrow y+(x_2)\\
+       r_1’:\quad &\mathbf{x}_1+(x_3)\rightarrow y+(x_3)\\
+       r_2: &y+(x_2)\rightarrow x_2+(x_2)\\ 
+     \end{cases}
+ \end{equation}
+ Is $r_1'$ reachable from $r_2$ in the R-graph?
+ ]}
+ 
+
+\NV{[Next proof for CRS only, not yet checked/touched.]} Indirectly assume that this is not the case. Then there are at least two strongly
   connected components $\RAF_1$ and $\RAF_2$. Assume w.l.o.g. that there is
   no path from any $r_2\in \RAF_2$ to any $r_1\in \RAF_1$. Then all
   F-reactants and F-catalysts of all F-reactions in $\RAF_1$ are in the
@@ -967,45 +893,36 @@ connected.
   RAF, which contradicts the minimality of $\RAF$.
 \end{proof}
 \vspace{6pt}
-Lemmata~\ref{lem:trivRAFCAF} and \ref{lem:RGQSC} can be
-summarized to the following statement.
-\vspace{6pt}
-\begin{theorem}\label{thm:RAFStrCon}
-  Let $\RAF$ be an irreducible RAF. Then $\RAF$ is non-trivial if and only
-  if the graph $\RGraph(\queen')$ is not a single F-reaction and is
-  strongly connected.
-\end{theorem}
-\vspace{6pt}
+%Lemmata~\ref{lem:trivRAFCAF} and \ref{lem:RGQSC} can be
+%summarized to the following statement.
+%\vspace{6pt}
+%\begin{theorem}\label{thm:RAFStrCon}
+ % Let $\RAF$ be an irreducible RAF. Then $\RAF$ is non-trivial if and only if the graph $\RGraph(\queen')$ is not a single F-reaction and is strongly connected. \end{theorem}\vspace{6pt}
 
-It is not hard to see that $\RGraph(\queen')$ is also the quotient graph
-for $\RGraph(\king')$. \holy{w.r.t.\ the equivalence relation $\simeq$ 
-defined in Eq.~\ref{eq:fEquiv}.}
-Fig.~\ref{fig:QScKNot} illustrates that the strong
-connectivity of a quotient graph does not guarantee strong connectivity of
-the original graph. However, for non-trivial, irreducible RAFs,
-$\RGraph(\king')$ is indeed strongly connected.
-\vspace{6pt}
-\begin{lemma}[Proof: SI]\label{lem:KSC}
-  Let $\RAF$ be a non-trivial, irreducible RAF. Then $\RGraph(\king')$ is
-  strongly connected.
-\end{lemma}
-\vspace{6pt}
+%It is not hard to see that $\RGraph(\queen')$ is also the quotient graphfor $\RGraph(\king')$. \holy{w.r.t.\ the equivalence relation $\simeq$ 
+%defined in Eq.~\ref{eq:fEquiv}.}
+
+
+
+%Fig.~\ref{fig:QScKNot} illustrates that the strong connectivity of a quotient graph does not guarantee strong connectivity of the original graph. However, for non-trivial, irreducible RAFs,$\RGraph(\king')$ is indeed strongly connected.\vspace{6pt}\begin{lemma}[Proof: SI]\label{lem:KSC}Let $\RAF$ be a non-trivial, irreducible RAF. Then $\RGraph(\king')$ is strongly connected.\end{lemma}\vspace{6pt}
 %
-It is readily verified that the subgraphs of $\queen'$ and $\king'$
-containing only those vertices that have at least one incoming and one
-outgoing edge are strongly connected as well. However, these subgraphs
-might still contain food molecules. The next two statements show that their
-removal does not destroy strong connectivity.
+\NV{In terms of the bipartite K\"onig graphs of a RAF, we cannot hope to have strong-connectedness unless we remove food and waste species: for any $\fr\in \RAF$, by definition, for a waste species $x_W$ there is no directed edge $(x_W,\mathbf{r})$, and for a food species $x_F$ there may be no directed edge $(\mathbf{r},x_F)$. We can however consider the bipartite graphs $\lord(\RAF)$ and  $\princess(\RAF)$ defined as follows:
+\begin{equation}\label{eq:PrinceGraph}
+  \begin{cases}
+    \lord(\RAF) \coloneqq
+    \king'[\closure{\RAF}{\food}\setminus
+      (\food\cup W) \cup R]\\
+    \princess(\RAF) \coloneqq
+    \queen'[\closure{\RAF}{\food}\setminus (\food\cup W) \cup \RAF],
+    \end{cases}
+  \end{equation}
+where the general notation $K[X'\cup R']$ refers to the subgraph of $K$ \emph{induced} by the vertex sets $(X',R')$. For $\lord(\RAF)$ and $\princess(\RAF)$ we have the following lemma.}
 \vspace{6pt}
 \begin{lemma}\label{lem:PSC}
-  Let $\RAF$ be a non-trivial, irreducible RAF. Then 
-  \begin{equation}\label{eq:PrinceGraph}
-    \princess(\RAF) \coloneqq
-    \queen'[\closure{\RAF}{\food}\setminus (\food\cup W) \cup \RAF]
-  \end{equation}
-  is strongly connected.
+  Let $\RAF$ be a non-trivial, irreducible RAF. Then \NV{$\lord(\RAF)$ and $\princess(\RAF)$}  are strongly connected.
 \end{lemma}
 \begin{proof}
+\NV{[For $\lord(\RAF)$ same counterexample \eqref{crnconnected}? $r'_1,x_3$ are not reachable from all other vertices. I leave the next proof here for $\princess(\RAF)$, but I have not checked it.]}
   Assume this is not the case. Then there are two strongly connected
   components $\princess_1,\princess_2$.  W.l.o.g., we assume that there is
   no path from any $u\in \princess_2$ to any $v\in \princess_1$. Then all
@@ -1015,25 +932,11 @@ removal does not destroy strong connectivity.
   \princess_1$. Then $\FR(\princess_1)$ is a non-empty RAF which
   contradicts the minimality of $\RAF$.
 \end{proof}	
-\vspace{6pt}
-
-Following the same argument as in Lemma~\ref{lem:PSC}, we obtain an
-analogous result for the subgraph of $\king'$ that contains no food and
-waste molecules.
-\vspace{6pt}
-\begin{corollary}
-  Let $\RAF$ be a non-trivial, irreducible RAF. Then 
-  \begin{equation}\label{eq:PrinceGraph}
-    \lord(\RAF) \coloneqq
-    \king'[\closure{\RAF}{\food}\setminus
-      (\food\cup W) \cup \varphi^{-1}(\RAF)]
-  \end{equation}
-  is strongly connected.
-\end{corollary}
-\vspace{6pt}
 
 \subsubsection{Cut-vertices}
+\NV{[From here I have not revised/polished but just sparse and not exhaustive comments since the issue with counterexample \eqref{crnconnected} must be addressed first.]}
 
+\NV{A strong block is...\TODO{[TBA]   }}
 In general, non-trivial, irreducible RAFs are not necessarily strong
 blocks, as is captured in the example of Fig.~\ref{ex:CutVertex}, which
 summarizes the graphs that have been introduced so far.
@@ -1173,7 +1076,7 @@ summarizes the graphs that have been introduced so far.
   \end{minipage}
   \par\bigskip
   
-  \caption{A non-trivial, irreducible RAF $\RAF$ in its different
+  \caption{A non-trivial, irreducible \NV{[Why irreducible? Are $\fr_0\cup\fr_1$ and $\fr_0\cup \fr_2$ not RAFs? Unless you mean that both $x_1,y_1$ are needed catalysts, but then the right picture is wrong. The notation for the Catalytic Reaction System is used here for the first time, and not clarified.]} RAF $\RAF$ in its different
     representations as a CRS $\Phi$ (\textbf{left}) and CRN $\Gamma(\Phi)$
     (\textbf{right}): the systems of stoichiometric equations
     \textbf{(top)}, the complete bipartite graphs $\queen'$ and $\king'$ as
@@ -1182,7 +1085,7 @@ summarizes the graphs that have been introduced so far.
     $\RGraph(\queen')$ and $\RGraph(\king')$.}
   \label{ex:CutVertex}
 \end{figure}
-Indeed, $\fr_0$ is a cut-vertex, since it has two catalysts, which are part
+Indeed, $\fr_0$ is a cut-vertex, since it has two catalysts \NV{[or double? Catalysts vs catalyzation.. catalyst for F-reaction appears here for the first time. Does `single catalysts' mean `single catalyzation' or `one catalyzation of cardinality one?']}, which are part
 of two different strong blocks $\princess[\{x_1,x_2\} \cup
   \{\fr_1,\fr_2\}]$ and $\princess[\{y_1,y_2\} \cup \{\fr_1,\fr_3\}]$. The
 existence of a cut-vertex in $\princess$, however, does not necessarily
@@ -1192,11 +1095,11 @@ by $x_1$ and $y_1$, then $\princess(\RAF)\simeq \lord(\RAF)$.
 \vspace{6pt}
 \begin{corollary}
   Let $\RAF$ be a non-trivial, irreducible RAF. Then $\princess(\RAF)$ and
-  $\lord(\RAF)$ are either a strong block or contain a cut-vertex.
+  $\lord(\RAF)$ are either a strong block or contain a cut-vertex. \NV{[Again, counterexample \eqref{crnconnected} to be addressed for $L(\RAF)$]}
 \end{corollary}
 \vspace{6pt}
 %
-The occurrence of cut-vertices is not restricted to reactions with two
+The occurrence of cut-vertices is not restricted to reactions with two \NV{[two or DOUBLE catalyzation?]}
 catalyzations, as emphasized in the example of Fig.~\ref{ex:CutVertex2}.
 \begin{figure}[bth]
   \begin{minipage}[c]{0.49\textwidth}
@@ -1237,7 +1140,7 @@ catalyzations, as emphasized in the example of Fig.~\ref{ex:CutVertex2}.
       \draw[->] (r3) to (x3);
     \end{tikzpicture}
   \end{minipage}
-  \caption{Example of a RAF with a cut-vertex that has a single catalyst
+  \caption{Example of \NV{a non-trivial irreducible} RAF with a cut-vertex that has a single catalyst
     \textit{(left)} with depiction of the corresponding König graph
     \textit{(right)}.}
   \label{ex:CutVertex2}
@@ -1250,7 +1153,7 @@ vertex. Indeed, a species vertex cannot be a cut-vertex.
 \begin{lemma}[Proof: SI]\label{lem:CutVertexReac}
   Let $\RAF$ be a non-trivial, irreducible RAF. If $\princess(\RAF)$ is not
   a strong block, then every cut-vertex is an F-reaction. Accordingly, if
-  $\lord(\RAF)$ is not a strong block, then every cut-vertex is a reaction.
+  $\lord(\RAF)$ is not a strong block, then every cut-vertex is a reaction. \NV{[Again, counterexample \eqref{crnconnected} to be addressed for $L(\RAF)$]}
 \end{lemma}
 \vspace{6pt}
 
@@ -1270,11 +1173,11 @@ equivalence class is trivial.
 
 The existence of cut-vertices, which can only be reaction vertices, enables
 the decomposition of $\princess$ and $\lord$ into strong blocks. For the
-graph $\lord(\RAF)$, each of these blocks contains an autocatalytic core,
+graph $\lord(\RAF)$, each of these blocks contains an autocatalytic core \NV{[Not yet introduced]},
 which is warranted by a unique structural property common to any strong
 block that guarantees semipositivity. In particular, each block in
 $\princess(\RAF)$ and $\lord(\RAF)$ contains reaction vertices for which
-all reactants are F-catalysts but not F-reactants.  We thereby collect them
+all reactants \NV{[`reactants' for an F-reaction is not well defined..does it mean the support of one catalyzation or of all catalyzations?]} are F-catalysts but not F-reactants.  We thereby collect them
 in the following sets:
 \begin{equation}
   \begin{split}
@@ -1284,6 +1187,7 @@ in the following sets:
     \ s^-_{xr}>0 \Rightarrow s^+_{xr}=s^-_{xr}, \forall x\in X(\block)\}.
   \end{split}
 \end{equation}
+\NV{[the notation $s^-_{x\fr}$ is not defined / not clear (I have already changed indeed in other instances before)]}
 and refer to these vertices as \emph{pure F-reactions} and \emph{pure
 reactions}, respectively.
 \vspace{6pt}
@@ -1293,11 +1197,11 @@ reactions}, respectively.
 \end{lemma}
 \vspace{6pt}
 %
-Following the same line of argument as in the proof of
+Following the same line of argument as in the proof \NV{[where is the proof? in SI?]} of
 Lemma~\ref{lem:cutVertexPureCat}, the same statement also holds for
 $\lord(\RAF)$, with the small difference that for some of the cut-vertices
 $\fr\in \RAF$ all representatives that are not cut-vertices in
-$\lord(\RAF)$.
+$\lord(\RAF)$ \NV{[There is no statement here, probably a typo, TBA]}.
 \vspace{6pt}
 \begin{corollary}\label{cor:cutVertexPureCat}
   For a non-trivial, irreducible RAF $\RAF$, any strong block $B$ of
@@ -1350,25 +1254,25 @@ reaction rates which satisfies $\SM(B)v>0$.
 \subsection{Autocatalytic Capacity of irreducible RAFs}
 \label{sec:AutoCatIrrRAF}
 
-In chemical reaction networks (CRNs) with explicit catalysis, the underlying network cannot be uniquely 
-inferred from the stoichiometric matrix. The matrix-centered definition of autocatalysis as introduced by Blokhuis 
-\cite{blokhuis_Universal_2020} and Vassena \cite{vassena_unstable_2024} therefore required 
-a modification that is based on the network and the matrix \cite{golnik_autocatalytic_2026}.
+\NV{In chemical reaction networks (CRN), a matrix-centered definition of \emph{stoichiometric autocatalysis} was introduced by Blokhuis et al. \cite{blokhuis_Universal_2020} reaction networks in reversible setting and without catalysis. This framework was recently adapted to the irreversible setting with catalysts of the present paper \cite{golnik_autocatalytic_2026}. The central definition is as follows.}
 
 \vspace{6pt}
 \begin{definition}\label{def:autSubRN}
-  A CRN $(X,R)$ is \emph{autocatalytic} if it contains a sub-CRN $(X',R')$
+  A CRN $(X,R)$ is \emph{\NV{stoichiometric} autocatalytic} if it contains a sub-CRN $(X',R')$
   such that
 \begin{enumerate}
  \item[(i)]  $(X',R')$ is  well-formed;
- \item[(ii)]  $\SM'\coloneqq \SM[X',R']$ is semi-positive, i.e., there is $v\in \mathbb{R}_{>0}^{|R'|}: \SM'v>0$.
+ \item[(ii)]  \NV{the associated stoichiometric matrix} $\SM'\coloneqq \SM[X',R']$ is semi-positive, i.e., there exists $v\in \mathbb{R}_{>0}^{|R'|}: \SM'v>0$.
 \end{enumerate}
 \end{definition}
 \vspace{6pt}
 
 A sub-CRN $(X',R')$ that satisfies \textit{(i.)} and \textit{(ii.)}, while
 no proper subnetwork $(X'',R'')$ with $X''\subseteq X', R''\subseteq R'$
-does, is called an \emph{autocatalytic core}. We are now in the position to
+does, is called an \emph{autocatalytic core}. %\NV{For autocatalytic cores subnetworks $(X',R')$, it has been shown that $|X'|=|R'|$ and that there exists a bijection $J:X'\rightarrow R'$ such that $J(x)=r$ is the unique reaction for which $x$ is a reactant.}.
+
+
+We are now in the position to
 show that $\lord(\RAF)$ for each non-trivial, irreducible RAF $\RAF$ is
 \emph{stoichiometrically autocatalytic}.
 
@@ -1394,6 +1298,7 @@ yield a net increase for all subnetwork species.
   \SM[V(\king')\setminus \food, \varphi^{-1} (\RAF)]$ is semi-positive.
 \end{theorem}
 \vspace{6pt}
+\NV{[Again, counterexample \eqref{crnconnected} to be addressed]}
 
 As a remark, the proof can be applied to the sub-stoichiometric matrix
 representing the species and reaction vertices of any strong block $B$ of
@@ -1413,13 +1318,14 @@ well-formed.
   Every strong block $B$ of $\lord(\RAF)$ for a non-trivial, irreducible
   RAF $\RAF$ contains an autocatalytic core.
 \end{theorem}
+\NV{[Again, counterexample \eqref{crnconnected} to be addressed for $L(\RAF)$]}
 \vspace{6pt}
 
 Thm.~\ref{Thm:StrBlockCore} provides only information on the existence, but
 not on the structure of the subnetworks responsible for the semipositivity
 of the corresponding submatrix. In the proof of Thm.~3.1
 \cite{golnik_bridging_2026}, it was shown that each RAF that is itself not
-a CAF contains an autocatalytic elementary circuit. We will adapt this
+a CAF contains an autocatalytic elementary circuit \NV{[What is an elementary circuit here? I guess it means in $\lord$?]}. We will adapt this
 construction to obtain such a circuit for each strong block.
 
 Since strong blocks are strongly connected, each vertex, and thus, also
