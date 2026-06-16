@@ -468,11 +468,17 @@ them in normal font.
 \subsection{Catalytic Reaction Systems (CRS)}
 
 Catalytic Reaction Systems (CRS) \textit{sensu} Lohn
-\cite{lohn_evolving_1998} take a different approach, \NV{which we overview here in our notation. 
-From the perspective of a CRS, two reactions
-$r_1, r_2 \in R$ are considered indistinguishable if  they differ
+\cite{lohn_evolving_1998} take a different approach, \NV{which 
+we overview here in our notation. \holy{We might remark at the 
+beginning that stoichiometries are often assumed to be implicitly 
+given by the examined chemistry, but are not explicitly treated, as many 
+results do not depend on them \cite{steel20}. Nevertheless, since 
+they represent an important cornerstone of CRNs, it is crucial to consider 
+them explicitly for deriving a direct relation between CRNs and CRS.} 
+From the perspective of a CRS, two reactions $r_1, r_2 \in R$ are considered indistinguishable if  they differ
 only in their F-catalysts but share the same F-reactants and F-products
-with the same respective stoichiometric multiplicities. To account for this, we introduce the following equivalence relation $\sim$ for two reactions $r_1$ and $r_2$ in the form \eqref{eq:Mod.SmEq}:
+with the same respective stoichiometric multiplicities. To account 
+for this, we introduce the following equivalence relation $\sim$ for two reactions $r_1$ and $r_2$ in the form \eqref{eq:Mod.SmEq}:
 \begin{equation}
     r_1\sim r_2\quad \text{if}\quad \sigma^\pm_{xr_1}=\sigma^\pm_{xr_2} \quad \text{for every $x\in X$}.
 \end{equation}
@@ -488,8 +494,7 @@ as the natural representative for the associated F-reaction, and we use the bold
 \end{equation}
 even if the uncatalyzed reaction $\tilde{r}$ itself may also not be in $R$.} 
 
-
-\NV{Moreover, we may write $\feducts(\tilde{\fr}):=\feducts(\tilde{r})$ and $\fproducts(\tilde{\fr}):=\fproducts(\tilde{r})$, since $\feducts(r) =\feducts(\tilde{r}),$ $\fproducts(r) =\fproducts(\tilde{r}),$ $\forall r \in \mathbf{\tilde{r}}$, and we use the capital $\FR$ for sets of F-reactions. By construction $\FR=R/\sim$ is the quotient set of $R$ over the equivalence relation $\sim$. For a given set of reactions $R$, we introduce a map $\varphi$ to conveniently obtain the corresponding F-reactions:
+\NV{Moreover, we may write $\feducts(\tilde{\fr}):=\feducts(\tilde{r})$ and $\fproducts(\tilde{\fr}):=\fproducts(\tilde{r})$, since $\feducts(r) =\feducts(\tilde{r}),$ $\fproducts(r) =\fproducts(\tilde{r}),$ $\forall r \in \mathbf{\tilde{r}}$, and we use the capital $\FR$ for sets of F-reactions. By construction, $\FR=R/\sim$ is the quotient set of $R$ over the equivalence relation $\sim$. For a given set of reactions $R$, we introduce a map $\varphi$ to conveniently obtain the corresponding F-reactions:
 \begin{equation}\label{eq:phimap}
   \varphi: R\mapsto \FR\quad\quad \varphi(r) \coloneqq \fr, 
 \end{equation}
@@ -626,7 +631,7 @@ A reflexively autocatalytic set (RAF) is then defined as follows:
   \FR$ is called
   \vspace{6pt}
   \begin{itemize} 
-  \item[i.]{\emph{reflexively autocatalytic} (RA) if $\forall \NV{\mathbf{r}}\in \RAF$,  \NV{there exists one catalyzation} $c\in \cat(\NV{\mathbf{r}})$ such that $c \subseteq
+  \item[i.]{\emph{reflexively autocatalytic} (RA) if for each $\mathbf{r}\in \RAF$,  \NV{there exists one catalyzation} $c\in \cat(\NV{\mathbf{r}})$ such that $c \subseteq
     \feducts(\RAF)\cup \fproducts(\RAF)$;}\\[-1.0em]
   \item[ii.]{\emph{\food-generated} (F) if $\feducts(\RAF)\subseteq
     \closure{\RAF}{\food}$;}\\[-1.0em]
@@ -639,7 +644,7 @@ A reflexively autocatalytic set (RAF) is then defined as follows:
 We remark that \NV{Property $i.$ requires, for each F-reaction $\mathbf{r}$, a nonempty set of catalyzations $\kappa_F(\mathbf{r})\neq \emptyset$ and that at least one catalyzation $c$ is supported on $\RAF$, i.e. $c \subseteq  \feducts(\RAF)\cup \fproducts(\RAF)$. Further,} Property
 $ii.$ together with Eq.~\ref{eq:Closure}, directly
 implies that all F-products of any reaction $\fr\in \RAF$ are also
-contained in the $\closure{\RAF}{\food}$, thus $\fproducts(r)\subseteq
+contained in $\closure{\RAF}{\food}$, thus $\fproducts(r)\subseteq
 \closure{\RAF}{\food}$.
 
 \subsection{A Partial Order on RAFs}
