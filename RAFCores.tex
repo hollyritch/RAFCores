@@ -839,7 +839,7 @@ non-trivial, in particular if they are composed of more than a single F-reaction
 %	\end{split}
 %\end{equation}
 
-The converse is not true; consider, e.g., $f \xrightarrow{(x_1)} x_1 + x_2$, where only $f\in \food$. 
+The converse is not true; consider, e.g., $f \xrightarrow{(x_1)} x_1$, where only $f\in \food$. 
 Nevertheless, we postpone the discussion of the trivial case to Sec.~\TODO{TBA}. As for CAFs, 
 it is not guaranteed that they carry a stoichiometrically autocatalytic subnetwork \cite{golnik_bridging_2026}, 
 we restrict our attention to non-trivial, irreducible RAFs. 
@@ -862,7 +862,8 @@ one F-reaction of $\RAF$.
 \vspace{6pt}
 
 In fact, Obs.~\ref{obs:monoCatalyzation} allows for adding an additional layer of minimality to irreducible RAFs, which 
-concerns the number of catalyzations. 
+concerns the number of catalyzations. However, a RAF is defined as a set of F-reactions, while the catalyzations are 
+given by the underlying CRS.   
 \vspace{6pt}
 \begin{definition}\label{def:minCat}
 	Let $(X,\FR,\cat(\FR))$ be a CRS with specified \emph{food set} $\food\subseteq X$ and $\RAF$ be an 
@@ -871,8 +872,8 @@ concerns the number of catalyzations.
 	and $\cat'(\fr) \subseteq \cat(\fr)$.
 \end{definition}
 \vspace{6pt}
-By this definition, an irreducible RAF with minimal catalyzations reflects a set of mono-catalyzed reactions. Within this  
-context, mono-catalyed does not necessarily refer to a single catalyst, but a single concerted action of potentially multiple 
+By this definition, an irreducible RAF with minimal catalyzations reflects a set of mono-catalyzed F-reactions. Within this  
+context, mono-catalyzed does not necessarily refer to a single catalyst, but a single concerted action of potentially multiple 
 catalysts.
 
 %In fact, for each non-trivial irreducible RAF, each F-reaction has at least one reactant that is not in the food set. 
@@ -892,29 +893,33 @@ catalysts.
 %\end{proof}
 %\vspace{6pt}
 
-
 \subsection{The Bipartite and Reaction Graphs of irreducible RAFs}
 
-Throughout this section, we will consider a CRS $\Phi\coloneqq (X,\FR,\cat)$ with
-food-set $\food\subseteq X$. %and K\"onig graph $\queen\coloneqq\queen(\Phi)$. 
-In addition, we assume a non-trivial, irreducible RAF
-$\RAF\subseteq \FR$ with sub-CRS
+Throughout this section, we will consider a CRS $\Phi\coloneqq (X,\FR,\cat(\FR))$ with
+food-set $\food\subseteq X$. In addition, we assume a non-trivial, irreducible RAF 
+with minimal catalyzations $(\RAF, \cat'(\RAF))$ and sub-CRS 
 \begin{equation}
-  \mathbf{\Phi}':= (\closure{\RAF}{\food}, \RAF, \cat')
+  \mathbf{\Phi}':= (\closure{\RAF}{\food}, \RAF, \cat'(\RAF))
 \end{equation}
-and \NV{consider} the K\"onig graph $\queen'\coloneqq \queen(\mathbf{\Phi}')$ of the CRS $ \mathbf{\Phi}'$ as well as the K\"onig graph  $\king'\coloneqq \king(\Gamma(\mathbf{\Phi}'))$ \NV{of its CRN representation $\Gamma(\mathbf{\Phi})$}.
+and study the K\"onig graph $\queen'\coloneqq \queen(\mathbf{\Phi}')$ of the CRS $ \mathbf{\Phi}'$. %as well as the K\"onig graph  $\king'\coloneqq \king(\Gamma(\mathbf{\Phi}'))$ \NV{of its CRN representation $\Gamma(\mathbf{\Phi})$}.
 
-\NV{We introduce a directed graph, so-called \emph{R-graph} (or \emph{reaction graph)} [Citation?], of both the CRN and CRS representations as follows. For a CRN $\Gamma$, the R-graph $\RGraph (\Gamma)$ is the directed graph
- with vertex set $R$ and edge set \begin{equation}
-  E\coloneqq
-\{(r_1,r_2) \ \vert \ \exists x\in X: s^+_{xr_1}>0,s^-_{xr_2}>0\}, 
- \end{equation} 
- i.e., there is a directed edge from $r_1$ to $r_2$ if a species $x$ is both a product of $r_1$ and a reactant of $r_2$. For a CRS $\Phi$, after recalling the $\varphi$ map \eqref{eq:phimap},  the R-graph $\RGraph(\mathbf{\Phi})=(\mathbf{R},E)$ is defined as the directed graph 
- with vertex set $\mathbf{R}$ and edge set 
-\begin{equation}E\coloneqq \{(\fr_1,\fr_2) \ \vert \ \exists x\in X, r_1\in \varphi^{-1}(\mathbf{r_1}), r_2\in \varphi^{-1} (\mathbf{r_2}): s^+_{xr_1}>0, s^-_{xr_2}>0\}
- \end{equation}
-  i.e., the R-graph for a CRS $(X,\mathbf{R})$ is the quotient graph, over the equivalence relation $\sim$, of the R-graph of its associated CRN $(X,R)$.}
+We introduce a directed graph, so-called \emph{R-graph} (or \emph{reaction graph}) of the CRS representations as 
+the graph $\RGraph(\mathbf{\Phi})=(\mathbf{R},E)$ with edge set $E\coloneqq \{(\fr_1,\fr_2) \ \vert \ \exists x\in X, 
+(\fr_1,x),(x,\fr_2) \in E(\queen(\mathbf{\Phi})\}$. 
 
+%For a CRN $\Gamma$, the R-graph $\RGraph (\Gamma)$ is the directed graph
+% with vertex set $R$ and edge set \begin{equation}
+%  E\coloneqq
+%\{(r_1,r_2) \ \vert \ \exists x\in X: s^+_{xr_1}>0,s^-_{xr_2}>0\}, 
+% \end{equation} 
+% i.e., there is a directed edge from $r_1$ to $r_2$ if a species $x$ is both a product of $r_1$ and a reactant of $r_2$. 
+ 
+%For a CRS $\Phi$, after recalling the $\varphi$ map \eqref{eq:phimap},  the R-graph $\RGraph(\mathbf{\Phi})=(\mathbf{R},E)$ is defined as the directed graph 
+%with vertex set $\mathbf{R}$ and edge set $E\coloneqq \{(\fr_1,\fr_2) \ \vert \ \exists x\in X, (\fr_1,x),(x,\fr_2) \in E(\queen(\mathbf{\phi})\}$.
+%\begin{equation}
+%	E\coloneqq \{(\fr_1,\fr_2) \ \vert \ \exists x\in X, r_1\in \varphi^{-1}(\mathbf{r_1}), r_2\in \varphi^{-1} (\mathbf{r_2}): s^+_{xr_1}>0, s^-_{xr_2}>0\}
+% \end{equation}
+%  i.e., the R-graph for a CRS $(X,\mathbf{R})$ is the quotient graph, over the equivalence relation $\sim$, of the R-graph of its associated CRN $(X,R)$.
 
 In line with calling elements of $\food$ food-molecules, we kindly refer to molecules of
 \begin{equation}\label{eq:Waste}
