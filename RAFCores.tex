@@ -324,17 +324,17 @@ such a manner is always \emph{stoichiometrically autocatalytic}
 	\centering
 	\begin{minipage}[c]{0.5\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{./Pictures/IrrRAFCoresn5rev.png}
+		\includegraphics[width=\textwidth]{./Pictures/IrrRAFCoresn5rev2.png}
 	\end{minipage}%
 	\hfill%
 	\begin{minipage}[c]{0.5\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{./Pictures/IrrRAFCoresn5rev2.png}
+		\includegraphics[width=\textwidth]{./Pictures/IrrRAFCoresn5rev.png}
 	\end{minipage}
-		\caption{Depiction of the number of autocatalytic cores among non-food molecules 
+	\caption{Depiction of the number of autocatalytic cores among non-food molecules 
 		in 50 different irreducible RAFs from two random instances of the binary polymer model 
 		with a fixed probability for any non-food species to catalyze any reaction of $p=0.01$ 
-		(\textbf{right}) and $p=0.008$ (\textbf{right}) and maximum polymer-length $5$.}
+		(\textbf{right}) and $p=0.008$ (\textbf{left}) and maximum polymer-length $5$.}
 	\label{fig:irrRAFCores}
 \end{figure}
 
@@ -461,14 +461,14 @@ A reaction $r$ for which a species $x$ satisfies $k_{xr}>0$ and $S_{xr}>0$ is ca
 \emph{explicit autocatalytic reaction}.
 
 In this setting, distinct reactions may share the same net reaction, 
-and thus differ only in their usage of catalysts, e.g., by requiring different 
-catalysts. For example, the hydrogenation of ethene to ethane can be
-mediated by platinum, palladium, or nickel separately
-\cite{crampton_ethylene_2016}. An example for co-catalysis, i.e., where the
-orchestrated cooperation of two catalysts is required, is the dual-catalyst
-system of palladium and copper in the Hoechst-Wacker process, where ethene
-is oxidized to acetaldehyde \cite{jira_acetaldehyde_2009}. To account
-for such situations, we define the set of F-catalysts as a set of nonzero pairs:
+and thus differ only, e.g., by requiring different catalysts. For example, 
+the hydrogenation of ethene to ethane can be mediated by platinum, 
+palladium, or nickel separately \cite{crampton_ethylene_2016}. An 
+example for co-catalysis, i.e., where the orchestrated cooperation of 
+two catalysts is required, is the dual-catalyst system of palladium and 
+copper in the Hoechst-Wacker process, where ethene is oxidized to 
+acetaldehyde \cite{jira_acetaldehyde_2009}. To account for such 
+situations, we define the set of F-catalysts as a set of nonzero pairs:
 \begin{equation}
   \cat(r)\coloneqq \{k_{xr} \cdot x\ | \ x\in X,\; k_{xr}>0\}.
 \end{equation}
@@ -477,7 +477,7 @@ by definition, or if the reaction is uncatalyzed.
 
 In a CRN $(X,\CR)$, each reaction $r$, as specified by
 Eq.~\ref{eq:Mod.SmEq}, is a distinct object. Thus, it is possible that two
-reactions sharing the same net reaction are different elements of $\CR$. 
+reactions sharing the same net reaction are different elements of $\CR$ 
 and thereby appear as distinct vertices in the bipartite K\"onigs
 representation of a CRN $\king\coloneqq (X\cup \C{R}, E_1\cup E_2)$, where
 \begin{equation}
@@ -485,27 +485,26 @@ representation of a CRN $\king\coloneqq (X\cup \C{R}, E_1\cup E_2)$, where
     E_1\coloneqq \{(x,r) \ | \ s^-_{xr}>0\} \quad \text{ and } \quad E_2\coloneqq \{(x,r) \ | \ s^+_{xr}>0 \}. 
   \end{split}
 \end{equation}
-We will refer to these kinds of reactions simply as reactions and denote
-them in normal font. 
+
 
 \subsection{Catalytic Reaction Systems (CRS)}
 
-Catalytic Reaction Systems (CRS) \textit{sensu} Lohn
-\cite{lohn_evolving_1998} take a different approach, which 
-we overview here in our notation. We might remark at the 
-beginning that stoichiometries are often assumed to be implicitly 
-given by the examined chemistry, but are not explicitly treated, as many 
-results do not depend on them \cite{steel20}. Nevertheless, since 
-they represent an important cornerstone of CRNs, it is crucial to consider 
-them explicitly for deriving a direct relation between CRNs and CRS. 
-From the perspective of a CRS, two reactions $r_1, r_2 \in R$ are considered indistinguishable if  they differ
-only in their F-catalysts but share the same F-reactants and F-products
-with the same respective stoichiometric multiplicities. To account 
-for this, we introduce the following equivalence relation $\sim$ for two reactions $r_1$ and $r_2$ in the form \eqref{eq:Mod.SmEq}:
+Catalytic Reaction Systems (CRS) \textit{sensu} Lohn \cite{lohn_evolving_1998} 
+take a different approach, which we overview here in our notation. We remark 
+that stoichiometries are often assumed to be implicitly given by the examined 
+chemistry, but are not explicitly treated, as many results do not depend on them 
+\cite{steel20}. Nevertheless, since they represent an important cornerstone of 
+CRNs, it is crucial to consider them explicitly for deriving a direct relation between 
+CRNs and CRS. From the perspective of a CRS, two reactions $r_1, r_2 \in R$ 
+are considered indistinguishable if  they differ only in their F-catalysts but share 
+the same F-reactants and F-products with the same respective stoichiometric 
+multiplicities. To account for this, we introduce the following equivalence relation 
+$\sim$ for two reactions $r_1$ and $r_2$ in the form \eqref{eq:Mod.SmEq}:
 \begin{equation}
     r_1\sim r_2\quad \text{if}\quad \sigma^\pm_{xr_1}=\sigma^\pm_{xr_2} \quad \text{for every $x\in X$}.
 \end{equation}
-We call any equivalence class $[\cdot]_{\sim}$ of this relation on $R$ an \emph{F-reaction}. For simplicity, we formally use the uncatalyzed reaction $\tilde{r}$
+We call any equivalence class $[\cdot]_{\sim}$ of this relation on $R$ an 
+\emph{F-reaction}. For simplicity, we formally use the uncatalyzed reaction $\tilde{r}$
 \begin{equation}
   \sum_{x\in X}\ \sigma^-_{xr}  \cdot x\quad \underset{\tilde{r
   }}\rightarrow \quad \sum_{x\in X} \ \sigma^+_{xr} \cdot x  ,
@@ -601,7 +600,8 @@ The corresponding graphs are shown in Fig.~\ref{fig:QScKNot}.
       \draw[->, magenta] (x3) to [bend right = 20] (r1'');
       \draw[->, magenta] (r1'') to [bend right = 20] (x3);
       \draw[->] (r1'') to (x2);
-      \draw[->, magenta] (r3) to [bend right = 30] (x3);			   \draw[->, magenta] (r3) to  (x4);
+      \draw[->, magenta] (r3) to [bend right = 30] (x3);			   
+      \draw[->, magenta] (r3) to  (x4);
       \draw[->, magenta] (x4) to [bend right = 30] (r4);
       \draw[->, magenta] (r4) to [bend right = 30] (x4);
       \draw[->, magenta] (r4) to  (x3);
@@ -653,8 +653,8 @@ notion of \emph{Reflexively Autocatalytic Sets} is built
 \cite{steel_emergence_2000, hordijk_detecting_2004}. In addition, their definition relies
 on the \emph{closure} of a set $X' \subseteq X$ w.r.t.\ to a set $\RAF \subseteq
 \FR$, denoted as $\closure{\RAF}{X'}$, which is the unique minimal set $Y$
-containing $X'$ such that for any $\fr\in \RAF: \feducts(\NV{\mathbf{r}})\subseteq Y
-\Rightarrow \fproducts(\NV{\mathbf{r}})\subseteq Y$. Thus:
+containing $X'$ such that for any $\fr\in \RAF: \feducts(\mathbf{r})\subseteq Y
+\Rightarrow \fproducts(\mathbf{r})\subseteq Y$. Thus:
 \begin{equation}\label{eq:Closure}
   \closure{\RAF}{X'} \coloneqq \min \{Y \subseteq X \ | \ X'\subseteq Y,
   \feducts(\mathbf{r}) \subseteq Y \Rightarrow \fproducts(\mathbf{r}) \subseteq Y \ \forall
@@ -674,45 +674,35 @@ A reflexively autocatalytic set (RAF) is then defined as follows:
     \feducts(\RAF)\cup \fproducts(\RAF)$;}\\[-1.0em]
   \item[ii.]{\emph{\food-generated} (F) if $\feducts(\RAF)\subseteq
     \closure{\RAF}{\food}$;}\\[-1.0em]
-  \item[iii.]{\emph{reflexive\NV{ly} autocatalytic and food-generated}
+  \item[iii.]{\emph{reflexively autocatalytic and food-generated}
     (RAF) if both i. and ii. hold.}
   \end{itemize}
 \end{definition}
 \vspace{6pt}
 
-We remark that \NV{Property $i.$ requires, for each F-reaction $\mathbf{r}$, a nonempty set of catalyzations $\kappa_F(\mathbf{r})\neq \emptyset$ and that at least one catalyzation $c$ is supported on $\RAF$, i.e. $c \subseteq  \feducts(\RAF)\cup \fproducts(\RAF)$. Further,} Property
-$ii.$ together with Eq.~\ref{eq:Closure}, directly
-implies that all F-products of any reaction $\fr\in \RAF$ are also
-contained in $\closure{\RAF}{\food}$, thus $\fproducts(r)\subseteq
+We remark that Property~$ii.$ together with Eq.~\ref{eq:Closure}, directly implies that all F-products 
+of any F-reaction $\fr\in \RAF$ are also contained in $\closure{\RAF}{\food}$, thus $\fproducts(\fr)\subseteq
 \closure{\RAF}{\food}$.
 
 \subsection{A Partial Order on RAFs}
 
-
-\PFS{The reactions of a RAF can be partially ordered such that for each
+The reactions of a RAF can be partially ordered such that for each
   $x\in\feducts(\mathbf{r})$ we have $x\in\food$ or there is a reaction $\mathbf{r}'\prec \mathbf{r}$
   such that $x\in\fproducts(\mathbf{r}')$. While there are many such partial orders,
   we construct a specific one that is reminiscent of a breadth-first
   search. Another way of viewing this partial order is an iterative
-  procedure to generate  the set $\closure{\RAF}{\food}$:}
+  procedure to generate the set $\closure{\RAF}{\food}$:
 %%
-%%
-%% This is not a total order since some reactions,
-%% e.g., the ones requiring only food molecules as F-reactants can be executed
-%% at the same time, while others, depending on molecules produced by these
-%% food-dependent reactions, can only take place consecutively. Here, we
-%% briefly explain the main idea and its consequences, while we will devote
-%% the supplement to formally deriving the partial order.
-%%
-%% A convenient way to construct an order on the F-reactions of a RAF $\RAF$
-%% is by generating the set $\closure{\RAF}{\food}$ iteratively, in
-%% particular, by
- \NV{ To this end, we define sequences of nested species subsets $(X'_0, ..., X'_n)$ where $X'_0=\food$ and $X'_i= X'_{i-1}\cup \{ \fproducts(\mathbf{r}) \; | \; \feducts{(\mathbf{r})\subseteq X'_{i-1}}\}$.} This iterative process \NV{builds} $\closure{\RAF}{\food}$ in a
-finite number of steps as long as
-$\vert \RAF\vert <\infty$. \PFS{A formal account of this procedure is
-  given in the Supplemental Material.}
 
-\NV{These ordered sequences define a \emph{generation reaction-index} $\gamma(\mathbf{r})$ where an F-reaction $\mathbf{r}$ happens for the first time, i.e. 
+ To this end, we define sequences of nested species subsets $(X'_0, ..., X'_n)$ 
+ where $X'_0=\food$ and $X'_i= X'_{i-1}\cup \{ \fproducts(\mathbf{r}) \; | \; 
+ \feducts{(\mathbf{r})\subseteq X'_{i-1}}\}$. This iterative process builds 
+ $\closure{\RAF}{\food}$ in a finite number of steps as long as
+$\vert \RAF\vert <\infty$. A formal account of this procedure is
+  given in the Supplemental Material.
+
+These ordered sequences define a \emph{generation reaction-index} 
+$\gamma(\mathbf{r})$ where an F-reaction $\mathbf{r}$ happens for the first time, i.e. 
 \begin{equation}
     \gamma(\mathbf{r})\coloneqq \operatorname{min} \{i \; | \; \feducts(\mathbf{r})\subseteq X'_i\} + 1,
 \end{equation} 
@@ -754,38 +744,15 @@ $\nfeducts(\fr_1)=\nfeducts(\fr_2)$ and $\nfproducts(\fr_1)=\nfproducts(\fr_2)$ 
   \end{split}
 \end{equation}
 where $\RAF=\{\fr_1,\fr_2\}$ is a RAF with net-reactions $\hat\fr_1=\hat\fr_2$ and $\rgen(\fr_1) = 1 < 2 = \rgen(\fr_2)$. 
-The singleton set $\{\fr_2\}$ in not a RAF since $\fr_2$ requires $x_1$ as an F-reactant.}
+The singleton set $\{\fr_2\}$ in not a RAF since $\fr_2$ requires $x_1$ as an F-reactant.
 
-%The \NV{generation} order $\preceq$ allows us to observe that each species vertex of the $\closure{\RAF}{\food}$ is reachable from at least one food molecule  in $\food$ in the bipartite K\"onig graph, which is restricted to  $\closure{\RAF}{\food}$, the reactions in $\RAF$, and to those catalyzations $\cat'$ of reactions in $\RAF\subseteq \FR$. Throughout, we denote this graph as $\queen'\coloneqq \queen(\closure{\RAF}{\food}, \RAF,\cat')$.
-
-%\vspace{6pt}
-%\begin{lemma}[Proof: SI]\label{lem:RAFPath}
- % Let $(X, \FR, \cat)$ be a CRS with $\food \subseteq X$ and a RAF   $\RAF\subseteq \FR$.  For any $x\in \closure{}{\food}\setminus \food$   there is an $f\in \food$ such that $P=(f, \ldots, x)$ is a path in   $\queen'$.
-%\end{lemma}
-%provide an order
-%$\preceq$ on the set of F-reactions $\FR$ and on the set of species
-%$X$. The generation in which a species $x\in X$ appears as a product for
-%the first time will be denoted by $\sgen(x)$ and set by definition
-%$\sgen(f)\coloneqq 0$ for all $f\in \food$. In addition, we denote the
-%generation in which all F-reactants are available for an F-reaction $\fr$
-%by $\rgen(\fr)$. A species $x_1$ precedes a species $x_2$, i.e.:
-%\begin{equation}
-%  x_1\preccurlyeq x_2 \Leftrightarrow \sgen(x_1) \leq \sgen(x_2)
-%\end{equation} 
-%and a reaction $\fr_1$ precedes a reaction $\fr_2$, i.e.: 
-%\begin{equation}
- % \fr_1\preceq \fr_2 \Leftrightarrow %\rgen(\fr_1) \leq \rgen(\fr_2)
-%\end{equation}
-%We refer to the values of $\sgen$ and $\rgen$ as the generation of a 
-%reaction or species. Since all representatives of an F-reaction share 
-%the same F-reactants, we may define the generation of a reaction as $\delta(r)\coloneqq \rgen(\fr)$.
-\NV{We conclude this section with a further definition.}
+We conclude this section with a further definition.
 \vspace{6pt}
 \begin{definition}
   A \emph{constructively autocatalytic and food-generated} set (CAF) is a
   RAF such that for each F-reaction $\fr$ all $x\in \feducts(\fr)$ satisfy
-  $\sgen(x)<\rgen(\fr)$ and there is at least one \NV{catalyzation $c\in \cat(\mathbf{r})$} 
-  such that all F-catalysts \NV{$x\in c \setminus \food$} satisfy $\sgen(x)< \rgen(\fr)$.
+  $\sgen(x)<\rgen(\fr)$ and there is at least one catalyzation $c\in \cat(\mathbf{r})$ 
+  such that all F-catalysts $x\in c \setminus \food$ satisfy $\sgen(x)< \rgen(\fr)$.
 \end{definition}
 
 \subsection{Irreducible RAFs}\label{sec:IrrRAF}
@@ -797,19 +764,19 @@ computational enumeration have gained reasonable attention in chemical
 reaction networks with and without explicit catalysis
 \cite{blokhuis_Universal_2020, golnik_birne_2025, golnik_using_2026,
   golnik_autocatalytic_2026}.  In \cite{golnik_bridging_2026}, we have
-shown that each RAF that is not a CAF contains a stoichiometrical
+shown that each RAF that is not a CAF contains a stoichiometrically
 autocatalytic subnetwork and thereby an autocatalytic core. It is therefore
 of immediate interest to investigate the substructures of a RAF that carry
 autocatalytic cores.
 
-The natural starting point for this endeavour are RAFs that contain no
+The natural starting point for this endeavour is RAFs that contain no
 proper subset that is also a RAF.
 \vspace{3mm}
 \begin{definition}\cite{steel_minimal_2013}.
   A RAF is irreducible if no subset of its set of F-reactions determines a RAF. 
 \end{definition}
-A direct consequence of Lemma~\ref{lem:OneFReacPerRAF} is that irreducible 
-RAFs never contains two F-reactions $\mathbf{r}_1$ and $\mathbf{r}_2$
+A direct consequence of Lemma~\ref{lem:OneFReacPerRAF} is that an 
+irreducible RAF never contains two F-reactions $\mathbf{r}_1$ and $\mathbf{r}_2$
 with the same net reaction $\hat{\mathbf{r}}_1 = \hat{\mathbf{r}}_2$:
 \vspace{6pt} 
 \begin{corollary}
@@ -831,28 +798,28 @@ with the same net reaction $\hat{\mathbf{r}}_1 = \hat{\mathbf{r}}_2$:
 %\PFS{apply to} irreducible RAFs.
 
 According to Theorem 3.1 of \cite{golnik_bridging_2026}, an autocatalytic
-elementary circuit can be found in a RAF as long as it is not a
-CAF. We call a RAF \emph{trivial} if it is composed of a single F-reaction. 
-Irreducible RAFs exhibit the convenient property that they are never CAFs as 
-long as they are non-trivial.
+elementary circuit can be found in any RAF that is not a CAF. Irreducible RAFs 
+exhibit the convenient property that they are never CAFs as long as they are 
+non-trivial, in particular if they are composed of more than a single F-reaction. 
 \vspace{6pt}
 \begin{lemma}\label{lem:trivRAFCAF}
-  Let $(X,\mathbf{R},\cat(\mathbf{R}))$ be a CRS with food-set $\food\subseteq X$. 
-  Then any irreducible, trivial RAF is a CAF, or its single F-reaction contains an explicit 
-  autocatalytic reaction. Moreover, each irreducible RAF that is a CAF is trivial.
+%  Let $(X,\mathbf{R},\cat(\mathbf{R}))$ be a CRS with food-set $\food\subseteq X$. 
+%  Then any irreducible, trivial RAF is either a CAF, or its single F-reaction contains 
+%  \TODO{an explicit autocatalytic reaction (or: a catalyzation for which one F-catalyst
+%  is also an F-product)}. 
+	Each irreducible CAF is trivial.
 \end{lemma}
 \begin{proof}
-	Let $\RAF\coloneqq \{\fr\}$ be an irreducible RAF. Then all F-reactants are in 
-	$\food$ and two cases can occur for the F-catalysts. First, there is at least one 
-	catalyzation $c\in \cat(\fr)$ for which each $x\in c$ satisfies $x\in \food$. 
-	Then $\RAF$ is a CAF. Secondly, for all catalyzations $c\in \cat(\fr)$ 
-	there is at least one $x\in c$ such that $x\notin \food$. Since $\RAF$ is a RAF, 
-	there is one catalyzation $c'\in \cat(\fr)$ such that all $x'\in c'$ satisfy 
-	$x'\in \closure{\RAF}{\food}$. Thus, if $x'\in c'$ such that $x'\notin \food$, then 
-	$x'$ is not an F-reactant, but an F-product of $\fr$. For the reaction $r'$ uniquely
-	identified by $(c', \fr)$, it follows that $k_{x'r'}>0, \sigma^-_{x'r'}=0$, and $\sigma^+_{x'r'}>0$. 
-	Hence, $r'\in \fr$ is an explicit autocatalytic reaction. 
-  	
+%	Let $\RAF\coloneqq \{\fr\}$ be an irreducible RAF. Then all F-reactants are in 
+%	$\food$ and two cases can occur for the F-catalysts. First, there is at least one 
+%	catalyzation $c\in \cat(\fr)$ for which each $x\in c$ satisfies $x\in \food$. 
+%	Then $\RAF$ is a CAF. Secondly, for all catalyzations $c\in \cat(\fr)$ 
+%	there is at least one $x\in c$ such that $x\notin \food$. Since $\RAF$ is a RAF, 
+%	there is one catalyzation $c'\in \cat(\fr)$ such that all $x'\in c'$ satisfy 
+%	$x'\in \closure{\RAF}{\food}$. Thus, if $x'\in c'$ such that $x'\notin \food$, then 
+%	$x'$ is not an F-reactant, but an F-product of $\fr$. For the reaction $r'$ uniquely
+%	identified by $(c', \fr)$, it follows that $k_{x'r'}>0, \sigma^-_{x'r'}=0$, and $\sigma^+_{x'r'}>0$. 
+%	Hence, $r'\in \fr$ is an explicit autocatalytic reaction.  	
 	For the second part of the statement, let now $\RAF'$ be an irreducible RAF that is a 
 	CAF. Assume $|\RAF'|>1$ and let $\fr''\in \RAF': \rgen(\fr'')=1$. Then all F-reactants and 
 	all F-catalysts $x$ for at least one catalyzation $c\in \cat(\fr'')$ satisfy $x\in \food$ since 
@@ -860,36 +827,71 @@ long as they are non-trivial.
 	of $\RAF'$. 
 \end{proof}
 \vspace{6pt}
-As a consequence, trivial, irreducible RAFs can be one of the following: 1) and 2) a CAF, whose 
-single F-reaction does not and does contain an explicit autocatalytic reaction, respectively, or 3) 
-not a CAF, but the single F-reaction equivalence class contains an explicit autocatalytic reaction:
-\begin{equation}
-	\begin{split}
-		\fr_1&:  f_1 \xrightarrow{(f_1)} x_2 \\[0.5em]
-		\fr_2&: f_1 \xrightarrow{(f_1)} f_1 + x_2 \\[0.5em]
-		\fr_3&: f_1 \xrightarrow{(x_1)} x_1 + x_2 \\[0.5em]
-	\end{split}
-\end{equation}
-However, as for CAFs it is not guaranteed that they carry a stoichiometrically autocatalytic subnetwork \cite{golnik_bridging_2026}, 
-we restrict our attention to non-trivial, irreducible RAFs. In fact, for each non-trivial irreducible RAF, each F-reaction has at
-least one reactant that is not in the food set.
-\vspace{6pt}
-\begin{lemma}\label{lem:OneReac}
-  Let $(X,\mathbf{R},\cat(\mathbf{R})$ be a CRS with food-set $\food\subseteq X$ and let $\RAF$ be a \NV{non-trivial}
-  irreducible RAF. Then \NV{any} $\fr\in \RAF$ has at least \NV{either one F-reactant not in the food set $\food$ or for each catalyzation $c\in\cat(\fr)$ there exists $x\in c \setminus \food$. Moreover, if $\rgen(\fr)=1$, for each catalyzation in $c=\cat(\fr)$ there exists $x\in c \setminus \food$.}
-\end{lemma}
+%As a consequence, trivial, irreducible RAFs can be one of the following: 1) a CAF, whose 
+%single F-reaction does not contain an explicit autocatalytic reaction, 2) not a CAF, but the 
+%single F-reaction equivalence class contains an explicit autocatalytic reaction, or 3) a CAF 
+%that contains an explicit autocatalytic reaction:
+%\begin{equation}
+%	\begin{split}
+%		\fr_1&: f_1 \xrightarrow{(f_1)} x_2 \\[0.5em]		
+%		\fr_2&: f_1 \xrightarrow{(x_1)} x_1 + x_2 \\[0.5em]
+%		\fr_3&: f_1 \xrightarrow{(f_1)} f_1 + x_2 \\[0.5em]
+%	\end{split}
+%\end{equation}
 
-\begin{proof}
-  \NV{Indirectly assume the existence of an F-reaction $\fr\in\RAF$ such that all F-reactants are in the food-set $\food$, and at least one catalyzation $c\in \cat(\mathbf{r})$ has support in $\food$. Then $\{\fr\}$ is a trivial CAF, and thus a RAF. This contradicts either the non-triviality or the irreducibility of $\RAF$. Finally, $\gamma(\fr)=1$ implies that all F-reactants of $\fr$ are in the food set, thus for each catalyzation in $c=\cat(\fr)$ there exists $x\in c \setminus \food$.}
-\end{proof}
+The converse is not true; consider, e.g., $f \xrightarrow{(x_1)} x_1 + x_2$, where only $f\in \food$. 
+Nevertheless, we postpone the discussion of the trivial case to Sec.~\TODO{TBA}. As for CAFs, 
+it is not guaranteed that they carry a stoichiometrically autocatalytic subnetwork \cite{golnik_bridging_2026}, 
+we restrict our attention to non-trivial, irreducible RAFs. 
+
+Property~$i.$ allows \emph{monocatalyzed} RAFs, i.e., those for which $|\cat(\fr)|=1$ for all $\fr \in \RAF$. 
+Moreover, any RAF $\RAF$ does not lose the RAF property, even if for each F-reaction, the set of 
+catalyzations is restricted to a single element, such that each of its catalysts is an F-product of at least 
+one F-reaction of $\RAF$.
+
+\vspace{6pt}
+\begin{observation}\label{obs:monoCatalyzation}
+	Let $(X,\FR,\cat(\FR))$ be a CRS with specified \emph{food set} $\food\subseteq X$ and $\RAF$ be a RAF. 
+	Then $\RAF$ is also a RAF in the CRS $(X, \FR,\cat'(\FR))$, where $\cat'(\FR)$ is the collection of catalyzations 
+	$\cat'(\fr)$ that satisfy:
+	\begin{itemize}
+		\item[i.]{$\cat'(\fr)$ is a single $c\in \cat(\fr)$ such that for each $x\in c$ it holds $x \in \closure{\RAF}{\food}$ if $\fr\in \RAF$,}
+		\item[ii.]{$\cat'(\fr) = \cat(\fr)$ for $\fr \notin\FR$.}
+	\end{itemize}
+\end{observation}
 \vspace{6pt}
 
-%The consequences of the result of Lemma~\ref{lem:OneReac} were already investigated in \cite{steel_minimal_2013}. It was shown that the R-graph \NV{[It has been only defined for CRN]}for each such RAF contains an elementary circuit. 
-In the next subsection,
-we turn to investigate the structural
-properties of two graph representations of non-trivial, irreducible RAFs,
-the bipartite and the reaction graph, in both the CRS and the CRN
-setting. % In particular, we will strengthen a result by Steel et al.\ \cite{steel_minimal_2013}.
+In fact, Obs.~\ref{obs:monoCatalyzation} allows for adding an additional layer of minimality to irreducible RAFs, which 
+concerns the number of catalyzations. 
+\vspace{6pt}
+\begin{definition}\label{def:minCat}
+	Let $(X,\FR,\cat(\FR))$ be a CRS with specified \emph{food set} $\food\subseteq X$ and $\RAF$ be an 
+	irreducible RAF. Then $(\RAF, \cat'(\RAF))$ is called \emph{an irreducible RAF with minimal catalyzations} 
+	if for each $\fr \in \RAF$ the set $\cat'(\fr)\in \cat'(\RAF)$ satisfies Property~$i.$ of Obs.~\ref{obs:monoCatalyzation} 
+	and $\cat'(\fr) \subseteq \cat(\fr)$.
+\end{definition}
+\vspace{6pt}
+By this definition, an irreducible RAF with minimal catalyzations reflects a set of mono-catalyzed reactions. Within this  
+context, mono-catalyed does not necessarily refer to a single catalyst, but a single concerted action of potentially multiple 
+catalysts.
+
+%In fact, for each non-trivial irreducible RAF, each F-reaction has at least one reactant that is not in the food set. 
+%\vspace{6pt}
+%\begin{lemma}\label{lem:OneReac}
+%  Let $(X,\mathbf{R},\cat(\mathbf{R})$ be a CRS with food-set $\food\subseteq X$ and let $\RAF$ be a non-trivial
+%  irreducible RAF. Then any $\fr\in \RAF$ has either at least one F-reactant not in the food set $\food$ or for each catalyzation 
+%  $c\in\cat(\fr)$ there exists $x\in c \setminus \food$. Moreover, if $\rgen(\fr)=1$, for each catalyzation in $c=\cat(\fr)$ there 
+%  exists $x\in c \setminus \food$.
+%\end{lemma}
+%
+%\begin{proof}
+%  Indirectly assume the existence of an F-reaction $\fr\in\RAF$ such that all F-reactants are in the food-set $\food$, and at 
+%  least one catalyzation $c\in \cat(\mathbf{r})$ has support in $\food$. Then $\{\fr\}$ is a trivial CAF, and thus a RAF. This 
+%  contradicts either the non-triviality or the irreducibility of $\RAF$. Finally, $\gamma(\fr)=1$ implies that all F-reactants of $\fr$ 
+%  are in the food set, thus for each catalyzation in $c=\cat(\fr)$ there exists $x\in c \setminus \food$.
+%\end{proof}
+%\vspace{6pt}
+
 
 \subsection{The Bipartite and Reaction Graphs of irreducible RAFs}
 
@@ -901,8 +903,6 @@ $\RAF\subseteq \FR$ with sub-CRS
   \mathbf{\Phi}':= (\closure{\RAF}{\food}, \RAF, \cat')
 \end{equation}
 and \NV{consider} the K\"onig graph $\queen'\coloneqq \queen(\mathbf{\Phi}')$ of the CRS $ \mathbf{\Phi}'$ as well as the K\"onig graph  $\king'\coloneqq \king(\Gamma(\mathbf{\Phi}'))$ \NV{of its CRN representation $\Gamma(\mathbf{\Phi})$}.
-
-
 
 \NV{We introduce a directed graph, so-called \emph{R-graph} (or \emph{reaction graph)} [Citation?], of both the CRN and CRS representations as follows. For a CRN $\Gamma$, the R-graph $\RGraph (\Gamma)$ is the directed graph
  with vertex set $R$ and edge set \begin{equation}
