@@ -839,7 +839,8 @@ they are composed of more than a single F-reaction (see also
 \vspace{6pt}
 \begin{lemma}\label{lem:trivRAFCAF}
  	 Let $(X,\mathbf{R},\cat(\mathbf{R}))$ be a CRS with food-set $\food\subseteq X$. 
-  	Then any irreducible, trivial RAF is either a CAF, or its single F-reaction contains \NV{[no statement here, typo]}. 
+  	Then any irreducible, trivial RAF is either a CAF, or its single F-reaction has an associated 
+	catalyzation for which one F-catalyst is also an F-product. 
 	Moreover, each irreducible CAF is trivial.
 \end{lemma}
 \begin{proof}
@@ -850,9 +851,9 @@ they are composed of more than a single F-reaction (see also
 	there is at least one $x\in c$ such that $x\notin \food$. Since $\RAF$ is a RAF, 
 	there is one catalyzation $c'\in \cat(\fr)$ such that all $x'\in c'$ satisfy 
 	$x'\in \closure{\RAF}{\food}$. Thus, if $x'\in c'$ such that $x'\notin \food$, then 
-	$x'$ is not an F-reactant, but an F-product of $\fr$. For the reaction $r'$ uniquely
-	identified by $(c', \fr)$, it follows that $k_{x'r'}>0, \sigma^-_{x'r'}=0$, and $\sigma^+_{x'r'}>0$. 
-	Hence, $r'\in \fr$ is an explicit autocatalytic reaction.  	
+	$x'$ is not an F-reactant, but an F-product of $\fr$. %For the reaction $r'$ uniquely
+%	identified by $(c', \fr)$, it follows that $k_{x'r'}>0, \sigma^-_{x'r'}=0$, and $\sigma^+_{x'r'}>0$. 
+%	Hence, $r'\in \fr$ is an explicit autocatalytic reaction.  	
 	For the second part of the statement, let now $\RAF'$ be an irreducible RAF that is a 
 	CAF. Assume $|\RAF'|>1$ and let $\fr''\in \RAF': \rgen(\fr'')=1$. Then all F-reactants and 
 	all F-catalysts $x$ for at least one catalyzation $c\in \cat(\fr'')$ satisfy $x\in \food$ since 
@@ -873,7 +874,7 @@ they are composed of more than a single F-reaction (see also
 %\end{equation}
 
 To see that not every trivial, irreducible RAF is necessarily a CAF, consider, e.g., 
-$f \xrightarrow{(x_1)} x_1$ with only $f\in \food$. As for CAFs, it is not guaranteed that they carry a 
+$f \xrightarrow{(x_1)} x_1$ with only $f\in \food$. As for CAFs it is not guaranteed that they carry a 
 stoichiometrically autocatalytic subnetwork \cite{golnik_bridging_2026}, we restrict our attention 
 to non-trivial, irreducible RAFs. For better readability, we also exclude in the following -- with a 
 slight abuse of terminology -- trivial CAFs when referring to irreducible RAFs.
@@ -898,16 +899,21 @@ slight abuse of terminology -- trivial CAFs when referring to irreducible RAFs.
 \subsection{The Bipartite and Reaction Graphs of irreducible RAFs}
 
 Throughout this section, we will consider a CRS $\Phi\coloneqq (X,\FR,\cat(\FR))$ with
-food-set $\food\subseteq X$. In addition, we assume a non-trivial, irreducible RAF 
+food-set $\food\subseteq X$. In addition, we assume an irreducible RAF 
 with minimal catalyzations $(\RAF, \cat'(\RAF))$ and sub-CRS 
 \begin{equation}
   \mathbf{\Phi}':= (\closure{\RAF}{\food}, \RAF, \cat'(\RAF))
 \end{equation}
-and study the K\"onig graph $\queen'\coloneqq \queen(\mathbf{\Phi}')$ of the CRS $ \mathbf{\Phi}'$. %as well as the K\"onig graph  $\king'\coloneqq \king(\Gamma(\mathbf{\Phi}'))$ \NV{of its CRN representation $\Gamma(\mathbf{\Phi})$}.
+and study the K\"onig graph $\queen'\coloneqq \queen(\mathbf{\Phi}')$ of $\mathbf{\Phi}'$. %as well as the K\"onig graph  $\king'\coloneqq \king(\Gamma(\mathbf{\Phi}'))$ \NV{of its CRN representation $\Gamma(\mathbf{\Phi})$}.
 
 We introduce a directed graph, so-called \emph{R-graph} (or \emph{reaction graph}) of the CRS representations as 
-the graph $\RGraph(\mathbf{\Phi})=(\mathbf{R},E)$ with edge set $E\coloneqq \{(\fr_1,\fr_2) \ \vert \ \exists x\in X, 
-(\fr_1,x),(x,\fr_2) \in E(\queen(\mathbf{\Phi})\}$. 
+the graph $\RGraph(\mathbf{\Phi})=(\mathbf{R},E)$ with edge set 
+\begin{equation}
+	E\coloneqq \{(\fr_1,\fr_2) \ \vert \ \exists x\in X \text{ and } (\fr_1,x),(x,\fr_2) \in E(\queen(\mathbf{\Phi})\}
+\end{equation}
+\cite{angeli_graphtheoretic_2010}. We emphasize that different notions of the R-graph exist 
+\cite{angeli_graphtheoretic_2010, nasti_efficient_2021, steel_minimal_2013}, each of which might induce 
+different results. 
 
 %For a CRN $\Gamma$, the R-graph $\RGraph (\Gamma)$ is the directed graph
 % with vertex set $R$ and edge set \begin{equation}
