@@ -875,7 +875,7 @@ they are composed of more than a single F-reaction (see also
 To see that not every trivial, irreducible RAF is necessarily a CAF, consider, e.g., 
 $f \xrightarrow{(x_1)} x_1$ with only $f\in \food$. As it is not guaranteed that CAFs carry a 
 stoichiometrically autocatalytic subnetwork \cite{golnik_bridging_2026}, we restrict our attention 
-to irreducible RAFs but exclude in the following -- with a slight abuse of terminology -- trivial 
+to irreducible RAFs and exclude in the following -- with a slight abuse of terminology -- trivial 
 CAFs when referring to irreducible RAFs.
 
 %In fact, for each non-trivial irreducible RAF, each F-reaction has at least one reactant that is not in the food set. 
@@ -901,8 +901,8 @@ Throughout this section, we will consider a CRS $\Phi\coloneqq (X,\FR,\cat(\FR))
 food-set $\food\subseteq X$. \TODO{Recall that a sub-CRS $\mathbf{\Phi}'$ is a triple 
 $(X', \FR', \cat'(\FR))$ such that $X'\subseteq X, \FR'\subseteq \FR,  
 \cat'(\FR)\subseteq \cat(\FR)$ (to be put in CRS section, later)}. In particular, we focus 
-on an irreducible, monocatalyzed RAFs $(\RAF, \cat'(\RAF))$ and 
-corresponding sub-CRS 
+on an irreducible, monocatalyzed RAFs $(\RAF, \cat'(\RAF))$ (that are not CAFs) and 
+corresponding CRS 
 \begin{equation}\label{eq:RAF-CRS}
   \mathbf{\Phi}':= (\closure{\RAF}{\food}, \RAF, \cat'(\RAF))
 \end{equation}
@@ -1007,7 +1007,7 @@ $\queen$ \emph{induced} by the vertex sets $(X',\RAF)$. We then have the
 following lemma.
 \vspace{6pt}
 \begin{lemma}\label{lem:PSC}
-  Let $\RAF$ be an irreducible RAF with minimal catalyzation. Then $\princess(\RAF)$ 
+  Let $\RAF$ be an irreducible, monocatalyzed RAF. Then $\princess(\RAF)$ 
   is strongly connected.
 \end{lemma}
 \begin{proof}
@@ -1023,11 +1023,12 @@ following lemma.
 
 In \cite{golnik_enumeration_2026}, we have shown that autocatalytic cores 
 inherit a bipartite K\"onig graph representation that are induced \emph{fluffles}, 
-in particular, subgraphs of the K\"onig graph that have $i.)$ the same number of 
-reaction and species vertices, $ii.)$ each species vertex out-degree $1$, and each
-reaction vertex has in-degree $1$, and $iii.)$ they are strong blocks. Recall that 
-a strong block is a subgraph that is strongly-connected and its underlying undirected
-graph is 2-connected (see SI Sec.~\TODO{TBA} for information on general graph theory).
+in particular, subgraphs of the K\"onig graph induced by a set of species and 
+reaction vertices that $i.)$ the two vertex sets are of identical size, $ii.)$ each 
+species vertex has out-degree $1$, and each reaction vertex has in-degree 
+$1$, and $iii.)$ they are strong blocks. Recall that a strong block is a subgraph 
+that is strongly-connected, and its underlying undirected graph is 2-connected 
+(see SI Sec.~\TODO{TBA}). 
 
 \subsubsection{Cut-vertices}
 \NV{[From here I have not revised/polished but just sparse and not exhaustive comments since the issue with counterexample \eqref{crnconnected} must be addressed first.]}
