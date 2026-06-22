@@ -732,21 +732,6 @@ We conclude this section with a further definition.
 
 \NV{[NV will continue polishing from here on Mon 22.06]}
 
-%Minimal \emph{stoichiometrically autocatalytic} subnetworks, formally
-%introduced in Sec.~\ref{sec:AutoCatIrrRAF}, are termed \emph{autocatalytic
-%cores} \cite{blokhuis_Universal_2020}. Their characterization and
-%computational enumeration have gained reasonable attention in chemical
-%reaction networks with and without explicit catalysis
-%\cite{blokhuis_Universal_2020, golnik_using_2026,
-%  golnik_autocatalytic_2026}.  In \cite{golnik_bridging_2026}, we have
-%shown that each RAF that is not a CAF contains a stoichiometrically
-%autocatalytic subnetwork and thereby an autocatalytic core. It is therefore
-%of immediate interest to investigate the substructures of a RAF that carry
-%autocatalytic cores.
-
-%The natural starting point for this endeavour is RAFs that contain no
-%proper subset that is also a RAF.
-
 For a sequence of reactions: $x_i\xrightarrow{(x_i)} x_{i+1}, x_0\in \food, i=0,\ldots, n$ 
 any set of the form $\{r_0,\ldots, r_k\}, k\leq n$ is a RAF and, in particular, a sub-RAF 
 of the maximal RAF $\{r_i\ \vert \ i=0,\ldots, n\}$. RAFs minimal w.r.t. to the RAF property 
@@ -802,7 +787,7 @@ i.e., those for which $|\cat(\fr)|=1$ for all $\fr \in \RAF$. Moreover, any RAF 
 %one F-reaction of $\RAF$. We clarify that $\RAF$ 
 also identifies a RAF in the sub-CRS where each catalyzation subset is a singleton that is F-generated, i.e., that any 
 choice \NV{(via axiom of choice here ahahah)} of single-catalyzation of which all catalysts are elements of 
-$\closure{\RAF}(\food)$ gives rise to a RAF itself.
+$\closure{\RAF}{\food}$ gives rise to a RAF itself.
 
 \vspace{6pt}
 \begin{observation}\label{obs:monoCatalyzation}
@@ -816,12 +801,12 @@ $\closure{\RAF}(\food)$ gives rise to a RAF itself.
 \end{observation}
 \vspace{6pt}
 
-Clearly, Obs.~\ref{obs:monoCatalyzation} also applies to irreducible RAFs. However, as remarked, not every choice of mono-catalyzations is compatible 
-with the RAF definition, as some may not be F-generated. The tuple $(\RAF, \cat'(\RAF)$ such that $\RAF$ is a(n) (irreducible) RAF and all catalyzations 
-of $\cat'(\RAF)$ satisfy properties $i.$ of Obs.~\ref{obs:monoCatalyzation} as well as $\cat'(\fr) \subseteq \cat(\fr)$ for all $r\in \RAF$ are called 
-monocatalyzed (irreducible) RAFs. In this way, catalyzations add a different layer of minimality to RAFs, which is imposed on the set of catalyzations but 
-not on the set of F-reactions. Note, however, that monocatalyzed does not necessarily refer to a single species catalyst, but a single concerted action that
-involve potentially multiple catalysts.
+In this way, catalyzations add a different layer of minimality to RAFs, which is imposed on the set of catalyzations instead 
+of on the set of F-reactions. Nevertheless, Obs.~\ref{obs:monoCatalyzation} also applies to irreducible RAFs. We call 
+the tuple $(\RAF, \cat'(\RAF)$ such that $\RAF$ is a(n) (irreducible) RAF and all catalyzations of $\cat'(\RAF)$ satisfy 
+properties $i.$ of Obs.~\ref{obs:monoCatalyzation} as well as $\cat'(\fr) \subseteq \cat(\fr)$ for all $r\in \RAF$ 
+monocatalyzed (irreducible) RAFs. Note, however, that monocatalyzed does not necessarily refer to a single species 
+catalyst, but a single concerted action that involves potentially multiple catalysts.
 
 %
 %Still, they might contain F-reactions that have more than one representative, as the following example shows. \begin{equation}
@@ -835,11 +820,22 @@ involve potentially multiple catalysts.
 %\fr_2=\{r_2\}\}$, which implies that Lemma~\ref{lem:IsoQK} does not
 %\PFS{apply to} irreducible RAFs.
 
-According to Theorem 3.1 of \cite{golnik_bridging_2026}, an autocatalytic
-elementary circuit can be found in any RAF that is not a CAF. Irreducible RAFs 
-exhibit the convenient property that they are never CAFs as long as they are 
-non-trivial, in particular if they are composed of more than a single F-reaction 
-(see also \ref{steel_minimal_2013}, Sec.~1.3).
+%According to Theorem 3.1 of \cite{golnik_bridging_2026}, an autocatalytic
+%elementary circuit can be found in any RAF that is not a CAF. 
+
+Minimal \emph{stoichiometrically autocatalytic} subnetworks, formally
+introduced in Sec.~\ref{sec:AutoCatIrrRAF}, are termed \emph{autocatalytic
+cores} \cite{blokhuis_Universal_2020}. Their characterization and
+computational enumeration have gained reasonable attention in chemical
+reaction networks with and without explicit catalysis
+\cite{blokhuis_Universal_2020, golnik_using_2026,
+  golnik_autocatalytic_2026}.  In \cite{golnik_bridging_2026}, we have
+shown that each (irreducible) RAF that is not a 
+CAF contains a stoichiometrically autocatalytic subnetwork and thereby 
+an autocatalytic core. Irreducible RAFs exhibit the convenient property 
+that they are never CAFs as long as they are non-trivial, in particular if 
+they are composed of more than a single F-reaction (see also 
+\cite{steel_minimal_2013}, Sec.~1.3).
 \vspace{6pt}
 \begin{lemma}\label{lem:trivRAFCAF}
  	 Let $(X,\mathbf{R},\cat(\mathbf{R}))$ be a CRS with food-set $\food\subseteq X$. 
@@ -876,14 +872,11 @@ non-trivial, in particular if they are composed of more than a single F-reaction
 %	\end{split}
 %\end{equation}
 
-To see that not a trivial, irreducible RAF is necessarily a CAF, consider the following example: 
-\begin{equation}
-	f \xrightarrow{(x_1)} x_1,
-\end{equation} 
-where only $f\in \food$. Nevertheless, we postpone the discussion of the trivial case to Sec.~\TODO{TBA}. 
-As for CAFs, it is not guaranteed that they carry a stoichiometrically autocatalytic subnetwork 
-\cite{golnik_bridging_2026}, we restrict our attention to non-trivial, irreducible RAFs. 
-
+To see that not every trivial, irreducible RAF is necessarily a CAF, consider, e.g.,: 
+$f \xrightarrow{(x_1)} x_1$, where only $f\in \food$. As for CAFs, it is not guaranteed that they carry a 
+stoichiometrically autocatalytic subnetwork \cite{golnik_bridging_2026}, we restrict our attention 
+to non-trivial, irreducible RAFs. For better readability, we exclude in the following -- with a 
+slight abuse of terminology -- trivial CAFs when referring to irreducible RAFs.
 
 %In fact, for each non-trivial irreducible RAF, each F-reaction has at least one reactant that is not in the food set. 
 %\vspace{6pt}
