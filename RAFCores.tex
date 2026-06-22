@@ -800,8 +800,9 @@ F-reactions may possess several catalyzations, where some of them may not even b
 i.e., those for which $|\cat(\fr)|=1$ for all $\fr \in \RAF$. Moreover, any RAF $\RAF$ %does not lose the RAF property, even if for each F-reaction, 
 %the set of catalyzations is restricted to a single element, such that each of its catalysts is an F-product of at least 
 %one F-reaction of $\RAF$. We clarify that $\RAF$ 
-also identifies a RAF in the CRS where each catalyzation subset is a singleton that is F-generated, i.e., that any 
-choice \NV{(via axiom of choice here ahahah)} of single-catalyzation gives rise to a RAF itself over the restricted CRS.
+also identifies a RAF in the sub-CRS where each catalyzation subset is a singleton that is F-generated, i.e., that any 
+choice \NV{(via axiom of choice here ahahah)} of single-catalyzation of which all catalysts are elements of 
+$\closure{\RAF}(\food)$ gives rise to a RAF itself.
 
 \vspace{6pt}
 \begin{observation}\label{obs:monoCatalyzation}
@@ -815,24 +816,12 @@ choice \NV{(via axiom of choice here ahahah)} of single-catalyzation gives rise 
 \end{observation}
 \vspace{6pt}
 
-Obs.~\ref{obs:monoCatalyzation} naturally also applies to irreducible RAFs. However, we remark that not each choice of mono-catalyzations is valid, 
-as some may not be F-generated. We will therefore refer to catalyzations satisfying properties $i.$ and $ii.$ stated in Obs.~\ref{obs:monoCatalyzation} 
-as F-generated monocatalyzations and to a tuple $(\RAF, \cat'(\RAF)$ as monocatalyzed (irreducible) RAFs. In this way, catalyzations add a different 
-layer of minimality to RAFs, which is imposed on the set of catalyzations but not on the set of F-reactions. However, a RAF is defined as a set of 
-F-reactions, while the catalyzations are given by the underlying CRS.   
-\vspace{6pt}
-\begin{definition}\label{def:minCat}
-	Let $(X,\FR,\cat(\FR))$ be a CRS with specified \emph{food set} $\food\subseteq X$ and $\RAF$ be an 
-	irreducible RAF. The $(\RAF, \cat'(\RAF))$ is called \emph{an irreducible RAF with minimal catalyzations} 
-	if for each $\fr \in \RAF$ the set $\cat'(\fr)\in \cat'(\RAF)$ satisfies Property~$i.$ of Obs.~\ref{obs:monoCatalyzation} 
-	and $\cat'(\fr) \subseteq \cat(\fr)$.
-\end{definition}
-\vspace{6pt}
-By this definition, an irreducible RAF with minimal catalyzations reflects a set of mono-catalyzed F-reactions. In fact, 
-mono-catalyzed does not necessarily refer to a single catalyst, but a single concerted action of potentially multiple 
-catalysts.
-
-
+Clearly, Obs.~\ref{obs:monoCatalyzation} also applies to irreducible RAFs. However, as remarked, not every choice of mono-catalyzations is compatible 
+with the RAF definition, as some may not be F-generated. The tuple $(\RAF, \cat'(\RAF)$ such that $\RAF$ is a(n) (irreducible) RAF and all catalyzations 
+of $\cat'(\RAF)$ satisfy properties $i.$ of Obs.~\ref{obs:monoCatalyzation} as well as $\cat'(\fr) \subseteq \cat(\fr)$ for all $r\in \RAF$ are called 
+monocatalyzed (irreducible) RAFs. In this way, catalyzations add a different layer of minimality to RAFs, which is imposed on the set of catalyzations but 
+not on the set of F-reactions. Note, however, that monocatalyzed does not necessarily refer to a single species catalyst, but a single concerted action that
+involve potentially multiple catalysts.
 
 %
 %Still, they might contain F-reactions that have more than one representative, as the following example shows. \begin{equation}
