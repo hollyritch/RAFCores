@@ -732,10 +732,14 @@ We conclude this section with a further definition.
 
 \NV{[NV will continue polishing from here on Mon 22.06]}
 
-For a sequence of reactions: $x_i\xrightarrow{(x_i)} x_{i+1}, x_0\in \food, i=0,\ldots, n$ 
-any set of the form $\{r_0,\ldots, r_k\}, k\leq n$ is a RAF and, in particular, a sub-RAF 
-of the maximal RAF $\{r_i\ \vert \ i=0,\ldots, n\}$. RAFs minimal w.r.t. to the RAF property 
-have been termed irreducible RAFs \cite{steel_minimal_2013}.
+Recall that we denote an F-reaction as follows:
+\begin{equation}
+	\fr: \sum_{x\in X}\ \sigma^-_{xr} \cdot x \quad \xrightarrow{(c) \in \cat(\fr)} \sum_{x\in X}\ \sigma^-_{xr} \cdot x.
+\end{equation}
+For a sequence of reactions: $\fr_i: x_i\xrightarrow{(x_i)} x_{i+1}, x_0\in \food, i=0,\ldots, n$, 
+where $(x_i)$ is the only catalyzation for $\fr_i$, any set of the form $\{r_0,\ldots, r_k\}, k\leq n$ 
+is a RAF and a subset of the maximal RAF $\{r_i\ \vert \ i=0,\ldots, n\}$. RAFs minimal w.r.t. the 
+RAF property have been termed irreducible RAFs \cite{steel_minimal_2013}.
 
 \vspace{3mm}
 \begin{definition}\label{def:irrerRAF}\cite{steel_minimal_2013}.
@@ -935,12 +939,12 @@ In line with calling elements of $\food$ food-molecules, we kindly refer to mole
 \end{equation}
 as waste molecules. %We note that $V(\king')=\closure{\RAF}{\food}$.
 
-\holy{RG until here}
-
 \subsubsection{Strong connectivity}
 
-\NV{We recall that a directed graph $(V,E)$ is \emph{strongly connected} if, for any pair of vertices $v_1,v_2\in V$, there exists a directed path from $v_1$ to $v_2$. Here, we establish the strong-connectedness of the R-graph of a non-trivial, irreducible RAF both for CRN and CRS representation.} 
-
+We recall that a directed graph $(V,E)$ is \emph{strongly connected} if, for any pair of 
+vertices $v_1,v_2\in V$, there exists a directed path from $v_1$ to $v_2$. Here, we 
+establish the strong-connectedness of the R-graph on irreducible RAFs with minimal 
+catalyzations. 
 
 \vspace{6pt}
 \begin{lemma}\label{lem:RGQSC}
