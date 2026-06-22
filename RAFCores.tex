@@ -732,20 +732,26 @@ We conclude this section with a further definition.
 
 \NV{[NV will continue polishing from here on Mon 22.06]}
 
-Minimal \emph{stoichiometrically autocatalytic} subnetworks, formally
-introduced in Sec.~\ref{sec:AutoCatIrrRAF}, are termed \emph{autocatalytic
-cores} \cite{blokhuis_Universal_2020}. Their characterization and
-computational enumeration have gained reasonable attention in chemical
-reaction networks with and without explicit catalysis
-\cite{blokhuis_Universal_2020, golnik_using_2026,
-  golnik_autocatalytic_2026}.  In \cite{golnik_bridging_2026}, we have
-shown that each RAF that is not a CAF contains a stoichiometrically
-autocatalytic subnetwork and thereby an autocatalytic core. It is therefore
-of immediate interest to investigate the substructures of a RAF that carry
-autocatalytic cores.
+%Minimal \emph{stoichiometrically autocatalytic} subnetworks, formally
+%introduced in Sec.~\ref{sec:AutoCatIrrRAF}, are termed \emph{autocatalytic
+%cores} \cite{blokhuis_Universal_2020}. Their characterization and
+%computational enumeration have gained reasonable attention in chemical
+%reaction networks with and without explicit catalysis
+%\cite{blokhuis_Universal_2020, golnik_using_2026,
+%  golnik_autocatalytic_2026}.  In \cite{golnik_bridging_2026}, we have
+%shown that each RAF that is not a CAF contains a stoichiometrically
+%autocatalytic subnetwork and thereby an autocatalytic core. It is therefore
+%of immediate interest to investigate the substructures of a RAF that carry
+%autocatalytic cores.
 
-The natural starting point for this endeavour is RAFs that contain no
-proper subset that is also a RAF.
+%The natural starting point for this endeavour is RAFs that contain no
+%proper subset that is also a RAF.
+
+For a sequence of reactions: $x_i\xrightarrow{(x_i)} x_{i+1}, x_0\in \food, i=0,\ldots, n$ 
+any set of the form $\{r_0,\ldots, r_k\}, k\leq n$ is a RAF and, in particular, a sub-RAF 
+of the maximal RAF $\{r_i\ \vert \ i=0,\ldots, n\}$. RAFs minimal w.r.t. to the RAF property 
+have been termed irreducible RAFs \cite{steel_minimal_2013}.
+
 \vspace{3mm}
 \begin{definition}\cite{steel_minimal_2013}.
   A RAF is irreducible if no subset of its set of F-reactions determines a RAF. 
