@@ -559,13 +559,18 @@ graph of a CRS is given as $\queen(X,\mathbf{R})\coloneqq (X \cup
     E_2\coloneqq \{(\fr, x) \ | \ x\in X, \fr\in \FR: s^+_{xr}>0 \text{ for some } r \in \fr \}
   \end{split}
 \end{equation}
-As a CRS is a quotient structure of a CRN, it follows that $\queen(X,\mathbf{R})$ is the \emph{quotient} graph of $K(X,R)$ induced by the equivalence relation $\sim$ on the reaction vertices. In particular, $\queen(X,\mathbf{R})$ is
+As a CRS is a quotient structure of a CRN, it follows that $\queen(X,\mathbf{R})$ 
+is the \emph{quotient} graph of $K(X,R)$ induced by the equivalence relation 
+$\sim$ on the reaction vertices. In particular, $\queen(X,\mathbf{R})$ is
 strongly connected whenever $\king(X,R)$ is strongly
 connected. 
 This follows immediately from the fact that strong connectivity
 is preserved under surjective digraph homomorphisms
-\cite{hell_graphs_2026}. Besides the trivial case of $|\phi^{-1}(\mathbf{r})|=1$ for all $\mathbf{r}$, the converse is in general not true: if $\queen(X,\mathbf{R})$ is strongly connected, $\king(X,R)$ needs not be. 
-As an example consider the following system:
+\cite{hell_graphs_2026}. Besides the trivial case of $|\phi^{-1}(\mathbf{r})|=1$ for 
+all $\mathbf{r}$, the converse is in general not true: if $\queen(X,\mathbf{R})$ 
+is strongly connected, $\king(X,R)$ needs not be. 
+
+As an example, consider the following system:
 \begin{equation}
 	\begin{split}
 		r'_1 &: x_3 + (x_1) 		\rightarrow x_2  + (x_1) \\
@@ -906,7 +911,7 @@ corresponding CRS
 \begin{equation}\label{eq:RAF-CRS}
   \mathbf{\Phi}':= (\closure{\RAF}{\food}, \RAF, \cat'(\RAF))
 \end{equation}
-and study properties of its bipartite K\"onig graph $\queen'\coloneqq \queen(\mathbf{\Phi}')$ 
+and study properties of its bipartite K\"onig graph $\queen(\RAF)\coloneqq \queen(\mathbf{\Phi}')$ 
 representation. (see Sec.~\ref{sec:CRS}). 
 
 We start by introducing a directed graph, so-called \emph{R-graph} (or \emph{reaction graph}) 
@@ -992,7 +997,7 @@ strong-connectedness unless we remove food and waste species: for any
 $\fr\in \RAF$, by definition, for a waste species $x_W$ there is no directed 
 edge $(x_W,\mathbf{r})$, and for a food species $x_F$ there may be no 
 directed edge $(\mathbf{r},x_F)$. We can, however, consider the bipartite 
-graph of $\queen(\RAF)$ that is void of food and waste molecules:
+graph of $\queen(\RAF')$ that is void of food and waste molecules:
 \begin{equation}\label{eq:PrinceGraph}
 %  \begin{cases}
 %    \lord(\RAF) \coloneqq
@@ -1021,57 +1026,64 @@ following lemma.
   of $\RAF$.
 \end{proof}	
 
-In \cite{golnik_enumeration_2026}, we have shown that autocatalytic cores 
-inherit a bipartite K\"onig graph representation that are induced \emph{fluffles}, 
+We recall that a strong block is a subgraph that is strongly connected, and its 
+underlying undirected graph is 2-connected (see SI Sec.~\TODO{TBA}). In 
+\cite{golnik_enumeration_2026}, we have shown that autocatalytic cores 
+exhibit a bipartite K\"onig graph representation that is an induced \emph{fluffle}, 
 in particular, subgraphs of the K\"onig graph induced by a set of species and 
-reaction vertices that $i.)$ the two vertex sets are of identical size, $ii.)$ each 
+reaction vertices such that $i.)$ the two vertex sets are of identical size, $ii.)$ each 
 species vertex has out-degree $1$, and each reaction vertex has in-degree 
-$1$, and $iii.)$ they are strong blocks. Recall that a strong block is a subgraph 
-that is strongly-connected, and its underlying undirected graph is 2-connected 
-(see SI Sec.~\TODO{TBA}). 
+$1$, and $iii.)$ they are strong blocks. We subsequently aim to identify 
+the maximal strong blocks in $\princess(\RAF)$. 
 
 \subsubsection{Cut-vertices}
-\NV{[From here I have not revised/polished but just sparse and not exhaustive comments since the issue with counterexample \eqref{crnconnected} must be addressed first.]}
-
-\NV{A strong block is...\TODO{[TBA]   }}
-In general, non-trivial, irreducible RAFs are not necessarily strong
-blocks, as is captured in the example of Fig.~\ref{ex:CutVertex}, which
-summarizes the graphs that have been introduced so far.
+Strongly-connected subgraphs, and $\princess(\RAF)$ in particular, may still contain 
+cut-vertices. An example is captured in Fig.~\ref{ex:CutVertex}, which 
+summarizes the two graphs introduced so far.
 \begin{figure}[htb]
   \centering
-  \begin{minipage}[c]{0.49\textwidth}
-    \centering	
-    \textbf{Catalytic Reaction Systems}
-  \end{minipage}%
+  \begin{minipage}[c]{0.5\textwidth}
+  	\begin{minipage}[c]{\textwidth}
+    		\centering
+    		\begin{equation}
+      			\begin{split}
+				\fr_0&: f  \xrightarrow{(x_1,y_1)} x_2 + y_2 \\
+				\fr_1&: x_2 \xrightarrow{(x_2)} x_1 \\
+				\fr_2&: y_2   \xrightarrow{(y_2)} y_1 + y_3
+      			\end{split}
+    		\end{equation}
+  	\end{minipage}
+	\par\bigskip
+	\par\bigskip
+  	\begin{minipage}[c]{\textwidth}
+    		\centering
+    		\begin{tikzpicture}
+      
+     			\node[draw, rectangle] (r0) at (0,0) {$\fr_1$};
+      			\node[draw, rectangle] (r1) at (1,0) {$\fr_0$};
+	      		\node[draw, rectangle] (r2) at (2,0) {$\fr_2$};
+      
+      
+      			\draw[->] (r0) to [bend right = 30] (r1);
+      			\draw[->] (r1) to [bend right = 30] (r0);
+	      		\draw[->] (r1) to [bend right = 30] (r2);
+      			\draw[->] (r2) to [bend right = 30] (r1);
+    		\end{tikzpicture}
+    	\end{minipage}
+   \end{minipage}%
   \hfill%
-  \begin{minipage}[c]{0.49\textwidth}	
-    \centering
-    \textbf{Chemical Reaction Networks}
-  \end{minipage}
-  \begin{minipage}[c]{0.49\textwidth}	
-    \centering
-    \begin{equation}
-      \begin{split}
-	\fr_0&: f  \xrightarrow{x_1,y_1} x_2 + y_2 \\
-	\fr_1&: x_2 \xrightarrow{x2} x_1 \\
-	\fr_2&: y_2   \xrightarrow{y_2} y_1 + y_3
-      \end{split}
-    \end{equation}
-  \end{minipage}%
-  \hfill%
-  \begin{minipage}[c]{0.49\textwidth}
-    \centering
-    \begin{equation}
-      \begin{split}
-	r'_0&: f + (x_1) \longrightarrow x_2 + y_2 +(x_1)\\
-	r''_0&: f + (y_1) \longrightarrow x_2 + y_2 +(y_1)\\
-	r_1&: x_2 + (x_2)\longrightarrow x_1 + (x_2) \\
-	r_2&: y_2 + (y_2) \longrightarrow y_1 + y_3 + (y_2)
-      \end{split}
-    \end{equation}
-  \end{minipage}
-  \par\bigskip	
-  \begin{minipage}[c]{0.49\textwidth}
+%  \begin{minipage}[c]{0.49\textwidth}
+%    \centering
+%    \begin{equation}
+%      \begin{split}
+%	r'_0&: f + (x_1) \longrightarrow x_2 + y_2 +(x_1)\\
+%	r''_0&: f + (y_1) \longrightarrow x_2 + y_2 +(y_1)\\
+%	r_1&: x_2 + (x_2)\longrightarrow x_1 + (x_2) \\
+%	r_2&: y_2 + (y_2) \longrightarrow y_1 + y_3 + (y_2)
+%      \end{split}
+%    \end{equation}
+%  \end{minipage}
+\begin{minipage}[c]{0.5\textwidth}
     \centering
     \begin{tikzpicture}
       \node[draw, circle] (f) at (-1,0) {$f$};
@@ -1100,111 +1112,92 @@ summarizes the graphs that have been introduced so far.
       \draw[->, purple] (r2) to (y1);
       \draw[->] (r2) to (y3);			
     \end{tikzpicture}
-  \end{minipage}%
-  \hfill%
-  \begin{minipage}[c]{0.49\textwidth}
-    \centering
-    \begin{tikzpicture}
-      \node[draw, circle] (f) at (-1,0) {$f$};
-      \node[draw, teal, circle] (x1) at (0,1) {$x_1$};
-      \node[draw, teal, circle] (x2) at (2,1) {$x_2$};
-      \node[draw, teal, circle] (y1) at (0,-1) {$y_1$};
-      \node[draw, teal, circle] (y2) at (2,-1) {$y_2$};
-      \node[draw, circle] (y3) at (0,-2) {$y_3$};
-      
-      \node[draw, teal, rectangle] (r'0) at (1,0.5) {$r'_0$};
-      \node[draw, teal, rectangle] (r''0) at (1,-0.5) {$r''_0$};
-      \node[draw, teal, rectangle] (r1) at (1,2) {$r_1$};
-      \node[draw, teal, rectangle] (r2) at (1,-2) {$r_2$};
-      
-      \draw[->] (f) to (r'0);
-      \draw[->] (f) to (r''0);
-      \draw[->, teal] (x1) to [bend right = 30] (r'0);
-      \draw[->, teal] (r'0) to [bend right = 30] (x1);
-      \draw[->, teal] (y1) to [bend right = 30] (r''0);
-      \draw[->, teal] (r''0) to [bend right = 30] (y1);
-      \draw[->, teal] (r'0) to (x2);
-      \draw[->, teal] (r''0) to (x2);
-      \draw[->, teal] (r'0) to (y2);
-      \draw[->, teal] (r''0) to (y2);
-      \draw[->, teal] (x2) to [bend right = 30] (r1);
-      \draw[->, teal] (r1) to [bend right = 30] (x2);
-      \draw[->, teal] (y2) to [bend right = 30] (r2);
-      \draw[->, teal] (r2) to [bend right = 30] (y2);
-      \draw[->, teal] (r1) to (x1);
-      \draw[->, teal] (r2) to (y1);	
-      \draw[->] (r2) to (y3);		
-    \end{tikzpicture}
-  \end{minipage}	
-  
-  \par\bigskip
-  \begin{minipage}[c]{0.49\textwidth}
-    \centering
-    \begin{tikzpicture}
-      
-      \node[draw, rectangle] (r0) at (0,0) {$r_0$};
-      \node[draw, rectangle] (r1) at (1,0) {$r_1$};
-      \node[draw, rectangle] (r2) at (2,0) {$r_2$};
-      
-      
-      \draw[->] (r0) to [bend right = 30] (r1);
-      \draw[->] (r1) to [bend right = 30] (r0);
-      \draw[->] (r1) to [bend right = 30] (r2);
-      \draw[->] (r2) to [bend right = 30] (r1);
-    \end{tikzpicture}
-    
-  \end{minipage}%
-  \hfill%	
-  \begin{minipage}[c]{0.49\textwidth}
-    \centering
-    \begin{tikzpicture}
-      \node[draw, rectangle] (r0) at (0,0) {$r_0$};
-      \node[draw, rectangle] (r1) at (1,0) {$r_1$};
-      \node[draw, rectangle] (r2) at (2,0) {$r_2$};
-      
-      
-      \draw[->] (r0) to [bend right = 30] (r1);
-      \draw[->] (r1) to [bend right = 30] (r0);
-      \draw[->] (r1) to [bend right = 30] (r2);
-      \draw[->] (r2) to [bend right = 30] (r1);
-      
-    \end{tikzpicture}
-    
   \end{minipage}
+  
+%  \begin{minipage}[c]{0.49\textwidth}
+%    \centering
+%    \begin{tikzpicture}
+%      \node[draw, circle] (f) at (-1,0) {$f$};
+%      \node[draw, teal, circle] (x1) at (0,1) {$x_1$};
+%      \node[draw, teal, circle] (x2) at (2,1) {$x_2$};
+%      \node[draw, teal, circle] (y1) at (0,-1) {$y_1$};
+%      \node[draw, teal, circle] (y2) at (2,-1) {$y_2$};
+%      \node[draw, circle] (y3) at (0,-2) {$y_3$};
+%      
+%      \node[draw, teal, rectangle] (r'0) at (1,0.5) {$r'_0$};
+%      \node[draw, teal, rectangle] (r''0) at (1,-0.5) {$r''_0$};
+%      \node[draw, teal, rectangle] (r1) at (1,2) {$r_1$};
+%      \node[draw, teal, rectangle] (r2) at (1,-2) {$r_2$};
+%      
+%      \draw[->] (f) to (r'0);
+%      \draw[->] (f) to (r''0);
+%      \draw[->, teal] (x1) to [bend right = 30] (r'0);
+%      \draw[->, teal] (r'0) to [bend right = 30] (x1);
+%      \draw[->, teal] (y1) to [bend right = 30] (r''0);
+%      \draw[->, teal] (r''0) to [bend right = 30] (y1);
+%      \draw[->, teal] (r'0) to (x2);
+%      \draw[->, teal] (r''0) to (x2);
+%      \draw[->, teal] (r'0) to (y2);
+%      \draw[->, teal] (r''0) to (y2);
+%      \draw[->, teal] (x2) to [bend right = 30] (r1);
+%      \draw[->, teal] (r1) to [bend right = 30] (x2);
+%      \draw[->, teal] (y2) to [bend right = 30] (r2);
+%      \draw[->, teal] (r2) to [bend right = 30] (y2);
+%      \draw[->, teal] (r1) to (x1);
+%      \draw[->, teal] (r2) to (y1);	
+%      \draw[->] (r2) to (y3);		
+%    \end{tikzpicture}
+%  \end{minipage}	
+  
+%  \hfill%	
+%  \begin{minipage}[c]{0.49\textwidth}
+%    \centering
+%    \begin{tikzpicture}
+%      \node[draw, rectangle] (r0) at (0,0) {$r_0$};
+%      \node[draw, rectangle] (r1) at (1,0) {$r_1$};
+%      \node[draw, rectangle] (r2) at (2,0) {$r_2$};
+%      
+%      
+%      \draw[->] (r0) to [bend right = 30] (r1);
+%      \draw[->] (r1) to [bend right = 30] (r0);
+%      \draw[->] (r1) to [bend right = 30] (r2);
+%      \draw[->] (r2) to [bend right = 30] (r1);
+%      
+%    \end{tikzpicture}
+    
   \par\bigskip
   
-  \caption{A non-trivial, irreducible \NV{[Why irreducible? Are $\fr_0\cup\fr_1$ and $\fr_0\cup \fr_2$ not RAFs? Unless you mean that both $x_1,y_1$ are needed catalysts, but then the right picture is wrong. The notation for the Catalytic Reaction System is used here for the first time, and not clarified.]} RAF $\RAF$ in its different
-    representations as a CRS $\Phi$ (\textbf{left}) and CRN $\Gamma(\Phi)$
-    (\textbf{right}): the systems of stoichiometric equations
-    \textbf{(top)}, the complete bipartite graphs $\queen'$ and $\king'$ as
-    well as the subgraph $\princess(\RAF)$ and $\lord(\RAF)$ in purple and
-    teal, respectively (\textbf{middle}), and the R-graphs
-    $\RGraph(\queen')$ and $\RGraph(\king')$.}
+  \caption{An irreducible, monocatalyzed RAF $\RAF$ with two different
+    graph representations of the CRS $\Phi(\RAF)$.
+    \textbf{Upper left}: The system of chemical equations, \textbf{lower left:}
+    the R-graph $\RGraph(\mathbf{\Phi}')$, and \textbf{right:} the complete 
+    bipartite graph $\queen(\RAF)$ as well as the subgraph $\princess(\RAF)$ in 
+    purple, respectively.}
   \label{ex:CutVertex}
 \end{figure}
-Indeed, $\fr_0$ is a cut-vertex, since it has two catalysts \NV{[or double? Catalysts vs catalyzation.. catalyst for F-reaction appears here for the first time. Does `single catalysts' mean `single catalyzation' or `one catalyzation of cardinality one?']}, which are part
-of two different strong blocks $\princess[\{x_1,x_2\} \cup
-  \{\fr_1,\fr_2\}]$ and $\princess[\{y_1,y_2\} \cup \{\fr_1,\fr_3\}]$. The
-existence of a cut-vertex in $\princess$, however, does not necessarily
-imply the existence of a cut-vertex in $\lord$. In case an equivalence
-class contains only one representative, i.e., if $\fr_0$ were co-catalyzed
-by $x_1$ and $y_1$, then $\princess(\RAF)\simeq \lord(\RAF)$.
+Indeed, $\fr_0$ is a cut-vertex, since it has one catalyzation composed of two catalysts, 
+which are part of two different strong blocks $\princess[\{x_1,x_2\} \cup
+  \{\fr_1,\fr_2\}]$ and $\princess[\{y_1,y_2\} \cup \{\fr_1,\fr_3\}]$. 
+%The existence of a cut-vertex in $\princess$, however, does not necessarily
+%imply the existence of a cut-vertex in $\lord$. In case an equivalence
+%class contains only one representative, i.e., if $\fr_0$ were co-catalyzed
+%by $x_1$ and $y_1$, then $\princess(\RAF)\simeq \lord(\RAF)$.
 \vspace{6pt}
 \begin{corollary}
-  Let $\RAF$ be a non-trivial, irreducible RAF. Then $\princess(\RAF)$ and
-  $\lord(\RAF)$ are either a strong block or contain a cut-vertex. \NV{[Again, counterexample \eqref{crnconnected} to be addressed for $L(\RAF)$]}
+  Let $\RAF$ be an irreducible, monocatalyzed RAF. Then $\princess(\RAF)$
+  is a strong block or contains a cut-vertex. 
 \end{corollary}
 \vspace{6pt}
 %
-The occurrence of cut-vertices is not restricted to reactions with two \NV{[two or DOUBLE catalyzation?]}
-catalyzations, as emphasized in the example of Fig.~\ref{ex:CutVertex2}.
+The occurrence of cut-vertices is not restricted to monocatalyzed F-reactions 
+that are co-catalyzed by two species, as emphasized in the example of Fig.~\ref{ex:CutVertex2}.
 \begin{figure}[bth]
   \begin{minipage}[c]{0.49\textwidth}
     \begin{equation}
       \begin{split}
-	r_1&: f_1 + (x_1) \longrightarrow x_2 + (x_1)\\
-	r_2&: f_2 +(x_4) \longrightarrow x3 + (x_4)\\
-	r_3&: 2x_3 + (x_2) \longrightarrow  x4 + x1+ (x_2)
+	r_1&: f_1 \xrightarrow{(x_1)}  x_2\\
+	r_2&: f_2 \xrightarrow{(x_4)} x3\\
+	r_3&: 2x_3 \xrightarrow{(x_2)}  x4 + x1
       \end{split}
     \end{equation}
   \end{minipage}%
@@ -1237,9 +1230,9 @@ catalyzations, as emphasized in the example of Fig.~\ref{ex:CutVertex2}.
       \draw[->] (r3) to (x3);
     \end{tikzpicture}
   \end{minipage}
-  \caption{Example of \NV{a non-trivial irreducible} RAF with a cut-vertex that has a single catalyst
-    \textit{(left)} with depiction of the corresponding König graph
-    \textit{(right)}.}
+  \caption{Example of an irreducible, monocatalyzed RAF with a 
+  cut-vertex that has a single catalyst \textit{(left)} with depiction 
+  of the corresponding König graph \textit{(right)}.}
   \label{ex:CutVertex2}
 \end{figure}
 As in Fig.~\ref{ex:CutVertex}, both strong blocks, i.e.,
@@ -1250,7 +1243,8 @@ vertex. Indeed, a species vertex cannot be a cut-vertex.
 \begin{lemma}[Proof: SI]\label{lem:CutVertexReac}
   Let $\RAF$ be a non-trivial, irreducible RAF. If $\princess(\RAF)$ is not
   a strong block, then every cut-vertex is an F-reaction. Accordingly, if
-  $\lord(\RAF)$ is not a strong block, then every cut-vertex is a reaction. \NV{[Again, counterexample \eqref{crnconnected} to be addressed for $L(\RAF)$]}
+  $\lord(\RAF)$ is not a strong block, then every cut-vertex is a reaction. 
+  \NV{[Again, counterexample \eqref{crnconnected} to be addressed for $L(\RAF)$]}
 \end{lemma}
 \vspace{6pt}
 
