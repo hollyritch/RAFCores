@@ -515,11 +515,7 @@ for such an F-reaction, i.e.,
 \begin{equation}
   \mathbf{\tilde{\mathbf{r}}}:=\{r\in R, \quad r\sim \tilde{r}\},  
 \end{equation}
-even if the uncatalyzed reaction $\tilde{r}$ itself may also not be in $R$. We denote an F-reaction $\fr$ as:
-\begin{equation}
-	\fr: \sum_{x\in X}\ \sigma^-_{xr} \cdot x \quad \xrightarrow{\cat(r), r\in \fr} \sum_{x\in X}\ \sigma^-_{xr} \cdot x.
-\end{equation}
-and use round instead of curly brackets for each catalyzation. 
+even if the uncatalyzed reaction $\tilde{r}$ itself may also not be in $R$. 
 
 \NV{Moreover, we may write $\feducts(\tilde{\fr}):=\feducts(\tilde{r})$ and $\fproducts(\tilde{\fr}):=\fproducts(\tilde{r})$, 
 since $\feducts(r) =\feducts(\tilde{r}),$ $\fproducts(r) =\fproducts(\tilde{r}),$ $\forall r \in \mathbf{\tilde{r}}$, and we use 
@@ -533,9 +529,17 @@ where $\FR\coloneqq \{[r]_{\sim} \ | \ r\in R\}$. This allows access to the
 pre-image of a set of F-reactions $\FR$ by $\varphi^{-1}(\FR)$. In particular, we call \emph{catalyzation} any nonempty 
 species set $c\coloneqq \kappa_F(r)\neq\emptyset$ for $r\in \varphi^{-1}(\mathbf{r})$. For an F-reaction $\mathbf{r}$ the 
 set of catalyzations is denoted by 
+
 \begin{equation}
 	\kappa_F(\mathbf{r})\coloneqq \bigcup_{r\in \varphi^{-1}(\mathbf{r})} \kappa_F(r).
 \end{equation}
+
+\holy{This allows us to denote an F-reaction as follows:
+\begin{equation}
+	\fr: \sum_{x\in X}\ \sigma^-_{xr} \cdot x \quad \xrightarrow{(c_1), \ldots, (c_k)} \sum_{x\in X}\ \sigma^-_{xr} \cdot x.
+\end{equation}
+with $c_i\in \cat(\fr)$ and use round instead of curly brackets for each catalyzation.}
+
 A \emph{Catalytic Reaction System} (CRS) is then the quotient structure $\mathbf{\Phi}=(X,\mathbf{R})$ of a CRN $(X,R)$ 
 induced by the relation $\sim$. It is clear that reactions $r\in R$ are in bijection with F-reactions $\mathbf{r}\in \mathbf{R}$ if 
 and only if, any F-reaction $\mathbf{r}$ contains as an equivalence class a unique reaction $r$, i.e. there are no two reactions 
@@ -736,9 +740,16 @@ We conclude this section with a further definition.
 \subsection{Irreducible RAFs}\label{sec:IrrRAF}
 
 \NV{[NV will continue polishing from here on Mon 22.06]}
+\TODO{To be removed after rewriting the CRS-section. Recall that an F-reaction is denoted as:
 
-For a sequence of F-reactions: $\fr_i: x_i\rightarrow x_{i+1}, x_0\in \food, i=0,\ldots, n$, 
-where each $\fr_i$ is catalyzed by $x_i$, any set of the form $\{r_0,\ldots, r_k\}, k\leq n$ 
+\begin{equation}
+	\fr: \sum_{x\in X}\ \sigma^-_{xr} \cdot x \quad \xrightarrow{(c_1), \ldots, (c_n)} \sum_{x\in X}\ \sigma^-_{xr} \cdot x,
+\end{equation}
+
+for the set of catalyzations $\cat(\fr)=\{c_1,\ldots, c_n\}$.}
+
+For a sequence of F-reactions: $\fr_i: x_i\rightarrow x_{i+1}, x_0\in \food, i=0,\ldots, m$, 
+where each $\fr_i$ is catalyzed by $x_i$, any set of the form $\{r_0,\ldots, r_k\}, k\leq m$ 
 is a RAF and a subset of the maximal RAF $\{r_i\ \vert \ i=0,\ldots, n\}$. RAFs minimal w.r.t. the 
 RAF property have been termed irreducible RAFs \cite{steel_minimal_2013}.
 
@@ -769,8 +780,8 @@ $\nfeducts(\fr_1)=\nfeducts(\fr_2)$ and $\nfproducts(\fr_1)=\nfproducts(\fr_2)$ 
 \setminus \mathbf{r}_1$  is a RAF, as shown in the following example:
 \begin{equation}
   \begin{split}
-    r_1&: f + (x_1) \hspace{22pt} \rightarrow x_1 + x_2 + (x_1)\\
-    r_2&: f + x_1 + (x_1) \rightarrow 2x_1 + x_2 + (x_1),
+    \fr_1&: f \hspace{22pt} \xrightarrow{(x_1)} x_1 + x_2\\
+    \fr_2&: f + x_1 \xrightarrow{(x_1)} 2x_1 + x_2,
   \end{split}
 \end{equation}
 where $\RAF=\{\fr_1,\fr_2\}$ is a RAF with net-reactions $\hat\fr_1=\hat\fr_2$ and $\rgen(\fr_1) = 1 < 2 = \rgen(\fr_2)$. 
