@@ -721,7 +721,7 @@ which we refer to as \emph{generation order} on species and reactions, respectiv
 
 We conclude this section with a further definition.
 \vspace{6pt}
-\begin{definition}
+\begin{definition}\label{def:CAF}
   A \emph{constructively autocatalytic and food-generated} set (CAF) is a
   RAF such that for each F-reaction $\fr$ all $x\in \feducts(\fr)$ satisfy
   $\sgen(x)<\rgen(\fr)$ and there is at least one catalyzation $c\in \cat(\mathbf{r})$ 
@@ -753,12 +753,13 @@ of the maximal RAF $\{r_i\ \vert \ i=0,\ldots, n\}$. RAFs minimal w.r.t. to the 
 have been termed irreducible RAFs \cite{steel_minimal_2013}.
 
 \vspace{3mm}
-\begin{definition}\cite{steel_minimal_2013}.
+\begin{definition}\label{def:irrerRAF}\cite{steel_minimal_2013}.
   A RAF is irreducible if no subset of its set of F-reactions determines a RAF. 
 \end{definition}
 
-The minimality condition imposed on the set of F-reactions has considerable 
-consequences. The first one follows from the pre-order on RAFs.
+The minimality condition imposed on the set of F-reactions via Def.~\ref{def:irrerRAF} has 
+considerable consequences, which we will discuss next. The first one follows from the 
+pre-order on RAFs.
 \vspace{6pt}
 \begin{lemma}\label{lem:OneFReacPerRAF}
   Let $(X,\FR,\cat)$ be a CRS with food-set $\food\subseteq X$. If a RAF $\mathbf{R}'$ contains
@@ -793,11 +794,14 @@ $\hat{\mathbf{r}}_1 = \hat{\mathbf{r}}_2$.
   \mathbf{R}$ with same net reaction $\hat{\fr}_1=\hat{\fr}_2$, $\fr_1\in \RAF$ implies $\fr_2\notin \RAF$.
 \end{corollary}
 \vspace{6pt}
-
-Property~$i.$ allows \emph{monocatalyzed} RAFs, i.e., those for which $|\cat(\fr)|=1$ for all $\fr \in \RAF$. 
-Moreover, any RAF $\RAF$ does not lose the RAF property, even if for each F-reaction, the set of 
-catalyzations is restricted to a single element, such that each of its catalysts is an F-product of at least 
-one F-reaction of $\RAF$.
+The irreducibility definition is a minimality condition on the set of F-reactions, only. However, each of those 
+F-reactions may possess several catalyzations, where some of them may not even be F-generated 
+(per definition). In fact, Property~$i.$ of Def.~\ref{def:RAF} implicitly allows \emph{monocatalyzed} RAFs, 
+i.e., those for which $|\cat(\fr)|=1$ for all $\fr \in \RAF$. Moreover, any RAF $\RAF$ %does not lose the RAF property, even if for each F-reaction, 
+%the set of catalyzations is restricted to a single element, such that each of its catalysts is an F-product of at least 
+%one F-reaction of $\RAF$. We clarify that $\RAF$ 
+also identifies a RAF in the CRS where each catalyzation subset is a singleton that is F-generated, i.e., that any 
+choice \TODO{(via axiom of choice here ahahah)} of single-catalyzation gives rise to a RAF itself over the restricted CRS.
 
 \vspace{6pt}
 \begin{observation}\label{obs:monoCatalyzation}
@@ -806,12 +810,12 @@ one F-reaction of $\RAF$.
 	$\cat'(\fr)$ that satisfy:
 	\begin{itemize}
 		\item[i.]{$\cat'(\fr)$ is a single catalyzation $c\in \cat'(\fr)$ such that $X(c)\subseteq \closure{\RAF}{\food}$ if $\fr\in \RAF$,}
-		\item[ii.]{$\cat'(\fr) = \cat(\fr)$ for $\fr \notin\FR$.}
+		\item[ii.]{$\cat'(\fr) = \cat(\fr)$ for $\fr \notin\RAF$.}
 	\end{itemize}
 \end{observation}
 \vspace{6pt}
 
-In fact, Obs.~\ref{obs:monoCatalyzation} allows for adding an additional layer of minimality to irreducible RAFs, which 
+In fact, Obs.~\ref{obs:monoCatalyzation} allows for adding another layer of minimality to irreducible RAFs, which 
 concerns the number of catalyzations. However, a RAF is defined as a set of F-reactions, while the catalyzations are 
 given by the underlying CRS.   
 \vspace{6pt}
@@ -822,8 +826,8 @@ given by the underlying CRS.
 	and $\cat'(\fr) \subseteq \cat(\fr)$.
 \end{definition}
 \vspace{6pt}
-By this definition, an irreducible RAF with minimal catalyzations reflects a set of mono-catalyzed F-reactions. Within this  
-context, mono-catalyzed does not necessarily refer to a single catalyst, but a single concerted action of potentially multiple 
+By this definition, an irreducible RAF with minimal catalyzations reflects a set of mono-catalyzed F-reactions. In fact, 
+mono-catalyzed does not necessarily refer to a single catalyst, but a single concerted action of potentially multiple 
 catalysts.
 
 
@@ -846,23 +850,21 @@ exhibit the convenient property that they are never CAFs as long as they are
 non-trivial, in particular if they are composed of more than a single F-reaction. 
 \vspace{6pt}
 \begin{lemma}\label{lem:trivRAFCAF}
-%  Let $(X,\mathbf{R},\cat(\mathbf{R}))$ be a CRS with food-set $\food\subseteq X$. 
-%  Then any irreducible, trivial RAF is either a CAF, or its single F-reaction contains 
-%  \TODO{an explicit autocatalytic reaction (or: a catalyzation for which one F-catalyst
-%  is also an F-product)}. 
-	Each irreducible CAF is trivial.
+ 	 Let $(X,\mathbf{R},\cat(\mathbf{R}))$ be a CRS with food-set $\food\subseteq X$. 
+  	Then any irreducible, trivial RAF is either a CAF, or its single F-reaction contains. 
+	Moreover, each irreducible CAF is trivial.
 \end{lemma}
 \begin{proof}
-%	Let $\RAF\coloneqq \{\fr\}$ be an irreducible RAF. Then all F-reactants are in 
-%	$\food$ and two cases can occur for the F-catalysts. First, there is at least one 
-%	catalyzation $c\in \cat(\fr)$ for which each $x\in c$ satisfies $x\in \food$. 
-%	Then $\RAF$ is a CAF. Secondly, for all catalyzations $c\in \cat(\fr)$ 
-%	there is at least one $x\in c$ such that $x\notin \food$. Since $\RAF$ is a RAF, 
-%	there is one catalyzation $c'\in \cat(\fr)$ such that all $x'\in c'$ satisfy 
-%	$x'\in \closure{\RAF}{\food}$. Thus, if $x'\in c'$ such that $x'\notin \food$, then 
-%	$x'$ is not an F-reactant, but an F-product of $\fr$. For the reaction $r'$ uniquely
-%	identified by $(c', \fr)$, it follows that $k_{x'r'}>0, \sigma^-_{x'r'}=0$, and $\sigma^+_{x'r'}>0$. 
-%	Hence, $r'\in \fr$ is an explicit autocatalytic reaction.  	
+	Let $\RAF\coloneqq \{\fr\}$ be an irreducible RAF. Then all F-reactants are in 
+	$\food$ and two cases can occur for the F-catalysts. First, there is at least one 
+	catalyzation $c\in \cat(\fr)$ for which each $x\in c$ satisfies $x\in \food$. 
+	Then $\RAF$ is a CAF. Secondly, for all catalyzations $c\in \cat(\fr)$ 
+	there is at least one $x\in c$ such that $x\notin \food$. Since $\RAF$ is a RAF, 
+	there is one catalyzation $c'\in \cat(\fr)$ such that all $x'\in c'$ satisfy 
+	$x'\in \closure{\RAF}{\food}$. Thus, if $x'\in c'$ such that $x'\notin \food$, then 
+	$x'$ is not an F-reactant, but an F-product of $\fr$. For the reaction $r'$ uniquely
+	identified by $(c', \fr)$, it follows that $k_{x'r'}>0, \sigma^-_{x'r'}=0$, and $\sigma^+_{x'r'}>0$. 
+	Hence, $r'\in \fr$ is an explicit autocatalytic reaction.  	
 	For the second part of the statement, let now $\RAF'$ be an irreducible RAF that is a 
 	CAF. Assume $|\RAF'|>1$ and let $\fr''\in \RAF': \rgen(\fr'')=1$. Then all F-reactants and 
 	all F-catalysts $x$ for at least one catalyzation $c\in \cat(\fr'')$ satisfy $x\in \food$ since 
