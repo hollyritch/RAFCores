@@ -786,8 +786,7 @@ i.e., those for which $|\cat(\fr)|=1$ for all $\fr \in \RAF$. Moreover, any RAF 
 %the set of catalyzations is restricted to a single element, such that each of its catalysts is an F-product of at least 
 %one F-reaction of $\RAF$. We clarify that $\RAF$ 
 also identifies a RAF in the restricted CRS where each catalyzation subset is a singleton that is F-generated, i.e., that any 
-choice \NV{(via axiom of choice here ahahah)} of single-catalyzation of which all catalysts are elements of 
-$\closure{\RAF}{\food}$ gives rise to a RAF itself.
+choice of single-catalyzations whose catalysts are elements of $\closure{\RAF}{\food}$ gives rise to a RAF itself.
 
 \vspace{6pt}
 \begin{observation}\label{obs:monoCatalyzation}
@@ -874,10 +873,10 @@ they are composed of more than a single F-reaction (see also
 %\end{equation}
 
 To see that not every trivial, irreducible RAF is necessarily a CAF, consider, e.g., 
-$f \xrightarrow{(x_1)} x_1$ with only $f\in \food$. As for CAFs it is not guaranteed that they carry a 
+$f \xrightarrow{(x_1)} x_1$ with only $f\in \food$. As it is not guaranteed that CAFs carry a 
 stoichiometrically autocatalytic subnetwork \cite{golnik_bridging_2026}, we restrict our attention 
-to non-trivial, irreducible RAFs. For better readability, we also exclude in the following -- with a 
-slight abuse of terminology -- trivial CAFs when referring to irreducible RAFs.
+to irreducible RAFs but exclude in the following -- with a slight abuse of terminology -- trivial 
+CAFs when referring to irreducible RAFs.
 
 %In fact, for each non-trivial irreducible RAF, each F-reaction has at least one reactant that is not in the food set. 
 %\vspace{6pt}
@@ -902,7 +901,7 @@ Throughout this section, we will consider a CRS $\Phi\coloneqq (X,\FR,\cat(\FR))
 food-set $\food\subseteq X$. \TODO{Recall that a sub-CRS $\mathbf{\Phi}'$ is a triple 
 $(X', \FR', \cat'(\FR))$ such that $X'\subseteq X, \FR'\subseteq \FR,  
 \cat'(\FR)\subseteq \cat(\FR)$ (to be put in CRS section, later)}. In particular, we focus 
-on an irreducible RAF with minimal catalyzations $(\RAF, \cat'(\RAF))$ and 
+on an irreducible, monocatalyzed RAFs $(\RAF, \cat'(\RAF))$ and 
 corresponding sub-CRS 
 \begin{equation}\label{eq:RAF-CRS}
   \mathbf{\Phi}':= (\closure{\RAF}{\food}, \RAF, \cat'(\RAF))
@@ -948,7 +947,7 @@ catalyzations.
 
 \vspace{6pt}
 \begin{lemma}\label{lem:RGQSC}
-  Let $\RAF$ be an irreducible RAF with minimal catalyzation and associated CRS 
+  Let $\RAF$ be an irreducible, monocatalyzed RAF and associated sub-CRS 
   $\mathbf{\Phi'}$ (Eq.~\ref{eq:RAF-CRS}).Then $\RGraph(\mathbf{\Phi}')$ is
   strongly connected.
 \end{lemma}
@@ -976,11 +975,10 @@ Indirectly assume that this is not the case. Then there are at least two strongl
   RAF, which contradicts the minimality of $\RAF$.
 \end{proof}
 \vspace{6pt}
+
 %Lemmata~\ref{lem:trivRAFCAF} and \ref{lem:RGQSC} can be
 %summarized to the following statement.
 %\vspace{6pt}
-%\begin{theorem}\label{thm:RAFStrCon}
- % Let $\RAF$ be an irreducible RAF. Then $\RAF$ is non-trivial if and only if the graph $\RGraph(\queen')$ is not a single F-reaction and is strongly connected. \end{theorem}\vspace{6pt}
 
 %It is not hard to see that $\RGraph(\queen')$ is also the quotient graphfor $\RGraph(\king')$. \holy{w.r.t.\ the equivalence relation $\simeq$ 
 %defined in Eq.~\ref{eq:fEquiv}.}
@@ -1009,18 +1007,27 @@ $\queen$ \emph{induced} by the vertex sets $(X',\RAF)$. We then have the
 following lemma.
 \vspace{6pt}
 \begin{lemma}\label{lem:PSC}
-  Let $\RAF$ be a non-trivial, irreducible RAF. Then $\princess(\RAF)$ is strongly connected.
+  Let $\RAF$ be an irreducible RAF with minimal catalyzation. Then $\princess(\RAF)$ 
+  is strongly connected.
 \end{lemma}
 \begin{proof}
-  Again, assume indirectly that this is not the case. Then there are two strongly connected
+  Again, assume indirectly that this is not the case. Then there are two non-empty, strongly connected
   components $\princess_1,\princess_2$.  W.l.o.g., we assume that there is
-  no path from any $u\in \princess_2$ to any $v\in \princess_1$. Then all
-  paths from $\princess_2$ to $\princess_1$ pass through $\food$ in
-  $\queen'$. This, however, implies that all F-catalysts and F-reactants
-  for all F-reactions in $\princess_1$ are contained in $\food\cup
-  \princess_1$. Then $\FR(\princess_1)$ is a non-empty RAF which
-  contradicts the minimality of $\RAF$.
+  no path from any $u\in \princess_2$ to any $v\in \princess_1$. Then all paths 
+  from $\princess_2$ to $\princess_1$ in $\queen(\mathbf{\Phi'})$ pass through 
+  $\food$ . This, however, implies that all F-catalysts and F-reactants
+  for all F-reactions in $\princess_1$ are contained in $\food \cup \princess_1$. 
+  Then $\FR(\princess_1)$ is a non-empty RAF which contradicts the minimality 
+  of $\RAF$.
 \end{proof}	
+
+In \cite{golnik_enumeration_2026}, we have shown that autocatalytic cores 
+inherit a bipartite K\"onig graph representation that are induced \emph{fluffles}, 
+in particular, subgraphs of the K\"onig graph that have $i.)$ the same number of 
+reaction and species vertices, $ii.)$ each species vertex out-degree $1$, and each
+reaction vertex has in-degree $1$, and $iii.)$ they are strong blocks. Recall that 
+a strong block is a subgraph that is strongly-connected and its underlying undirected
+graph is 2-connected (see SI Sec.~\TODO{TBA} for information on general graph theory).
 
 \subsubsection{Cut-vertices}
 \NV{[From here I have not revised/polished but just sparse and not exhaustive comments since the issue with counterexample \eqref{crnconnected} must be addressed first.]}
