@@ -791,7 +791,7 @@ $\hat{\mathbf{r}}_1 = \hat{\mathbf{r}}_2$.
 \begin{corollary}
   Let $(X,\mathbf{R}, \cat(\mathbf{R}))$ be a CRS with food-set $\food\subseteq X$ and let
   $\RAF\subseteq \mathbf{R}$ be an irreducible RAF. For two F-reactions $\fr_r,\fr_2 \in 
-  \mathbf{R}$ with same net reaction $\hat{\fr}_1=\hat{\fr}_2$, $\fr_1\in \RAF$ implies $\fr_2\notin \RAF$.
+  \mathbf{R}$ with the same net reaction $\hat{\fr}_1=\hat{\fr}_2$, $\fr_1\in \RAF$ implies $\fr_2\notin \RAF$.
 \end{corollary}
 \vspace{6pt}
 The irreducibility definition is a minimality condition on the set of F-reactions, only. However, each of those 
@@ -801,7 +801,7 @@ i.e., those for which $|\cat(\fr)|=1$ for all $\fr \in \RAF$. Moreover, any RAF 
 %the set of catalyzations is restricted to a single element, such that each of its catalysts is an F-product of at least 
 %one F-reaction of $\RAF$. We clarify that $\RAF$ 
 also identifies a RAF in the CRS where each catalyzation subset is a singleton that is F-generated, i.e., that any 
-choice \TODO{(via axiom of choice here ahahah)} of single-catalyzation gives rise to a RAF itself over the restricted CRS.
+choice \NV{(via axiom of choice here ahahah)} of single-catalyzation gives rise to a RAF itself over the restricted CRS.
 
 \vspace{6pt}
 \begin{observation}\label{obs:monoCatalyzation}
@@ -815,13 +815,15 @@ choice \TODO{(via axiom of choice here ahahah)} of single-catalyzation gives ris
 \end{observation}
 \vspace{6pt}
 
-In fact, Obs.~\ref{obs:monoCatalyzation} allows for adding another layer of minimality to irreducible RAFs, which 
-concerns the number of catalyzations. However, a RAF is defined as a set of F-reactions, while the catalyzations are 
-given by the underlying CRS.   
+Obs.~\ref{obs:monoCatalyzation} naturally also applies to irreducible RAFs. However, we remark that not each choice of mono-catalyzations is valid, 
+as some may not be F-generated. We will therefore refer to catalyzations satisfying properties $i.$ and $ii.$ stated in Obs.~\ref{obs:monoCatalyzation} 
+as F-generated monocatalyzations and to a tuple $(\RAF, \cat'(\RAF)$ as monocatalyzed (irreducible) RAFs. In this way, catalyzations add a different 
+layer of minimality to RAFs, which is imposed on the set of catalyzations but not on the set of F-reactions. However, a RAF is defined as a set of 
+F-reactions, while the catalyzations are given by the underlying CRS.   
 \vspace{6pt}
 \begin{definition}\label{def:minCat}
 	Let $(X,\FR,\cat(\FR))$ be a CRS with specified \emph{food set} $\food\subseteq X$ and $\RAF$ be an 
-	irreducible RAF. Then $(\RAF, \cat'(\RAF))$ is called \emph{an irreducible RAF with minimal catalyzations} 
+	irreducible RAF. The $(\RAF, \cat'(\RAF))$ is called \emph{an irreducible RAF with minimal catalyzations} 
 	if for each $\fr \in \RAF$ the set $\cat'(\fr)\in \cat'(\RAF)$ satisfies Property~$i.$ of Obs.~\ref{obs:monoCatalyzation} 
 	and $\cat'(\fr) \subseteq \cat(\fr)$.
 \end{definition}
@@ -884,10 +886,13 @@ non-trivial, in particular if they are composed of more than a single F-reaction
 %	\end{split}
 %\end{equation}
 
-The converse is not true; consider, e.g., $f \xrightarrow{(x_1)} x_1$, where only $f\in \food$. 
-Nevertheless, we postpone the discussion of the trivial case to Sec.~\TODO{TBA}. As for CAFs, 
-it is not guaranteed that they carry a stoichiometrically autocatalytic subnetwork \cite{golnik_bridging_2026}, 
-we restrict our attention to non-trivial, irreducible RAFs. 
+To see that not a trivial, irreducible RAF is not necessarily a CAF, consider the following example: 
+\begin{equation}
+	f \xrightarrow{(x_1)} x_1,
+\end{equation} 
+where only $f\in \food$. Nevertheless, we postpone the discussion of the trivial case to Sec.~\TODO{TBA}. 
+As for CAFs, it is not guaranteed that they carry a stoichiometrically autocatalytic subnetwork 
+\cite{golnik_bridging_2026}, we restrict our attention to non-trivial, irreducible RAFs. 
 
 
 %In fact, for each non-trivial irreducible RAF, each F-reaction has at least one reactant that is not in the food set. 
