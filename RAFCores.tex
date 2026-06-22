@@ -899,17 +899,19 @@ slight abuse of terminology -- trivial CAFs when referring to irreducible RAFs.
 \subsection{The Bipartite and Reaction Graphs of irreducible RAFs}
 
 Throughout this section, we will consider a CRS $\Phi\coloneqq (X,\FR,\cat(\FR))$ with
-food-set $\food\subseteq X$. Recall that a sub-CRS $\mathbf{\Phi}'$ is a triple 
+food-set $\food\subseteq X$. \TODO{Recall that a sub-CRS $\mathbf{\Phi}'$ is a triple 
 $(X', \FR', \cat'(\FR))$ such that $X'\subseteq X, \FR'\subseteq \FR,  
-\cat'(\FR)\subseteq \cat(\FR)$. Here, we consider an irreducible RAF 
-with minimal catalyzations $(\RAF, \cat'(\RAF))$ and corresponding sub-CRS 
+\cat'(\FR)\subseteq \cat(\FR)$ (to be put in CRS section, later)}. In particular, we focus 
+on an irreducible RAF with minimal catalyzations $(\RAF, \cat'(\RAF))$ and 
+corresponding sub-CRS 
 \begin{equation}\label{eq:RAF-CRS}
   \mathbf{\Phi}':= (\closure{\RAF}{\food}, \RAF, \cat'(\RAF))
 \end{equation}
-and study the bipartite K\"onig graph $\queen'\coloneqq \queen(\mathbf{\Phi}')$ of $\mathbf{\Phi}'$ (see Sec.~\ref{sec:CRS}). %as well as the K\"onig graph  $\king'\coloneqq \king(\Gamma(\mathbf{\Phi}'))$ \NV{of its CRN representation $\Gamma(\mathbf{\Phi})$}.
+and study properties of its bipartite K\"onig graph $\queen'\coloneqq \queen(\mathbf{\Phi}')$ 
+representation. (see Sec.~\ref{sec:CRS}). 
 
-We introduce a directed graph, so-called \emph{R-graph} (or \emph{reaction graph}) of the CRS representations as 
-the graph $\RGraph(\mathbf{\Phi})=(\mathbf{R},E)$ with edge set 
+We start by introducing a directed graph, so-called \emph{R-graph} (or \emph{reaction graph}) 
+of the CRS representations as the graph $\RGraph(\mathbf{\Phi})=(\mathbf{R},E)$ with edge set 
 \begin{equation}
 	E\coloneqq \{(\fr_1,\fr_2) \ \vert \ \exists x\in X \text{ and } (\fr_1,x),(x,\fr_2) \in E(\queen(\mathbf{\Phi})\}
 \end{equation}
@@ -935,19 +937,19 @@ In line with calling elements of $\food$ food-molecules, we kindly refer to mole
 \begin{equation}\label{eq:Waste}
   \mathbf{W}\coloneqq \{x\in \closure{\RAF}{\food} \ | \ \nexists \fr \in \RAF \text{ s.t. } s^-_{xr}>0\}		
 \end{equation}
-as waste molecules. %We note that $V(\king')=\closure{\RAF}{\food}$.
+as waste molecules. 
 
 \subsubsection{Strong connectivity}
 
 We recall that a directed graph $(V,E)$ is \emph{strongly connected} if, for any pair of 
 vertices $v_1,v_2\in V$, there exists a directed path from $v_1$ to $v_2$. Here, we 
-establish the strong-connectedness of the R-graph on irreducible RAFs with minimal 
+establish the strong connectedness of the R-graph on irreducible RAFs with minimal 
 catalyzations. 
 
 \vspace{6pt}
 \begin{lemma}\label{lem:RGQSC}
   Let $\RAF$ be an irreducible RAF with minimal catalyzation and associated CRS 
-  $\mathbf{\Phi'}$ (Eq.~\ref{eq:RAF-CRS}).Then both $\RGraph(\mathbf{\Phi}')$ is
+  $\mathbf{\Phi'}$ (Eq.~\ref{eq:RAF-CRS}).Then $\RGraph(\mathbf{\Phi}')$ is
   strongly connected.
 \end{lemma}
 \begin{proof}
@@ -987,24 +989,30 @@ Indirectly assume that this is not the case. Then there are at least two strongl
 
 %Fig.~\ref{fig:QScKNot} illustrates that the strong connectivity of a quotient graph does not guarantee strong connectivity of the original graph. However, for non-trivial, irreducible RAFs,$\RGraph(\king')$ is indeed strongly connected.\vspace{6pt}\begin{lemma}[Proof: SI]\label{lem:KSC}Let $\RAF$ be a non-trivial, irreducible RAF. Then $\RGraph(\king')$ is strongly connected.\end{lemma}\vspace{6pt}
 %
-\NV{In terms of the bipartite K\"onig graphs of a RAF, we cannot hope to have strong-connectedness unless we remove food and waste species: for any $\fr\in \RAF$, by definition, for a waste species $x_W$ there is no directed edge $(x_W,\mathbf{r})$, and for a food species $x_F$ there may be no directed edge $(\mathbf{r},x_F)$. We can however consider the bipartite graphs $\lord(\RAF)$ and  $\princess(\RAF)$ defined as follows:
+In terms of the bipartite K\"onig graphs of a RAF, we cannot hope to have 
+strong-connectedness unless we remove food and waste species: for any 
+$\fr\in \RAF$, by definition, for a waste species $x_W$ there is no directed 
+edge $(x_W,\mathbf{r})$, and for a food species $x_F$ there may be no 
+directed edge $(\mathbf{r},x_F)$. We can, however, consider the bipartite 
+graph of $\queen(\RAF)$ that is void of food and waste molecules:
 \begin{equation}\label{eq:PrinceGraph}
-  \begin{cases}
-    \lord(\RAF) \coloneqq
-    \king'[\closure{\RAF}{\food}\setminus
-      (\food\cup W) \cup R]\\
+%  \begin{cases}
+%    \lord(\RAF) \coloneqq
+%    \king'[\closure{\RAF}{\food}\setminus
+%      (\food\cup W) \cup R]\\
     \princess(\RAF) \coloneqq
-    \queen'[\closure{\RAF}{\food}\setminus (\food\cup W) \cup \RAF],
-    \end{cases}
+    \queen[\closure{\RAF}{\food}\setminus (\food\cup W) \cup \RAF],
+%    \end{cases}
   \end{equation}
-where the general notation $K[X'\cup R']$ refers to the subgraph of $K$ \emph{induced} by the vertex sets $(X',R')$. For $\lord(\RAF)$ and $\princess(\RAF)$ we have the following lemma.}
+where the general notation $\queen[X'\cup \RAF]$ refers to the subgraph of 
+$\queen$ \emph{induced} by the vertex sets $(X',\RAF)$. We then have the 
+following lemma.
 \vspace{6pt}
 \begin{lemma}\label{lem:PSC}
-  Let $\RAF$ be a non-trivial, irreducible RAF. Then \NV{$\lord(\RAF)$ and $\princess(\RAF)$}  are strongly connected.
+  Let $\RAF$ be a non-trivial, irreducible RAF. Then $\princess(\RAF)$ is strongly connected.
 \end{lemma}
 \begin{proof}
-\NV{[For $\lord(\RAF)$ same counterexample \eqref{crnconnected}? $r'_1,x_3$ are not reachable from all other vertices. I leave the next proof here for $\princess(\RAF)$, but I have not checked it.]}
-  Assume this is not the case. Then there are two strongly connected
+  Again, assume indirectly that this is not the case. Then there are two strongly connected
   components $\princess_1,\princess_2$.  W.l.o.g., we assume that there is
   no path from any $u\in \princess_2$ to any $v\in \princess_1$. Then all
   paths from $\princess_2$ to $\princess_1$ pass through $\food$ in
