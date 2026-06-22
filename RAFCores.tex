@@ -686,7 +686,22 @@ A reflexively autocatalytic set (RAF) is then defined as follows:
 
 We remark that Property~$ii.$ together with the definition of closure, Eq.~\eqref{eq:Closure}, directly implies that all F-products 
 of any F-reaction $\fr\in \RAF$ are also contained in $\closure{\RAF}{\food}$, thus $\fproducts(\fr)\subseteq
-\closure{\RAF}{\food}$.
+\closure{\RAF}{\food}$. \holy{Another consequence is summarized in the following Lemma.  
+
+\vspace{6pt}
+\begin{lemma}\label{lem:ArbCat}
+	Let $(X,\FR,\cat(\FR))$ be a CRS with specified \emph{food set} $\food\subseteq X$ and let $\RAF$ be a RAF. 
+	Then $\RAF$ is also a RAF in any CRS $(X, \FR,\tilde{\kappa}_F(\FR))$ where the catalyzations $\tilde{\kappa}_F(\FR)$ 
+	satisfy that for all $\fr\in \RAF$ there exists a non-empty $c\in \tilde{\kappa}_F(\fr)\in \tilde{\kappa}_F(\FR)$ with 
+	$c\subseteq \closure{\RAF}{\food}$, if $\fr\in \RAF$.
+\end{lemma}
+\begin{proof}
+    	First, the requirement on $\tilde{\kappa}_F(\FR)$ guarantees for all $\fr \in \RAF$ to be associated with an 
+	F-generated catalyzation. Second, $\RAF$ satisfies Property~$ii.$ of Def.~\ref{def:RAF} also in 
+	$(X,\CR,\tilde{\kappa}_F(\FR))$, as $\closure{\RAF}{\food}$ does not depend on $\tilde{\kappa}_F(\FR)$ 
+	(see Eq.~\ref{eq:Closure}).
+\end{proof}
+}
 
 \subsection{A Partial Order on RAFs}
 
@@ -702,7 +717,6 @@ The reactions of a RAF can be partially ordered such that for each
  $\closure{\RAF}{\food}$ in a finite number of steps as long as
 $\vert \RAF\vert <\infty$. A formal account of this procedure is
   given in the Supplemental Material.
-
 
 These ordered sequences define a \emph{generation reaction-index} 
 $\gamma(\mathbf{r})$ where an F-reaction $\mathbf{r}$ happens for the first time, i.e. 
@@ -723,7 +737,7 @@ Clearly, the total order $\le$ on the natural numbers induces a preorder $\precc
 \end{equation}
 which we refer to as \emph{generation order} on species and reactions, respectively.
 
-We conclude this section with a further definition.
+Before we conclude this section with a further definition.
 \vspace{6pt}
 \begin{definition}\label{def:CAF}
   A \emph{constructively autocatalytic and food-generated} set (CAF) is a
@@ -731,6 +745,7 @@ We conclude this section with a further definition.
   $\sgen(x)<\rgen(\fr)$ and there is at least one catalyzation $c\in \cat(\mathbf{r})$ 
   such that all F-catalysts $x\in c$ satisfy $\sgen(x)< \rgen(\fr)$.
 \end{definition}
+
 
 \subsection{Irreducible RAFs}\label{sec:IrrRAF}
 
@@ -741,49 +756,63 @@ notion of \emph{irreducible RAF} has been introduced.
 
 \vspace{3mm}
 \begin{definition}[Irreducible RAF]\label{def:irrerRAF}
-  A RAF $\RAF$ is irreducible if no subset $\RAF'\subset \RAF$ of F-reactions determines a RAF. 
+  A RAF $\RAF$ is irreducible if no subset $\RAF'\subset \RAF$ of 
+  F-reactions determines a RAF. 
 \end{definition}
 
-\emph{Example.} Consider a species set $X=\{x_0,...,x_{n+1}\}$ with food set $\food=\{x_1\}$ and a sequence of $n+1$ F-reactions
+\emph{Example.} Consider a species set $X=\{x_0,...,x_{n+1}\}$ with food 
+set $\food=\{x_1\}$ and a sequence of $n+1$ F-reactions
 \begin{equation}
  \fr_i:\qquad x_i\longrightarrow x_{i+1},
 \end{equation}
-such that $c=\{x_{i+1}\} \in \kappa_F(\fr_i)$, i.e. for each F-reaction $\fr_i$ there exists a  catalyzation which consists of its F-product.
-Clearly, any set $\RAF_k$ of the form $\RAF_k\coloneqq \{\fr_0,\ldots, \fr_k\}$, with $k\leq n$ satisfies Def.~\ref{def:RAF} and it is thus a RAF. In particular, $\RAF_0=\{\fr_0\}$ is an irreducible RAF.
+such that $c=\{x_{i+1}\} \in \kappa_F(\fr_i)$, i.e. for each F-reaction $\fr_i$ 
+there exists a catalyzation which consists of its F-product.
+Clearly, any set $\RAF_k$ of the form $\RAF_k\coloneqq \{\fr_0,\ldots, \fr_k\}$, 
+with $k\leq n$ satisfies Def.~\ref{def:RAF} and it is thus a RAF. In particular, 
+$\RAF_0=\{\fr_0\}$ is an irreducible RAF.
 
 
-The minimality condition imposed on the set of F-reactions via Def.~\ref{def:irrerRAF} directly yields the following structural lemma.
+The minimality condition imposed on the set of F-reactions via Def.~\ref{def:irrerRAF} 
+directly yields the following structural lemma.
 \vspace{6pt}
 \begin{lemma}\label{lem:OneFReacPerRAF}
-  Let $(X,\FR,\cat(\FR))$ be a CRS with food-set $\food\subseteq X$. An irreducible RAF $\RAF$ never contains two F-reactions $\fr_1$ and $\fr_2$ such that its net-stoichiometry coincides: 
+  Let $(X,\FR,\cat(\FR))$ be a CRS with food-set $\food\subseteq X$. An irreducible RAF $\RAF$ never contains two F-reactions 
+  $\fr_1$ and $\fr_2$ such that its net-stoichiometry coincides: 
   \begin{equation}\label{eq:netreaction}
       \sigma^+_{x\fr_1}-\sigma^-_{x\fr_1}=\sigma^+_{x\fr_2}-\sigma^-_{x\fr_2} \quad \quad \text{for all $x\in X$}.
   \end{equation}
 \end{lemma}
 \begin{proof}
-Indirectly assume there exist two F-reactions $\fr_1,\fr_2\in \RAF$ such that \eqref{eq:netreaction} holds and assume, without loss of generality, that $\fr_1\preceq \fr_2$. Consider the set $\RAF'\coloneqq \RAF \setminus \fr_2$.
-Since \eqref{eq:netreaction} holds, it follows that $\closure{\RAF}{\food} = \closure{\RAF'}{\food}$ \NV{[This is ok, but a bit pushy, could be added a clarifying sentence if not more confusing, since we are not really explicit in the closure building process here in the main text]}. Therefore, $\RAF'$ is (i) Reflexively Autocatalytic, since $\RAF$ is, and (ii) is $\food$-generated; in particular, $\RAF'$ is a RAF which contradicts $\RAF$ being irreducible.
+Indirectly assume there exist two F-reactions $\fr_1,\fr_2\in \RAF$ such that \eqref{eq:netreaction} 
+holds and assume, without loss of generality, that $\fr_1\preceq \fr_2$. Consider the set 
+$\RAF'\coloneqq \RAF \setminus \fr_2$. Since \eqref{eq:netreaction} holds, it follows that 
+$\closure{\RAF}{\food} = \closure{\RAF'}{\food}$ \holy{, since $\fr_1$ and $\fr_2$ have the same 
+F-reactants and F-products.} Therefore, $\RAF'$ is (i) Reflexively Autocatalytic, since $\RAF$ is, 
+and (ii) is $\food$-generated; in particular, $\RAF'$ is a RAF which contradicts $\RAF$ being irreducible.
 \end{proof}
 
-Since a RAF is defined in Def.~\ref{def:RAF} as a subset of F-reactions, Def.~\ref{def:irrerRAF} imposes a minimality condition only on the set of F-reactions. However, motivated by the fact that in the CRN setting different catalyzations correspond to different reactions, we also consider irreducible RAFs $\RAF$ with a minimal number of catalyzations making $\RAF$ irreducible. The next lemma shows that one catalyzation per reaction, i.e. $|\cat(\fr)|=1$ for every F-reaction $\fr$, always suffices.
+Since a RAF is defined in Def.~\ref{def:RAF} as a subset of F-reactions, Def.~\ref{def:irrerRAF} imposes 
+a minimality condition only on the set of F-reactions. However, motivated by the fact that in the CRN setting 
+different catalyzations correspond to different reactions, we also consider irreducible RAFs $\RAF$ with a 
+minimal number of catalyzations making $\RAF$ irreducible. The next Corollary is a direct consequence of 
+Lemma~\ref{lem:ArbCat} and shows that one catalyzation per reaction, i.e. $|\cat(\fr)|=1$ for every F-reaction 
+$\fr$, always suffices.
 
 \vspace{6pt}
-\begin{lemma}\label{lem:mono}
+\begin{corollary}\label{lem:mono}
 Let $(X,\FR,\cat(\FR))$ be a CRS with specified \emph{food set} $\food\subseteq X$ and let $\RAF$ be a RAF. 
 	Then $\RAF$ is also a RAF in any CRS $(X, \FR,\cat'(\FR))$ where the catalyzations $\cat'(\FR)$  satisfy:
 	\begin{itemize}
-		\item[i.]{$\cat'(\fr)=\{c\}$ with $c\subseteq \closure{\RAF}{\food}$, if $\fr\in \RAF$,}
+		\item[i.]{$\cat'(\fr)=\{c\}$ with $\emptyset\neq c\subseteq \closure{\RAF}{\food}$, if $\fr\in \RAF$,}
 		\item[ii.]{$\cat'(\fr) = \cat(\fr)$, if $\fr \notin\RAF$.}
 	\end{itemize}
-\end{lemma}
-\begin{proof}
-    TBA.
-\end{proof}
+\end{corollary}
 
 Lemma \ref{lem:mono} suggests to introduce the following notion.
 \vspace{6pt}
 \begin{definition}
-Let $(X,\FR,\cat(\FR))$ be a CRS with specified \emph{food set} $\food\subseteq X$. We call $\RAF$ be a monocatalyzed RAF if it is a RAF and it holds  $|\cat(\fr)|=1$ for all F-reactions $\fr \in \RAF$.
+Let $(X,\FR,\cat(\FR))$ be a CRS with specified \emph{food set} $\food\subseteq X$. We call $\RAF$ a monocatalyzed 
+RAF if it is a RAF and it holds $|\cat(\fr)|=1$ for all F-reactions $\fr \in \RAF$.
 \end{definition}
 
 We stress that a monocatalyzed RAF may include nevertheless reactions $\fr$, whose unique catalyzation $c$ is a set of multiple species, i.e. $c=\{x_1,..., x_n\}$. 
@@ -820,7 +849,8 @@ they are composed of more than a single F-reaction (see also
 \vspace{6pt}
 \begin{lemma}\label{lem:trivRAFCAF}
  	 Let $(X,\mathbf{R},\cat(\mathbf{R}))$ be a CRS with food-set $\food\subseteq X$. 
-  	Then any irreducible, trivial RAF is either a CAF, or its single F-reaction contains \NV{[no statement here, typo]}. 
+  	Then any irreducible, trivial RAF is either a CAF, or its single F-reaction has a 
+	catalyzation whose F-catalysts are also F-products.  
 	Moreover, each irreducible CAF is trivial.
 \end{lemma}
 \begin{proof}
