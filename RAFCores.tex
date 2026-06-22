@@ -487,7 +487,7 @@ representation of a CRN $\king\coloneqq (X\cup \C{R}, E_1\cup E_2)$, where
 \end{equation}
 
 
-\subsection{Catalytic Reaction Systems (CRS)}
+\subsection{Catalytic Reaction Systems (CRS)}\label{sec:CRS}
 
 Catalytic Reaction Systems (CRS) \textit{sensu} Lohn \cite{lohn_evolving_1998} 
 take a different approach, which we overview here in our notation. We remark 
@@ -903,11 +903,10 @@ food-set $\food\subseteq X$. Recall that a sub-CRS $\mathbf{\Phi}'$ is a triple
 $(X', \FR', \cat'(\FR))$ such that $X'\subseteq X, \FR'\subseteq \FR,  
 \cat'(\FR)\subseteq \cat(\FR)$. Here, we consider an irreducible RAF 
 with minimal catalyzations $(\RAF, \cat'(\RAF))$ and corresponding sub-CRS 
-\begin{equation}
+\begin{equation}\label{eq:RAF-CRS}
   \mathbf{\Phi}':= (\closure{\RAF}{\food}, \RAF, \cat'(\RAF))
 \end{equation}
-and study the bipartite K\"onig graph $\queen'\coloneqq \queen(\mathbf{\Phi}')$ of $\mathbf{\Phi}'$ (see \TODO{SI Sec.~TBA} for 
-details . %as well as the K\"onig graph  $\king'\coloneqq \king(\Gamma(\mathbf{\Phi}'))$ \NV{of its CRN representation $\Gamma(\mathbf{\Phi})$}.
+and study the bipartite K\"onig graph $\queen'\coloneqq \queen(\mathbf{\Phi}')$ of $\mathbf{\Phi}'$ (see Sec.~\ref{sec:CRS}). %as well as the K\"onig graph  $\king'\coloneqq \king(\Gamma(\mathbf{\Phi}'))$ \NV{of its CRN representation $\Gamma(\mathbf{\Phi})$}.
 
 We introduce a directed graph, so-called \emph{R-graph} (or \emph{reaction graph}) of the CRS representations as 
 the graph $\RGraph(\mathbf{\Phi})=(\mathbf{R},E)$ with edge set 
@@ -947,23 +946,25 @@ catalyzations.
 
 \vspace{6pt}
 \begin{lemma}\label{lem:RGQSC}
-  Let $\RAF$ be a non-trivial, irreducible RAF with associated CRS $\mathbf{\Phi'}$ and CRN $\Gamma(\mathbf{\Phi})$. Then both $\RGraph(\mathbf{\Phi}')$ and $\RGraph(\Gamma(\mathbf{\Phi}'))$ are
+  Let $\RAF$ be an irreducible RAF with minimal catalyzation and associated CRS 
+  $\mathbf{\Phi'}$ (Eq.~\ref{eq:RAF-CRS}).Then both $\RGraph(\mathbf{\Phi}')$ is
   strongly connected.
 \end{lemma}
 \begin{proof}
- \NV{The strong connectedness of $\RGraph(\mathbf{\Phi}')$ follows automatically from the strong connectedness of $\RGraph(\Gamma(\mathbf{\Phi}'))$ as a quotient graph, so we prove that $\RGraph(\Gamma(\mathbf{\Phi}'))$ is strongly connected. [what about:
- \begin{equation}\label{crnconnected}
-     \begin{cases}
-       r_1:\quad &\mathbf{x}_1+(x_2)\rightarrow y+(x_2)\\
-       r_1’:\quad &\mathbf{x}_1+(x_3)\rightarrow y+(x_3)\\
-       r_2: &y+(x_2)\rightarrow x_2+(x_2)\\ 
-     \end{cases}
- \end{equation}
- Is $r_1'$ reachable from $r_2$ in the R-graph?
- ]}
- 
-
-\NV{[Next proof for CRS only, not yet checked/touched.]} Indirectly assume that this is not the case. Then there are at least two strongly
+% \NV{The strong connectedness of $\RGraph(\mathbf{\Phi}')$ follows automatically from the strong connectedness of $\RGraph(\Gamma(\mathbf{\Phi}'))$ as a quotient graph, so we prove that $\RGraph(\Gamma(\mathbf{\Phi}'))$ is strongly connected. [what about:
+% \begin{equation}\label{crnconnected}
+%     \begin{cases}
+%       r_1:\quad &\mathbf{x}_1+(x_2)\rightarrow y+(x_2)\\
+%       r_1’:\quad &\mathbf{x}_1+(x_3)\rightarrow y+(x_3)\\
+%       r_2: &y+(x_2)\rightarrow x_2+(x_2)\\ 
+%     \end{cases}
+% \end{equation}
+% Is $r_1'$ reachable from $r_2$ in the R-graph?
+% ]}
+% 
+%
+%\NV{[Next proof for CRS only, not yet checked/touched.]} 
+Indirectly assume that this is not the case. Then there are at least two strongly
   connected components $\RAF_1$ and $\RAF_2$. Assume w.l.o.g. that there is
   no path from any $r_2\in \RAF_2$ to any $r_1\in \RAF_1$. Then all
   F-reactants and F-catalysts of all F-reactions in $\RAF_1$ are in the
