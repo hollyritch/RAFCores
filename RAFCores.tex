@@ -732,12 +732,8 @@ We conclude this section with a further definition.
 
 \NV{[NV will continue polishing from here on Mon 22.06]}
 
-Recall that we denote an F-reaction as follows:
-\begin{equation}
-	\fr: \sum_{x\in X}\ \sigma^-_{xr} \cdot x \quad \xrightarrow{(c) \in \cat(\fr)} \sum_{x\in X}\ \sigma^-_{xr} \cdot x.
-\end{equation}
-For a sequence of reactions: $\fr_i: x_i\xrightarrow{(x_i)} x_{i+1}, x_0\in \food, i=0,\ldots, n$, 
-where $(x_i)$ is the only catalyzation for $\fr_i$, any set of the form $\{r_0,\ldots, r_k\}, k\leq n$ 
+For a sequence of F-reactions: $\fr_i: x_i\rightarrow x_{i+1}, x_0\in \food, i=0,\ldots, n$, 
+where each $\fr_i$ is catalyzed by $x_i$, any set of the form $\{r_0,\ldots, r_k\}, k\leq n$ 
 is a RAF and a subset of the maximal RAF $\{r_i\ \vert \ i=0,\ldots, n\}$. RAFs minimal w.r.t. the 
 RAF property have been termed irreducible RAFs \cite{steel_minimal_2013}.
 
@@ -903,12 +899,15 @@ slight abuse of terminology -- trivial CAFs when referring to irreducible RAFs.
 \subsection{The Bipartite and Reaction Graphs of irreducible RAFs}
 
 Throughout this section, we will consider a CRS $\Phi\coloneqq (X,\FR,\cat(\FR))$ with
-food-set $\food\subseteq X$. In addition, we assume an irreducible RAF 
-with minimal catalyzations $(\RAF, \cat'(\RAF))$ and sub-CRS 
+food-set $\food\subseteq X$. Recall that a sub-CRS $\mathbf{\Phi}'$ is a triple 
+$(X', \FR', \cat'(\FR))$ such that $X'\subseteq X, \FR'\subseteq \FR,  
+\cat'(\FR)\subseteq \cat(\FR)$. Here, we consider an irreducible RAF 
+with minimal catalyzations $(\RAF, \cat'(\RAF))$ and corresponding sub-CRS 
 \begin{equation}
   \mathbf{\Phi}':= (\closure{\RAF}{\food}, \RAF, \cat'(\RAF))
 \end{equation}
-and study the K\"onig graph $\queen'\coloneqq \queen(\mathbf{\Phi}')$ of $\mathbf{\Phi}'$. %as well as the K\"onig graph  $\king'\coloneqq \king(\Gamma(\mathbf{\Phi}'))$ \NV{of its CRN representation $\Gamma(\mathbf{\Phi})$}.
+and study the bipartite K\"onig graph $\queen'\coloneqq \queen(\mathbf{\Phi}')$ of $\mathbf{\Phi}'$ (see \TODO{SI Sec.~TBA} for 
+details . %as well as the K\"onig graph  $\king'\coloneqq \king(\Gamma(\mathbf{\Phi}'))$ \NV{of its CRN representation $\Gamma(\mathbf{\Phi})$}.
 
 We introduce a directed graph, so-called \emph{R-graph} (or \emph{reaction graph}) of the CRS representations as 
 the graph $\RGraph(\mathbf{\Phi})=(\mathbf{R},E)$ with edge set 
