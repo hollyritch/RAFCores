@@ -719,34 +719,6 @@ Clearly, the total order $\le$ on the natural numbers induces a preorder $\precc
 \end{equation}
 which we refer to as \emph{generation order} on species and reactions, respectively.
 
-\NV{[consider moving the following type of argument later when we speak of irreducibility, because it seems directed there and here is a bit standalone / interrupting the flow ...]}{\tiny
-One consequence of the presence of the generation order is the following Lemma. 
-\vspace{6pt}
-\begin{lemma}\label{lem:OneFReacPerRAF}
-  Let $(X,\FR,\cat)$ be a CRS with food-set $\food\subseteq X$. If a RAF $\mathbf{R}'$ contains
-two F-reactions $\mathbf{r}_1 \preceq \mathbf{r}_2$ that share the same net reaction, i.e. 
-$\hat{\mathbf{r}}_1=\hat{\mathbf{r}}_2$, then $\RAF_1 \coloneqq \mathbf{R}\setminus \mathbf{r}_2$ is a RAF.
-\end{lemma}
-\begin{proof}
-Since $\RAF$ is reflexively autocatalytic, in particular each reaction $\mathbf{r}\in \RAF_1$ has a nonempty 
-catalyzation $c(\mathbf{r}) \subseteq \feducts(\RAF)\cup \fproducts(\RAF)$. In addition, since 
-$\nfeducts(\fr_1)=\nfeducts(\fr_2)$ and $\nfproducts(\fr_1)=\nfproducts(\fr_2)$ and $\rgen(\fr_1)\leq
-  \rgen(\fr_2)$, $\closure{\RAF}{\food} = \closure{\RAF_1}{\food}$. Thus, $\RAF_1$ is food-generated, and 
-  for any above catalyzation $c$ it holds that $c(\mathbf{r}) \subseteq \feducts(\RAF_1)\cup \fproducts(\RAF_1)$, 
-  yielding that $\RAF_1$  is also reflexively autocatalytic.
-\end{proof}
-\vspace{6pt} 
-\noindent In the setting of Lemma \ref{lem:OneFReacPerRAF}, in turn, it does not follow that $\RAF_2\coloneqq \RAF 
-\setminus \mathbf{r}_1$  is a RAF, as shown in the following example:
-\begin{equation}
-  \begin{split}
-    r_1&: f + (x_1) \hspace{22pt} \rightarrow x_1 + x_2 + (x_1)\\
-    r_2&: f + x_1 + (x_1) \rightarrow 2x_1 + x_2 + (x_1),
-  \end{split}
-\end{equation}
-where $\RAF=\{\fr_1,\fr_2\}$ is a RAF with net-reactions $\hat\fr_1=\hat\fr_2$ and $\rgen(\fr_1) = 1 < 2 = \rgen(\fr_2)$. 
-The singleton set $\{\fr_2\}$ in not a RAF since $\fr_2$ requires $x_1$ as an F-reactant.}
-
 We conclude this section with a further definition.
 \vspace{6pt}
 \begin{definition}
@@ -778,7 +750,35 @@ proper subset that is also a RAF.
 \begin{definition}\cite{steel_minimal_2013}.
   A RAF is irreducible if no subset of its set of F-reactions determines a RAF. 
 \end{definition}
-\NV{[Would put here directly lemma \ref{lem:OneFReacPerRAF}]} A direct consequence of Lemma~\ref{lem:OneFReacPerRAF} is that an 
+
+The pre-order on RAFs yields the following result for irreducible RAFs.
+\vspace{6pt}
+\begin{lemma}\label{lem:OneFReacPerRAF}
+  Let $(X,\FR,\cat)$ be a CRS with food-set $\food\subseteq X$. If a RAF $\mathbf{R}'$ contains
+two F-reactions $\mathbf{r}_1 \preceq \mathbf{r}_2$ that share the same net reaction, i.e. 
+$\hat{\mathbf{r}}_1=\hat{\mathbf{r}}_2$, then $\RAF_1 \coloneqq \mathbf{R}\setminus \mathbf{r}_2$ is a RAF.
+\end{lemma}
+\begin{proof}
+Since $\RAF$ is reflexively autocatalytic, in particular each reaction $\mathbf{r}\in \RAF_1$ has a nonempty 
+catalyzation $c(\mathbf{r}) \subseteq \feducts(\RAF)\cup \fproducts(\RAF)$. In addition, since 
+$\nfeducts(\fr_1)=\nfeducts(\fr_2)$ and $\nfproducts(\fr_1)=\nfproducts(\fr_2)$ and $\rgen(\fr_1)\leq
+  \rgen(\fr_2)$, $\closure{\RAF}{\food} = \closure{\RAF_1}{\food}$. Thus, $\RAF_1$ is food-generated, and 
+  for any above catalyzation $c$ it holds that $c(\mathbf{r}) \subseteq \feducts(\RAF_1)\cup \fproducts(\RAF_1)$, 
+  yielding that $\RAF_1$  is also reflexively autocatalytic.
+\end{proof}
+\vspace{6pt} 
+\noindent In the setting of Lemma \ref{lem:OneFReacPerRAF}, in turn, it does not follow that $\RAF_2\coloneqq \RAF 
+\setminus \mathbf{r}_1$  is a RAF, as shown in the following example:
+\begin{equation}
+  \begin{split}
+    r_1&: f + (x_1) \hspace{22pt} \rightarrow x_1 + x_2 + (x_1)\\
+    r_2&: f + x_1 + (x_1) \rightarrow 2x_1 + x_2 + (x_1),
+  \end{split}
+\end{equation}
+where $\RAF=\{\fr_1,\fr_2\}$ is a RAF with net-reactions $\hat\fr_1=\hat\fr_2$ and $\rgen(\fr_1) = 1 < 2 = \rgen(\fr_2)$. 
+The singleton set $\{\fr_2\}$ in not a RAF since $\fr_2$ requires $x_1$ as an F-reactant.
+
+A direct consequence of Lemma~\ref{lem:OneFReacPerRAF} is that an 
 irreducible RAF never contains two F-reactions $\mathbf{r}_1$ and $\mathbf{r}_2$
 with the same net reaction $\hat{\mathbf{r}}_1 = \hat{\mathbf{r}}_2$:
 \vspace{6pt} 
