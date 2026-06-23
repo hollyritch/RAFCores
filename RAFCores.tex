@@ -684,9 +684,10 @@ A reflexively autocatalytic set (RAF) is then defined as follows:
 \end{definition}
 \vspace{6pt}
 
-We remark that Property~$ii.$ together with the definition of closure, Eq.~\eqref{eq:Closure}, directly implies that all F-products 
-of any F-reaction $\fr\in \RAF$ are also contained in $\closure{\RAF}{\food}$, thus $\fproducts(\fr)\subseteq
-\closure{\RAF}{\food}$. \holy{Another consequence is summarized in the following Lemma.  
+We remark that Property~$ii.$ together with the definition of the closure, Eq.~\eqref{eq:Closure}, directly implies 
+that all F-products of any F-reaction $\fr\in \RAF$ are also contained in $\closure{\RAF}{\food}$, thus $\fproducts(\fr)\subseteq
+\closure{\RAF}{\food}$. \holy{Property~$i.$ provides a certain degree of freedom in the catalyzations of a RAF; the 
+following Lemma makes this precise.
 
 \vspace{6pt}
 \begin{lemma}\label{lem:ArbCat}
@@ -794,21 +795,38 @@ and (ii) is $\food$-generated; in particular, $\RAF'$ is a RAF which contradicts
 Since a RAF is defined in Def.~\ref{def:RAF} as a subset of F-reactions, Def.~\ref{def:irrerRAF} imposes 
 a minimality condition only on the set of F-reactions. However, motivated by the fact that in the CRN setting 
 different catalyzations correspond to different reactions, we also consider irreducible RAFs $\RAF$ with a 
-minimal number of catalyzations making $\RAF$ irreducible. The next Corollary is a direct consequence of 
-Lemma~\ref{lem:ArbCat} and shows that one catalyzation per reaction, i.e. $|\cat(\fr)|=1$ for every F-reaction 
-$\fr$, always suffices.
+minimal number of catalyzations \holy{while conserving irreducibility. 
+
+In Lemma~\ref{lem:ArbCat} catalyzations could, in theory, be chosen arbitrarily as long as they satisfy Property~$i.$ 
+of Def.~\ref{def:RAF}. While conserving the RAF property, irreducibility is not guaranteed to be unaffected by this 
+procedure. In fact, for any first-generation F-reaction $\fr \in \RAF$, i.e., $\gamma(\fr) = 1$, the catalyzation 
+$\cat(\fr) \coloneqq \{\fproducts(\fr)\}$ suffices to render $\{\fr\}$ an irreducible RAF. The subsequent Lemma, however, 
+allows us to consider minimal catalyzations without changing irreducibility; in particular, it shows that one catalyzation per 
+reaction, i.e. $|\cat(\fr)|=1$ for every F-reaction $\fr$, always suffices.
 
 \vspace{6pt}
-\begin{corollary}\label{lem:mono}
-Let $(X,\FR,\cat(\FR))$ be a CRS with specified \emph{food set} $\food\subseteq X$ and let $\RAF$ be a RAF. 
-	Then $\RAF$ is also a RAF in any CRS $(X, \FR,\cat'(\FR))$ where the catalyzations $\cat'(\FR)$  satisfy:
+\begin{lemma}\label{lem:mono}
+	Let $\mathbf{\Phi}\coloneqq (X,\FR,\cat(\FR))$ be a CRS with specified \emph{food set} $\food\subseteq X$ 
+	and let $\RAF$ be an (irreducible) RAF. Then $\RAF$ is also an (irreducible) RAF in any CRS $(X, \FR,\cat'(\FR))$ 
+	where the catalyzations $\cat'(\FR)$ satisfy:
 	\begin{itemize}
 		\item[i.]{$\cat'(\fr)=\{c\}$ with $\emptyset\neq c\subseteq \closure{\RAF}{\food}$, if $\fr\in \RAF$,}
 		\item[ii.]{$\cat'(\fr) = \cat(\fr)$, if $\fr \notin\RAF$.}
 	\end{itemize}
-\end{corollary}
+\end{lemma}
+\begin{proof}
+	The statement for RAFs in general is a direct consequence of Lemma~\ref{lem:ArbCat}. Let therefore $\RAF$ be an 
+	irreducible RAF and assume indirectly that the statement ist not true. Then there is a CRS $\mathbf{\Phi}'\coloneqq 
+	(X, \FR, \cat'(\FR))$ with catalyzations satisfying properties $i.$ and $ii.$ of Cor.~\ref{cor:mono} and an irreducible 
+	RAF $\RAF'$ in $\mathbf{\Phi}'$ that is a proper subset $\RAF$. Thus, $\RAF'$ satisfies both Property~$i.$ and $ii.$ 
+	of Def.~\ref{def:RAF}. We observe that $\closure{\RAF'}{\food}$ is independent of the underlying catalyzation. Since for 
+	each $\fr \in \RAF'$ $i.$ holds, Property~$i.$ of Def.~\ref{def:RAF} is satisfied for $\RAF'$ also in $\Phi$. Thereby, 
+	$\RAF'$ is also a RAF in $\Phi$, which is a contradiction since $\RAF$ was an irreducible RAF. 
+\end{proof}
+}
 
-Lemma \ref{lem:mono} suggests to introduce the following notion.
+\vspace{6pt}
+Cor.~\ref{lem:mono} suggests introducing the following notion.
 \vspace{6pt}
 \begin{definition}
 Let $(X,\FR,\cat(\FR))$ be a CRS with specified \emph{food set} $\food\subseteq X$. We call $\RAF$ a monocatalyzed 
