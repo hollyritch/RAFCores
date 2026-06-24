@@ -688,23 +688,20 @@ A reflexively autocatalytic set (RAF) is then defined as follows:
 
 We remark that Property~$ii.$ together with the definition of the closure, Eq.~\eqref{eq:Closure}, directly implies 
 that all F-products of any F-reaction $\fr\in \RAF$ are also contained in $\closure{\RAF}{\food}$, thus $\fproducts(\fr)\subseteq
-\closure{\RAF}{\food}$. \holy{Property~$i.$ reveals an inherent degree of freedom in the catalyzations of a RAF, as the 
-following Lemma makes precise.
+\closure{\RAF}{\food}$. It is also worthwhile noting that Property~$i.$ and ~$ii.$ are essentially independent to each other, in the sense that Property~$i.$ depends only on $X$ and $\FR$, and not on the catalyzations. This reveals an inherent freedom in the definition of catalyzations of a RAF, as the 
+following Lemma underlines.
+
+
 
 \vspace{6pt}
 \begin{lemma}\label{lem:ArbCat}
-	Let $(X,\FR,\cat(\FR))$ be a CRS with specified \emph{food set} $\food\subseteq X$ and let $\RAF$ be a RAF. 
-	Then $\RAF$ is also a RAF in any CRS $(X, \FR,\tilde{\kappa}_F(\FR))$ where the catalyzations $\tilde{\kappa}_F(\FR)$ 
-	satisfy that for all $\fr\in \RAF$ there exists a non-empty $c\in \tilde{\kappa}_F(\fr)\in \tilde{\kappa}_F(\FR)$ with 
-	$c\subseteq \closure{\RAF}{\food}$, if $\fr\in \RAF$.
+
+Let $X$ be a set of species and $\FR$ be a set of $F$-reactions on $X$. Then, for any $\food$-generated set $\RAF$ there exist infinitely many sets of catalyzations $\{\cat(\FR)_i\}$  which make $\RAF$ a RAF in the CRS $(X,\FR,\cat (\FR)_i))$, for any $i$.
 \end{lemma}
 \begin{proof}
-    	First, the requirement on $\tilde{\kappa}_F(\FR)$ guarantees for all $\fr \in \RAF$ to be associated with an 
-	F-generated catalyzation. Second, $\RAF$ satisfies Property~$ii.$ of Def.~\ref{def:RAF} also in 
-	$(X,\CR,\tilde{\kappa}_F(\FR))$, as $\closure{\RAF}{\food}$ does not depend on $\tilde{\kappa}_F(\FR)$ 
-	(see Eq.~\ref{eq:Closure}).
+To define such valid set of catalyzations $\cat(\FR)$, it is sufficient to arbitrarily assign to each F-reaction $\mathbf{r}$ any set $\{c_j(\fr)\}$ of sets of species $c_j(\fr)\subseteq X$. For $\mathbf{r}\in \RAF$, we shall further require that at least one set $c_{j^*}(\fr)$ consists only of species that are in the closure, i.e. ${c_{j^*}}(\fr)\subseteq \closure{\RAF}{\food}$. Obviously, any such choice of catalyzations renders $\RAF$ reflexively autocatalytic. It is also obvious that such arbitrary assignments are infinite.
 \end{proof}
-}
+
 
 \subsection{A Partial Order on RAFs}
 
