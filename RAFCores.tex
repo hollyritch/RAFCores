@@ -667,7 +667,7 @@ containing $X'$ such that for any $\fr\in \RAF: \feducts(\mathbf{r})\subseteq Y
   \mathbf{r}\in \RAF\}.
 %%  %}_{\eqqcolon \mathfrak{C}_{\RAF}(X')}
 \end{equation}
-A reflexively autocatalytic set (RAF) is then defined as follows:
+A reflexively autocatalytic set (RAF) is then defined as follows \holy{\cite{hordijk_required_2011}}:
 
 \vspace{6pt}
 \begin{definition}[RAF]\label{def:RAF}
@@ -676,11 +676,11 @@ A reflexively autocatalytic set (RAF) is then defined as follows:
   \vspace{6pt}
   \begin{itemize} 
   \item[i.]{\emph{Reflexively Autocatalytic} (RA) if, for each $\mathbf{r}\in \RAF$,  
-  there exists one catalyzation $c\in \cat(\mathbf{r})$ such that $c \subseteq
-    \feducts(\RAF)\cup \fproducts(\RAF)$;}\\[-1.0em]
+  there exists one catalyzation $c\in \cat(\mathbf{r})$ such that $c \subseteq \holy{\closure{\RAF}{\food}}$ \TODO{(Check carefully the subsequent statements w.r.t. this modification)};}\\[-1.0em]
+    %\feducts(\RAF)\cup \fproducts(\RAF)$;}\\[-1.0em]
   \item[ii.]{\emph{\food-generated} (F) if $\feducts(\RAF)\subseteq
     \closure{\RAF}{\food}$;}\\[-1.0em]
-  \item[iii.]{\emph{reflexively autocatalytic and food-generated}
+  \item[iii.]{\emph{Reflexively Autocatalytic and $\food$-generated}
     (RAF) if both i. and ii. hold.}
   \end{itemize}
 \end{definition}
@@ -688,20 +688,26 @@ A reflexively autocatalytic set (RAF) is then defined as follows:
 
 We remark that Property~$ii.$ together with the definition of the closure, Eq.~\eqref{eq:Closure}, directly implies 
 that all F-products of any F-reaction $\fr\in \RAF$ are also contained in $\closure{\RAF}{\food}$, thus $\fproducts(\fr)\subseteq
-\closure{\RAF}{\food}$. It is also worthwhile noting that Property~$i.$ and ~$ii.$ are essentially independent to each other. In particular, Property~$i.$ depends only on $X$ and $\FR$, and not on the catalyzations. This reveals an inherent freedom in the definition of catalyzations of a RAF, as the 
-following Lemma underlines.
+\closure{\RAF}{\food}$. It is also worthwhile noting that Property~$i.$ and ~$ii.$ are essentially independent to each other. In 
+particular, Property~$i.$ depends only on $X$ and $\FR$, and not on the catalyzations. This reveals an inherent freedom in 
+the definition of catalyzations of a RAF, as the following Lemma underlines.
 
 
 
 \vspace{6pt}
 \begin{lemma}\label{lem:ArbCat}
 
-Let $X$ be a set of species and $\FR$ be a set of $F$-reactions on $X$. Then, for any $\food$-generated set $\RAF$ there exist infinitely many sets of catalyzations $\{\cat(\FR)_i\}$  which make $\RAF$ a RAF in the CRS $(X,\FR,\cat (\FR)_i))$, for any $i$.
+Let $X$ be a set of species and $\FR$ be a set of $F$-reactions on $X$. Then, for any $\food$-generated set $\RAF$ there 
+exist infinitely many sets of catalyzations $\{\cat(\FR)_i\}$  which make $\RAF$ a RAF in the CRS $(X,\FR,\cat (\FR)_i))$, for 
+any $i$.
 \end{lemma}
 \begin{proof}
-To define such valid set of catalyzations $\cat(\FR)$, it is sufficient to arbitrarily assign to each F-reaction $\mathbf{r}$ any set $\{c_j(\fr)\}$ of sets of species $c_j(\fr)\subseteq X$. For $\mathbf{r}\in \RAF$, we shall further require that at least one set $c_{j^*}(\fr)$ consists only of species that are in the closure, i.e. ${c_{j^*}}(\fr)\subseteq \closure{\RAF}{\food}$. Obviously, any such choice of catalyzations renders $\RAF$ reflexively autocatalytic. It is also obvious that such arbitrary assignments are infinite.
+To define such valid set of catalyzations $\cat(\FR)$, it is sufficient to arbitrarily assign to each F-reaction $\mathbf{r}$ any set 
+$\{c_j(\fr)\}$ of sets of species $c_j(\fr)\subseteq X$. For $\mathbf{r}\in \RAF$, we shall further require that at least one set 
+$c_{j^*}(\fr)$ consists only of species that are in the closure, i.e. ${c_{j^*}}(\fr)\subseteq \closure{\RAF}{\food}$. Obviously, 
+any such choice of catalyzations renders $\RAF$ Reflexively Autocatalytic. It is also obvious that such arbitrary assignments 
+are infinite.
 \end{proof}
-
 
 \subsection{A Partial Order on RAFs}
 
@@ -723,7 +729,8 @@ $\gamma(\mathbf{r})$ where an F-reaction $\mathbf{r}$ happens for the first time
 \begin{equation}\label{def:genreactionindex}
     \gamma(\mathbf{r})\coloneqq \operatorname{min} \{i \; | \; \feducts(\mathbf{r})\subseteq X'_i\} + 1,
 \end{equation} 
-where the index is shifted by one for normalization, so that the \emph{first} generation corresponds to index $\gamma(\mathbf{r})=1$. Similarly, the sequences define a \emph{generation species-index} $g(x)$
+where the index is shifted by one for normalization, so that the \emph{first} generation corresponds to 
+index $\gamma(\mathbf{r})=1$. Similarly, the sequences define a \emph{generation species-index} $g(x)$
  where a non-food species $x\not\in \food$ is produced for the first time, i.e.
 \begin{equation}
    g(x)= \operatorname{min} \{i \; | \; x\in X'_i\}.
@@ -761,7 +768,7 @@ notion of \emph{irreducible RAF} has been introduced.
 \end{definition}
 
 \emph{Example.} Consider a species set $X=\{x_0,...,x_{n+1}\}$ with food 
-set $\food=\{x_1\}$ and a sequence of $n+1$ F-reactions
+set $\food=\{x_0\}$ and a sequence of $n+1$ F-reactions
 \begin{equation}\label{eq:ExReacSeq}
  \fr_i:\qquad x_i\longrightarrow x_{i+1},
 \end{equation}
@@ -796,7 +803,12 @@ a minimality condition only on the set of F-reactions. However, motivated by the
 different catalyzations correspond to different reactions, we also consider irreducible RAFs $\RAF$ with a 
 minimal number of catalyzations while conserving irreducibility. 
 
-For any $\food$-generated set $\RAF$, Lemma~\ref{lem:ArbCat} shows indeed that infinitely many catalyzations exist that render $\RAF$ a RAF. Complementarily, here we address which catalyzation subsets $\cat'(\FR)\subset \cat(\FR)$ preserve the fact that a $\food$-generated set $\RAF$, which is an irreducible RAF in the CRS $(X,\FR, \cat(\FR))$, is still an irreducible RAF in the CRS $(X,\FR, \cat'(\FR))$. The following Lemma shows that $\cat'(\FR)$ can always be chosen such that $|\cat'(\fr)|=1$  for all F-reactions $\fr\in \RAF$.
+For any $\food$-generated set $\RAF$, Lemma~\ref{lem:ArbCat} shows indeed that infinitely many 
+catalyzations exist that render $\RAF$ a RAF. Complementarily, here we address which catalyzation 
+subsets $\cat'(\FR)\subset \cat(\FR)$ preserve the fact that an $\food$-generated set $\RAF$, which is 
+an irreducible RAF in the CRS $(X,\FR, \cat(\FR))$, is still an irreducible RAF in the CRS $(X,\FR, \cat'(\FR))$. 
+The following Lemma shows that $\cat'(\FR)$ can always be chosen such that $|\cat'(\fr)|=1$  for all 
+F-reactions $\fr\in \RAF$.
 
 \vspace{6pt}
 \begin{lemma}\label{lem:mono}
@@ -806,12 +818,13 @@ For any $\food$-generated set $\RAF$, Lemma~\ref{lem:ArbCat} shows indeed that i
 	\begin{equation}\label{eq:casesmono}\cat'(\fr)=\begin{cases}
 	   \{c\}\text{ with $\emptyset\neq c\subseteq \closure{\RAF}{\food}$}\quad &\text{if $\fr\in \RAF$,}\\ 
 \cat(\fr)&\text{otherwise.}
-	\end{cases} , 
+	\end{cases}, 
     \end{equation}
 \end{lemma}
 \begin{proof}
-	 The first case in \eqref{eq:casesmono} guarantees that $\RAF$ is reflexively autocatalytic in $(X, \FR,\cat'(\FR))$ .
-     Once a set $\RAF$ is reflexively autocatalytic, his being an irreducible RAF only depends on the $\food$-generated property, which - in turn - is independent from the catalyzations. Therefore, $\RAF$ is an irreducible RAF in $(X, \FR,\cat'(\FR))$
+     The first case in \eqref{eq:casesmono} guarantees that $\RAF$ is Reflexively Autocatalytic in $(X, \FR,\cat'(\FR))$.
+     Once a set $\RAF$ is Reflexively Autocatalytic, being an irreducible RAF only depends on the $\food$-generated 
+     property, which - in turn - is independent from the catalyzations. Therefore, $\RAF$ is an irreducible RAF in $(X, \FR,\cat'(\FR))$
 \end{proof}
 
 \NV{NV till here.}
@@ -824,7 +837,7 @@ Let $(X,\FR,\cat(\FR))$ be a CRS with specified \emph{food set} $\food\subseteq 
 RAF if it is a RAF and it holds $|\cat(\fr)|=1$ for all F-reactions $\fr \in \RAF$.
 \end{definition}
 
-We stress that a monocatalyzed RAF may include nevertheless reactions $\fr$, whose unique catalyzation $c$ is a set 
+We stress that a monocatalyzed RAF may include, nevertheless, F-reactions $\fr$, whose unique catalyzation $c$ is a set 
 of multiple species, i.e. $c=\{x_1,..., x_n\}$. \holy{In addition, since irreducibility of a RAF is not affected by the choice of catalyzations 
 from the set $\cat(\FR)$, as shown in Lemma~\ref{lem:mono}, there exist exponentially many sub-CRS that carry the 
 original irreducible RAF.
@@ -860,57 +873,47 @@ only one irreducible RAF, i.e., $\RAF\coloneqq \{\fr_1\}$, and for $n=2$ the sub
 and $(\{x_0,x_1,x_2\}, \{\fr_1,\fr_2\}, \{\{(x_1)\}, \{(x_2)\}\}$  satisfy condition $i.$ and $ii.$ of Lemma~\ref{lem:ExpoSubCRS}.
 }
 
-Finally, we underline that irreducibility is a property that is of interest only for RAF, which are not CAF. We have the following proposition indeed:
+Finally, we underline that irreducibility is a property that is of interest only for RAFs that are not CAFs. We have the following proposition indeed:
 \vspace{6pt}
 \begin{proposition}\label{prop:Caftrivial}
 Any irreducible RAF $\RAF$, which is itself a CAF, is a single F-reaction $\RAF=\{\fr\}$.
 \end{proposition}
 \begin{proof}
-Let $\RAF$ be an irreducible RAF that is a CAF and consider any F-reaction $\fr\in \RAF$, which satisfies $\gamma(\fr)=1$. By Def.~\ref{def:CAF} and of generation reaction-index \eqref{def:genreactionindex} $\gamma$, it follows that all F-reactants $\rho(\fr)$ and at least one catalyzation $c\in \cat(\fr)$ are in the food set $\food$. Therefore $\fr$ is a CAF (and RAF) itself, and $\RAF=\{\fr\}$ by irreducibility of $\RAF$.
+Let $\RAF$ be an irreducible RAF that is a CAF and consider any F-reaction $\fr\in \RAF$, which satisfies $\gamma(\fr)=1$. By Def.~\ref{def:CAF} 
+and of generation reaction-index $\gamma$ (Eq.~\eqref{def:genreactionindex}), it follows that all F-reactants $\rho(\fr)$ and at least one catalyzation 
+$c\in \cat(\fr)$ are in the food set $\food$. Therefore $\fr$ is a CAF (and RAF) itself, and $\RAF=\{\fr\}$ by irreducibility of $\RAF$.
 \end{proof}
 
-Due to Prop.~\ref{prop:Caftrivial}, throughout the paper we exclude the trivial CAF case whenever making statements about irreducible RAFs. To keep the exposition concise, we assume this exclusion throughout and do not repeat it explicitly in each statement. 
+Due to Prop.~\ref{prop:Caftrivial}, throughout the paper we exclude the trivial CAF case whenever making statements about irreducible RAFs. 
+To keep the exposition concise, we assume this exclusion throughout and do not repeat it explicitly in each statement. 
 
-\subsection{Temp}
-
-Minimal \emph{stoichiometrically autocatalytic} subnetworks, formally
-introduced in Sec.~\ref{sec:AutoCatIrrRAF}, are termed \emph{autocatalytic
-cores} \cite{blokhuis_Universal_2020}. Their characterization and
-computational enumeration have gained reasonable attention in chemical
-reaction networks with and without explicit catalysis
-\cite{blokhuis_Universal_2020, golnik_using_2026,
-  golnik_autocatalytic_2026}.  In \cite{golnik_bridging_2026}, we have
-shown that each (irreducible) RAF that is not a 
-CAF contains a stoichiometrically autocatalytic subnetwork and thereby 
-an autocatalytic core. Irreducible RAFs exhibit the convenient property 
-that they are never CAFs as long as they are non-trivial, in particular if 
-they are composed of more than a single F-reaction (see also 
-\cite{steel_minimal_2013}, Sec.~1.3).
-\vspace{6pt}
-\begin{lemma}\label{lem:trivRAFCAF}
- 	 Let $(X,\mathbf{R},\cat(\mathbf{R}))$ be a CRS with food-set $\food\subseteq X$. 
-  	Then any irreducible, trivial RAF is either a CAF, or its single F-reaction has a 
-	catalyzation whose F-catalysts are also F-products.  
-	Moreover, each irreducible CAF is trivial.
-\end{lemma}
-\begin{proof}
-	Let $\RAF\coloneqq \{\fr\}$ be an irreducible RAF. Then all F-reactants are in 
-	$\food$ and two cases can occur for the F-catalysts. First, there is at least one 
-	catalyzation $c\in \cat(\fr)$ for which each $x\in c$ satisfies $x\in \food$. 
-	Then $\RAF$ is a CAF. Secondly, for all catalyzations $c\in \cat(\fr)$ 
-	there is at least one $x\in c$ such that $x\notin \food$. Since $\RAF$ is a RAF, 
-	there is one catalyzation $c'\in \cat(\fr)$ such that all $x'\in c'$ satisfy 
-	$x'\in \closure{\RAF}{\food}$. Thus, if $x'\in c'$ such that $x'\notin \food$, then 
-	$x'$ is not an F-reactant, but an F-product of $\fr$. For the reaction $r'$ uniquely
-	identified by $(c', \fr)$, it follows that $k_{x'r'}>0, \sigma^-_{x'r'}=0$, and $\sigma^+_{x'r'}>0$. 
-	Hence, $r'\in \fr$ is an explicit autocatalytic reaction.  	
-	For the second part of the statement, let now $\RAF'$ be an irreducible RAF that is a 
-	CAF. Assume $|\RAF'|>1$ and let $\fr''\in \RAF': \rgen(\fr'')=1$. Then all F-reactants and 
-	all F-catalysts $x$ for at least one catalyzation $c\in \cat(\fr'')$ satisfy $x\in \food$ since 
-	$\RAF'$ is a CAF. Thus $\{\fr''\}$ is a CAF, and a RAF itself, contradicting the minimality 
-	of $\RAF'$. 
-\end{proof}
-\vspace{6pt}
+%\subsection{Temp}
+%
+%\vspace{6pt}
+%\begin{lemma}\label{lem:trivRAFCAF}
+% 	 Let $(X,\mathbf{R},\cat(\mathbf{R}))$ be a CRS with food-set $\food\subseteq X$. 
+%  	Then any irreducible, trivial RAF is either a CAF, or its single F-reaction has a 
+%	catalyzation whose F-catalysts are also F-products.  
+%	Moreover, each irreducible CAF is trivial.
+%\end{lemma}
+%\begin{proof}
+%	Let $\RAF\coloneqq \{\fr\}$ be an irreducible RAF. Then all F-reactants are in 
+%	$\food$ and two cases can occur for the F-catalysts. First, there is at least one 
+%	catalyzation $c\in \cat(\fr)$ for which each $x\in c$ satisfies $x\in \food$. 
+%	Then $\RAF$ is a CAF. Secondly, for all catalyzations $c\in \cat(\fr)$ 
+%	there is at least one $x\in c$ such that $x\notin \food$. Since $\RAF$ is a RAF, 
+%	there is one catalyzation $c'\in \cat(\fr)$ such that all $x'\in c'$ satisfy 
+%	$x'\in \closure{\RAF}{\food}$. Thus, if $x'\in c'$ such that $x'\notin \food$, then 
+%	$x'$ is not an F-reactant, but an F-product of $\fr$. For the reaction $r'$ uniquely
+%	identified by $(c', \fr)$, it follows that $k_{x'r'}>0, \sigma^-_{x'r'}=0$, and $\sigma^+_{x'r'}>0$. 
+%	Hence, $r'\in \fr$ is an explicit autocatalytic reaction.  	
+%	For the second part of the statement, let now $\RAF'$ be an irreducible RAF that is a 
+%	CAF. Assume $|\RAF'|>1$ and let $\fr''\in \RAF': \rgen(\fr'')=1$. Then all F-reactants and 
+%	all F-catalysts $x$ for at least one catalyzation $c\in \cat(\fr'')$ satisfy $x\in \food$ since 
+%	$\RAF'$ is a CAF. Thus $\{\fr''\}$ is a CAF, and a RAF itself, contradicting the minimality 
+%	of $\RAF'$. 
+%\end{proof}
+%\vspace{6pt}
 %As a consequence, trivial, irreducible RAFs can be one of the following: 1) a CAF, whose 
 %single F-reaction does not contain an explicit autocatalytic reaction, 2) not a CAF, but the 
 %single F-reaction equivalence class contains an explicit autocatalytic reaction, or 3) a CAF 
@@ -923,11 +926,11 @@ they are composed of more than a single F-reaction (see also
 %	\end{split}
 %\end{equation}
 
-To see that not every trivial, irreducible RAF is necessarily a CAF, consider, e.g., 
-$f \xrightarrow{(x_1)} x_1$ with only $f\in \food$. As for CAFs, it is not guaranteed that they carry a 
-stoichiometrically autocatalytic subnetwork \cite{golnik_bridging_2026}, we restrict our attention 
-to non-trivial, irreducible RAFs. For better readability, we also exclude in the following -- with a 
-slight abuse of terminology -- trivial CAFs when referring to irreducible RAFs.
+%To see that not every trivial, irreducible RAF is necessarily a CAF, consider, e.g., 
+%$f \xrightarrow{(x_1)} x_1$ with only $f\in \food$. As for CAFs, it is not guaranteed that they carry a 
+%stoichiometrically autocatalytic subnetwork \cite{golnik_bridging_2026}, we restrict our attention 
+%to non-trivial, irreducible RAFs. For better readability, we also exclude in the following -- with a 
+%slight abuse of terminology -- trivial CAFs when referring to irreducible RAFs.
 
 %In fact, for each non-trivial irreducible RAF, each F-reaction has at least one reactant that is not in the food set. 
 %\vspace{6pt}
@@ -947,17 +950,17 @@ slight abuse of terminology -- trivial CAFs when referring to irreducible RAFs.
 %\vspace{6pt}
 \subsection{The Bipartite and Reaction Graphs of irreducible RAFs}
 
-Throughout this section, we will consider a CRS $\Phi\coloneqq (X,\FR,\cat(\FR))$ with
+Within this section, we will consider a CRS $\Phi\coloneqq (X,\FR,\cat(\FR))$ with
 food-set $\food\subseteq X$. Recall that a sub-CRS $\mathbf{\Phi}'$ is a triple 
 $(X', \FR', \cat'(\FR))$ such that $X'\subseteq X, \FR'\subseteq \FR,  
 \cat'(\FR)\subseteq \cat(\FR)$. In particular, we focus on an irreducible, monocatalyzed 
-RAF $\RAF$ (that is not a CAF) with corresponding CRS 
+RAF $\RAF$ with corresponding CRS 
 \begin{equation}\label{eq:RAF-CRS}
   \mathbf{\Phi}':= (\closure{\RAF}{\food}, \RAF, \cat'(\RAF))
 \end{equation}
-such that $\cat'(\RAF)$ satisfies Property~$i.$ of Lemma~\ref{lem:mono} as well a
-as $\cat'(\RAF)\subseteq \cat(\RAF)$ and study properties of its bipartite K\H{o}nig graph 
-$\queen(\RAF)\coloneqq \queen(\mathbf{\Phi}')$ representation. (see Sec.~\ref{sec:CRS}). 
+such that $\cat'(\RAF)$ satisfies the requirement of Lemma~\ref{lem:mono} and study properties 
+of its bipartite K\H{o}nig graph $\queen(\RAF)\coloneqq \queen(\mathbf{\Phi}')$ representation 
+(see Sec.~\ref{sec:CRS}). 
 
 We start by introducing a directed graph, so-called \emph{R-graph} (or \emph{reaction graph}) 
 of the CRS representations as the graph $\RGraph(\mathbf{\Phi})=(\mathbf{R},E)$ with edge set 
@@ -984,7 +987,7 @@ as waste molecules.
 \subsubsection{Strong connectivity}
 
 We recall that a directed graph $(V,E)$ is \emph{strongly connected} if, for any pair of 
-vertices $v_1,v_2\in V$, there exists a directed path from $v_1$ to $v_2$. Here, we 
+vertices $v_1,v_2\in V$, there exists a directed path from $v_1$ to $v_2$. First, we 
 establish the strong connectedness of the R-graph on irreducible RAFs with minimal 
 catalyzations. 
 
@@ -1012,7 +1015,7 @@ Indirectly assume that this is not the case. Then there are at least two non-emp
 strongly connected components $\RAF_1$ and $\RAF_2$. Assume w.l.o.g. that 
 there is no path from any $r_2\in \RAF_2$ to any $r_1\in \RAF_1$. Then all F-reactants 
 and F-catalysts of all F-reactions in $\RAF_1$ are in the closure $\closure{\RAF_1}{\food}$, 
-in symbols $\feducts\cup \cat(\RAF_1)\subseteq \closure{\RAF_1}{\food}$. With 
+in symbols $\feducts(\RAF_1)\cup \cat(\RAF_1)\subseteq \closure{\RAF_1}{\food}$. With 
 $\RAF_1\subseteq \RAF$ and $\RAF$ being a RAF, this implies that $\RAF_1$ 
 is itself a RAF, which contradicts the minimality of $\RAF$.
 \end{proof}
@@ -1022,15 +1025,15 @@ In terms of the bipartite K\H{o}nig graph of a RAF, we cannot hope to have
 strong-connectedness unless we remove food and waste species: for any 
 $\fr\in \RAF$, by definition, for a waste species $x_W$ there is no directed 
 edge $(x_W,\mathbf{r})$, and for a food species $x_F$ there may be no 
-directed edge $(\mathbf{r},x_F)$. We can, however, consider the bipartite 
-graph of $\queen(\RAF')$ that is void of food and waste molecules:
+directed edge $(\mathbf{r},x_F)$. We can, however, consider the subgraph 
+of $\queen(\RAF)$ that is void of food and waste molecules:
 \begin{equation}\label{eq:PrinceGraph}
     \princess(\RAF) \coloneqq
     \queen[\closure{\RAF}{\food}\setminus (\food\cup W) \cup \RAF],
   \end{equation}
 where the general notation $\queen[X'\cup \RAF]$ refers to the subgraph of 
-$\queen$ \emph{induced} by the vertex sets $(X',\RAF)$. We then have the 
-following lemma.
+$\queen$ \emph{induced} by the vertex sets $(X',\RAF)$. We conclude this 
+subsection with the following lemma.
 \vspace{6pt}
 \begin{lemma}\label{lem:PSC}
   Let $\RAF$ be an irreducible, monocatalyzed RAF. Then $\princess(\RAF)$ 
@@ -1040,26 +1043,22 @@ following lemma.
   Again, assume indirectly that this is not the case. Then there are two non-empty, 
   strongly connected components $\princess_1,\princess_2$.  W.l.o.g., we assume 
   that there is no path from any $u\in \princess_2$ to any $v\in \princess_1$. Then 
-  all paths from $\princess_2$ to $\princess_1$ in $\queen(\mathbf{\Phi'})$ pass through 
+  all paths from $\princess_2$ to $\princess_1$ in $\queen(\mathbf{\RAF})$ pass through 
   $\food$ . This, however, implies that all F-catalysts and F-reactants for all F-reactions 
   in $\princess_1$ are contained in $\food \cup \princess_1$. Then $\FR(\princess_1)$ 
   is a non-empty RAF which contradicts the minimality of $\RAF$.
 \end{proof}	
 
-We recall that a strong block is a subgraph that is strongly connected, and its 
-underlying undirected graph is 2-connected (see SI Sec.~\TODO{TBA}). In 
-\cite{golnik_enumeration_2026}, we have shown that autocatalytic cores 
-exhibit a bipartite K\H{o}nig graph representation that is an induced \emph{fluffle}, 
-in particular, subgraphs of the K\H{o}nig graph induced by a set of species and 
-reaction vertices such that $i.)$ the two vertex sets are of identical size, $ii.)$ each 
-species vertex has out-degree $1$, each reaction vertex has in-degree 
-$1$, and $iii.)$ they are strong blocks. This result suggests identifying the maximal 
-strong blocks in the stronlgy connected graph $\princess(\RAF)$. 
-
 \subsubsection{Cut-vertices}
-Strongly-connected subgraphs, and $\princess(\RAF)$ of an irreducible monocatalyzed 
-RAF $\RAF$, in particular, may still contain cut-vertices. An example is captured in 
-Fig.~\ref{ex:CutVertex2}.
+
+Strongly-connected subgraphs, and $\princess(\RAF)$ of an irreducible, monocatalyzed 
+RAF $\RAF$, in particular, may still contain cut-vertices. Minimal \emph{stoichiometrically 
+autocatalytic} subnetworks, formally introduced in Sec.~\ref{sec:AutoCatIrrRAF} and termed 
+\emph{autocatalytic cores} \cite{blokhuis_Universal_2020}, encompass a bipartite K\H{o}nig 
+graph representation that includes the property of being strong blocks - strongly connected subgraphs whose 
+underlying undirected graph is 2-connected \cite{golnik_enumeration_2026, golnik_using_2026,
+golnik_autocatalytic_2026}. This result suggests identifying the maximal strong blocks in $\princess(\RAF)$. 
+
 %\begin{figure}[htb]
 %  \centering
 %  \begin{minipage}[c]{0.49\textwidth}
@@ -1205,14 +1204,12 @@ Fig.~\ref{ex:CutVertex2}.
 %    $\RGraph(\queen')$ and $\RGraph(\king')$.}
 %  \label{ex:CutVertex}
 %\end{figure}
+The Example depicted in Fig.~\ref{ex:CutVertex2} illustrates an irreducible RAF $\RAF$, such that 
+$\princess(\RAF)$ contains a cut-vertex, i.e., $\fr_2$ since its removal disconnects the graph. 
+Both maximal strong blocks, i.e., $\princess[\{x_1,x_2\} \cup \{\fr_1,\fr_2\}]$ and 
+$\princess[\{x_3,x_4\}\cup \{\fr_2,\fr_3\}]$ thereby share the common cut F-reaction vertex $\fr_2$. 
+Indeed, a species vertex cannot be a cut-vertex.
 
-Indeed, $\fr_0$ is a cut-vertex, since it has one catalyzation composed of two catalysts, 
-which are part of two different strong blocks $\princess[\{x_1,x_2\} \cup
-  \{\fr_1,\fr_2\}]$ and $\princess[\{y_1,y_2\} \cup \{\fr_1,\fr_3\}]$. 
-%The existence of a cut-vertex in $\princess$, however, does not necessarily
-%imply the existence of a cut-vertex in $\lord$. In case an equivalence
-%class contains only one representative, i.e., if $\fr_0$ were co-catalyzed
-%by $x_1$ and $y_1$, then $\princess(\RAF)\simeq \lord(\RAF)$.
 \vspace{6pt}
 \begin{corollary}
   Let $\RAF$ be an irreducible, monocatalyzed RAF. Then $\princess(\RAF)$
@@ -1220,8 +1217,7 @@ which are part of two different strong blocks $\princess[\{x_1,x_2\} \cup
 \end{corollary}
 \vspace{6pt}
 %
-The occurrence of cut-vertices is not restricted to monocatalyzed F-reactions 
-that are co-catalyzed by two species, as emphasized in the example of Fig.~\ref{ex:CutVertex2}.
+
 \begin{figure}[bth]
   \begin{minipage}[c]{0.49\textwidth}
     \begin{equation}
@@ -1266,16 +1262,11 @@ that are co-catalyzed by two species, as emphasized in the example of Fig.~\ref{
   of the corresponding König graph \textit{(right)}.}
   \label{ex:CutVertex2}
 \end{figure}
-As in Fig.~\ref{ex:CutVertex}, both strong blocks, i.e.,
-$\princess[\{x_1,x_2\}\cup \{\fr_1,\fr_2\}]$ and $\princess[\{x_3,x_4\}\cup
-  \{\fr_2,\fr_3\}]$ share a common cut-vertex that is a reaction
-vertex. Indeed, a species vertex cannot be a cut-vertex.
+
 \vspace{6pt}
 \begin{lemma}[Proof: SI]\label{lem:CutVertexReac}
   Let $\RAF$ be a non-trivial, irreducible RAF. If $\princess(\RAF)$ is not
-  a strong block, then every cut-vertex is an F-reaction. Accordingly, if
-  $\lord(\RAF)$ is not a strong block, then every cut-vertex is a reaction. 
-  \NV{[Again, counterexample \eqref{crnconnected} to be addressed for $L(\RAF)$]}
+  a strong block, then every cut-vertex is an F-reaction. 
 \end{lemma}
 \vspace{6pt}
 
