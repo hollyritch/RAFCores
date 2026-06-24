@@ -544,8 +544,10 @@ correspond essentially to the same network object.}
 
 \NV{We also stress that a CRS may be fully defined over the formal pair $(X,\mathbf{R)}$ by 
 specifying explicitly the catalyzations $\kappa_F(\mathbf{R}):=\{\kappa_F(\mathbf{r}) \;|\; \mathbf{r}\in \mathbf{R}\}$. 
-This way, a CRS is a triple $\Phi=(X, \mathbf{R},\kappa_F(\mathbf{R}))$ and the reference to 
-its lift CRN may be omitted. The set $R$ may then be retrieved via the catalyzations explicitly, 
+This way, a CRS is a triple $\mathbf{\Phi}=(X, \mathbf{R},\kappa_F(\mathbf{R}))$ and the reference to 
+its lift CRN may be omitted. \holy{A triple $\mathbf{\Phi}'\coloneqq (X', \FR',\cat'(\FR))$ is called a sub-CRS 
+of $\mathbf{\Phi}$, denoted as $\mathbf{\Phi}' \subseteq \mathbf{\Phi}$ if $X'\subseteq X, \FR'\subseteq \FR$, 
+and $\cat'(\FR)\subseteq \cat(\FR)$.} The set $R$ may then be retrieved via the catalyzations explicitly, 
 as any pair $(\mathbf{r},c)$ uniquely identifies a reaction $r$ in the CRN setting Eq.~\eqref{eq:Mod.SmEq}. 
 In this case, for a CRS $\mathbf\Phi=(X, \mathbf{R},\kappa_F(\mathbf{R}))$ we will speak of 
 $\Gamma(\mathbf{\Phi}):=(X,R)$ as the \emph{CRN representation} of $\mathbf{\Phi}$.} 
@@ -686,8 +688,8 @@ A reflexively autocatalytic set (RAF) is then defined as follows:
 
 We remark that Property~$ii.$ together with the definition of the closure, Eq.~\eqref{eq:Closure}, directly implies 
 that all F-products of any F-reaction $\fr\in \RAF$ are also contained in $\closure{\RAF}{\food}$, thus $\fproducts(\fr)\subseteq
-\closure{\RAF}{\food}$. \holy{Property~$i.$ provides a certain degree of freedom in the catalyzations of a RAF; the 
-following Lemma makes this precise.
+\closure{\RAF}{\food}$. \holy{Property~$i.$ reveals an inherent degree of freedom in the catalyzations of a RAF, as the 
+following Lemma makes precise.
 
 \vspace{6pt}
 \begin{lemma}\label{lem:ArbCat}
@@ -763,7 +765,7 @@ notion of \emph{irreducible RAF} has been introduced.
 
 \emph{Example.} Consider a species set $X=\{x_0,...,x_{n+1}\}$ with food 
 set $\food=\{x_1\}$ and a sequence of $n+1$ F-reactions
-\begin{equation}
+\begin{equation}\label{eq:ExReacSeq}
  \fr_i:\qquad x_i\longrightarrow x_{i+1},
 \end{equation}
 such that $c=\{x_{i+1}\} \in \kappa_F(\fr_i)$, i.e. for each F-reaction $\fr_i$ 
@@ -798,8 +800,8 @@ different catalyzations correspond to different reactions, we also consider irre
 minimal number of catalyzations \holy{while conserving irreducibility. 
 
 In Lemma~\ref{lem:ArbCat} catalyzations could, in theory, be chosen arbitrarily as long as they satisfy Property~$i.$ 
-of Def.~\ref{def:RAF}. While conserving the RAF property, irreducibility is not guaranteed to be unaffected by this 
-procedure. In fact, for any first-generation F-reaction $\fr \in \RAF$, i.e., $\gamma(\fr) = 1$, the catalyzation 
+of Def.~\ref{def:RAF}. Although the RAF property is maintained under this procedure, irreducibility is not guaranteed 
+to be. In fact, for any first-generation F-reaction $\fr \in \RAF$, i.e., $\gamma(\fr) = 1$, the catalyzation 
 $\cat(\fr) \coloneqq \{\fproducts(\fr)\}$ suffices to render $\{\fr\}$ an irreducible RAF. The subsequent Lemma, however, 
 allows us to consider minimal catalyzations without changing irreducibility; in particular, it shows that one catalyzation per 
 reaction, i.e. $|\cat(\fr)|=1$ for every F-reaction $\fr$, always suffices.
@@ -820,25 +822,53 @@ reaction, i.e. $|\cat(\fr)|=1$ for every F-reaction $\fr$, always suffices.
 	(X, \FR, \cat'(\FR))$ with catalyzations satisfying properties $i.$ and $ii.$ and an irreducible RAF $\RAF'$ in $\mathbf{\Phi}'$ 
 	that is a proper subset of $\RAF$. Thus, $\RAF'$ satisfies both Property~$i.$ and $ii.$ of Def.~\ref{def:RAF}. We observe 
 	that $\closure{\RAF'}{\food}$ is independent of the underlying catalyzation. For each $\fr \in \RAF'$ requirement $i.$ satisfies
-	Property~$i.$ of Def.~\ref{def:RAF} also in $\Phi$. Thereby, $\RAF'$ is a RAF in $\Phi$, which is a contradiction since $\RAF$ 
+	Property~$i.$ of Def.~\ref{def:RAF} also in $\mathbf{\Phi}$. Thereby, $\RAF'$ is a RAF in $\Phi$, which is a contradiction since $\RAF$ 
 	was an irreducible RAF. 
 \end{proof}
 }
 
 \vspace{6pt}
-Cor.~\ref{lem:mono} suggests introducing the following notion.
+Lemma~\ref{lem:mono} suggests introducing the following notion.
 \vspace{6pt}
 \begin{definition}
 Let $(X,\FR,\cat(\FR))$ be a CRS with specified \emph{food set} $\food\subseteq X$. We call $\RAF$ a monocatalyzed 
 RAF if it is a RAF and it holds $|\cat(\fr)|=1$ for all F-reactions $\fr \in \RAF$.
 \end{definition}
 
-We stress that a monocatalyzed RAF may include nevertheless reactions $\fr$, whose unique catalyzation $c$ is a set of multiple species, i.e. $c=\{x_1,..., x_n\}$. 
+We stress that a monocatalyzed RAF may include nevertheless reactions $\fr$, whose unique catalyzation $c$ is a set 
+of multiple species, i.e. $c=\{x_1,..., x_n\}$. \holy{In addition, since irreducibility of a RAF is not affected by the choice of catalyzations 
+from the set $\cat(\FR)$, as shown in Lemma~\ref{lem:mono}, there exist exponentially many sub-CRS that carry the 
+original irreducible RAF.
 
-\NV{[PONDER WHETHER ADD HERE A COUNTING/EXISTENCE LEMMA, FOR EACH CRS THAT CONTAINS AN IRREDUCIBLE RAF, THERE ARE N (with exponential formula) SUB-CRS THAT CONTAIN A MONOCATALYZED IRREDUCIBLE RAF.]}
+\begin{lemma}\label{lem:ExpoSubCRS}
+	Let $\mathbf{\Phi}\coloneqq (X,\FR,\cat(\FR))$ be a CRS with specified \emph{food set} $\food\subseteq X$ 
+	and $\RAF$ be an irreducible RAF. Then there exist CRS $\mathbf{\Phi}_1,\ldots, \mathbf{\Phi}_N$ 
+	pairwise disjoint such that for each $1\leq i\leq N$ it holds that
+	\begin{itemize}
+		\item[i.]{$\mathbf{\Phi}_i\subseteq \mathbf{\Phi}$} 
+		\item[ii.]{$\RAF$ is a monocatalyzed irreducible RAF in $\mathbf{\Phi}_i$} 
+	\end{itemize}
+	and $N$ satisfies
+	\begin{equation}
+		N = \prod_{\fr\in \RAF}\ \vert \cat(\fr) \vert. 
+	\end{equation}
+\end{lemma} 
+\begin{proof}
+	For each reaction, there are $\vert \cat(\fr) \vert$ catalyzations. Hence, there are \linebreak $N=\prod_{\fr\in \RAF}\ \vert \cat(\fr) \vert$ pairwise distinct 
+	combinations of possible monocatalyzations for F-reactions in $\RAF$ Let $\cat''(\FR), \cat''(\FR) \subseteq \cat(\FR), \cat''(\FR)\neq \cat''(\FR)$ adhere 
+	to conditions $i.$ and $ii.$ of Lemma~\ref{lem:mono}. Thus, for each $\fr \in \RAF: \vert \cat(\fr)\vert = 1$. In addition, $\mathbf{\Phi}'\coloneqq \{X, \FR, \cat'(\FR)\}$ 
+	and $\mathbf{\Phi}''\coloneqq \{X, \FR, \cat''(\FR)\}$ satisfy $\mathbf{\Phi}',\mathbf{\Phi}''\subseteq \mathbf{\Phi}$ and $\mathbf{\Phi}'\neq \mathbf{\Phi}''$. 
+	By Lemma~\ref{lem:mono}, $\RAF$ is also a RAF in $\mathbf{\Phi}'$ and $\mathbf{\Phi}''$.  
+\end{proof}
 
 
-Finally, we underline that irreducibility is a property which is of interest only for RAF, which are not CAF. We have indeed the following proposition:
+We remark that $N$, as determined in Lemma~\ref{lem:ExpoSubCRS}, reflects only a lower bound, since 
+any proper subset $\tilde{\FR}\subseteq \FR: \RAF\subseteq \tilde{\FR}$ defines a sub-CRS on the same set of 
+species and catalyzations restricted to $\tilde{\FR}$. In particular, the example of Eq.~\eqref{eq:ExReacSeq} has 
+only one irreducible RAF, i.e., $\RAF\coloneqq \{\fr_1\}$, and for $n=2$ the sub-CRS $(\{x_0,x_1,x_2\}, \{r_1\}, \{\{(\fr_1)\}\}$ 
+and $(\{x_0,x_1,x_2\}, \{\fr_1,\fr_2\}, \{\{(x_1)\}, \{(x_2)\}\}$  satisfy condition $i.$ and $ii.$ of Lemma~\ref{lem:ExpoSubCRS}.}
+
+Finally, we underline that irreducibility is a property that is of interest only for RAF, which are not CAF. We have the following proposition indeed:
 \vspace{6pt}
 \begin{proposition}\label{prop:Caftrivial}
 Any irreducible RAF $\RAF$, which is itself a CAF, is a single F-reaction $\RAF=\{\fr\}$.
