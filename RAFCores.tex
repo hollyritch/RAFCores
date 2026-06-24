@@ -1268,7 +1268,24 @@ Indeed, a species vertex cannot be a cut-vertex.
   Let $\RAF$ be a non-trivial, irreducible RAF. If $\princess(\RAF)$ is not
   a strong block, then every cut-vertex is an F-reaction. 
 \end{lemma}
+\begin{proof}
+	Assume there is a cut-vertex $w\in X(\princess)$. Then
+	$\princess[V(\princess)\setminus \{w\}]$ is composed of at least two
+  	connected components $\princess_1$ and $\princess_2$. Then for any two
+  	vertices $v\in \princess_1$ and $u\in \princess_2$ we have $w\in P_{uv}$
+  	and $w\in P_{vu}$ for arbitrary paths connecting $u$ and $v$. Therefore,
+  	there is no $x_1\in X(\princess_1)$ such that $x_1$ is an F-reactant,
+  	F-product, or F-catalyst for any reaction $r_2\in \FR(\princess_2)$, and
+  	there is no $x_2\in X(\princess_2)$ such that $x_2$ is a F-reactant,
+  	F-product, or F-catalyst for any reaction $r_1\in \FR(\princess_1)$.
+  	Then $\closure{\FR(\princess_1)}{\food}\neq \emptyset$, implying that
+  	$\FR(\princess_1)$ is a RAF or (not mutually exclusive)
+  	$\closure{\FR(\princess_2)}{\food}\neq \emptyset$, implying that
+  	$\FR(\princess_2)$ is a RAF. In either case, this contradicts the
+  	assumption that $\RAF$ is an irreducible RAF.
+\end{proof}
 \vspace{6pt}
+\holy{RG until here}
 
 Cut-vertices in $\princess(\RAF)$ and $\lord(\RAF)$ are not unrelated from
 each other. In particular, only equivalence classes of cut-vertices in
