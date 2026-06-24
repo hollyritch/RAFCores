@@ -688,7 +688,7 @@ A reflexively autocatalytic set (RAF) is then defined as follows:
 
 We remark that Property~$ii.$ together with the definition of the closure, Eq.~\eqref{eq:Closure}, directly implies 
 that all F-products of any F-reaction $\fr\in \RAF$ are also contained in $\closure{\RAF}{\food}$, thus $\fproducts(\fr)\subseteq
-\closure{\RAF}{\food}$. It is also worthwhile noting that Property~$i.$ and ~$ii.$ are essentially independent to each other, in the sense that Property~$i.$ depends only on $X$ and $\FR$, and not on the catalyzations. This reveals an inherent freedom in the definition of catalyzations of a RAF, as the 
+\closure{\RAF}{\food}$. It is also worthwhile noting that Property~$i.$ and ~$ii.$ are essentially independent to each other. In particular, Property~$i.$ depends only on $X$ and $\FR$, and not on the catalyzations. This reveals an inherent freedom in the definition of catalyzations of a RAF, as the 
 following Lemma underlines.
 
 
@@ -786,43 +786,35 @@ directly yields the following structural lemma.
 Indirectly assume there exist two F-reactions $\fr_1,\fr_2\in \RAF$ such that \eqref{eq:netreaction} 
 holds and assume, without loss of generality, that $\fr_1\preceq \fr_2$. Consider the set 
 $\RAF'\coloneqq \RAF \setminus \fr_2$. Since \eqref{eq:netreaction} holds, it follows that 
-$\closure{\RAF}{\food} = \closure{\RAF'}{\food}$ \holy{, since $\fr_1$ and $\fr_2$ have the same 
-F-reactants and F-products.} Therefore, $\RAF'$ is (i) Reflexively Autocatalytic, since $\RAF$ is, 
+$\closure{\RAF}{\food} = \closure{\RAF'}{\food}$, since $\fr_1$ and $\fr_2$ have the same 
+F-reactants and F-products. Therefore, $\RAF'$ is (i) Reflexively Autocatalytic, since $\RAF$ is, 
 and (ii) is $\food$-generated; in particular, $\RAF'$ is a RAF which contradicts $\RAF$ being irreducible.
 \end{proof}
 
 Since a RAF is defined in Def.~\ref{def:RAF} as a subset of F-reactions, Def.~\ref{def:irrerRAF} imposes 
 a minimality condition only on the set of F-reactions. However, motivated by the fact that in the CRN setting 
 different catalyzations correspond to different reactions, we also consider irreducible RAFs $\RAF$ with a 
-minimal number of catalyzations \holy{while conserving irreducibility. 
+minimal number of catalyzations while conserving irreducibility. 
 
-In Lemma~\ref{lem:ArbCat} catalyzations could, in theory, be chosen arbitrarily as long as they satisfy Property~$i.$ 
-of Def.~\ref{def:RAF}. Although the RAF property is maintained under this procedure, irreducibility is not guaranteed 
-to be. In fact, for any first-generation F-reaction $\fr \in \RAF$, i.e., $\gamma(\fr) = 1$, the catalyzation 
-$\cat(\fr) \coloneqq \{\fproducts(\fr)\}$ suffices to render $\{\fr\}$ an irreducible RAF. The subsequent Lemma, however, 
-allows us to consider minimal catalyzations without changing irreducibility; in particular, it shows that one catalyzation per 
-reaction, i.e. $|\cat(\fr)|=1$ for every F-reaction $\fr$, always suffices.
+For any $\food$-generated set $\RAF$, Lemma~\ref{lem:ArbCat} shows indeed that infinitely many catalyzations exist that render $\RAF$ a RAF. Complementarily, here we address which catalyzation subsets $\cat'(\FR)\subset \cat(\FR)$ preserve the fact that a $\food$-generated set $\RAF$, which is an irreducible RAF in the CRS $(X,\FR, \cat(\FR))$, is still an irreducible RAF in the CRS $(X,\FR, \cat'(\FR))$. The following Lemma shows that $\cat'(\FR)$ can always be chosen such that $|\cat'(\fr)|=1$  for all F-reactions $\fr\in \RAF$.
 
 \vspace{6pt}
 \begin{lemma}\label{lem:mono}
 	Let $\mathbf{\Phi}\coloneqq (X,\FR,\cat(\FR))$ be a CRS with specified \emph{food set} $\food\subseteq X$ 
-	and let $\RAF$ be an (irreducible) RAF. Then $\RAF$ is also an (irreducible) RAF in any CRS $(X, \FR,\cat'(\FR))$ 
-	where the catalyzations $\cat'(\FR)$ satisfy:
-	\begin{itemize}
-		\item[i.]{$\cat'(\fr)=\{c\}$ with $\emptyset\neq c\subseteq \closure{\RAF}{\food}$, if $\fr\in \RAF$,}
-		\item[ii.]{$\cat'(\fr) = \cat(\fr)$, if $\fr \notin\RAF$.}
-	\end{itemize}
+	and let $\RAF$ be an irreducible RAF. Then $\RAF$ is also an irreducible RAF in any CRS $(X, \FR,\cat'(\FR))$ 
+	where the catalyzations $\cat'(\FR)\subseteq\cat(\FR)$ satisfy:
+	\begin{equation}\label{eq:casesmono}\cat'(\fr)=\begin{cases}
+	   \{c\}\text{ with $\emptyset\neq c\subseteq \closure{\RAF}{\food}$}\quad &\text{if $\fr\in \RAF$,}\\ 
+\cat(\fr)&\text{otherwise.}
+	\end{cases} , 
+    \end{equation}
 \end{lemma}
 \begin{proof}
-	The statement for RAFs in general is a direct consequence of Lemma~\ref{lem:ArbCat}. Let therefore $\RAF$ be an 
-	irreducible RAF and assume indirectly that the statement ist not true. Then there is a CRS $\mathbf{\Phi}'\coloneqq 
-	(X, \FR, \cat'(\FR))$ with catalyzations satisfying properties $i.$ and $ii.$ and an irreducible RAF $\RAF'$ in $\mathbf{\Phi}'$ 
-	that is a proper subset of $\RAF$. Thus, $\RAF'$ satisfies both Property~$i.$ and $ii.$ of Def.~\ref{def:RAF}. We observe 
-	that $\closure{\RAF'}{\food}$ is independent of the underlying catalyzation. For each $\fr \in \RAF'$ requirement $i.$ satisfies
-	Property~$i.$ of Def.~\ref{def:RAF} also in $\mathbf{\Phi}$. Thereby, $\RAF'$ is a RAF in $\Phi$, which is a contradiction since $\RAF$ 
-	was an irreducible RAF. 
+	 The first case in \eqref{eq:casesmono} guarantees that $\RAF$ is reflexively autocatalytic in $(X, \FR,\cat'(\FR))$ .
+     Once a set $\RAF$ is reflexively autocatalytic, his being an irreducible RAF only depends on the $\food$-generated property, which - in turn - is independent from the catalyzations. Therefore, $\RAF$ is an irreducible RAF in $(X, \FR,\cat'(\FR))$
 \end{proof}
-}
+
+\NV{NV till here.}
 
 \vspace{6pt}
 Lemma~\ref{lem:mono} suggests introducing the following notion.
