@@ -1278,8 +1278,6 @@ satisfied by the species from inside. A species vertex can therefore never be a 
   	$\FR(\princess_1)$ or $\FR(\princess_2)$ is a RAF, respectively. In either case, this 
 	contradicts the assumption that $\RAF$ is an irreducible RAF.
 \end{proof}
-\vspace{6pt}
-\holy{RG until here}
 
 %Cut-vertices in $\princess(\RAF)$ and $\lord(\RAF)$ are not unrelated from
 %each other. In particular, only equivalence classes of cut-vertices in
@@ -1295,30 +1293,60 @@ satisfied by the species from inside. A species vertex can therefore never be a 
 
 \subsubsection{Strong Blocks}
 
-The existence of cut-vertices, which can only be reaction vertices, enables
-the decomposition of $\princess$ and $\lord$ into strong blocks. For the
-graph $\lord(\RAF)$, each of these blocks contains an autocatalytic core \NV{[Not yet introduced]},
-which is warranted by a unique structural property common to any strong
-block that guarantees semipositivity. In particular, each block in
-$\princess(\RAF)$ and $\lord(\RAF)$ contains reaction vertices for which
-all reactants \NV{[`reactants' for an F-reaction is not well defined..does it mean the support of one catalyzation or of all catalyzations?]} are F-catalysts but not F-reactants.  We thereby collect them
-in the following sets:
+The existence of cut-vertices, which can only be reaction vertices, allows for
+the decomposition of $\princess$ into maximal strong blocks $\block_1,\ldots, 
+\block_n$. Food-connected blocks of $\princess(\RAF)$ contain F-reaction 
+vertices whose F-reactants are all elements of $\food$ and thereby no vertices 
+of the block itself. Before we state any further results formally, we collect these 
+vertices for each maximal strong block in the following sets:
 \begin{equation}
-  \begin{split}
-    \FR^*(\block)\coloneqq \{\fr\in \FR(\block) \ | \ s^-_{x\fr}>0
-    \Rightarrow s^+_{x\fr}=s^-_{x\fr}, \forall x\in X(\block)\}
-    \\ R^*(\block)\coloneqq \{r\in \varphi^{-1}{\FR}(\block) \ |
-    \ s^-_{xr}>0 \Rightarrow s^+_{xr}=s^-_{xr}, \forall x\in X(\block)\}.
-  \end{split}
+    \FR^*(\block)\coloneqq \{\fr\in \FR(\block) \ | \ \nexists x\in X(B): \sigma^-_{x\fr}>0\}
+    \\ 
+%    R^*(\block)\coloneqq \{r\in \varphi^{-1}{\FR}(\block) \ |
+%    \ s^-_{xr}>0 \Rightarrow s^+_{xr}=s^-_{xr}, \forall x\in X(\block)\}.
 \end{equation}
-\NV{[the notation $s^-_{x\fr}$ is not defined / not clear (I have already changed indeed in other instances before)]}
-and refer to these vertices as \emph{pure F-reactions} and \emph{pure
-reactions}, respectively.
+and refer to them as \emph{liberal F-reactions}. A simple consequence of the strong 
+connectedness of $\princess(\block)$ is that each liberal reaction has at least one 
+F-catalyst. We now show that $\FR^*(\block)$ is non-empty for any maximal strong 
+block. 
 \vspace{6pt}
 \begin{lemma}\label{lem:cutVertexPureCat}
-  For a non-trivial, irreducible RAF $\RAF$, any strong block $\block$ of
-  $\princess(\RAF)$ contains a pure reaction.
+  Every strong block $\block$ of $\princess(\RAF)$ contains a liberal reaction.
 \end{lemma}
+\begin{proof}
+  Strong blocks $\block$ that contain an F-reaction $\fr: \rgen(\fr)=1$. For them
+  all F-reactants are elements of $\food$. Since $\princess[\block]$ is 
+  strongly-connected, it has at least one F-catalyst that is not an F-reactant.
+  
+  Any other strong block $\block'$ that is not food-connected contains a 
+  cut-vertex $\fr_1\in \RAF$. We start with the simple case in which $\block'$ 
+  comprises only one cut-vertex. We observe that $\rgen(\fr_1)< \rgen(\fr)$, 
+  for all $\fr\in \FR(\block')\setminus \{\fr_1\}$. Assume a species $x\in X(\block')$ 
+  is an F-reactant for $\fr_1$. This, however, implies that $x$ is an F-product 
+  of another F-reaction $\fr_2\in \FR(\block')\Rightarrow \rgen(\fr_2)< \rgen(\fr_1)$, a contradiction.
+
+  Assume now that $\block'$ has cut-vertices: $\FR^*(\block')\coloneqq
+  \{\fr^*_1, \ldots, \fr^*_k\}$. We may then choose $\fr_j^*:
+  \rgen(\fr_j^*)\leq \rgen(\fr^*_i), \forall \ \fr^*_i\in
+  \FR^*(\block')$. Assume now that $\fr_j^*$ has an F-reactant $x_j\in
+  X(\block')$. Then $x_j$ is an F-product of some reaction in $\fr_1$, and
+  $\rgen(\fr_1)<\rgen(\fr^*_j)$. Then $\fr_1$ cannot be a cut-vertex since
+  then $\rgen(\fr_1)<\rgen(\fr^*_j)\leq \rgen(\fr_1)$, which is a
+  contradiction. Thus, $\fr_1$ is not a cut-vertex and thereby has an
+  F-reactant $x_1 \in X(\block')$. Then $x_1$ is an F-product of some
+  F-reaction $\fr_2\in \FR(\block')$. If $\fr^*_j=\fr_2$ then
+  $\rgen(\fr^*_j)< \rgen(\fr_1)<\rgen(\fr^*_j)$, a
+  contradiction. Otherwise, $\rgen(\fr_2)<\rgen(\fr_1)<\rgen(\fr^*_j)$.  By
+  iterative application of upper argument, we obtain with the finiteness of
+  $\block$:
+  \begin{equation}
+    \rgen(\fr_k)<\rgen(\fr_{k-1}) <\ldots < \rgen(\fr_l)
+  \end{equation}
+  with $r_k=r_l$, which yields a contradiction and thereby
+  $\rgen(\fr^*_j)\leq \rgen(\fr), \forall \fr\in \FR(\block)\setminus
+  \{\fr_1\}$ and $\rgen(\fr^*_j)< \rgen(\fr)$ for all $\fr\in
+  \FR(\block)\setminus \FR^*(\block')$.
+\end{proof}
 \vspace{6pt}
 %
 Following the same line of argument as in the proof \NV{[where is the proof? in SI?]} of
