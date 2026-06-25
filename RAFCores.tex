@@ -845,29 +845,30 @@ that carry the original irreducible RAF.
 \begin{lemma}\label{lem:ExpoSubCRS}
 	Let $\mathbf{\Phi}\coloneqq (X,\FR,\cat(\FR))$ be a CRS with specified \emph{food set} $\food\subseteq X$ 
 	and $\RAF$ be an irreducible RAF. Then there exist exactly $N$ CRS $\mathbf{\Phi}_1,\ldots, \mathbf{\Phi}_N$ 
-	pairwise disjoint such that for each $1\leq i\leq N$ it holds that
+	such that for each $1\leq i,j\leq N$ it holds that
 	\begin{itemize}
-		\item[i.]{$\mathbf{\Phi}_i\subseteq \mathbf{\Psi}\coloneqq (\closure{\RAF}{\food}, \RAF, \cat(\RAF)$,} 
-		\item[ii.]{$\RAF$ is a monocatalyzed irreducible RAF in $\mathbf{\Phi}_i$} 
+		\item[i.]{$\mathbf{\Phi}_i$ and $\mathbf{\Phi}_j$ are pairwise disjoint, i.e., $\mathbf{\Phi}_i\neq \mathbf{\Phi}_j, i\neq j$.}
+		\item[ii.]{$\mathbf{\Phi}_i\subseteq \mathbf{\Psi}\coloneqq (\closure{\RAF}{\food}, \RAF, \cat(\RAF)$,} 
+		\item[iii.]{$\RAF$ is a monocatalyzed irreducible RAF in $\mathbf{\Phi}_i$} 
 	\end{itemize}
-	and $N$ satisfies
-	\begin{equation}
+	while $N$ satisfies
+	\begin{equation} \label{eq:ExpoNum}
 		N = \prod_{\fr\in \RAF}\ \vert \cat(\fr) \vert. 
 	\end{equation}
 \end{lemma} 
 \begin{proof}
 	We first note that for a sub-CRS $\mathbf{\tilde{\Phi}}$, the set of species and F-reactions need to satisfy $\tilde{X}=\closure{\RAF}{\food}$ and 
-	$\tilde{FR}=\RAF$, respectively, since otherwise $\RAF$ would not be a RAF in $\mathbf{\tilde{\Phi}}$. Secondly, for each F-reaction, there are 
+	$\tilde{\FR}=\RAF$, respectively, since otherwise $\RAF$ would not be a RAF in $\mathbf{\tilde{\Phi}}$. Secondly, for each F-reaction, there are 
 	$\vert \cat(\fr) \vert$ catalyzations. Hence, there are \linebreak $N=\prod_{\fr\in \RAF}\ \vert \cat(\fr) \vert$ pairwise distinct combinations of possible 
 	monocatalyzations for all F-reactions in $\RAF$. Let $\cat'(\RAF), \cat''(\RAF) \subseteq \cat(\RAF)$ with $\cat'(\RAF)\neq \cat''(\RAF)$ adhere 
 	to conditions $i.$ and $ii.$ of Lemma~\ref{lem:mono}. Thus, for each $\fr \in \RAF: \vert \cat(\fr)\vert = 1$. In addition, 
 	$\mathbf{\Phi}'\coloneqq (\closure{\RAF}{\food}, \RAF, \cat'(\RAF))$ and $\mathbf{\Phi}''\coloneqq (\closure{\RAF}{\food}, \RAF, \cat''(\RAF))$ 
-	satisfy $\mathbf{\Phi}',\mathbf{\Phi}''\subseteq \mathbf{\Phi}(\RAF)$ as well as $\mathbf{\Phi}'\neq \mathbf{\Phi}''$. Then $\RAF$ is 
-	monocatalyzed and by Lemma~\ref{lem:mono} an irreducible RAF in both $\mathbf{\Phi}'$ and $\mathbf{\Phi}''$. 
+	satisfy $\mathbf{\Phi}'\neq \mathbf{\Phi}''$ ($i.$) as well as $\mathbf{\Phi}',\mathbf{\Phi}''\subseteq \mathbf{\Psi}$ ($ii.$). Then $\RAF$ is 
+	monocatalyzed and by Lemma~\ref{lem:mono} an irreducible RAF in both $\mathbf{\Phi}'$ and $\mathbf{\Phi}''$ ($iii.$). 
 \end{proof}
 
 We remark that $N$, as determined in Lemma~\ref{lem:ExpoSubCRS}, reflects only a lower bound if $\mathbf{\Psi}=\mathbf{\Phi}$, since 
-any proper subset $\tilde{\FR}\subseteq \FR: \RAF\subseteq \tilde{\FR}$ defines a sub-CRS on the same set of 
+any subset $\tilde{\FR}\subseteq \FR: \RAF\subset \tilde{\FR}$ defines a sub-CRS on the same set of 
 species and catalyzations restricted to $\tilde{\FR}$. In particular, the example of Eq.~\eqref{eq:ExReacSeq} has 
 only one irreducible RAF, i.e., $\RAF\coloneqq \{\fr_1\}$, and for $n=2$ the sub-CRS $(\{x_0,x_1,x_2\}, \{\fr_1\}, \{\{(x_1)\}\}$ 
 and $(\{x_0,x_1,x_2\}, \{\fr_1,\fr_2\}, \{\{(x_1)\}, \{(x_2)\}\}$  satisfy condition $i.$ and $ii.$ of Lemma~\ref{lem:ExpoSubCRS}.
@@ -876,7 +877,7 @@ and $(\{x_0,x_1,x_2\}, \{\fr_1,\fr_2\}, \{\{(x_1)\}, \{(x_2)\}\}$  satisfy condi
 Finally, we underline that irreducibility is a property that is of interest only for RAFs that are not CAFs. We have the following proposition indeed:
 \vspace{6pt}
 \begin{proposition}\label{prop:Caftrivial}
-Any irreducible RAF $\RAF$, which is itself a CAF, is a single F-reaction $\RAF=\{\fr\}$.
+Any irreducible RAF $\RAF$ that is itself a CAF is a single F-reaction $\RAF=\{\fr\}$.
 \end{proposition}
 \begin{proof}
 Let $\RAF$ be an irreducible RAF that is a CAF and consider any F-reaction $\fr\in \RAF$, which satisfies $\gamma(\fr)=1$. By Def.~\ref{def:CAF} 
@@ -951,9 +952,7 @@ To keep the exposition concise, we assume this exclusion throughout and do not r
 \subsection{The Bipartite and Reaction Graphs of irreducible RAFs}
 
 Within this section, we will consider a CRS $\Phi\coloneqq (X,\FR,\cat(\FR))$ with
-food-set $\food\subseteq X$. Recall that a sub-CRS $\mathbf{\Phi}'$ is a triple 
-$(X', \FR', \cat'(\FR))$ such that $X'\subseteq X, \FR'\subseteq \FR,  
-\cat'(\FR)\subseteq \cat(\FR)$. In particular, we focus on an irreducible, monocatalyzed 
+food-set $\food\subseteq X$. In particular, we focus on an irreducible, monocatalyzed 
 RAF $\RAF$ with corresponding CRS 
 \begin{equation}\label{eq:RAF-CRS}
   \mathbf{\Phi}':= (\closure{\RAF}{\food}, \RAF, \cat'(\RAF))
@@ -1204,19 +1203,13 @@ golnik_autocatalytic_2026}. This result suggests identifying the maximal strong 
 %    $\RGraph(\queen')$ and $\RGraph(\king')$.}
 %  \label{ex:CutVertex}
 %\end{figure}
+Strongly connected graphs are not necessarily strong blocks, since they can still contain cut-vertices. 
 The Example depicted in Fig.~\ref{ex:CutVertex2} illustrates an irreducible RAF $\RAF$, such that 
-$\princess(\RAF)$ contains a cut-vertex, i.e., $\fr_2$ since its removal disconnects the graph. 
-Both maximal strong blocks, i.e., $\princess[\{x_1,x_2\} \cup \{\fr_1,\fr_2\}]$ and 
+$\princess(\RAF)$ contains a cut-vertex, i.e., $\fr_2$ as its removal disconnects the graph. The R-graph 
+of an irreducible, monocatalyzed RAF is therefore either a strong block or it contains a cut-vertex, but not 
+In Fig.~\ref{CutVertex2} both maximal strong blocks $\princess[\{x_1,x_2\} \cup \{\fr_1,\fr_2\}]$ and 
 $\princess[\{x_3,x_4\}\cup \{\fr_2,\fr_3\}]$ thereby share the common cut F-reaction vertex $\fr_2$. 
-Indeed, a species vertex cannot be a cut-vertex.
-
-\vspace{6pt}
-\begin{corollary}
-  Let $\RAF$ be an irreducible, monocatalyzed RAF. Then $\princess(\RAF)$
-  is a strong block or contains a cut-vertex. 
-\end{corollary}
-\vspace{6pt}
-%
+It turns out that a species vertex, indeed, cannot be a cut-vertex.
 
 \begin{figure}[bth]
   \begin{minipage}[c]{0.49\textwidth}
