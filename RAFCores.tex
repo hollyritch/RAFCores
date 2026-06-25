@@ -585,7 +585,7 @@ A Reflexively Autocatalytic F-generated set (RAF) is then defined as follows \ho
   \vspace{6pt}
   \begin{itemize} 
   \item[i.]{\emph{Reflexively Autocatalytic} (RA) if, for each $\mathbf{r}\in \RAF$,  
-  there exists one catalyzation $c\in \cat(\mathbf{r})$ such that $c \subseteq \closure{\RAF}{\food}$;}\\[-1.0em]
+  there exists at least one catalyzation $c\in \cat(\mathbf{r})$ such that $c \subseteq \closure{\RAF}{\food}$;}\\[-1.0em]
     %\feducts(\RAF)\cup \fproducts(\RAF)$;}\\[-1.0em]
   \item[ii.]{\emph{\food-generated} (F) if $\feducts(\RAF)\subseteq
     \closure{\RAF}{\food}$;}\\[-1.0em]
@@ -725,7 +725,7 @@ F-reactions $\fr\in \RAF$.
 	and let $\RAF$ be an irreducible RAF. Then $\RAF$ is also an irreducible RAF in any CRS $(X, \FR,\cat'(\FR))$ 
 	where the catalyzations $\cat'(\FR)\subseteq\cat(\FR)$ satisfy:
 	\begin{equation}\label{eq:casesmono}\cat'(\fr)=\begin{cases}
-	   \{c\}\text{ with $\emptyset\neq c\subseteq \closure{\RAF}{\food}$}\quad &\text{if $\fr\in \RAF$,}\\ 
+	   \{c\}\text{ with $c\subseteq \closure{\RAF}{\food}$}\quad &\text{if $\fr\in \RAF$,}\\ 
 \cat(\fr)&\text{otherwise.}
 	\end{cases}, 
     \end{equation}
@@ -736,52 +736,33 @@ F-reactions $\fr\in \RAF$.
      property, which - in turn - is independent from the catalyzations. Therefore, $\RAF$ is an irreducible RAF in $(X, \FR,\cat'(\FR))$
 \end{proof}
 
-\NV{NV till here.}
 
 \vspace{6pt}
 Lemma~\ref{lem:mono} suggests introducing the following notion.
 \vspace{6pt}
 \begin{definition}
-Let $(X,\FR,\cat(\FR))$ be a CRS with specified \emph{food set} $\food\subseteq X$. We call $\RAF$ a monocatalyzed 
-RAF if it is a RAF and it holds $|\cat(\fr)|=1$ for all F-reactions $\fr \in \RAF$.
+Let $(X,\FR,\cat(\FR))$ be a CRS with specified \emph{food set} $\food\subseteq X$. We call $\RAF$ a \emph{monocatalyzed 
+RAF} if it is a RAF and it holds $|\cat(\fr)|=1$ for all F-reactions $\fr \in \RAF$.
 \end{definition}
 
 We stress that a monocatalyzed RAF may include, nevertheless, F-reactions $\fr$, whose unique catalyzation $c$ is a set 
-of multiple species, i.e. $c=\{x_1,..., x_n\}$. \holy{In addition, since irreducibility of a RAF is not affected by the choice of 
-monocatalyzations from the set $\cat(\FR)$, as shown in Lemma~\ref{lem:mono}, there exist exponentially many sub-CRS 
-that carry the original irreducible RAF.
+of multiple species, i.e. $c=\{x_1,..., x_n\}$. Lemma \ref{lem:mono} implies that, for a CRS $\mathbf{\Phi}=(X,\FR,\cat(\FR))$ with irreducible RAF $\RAF\subseteq\FR$, there exists exponentially many sub-CRS $\Phi'_i$ for which $\RAF$ is a monocatalyzed irreducible RAF. This is formalized in the following lemma.
 
+\vspace{6pt}
 \begin{lemma}\label{lem:ExpoSubCRS}
-	Let $\mathbf{\Phi}\coloneqq (X,\FR,\cat(\FR))$ be a CRS with specified \emph{food set} $\food\subseteq X$ 
-	and $\RAF$ be an irreducible RAF. Then there exist exactly $N$ CRS $\mathbf{\Phi}_1,\ldots, \mathbf{\Phi}_N$ 
-	such that for each $1\leq i,j\leq N$ it holds that
-	\begin{itemize}
-		\item[i.]{$\mathbf{\Phi}_i$ and $\mathbf{\Phi}_j$ are pairwise disjoint, i.e., $\mathbf{\Phi}_i\neq \mathbf{\Phi}_j, i\neq j$.}
-		\item[ii.]{$\mathbf{\Phi}_i\subseteq \mathbf{\Psi}\coloneqq (\closure{\RAF}{\food}, \RAF, \cat(\RAF)$,} 
-		\item[iii.]{$\RAF$ is a monocatalyzed irreducible RAF in $\mathbf{\Phi}_i$} 
-	\end{itemize}
-	while $N$ satisfies
-	\begin{equation} \label{eq:ExpoNum}
-		N = \prod_{\fr\in \RAF}\ \vert \cat(\fr) \vert. 
+	Let $\mathbf{\Phi}=(X,\FR,\cat(\FR))$ be a CRS with specified \emph{food set} $\food\subseteq X$ 
+	and $\RAF$ be an irreducible RAF. Then there exist at least $N$ distinct sub-CRS $\mathbf{\Phi}'_1,\ldots,  \mathbf{\Phi}'_N$ with 
+    \begin{equation} \label{eq:ExpoNum}
+		N = \prod_{\fr\in \RAF}\ \vert \{ c \in\cat(\fr) \; \mid\; c \subseteq \closure{\RAF}{\food} \vert, 
 	\end{equation}
+	such that for $i=1,\ldots,N$ it holds that $\RAF$ is a monocatalyzed irreducible RAF in $\mathbf{\Phi}_i$.
 \end{lemma} 
 \begin{proof}
-	We first note that for a sub-CRS $\mathbf{\tilde{\Phi}}$, the set of species and F-reactions need to satisfy $\tilde{X}=\closure{\RAF}{\food}$ and 
-	$\tilde{\FR}=\RAF$, respectively, since otherwise $\RAF$ would not be a RAF in $\mathbf{\tilde{\Phi}}$. Secondly, for each F-reaction, there are 
-	$\vert \cat(\fr) \vert$ catalyzations. Hence, there are \linebreak $N=\prod_{\fr\in \RAF}\ \vert \cat(\fr) \vert$ pairwise distinct combinations of possible 
-	monocatalyzations for all F-reactions in $\RAF$. Let $\cat'(\RAF), \cat''(\RAF) \subseteq \cat(\RAF)$ with $\cat'(\RAF)\neq \cat''(\RAF)$ adhere 
-	to conditions $i.$ and $ii.$ of Lemma~\ref{lem:mono}. Thus, for each $\fr \in \RAF: \vert \cat(\fr)\vert = 1$. In addition, 
-	$\mathbf{\Phi}'\coloneqq (\closure{\RAF}{\food}, \RAF, \cat'(\RAF))$ and $\mathbf{\Phi}''\coloneqq (\closure{\RAF}{\food}, \RAF, \cat''(\RAF))$ 
-	satisfy $\mathbf{\Phi}'\neq \mathbf{\Phi}''$ ($i.$) as well as $\mathbf{\Phi}',\mathbf{\Phi}''\subseteq \mathbf{\Psi}$ ($ii.$). Then $\RAF$ is 
-	monocatalyzed and by Lemma~\ref{lem:mono} an irreducible RAF in both $\mathbf{\Phi}'$ and $\mathbf{\Phi}''$ ($iii.$). 
+	 Lemma \ref{lem:mono} implies that there are at least $N=\prod_{\fr\in \RAF}\ \vert \cat(\fr) \vert$  distinct combinations of possible 
+	monocatalyzations for all F-reactions in $\RAF$. Any such monocatalyzation  $\cat'(\RAF)$ provides a sub-CRS $\mathbf{\Phi}'=(X,\FR,\cat'(\FR))$, where $\cat'(\RAF)\subseteq\cat(\FR)$ is arbitrarily extended to $\FR$, for which $\RAF$ is a monocatalyzed irreducible RAF.
 \end{proof}
 
-We remark that $N$, as determined in Lemma~\ref{lem:ExpoSubCRS}, reflects only a lower bound if $\mathbf{\Psi}=\mathbf{\Phi}$, since 
-any subset $\tilde{\FR}\subseteq \FR: \RAF\subset \tilde{\FR}$ defines a sub-CRS on the same set of 
-species and catalyzations restricted to $\tilde{\FR}$. In particular, the example of Eq.~\eqref{eq:ExReacSeq} has 
-only one irreducible RAF, i.e., $\RAF\coloneqq \{\fr_1\}$, and for $n=2$ the sub-CRS $(\{x_0,x_1,x_2\}, \{\fr_1\}, \{\{(x_1)\}\}$ 
-and $(\{x_0,x_1,x_2\}, \{\fr_1,\fr_2\}, \{\{(x_1)\}, \{(x_2)\}\}$  satisfy condition $i.$ and $ii.$ of Lemma~\ref{lem:ExpoSubCRS}.
-}
+%We remark that $N$, as determined in Lemma~\ref{lem:ExpoSubCRS}, reflects only a lower bound if $\mathbf{\Psi}=\mathbf{\Phi}$, since  any subset $\tilde{\FR}\subseteq \FR: \RAF\subset \tilde{\FR}$ defines a sub-CRS on the same set of  species and catalyzations restricted to $\tilde{\FR}$. In particular, the example of Eq.~\eqref{eq:ExReacSeq} has only one irreducible RAF, i.e., $\RAF\coloneqq \{\fr_1\}$, and for $n=2$ the sub-CRS $(\{x_0,x_1,x_2\}, \{\fr_1\}, \{\{(x_1)\}\}$ and $(\{x_0,x_1,x_2\}, \{\fr_1,\fr_2\}, \{\{(x_1)\}, \{(x_2)\}\}$  satisfy condition $i.$ and $ii.$ of Lemma~\ref{lem:ExpoSubCRS}.
 
 Finally, we underline that irreducibility is a property that is of interest only for RAFs that are not CAFs. We have the following proposition indeed:
 \vspace{6pt}
@@ -795,7 +776,9 @@ $c\in \cat(\fr)$ are in the food set $\food$. Therefore $\fr$ is a CAF (and RAF)
 \end{proof}
 
 Due to Prop.~\ref{prop:Caftrivial}, throughout the paper we exclude the trivial CAF case whenever making statements about irreducible RAFs. 
-To keep the exposition concise, we assume this exclusion throughout and do not repeat it explicitly in each statement. 
+To keep the exposition concise, we assume this exclusion throughout and do not repeat it explicitly in each statement.
+
+\NV{NV till here}
 
 %\subsection{Temp}
 %
