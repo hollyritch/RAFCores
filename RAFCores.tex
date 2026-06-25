@@ -1262,7 +1262,7 @@ in the subsequent Lemma.
 \end{figure}
 
 \vspace{6pt}
-\begin{lemma}[Proof: SI]\label{lem:CutVertexReac}
+\begin{lemma}\label{lem:CutVertexReac}
   Let $\RAF$ be an irreducible, monocatalyzed RAF. If $\princess(\RAF)$ is not
   a strong block, then every cut-vertex is an F-reaction. 
 \end{lemma}
@@ -1303,11 +1303,9 @@ Food-connected blocks of $\princess(\RAF)$ contain F-reaction vertices whose
 F-reactants are all elements of $\food$ and thereby no vertices of the block itself. 
 We call such F-reactions \emph{liberal} and collect them for each block in the sets
 \begin{equation}
-    \FR_\ell(\block)\coloneqq \{\fr\in \FR(\block) \ | \ \nexists x\in X(\block): \sigma^-_{x\fr}>0\}.
+    \FR_\ell(\block)\coloneqq \{\fr\in \FR(\block) \ | \ \nexists x\in X(\block): \sigma^-_{x\fr}>0\},
 \end{equation}
-Strong connectedness of $\princess(\block)$ ensures that liberal reactions have at 
-least one F-catalyst inside the block. In addition, for each block $\FR_\ell(\block)$ is 
-not empty. 
+which is, indeed, a non-empty set for each block.
 \vspace{6pt}
 \begin{lemma}\label{lem:cutVertexPureCat}
   Every strong block $\block$ of $\princess(\RAF)$ contains a liberal reaction.
@@ -1325,7 +1323,7 @@ not empty.
   for all $\fr_{\ell_i}\in\FR_\ell(\block)$. Assume now that $\fr_{\ell_j}$ has an F-reactant 
   $x_j\in X(\block)$. Then $x_j$ is an F-product of some reaction in $\fr_1$, and
   $\rgen(\fr_1)<\rgen(\fr_{\ell_j})$. Then $\fr_1$ cannot be a liberal reaction since
-  otherwise $\rgen(\fr_1)<\rgen(\fr^*_j)\leq \rgen(\fr_1)$. Thus, $\fr_1$ 
+  otherwise $\rgen(\fr_1)<\rgen(\fr_{\ell_j})\leq \rgen(\fr_1)$. Thus, $\fr_1$ 
   has an F-reactant $x_1 \in X(\block)$, which is an F-product of some
   F-reaction $\fr_2\in \FR(\block)$. If $\fr_2=\fr_{\ell_j}$ then
   $\rgen(\fr_{\ell_j})< \rgen(\fr_1)<\rgen(\fr_{\ell_j})$, a contradiction. 
@@ -1342,29 +1340,34 @@ not empty.
 \end{proof}
 \vspace{6pt}
 %
+
+The proof of Lemma~\ref{lem:cutVertexPureCat} has two important
+consequences. First, only cut-vertices can be liberal F-reactions, 
+although not all cut-vertices necessarily are. Second, liberal F-reactions 
+take an important position within the pre-order of blocks of an irreducible, 
+monocatalyzed RAFs, as there is always one -- potentially multiple -- with 
+the lowest generation order of all F-reactions inside the block. In addition,
+strong connectedness of $\princess(\block)$ ensures that each liberal F-reactions 
+is connected to its single F-catalyst inside the block. Intuitively, but not trivially 
+following, they also have at least one F-product inside the block, which can 
+the F-catalyst.
+\vspace{6pt}
+\begin{lemma}\label{lem:LibReacFProd}
+	For every liberal reaction $\fr_\ell \in \FR_\ell(\block)$ there is at least on species 
+	$x\in X(\block)$ such that $\sigma^+_{x\fr_\ell}>0$.
+\end{lemma}
+\begin{proof}
+	Assume indirectly that this is not the case. Then $\block$ is composed of the single 
+	F-reaction $\fr_\ell$ and its F-catalyst $x_\ell$. If $x_\ell$ is not an F-product of $\fr_\ell$, 
+	then there is another F-reaction $\fr'$ of a block $\block'\neq\block$ such that 
+	$\sigma^+_{x_\ell\fr'}>0$. Then $x_\ell$ is a cut-vertex, which contradicts 
+	Lemma~\ref{lem:CutVertexReac}.
+\end{proof}
+\vspace{6pt}
 \holy{RG until here}
 
-%Following the same line of argument as in the proof \NV{[where is the proof? in SI?]} of
-%Lemma~\ref{lem:cutVertexPureCat}, the same statement also holds for
-%$\lord(\RAF)$, with the small difference that for some of the cut-vertices
-%$\fr\in \RAF$ all representatives that are not cut-vertices in
-%$\lord(\RAF)$ \NV{[There is no statement here, probably a typo, TBA]}.
-%\vspace{6pt}
-%\begin{corollary}\label{cor:cutVertexPureCat}
-%  For a non-trivial, irreducible RAF $\RAF$, any strong block $B$ of
-%  $\lord(\RAF)$ contains a pure reaction.
-%\end{corollary}
-%\vspace{6pt}
-%
 
-The proof of Lemma~\ref{lem:cutVertexPureCat} has three important
-consequences. First, only cut-vertices can be liberal F-reactions, 
-although not all cut-vertices necessarily are. Second, pure F-reactions take an important role in the partial order
-of strong blocks of irreducible RAFs, as there is always one with the
-lowest generation number in a strong block, according to the partial
-order. Third, Cor.~\ref{cor:cutVertexPureCat} implies that the
-stoichiometric matrix of a strong block $B$ always contains a non-negative
-column. This column represents a pure reaction, i.e., it has only reactants
+This column represents a pure reaction, i.e., it has only reactants
 that are F-catalysts but not F-reactants within $B$ and at least one
 positive entry for a product $y^*\in X(\block): s^+_{yr^*}>0$:
 \begin{equation}
