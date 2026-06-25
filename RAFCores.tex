@@ -357,6 +357,7 @@ as shown in Fig.~\ref{fig:irrRAFCores}.
 
 \section{Catalytic Reaction Systems (CRS)}\label{sec:CRS}
 
+\holy{
 Research on systems of chemical interactions has attracted
 considerable attention, although their formalization lacks
 consistency throughout the various frameworks \cite{lohn_evolving_1998,
@@ -365,185 +366,200 @@ different authors have introduced different notions of reactions
 \cite{muller_what_2022}. We will therefore take advantage of different
 style formats, i.e., $\FR$ and $\CR$, to highlight sets of reactions that
 are derived from Catalytic Reaction Systems \cite{lohn_evolving_1998} 
-and Chemical Reaction Networks \cite{muller_what_2022}, respectively. We
-will see that both sets do not contain the same mathematical objects.
+and Chemical Reaction Networks \cite{muller_what_2022}, respectively. 
+We refer to reaction objects in CRS as F-reactions and denote them in 
+bold, i.e., $\fr \in \FR$, and in CRN as C-reactions $r\in R$ and denote 
+them in normal font. We will see that F-reactions and C-reactions are 
+not the same mathematical objects.
 
 We commence by overviewing Catalytic Reaction Systems (CRS) \textit{sensu} 
-Lohn \cite{lohn_evolving_1998} in our notation. Primarily, we remark that in CRS 
-stoichiometries are often assumed to be implicitly given by the examined 
-chemistry, but are not necessarily stated explicitly, as many results do not depend on them 
-\cite{steel20}. Nevertheless, since they represent an important cornerstone of 
-CRNs, it is crucial to consider them explicitly for deriving a direct relation between 
-CRS and CRNs later on. To distinguish reactions in CRS and CRNs, we refer to 
-reaction objects in CRS as F-reactions and denote them in bold, i.e., $\fr \in \FR$, 
-and in CRN as reactions $r\in R$ and denote them in normal font. 
+Lohn \cite{lohn_evolving_1998} in our notation. Given a set of species $X$, an 
+F-reaction $\fr$ is a tuple, denoted as $\fr=(\feducts(\fr),\fproducts (\fr))$ composed 
+of two subsets of $X$, $\feducts(\fr),\fproducts (\fr) \subseteq X$, that formally describes 
+the transformation from species of $\feducts(\fr)$ into species of $\fproducts(\fr)$. 
+We call elements of $\feducts(\fr)$ and $\fproducts(\fr)$ F-reactants and F-products, 
+respectively. Each F-reaction is additionally associated with a potentially empty 
+set of catalyzations $\cat(\fr)$ that is composed of multi-sets of species from $X$. 
+Each $c\in \cat(\fr)$ encodes a concerted action of species catalyzing the reaction 
+$\fr$ independently from each other. Species $x\in c\in \cat(\fr)$ are called F-catalysts. 
+For a set of F-reactions $\FR$, we gather the catalyzations in the collection 
+$\cat(\FR)=\{\cat(\fr) \ \vert \ \fr\in \FR\}$.  A \emph{Catalytic Reaction System} 
+(CRS) is then the triple $\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$.
 
-Given a set of species $X$, an F-reaction $\fr$ is a tuple, denoted as 
-$\fr=(\feducts(\fr),\fproducts (\fr))$ composed of two subsets of $X$, 
-i.e., $\feducts(\fr),\fproducts (\fr) \subseteq X$, that encodes the 
-transformation of the F-reactant set $\feducts(\fr)$ into the 
-F-product set $\fproducts(\fr)$. Each reaction is associated with 
-a set of catalyzations:
-\begin{equation}
-	\cat(\fr) = \{c(\fr)\},
-\end{equation}
-where $c$ are multi-sets of the species in $X$. 
+In CRS, stoichiometries are often assumed to be implicitly given by the examined 
+chemistry, but are not necessarily stated explicitly, as many results do not depend 
+on them \cite{steel20}. Nevertheless, since they represent an important 
+cornerstone of CRNs, it is crucial to consider them explicitly for deriving a direct 
+relation between CRS and CRNs later on. Therefore, $\sigma^-_{x\fr}, 
+\sigma^+_{x\fr}, x\in X$ denote the nonnegative stoichiometric coefficients for $\fr$. 
+In particular, species $x$ appearing in $\feducts(\fr)$ ($\fproducts(\fr)$) satisfy 
+$\sigma^-_{x\fr}>0 \ (\sigma^+_{x\fr}>0)$. Note that a species $x\in X$ may be 
+an element of both $\feducts(\fr)$ and $\fproducts(\fr)$. Species $y\in X: y\notin 
+\feducts(\fr) \ (y\notin \fproducts(\fr))$ satisfy $\sigma^-_{y\fr}=0 \ (\sigma^+_{y\fr}=0)$. 
 
-are considered indistinguis hable if  they differ only in their F-catalysts but share 
-the same F-reactants and F-products with the same respective stoichiometric 
-multiplicities. To account for this, we introduce the following equivalence relation 
-$\sim$ for two reactions $r_1$ and $r_2$ in the form \eqref{eq:Mod.SmEq}:
+An F-reaction $\fr \in \FR$ can then be denoted as follows:
 \begin{equation}
-    r_1\sim r_2\quad \text{if}\quad \sigma^\pm_{xr_1}=\sigma^\pm_{xr_2} \quad \text{for every $x\in X$}.
-\end{equation}
-We call any equivalence class $[\cdot]_{\sim}$ of this relation on $R$ an 
-\emph{F-reaction}. For simplicity, we formally use the uncatalyzed reaction $\tilde{r}$
-\begin{equation}
-  \sum_{x\in X}\ \sigma^-_{xr}  \cdot x\quad \underset{\tilde{r
-  }}\rightarrow \quad \sum_{x\in X} \ \sigma^+_{xr} \cdot x  ,
-\end{equation}
-with $\kappa_{x\tilde{r}}=0$ for all $x\in X$
-as the natural representative for the associated F-reaction, and we use the bold notation $\mathbf{\tilde{\mathbf{r}}}$ 
-for such an F-reaction, i.e.,
-\begin{equation}
-  \mathbf{\tilde{\mathbf{r}}}:=\{r\in R, \quad r\sim \tilde{r}\},  
-\end{equation}
-even if the uncatalyzed reaction $\tilde{r}$ itself may also not be in $R$. We denote an F-reaction $\fr$ as:
-\begin{equation}
-	\fr: \sum_{x\in X}\ \sigma^-_{xr} \cdot x \quad \xrightarrow{\cat(r), r\in \fr} \sum_{x\in X}\ \sigma^-_{xr} \cdot x.
-\end{equation}
-and use round instead of curly brackets for each catalyzation. 
+	\fr: \sum_{x\in X}\ \sigma^-_{xr} \cdot x \quad \xrightarrow{(c_1),\ldots, (c_n), c\in \cat(\fr)} \sum_{x\in X}\ \sigma^-_{xr} \cdot x.
+\end{equation}}
 
-\NV{Moreover, we may write $\feducts(\tilde{\fr}):=\feducts(\tilde{r})$ and $\fproducts(\tilde{\fr}):=\fproducts(\tilde{r})$, 
-since $\feducts(r) =\feducts(\tilde{r}),$ $\fproducts(r) =\fproducts(\tilde{r}),$ $\forall r \in \mathbf{\tilde{r}}$, and we use 
-the capital $\FR$ for sets of F-reactions. By construction, $\FR=R/\sim$ is the quotient set of $R$ over the equivalence 
-relation $\sim$. For a given set of reactions $R$, we introduce a map $\varphi$ to conveniently obtain the corresponding 
-F-reactions:
-\begin{equation}\label{eq:phimap}
-  \varphi: R\mapsto \FR\quad\quad \varphi(r) \coloneqq \fr, 
-\end{equation}
-where $\FR\coloneqq \{[r]_{\sim} \ | \ r\in R\}$. This allows access to the
-pre-image of a set of F-reactions $\FR$ by $\varphi^{-1}(\FR)$. In particular, we call \emph{catalyzation} any nonempty 
-species set $c\coloneqq \kappa_F(r)\neq\emptyset$ for $r\in \varphi^{-1}(\mathbf{r})$. For an F-reaction $\mathbf{r}$ the 
-set of catalyzations is denoted by 
-\begin{equation}
-	\kappa_F(\mathbf{r})\coloneqq \bigcup_{r\in \varphi^{-1}(\mathbf{r})} \kappa_F(r).
-\end{equation}
-A \emph{Catalytic Reaction System} (CRS) is then the quotient structure $\mathbf{\Phi}=(X,\mathbf{R})$ of a CRN $(X,R)$ 
-induced by the relation $\sim$. It is clear that reactions $r\in R$ are in bijection with F-reactions $\mathbf{r}\in \mathbf{R}$ if 
-and only if, any F-reaction $\mathbf{r}$ contains as an equivalence class a unique reaction $r$, i.e. there are no two reactions 
-$r_1,r_2\in R$ with $r_1\sim r_2$ and thus $|\phi^{-1}(\mathbf{r})|=1$ for all $\mathbf{r}$. In this case, a CRN and a CRS 
-correspond essentially to the same network object.}
+%are considered indistinguis hable if  they differ only in their F-catalysts but share 
+%the same F-reactants and F-products with the same respective stoichiometric 
+%multiplicities. To account for this, we introduce the following equivalence relation 
+%$\sim$ for two reactions $r_1$ and $r_2$ in the form \eqref{eq:Mod.SmEq}:
+%\begin{equation}
+%    r_1\sim r_2\quad \text{if}\quad \sigma^\pm_{xr_1}=\sigma^\pm_{xr_2} \quad \text{for every $x\in X$}.
+%\end{equation}
+%We call any equivalence class $[\cdot]_{\sim}$ of this relation on $R$ an 
+%\emph{F-reaction}. For simplicity, we formally use the uncatalyzed reaction $\tilde{r}$
+%\begin{equation}
+%  \sum_{x\in X}\ \sigma^-_{xr}  \cdot x\quad \underset{\tilde{r
+%  }}\rightarrow \quad \sum_{x\in X} \ \sigma^+_{xr} \cdot x  ,
+%\end{equation}
+%with $\kappa_{x\tilde{r}}=0$ for all $x\in X$
+%as the natural representative for the associated F-reaction, and we use the bold notation $\mathbf{\tilde{\mathbf{r}}}$ 
+%for such an F-reaction, i.e.,
+%\begin{equation}
+%  \mathbf{\tilde{\mathbf{r}}}:=\{r\in R, \quad r\sim \tilde{r}\},  
+%\end{equation}
+%even if the uncatalyzed reaction $\tilde{r}$ itself may also not be in $R$. We denote an F-reaction $\fr$ as:
+%\begin{equation}
+%	\fr: \sum_{x\in X}\ \sigma^-_{xr} \cdot x \quad \xrightarrow{\cat(r), r\in \fr} \sum_{x\in X}\ \sigma^-_{xr} \cdot x.
+%\end{equation}
+%and use round instead of curly brackets for each catalyzation. 
+%
+%\NV{Moreover, we may write $\feducts(\tilde{\fr}):=\feducts(\tilde{r})$ and $\fproducts(\tilde{\fr}):=\fproducts(\tilde{r})$, 
+%since $\feducts(r) =\feducts(\tilde{r}),$ $\fproducts(r) =\fproducts(\tilde{r}),$ $\forall r \in \mathbf{\tilde{r}}$, and we use 
+%the capital $\FR$ for sets of F-reactions. By construction, $\FR=R/\sim$ is the quotient set of $R$ over the equivalence 
+%relation $\sim$. For a given set of reactions $R$, we introduce a map $\varphi$ to conveniently obtain the corresponding 
+%F-reactions:
+%\begin{equation}\label{eq:phimap}
+%  \varphi: R\mapsto \FR\quad\quad \varphi(r) \coloneqq \fr, 
+%\end{equation}
+%where $\FR\coloneqq \{[r]_{\sim} \ | \ r\in R\}$. This allows access to the
+%pre-image of a set of F-reactions $\FR$ by $\varphi^{-1}(\FR)$. In particular, we call \emph{catalyzation} any nonempty 
+%species set $c\coloneqq \kappa_F(r)\neq\emptyset$ for $r\in \varphi^{-1}(\mathbf{r})$. For an F-reaction $\mathbf{r}$ the 
+%set of catalyzations is denoted by 
+%\begin{equation}
+%	\kappa_F(\mathbf{r})\coloneqq \bigcup_{r\in \varphi^{-1}(\mathbf{r})} \kappa_F(r).
+%\end{equation}
 
-\NV{We also stress that a CRS may be fully defined over the formal pair $(X,\mathbf{R)}$ by 
-specifying explicitly the catalyzations $\kappa_F(\mathbf{R}):=\{\kappa_F(\mathbf{r}) \;|\; \mathbf{r}\in \mathbf{R}\}$. 
-This way, a CRS is a triple $\mathbf{\Phi}=(X, \mathbf{R},\kappa_F(\mathbf{R}))$ and the reference to 
-its lift CRN may be omitted. \holy{A triple $\mathbf{\Phi}'\coloneqq (X', \FR',\cat'(\FR))$ is called a sub-CRS 
-of $\mathbf{\Phi}$, denoted as $\mathbf{\Phi}' \subseteq \mathbf{\Phi}$ if $X'\subseteq X, \FR'\subseteq \FR$, 
-and $\cat'(\FR)\subseteq \cat(\FR)$.} The set $R$ may then be retrieved via the catalyzations explicitly, 
-as any pair $(\mathbf{r},c)$ uniquely identifies a reaction $r$ in the CRN setting Eq.~\eqref{eq:Mod.SmEq}. 
-In this case, for a CRS $\mathbf\Phi=(X, \mathbf{R},\kappa_F(\mathbf{R}))$ we will speak of 
-$\Gamma(\mathbf{\Phi}):=(X,R)$ as the \emph{CRN representation} of $\mathbf{\Phi}$.} 
+%A \emph{Catalytic Reaction System} (CRS) is then the quotient structure $\mathbf{\Phi}=(X,\mathbf{R})$ of a CRN $(X,R)$ 
+%induced by the relation $\sim$. It is clear that reactions $r\in R$ are in bijection with F-reactions $\mathbf{r}\in \mathbf{R}$ if 
+%and only if, any F-reaction $\mathbf{r}$ contains as an equivalence class a unique reaction $r$, i.e. there are no two reactions 
+%$r_1,r_2\in R$ with $r_1\sim r_2$ and thus $|\phi^{-1}(\mathbf{r})|=1$ for all $\mathbf{r}$. In this case, a CRN and a CRS 
+%correspond essentially to the same network object.}
+%
+%\NV{We also stress that a CRS may be fully defined over the formal pair $(X,\mathbf{R)}$ by 
+%specifying explicitly the catalyzations $\kappa_F(\mathbf{R}):=\{\kappa_F(\mathbf{r}) \;|\; \mathbf{r}\in \mathbf{R}\}$. 
+%This way, a CRS is a triple $\mathbf{\Phi}=(X, \mathbf{R},\kappa_F(\mathbf{R}))$ and the reference to 
+%its lift CRN may be omitted. \holy{A triple $\mathbf{\Phi}'\coloneqq (X', \FR',\cat'(\FR))$ is called a sub-CRS 
+%of $\mathbf{\Phi}$, denoted as $\mathbf{\Phi}' \subseteq \mathbf{\Phi}$ if $X'\subseteq X, \FR'\subseteq \FR$, 
+%and $\cat'(\FR)\subseteq \cat(\FR)$.} The set $R$ may then be retrieved via the catalyzations explicitly, 
+%as any pair $(\mathbf{r},c)$ uniquely identifies a reaction $r$ in the CRN setting Eq.~\eqref{eq:Mod.SmEq}. 
+%In this case, for a CRS $\mathbf\Phi=(X, \mathbf{R},\kappa_F(\mathbf{R}))$ we will speak of 
+%$\Gamma(\mathbf{\Phi}):=(X,R)$ as the \emph{CRN representation} of $\mathbf{\Phi}$.} 
 
-\NV{Analogously to the bipartite graph representation of a CRN, the bipartite
-graph of a CRS is given as $\queen(X,\mathbf{R})\coloneqq (X \cup
-\FR, E_1\cup E_2)$ with:
+\TODO{Move the following into bipartite Sec 3.3}
+
+\holy{The bipartite K\H{o}nig graph representation of a CRS, is the graph 
+given as $\queen(X,\mathbf{R})\coloneqq (X \cup \FR, E_1\cup E_2)$ with:
 \begin{equation}
   \begin{split}
-    E_1\coloneqq \{(x,\fr) \ | \ x\in X, \fr\in \FR: s^-_{xr}>0 \text{ for some } r \in \fr \} \\
-    E_2\coloneqq \{(\fr, x) \ | \ x\in X, \fr\in \FR: s^+_{xr}>0 \text{ for some } r \in \fr \}
+    E_1\coloneqq \{(x,\fr) \ | \ x\in X, \fr\in \FR: x\in \feducts(\fr) \text{ or } x\in c\in \cat(\fr)\} \\
+    E_2\coloneqq \{(\fr, x) \ | \ x\in X, \fr\in \FR: x\in \fproducts(\fr) \text{ or } x\in c\in \cat(\fr) \}
   \end{split}
-\end{equation}
-As a CRS is a quotient structure of a CRN, it follows that $\queen(X,\mathbf{R})$ 
-is the \emph{quotient} graph of $K(X,R)$ induced by the equivalence relation 
-$\sim$ on the reaction vertices. In particular, $\queen(X,\mathbf{R})$ is
-strongly connected whenever $\king(X,R)$ is strongly
-connected. 
-This follows immediately from the fact that strong connectivity
-is preserved under surjective digraph homomorphisms
-\cite{hell_graphs_2026}. Besides the trivial case of $|\phi^{-1}(\mathbf{r})|=1$ for 
-all $\mathbf{r}$, the converse is in general not true: if $\queen(X,\mathbf{R})$ 
-is strongly connected, $\king(X,R)$ needs not be. 
-As an example consider the following system:
-\begin{equation}
-	\begin{split}
-		r'_1 &: x_3 + (x_1) 		\rightarrow x_2  + (x_1) \\
-		r''_1 &: x_3 + (x_3) 		\rightarrow x_2  + (x_3) \\
-		r_2 &: x_2	+ (x_2)	   	\rightarrow x_1 + (x_2) \\
-		r_3 &: x_3 + (x_3) 		\rightarrow x_4 + (x_3)  \\
-		r_4 &: x_4 + (x_4)		\rightarrow x_3 + (x_4)
-	\end{split}
-\end{equation}
-The corresponding graphs are shown in Fig.~\ref{fig:QScKNot}.
-\begin{figure}[htb]
-  \begin{minipage}[c]{0.5\textwidth}
-    \centering
-    \begin{tikzpicture}
-      \node[draw, cyan, circle] (x1) at (0,0) {$x_1$};
-      \node[draw, cyan, circle] (x2) at (2,0) {$x_2$};
-      \node[draw, magenta, circle] (x3) at (0,-3) {$x_3$};
-      \node[draw, magenta, circle] (x4) at (2,-4.5) {$x_4$};
-      \node[draw, cyan, rectangle] (r1') at (1,-1) {$r_1'$};
-      \node[draw, magenta, rectangle] (r1'') at (1.75,-2) {$r_1''$};
-      \node[draw, cyan, rectangle] (r2) at (1,1) {$r_2$};
-      \node[draw, magenta, rectangle] (r3) at (0,-4.5) {$r_3$};
-      \node[draw, magenta, rectangle] (r4) at (2,-3) {$r_4$};
-       \draw[->, cyan] (x1) to [bend right = 30] (r1');
-      \draw[->, cyan] (r1') to [bend right = 30] (x1);
-      \draw[->, cyan] (r1') to (x2);
-      \draw[->, cyan] (x2) to [bend right = 30] (r2);
-      \draw[->, cyan] (r2) to [bend right = 30] (x2);
-      \draw[->, cyan] (r2) to [bend right = 30] (x1);
-      \draw[->] (x3) to (r1');
-      \draw[->, magenta] (x3) to [bend right = 30] (r3);
-      \draw[->, magenta] (x3) to [bend right = 20] (r1'');
-      \draw[->, magenta] (r1'') to [bend right = 20] (x3);
-      \draw[->] (r1'') to (x2);
-      \draw[->, magenta] (r3) to [bend right = 30] (x3);			   
-      \draw[->, magenta] (r3) to  (x4);
-      \draw[->, magenta] (x4) to [bend right = 30] (r4);
-      \draw[->, magenta] (r4) to [bend right = 30] (x4);
-      \draw[->, magenta] (r4) to  (x3);
-    \end{tikzpicture}
-  \end{minipage}%
-  \hfill%
-  \begin{minipage}[c]{0.5\textwidth}
-    \centering
-    \begin{tikzpicture}
-      \node[draw, circle] (x1) at (0,0) {$x_1$};
-      \node[draw, circle] (x2) at (2,0) {$x_2$};
-      \node[draw, circle] (x3) at (0,-2) {$x_3$};
-      \node[draw, circle] (x4) at (2,-3.5) {$x_4$};
-        \node[draw, rectangle] (r1) at (1,-1) {$r_1$};
-      \node[draw, rectangle] (r2) at (1,1) {$r_2$};
-      \node[draw, rectangle] (r3) at (0,-3.5) {$r_3$};
-      \node[draw, rectangle] (r4) at (2,-2) {$r_4$};
-       \draw[->] (x1) to [bend right = 30] (r1);
-      \draw[->] (r1) to [bend right = 30] (x1);
-      \draw[->] (r1) to (x2);
-      \draw[->] (x2) to [bend right = 30] (r2);
-      \draw[->] (r2) to [bend right = 30] (x2);
-      \draw[->] (r2) to [bend right = 30] (x1);
-      \draw[->] (x3) to [bend right = 30] (r1);
-      \draw[->] (r1) to [bend right = 30] (x3);
-      \draw[->] (x3) to [bend right = 30] (r3);
-      \draw[->] (r3) to [bend right = 30] (x3);			
-      \draw[->] (r3) to  (x4);
-      \draw[->] (x4) to [bend right = 30] (r4);
-      \draw[->] (r4) to [bend right = 30] (x4);
-      \draw[->] (r4) to  (x3);
-    \end{tikzpicture}
-  \end{minipage}
-  \caption{\textbf{Left}: An example for a CRN where only two reactions
-    $r'_1$ and $r''_1$ fall into the same $\sim$ equivalence class with
-    corresponding bipartite K\H{o}nig graph for the CRN (\textbf{left}) and
-    CRS (\textbf{right}). For the CRN, the two strongly connected
-    components are depicted in cyan and magenta.}
-  \label{fig:QScKNot}
-\end{figure}
-\FloatBarrier
-We will see that we regain strong connectedness by requiring minimality 
-on the set of reflexively autocatalytic sets (RAFs).}
+\end{equation}}
+
+%As a CRS is a quotient structure of a CRN, it follows that $\queen(X,\mathbf{R})$ 
+%is the \emph{quotient} graph of $K(X,R)$ induced by the equivalence relation 
+%$\sim$ on the reaction vertices. In particular, $\queen(X,\mathbf{R})$ is
+%strongly connected whenever $\king(X,R)$ is strongly
+%connected. 
+%This follows immediately from the fact that strong connectivity
+%is preserved under surjective digraph homomorphisms
+%\cite{hell_graphs_2026}. Besides the trivial case of $|\phi^{-1}(\mathbf{r})|=1$ for 
+%all $\mathbf{r}$, the converse is in general not true: if $\queen(X,\mathbf{R})$ 
+%is strongly connected, $\king(X,R)$ needs not be. 
+%As an example consider the following system:
+%\begin{equation}
+%	\begin{split}
+%		r'_1 &: x_3 + (x_1) 		\rightarrow x_2  + (x_1) \\
+%		r''_1 &: x_3 + (x_3) 		\rightarrow x_2  + (x_3) \\
+%		r_2 &: x_2	+ (x_2)	   	\rightarrow x_1 + (x_2) \\
+%		r_3 &: x_3 + (x_3) 		\rightarrow x_4 + (x_3)  \\
+%		r_4 &: x_4 + (x_4)		\rightarrow x_3 + (x_4)
+%	\end{split}
+%\end{equation}
+%The corresponding graphs are shown in Fig.~\ref{fig:QScKNot}.
+%\begin{figure}[htb]
+%  \begin{minipage}[c]{0.5\textwidth}
+%    \centering
+%    \begin{tikzpicture}
+%      \node[draw, cyan, circle] (x1) at (0,0) {$x_1$};
+%      \node[draw, cyan, circle] (x2) at (2,0) {$x_2$};
+%      \node[draw, magenta, circle] (x3) at (0,-3) {$x_3$};
+%      \node[draw, magenta, circle] (x4) at (2,-4.5) {$x_4$};
+%      \node[draw, cyan, rectangle] (r1') at (1,-1) {$r_1'$};
+%      \node[draw, magenta, rectangle] (r1'') at (1.75,-2) {$r_1''$};
+%      \node[draw, cyan, rectangle] (r2) at (1,1) {$r_2$};
+%      \node[draw, magenta, rectangle] (r3) at (0,-4.5) {$r_3$};
+%      \node[draw, magenta, rectangle] (r4) at (2,-3) {$r_4$};
+%       \draw[->, cyan] (x1) to [bend right = 30] (r1');
+%      \draw[->, cyan] (r1') to [bend right = 30] (x1);
+%      \draw[->, cyan] (r1') to (x2);
+%      \draw[->, cyan] (x2) to [bend right = 30] (r2);
+%      \draw[->, cyan] (r2) to [bend right = 30] (x2);
+%      \draw[->, cyan] (r2) to [bend right = 30] (x1);
+%      \draw[->] (x3) to (r1');
+%      \draw[->, magenta] (x3) to [bend right = 30] (r3);
+%      \draw[->, magenta] (x3) to [bend right = 20] (r1'');
+%      \draw[->, magenta] (r1'') to [bend right = 20] (x3);
+%      \draw[->] (r1'') to (x2);
+%      \draw[->, magenta] (r3) to [bend right = 30] (x3);			   
+%      \draw[->, magenta] (r3) to  (x4);
+%      \draw[->, magenta] (x4) to [bend right = 30] (r4);
+%      \draw[->, magenta] (r4) to [bend right = 30] (x4);
+%      \draw[->, magenta] (r4) to  (x3);
+%    \end{tikzpicture}
+%  \end{minipage}%
+%  \hfill%
+%  \begin{minipage}[c]{0.5\textwidth}
+%    \centering
+%    \begin{tikzpicture}
+%      \node[draw, circle] (x1) at (0,0) {$x_1$};
+%      \node[draw, circle] (x2) at (2,0) {$x_2$};
+%      \node[draw, circle] (x3) at (0,-2) {$x_3$};
+%      \node[draw, circle] (x4) at (2,-3.5) {$x_4$};
+%        \node[draw, rectangle] (r1) at (1,-1) {$r_1$};
+%      \node[draw, rectangle] (r2) at (1,1) {$r_2$};
+%      \node[draw, rectangle] (r3) at (0,-3.5) {$r_3$};
+%      \node[draw, rectangle] (r4) at (2,-2) {$r_4$};
+%       \draw[->] (x1) to [bend right = 30] (r1);
+%      \draw[->] (r1) to [bend right = 30] (x1);
+%      \draw[->] (r1) to (x2);
+%      \draw[->] (x2) to [bend right = 30] (r2);
+%      \draw[->] (r2) to [bend right = 30] (x2);
+%      \draw[->] (r2) to [bend right = 30] (x1);
+%      \draw[->] (x3) to [bend right = 30] (r1);
+%      \draw[->] (r1) to [bend right = 30] (x3);
+%      \draw[->] (x3) to [bend right = 30] (r3);
+%      \draw[->] (r3) to [bend right = 30] (x3);			
+%      \draw[->] (r3) to  (x4);
+%      \draw[->] (x4) to [bend right = 30] (r4);
+%      \draw[->] (r4) to [bend right = 30] (x4);
+%      \draw[->] (r4) to  (x3);
+%    \end{tikzpicture}
+%  \end{minipage}
+%  \caption{\textbf{Left}: An example for a CRN where only two reactions
+%    $r'_1$ and $r''_1$ fall into the same $\sim$ equivalence class with
+%    corresponding bipartite K\H{o}nig graph for the CRN (\textbf{left}) and
+%    CRS (\textbf{right}). For the CRN, the two strongly connected
+%    components are depicted in cyan and magenta.}
+%  \label{fig:QScKNot}
+%\end{figure}
+%\FloatBarrier
+%We will see that we regain strong connectedness by requiring minimality 
+%on the set of reflexively autocatalytic sets (RAFs).}
 
 \section{Autocatalytic Sets}
 
