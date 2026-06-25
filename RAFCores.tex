@@ -1207,17 +1207,20 @@ Strongly connected graphs are not necessarily strong blocks, since they can stil
 The Example depicted in Fig.~\ref{ex:CutVertex2} illustrates an irreducible RAF $\RAF$, such that 
 $\princess(\RAF)$ contains a cut-vertex, i.e., $\fr_2$ as its removal disconnects the graph. The R-graph 
 of an irreducible, monocatalyzed RAF is therefore either a strong block or it contains a cut-vertex, but not 
-In Fig.~\ref{CutVertex2} both maximal strong blocks $\princess[\{x_1,x_2\} \cup \{\fr_1,\fr_2\}]$ and 
+both. In Fig.~\ref{ex:CutVertex2} both maximal strong blocks $\princess[\{x_1,x_2\} \cup \{\fr_1,\fr_2\}]$ and 
 $\princess[\{x_3,x_4\}\cup \{\fr_2,\fr_3\}]$ thereby share the common cut F-reaction vertex $\fr_2$. 
-It turns out that a species vertex, indeed, cannot be a cut-vertex.
+In fact, the minimality condition on the set of F-reactions suggests that if a species is a cut-vertex, separating 
+$\princess(\RAF)$ into two strongly connected components, then at least one component would be food-generated. 
+In addition, all requirements in terms of F-reactants and F-catalysts for all F-reactions in that component would be 
+satisfied by the species from inside. A species vertex can therefore never be a cut-vertex.
 
 \begin{figure}[bth]
   \begin{minipage}[c]{0.49\textwidth}
     \begin{equation}
       \begin{split}
 	\fr_1&: f_1 \xrightarrow{(x_1)}  x_2\\
-	\fr_2&: f_2 \xrightarrow{(x_4)} x3\\
-	\fr_3&: 2x_3 \xrightarrow{(x_2)}  x4 + x1
+	\fr_2&: f_2 \xrightarrow{(x_4)} x_3\\
+	\fr_3&: 2x_3 \xrightarrow{(x_2)}  x_1 + x_4 
       \end{split}
     \end{equation}
   \end{minipage}%
@@ -1258,39 +1261,37 @@ It turns out that a species vertex, indeed, cannot be a cut-vertex.
 
 \vspace{6pt}
 \begin{lemma}[Proof: SI]\label{lem:CutVertexReac}
-  Let $\RAF$ be a non-trivial, irreducible RAF. If $\princess(\RAF)$ is not
+  Let $\RAF$ be an irreducible, monocatalyzed RAF. If $\princess(\RAF)$ is not
   a strong block, then every cut-vertex is an F-reaction. 
 \end{lemma}
 \begin{proof}
-	Assume there is a cut-vertex $w\in X(\princess)$. Then
-	$\princess[V(\princess)\setminus \{w\}]$ is composed of at least two
-  	connected components $\princess_1$ and $\princess_2$. Then for any two
-  	vertices $v\in \princess_1$ and $u\in \princess_2$ we have $w\in P_{uv}$
-  	and $w\in P_{vu}$ for arbitrary paths connecting $u$ and $v$. Therefore,
-  	there is no $x_1\in X(\princess_1)$ such that $x_1$ is an F-reactant,
-  	F-product, or F-catalyst for any reaction $r_2\in \FR(\princess_2)$, and
-  	there is no $x_2\in X(\princess_2)$ such that $x_2$ is a F-reactant,
+	Assume there is a cut-vertex $w\in X(\princess)$. Then there are at least two
+  	strongly connected components $\princess_1$ and $\princess_2$. Then for any two
+  	vertices $u\in \princess_1$ and $v\in \princess_2$ we have $w\in P_{uv}$
+  	and $w\in P_{vu}$ for arbitrary paths connecting $u$ and $v$ in $\princess(\RAF)$. 
+	Therefore, except $w$, there is no $x_1\in X(\princess_1)$ such that $x_1$ 
+	is an F-reactant, F-product, or F-catalyst for any reaction $r_2\in \FR(\princess_2)$, 
+	and there is no $x_2\in X(\princess_2)$ such that $x_2$ is an F-reactant,
   	F-product, or F-catalyst for any reaction $r_1\in \FR(\princess_1)$.
-  	Then $\closure{\FR(\princess_1)}{\food}\neq \emptyset$, implying that
-  	$\FR(\princess_1)$ is a RAF or (not mutually exclusive)
-  	$\closure{\FR(\princess_2)}{\food}\neq \emptyset$, implying that
-  	$\FR(\princess_2)$ is a RAF. In either case, this contradicts the
-  	assumption that $\RAF$ is an irreducible RAF.
+  	Then either $\closure{\FR(\princess_1)}{\food}\neq \emptyset$ or (not mutually exclusive) 
+	$\closure{\FR(\princess_2)}{\food}\neq \emptyset$, , implying that
+  	$\FR(\princess_1)$ or $\FR(\princess_2)$ is a RAF, respectively. In either case, this 
+	contradicts the assumption that $\RAF$ is an irreducible RAF.
 \end{proof}
 \vspace{6pt}
 \holy{RG until here}
 
-Cut-vertices in $\princess(\RAF)$ and $\lord(\RAF)$ are not unrelated from
-each other. In particular, only equivalence classes of cut-vertices in
-$\lord(\RAF)$ can be cut-vertices in $\princess(\RAF)$. In addition, a
-reaction vertex can only be a cut-vertex in $\lord(\RAF)$ if its
-equivalence class is trivial.
-\vspace{6pt}
-\begin{lemma}\label{lem:CutVertPP}
-  Let $\RAF$ be a non-trivial, irreducible RAF. If $r \in
-  \varphi^{-1}(\RAF)$ is a cut-vertex in $\lord(\RAF)$ then $|\fr|=1$ and
-  $\fr$ is a cut-vertex in $\princess(\RAF)$.
-\end{lemma}
+%Cut-vertices in $\princess(\RAF)$ and $\lord(\RAF)$ are not unrelated from
+%each other. In particular, only equivalence classes of cut-vertices in
+%$\lord(\RAF)$ can be cut-vertices in $\princess(\RAF)$. In addition, a
+%reaction vertex can only be a cut-vertex in $\lord(\RAF)$ if its
+%equivalence class is trivial.
+%\vspace{6pt}
+%\begin{lemma}\label{lem:CutVertPP}
+%  Let $\RAF$ be a non-trivial, irreducible RAF. If $r \in
+%  \varphi^{-1}(\RAF)$ is a cut-vertex in $\lord(\RAF)$ then $|\fr|=1$ and
+%  $\fr$ is a cut-vertex in $\princess(\RAF)$.
+%\end{lemma}
 
 \subsubsection{Strong Blocks}
 
