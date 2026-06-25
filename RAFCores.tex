@@ -1205,14 +1205,16 @@ golnik_autocatalytic_2026}. This result suggests identifying the maximal strong 
 %\end{figure}
 Strongly connected graphs are not necessarily strong blocks, since they can still contain cut-vertices. 
 The Example depicted in Fig.~\ref{ex:CutVertex2} illustrates an irreducible RAF $\RAF$, such that 
-$\princess(\RAF)$ contains a cut-vertex, i.e., $\fr_2$ as its removal disconnects the graph. The R-graph 
-of an irreducible, monocatalyzed RAF is therefore either a strong block or it contains a cut-vertex, but not 
+$\princess(\RAF)$ contains a cut-vertex ($\fr_2$) whose removal would disconnect the graph. $\princess(\RAF)$ 
+of an irreducible, monocatalyzed RAF $\RAF$ is therefore either a strong block or it contains a cut-vertex, but not 
 both. In Fig.~\ref{ex:CutVertex2} both maximal strong blocks $\princess[\{x_1,x_2\} \cup \{\fr_1,\fr_2\}]$ and 
-$\princess[\{x_3,x_4\}\cup \{\fr_2,\fr_3\}]$ thereby share the common cut F-reaction vertex $\fr_2$. 
-In fact, the minimality condition on the set of F-reactions suggests that if a species is a cut-vertex, separating 
-$\princess(\RAF)$ into two strongly connected components, then at least one component would be food-generated. 
-In addition, all requirements in terms of F-reactants and F-catalysts for all F-reactions in that component would be 
-satisfied by the species from inside. A species vertex can therefore never be a cut-vertex.
+$\princess[\{x_3,x_4\}\cup \{\fr_2,\fr_3\}]$ share the common cut F-reaction vertex $\fr_2$. 
+
+The minimality condition on the set of F-reactions suggests that only F-reactions can be cut-vertices. If a species were 
+a cut-vertex, separating $\princess(\RAF)$ into two strongly connected components, then at least one component 
+would be food-generated. For this component, all requirements in terms of F-reactants and F-catalysts for all F-reactions 
+in that component would be satisfied by the species from inside. That this result is true in general, is summarized 
+in the subsequent Lemma. 
 
 \begin{figure}[bth]
   \begin{minipage}[c]{0.49\textwidth}
@@ -1295,19 +1297,16 @@ satisfied by the species from inside. A species vertex can therefore never be a 
 
 The existence of cut-vertices, which can only be reaction vertices, allows for
 the decomposition of $\princess$ into maximal strong blocks $\block_1,\ldots, 
-\block_n$. Throughout we will refer to maximal strong blocks simply as blocks. 
+\block_n$. Throughout, we will refer to maximal strong blocks simply as blocks. 
+
 Food-connected blocks of $\princess(\RAF)$ contain F-reaction vertices whose 
 F-reactants are all elements of $\food$ and thereby no vertices of the block itself. 
-Such reactions are called \emph{liberal F-reactions} and colleced for each block 
-in the sets
+We call such F-reactions \emph{liberal} and collect them for each block in the sets
 \begin{equation}
-    \FR^*(\block)\coloneqq \{\fr\in \FR(\block) \ | \ \nexists x\in X(B): \sigma^-_{x\fr}>0\}.
-    \\ 
-%    R^*(\block)\coloneqq \{r\in \varphi^{-1}{\FR}(\block) \ |
-%    \ s^-_{xr}>0 \Rightarrow s^+_{xr}=s^-_{xr}, \forall x\in X(\block)\}.
+    \FR_\ell(\block)\coloneqq \{\fr\in \FR(\block) \ | \ \nexists x\in X(\block): \sigma^-_{x\fr}>0\}.
 \end{equation}
 Strong connectedness of $\princess(\block)$ ensures that liberal reactions have at 
-least one F-catalyst inside the block. In addition, for each block $\FR^*(\block)$ is 
+least one F-catalyst inside the block. In addition, for each block $\FR_\ell(\block)$ is 
 not empty. 
 \vspace{6pt}
 \begin{lemma}\label{lem:cutVertexPureCat}
@@ -1321,46 +1320,46 @@ not empty.
   \setminus \{\fr_1\}$. If some $x\in X(\block)$ is an F-reactant for $\fr_1$, then
   $x$ is an F-product of another F-reaction $\fr_2\in \FR(\block)\Rightarrow 
   \rgen(\fr_2)< \rgen(\fr_1)$, a contradiction. If $\block$ has cut-vertices 
-  $\FR^*(\block)\coloneqq \{\fr^*_1, \ldots, \fr^*_k\}$, we may choose 
-  $\fr_j^*\in \FR^*(\block)$ such that $\rgen(\fr_j^*)\leq \rgen(\fr^*_i)$ for all 
-  $\fr^*_i\in\FR^*(\block)$. Assume now that $\fr_j^*$ has an F-reactant $x_j\in
-  X(\block')$. Then $x_j$ is an F-product of some reaction in $\fr_1$, and
-  $\rgen(\fr_1)<\rgen(\fr^*_j)$. Then $\fr_1$ cannot be a liberal reaction since
+  $\FR_\ell(\block)\coloneqq \{\fr_{\ell_1}, \ldots, \fr_{\ell_k}\}$, we may choose 
+  $\fr_{\ell_j}\in \FR_\ell(\block)$ such that $\rgen(\fr_{\ell_j})\leq \rgen(\fr_{\ell_i})$ 
+  for all $\fr_{\ell_i}\in\FR_\ell(\block)$. Assume now that $\fr_{\ell_j}$ has an F-reactant 
+  $x_j\in X(\block)$. Then $x_j$ is an F-product of some reaction in $\fr_1$, and
+  $\rgen(\fr_1)<\rgen(\fr_{\ell_j})$. Then $\fr_1$ cannot be a liberal reaction since
   otherwise $\rgen(\fr_1)<\rgen(\fr^*_j)\leq \rgen(\fr_1)$. Thus, $\fr_1$ 
-  has an F-reactant $x_1 \in X(\block')$, which is an F-product of some
-  F-reaction $\fr_2\in \FR(\block')$. If $\fr^*_j=\fr_2$ then
-  $\rgen(\fr^*_j)< \rgen(\fr_1)<\rgen(\fr^*_j)$, a
-  contradiction. Otherwise, $\rgen(\fr_2)<\rgen(\fr_1)<\rgen(\fr^*_j)$ and by
+  has an F-reactant $x_1 \in X(\block)$, which is an F-product of some
+  F-reaction $\fr_2\in \FR(\block)$. If $\fr_2=\fr_{\ell_j}$ then
+  $\rgen(\fr_{\ell_j})< \rgen(\fr_1)<\rgen(\fr_{\ell_j})$, a contradiction. 
+  Otherwise, $\rgen(\fr_2)<\rgen(\fr_1)<\rgen(\fr_{\ell_j})$ and by
   iterative application of the upper argument, we obtain with the finiteness of
   $\block$:
   \begin{equation}
     \rgen(\fr_k)<\rgen(\fr_{k-1}) <\ldots < \rgen(\fr_l)
   \end{equation}
   with $\fr_k=\fr_l$, which yields a contradiction and thereby
-  $\rgen(\fr^*_j)\leq \rgen(\fr)$ for all $\fr\in \FR(\block)\setminus
-  \{\fr^*_j\}$ and $\rgen(\fr^*_j)< \rgen(\fr)$ for all $\fr\in
-  \FR(\block)\setminus \FR^*(\block)$.
+  $\rgen(\fr_{\ell_j})\leq \rgen(\fr)$ for all $\fr\in \FR_\ell(\block)\setminus
+  \{\fr_{\ell_j}\}$ and $\rgen(\fr_{\ell_j})< \rgen(\fr)$ for all $\fr\in
+  \FR(\block)\setminus \FR_\ell(\block)$.
 \end{proof}
 \vspace{6pt}
 %
 \holy{RG until here}
 
-Following the same line of argument as in the proof \NV{[where is the proof? in SI?]} of
-Lemma~\ref{lem:cutVertexPureCat}, the same statement also holds for
-$\lord(\RAF)$, with the small difference that for some of the cut-vertices
-$\fr\in \RAF$ all representatives that are not cut-vertices in
-$\lord(\RAF)$ \NV{[There is no statement here, probably a typo, TBA]}.
-\vspace{6pt}
-\begin{corollary}\label{cor:cutVertexPureCat}
-  For a non-trivial, irreducible RAF $\RAF$, any strong block $B$ of
-  $\lord(\RAF)$ contains a pure reaction.
-\end{corollary}
-\vspace{6pt}
+%Following the same line of argument as in the proof \NV{[where is the proof? in SI?]} of
+%Lemma~\ref{lem:cutVertexPureCat}, the same statement also holds for
+%$\lord(\RAF)$, with the small difference that for some of the cut-vertices
+%$\fr\in \RAF$ all representatives that are not cut-vertices in
+%$\lord(\RAF)$ \NV{[There is no statement here, probably a typo, TBA]}.
+%\vspace{6pt}
+%\begin{corollary}\label{cor:cutVertexPureCat}
+%  For a non-trivial, irreducible RAF $\RAF$, any strong block $B$ of
+%  $\lord(\RAF)$ contains a pure reaction.
+%\end{corollary}
+%\vspace{6pt}
 %
+
 The proof of Lemma~\ref{lem:cutVertexPureCat} has three important
-consequences. First, it identifies cut-vertices as pure F-reactions
-(equivalently pure reactions), although not all cut-vertices necessarily
-are. Second, pure F-reactions take an important role in the partial order
+consequences. First, only cut-vertices can be liberal F-reactions, 
+although not all cut-vertices necessarily are. Second, pure F-reactions take an important role in the partial order
 of strong blocks of irreducible RAFs, as there is always one with the
 lowest generation number in a strong block, according to the partial
 order. Third, Cor.~\ref{cor:cutVertexPureCat} implies that the
