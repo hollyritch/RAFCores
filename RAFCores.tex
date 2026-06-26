@@ -428,7 +428,7 @@ The stoichiometric Eq.~\ref{eq:reaction} can then be rewritten as:
 \end{equation}
 We refer to species appearing in Eq.~\ref{eq:Mod.SmEq} with $\sigma^{-}_{xr}>0$, 
 $\sigma^{+}_{xr}>0$, and $k_{xr}>0$ as F-reactants,
-F-products, and F-catalysts, respectively. We collect F-reactants and
+F-products, and F-catalysts, respectively. The nomenclature `F-catalysts' is to distinguish this notion from the more loose definition of catalyst just as a species that is both reactant and product, which is often also found in literature. We collect F-reactants and
 F-products in the following sets:
 \begin{equation}
   \begin{split}
@@ -437,14 +437,14 @@ F-products in the following sets:
     \cat(r)&\coloneqq \{(x, k_{xr})\ | \ x\in X,\; k_{xr}>0\}.
   \end{split}
 \end{equation} 
-Note that the set of F-catalysts is defined as a set of pairs $(x,k_{xr})$. In CRNs, distinct reactions $r_1\neq r_2$
-may differ only in the catalysts $\kappa_F(r_1)\neq \kappa_F(r_2)$ and share identical F-reactants and F-products. For example, 
+Note that the set of F-catalysts is defined as a set of pairs $(x,k_{xr})$ to encode also the respective coefficient. In a CRN, distinct reactions $r_1\neq r_2$
+may differ only in the F-catalysts $\kappa_F(r_1)\neq \kappa_F(r_2)$ and share identical F-reactants and F-products. For example, 
 the hydrogenation of ethene to ethane can be mediated by platinum, 
 palladium, or nickel separately \cite{crampton_ethylene_2016}. An 
 example for co-catalysis, i.e., where the orchestrated cooperation of 
 two catalysts is required, is the dual-catalyst system of palladium and 
 copper in the Hoechst-Wacker process, where ethene is oxidized to 
-acetaldehyde \cite{jira_acetaldehyde_2009}. The idea that one `same' chemical process, intended as a net-molecule transformation, can be catalyzed by different catalysts has led to the different, although as we will see very much related, concept of Catalytic Reaction Systems, which we overview in the text section.
+acetaldehyde \cite{jira_acetaldehyde_2009}. The idea that one `same' chemical process, intended as a net-molecule transformation, can be catalyzed by different catalysts has led to the different, although much related, concept of Catalytic Reaction Systems, which we overview in the text section.
 
 
 
@@ -464,7 +464,7 @@ The \emph{catalyzation} set $\cat(\FR)=\{ \cat(\mathbf{r)} \}_{\fr\in\FR}$ const
 For a single F-reaction $\fr$, the set of catalyzations $\cat(\fr)$ is defined as
 $\cat(\fr)=\{c_\fr\}$, where each catalyzation $c_\fr$ is in turn a set of pairs $(x,k_{x\mathbf{r}})$:
 \begin{equation}
-    c_\fr\coloneqq \{(x_1,k_{x_1\mathbf{r}}),\ldots, (x_n,k_{x_n\fr})\}.
+    c_\fr\coloneqq \{(x_1,k^c_{x_1\mathbf{r}}),\ldots, (x_n,k^c_{x_n\fr})\}.
 \end{equation}
 where $k_{x\fr}>0$ is a positive coefficient.  We call a $\fr\in \FR$ \emph{F-reaction} to distinguish it from the CRN reactions \eqref{eq:Mod.SmEq}. Moreover, a comparison between a CRN reaction \eqref{eq:Mod.SmEq}  with a CRS F-reaction \eqref{eq:FReacEq} and the definition of catalyzations set $\cat$ suggests the following formalization of the relation between a CRN and a CRS.
 
@@ -480,7 +480,7 @@ In particular, an F-reaction in a CRS is just an equivalence class of CRN, $\fr=
 $c(\mathbf{r})=\cup_ {r\in \fr}\{\cat(r)\}$. 
 
 
-\textbf{From a CRS $\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$ to a CRN $\Gamma=(X,\mathcal{R})$.} Viceversa, by rolling back the previous argument, to each CRS $\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$ we may associate a CRN $\Gamma (\mathbf{\Phi})=(X,\mathcal{R})$, where each reaction $r\in \mathcal{R}$ corresponds to a pair $(\fr,c_\fr)$, naturally defined from \eqref{eq:FReacEq}, setting  $\cat(r)=c_\fr$, and defining $r$ via \eqref{eq:Mod.SmEq} with $\sigma^{\pm}_{x\fr}=\sigma^{\pm}_{xr}$. 
+\textbf{From a CRS $\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$ to a CRN $\Gamma=(X,\mathcal{R})$.} Viceversa, by rolling back the previous argument, to each CRS $\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$ we may associate a CRN $\Gamma (\mathbf{\Phi})=(X,\mathcal{R})$, where each reaction $r\in \mathcal{R}$ corresponds to a pair $(\fr,c_\fr)$, naturally defined from \eqref{eq:FReacEq}, setting  $\cat(r)=c_\fr$, and defining $r$ via \eqref{eq:Mod.SmEq} with $\sigma^{\pm}_{xr}=\sigma^{\pm}_{x\fr}$. 
 
 
 By construction, it is clear that 
