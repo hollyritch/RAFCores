@@ -468,7 +468,7 @@ $\cat(\fr)=\{c_\fr\}$, where each catalyzation $c_\fr$ is in turn a set of pairs
 \end{equation}
 where $k_{x\fr}>0$ is a positive coefficient.  We call a $\fr\in \FR$ \emph{F-reaction} to distinguish it from the CRN reactions \eqref{eq:Mod.SmEq}. Moreover, a comparison between a CRN reaction \eqref{eq:Mod.SmEq}  with a CRS F-reaction \eqref{eq:FReacEq} and the definition of catalyzations set $\cat$ suggests the following formalization of the relation between a CRN and a CRS.
 
-\textbf{From a CRN $\Gamma=(X,\mathcal)$ to a CRS $\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$.}  Consider the equivalence relation $\sim$ on CRN reactions defined as 
+{\textbf{From a CRN $\Gamma=(X,\mathcal{R})$ to a CRS $\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$.}  Consider the equivalence relation $\sim$ on CRN reactions defined as 
 \begin{equation}
     r_1 \sim r_2 \quad \text{if $\sigma_{xr_1}^{\pm}=\sigma_{xr_2}^{\pm}$ for any $x\in X$.}
 \end{equation}
@@ -476,11 +476,11 @@ To each CRN $\Gamma=(X,\mathcal{R})$ we can associate a CRS $\mathbf{\Phi}(\Gamm
 \begin{equation}
     \FR=\dfrac{\mathcal{R}}{\sim}.
 \end{equation}
-In particular, an F-reaction in a CRS is just an equivalence class of CRN reactions. Each catalyzation $c$ is then just the set of the set of F-catalysts
+In particular, an F-reaction in a CRS is just an equivalence class of CRN, $\fr=[r]_{\sim}$. Each catalyzation $c$ is then just the set of the set of F-catalysts
 $c(\mathbf{r})=\cup_ {r\in \fr}\{\cat(r)\}$. 
 
 
-\textbf{From a CRS $\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$ to a CRN $\Gamma=(X,\mathcal{R})$.} Viceversa, and just by rolling back the previous argument, to each CRS $\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$ we may associate a CRN $\Gamma (\mathbf{\Phi})=(X,\mathcal{R})$, where each reaction $r\in \mathcal{R}$ corresponds to a pair $(\fr,c_\fr)$, naturally defined from \eqref{eq:FReacEq}, setting  $\cat(r)=c_\fr$, and defining $r$ via \eqref{eq:Mod.SmEq}. 
+\textbf{From a CRS $\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$ to a CRN $\Gamma=(X,\mathcal{R})$.} Viceversa, by rolling back the previous argument, to each CRS $\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$ we may associate a CRN $\Gamma (\mathbf{\Phi})=(X,\mathcal{R})$, where each reaction $r\in \mathcal{R}$ corresponds to a pair $(\fr,c_\fr)$, naturally defined from \eqref{eq:FReacEq}, setting  $\cat(r)=c_\fr$, and defining $r$ via \eqref{eq:Mod.SmEq} with $\sigma^{\pm}_{x\fr}=\sigma^{\pm}_{xr}$. 
 
 
 By construction, it is clear that 
