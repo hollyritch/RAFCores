@@ -754,8 +754,6 @@ monocatalyzed irreducible RAF. This is formalized in the following lemma.
 	monocatalyzations for all F-reactions in $\RAF$. Any such monocatalyzation  $\cat'(\RAF)$ provides a sub-CRS $\mathbf{\Phi}'=(X,\FR,\cat'(\FR))$, where $\cat'(\RAF)\subseteq\cat(\FR)$ is arbitrarily extended to $\FR$, for which $\RAF$ is a monocatalyzed irreducible RAF.
 \end{proof}
 
-%We remark that $N$, as determined in Lemma~\ref{lem:ExpoSubCRS}, reflects only a lower bound if $\mathbf{\Psi}=\mathbf{\Phi}$, since  any subset $\tilde{\FR}\subseteq \FR: \RAF\subset \tilde{\FR}$ defines a sub-CRS on the same set of  species and catalyzations restricted to $\tilde{\FR}$. In particular, the example of Eq.~\eqref{eq:ExReacSeq} has only one irreducible RAF, i.e., $\RAF\coloneqq \{\fr_1\}$, and for $n=2$ the sub-CRS $(\{x_0,x_1,x_2\}, \{\fr_1\}, \{\{(x_1)\}\}$ and $(\{x_0,x_1,x_2\}, \{\fr_1,\fr_2\}, \{\{(x_1)\}, \{(x_2)\}\}$  satisfy condition $i.$ and $ii.$ of Lemma~\ref{lem:ExpoSubCRS}.
-
 Finally, we underline that irreducibility is a property that is of interest only for RAFs that are not CAFs. We have the following proposition indeed:
 \vspace{6pt}
 \begin{proposition}\label{prop:Caftrivial}
@@ -780,19 +778,21 @@ RAF $\RAF$ with corresponding CRS
 \begin{equation}\label{eq:RAF-CRS}
   \mathbf{\Phi}' \coloneqq (\closure{\RAF}{\food}, \RAF, \cat'(\RAF))
 \end{equation}
-such that $\cat'(\RAF)$ satisfies the requirement of Lemma~\ref{lem:mono}. Various graph 
-representations of RAFs have been considered \cite{}. Here, we study properties of its 
-bipartite K\H{o}nig graph representation, which is the graph 
-$\queen(\mathbf{\Phi'}) \coloneqq \queen(\RAF) \coloneqq \queen(X \cup \FR, E_1\cup E_2)$ with:
+such that $\cat'(\RAF)$ satisfies the requirement of Lemma~\ref{lem:mono}. \holy{Various graph 
+representations of chemical reaction systems have been studied, which were mainly focused 
+on directed graphs with reactions as vertices \cite{steel_minimal_2013, steel_autocatalytic_2019}. 
+Here, we investigate properties of the bipartite K\H{o}nig graph representation \cite{zykov_hypergraphs_1974} 
+of an irreducible, monocatalyzed RAF $\RAF$, which is the subgraph of the graph 
+$\queen(\mathbf{\Phi}) \coloneqq \queen(X \cup \FR, E_1\cup E_2)$ with:
 \begin{equation}
   \begin{split}
     E_1\coloneqq \{(x,\fr) \ | \ x\in X, \fr\in \FR: x\in \feducts(\fr) \text{ or } x\in c\in \cat(\fr)\} \\
-    E_2\coloneqq \{(\fr, x) \ | \ x\in X, \fr\in \FR: x\in \fproducts(\fr) \text{ or } x\in c\in \cat(\fr) \}.
+    E_2\coloneqq \{(\fr, x) \ | \ x\in X, \fr\in \FR: x\in \fproducts(\fr) \text{ or } x\in c\in \cat(\fr) \},
   \end{split}
 \end{equation}
-
-Note that this graph appears under various names and is also known as the species-metabolite (SR) graph, 
-the metabolite-reaction (MR) graph, and petrinets \cite{}. 
+induced by the vertex set $\RAF \cup \closure{\RAF}{\food}$. Note that, the K\H{o}nig graph emerged under 
+various names and is also known as the species-reaction (SR) graph \cite{craciun_multiple_2006}, 
+metabolite-reaction (MR) graph \cite{vassena_good_2020}, and Petri nets \cite{angeli_petri_2007}.}
 
 In line with calling elements of $\food$ food-molecules, we kindly refer to molecules of
 \begin{equation}\label{eq:Waste}
