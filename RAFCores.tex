@@ -110,12 +110,13 @@
 \newcommand{\SM}{S}
 \newcommand{\closure}[2]{\mathscr{C}_{#1}(#2)}
 \newcommand{\cl}[0]{c}
-\newcommand{\CR}[0]{R}
+\newcommand{\CR}[0]{\mathcal{R}}
 \newcommand{\C}[1]{\mathit{#1}}
 \newcommand{\FR}[0]{\mathbf{R}}
 \newcommand{\RGraph}[0]{\mathcal{R}}
 %\newcommand{\F}[1]{\mathbf{#1}}
 \newcommand{\fr}[0]{\mathbf{r}}
+\newcommand{\crnr}[0]{\textit{r}}
 \newcommand{\net}[1]{\hat{#1}}
 \newcommand{\RAF}[0]{\mathbf{R}'}
 \newcommand{\block}[0]{\mathbf{B}}
@@ -368,8 +369,8 @@ style formats, i.e., $\FR$ and $\CR$, to highlight sets of reactions that
 are derived from Catalytic Reaction Systems \cite{lohn_evolving_1998} 
 and Chemical Reaction Networks \cite{muller_what_2022}, respectively. 
 We refer to reaction objects in CRS as F-reactions and denote them in 
-bold, i.e., $\fr \in \FR$, and in CRN as C-reactions $r\in R$ and denote 
-them in normal font. We will see that F-reactions and C-reactions are 
+bold, i.e., $\fr \in \FR$, and in CRN as C-reactions $r\in \CR$ and denote 
+them in italic font. We will see that F-reactions and C-reactions are 
 not the same mathematical objects.
 
 We commence by overviewing Catalytic Reaction Systems (CRS) \textit{sensu} 
@@ -398,10 +399,11 @@ species $x\in X$ may be an element of both $\feducts(\fr)$ and $\fproducts(\fr)$
 Species $y\in X: y\notin \feducts(\fr) \ (y\notin \fproducts(\fr))$ satisfy 
 $\sigma^-_{y\fr}=0 \ (\sigma^+_{y\fr}=0)$. 
 
-An F-reaction $\fr \in \FR$ can then be denoted as follows:
-\begin{equation}
-	\fr: \sum_{x\in X}\ \sigma^-_{xr} \cdot x \quad \xrightarrow{(c_1),\ldots, (c_n), c\in \cat(\fr)} \sum_{x\in X}\ \sigma^-_{xr} \cdot x.
-\end{equation}}
+An F-reaction $\fr \in \FR$ can then be denoted as 
+\begin{equation}\label{eq:FReacEq}
+	\fr: \sum_{x\in X}\ \sigma^-_{xr} \cdot x \quad \rightarrow \sum_{x\in X}\ \sigma^-_{xr} \cdot x
+\end{equation}
+associated with catalyzations $\cat(\fr)$.}
 
 %are considered indistinguis hable if  they differ only in their F-catalysts but share 
 %the same F-reactants and F-products with the same respective stoichiometric 
@@ -751,7 +753,9 @@ monocatalyzed irreducible RAF. This is formalized in the following lemma.
 \end{lemma} 
 \begin{proof}
 	 Lemma \ref{lem:mono} implies that there are at least $N=\prod_{\fr\in \RAF}\ \vert \cat(\fr) \vert$  distinct combinations of possible 
-	monocatalyzations for all F-reactions in $\RAF$. Any such monocatalyzation  $\cat'(\RAF)$ provides a sub-CRS $\mathbf{\Phi}'=(X,\FR,\cat'(\FR))$, where $\cat'(\RAF)\subseteq\cat(\FR)$ is arbitrarily extended to $\FR$, for which $\RAF$ is a monocatalyzed irreducible RAF.
+	monocatalyzations for all F-reactions in $\RAF$. Any such monocatalyzation  $\cat'(\RAF)$ provides a sub-CRS 
+	$\mathbf{\Phi}'=(X,\FR,\cat'(\FR))$, where $\cat'(\RAF)\subseteq\cat(\FR)$ is arbitrarily extended to $\FR$, for which $\RAF$ is a 
+	monocatalyzed irreducible RAF.
 \end{proof}
 
 Finally, we underline that irreducibility is a property that is of interest only for RAFs that are not CAFs. We have the following proposition indeed:
@@ -802,7 +806,7 @@ connected subgraphs whose underlying undirected graph is 2-connected \cite{golni
 golnik_autocatalytic_2026}. Indeed, we shall see later that for an irreducible, monocatalyzed RAF $\RAF$, 
 $\queen(\RAF)$ is isomorphic to the K\H{o}nig graph representation of the associated CRN. Taking into account 
 that any RAF that is not itself a CAF is stoichiometrically autocatalytic \cite{golnik_bridging_2026}, 
-further investigating the structure of $\queen(\RAF)$ seems promising.}
+imposes to further investigate the structure of $\queen(\RAF)$.}
 
 \paragraph{Strong connectivity}
 
@@ -1006,16 +1010,16 @@ $\princess[\{x_3,x_4\}\cup \{\fr_2,\fr_3\}]$ share the common cut F-reaction ver
 The minimality condition on the set of F-reactions suggests that only F-reactions can be cut-vertices. If a species were 
 a cut-vertex, separating $\princess(\RAF)$ into two strongly connected components, then at least one component 
 would be food-generated. For this component, all requirements in terms of F-reactants and F-catalysts for all F-reactions 
-in that component would be satisfied by the species from inside. That this result is true in general, is summarized 
+in that component would be satisfied by the species from inside. That this result is true in general is summarized 
 in the subsequent Lemma. 
 
 \begin{figure}[bth]
   \begin{minipage}[c]{0.49\textwidth}
     \begin{equation}
       \begin{split}
-	\fr_1&: f_1 \xrightarrow{(x_1)}  x_2\\
-	\fr_2&: f_2 \xrightarrow{(x_4)} x_3\\
-	\fr_3&: 2x_3 \xrightarrow{(x_2)}  x_1 + x_4 
+	\fr_1& : f_1 \xrightarrow{(x_1)}  x_2 \qquad (x_1)\\
+	\fr_2& : f_2 \xrightarrow{(x_4)} x_3 \qquad (x_4)\\
+	\fr_3& : 2x_3 \xrightarrow{}  x_1 + x_4 \qquad (x_2)
       \end{split}
     \end{equation}
   \end{minipage}%
@@ -1048,9 +1052,9 @@ in the subsequent Lemma.
       \draw[->] (r3) to (x3);
     \end{tikzpicture}
   \end{minipage}
-  \caption{Example of an irreducible, monocatalyzed RAF with a 
-  cut-vertex that has a single catalyst \textit{(left)} with depiction 
-  of the corresponding König graph \textit{(right)}.}
+  \caption{\textit{(Left):} Example of an irreducible, monocatalyzed RAF with a 
+  cut-vertex that has a single catalyst. Catalyzations are 
+  indicated in brackets. \textit{(Right):} Depiction of the corresponding König graph.}
   \label{ex:CutVertex2}
 \end{figure}
 
@@ -1143,7 +1147,7 @@ the lowest generation order of all F-reactions inside the block. In addition,
 strong connectedness of $\princess(\block)$ ensures that each liberal F-reactions 
 is connected to its single F-catalyst inside the block. Intuitively, but not trivially 
 following, they also have at least one F-product inside the block, which can 
-the F-catalyst.
+be the F-catalyst.
 \vspace{6pt}
 \begin{lemma}\label{lem:LibReacFProd}
 	For every liberal reaction $\fr_\ell \in \FR_\ell(\block)$ there is at least on species 
@@ -1158,86 +1162,91 @@ the F-catalyst.
 \end{proof}
 \vspace{6pt}
 
-\subsection{Chemical Reaction Networks (CRNs)}
+Liberal F-reactions take a central role in $\princess(\RAF)$. In particular, they can be 
+considered as inflow reactions for the corresponding block, as they depend only on 
+F-reactants located outside the block, not inside. We will see that their corresponding 
+C-reactions in the associated CRN are responsible for warranting a crucial property 
+of shaping subnetworks stoichiometrically autocatalytic, as they induce a nonnegative 
+column in the associated stoichiometric matrices. We will therefore now introduce 
+CRNs formally, and derive a relation between F- and C-reactions before showing 
+that each block of an irreducible RAF contains an autocatalytic core. 
 
-One setting is given by the framework of a chemical reaction
-network (CRN). A CRN $\Gamma \coloneqq (X,\CR)$ is a tuple of two finite
-sets, a set of species $X$ and a set of reactions $\CR$. For any $r\in
-\CR$, we can write a stoichiometric equation as:
+\section{Chemical Reaction Networks (CRNs)}
+
+A chemical reaction network (CRN) $\Gamma \coloneqq (X,\CR)$ is a tuple of two finite
+sets, a set of species $X$ and a set of reactions $\CR$, which we call C-reactions. A 
+\emph{sub-CRN} is a tuple $(X',\CR')$ with $X'\subseteq X$ and $\CR'\subseteq
+\CR$, where $r\in \CR'$ omits the reference to species $x\not\in X'$. 
+For any $r \in \CR$, we can write a stoichiometric equation as:
 \begin{equation}\label{eq:reaction}
-  \sum_{x\in X}\ s^-_{xr} \cdot x \quad\underset{r}\rightarrow \quad \sum_{x\in X} \ s^+_{xr}\cdot x
+  r: \sum_{x\in X}\ s^-_{xr} \cdot x \rightarrow \quad \sum_{x\in X} \ s^+_{xr}\cdot x
 \end{equation}
 where $s^{\pm}_{xr}$ are the reactant and product stoichiometry of the
-molecule $x$ in the reaction $r$. Reactants and products of a reaction $r$ are collected in
-the sets:
+molecule $x$ in the C-reaction $r$. Reactants and products of a 
+C-reaction $r$ are collected in the sets:
 \begin{equation}
   \begin{split}
     \ceducts(r) \coloneqq \{x\in X \ \vert \ s^-_{xr}>0\} \\
     \cproducts(r) \coloneqq \{x\in X \ \vert \ s^+_{xr}>0\} 
   \end{split}
 \end{equation}
-A \emph{sub-CRN} is a tuple $(X',R')$ with $X'\subseteq X$ and $R'\subseteq
-R$, where $r\in R'$ omits the reference to species $x\not\in X'$. A 
-\emph{sub-CRN} is \emph{well-formed} if for each reaction $r\in R'$
-there are species $x,y\in X': s^-_{xr}>0, s^+_{xr}>0$.  The $|X|\times|R|$
-\emph{stoichiometric matrix} $\SM$ encodes all \emph{net-stoichiometries}:
-\begin{equation}
-  \SM_{xr}\coloneqq s^+_{xr}-s^-_{xr}
+The $|X|\times|\CR|$ \emph{stoichiometric matrix} $\SM$ encodes 
+all \emph{net-stoichiometries}:
+\begin{equation} 
+	\begin{split}
+  		\SM_{xr}& \coloneqq s^+_{xr}-s^-_{xr} \qquad \text{and} \\[0.5em]
+  		& \begin{cases}
+		    	\net{s}^-_{xr} = -\SM_{xr}  \qquad &\text{ if } \SM_{xr} < 0, \text{and } 0 \text{ otherwise;}\\
+    			\net{s}^+_{xr} = \SM_{xr}  \qquad &\text{ if } \SM_{xr}> 0, \text{and } 0 \text{ otherwise.}   
+  		\end{cases}
+	\end{split}
 \end{equation}
-For a reaction $r$ we can define its \emph{net reaction} $\net{r}$ as
-\begin{equation}\label{eq:NetReaction}
-  \sum_{x\in X}\ \net{s}^-_{xr} \cdot x\quad\underset{\net{r}} \quad \rightarrow \sum_{x\in X}
-  \ \net{s}^+_{xr}\cdot x 
-\end{equation}
-with 
-\begin{equation}
-\begin{cases}
-    \net{s}^-_{xr} = -\SM_{xr}  \qquad &\text{ if } \SM_{xr} < 0, \text{and } 0 \text{ otherwise;}\\
-    \net{s}^+_{xr} = \SM_{xr}  \qquad &\text{ if } \SM_{xr}> 0, \text{and } 0 \text{ otherwise,}   
-  \end{cases}
-\end{equation}
-and
-\begin{equation}
-  \begin{split}
-   \net{\ceducts}(r) & \coloneqq \{x\in X \ \vert \ \net{s}^-_{xr}>0\} \\
-   \net{\cproducts}(r) & \coloneqq \{x\in X \ \vert \ \net{s}^+_{xr}>0\} \\
-  \end{split}
-\end{equation}
-as the sets of \emph{net-reactants} and \emph{net-products} of reaction $r$,
-respectively. Note, we thereby have $\net{\ceducts}(r) = \ceducts(\net{r})$
-and $\net{\cproducts}(r) = \cproducts(\net{r})$.
+%For a C-reaction $r$
+%\begin{equation}\label{eq:NetReaction}
+% \net{r}: \sum_{x\in X}\ \net{s}^-_{xr} \cdot x \rightarrow \sum_{x\in X}
+%  \ \net{s}^+_{xr}\cdot x 
+%\end{equation}
+%describes the \emph{net reaction} of $r$ with 
+%and
+%\begin{equation}
+%  \begin{split}
+%   \net{\ceducts}(r) & \coloneqq \{x\in X \ \vert \ \net{s}^-_{xr}>0\} \\
+%   \net{\cproducts}(r) & \coloneqq \{x\in X \ \vert \ \net{s}^+_{xr}>0\} \\
+%  \end{split}
+%\end{equation}
+%as the sets of \emph{net-reactants} and \emph{net-products} of reaction $r$,
+%respectively. Note, we thereby have $\net{\ceducts}(r) = \ceducts(\net{r})$
+%and $\net{\cproducts}(r) = \cproducts(\net{r})$.
 
-There are multiple reasons for the case where stoichiometry and 
-net-stoichiometry are different, i.e. $s^{\pm}_{xr}\neq \net{s}^{\pm}_{xr}$; 
-one is catalysis. In the original CRN mathematical setting, a
-catalyst for a reaction $r$ is simply a species $x\in X$ such that
-$s^{-}_{xr}\cdot s^{+}_{xr}\neq 0$, thus it appears on both sides of the
-stoichiometric equation \eqref{eq:reaction} of $r$. In case $s^-_{xr}>s^+_{xr}>0$, $x$
-is both net-reactant and catalyst of reaction $r$, while in the case $s^+_{xr}>s^-_{xr}>0$, 
-$x$ is both net-product and catalyst of reaction $r$. 
-
-From a chemical perspective, in turn, a catalyst is a species $x\in X$ that not only satisfies 
-$s^{-}_{xr}\cdot s^{+}_{xr}\neq 0$, but also ``increases the rate of a reaction without 
-modifying the overall standard Gibbs energy change in the reaction'' \cite{gold_iupac_2025}. 
-However, a solvent, such as water, can also exert the same effect on a chemical reaction 
-without being considered a catalyst \cite{marx_nature_1999}. For example, in Br{\o}nstedt/Lowry's 
-acid-base theory, water is rather considered a reactant, i.e., a proton acceptor, removing environmental
-constraints to facilitate proton transfer between reactants \cite{eigen_proton_1964}. To be specific 
-on the ``chemically'' catalytic role that a species plays within a chemical reaction, we partition 
-stoichiometries $s^{\pm}_{xr}$ as in
-\cite{golnik_bridging_2026} by:
+Stoichiometry and net-stoichiometry might not coincide, i.e., 
+$s^{\pm}_{xr}\neq \net{s}^{\pm}_{xr}$. On reasons is catalysis. 
+In CRNs, a catalyst is a species $x\in X$ that appears on both sides 
+of the stoichiometric equation \eqref{eq:reaction} of $r$. From a 
+chemical perspective, in turn, a catalyst additionally 
+%$s^{-}_{xr}\cdot s^{+}_{xr}\neq 0$, but also 
+``increases the rate of a reaction without modifying the overall standard 
+Gibbs energy change in the reaction'' \cite{gold_iupac_2025}. However, the solvent, 
+such as water, can exert the same effect without being considered a catalyst 
+\cite{marx_nature_1999}, e.g., in Br{\o}nstedt/Lowry's acid-base theory 
+\cite{eigen_proton_1964}. To be specific on the ``chemically'' catalytic role a 
+species plays, we partition stoichiometries as in \cite{golnik_bridging_2026} as
 \begin{equation}
 	 s^{\pm}_{xr}=\sigma^{\pm}_{xr} + k_{xr}.
 \end{equation}
-It is readily verified that $\SM_{xr} = s^+_{xr}-s^-_{xr} = \sigma^+_{xr} - \sigma^-_{xr}$, thus the net stoichiometries 
-are identically encoded in $\sigma^{\pm}_{xr}$. The stoichiometric Eq.~\ref{eq:reaction} can then be rewritten as:
+It is readily verified that $\SM_{xr} = s^+_{xr}-s^-_{xr} = \sigma^+_{xr} - \sigma^-_{xr}$, 
+thus the net stoichiometries are identically encoded in $\sigma^{\pm}_{xr}$. 
+The stoichiometric Eq.~\ref{eq:reaction} can then be rewritten as:
 \begin{equation}\label{eq:Mod.SmEq}
-  \sum_{x\in X}\ \sigma^-_{xr} \cdot x + \left(\sum_{x\in X}\ k_{xr}
-  \cdot x\right)\quad\underset{r}\rightarrow \quad \sum_{x\in X} \ \sigma^+_{xr} \cdot x +
-  \left(\sum_{x\in X}\ k_{xr} \cdot x\right).
+  r: \sum_{x\in X}\ \sigma^-_{xr} \cdot x + \left(\sum_{x\in X}\ k_{xr}
+  \cdot x\right) \rightarrow \quad \sum_{x\in X} \ \sigma^+_{xr} \cdot x +
+  \left(\sum_{x\in X}\ k_{xr} \cdot x\right),
 \end{equation}
-We refer to species appearing in Eq.~\ref{eq:Mod.SmEq} with
-$\sigma^{-}_{xr}>0$, $\sigma^{+}_{xr}>0$, and $k_{xr}>0$ as F-reactants,
+whose net equation coincides with Eq.~\eqref{eq:FReacEq}. \TODO{Now 
+state the equivalence relation.}
+\holy{RG until here}
+
+Species appearing in Eq.~\ref{eq:Mod.SmEq} with $\sigma^{-}_{xr}>0$, 
+$\sigma^{+}_{xr}>0$, and $k_{xr}>0$ as F-reactants,
 F-products, and F-catalysts, respectively. We collect F-reactants and
 F-products in the following sets:
 \begin{equation}
@@ -1331,7 +1340,7 @@ reaction rates which satisfies $\SM(B)v>0$.
 
 A sub-CRN $(X',R')$ that satisfies \textit{(i.)} and \textit{(ii.)}, while
 no proper subnetwork $(X'',R'')$ with $X''\subseteq X', R''\subseteq R'$
-does, is called an \emph{autocatalytic core}. %\NV{For autocatalytic cores subnetworks $(X',R')$, it has been shown that $|X'|=|R'|$ and that there exists a bijection $J:X'\rightarrow R'$ such that $J(x)=r$ is the unique reaction for which $x$ is a reactant.}.
+does, is called an \emph{autocatalytic core}. 
 
 
 We are now in the position to
