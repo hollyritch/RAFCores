@@ -28,6 +28,7 @@
 \usepackage{subcaption}
 \usepackage{xr}
 \usepackage{bm}
+\usepackage{xfrac}
 %% CUSTOM PACKAGES
 %\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
 \usepackage{hyperref}
@@ -476,7 +477,7 @@ To each CRN $\Gamma=(X,\mathcal{R})$ we can associate a CRS $\mathbf{\Phi}(\Gamm
 \begin{equation}
     \FR=\dfrac{\mathcal{R}}{\sim}.
 \end{equation}
-In particular, an F-reaction in a CRS is just an equivalence class of CRN, $\fr=[r]_{\sim}$. Each catalyzation $c$ is then just the set of the set of F-catalysts
+In particular, an F-reaction in a CRS is just an equivalence class of CRN reactions, $\fr=[r]_{\sim}$. Each catalyzation $c$ is then just the set of F-catalysts
 $c(\mathbf{r})=\cup_ {r\in \fr}\{\cat(r)\}$. 
 
 
@@ -491,7 +492,7 @@ Moreover, since $\FR$ is a quotient set from $\mathcal{R}$, we have that:
 \begin{equation}
    |\FR| \le |\mathcal{R}|,
 \end{equation}
-with equality achieved if, and only if, each F-reaction $\fr$, viewed as an equivalence on $\mathcal{R}$, consistss only of one element, i.e.
+with equality achieved if, and only if, each F-reaction $\fr$, viewed as an equivalence on $\mathcal{R}$, consists only of one element, i.e.
 $\fr=[r]_{\sim}=\{r\}$.
 
 
@@ -872,75 +873,78 @@ To keep the exposition concise, we assume this exclusion throughout and do not r
 
 \NV{NV till here}
 
-Within this section, we will investigate the structure of CRS $\mathbf{\Phi}'$, with food-set $\food$, which themselves contain only the F-reactions of a monocatalyzed irreducible $\RAF$, i.e.
- 
+\holy{Within this section, we will investigate the structure of CRS $\mathbf{\Phi}'$, 
+with food-set $\food$, which themselves contain only the F-reactions of a 
+monocatalyzed irreducible $\RAF$, i.e.
 \begin{equation}\label{eq:RAF-CRS}
   \mathbf{\Phi}' \coloneqq (\closure{\RAF}{\food}, \RAF, \cat'(\RAF))
 \end{equation}
-where $|\cat'(\fr)|=1$ for each F-reaction $\fr\in \RAF$.
 
-\holy{Various graph 
-representations of CRS have been studied, which were mainly focused on directed graphs with 
-reactions as vertices \cite{steel_minimal_2013, steel_autocatalytic_2019}. Here, we investigate 
-properties of the bipartite K\H{o}nig graph representation \cite{zykov_hypergraphs_1974} 
-of an irreducible, monocatalyzed RAF $\RAF$, which is the subgraph of the graph 
-$\queen(\mathbf{\Phi}) \coloneqq (X \cup \FR, E_1\cup E_2)$ with:
+where $|\cat'(\fr)|=1$ for each F-reaction $\fr\in \RAF$ and its corresponding CRN 
+$\Gamma'\coloneqq \Gamma(\Phi')\coloneqq (X, \CR')$. In the monocatalytic case, 
+$\Gamma'$ can be canonically identified with $\mathbf{\Phi}'$ as each F-reaction 
+is associated with a unique catalyzation, so that every equivalence class reduces 
+to a single CRN reaction. In this way, we can conveniently study the properties of 
+graphs derived from $\mathbf{\Phi}'$, by simply studying the properties of graphs 
+derived from $\Gamma'$.}
+
+\holy{In particular, we will be interested in the bipartite K\H{o}nig graph representation 
+\cite{zykov_hypergraphs_1974} of an irreducible, monocatalyzed RAF 
+$\RAF$ obtained from the CRN $\Gamma'$, which is the graph $\king(\Gamma') 
+\coloneqq (X \cup \CR', E)$, whose edge set $E\coloneqq E_1\cup E_2$, induced by 
+the two disjoint vertex sets, is composed of two distinct types given as
 \begin{equation}
-  \begin{split}
-    E_1\coloneqq \{(x,\fr) \ | \ x\in X, \fr\in \FR: x\in \feducts(\fr) \text{ or } x\in c\in \cat(\fr)\} \\
-    E_2\coloneqq \{(\fr, x) \ | \ x\in X, \fr\in \FR: x\in \fproducts(\fr) \text{ or } x\in c\in \cat(\fr) \},
-  \end{split}
+    \begin{cases} (x,r) \ | \ x\in X, r\in \CR: s^-_{xr}>0 \\
+ 			(r, x) \ | \ x\in X, r\in \FR: s^+_{xr}>0. \end{cases}
 \end{equation}
-induced by the vertex set $\RAF \cup \closure{\RAF}{\food}$, denoted as $\queen(\RAF)$. Note 
-that the K\H{o}nig graph emerged under various names in the context of CRN theory, as the 
+Note that the K\H{o}nig graph emerged under various names in the context of CRN theory, as the 
 species-reaction (SR) graph \cite{craciun_multiple_2006}, metabolite-reaction (MR) graph 
 \cite{vassena_good_2020}, and also as Petri nets \cite{angeli_petri_2007}.
 
-Minimal \emph{stoichiometrically autocatalytic} subnetworks, formally introduced in Sec.~\ref{sec:AutoCatIrrRAF} 
-and termed \emph{autocatalytic cores} \cite{blokhuis_Universal_2020}, encompass a bipartite K\H{o}nig 
-graph representation reflecting the underlying CRN that includes the property of being strong blocks - strongly 
-connected subgraphs whose underlying undirected graph is 2-connected \cite{golnik_enumeration_2026, golnik_using_2026,
-golnik_autocatalytic_2026}. Indeed, we shall see later that for an irreducible, monocatalyzed RAF $\RAF$, 
-$\queen(\RAF)$ is isomorphic to the K\H{o}nig graph representation of the associated CRN. Taking into account 
-that any RAF that is not itself a CAF is stoichiometrically autocatalytic \cite{golnik_bridging_2026}, 
-imposes to further investigate the structure of $\queen(\RAF)$.}
+Minimal \emph{stoichiometrically autocatalytic} subnetworks, formally 
+introduced in Sec.~\ref{sec:AutoCatIrrRAF} and termed \emph{autocatalytic cores} 
+\cite{blokhuis_Universal_2020}, encompass a bipartite K\H{o}nig 
+graph representation of the corresponding CRN that includes the 
+property of being strong blocks - strongly connected subgraphs whose underlying 
+undirected graph is 2-connected \cite{golnik_enumeration_2026, golnik_using_2026, 
+golnik_autocatalytic_2026}. Taking into account that any RAF that is not itself a CAF 
+is stoichiometrically autocatalytic \cite{golnik_bridging_2026}, incentivises further 
+investigating the structure of $\king(\RAF)$.
 
 \paragraph{Strong connectivity}
 
 We recall that a directed graph $(V,E)$ is \emph{strongly connected} if, for any pair of 
 vertices $v_1,v_2\in V$, there exists a directed path from $v_1$ to $v_2$. In terms of 
-the bipartite K\H{o}nig graph of an irreducible, monocatalyzed RAF, we cannot hope 
-to have strong-connectedness unless we remove food and waste species, of which 
-the latter are derived from the set
+$\king(\RAF)$, we cannot hope to have strong-connectedness unless we remove food 
+and waste species, of which the latter are derived from the set
 \begin{equation}\label{eq:Waste}
-  \mathbf{W}\coloneqq \{x\in \closure{\RAF}{\food} \ | \ \nexists \fr \in \RAF \text{ s.t. } s^-_{xr}>0\}.
+  \mathbf{W}\coloneqq \{x\in \closure{\RAF}{\food} \ | \ \nexists r \in \CR' \text{ s.t. } s^-_{xr}>0\}.
 \end{equation}
-
-For any $\fr\in \RAF$, by definition, for a waste species $x_W$, there is no directed edge 
-$(x_W,\mathbf{r})$, and for a food species $x_F$, there may be no directed edge 
-$(\mathbf{r},x_F)$. We can, however, consider the subgraph of $\queen(\RAF)$ 
-that is void of food and waste molecules:
+For any $r\in \CR'$, by definition, for a waste species $x_W$, there is no directed edge 
+$(x_W,r)$, and for a food species $x_F$, there may be no directed edge $(r,x_F)$. We 
+can, however, consider the subgraph of $\king(\RAF)$ that is void of food and waste 
+molecules:
 \begin{equation}\label{eq:PrinceGraph}
-    \princess(\RAF) \coloneqq
-    \queen[\closure{\RAF}{\food}\setminus (\food\cup W) \cup \RAF],
+    \lord(\RAF) \coloneqq
+    \king[\closure{\RAF}{\food}\setminus (\food\cup W) \cup \CR'],
   \end{equation}
-where the general notation $\queen[X'\cup \RAF]$ refers to the subgraph of 
-$\queen$ \emph{induced} by the vertex sets $(X',\RAF)$. We conclude this 
-subsection with the following lemma.
+where the general notation $\king[X'\cup \CR']$ refers to the subgraph of 
+$\king$ \emph{induced} by the vertex sets $(X',\CR')$. We then have 
+the following lemma.
 \vspace{6pt}
 \begin{lemma}\label{lem:PSC}
-  Let $\RAF$ be an irreducible, monocatalyzed RAF. Then $\princess(\RAF)$ 
+  Let $\RAF$ be an irreducible, monocatalyzed RAF. Then $\lord(\RAF)$ 
   is strongly connected.
 \end{lemma}
 \begin{proof}
   Again, assume indirectly that this is not the case. Then there are two non-empty, 
-  strongly connected components $\princess_1,\princess_2$.  W.l.o.g., we assume 
-  that there is no path from any $u\in \princess_2$ to any $v\in \princess_1$. Then 
-  all paths from $\princess_2$ to $\princess_1$ in $\queen(\mathbf{\RAF})$ pass through 
-  $\food$ . This, however, implies that all F-catalysts and F-reactants for all F-reactions 
-  in $\princess_1$ are contained in $\food \cup \princess_1$. Then $\FR(\princess_1)$ 
+  strongly connected components $\lord_1,\lord_2$.  W.l.o.g., we assume 
+  that there is no path from any $u\in \lord_2$ to any $v\in \lord_1$. Then 
+  all paths from $\lord_2$ to $\lord_1$ in $\king(\RAF)$ pass through 
+  $\food$. This, however, implies that all F-catalysts and F-reactants for all F-reactions 
+  in $\lord_1$ are contained in $\food \cup \lord_1$. Then $R(\lord_1)/{\sim}$ 
   is a non-empty RAF which contradicts the minimality of $\RAF$.
-\end{proof}	 
+\end{proof}}
 
 \paragraph{Cut-vertices}
 
