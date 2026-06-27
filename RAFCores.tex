@@ -358,7 +358,7 @@ remarkably rich structure, comprising up to thousands of autocatalytic cores,
 as shown in Fig.~\ref{fig:irrRAFCores}.
 
 
-\section{\NV{Two different representations of chemical systems}}
+\section{Two different Representations of Chemical Systems}
 
 Research on systems of chemical interactions has attracted
 considerable attention, although their formalization lacks
@@ -429,8 +429,10 @@ The stoichiometric Eq.~\ref{eq:reaction} can then be rewritten as:
 \end{equation}
 We refer to species appearing in Eq.~\ref{eq:Mod.SmEq} with $\sigma^{-}_{xr}>0$, 
 $\sigma^{+}_{xr}>0$, and $k_{xr}>0$ as F-reactants,
-F-products, and F-catalysts, respectively. The nomenclature `F-catalysts' is to distinguish this notion from the more loose definition of catalyst just as a species that is both reactant and product, which is often also found in literature. We collect F-reactants and
-F-products in the following sets:
+F-products, and F-catalysts, respectively. The nomenclature `F-catalysts' is to 
+distinguish this notion from the more loose definition of a catalyst, just as a 
+species that is both reactant and product, which is often also found in literature. 
+We collect F-reactants, F-products, and F-catalysts in the following sets:
 \begin{equation}
   \begin{split}
     \feducts(r) & \coloneqq \{x\in X \ | \ \sigma^-_{xr} > 0\}; \\
@@ -438,8 +440,10 @@ F-products in the following sets:
     \cat(r)&\coloneqq \{(x, k_{xr})\ | \ x\in X,\; k_{xr}>0\}.
   \end{split}
 \end{equation} 
-Note that the set of F-catalysts is defined as a set of pairs $(x,k_{xr})$ to encode also the respective coefficient. In a CRN, distinct reactions $r_1\neq r_2$
-may differ only in the F-catalysts $\kappa_F(r_1)\neq \kappa_F(r_2)$ and share identical F-reactants and F-products. For example, 
+Note that the set of F-catalysts is defined as a set of pairs $(x,k_{xr})$ 
+to encode also the respective coefficient. In a CRN, distinct reactions $r_1\neq r_2$
+may differ only in the F-catalysts $\kappa_F(r_1)\neq \kappa_F(r_2)$ 
+and share identical F-reactants and F-products. For example, 
 the hydrogenation of ethene to ethane can be mediated by platinum, 
 palladium, or nickel separately \cite{crampton_ethylene_2016}. An 
 example for co-catalysis, i.e., where the orchestrated cooperation of 
@@ -447,10 +451,7 @@ two catalysts is required, is the dual-catalyst system of palladium and
 copper in the Hoechst-Wacker process, where ethene is oxidized to 
 acetaldehyde \cite{jira_acetaldehyde_2009}. The idea that one `same' chemical process, intended as a net-molecule transformation, can be catalyzed by different catalysts has led to the different, although much related, concept of Catalytic Reaction Systems, which we overview in the text section.
 
-
-
 \subsection{Catalytic Reaction Systems (CRS)}\label{sec:CRS}
-
 
 Catalytic Reaction Systems (CRS) \textit{sensu} 
 Lohn \cite{lohn_evolving_1998} are defined as a triple 
@@ -869,7 +870,12 @@ To keep the exposition concise, we assume this exclusion throughout and do not r
 
 \subsection{The K\H{o}nig Graph of Monocatalyzed Irreducible RAFs}
 
-\NV{HERE NOW we just need to state the obvious: that the advantage of considering monocatalysed irreducible RAF is that the CRN setting and the CRS coincide (isomorphism of singleton quotient spaces), so that is settled and we do not have to mention this anymore  in our life. We just need to decide which notation to use, or maybe introduce a new one HERE, or maybe not, let's think, let's ponder.}
+\NV{HERE NOW we just need to state the obvious: that the advantage 
+of considering monocatalysed irreducible RAF is that the CRN setting 
+and the CRS coincide (isomorphism of singleton quotient spaces), so 
+that is settled and we do not have to mention this anymore in our life. 
+We just need to decide which notation to use, or maybe introduce a 
+new one HERE, or maybe not, let's think, let's ponder.}
 
 \NV{NV till here}
 
@@ -908,9 +914,10 @@ graph representation of the corresponding CRN that includes the
 property of being strong blocks - strongly connected subgraphs whose underlying 
 undirected graph is 2-connected \cite{golnik_enumeration_2026, golnik_using_2026, 
 golnik_autocatalytic_2026}. Taking into account that any RAF that is not itself a CAF 
-is stoichiometrically autocatalytic \cite{golnik_bridging_2026}, incentivises further 
-investigating the structure of $\king(\RAF)$.
+is stoichiometrically autocatalytic \cite{golnik_bridging_2026}, this incentivises further 
+investigating the structure of $\king(\RAF)$.}
 
+\holy{
 \paragraph{Strong connectivity}
 
 We recall that a directed graph $(V,E)$ is \emph{strongly connected} if, for any pair of 
@@ -940,187 +947,49 @@ the following lemma.
   Again, assume indirectly that this is not the case. Then there are two non-empty, 
   strongly connected components $\lord_1,\lord_2$.  W.l.o.g., we assume 
   that there is no path from any $u\in \lord_2$ to any $v\in \lord_1$. Then 
-  all paths from $\lord_2$ to $\lord_1$ in $\king(\RAF)$ pass through 
-  $\food$. This, however, implies that all F-catalysts and F-reactants for all F-reactions 
-  in $\lord_1$ are contained in $\food \cup \lord_1$. Then $R(\lord_1)/{\sim}$ 
-  is a non-empty RAF which contradicts the minimality of $\RAF$.
-\end{proof}}
+  all paths from vertices of $\lord_2$ to vertices of $\lord_1$ in $\king(\RAF)$ 
+  pass through $\food$. This, however, implies that all F-catalysts and F-reactants 
+  for all F-reactions in $\lord_1$ are contained in $\food \cup \lord_1$. Then 
+  $R(\lord_1)/{\sim}$ is a non-empty RAF which contradicts the minimality of $\RAF$.
+\end{proof}
 
+Before we proceed, we remark on an interesting consequence for the R-graph of 
+an irreducible, monocatalyzed RAF $\RAF$, which has only F-reactions as 
+vertices and directed edges from $\fr_1$ to $\fr_2$ whenever there is a species 
+$x$ that is either an F-catalyst of $\fr_1$ and $\fr_2$ or $\sigma^+_{x\fr_1}>0$ 
+and $\sigma^-_{x\fr_2}>0$. In fact, Lemma~\ref{lem:PSC} implies that, if $\RAF$ 
+is an irreducible, monocatalyzed RAF, the R-graph is strongly connected 
+(see SI Cor.~\TODO{TBA, will only add the Cor. to the SI if this is not removed}). 
+Note that different notions of such a graph have been defined in the RAF 
+universe, which not necessarily all lead to the same results \cite{steel_minimal_2013, 
+steel_autocatalytic_2019}.
+}
+
+\holy{
 \paragraph{Cut-vertices}
 
-Strongly connected subgraphs, and $\princess(\RAF)$ of an irreducible, monocatalyzed 
-RAF $\RAF$, in particular, may still contain cut-vertices. Minimal \emph{stoichiometrically 
-autocatalytic} subnetworks, formally introduced in Sec.~\ref{sec:AutoCatIrrRAF} and termed 
-\emph{autocatalytic cores} \cite{blokhuis_Universal_2020}, encompass a bipartite K\H{o}nig 
-graph representation that includes the property of being strong blocks - strongly connected subgraphs whose 
-underlying undirected graph is 2-connected \cite{golnik_enumeration_2026, golnik_using_2026,
-golnik_autocatalytic_2026}. This result suggests identifying the maximal strong blocks in $\princess(\RAF)$. 
+Strongly connected graphs are not necessarily strong blocks, as they can still contain cut-vertices. 
+A strong block $B$ of digraph $G=(V,E)$ is termed maximal if there is no vertex $v\in V$ such that 
+$G[B\cup \{v\}]$ is a strong block. The Example depicted in Fig.~\ref{ex:CutVertex2} illustrates an 
+irreducible RAF $\RAF$, with $\lord(\RAF)$ containing the cut-vertex $r_2$, whose removal would 
+disconnect the graph. $\lord(\RAF)$ of an irreducible, monocatalyzed RAF $\RAF$ is therefore either 
+a strong block or it contains a cut-vertex, but not both. In Fig.~\ref{ex:CutVertex2} both maximal 
+strong blocks $\lord[\{x_1,x_2\} \cup \{r_1,r_2\}]$ and $\lord[\{x_3,x_4\}\cup \{r_2,r_3\}]$ share the 
+common cut F-reaction vertex $r_2$. 
 
-%\begin{figure}[htb]
-%  \centering
-%  \begin{minipage}[c]{0.49\textwidth}
-%    \centering	
-%    \textbf{Catalytic Reaction Systems}
-%  \end{minipage}%
-%  \hfill%
-%  \begin{minipage}[c]{0.49\textwidth}	
-%    \centering
-%    \textbf{Chemical Reaction Networks}
-%  \end{minipage}
-%  \begin{minipage}[c]{0.49\textwidth}	
-%    \centering
-%    \begin{equation}
-%      \begin{split}
-%	\fr_0&: f  \xrightarrow{x_1,y_1} x_2 + y_2 \\
-%	\fr_1&: x_2 \xrightarrow{x2} x_1 \\
-%	\fr_2&: y_2   \xrightarrow{y_2} y_1 + y_3
-%      \end{split}
-%    \end{equation}
-%  \end{minipage}%
-%  \hfill%
-%  \begin{minipage}[c]{0.49\textwidth}
-%    \centering
-%    \begin{equation}
-%      \begin{split}
-%	r'_0&: f + (x_1) \longrightarrow x_2 + y_2 +(x_1)\\
-%	r''_0&: f + (y_1) \longrightarrow x_2 + y_2 +(y_1)\\
-%	r_1&: x_2 + (x_2)\longrightarrow x_1 + (x_2) \\
-%	r_2&: y_2 + (y_2) \longrightarrow y_1 + y_3 + (y_2)
-%      \end{split}
-%    \end{equation}
-%  \end{minipage}
-%  \par\bigskip	
-%  \begin{minipage}[c]{0.49\textwidth}
-%    \centering
-%    \begin{tikzpicture}
-%      \node[draw, circle] (f) at (-1,0) {$f$};
-%      \node[draw, purple, circle] (x1) at (0,1) {$x_1$};
-%      \node[draw, purple, circle] (x2) at (2,1) {$x_2$};
-%      \node[draw, purple, circle] (y1) at (0,-1) {$y_1$};
-%      \node[draw, purple, circle] (y2) at (2,-1) {$y_2$};
-%      \node[draw, circle] (y3) at (0,-2) {$y_3$};
-%      
-%      \node[draw, purple, rectangle] (r0) at (1,0) {$\fr_0$};
-%      \node[draw, purple, rectangle] (r1) at (1,2) {$\fr_1$};
-%      \node[draw, purple, rectangle] (r2) at (1,-2) {$\fr_2$};
-%      
-%      \draw[->] (f) to (r0);
-%      \draw[->, purple] (x1) to [bend right = 30] (r0);
-%      \draw[->, purple] (r0) to [bend right = 30] (x1);
-%      \draw[->, purple] (y1) to [bend right = 30] (r0);
-%      \draw[->, purple] (r0) to [bend right = 30] (y1);
-%      \draw[->, purple] (r0) to (x2);
-%      \draw[->, purple] (r0) to (y2);
-%      \draw[->, purple] (x2) to [bend right = 30] (r1);
-%      \draw[->, purple] (r1) to [bend right = 30] (x2);
-%      \draw[->, purple] (y2) to [bend right = 30] (r2);
-%      \draw[->, purple] (r2) to [bend right = 30] (y2);
-%      \draw[->, purple] (r1) to (x1);
-%      \draw[->, purple] (r2) to (y1);
-%      \draw[->] (r2) to (y3);			
-%    \end{tikzpicture}
-%  \end{minipage}%
-%  \hfill%
-%  \begin{minipage}[c]{0.49\textwidth}
-%    \centering
-%    \begin{tikzpicture}
-%      \node[draw, circle] (f) at (-1,0) {$f$};
-%      \node[draw, teal, circle] (x1) at (0,1) {$x_1$};
-%      \node[draw, teal, circle] (x2) at (2,1) {$x_2$};
-%      \node[draw, teal, circle] (y1) at (0,-1) {$y_1$};
-%      \node[draw, teal, circle] (y2) at (2,-1) {$y_2$};
-%      \node[draw, circle] (y3) at (0,-2) {$y_3$};
-%      
-%      \node[draw, teal, rectangle] (r'0) at (1,0.5) {$r'_0$};
-%      \node[draw, teal, rectangle] (r''0) at (1,-0.5) {$r''_0$};
-%      \node[draw, teal, rectangle] (r1) at (1,2) {$r_1$};
-%      \node[draw, teal, rectangle] (r2) at (1,-2) {$r_2$};
-%      
-%      \draw[->] (f) to (r'0);
-%      \draw[->] (f) to (r''0);
-%      \draw[->, teal] (x1) to [bend right = 30] (r'0);
-%      \draw[->, teal] (r'0) to [bend right = 30] (x1);
-%      \draw[->, teal] (y1) to [bend right = 30] (r''0);
-%      \draw[->, teal] (r''0) to [bend right = 30] (y1);
-%      \draw[->, teal] (r'0) to (x2);
-%      \draw[->, teal] (r''0) to (x2);
-%      \draw[->, teal] (r'0) to (y2);
-%      \draw[->, teal] (r''0) to (y2);
-%      \draw[->, teal] (x2) to [bend right = 30] (r1);
-%      \draw[->, teal] (r1) to [bend right = 30] (x2);
-%      \draw[->, teal] (y2) to [bend right = 30] (r2);
-%      \draw[->, teal] (r2) to [bend right = 30] (y2);
-%      \draw[->, teal] (r1) to (x1);
-%      \draw[->, teal] (r2) to (y1);	
-%      \draw[->] (r2) to (y3);		
-%    \end{tikzpicture}
-%  \end{minipage}	
-%  
-%  \par\bigskip
-%  \begin{minipage}[c]{0.49\textwidth}
-%    \centering
-%    \begin{tikzpicture}
-%      
-%      \node[draw, rectangle] (r0) at (0,0) {$r_0$};
-%      \node[draw, rectangle] (r1) at (1,0) {$r_1$};
-%      \node[draw, rectangle] (r2) at (2,0) {$r_2$};
-%      
-%      
-%      \draw[->] (r0) to [bend right = 30] (r1);
-%      \draw[->] (r1) to [bend right = 30] (r0);
-%      \draw[->] (r1) to [bend right = 30] (r2);
-%      \draw[->] (r2) to [bend right = 30] (r1);
-%    \end{tikzpicture}
-%    
-%  \end{minipage}%
-%  \hfill%	
-%  \begin{minipage}[c]{0.49\textwidth}
-%    \centering
-%    \begin{tikzpicture}
-%      \node[draw, rectangle] (r0) at (0,0) {$r_0$};
-%      \node[draw, rectangle] (r1) at (1,0) {$r_1$};
-%      \node[draw, rectangle] (r2) at (2,0) {$r_2$};
-%      
-%      
-%      \draw[->] (r0) to [bend right = 30] (r1);
-%      \draw[->] (r1) to [bend right = 30] (r0);
-%      \draw[->] (r1) to [bend right = 30] (r2);
-%      \draw[->] (r2) to [bend right = 30] (r1);
-%      
-%    \end{tikzpicture}
-%    
-%  \end{minipage}
-%  \par\bigskip
-%  
-%  \caption{A non-trivial, irreducible RAF $\RAF$ in its different
-%    representations as a CRS $\Phi$ (\textbf{left}) and CRN $\Gamma(\Phi)$
-%    (\textbf{right}): the systems of stoichiometric equations
-%    \textbf{(top)}, the complete bipartite graphs $\queen'$ and $\king'$ as
-%    well as the subgraph $\princess(\RAF)$ and $\lord(\RAF)$ in purple and
-%    teal, respectively (\textbf{middle}), and the R-graphs
-%    $\RGraph(\queen')$ and $\RGraph(\king')$.}
-%  \label{ex:CutVertex}
-%\end{figure}
-Strongly connected graphs are not necessarily strong blocks, since they can still contain cut-vertices. 
-The Example depicted in Fig.~\ref{ex:CutVertex2} illustrates an irreducible RAF $\RAF$, such that 
-$\princess(\RAF)$ contains a cut-vertex ($\fr_2$) whose removal would disconnect the graph. $\princess(\RAF)$ 
-of an irreducible, monocatalyzed RAF $\RAF$ is therefore either a strong block or it contains a cut-vertex, but not 
-both. In Fig.~\ref{ex:CutVertex2} both maximal strong blocks $\princess[\{x_1,x_2\} \cup \{\fr_1,\fr_2\}]$ and 
-$\princess[\{x_3,x_4\}\cup \{\fr_2,\fr_3\}]$ share the common cut F-reaction vertex $\fr_2$. 
-
-The minimality condition on the set of F-reactions suggests that only F-reactions can be cut-vertices. If a species were 
-a cut-vertex, separating $\princess(\RAF)$ into two strongly connected components, then at least one component 
-would be food-generated. For this component, all requirements in terms of F-reactants and F-catalysts for all F-reactions 
-in that component would be satisfied by the species from inside. That this result is true in general is summarized 
-in the subsequent Lemma. 
+The minimality condition on the set of F-reactions suggests that only CRN reactions can be cut-vertices. 
+If a species were a cut-vertex, separating $\lord(\RAF)$ into two strongly connected components, then 
+the set of F-reactions of this component would be food-generated, as all requirements in terms of 
+F-reactants and F-catalysts for all F-reactions would be satisfied by species from inside. That this 
+result holds in general is summarized in the following Lemma. 
 
 \begin{figure}[bth]
   \begin{minipage}[c]{0.49\textwidth}
     \begin{equation}
       \begin{split}
-	\fr_1& : f_1 \xrightarrow{(x_1)}  x_2 \qquad (x_1)\\
-	\fr_2& : f_2 \xrightarrow{(x_4)} x_3 \qquad (x_4)\\
-	\fr_3& : 2x_3 \xrightarrow{}  x_1 + x_4 \qquad (x_2)
+	r_1& : f_1 + (x_1) \rightarrow  x_2 + (x_1) \\
+	r_2& : f_2 + (x_4)\rightarrow x_3 + (x_4)\\
+	r_3& : 2x_3 + (x_2) \rightarrow x_1 + x_4 + (x_2)
       \end{split}
     \end{equation}
   \end{minipage}%
@@ -1134,9 +1003,9 @@ in the subsequent Lemma.
       \node[draw, circle] (x3) at (3,-1) {$x_3$};
       \node[draw, circle] (x4) at (2,-2) {$x_4$};
       
-      \node[draw, rectangle] (r1) at (1,0) {$\fr_1$};
-      \node[draw, rectangle] (r2) at (2,-1) {$\fr_2$};
-      \node[draw, rectangle] (r3) at (3,-2) {$\fr_3$};
+      \node[draw, rectangle] (r1) at (1,0) {$r_1$};
+      \node[draw, rectangle] (r2) at (2,-1) {$r_2$};
+      \node[draw, rectangle] (r3) at (3,-2) {$r_3$};
       
       \draw[->] (f1) to (r1);
       \draw[->] (f2) to (r3);
@@ -1153,143 +1022,128 @@ in the subsequent Lemma.
       \draw[->] (r3) to (x3);
     \end{tikzpicture}
   \end{minipage}
-  \caption{\textit{(Left):} Example of an irreducible, monocatalyzed RAF with a 
-  cut-vertex that has a single catalyst. Catalyzations are 
+  \caption{\textit{(Left):} Example of an irreducible, monocatalyzed RAF written 
+  as CRN reactions with a cut-vertex that has a single catalyst. Catalyzations are 
   indicated in brackets. \textit{(Right):} Depiction of the corresponding König graph.}
   \label{ex:CutVertex2}
 \end{figure}
 
 \vspace{6pt}
 \begin{lemma}\label{lem:CutVertexReac}
-  Let $\RAF$ be an irreducible, monocatalyzed RAF. If $\princess(\RAF)$ is not
-  a strong block, then every cut-vertex is an F-reaction. 
+  Let $\RAF$ be an irreducible, monocatalyzed RAF. If $\lord(\RAF)$ is not
+  a strong block, then every cut-vertex is a CRN reaction. 
 \end{lemma}
 \begin{proof}
-	Assume there is a cut-vertex $w\in X(\princess)$. Then there are at least two
-  	strongly connected components $\princess_1$ and $\princess_2$. Then for any two
-  	vertices $u\in \princess_1$ and $v\in \princess_2$ we have $w\in P_{uv}$
-  	and $w\in P_{vu}$ for arbitrary paths connecting $u$ and $v$ in $\princess(\RAF)$. 
-	Therefore, except $w$, there is no $x_1\in X(\princess_1)$ such that $x_1$ 
-	is an F-reactant, F-product, or F-catalyst for any reaction $r_2\in \FR(\princess_2)$, 
-	and there is no $x_2\in X(\princess_2)$ such that $x_2$ is an F-reactant,
-  	F-product, or F-catalyst for any reaction $r_1\in \FR(\princess_1)$.
-  	Then either $\closure{\FR(\princess_1)}{\food}\neq \emptyset$ or (not mutually exclusive) 
-	$\closure{\FR(\princess_2)}{\food}\neq \emptyset$, , implying that
-  	$\FR(\princess_1)$ or $\FR(\princess_2)$ is a RAF, respectively. In either case, this 
-	contradicts the assumption that $\RAF$ is an irreducible RAF.
+	Assume there is a cut-vertex $w\in X(\lord)$. Then there are at least two
+  	strongly connected components $\lord_1$ and $\lord_2$. Then for any two
+  	vertices $u\in V(\lord_1)$ and $v\in V(\lord_2)$ we have $w\in P_{uv}$
+  	and $w\in P_{vu}$ for arbitrary paths connecting $u$ and $v$ in $\lord(\RAF)$. 
+	Therefore, except $w$, there is no $x_1\in X(\lord_1)$ such that $x_1$ 
+	is an F-reactant, F-product, or F-catalyst for any reaction $r_2\in \CR(\lord_2)$, 
+	and there is no $x_2\in X(\lord_2)$ such that $x_2$ is an F-reactant,
+  	F-product, or F-catalyst for any reaction $r_1\in \CR(\lord_1)$.
+  	Then either $\closure{\CR(\lord_1)/\sim}{\food}\neq \emptyset$ or (not mutually exclusive) 
+	$\closure{\CR(\lord_2)/\sim}{\food}\neq \emptyset$, implying that
+  	$\CR(\lord_1)/\sim$ or $\CR(\lord_2)/\sim$ is a RAF, respectively. Either case 
+	contradicts the irreducibility of $\RAF$.
 \end{proof}
-
-%Cut-vertices in $\princess(\RAF)$ and $\lord(\RAF)$ are not unrelated from
-%each other. In particular, only equivalence classes of cut-vertices in
-%$\lord(\RAF)$ can be cut-vertices in $\princess(\RAF)$. In addition, a
-%reaction vertex can only be a cut-vertex in $\lord(\RAF)$ if its
-%equivalence class is trivial.
-%\vspace{6pt}
-%\begin{lemma}\label{lem:CutVertPP}
-%  Let $\RAF$ be a non-trivial, irreducible RAF. If $r \in
-%  \varphi^{-1}(\RAF)$ is a cut-vertex in $\lord(\RAF)$ then $|\fr|=1$ and
-%  $\fr$ is a cut-vertex in $\princess(\RAF)$.
-%\end{lemma}
-
+}
+\holy{
 \paragraph{Strong Blocks}
 
 The existence of cut-vertices, which can only be reaction vertices, allows for
-the decomposition of $\princess$ into maximal strong blocks $\block_1,\ldots, 
-\block_n$. Throughout, we will refer to maximal strong blocks simply as blocks. 
+the decomposition of $\lord(\RAF)$ into maximal strong blocks $\lord_1,\ldots, 
+\lord_n$. Throughout, we will refer to maximal strong blocks simply as blocks. 
 
-Food-connected blocks of $\princess(\RAF)$ contain F-reaction vertices whose 
+Food-connected blocks of $\lord(\RAF)$ contain CRN reaction vertices whose 
 F-reactants are all elements of $\food$ and thereby no vertices of the block itself. 
-We call such F-reactions \emph{liberal} and collect them for each block in the sets
+We call such reactions \emph{liberal} and collect them for each block $\lord'\subseteq 
+\lord$ in the sets
 \begin{equation}
-    \FR_\ell(\block)\coloneqq \{\fr\in \FR(\block) \ | \ \nexists x\in X(\block): \sigma^-_{x\fr}>0\},
+    \CR_\ell(\lord')\coloneqq \{r\in \CR(\lord') \ | \ \nexists x\in X(\lord'): \sigma^-_{xr}>0\},
 \end{equation}
-which is, indeed, a non-empty set for each block.
+which is, indeed, a non-empty set for each block. To simplify notation, we might 
+write $\fr$ instead of $[r]_{\sim}$ for the equivalence class (F-reaction) of a CRN 
+reaction $r$.
 \vspace{6pt}
 \begin{lemma}\label{lem:cutVertexPureCat}
-  Every strong block $\block$ of $\princess(\RAF)$ contains a liberal reaction.
+  Every strong block $\lord'$ of $\lord(\RAF)$ contains a liberal reaction.
 \end{lemma}
 \begin{proof}
-  Let $\block$ be a maximal strong block of $\princess(\RAF)$. If $\block$ contains 
-  an F-reaction $\fr: \rgen(\fr)=1$, all F-reactants of $\fr$ are elements of $\food$. 
-  Otherwise, $\block$ contains a cut-vertex $\fr_1\in \FR(\block)$. If $\fr_1$ is the only 
-  cut-vertex in $\block$, then $\rgen(\fr_1)< \rgen(\fr)$, for all $\fr\in \FR(\block) 
-  \setminus \{\fr_1\}$. If some $x\in X(\block)$ is an F-reactant for $\fr_1$, then
-  $x$ is an F-product of another F-reaction $\fr_2\in \FR(\block)\Rightarrow 
-  \rgen(\fr_2)< \rgen(\fr_1)$, a contradiction. If $\block$ has cut-vertices 
-  $\FR_\ell(\block)\coloneqq \{\fr_{\ell_1}, \ldots, \fr_{\ell_k}\}$, we may choose 
-  $\fr_{\ell_j}\in \FR_\ell(\block)$ such that $\rgen(\fr_{\ell_j})\leq \rgen(\fr_{\ell_i})$ 
-  for all $\fr_{\ell_i}\in\FR_\ell(\block)$. Assume now that $\fr_{\ell_j}$ has an F-reactant 
-  $x_j\in X(\block)$. Then $x_j$ is an F-product of some reaction in $\fr_1$, and
-  $\rgen(\fr_1)<\rgen(\fr_{\ell_j})$. Then $\fr_1$ cannot be a liberal reaction since
-  otherwise $\rgen(\fr_1)<\rgen(\fr_{\ell_j})\leq \rgen(\fr_1)$. Thus, $\fr_1$ 
-  has an F-reactant $x_1 \in X(\block)$, which is an F-product of some
-  F-reaction $\fr_2\in \FR(\block)$. If $\fr_2=\fr_{\ell_j}$ then
+  Let $\lord'$ be a maximal strong block of $\lord(\RAF)$. If $\lord'$ contains 
+  a CRN reaction $r: \rgen(\fr)=1$, all F-reactants of $r$ are elements of $\food$. 
+  Otherwise, $\lord'$ contains a cut-vertex $r_1\in \CR(\lord')$. If $r_1$ is the only 
+  cut-vertex in $\lord'$, then $\rgen(\fr_1)< \rgen(\fr)$, for all $r\in \CR(\lord') 
+  \setminus \{r_1\}$. If some $x\in X(\lord')$ is an F-reactant for $r_1$, then
+  $x$ is an F-product of another F-reaction $r_2\in \CR(\lord')\Rightarrow 
+  \rgen(\fr_2)< \rgen(\fr_1)$, a contradiction. If $\lord'$ has cut-vertices 
+  $\CR_\ell(\lord')\coloneqq \{r_{\ell_1}, \ldots, r_{\ell_k}\}$, we may choose 
+  $r_{\ell_j}\in \CR_\ell(\lord')$ such that $\rgen(\fr_{\ell_j})\leq \rgen(\fr_{\ell_i})$ 
+  for all $r_{\ell_i}\in\CR_\ell(\lord')$. Assume now that $r_{\ell_j}$ has an F-reactant 
+  $x_j\in X(\lord')$. Then $x_j$ is an F-product of some reaction in $r_1$, and
+  $\rgen(\fr_1)<\rgen(\fr_{\ell_j})$. Then $r_1$ cannot be a liberal reaction since
+  otherwise $\rgen(\fr_1)<\rgen(\fr_{\ell_j})\leq \rgen(\fr_1)$. Thus, $r_1$ 
+  has an F-reactant $x_1 \in X(\lord')$, which is an F-product of some
+  reaction $r_2\in \FR(\lord')$. If $r_2=r_{\ell_j}$ then
   $\rgen(\fr_{\ell_j})< \rgen(\fr_1)<\rgen(\fr_{\ell_j})$, a contradiction. 
   Otherwise, $\rgen(\fr_2)<\rgen(\fr_1)<\rgen(\fr_{\ell_j})$ and by
   iterative application of the upper argument, we obtain with the finiteness of
-  $\block$:
+  $\lord'$:
   \begin{equation}
     \rgen(\fr_k)<\rgen(\fr_{k-1}) <\ldots < \rgen(\fr_l)
   \end{equation}
   with $\fr_k=\fr_l$, which yields a contradiction and thereby
-  $\rgen(\fr_{\ell_j})\leq \rgen(\fr)$ for all $\fr\in \FR_\ell(\block)\setminus
-  \{\fr_{\ell_j}\}$ and $\rgen(\fr_{\ell_j})< \rgen(\fr)$ for all $\fr\in
-  \FR(\block)\setminus \FR_\ell(\block)$.
+  $\rgen(\fr_{\ell_j})\leq \rgen(\fr)$ for all $r\in \CR_\ell(\lord')\setminus
+  \{r_{\ell_j}\}$ and $\rgen(\fr_{\ell_j})< \rgen(\fr)$ for all $r\in
+  \CR(\lord')\setminus \CR_\ell(\lord')$.
 \end{proof}
 \vspace{6pt}
-%
-
+}
+\holy{
 The proof of Lemma~\ref{lem:cutVertexPureCat} has two important
-consequences. First, only cut-vertices can be liberal F-reactions, 
-although not all cut-vertices necessarily are. Second, liberal F-reactions 
-take an important position within the pre-order of blocks of an irreducible, 
-monocatalyzed RAFs, as there is always one -- potentially multiple -- with 
-the lowest generation order of all F-reactions inside the block. In addition,
-strong connectedness of $\princess(\block)$ ensures that each liberal F-reactions 
-is connected to its single F-catalyst inside the block. Intuitively, but not trivially 
-following, they also have at least one F-product inside the block, which can 
+consequences. First, only cut-vertices can be liberal reactions, 
+although not all cut-vertices necessarily are. Second, F-reactions of 
+liberal reactions take an important position within the pre-order of blocks 
+of an irreducible, monocatalyzed RAFs, as there is always one -- potentially 
+multiple -- of which the corresponding F-reaction has the lowest generation 
+of all reactions inside the block. In addition, strong connectedness of $\lord'$ 
+ensures that each liberal reaction is connected to its single F-catalyst inside 
+the block. Intuitively, but not trivially following, they also have at least one 
+F-product inside the block, which can 
 be the F-catalyst.
 \vspace{6pt}
 \begin{lemma}\label{lem:LibReacFProd}
-	For every liberal reaction $\fr_\ell \in \FR_\ell(\block)$ there is at least on species 
-	$x\in X(\block)$ such that $\sigma^+_{x\fr_\ell}>0$.
+	For every liberal reaction $\fr_\ell \in \CR_\ell(\lord')$ there is at least on species 
+	$x\in X(\lord')$ such that $\sigma^+_{xr_\ell}>0$.
 \end{lemma}
 \begin{proof}
-	Assume indirectly that this is not the case. Then $\block$ is composed of the single 
-	F-reaction $\fr_\ell$ and its F-catalyst $x_\ell$. If $x_\ell$ is not an F-product of $\fr_\ell$, 
-	then there is another F-reaction $\fr'$ of a block $\block'\neq\block$ such that 
-	$\sigma^+_{x_\ell\fr'}>0$. Then $x_\ell$ is a cut-vertex, which contradicts 
+	Assume indirectly that this is not the case. Then $\lord'$ is composed of the single 
+	reaction $r_\ell$ and its F-catalyst $x_\ell$. If $x_\ell$ is not an F-product of $r_\ell$, 
+	then there is another reaction $r'$ of a block $\lord''\neq\lord'$ such that 
+	$\sigma^+_{x_\ell r'}>0$. Then $x_\ell$ is a cut-vertex, which contradicts 
 	Lemma~\ref{lem:CutVertexReac}.
 \end{proof}
 \vspace{6pt}
+}
 
-Liberal F-reactions take a central role in $\princess(\RAF)$. In particular, they can be 
-considered as inflow reactions for the corresponding block, as they depend only on 
-F-reactants located outside the block, not inside. We will see that their corresponding 
-reactions in the associated CRN are responsible for warranting a crucial property 
-of shaping subnetworks stoichiometrically autocatalytic, as they induce a nonnegative 
-column in the associated stoichiometric matrices. We will therefore now introduce 
-CRNs formally, and derive a relation between F- and reactions before showing 
-that each block of an irreducible RAF contains an autocatalytic core. 
-
-
-\subsection{Stoichiometric Autocatalysis}
-
-
-This column represents a pure reaction, i.e., it has only reactants
-that are F-catalysts but not F-reactants within $B$ and at least one
-positive entry for a product $y^*\in X(\block): s^+_{yr^*}>0$:
+\holy{
+Liberal reactions play a crucial role in $\lord(\RAF)$. In particular, they can be 
+considered as inflow reactions for the corresponding block $\lord'$, as they 
+depend only on F-reactants located outside the block, not inside. A liberal reaction
+$r_\ell$ thereby corresponds to a non-negative column in the associated stoichiometric 
+matrix $\SM[X(\lord'),\CR(\lord')]$ with at least one positive entry that encodes an
+F-product of $r_\ell$, i.e., $y \in X(\lord): s^+_{yr_\ell}>0$:
 \begin{equation}
-  \SM[X(B), R(B)] = 
+  \SM[X(\lord'),\CR(\lord')] = 
   \begin{array}{c c}
     & 	\begin{array}{c c c} 			
 	  & 	r^* 		& 
 	\end{array} \\
     \begin{array}{c} 
       \ \\ 
-      x^* \\
+      x_\ell \\
       \ \\ [0.5em]
-      y^* \\
+      y_\ell \\
       \ \\
       \ \\		
     \end{array}
@@ -1297,18 +1151,21 @@ positive entry for a product $y^*\in X(\block): s^+_{yr^*}>0$:
 	\ddots 	& 	\vdots 	& \ddots \\
 	\ldots 	& 	0 		& \ldots \\
 	\ddots 	& 	\vdots 	& \ddots \\
-	\ldots 	& 	s^+_{y^*r^*} & \ldots \\
+	\ldots 	& 	s^+_{yr_\ell} & \ldots \\
 	\ldots 	& 	0 & \ldots \\
 	\ddots 	& 	\vdots 	& \ddots 
       \end{pmatrix}
-  \end{array}
+  \end{array}.
 \end{equation}
 \vspace{6pt}
 
-The nonnegative column reflecting $r^*$ in $\SM(B)\coloneqq \SM[X(B),
-  R(B)]$ renders $r^*$ as an import reaction for the strong block $B$. In
-fact, this allows us to construct a strictly positive vector $v$ of
-reaction rates which satisfies $\SM(B)v>0$.
+In fact, this allows us to construct a strictly positive vector $v$ of
+reaction rates which satisfies $\SM[X(\lord'),\CR(\lord')]v>0$.
+}
+
+\holy{RG until here}
+
+\subsection{Stoichiometric Autocatalysis}
 
 \subsection{Autocatalytic Capacity of irreducible RAFs}
 \label{sec:AutoCatIrrRAF}
