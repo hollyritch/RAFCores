@@ -322,23 +322,6 @@ beforehand. Interestingly, a RAF that is itself not entirely constrained in
 such a manner is always \emph{stoichiometrically autocatalytic}
 \cite{golnik_bridging_2026}.
 
-\begin{figure}[htb]
-	\centering
-	\begin{minipage}[c]{0.5\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{./Pictures/IrrRAFCoresn5rev2.png}
-	\end{minipage}%
-	\hfill%
-	\begin{minipage}[c]{0.5\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{./Pictures/IrrRAFCoresn5rev.png}
-	\end{minipage}
-	\caption{Depiction of the number of autocatalytic cores among non-food molecules 
-		in 50 different irreducible RAFs from two random instances of the binary polymer model 
-		with a fixed probability for any non-food species to catalyze any reaction of $p=0.01$ 
-		(\textbf{right}) and $p=0.008$ (\textbf{left}) and maximum polymer-length $5$.}
-	\label{fig:irrRAFCores}
-\end{figure}
 
 In this contribution, we extend this theory and set out to identify the
 underlying structures carrying the autocatalytic capacity of a RAF that is
@@ -351,12 +334,7 @@ addition, we show that requiring minimality, with respect to the RAF
 property, imposes remarkable constraints on the emerging graph
 structures. Finally, we explore how these consequences impact on the
 correspondence between the two notions of minimality: \textsc{irreducible
-RAFs} and \emph{autocatalytic cores}. As a preliminary glimpse of the
-theoretical results that follow, irreducible RAFs in random instances of the 
-binary polymer model \cite{kauffman_autocatalytic_1986} already reveal a 
-remarkably rich structure, comprising up to thousands of autocatalytic cores, 
-as shown in Fig.~\ref{fig:irrRAFCores}.
-
+RAFs} and \emph{autocatalytic cores}. 
 
 \section{Two different Representations of Chemical Systems}
 
@@ -466,9 +444,9 @@ The \emph{catalyzation} set $\cat(\FR)=\{ \cat(\mathbf{r)} \}_{\fr\in\FR}$ const
 For a single F-reaction $\fr$, the set of catalyzations $\cat(\fr)$ is defined as
 $\cat(\fr)=\{c_\fr\}$, where each catalyzation $c_\fr$ is in turn a set of pairs $(x,k_{x\mathbf{r}})$:
 \begin{equation}
-    c_\fr\coloneqq \{(x_1,k^c_{x_1\mathbf{r}}),\ldots, (x_n,k^c_{x_n\fr})\}.
+    c_\fr\coloneqq \{(x_1,k\TODO{^c}_{x_1\mathbf{r}}),\ldots, (x_n,k\TODO{^c}_{x_n\fr})\}.
 \end{equation}
-where $k_{x\fr}>0$ is a positive coefficient.  We call a $\fr\in \FR$ \emph{F-reaction} to distinguish it from the CRN reactions \eqref{eq:Mod.SmEq}. Moreover, a comparison between a CRN reaction \eqref{eq:Mod.SmEq}  with a CRS F-reaction \eqref{eq:FReacEq} and the definition of catalyzations set $\cat$ suggests the following formalization of the relation between a CRN and a CRS.
+where $k_{x\fr}>0$ is a positive coefficient. We call an $\fr\in \FR$ \emph{F-reaction} to distinguish it from the CRN reactions \eqref{eq:Mod.SmEq}. Moreover, a comparison between a CRN reaction \eqref{eq:Mod.SmEq}  with a CRS F-reaction \eqref{eq:FReacEq} and the definition of catalyzations set $\cat$ suggests the following formalization of the relation between a CRN and a CRS.
 
 {\textbf{From a CRN $\Gamma=(X,\mathcal{R})$ to a CRS $\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$.}  Consider the equivalence relation $\sim$ on CRN reactions defined as 
 \begin{equation}
@@ -879,43 +857,47 @@ new one HERE, or maybe not, let's think, let's ponder.}
 
 \NV{NV till here}
 
-\holy{Within this section, we will investigate the structure of CRS $\mathbf{\Phi}'$, 
-with food-set $\food$, which themselves contain only the F-reactions of a 
-monocatalyzed irreducible $\RAF$, i.e.
-\begin{equation}\label{eq:RAF-CRS}
-  \mathbf{\Phi}' \coloneqq (\closure{\RAF}{\food}, \RAF, \cat'(\RAF))
-\end{equation}
-
-where $|\cat'(\fr)|=1$ for each F-reaction $\fr\in \RAF$ and its corresponding CRN 
-$\Gamma'\coloneqq \Gamma(\Phi')\coloneqq (X, \CR')$. In the monocatalytic case, 
-$\Gamma'$ can be canonically identified with $\mathbf{\Phi}'$ as each F-reaction 
-is associated with a unique catalyzation, so that every equivalence class reduces 
-to a single CRN reaction. In this way, we can conveniently study the properties of 
-graphs derived from $\mathbf{\Phi}'$, by simply studying the properties of graphs 
-derived from $\Gamma'$.}
-
-\holy{In particular, we will be interested in the bipartite K\H{o}nig graph representation 
-\cite{zykov_hypergraphs_1974} of an irreducible, monocatalyzed RAF 
-$\RAF$ obtained from the CRN $\Gamma'$, which is the graph $\king(\Gamma') 
-\coloneqq (X \cup \CR', E)$, whose edge set $E\coloneqq E_1\cup E_2$, induced by 
-the two disjoint vertex sets, is composed of two distinct types given as
-\begin{equation}
-    \begin{cases} (x,r) \ | \ x\in X, r\in \CR: s^-_{xr}>0 \\
- 			(r, x) \ | \ x\in X, r\in \FR: s^+_{xr}>0. \end{cases}
-\end{equation}
-Note that the K\H{o}nig graph emerged under various names in the context of CRN theory, as the 
-species-reaction (SR) graph \cite{craciun_multiple_2006}, metabolite-reaction (MR) graph 
-\cite{vassena_good_2020}, and also as Petri nets \cite{angeli_petri_2007}.
-
-Minimal \emph{stoichiometrically autocatalytic} subnetworks, formally 
+\holy{
+Minimal \emph{stoichiometrically autocatalytic} CRN subnetworks, formally 
 introduced in Sec.~\ref{sec:AutoCatIrrRAF} and termed \emph{autocatalytic cores} 
 \cite{blokhuis_Universal_2020}, encompass a bipartite K\H{o}nig 
 graph representation of the corresponding CRN that includes the 
 property of being strong blocks - strongly connected subgraphs whose underlying 
 undirected graph is 2-connected \cite{golnik_enumeration_2026, golnik_using_2026, 
 golnik_autocatalytic_2026}. Taking into account that any RAF that is not itself a CAF 
-is stoichiometrically autocatalytic \cite{golnik_bridging_2026}, this incentivises further 
-investigating the structure of $\king(\RAF)$.}
+is stoichiometrically autocatalytic \cite{golnik_bridging_2026}, it will be of interest to 
+investigate the structure of the bipartite K\"onig graph representation of irreducible 
+RAFs.
+
+To this end, we will be concerned with CRS $\mathbf{\Phi}'$, with food-set $\food$,
+which themselves contain only the F-reactions of a monocatalyzed irreducible $\RAF$, i.e.
+\begin{equation}\label{eq:RAF-CRS}
+  \mathbf{\Phi}' \coloneqq (\closure{\RAF}{\food}, \RAF, \cat'(\RAF))
+\end{equation}
+
+where $|\cat'(\fr)|=1$ for each F-reaction $\fr\in \RAF$ and its corresponding CRN 
+$\Gamma'\coloneqq \Gamma(\Phi')\coloneqq (X, \CR')$. }
+
+\holy{In particular, we will be interested in the bipartite K\H{o}nig graph representation 
+\cite{zykov_hypergraphs_1974} of an irreducible, monocatalyzed RAF $\RAF$. In the 
+monocatalytic case, each F-reaction is associated with a unique catalyzation, yielding 
+a canonical identification of $\Gamma'$ with $\mathbf{\Phi}'$. Accordingly, each equivalence 
+class reduces to a single element, so that CRN reaction and F-reactions are in bijective 
+correspondence. In this way, we can conveniently study the properties of the directed bipartite 
+K\"onig representation derived from $\mathbf{\Phi}'$, by simply studying the properties 
+of the one derived from $\Gamma'$, as the two graphs are isomorphic. 
+
+We therefore consider only the K\H{o}nig graph of the CRN $\Gamma'$, which is the graph 
+$\king(\Gamma') \coloneqq (X \cup \CR', E)$, whose edge set $E\coloneqq E_1\cup E_2$, 
+induced by the two disjoint vertex sets, is composed of two distinct types given as
+\begin{equation}
+    \begin{cases} (x,r) \ | \ x\in X, r\in \CR: s^-_{xr}>0 \\
+ 			(r, x) \ | \ x\in X, r\in \FR: s^+_{xr}>0. \end{cases}
+\end{equation}
+Note that the K\H{o}nig graph emerged under various names in the context of CRN theory, as the 
+species-reaction (SR) graph \cite{craciun_multiple_2006}, metabolite-reaction (MR) graph 
+\cite{vassena_good_2020}, and also as Petri nets \cite{angeli_petri_2007}.}
+
 
 \holy{
 \paragraph{Strong connectivity}
@@ -973,15 +955,15 @@ A strong block $B$ of digraph $G=(V,E)$ is termed maximal if there is no vertex 
 $G[B\cup \{v\}]$ is a strong block. The Example depicted in Fig.~\ref{ex:CutVertex2} illustrates an 
 irreducible RAF $\RAF$, with $\lord(\RAF)$ containing the cut-vertex $r_2$, whose removal would 
 disconnect the graph. $\lord(\RAF)$ of an irreducible, monocatalyzed RAF $\RAF$ is therefore either 
-a strong block or it contains a cut-vertex, but not both. In Fig.~\ref{ex:CutVertex2} both maximal 
+a strong block itself or it contains a cut-vertex, but not both. In Fig.~\ref{ex:CutVertex2} both maximal 
 strong blocks $\lord[\{x_1,x_2\} \cup \{r_1,r_2\}]$ and $\lord[\{x_3,x_4\}\cup \{r_2,r_3\}]$ share the 
 common cut F-reaction vertex $r_2$. 
 
 The minimality condition on the set of F-reactions suggests that only CRN reactions can be cut-vertices. 
 If a species were a cut-vertex, separating $\lord(\RAF)$ into two strongly connected components, then 
-the set of F-reactions of this component would be food-generated, as all requirements in terms of 
-F-reactants and F-catalysts for all F-reactions would be satisfied by species from inside. That this 
-result holds in general is summarized in the following Lemma. 
+the set of F-reactions of this component would be food-generated, as all F-reactants and F-catalysts for 
+all F-reactions would be satisfied by species from inside. That this result holds in general is summarized 
+in the following Lemma. 
 
 \begin{figure}[bth]
   \begin{minipage}[c]{0.49\textwidth}
@@ -1133,7 +1115,9 @@ depend only on its single F-catalyst $x_\ell$ and F-reactants located outside
 the block, not inside. A liberal reaction $r_\ell$ thereby corresponds to a 
 non-negative column in the associated stoichiometric matrix 
 $\SM[X(\lord'),\CR(\lord')]$ with at least one positive entry that reflects an
-F-product of $r_\ell$, i.e., $y \in X(\lord): s^+_{yr_\ell}>0$:
+F-product of $r_\ell$, i.e., $y \in X(\lord): \sigma^+_{yr_\ell}>0$, which, by 
+Definition of $r_\ell$ can not be an F-reactant, thus $S_{yr_\ell}=\sigma^+_{yr_\ell}>0$
+and the associated stoichiometric matrix reads:
 \begin{equation}
   \SM[X(\lord'),\CR(\lord')] = 
   \begin{array}{c c}
@@ -1149,29 +1133,58 @@ F-product of $r_\ell$, i.e., $y \in X(\lord): s^+_{yr_\ell}>0$:
       \ \\		
     \end{array}
     & \begin{pmatrix}						
-	\ddots 	& 	\vdots 	& \ddots \\
-	\ldots 	& 	0 		& \ldots \\
-	\ddots 	& 	\vdots 	& \ddots \\
-	\ldots 	& 	s^+_{yr_\ell} & \ldots \\
-	\ldots 	& 	0 & \ldots \\
-	\ddots 	& 	\vdots 	& \ddots 
+	\ddots 	& 	\vdots 			& \ddots \\
+	\ldots 	& 	0 				& \ldots \\
+	\ddots 	& 	\vdots 			& \ddots \\
+	\ldots 	& 	\sigma^+_{yr_\ell} 	& \ldots \\
+	\ldots 	& 	0 				& \ldots \\
+	\ddots 	& 	\vdots 			& \ddots 
       \end{pmatrix}
   \end{array}.
 \end{equation}
 \vspace{6pt}
 
-In fact, this allows us to construct a strictly positive vector $v$ of
-reaction rates which satisfies $\SM[X(\lord'),\CR(\lord')]v>0$.
-}
+\subsection{Stoichiometric Autocatalysis of Irreducible RAFs}\label{sec:AutoCatIrrRAF}
 
-\holy{RG until here}
+The columns induced by liberal reactions are properties common 
+not only to the stoichiometric matrices associated with each block, 
+but also to the stoichiometric matrix representing all reactions and 
+all non-food molecules of the closure, i.e., 
+$\SM[\closure{\RAF}{\food}\setminus \food, \CR']$. They additionally, 
+allow us to construct a strictly positive vector $v$ of reaction rates 
+which satisfies $\SM[\closure{\RAF}{\food}\setminus \food, \CR]v>0$. 
+Such a matrix is called \emph{semi-positive}.
 
-\subsection{Stoichiometric Autocatalysis}
+\vspace{6pt}
+\begin{theorem}[Proof: SI]\label{thm:NonFoodSemipositiv}
+  Let $\RAF$ be a non-trivial, irreducible RAF. The matrix $A\coloneqq
+  \SM[\closure{\RAF}{\food}\setminus \food, \CR']$ is semi-positive.
+\end{theorem}
+\vspace{6pt}
 
-\subsection{Autocatalytic Capacity of irreducible RAFs}
-\label{sec:AutoCatIrrRAF}
+As a remark, the proof can be applied to the sub-stoichiometric matrix
+representing the species and reaction vertices of any block $L'$ of $\lord(\RAF)$ 
+to show semi-positivity of $\SM[X(\lord'), R(\lord')]$. Equivalently, every 
+species of $\lord'$ is produced and consumed only by reactions belonging to that
+block. Thereby, the vector $v'$ that denotes the sub-vector of $v$
+restricted to the reactions of $\lord'$ directly yields for the submatrix
+restricted to the species and reactions of $\lord'$:
+\begin{equation}
+  \SM[X(\lord'), \CR(\lord')]v'>0.
+\end{equation}
+Thus, each block has a semipositive stoichiometric submatrix. 
 
-\NV{In chemical reaction networks (CRN), a matrix-centered definition of \emph{stoichiometric autocatalysis} was introduced by Blokhuis et al. \cite{blokhuis_Universal_2020} reaction networks in reversible setting and without catalysis. This framework was recently adapted to the irreversible setting with catalysts of the present paper \cite{golnik_autocatalytic_2026}. The central definition is as follows.}
+Since strong blocks are strongly connected, each reaction vertex has at least one 
+incoming edge, i.e., from an F-reactant or an F-catalyst, and at least one outgoing 
+edge, i..e, to an F-catalst or an F-product. Such sub-networks are also called 
+well-formed. 
+
+In chemical reaction networks (CRN), a matrix-centered definition of 
+\emph{stoichiometric autocatalysis} was introduced by Blokhuis et al. 
+\cite{blokhuis_Universal_2020} reaction networks in reversible setting and without 
+catalysis. This framework was recently adapted to the irreversible setting with 
+catalysts of the present paper \cite{golnik_autocatalytic_2026}. The central definition 
+is as follows.
 
 \vspace{6pt}
 \begin{definition}\label{def:autSubRN}
@@ -1188,11 +1201,38 @@ A sub-CRN $(X',R')$ that satisfies \textit{(i.)} and \textit{(ii.)}, while
 no proper subnetwork $(X'',R'')$ with $X''\subseteq X', R''\subseteq R'$
 does, is called an \emph{autocatalytic core}. 
 
+From the obtained results above and the Def.~\ref{def:autSubRN} it follows that
+for an irreducible, monocatalyzed RAF $\RAF$ the subnetworks corresponding 
+to $(\closure{\RAF}{\food\setminus \food\cup W, \CR})$ and to each 
+maximal strong block $\lord'$ of $\lord(\RAF)$, i.e., $(X(\lord'), \CR(\lord'))$, are 
+\emph{stoichiometrically autocatalytic}. In particular, each block contains 
+an \emph{autocatalytic core}. 
 
-We are now in the position to
-show that $\lord(\RAF)$ for each non-trivial, irreducible RAF $\RAF$ is
-\emph{stoichiometrically autocatalytic}.
+As a preliminary glimpse of the
+theoretical results that follow, irreducible RAFs in random instances of the 
+binary polymer model \cite{kauffman_autocatalytic_1986} already reveal a 
+remarkably rich structure, comprising up to thousands of autocatalytic cores, 
+as shown in Fig.~\ref{fig:irrRAFCores}.
 
+\begin{figure}[htb]
+	\centering
+	\begin{minipage}[c]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./Pictures/IrrRAFCoresn5rev2.png}
+	\end{minipage}%
+	\hfill%
+	\begin{minipage}[c]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./Pictures/IrrRAFCoresn5rev.png}
+	\end{minipage}
+	\caption{Depiction of the number of autocatalytic cores among non-food molecules 
+		in 50 different irreducible RAFs from two random instances of the binary polymer model 
+		with a fixed probability for any non-food species to catalyze any reaction of $p=0.01$ 
+		(\textbf{right}) and $p=0.008$ (\textbf{left}) and maximum polymer-length $5$.}
+	\label{fig:irrRAFCores}
+\end{figure}
+\holy{RG until here}
+}
 The results on the structure of irreducible RAFs imply that each strong
 block $B$ of $\lord(\RAF)$ satisfies $(i.)$ of Def.~\ref{def:autSubRN}. To
 show semi-positivity, the key observation is that $B$ contains at least one
@@ -1201,34 +1241,6 @@ F-catalysts (Lemma~\ref{lem:cutVertexPureCat} and
 Cor.~\ref{cor:cutVertexPureCat}). In particular, all $r \in
 \varphi^{-1}(\RAF)$ that satisfy $\delta(r)=1$ are pure reactions.
 
-Pure reactions induce a nonnegative column with at least one positive entry
-in the corresponding stoichiometric matrices, such as the matrices
-$\SM[X(B), R(B)]$ for a strong block $B$ and
-$\SM[\closure{\RAF}{\food}\setminus \food, \varphi^{-1}(\RAF)]$ of the
-whole RAF without food molecules. They can therefore be viewed as import
-reactions, which allow a sufficiently high import into the subnetwork such
-that all succeeding reactions exhibit strictly positive flow values that
-yield a net increase for all subnetwork species.
-\vspace{6pt}
-\begin{theorem}[Proof: SI]\label{thm:NonFoodSemipositiv}
-  Let $\RAF$ be a non-trivial, irreducible RAF. The matrix $A\coloneqq
-  \SM[V(\king')\setminus \food, \varphi^{-1} (\RAF)]$ is semi-positive.
-\end{theorem}
-\vspace{6pt}
-\NV{[Again, counterexample \eqref{crnconnected} to be addressed]}
-
-As a remark, the proof can be applied to the sub-stoichiometric matrix
-representing the species and reaction vertices of any strong block $B$ of
-$\lord(\RAF)$ to show their semi-positivity. Equivalently, every species of
-$B$ is produced and consumed only by reactions belonging to that
-block. Thereby, the vector $v_{R(B)}$ that denotes the sub-vector of $v$
-restricted to the reactions of $B$ directly yields for the submatrix
-restricted to the species and reactions of $B$:
-\begin{equation}
-  \SM[X(B), R(B)]v_{R(B)}>0.
-\end{equation}
-Thus, each block has a semipositive stoichiometric submatrix and is also
-well-formed.
 %
 \vspace{6pt}
 \begin{theorem}\label{Thm:StrBlockCore}
@@ -1237,6 +1249,7 @@ well-formed.
 \end{theorem}
 \NV{[Again, counterexample \eqref{crnconnected} to be addressed for $L(\RAF)$]}
 \vspace{6pt}
+
 
 Thm.~\ref{Thm:StrBlockCore} provides only information on the existence, but
 not on the structure of the subnetworks responsible for the semipositivity
