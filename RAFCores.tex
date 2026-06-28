@@ -925,16 +925,16 @@ the following lemma.
   $R(\lord_1)/{\sim}$ is a non-empty RAF which contradicts the minimality of $\RAF$.
 \end{proof}
 
-Before we proceed, we remark on an interesting consequence for the R-graph of 
-an irreducible, monocatalyzed RAF $\RAF$, which has only F-reactions as 
-vertices and directed edges from $\fr_1$ to $\fr_2$ whenever there is a species 
-$x$ that is either an F-catalyst of $\fr_1$ and $\fr_2$ or $\sigma^+_{x\fr_1}>0$ 
-and $\sigma^-_{x\fr_2}>0$. In fact, Lemma~\ref{lem:PSC} implies that, if $\RAF$ 
-is an irreducible, monocatalyzed RAF, the R-graph is strongly connected 
-(see SI Cor.~\TODO{TBA, will only add the Cor. to the SI if this is not removed}). 
-Note that different notions of such a graph have been defined in the RAF 
-universe, which not necessarily all lead to the same results \cite{steel_minimal_2013, 
-steel_autocatalytic_2019}.
+%Before we proceed, we remark on an interesting consequence for the R-graph of 
+%an irreducible, monocatalyzed RAF $\RAF$, which has only F-reactions as 
+%vertices and directed edges from $\fr_1$ to $\fr_2$ whenever there is a species 
+%$x$ that is either an F-catalyst of $\fr_1$ and $\fr_2$ or $\sigma^+_{x\fr_1}>0$ 
+%and $\sigma^-_{x\fr_2}>0$. In fact, Lemma~\ref{lem:PSC} implies that, if $\RAF$ 
+%is an irreducible, monocatalyzed RAF, the R-graph is strongly connected 
+%(see SI Cor.~\TODO{TBA, will only add the Cor. to the SI if this is not removed}). 
+%Note that different notions of such a graph have been defined in the RAF 
+%universe, which not necessarily all lead to the same results \cite{steel_minimal_2013, 
+%steel_autocatalytic_2019}.
 }
 
 \holy{
@@ -1098,6 +1098,8 @@ be the F-catalyst.
 \vspace{6pt}
 }
 
+\subsection{Stoichiometric Autocatalysis of Irreducible RAFs}\label{sec:AutoCatIrrRAF}
+
 \holy{
 Liberal reactions play a crucial role in $\lord(\RAF)$. In particular, they can be 
 considered as inflow reactions for the corresponding block $\lord'$, as they 
@@ -1105,9 +1107,9 @@ depend only on its single F-catalyst $x_\ell$ and F-reactants located outside
 the block, not inside. A liberal reaction $r_\ell$ thereby corresponds to a 
 non-negative column in the associated stoichiometric matrix 
 $\SM[X(\lord'),\CR(\lord')]$ with at least one positive entry that reflects an
-F-product of $r_\ell$, i.e., $y \in X(\lord): \sigma^+_{yr_\ell}>0$, which, by 
-Definition of $r_\ell$ can not be an F-reactant, thus $S_{yr_\ell}=\sigma^+_{yr_\ell}>0$
-and the associated stoichiometric matrix reads:
+F-product of $r_\ell$, i.e., $y \in X(\lord): \sigma^+_{yr_\ell}>0$. By definition 
+of $r_\ell$ $y$ cannot be an F-reactant, thus $S_{yr_\ell}=\sigma^+_{yr_\ell}>0$.
+The associated stoichiometric matrix then reads
 \begin{equation}
   \SM[X(\lord'),\CR(\lord')] = 
   \begin{array}{c c}
@@ -1134,44 +1136,42 @@ and the associated stoichiometric matrix reads:
 \end{equation}
 \vspace{6pt}
 
-\subsection{Stoichiometric Autocatalysis of Irreducible RAFs}\label{sec:AutoCatIrrRAF}
-
 The columns induced by liberal reactions are properties common 
 not only to the stoichiometric matrices associated with each block, 
 but also to the stoichiometric matrix representing all reactions and 
 all non-food molecules of the closure, i.e., 
-$\SM[\closure{\RAF}{\food}\setminus \food, \CR']$. They additionally, 
-allow us to construct a strictly positive vector $v$ of reaction rates 
-which satisfies $\SM[\closure{\RAF}{\food}\setminus \food, \CR]v>0$. 
-Such a matrix is called \emph{semi-positive}.
+$\SM[\closure{\RAF}{\food}\setminus \food, \CR']$. This allows us 
+to construct a strictly positive vector $v$ of reaction rates which 
+satisfies $\SM[\closure{\RAF}{\food}\setminus \food, \CR]v>0$. 
+A matrix $A$ satisfying $Aw>0$ for $w>0$ is called \emph{semi-positive}.
 
 \vspace{6pt}
 \begin{theorem}[Proof: SI]\label{thm:NonFoodSemipositiv}
-  Let $\RAF$ be a non-trivial, irreducible RAF. The matrix $A\coloneqq
-  \SM[\closure{\RAF}{\food}\setminus \food, \CR']$ is semi-positive.
+  For an irreducible, monocatalyzed RAF $\RAF$, the matrix 
+  $\SM[\closure{\RAF}{\food}\setminus \food, \CR']$ is semi-positive.
 \end{theorem}
 \vspace{6pt}
 
-As a remark, the proof can be applied to the sub-stoichiometric matrix
-representing the species and reaction vertices of any block $L'$ of $\lord(\RAF)$ 
-to show semi-positivity of $\SM[X(\lord'), R(\lord')]$. Equivalently, every 
-species of $\lord'$ is produced and consumed only by reactions belonging to that
-block. Thereby, the vector $v'$ that denotes the sub-vector of $v$
-restricted to the reactions of $\lord'$ directly yields for the submatrix
-restricted to the species and reactions of $\lord'$:
+%As a remark, the proof can be applied to the sub-stoichiometric matrix
+%representing the species and reaction vertices of any block $L'$ of $\lord(\RAF)$ 
+%to show semi-positivity of $\SM[X(\lord'), R(\lord')]$. Equivalently, 
+Every species of a block $\lord'$ is produced and consumed only by 
+reactions belonging to $\lord'$. Thereby, the vector $v'$ that denotes 
+the sub-vector of $v$ restricted to the reactions of $\lord'$ directly 
+yields for the submatrix restricted to the species and reactions of $\lord'$:
 \begin{equation}
   \SM[X(\lord'), \CR(\lord')]v'>0.
 \end{equation}
-Thus, each block has a semipositive stoichiometric submatrix. 
-
-Since strong blocks are strongly connected, each reaction vertex has at least one 
-incoming edge, i.e., from an F-reactant or an F-catalyst, and at least one outgoing 
-edge, i..e, to an F-catalst or an F-product. Such sub-networks are also called 
-well-formed. 
+Thus, each block has a semipositive stoichiometric submatrix. In addition, since strong 
+blocks are strongly connected, each reaction vertex has at least one incoming edge, 
+i.e., from an F-reactant or an F-catalyst, and at least one outgoing edge, i.e., to an 
+F-catalyst or an F-product. Each reaction in the sub-network $(X(\lord'), \CR(\lord')$ 
+therefore has at least one reactant and one product. We say that such a sub-network 
+is \emph{well-formed}. 
 
 In chemical reaction networks (CRN), a matrix-centered definition of 
 \emph{stoichiometric autocatalysis} was introduced by Blokhuis et al. 
-\cite{blokhuis_Universal_2020} reaction networks in reversible setting and without 
+\cite{blokhuis_Universal_2020} in reversible setting and without 
 catalysis. This framework was recently adapted to the irreversible setting with 
 catalysts of the present paper \cite{golnik_autocatalytic_2026}. The central definition 
 is as follows.
@@ -1198,11 +1198,16 @@ maximal strong block $\lord'$ of $\lord(\RAF)$, i.e., $(X(\lord'), \CR(\lord'))$
 \emph{stoichiometrically autocatalytic}. In particular, each block contains 
 an \emph{autocatalytic core}. 
 
-As a preliminary glimpse of the
-theoretical results that follow, irreducible RAFs in random instances of the 
-binary polymer model \cite{kauffman_autocatalytic_1986} already reveal a 
-remarkably rich structure, comprising up to thousands of autocatalytic cores, 
-as shown in Fig.~\ref{fig:irrRAFCores}.
+\vspace{6pt}
+\begin{corollary}\label{Thm:StrBlockCore}
+  Every strong block $\lord'$ of $\lord(\RAF)$ of an irreducible, monocatalyzed
+  RAF $\RAF$ contains an autocatalytic core.
+\end{corollary}
+\vspace{6pt}
+
+However, random instances of the binary polymer model \cite{kauffman_autocatalytic_1986} 
+irreducible RAFs reveal a remarkably rich structure, comprising up to thousands of autocatalytic 
+cores, as shown in Fig.~\ref{fig:irrRAFCores}. }
 
 \begin{figure}[htb]
 	\centering
@@ -1221,25 +1226,9 @@ as shown in Fig.~\ref{fig:irrRAFCores}.
 		(\textbf{right}) and $p=0.008$ (\textbf{left}) and maximum polymer-length $5$.}
 	\label{fig:irrRAFCores}
 \end{figure}
+
+
 \holy{RG until here}
-}
-The results on the structure of irreducible RAFs imply that each strong
-block $B$ of $\lord(\RAF)$ satisfies $(i.)$ of Def.~\ref{def:autSubRN}. To
-show semi-positivity, the key observation is that $B$ contains at least one
-pure reaction, i.e., a reaction for which all reactants in $B$ are
-F-catalysts (Lemma~\ref{lem:cutVertexPureCat} and
-Cor.~\ref{cor:cutVertexPureCat}). In particular, all $r \in
-\varphi^{-1}(\RAF)$ that satisfy $\delta(r)=1$ are pure reactions.
-
-%
-\vspace{6pt}
-\begin{theorem}\label{Thm:StrBlockCore}
-  Every strong block $B$ of $\lord(\RAF)$ for a non-trivial, irreducible
-  RAF $\RAF$ contains an autocatalytic core.
-\end{theorem}
-\NV{[Again, counterexample \eqref{crnconnected} to be addressed for $L(\RAF)$]}
-\vspace{6pt}
-
 
 Thm.~\ref{Thm:StrBlockCore} provides only information on the existence, but
 not on the structure of the subnetworks responsible for the semipositivity
