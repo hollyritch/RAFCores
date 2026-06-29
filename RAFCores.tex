@@ -857,8 +857,7 @@ Let $\mathbf{\Phi}=(X,\FR,\cat(\FR))$ be a CRS with food set $\food\subseteq X$.
 \begin{equation}\label{eq:RAF-CRS}
   \mathbf{\Phi}' \coloneqq (\closure{\RAF}{\food}, \RAF, \cat'(\RAF)),
 \end{equation}
-where $|\cat'(\fr)|=1$ for each F-reaction $\fr\in \RAF$. Consider now the associated CRN $\Gamma'\coloneqq \Gamma(\mathbf{\Phi}')$. One central advantage of considering such monocatalyzed CRSs $\mathbf{\Phi}'$ is that the quotient map from $\Gamma(\mathbf{\Phi}')$ to $\mathbf{\Phi}'$ is a bijection. Indeed, the quotient construction becomes trivial, since every equivalence class, i.e. every F-reaction $\fr$, is a singleton $\fr=\{r\}$. Thus, the quotient CRS can be canonically identified with the underlying CRN and we can therefore naturally addressed `CRN' properties of $\mathbf{\Phi}'$ by studying these properties 
-in $\Gamma'$. To do so, we use the notation $\mathcal{R}'$ to identify the CRN reactions of $\Gamma'$, i.e. $\Gamma'=(X,\mathcal{R}')$. We repeat that each of such reactions $r\in \mathcal{R}'$, written as \eqref{eq:Mod.SmEq}, is in canonical bijection with an F-reaction $\fr\in \RAF$, written as \eqref{eq:FReacEq}, which is catalyzed by the singleton $\cat(\fr)=\{c\}$ with $c=\cat(r)$.
+where $|\cat'(\fr)|=1$ for each F-reaction $\fr\in \RAF$. Consider now the associated CRN $\Gamma'\coloneqq \Gamma(\mathbf{\Phi}')$. One central advantage of considering such monocatalyzed CRSs $\mathbf{\Phi}'$ is that the quotient map from $\Gamma(\mathbf{\Phi}')$ to $\mathbf{\Phi}'$ is a bijection. Indeed, the quotient construction becomes trivial, since every equivalence class, i.e. every F-reaction $\fr$, is a singleton $\fr=\{r\}$. Thus, the quotient CRS can be canonically identified with the underlying CRN and we can therefore naturally address properties of $\mathbf{\Phi}'$ by studying them in $\Gamma'$. To do so, we use the notation $\mathcal{R}'$ to identify the CRN reactions of $\Gamma'$, i.e. $\Gamma'=(X,\mathcal{R}')$. We repeat that each of such reactions $r\in \mathcal{R}'$, written as \eqref{eq:Mod.SmEq}, is in canonical bijection with an F-reaction $\fr\in \RAF$, written as \eqref{eq:FReacEq}, which is catalyzed by the singleton $\cat(\fr)=\{c\}$ with $c=\cat(r)$.
 
 We may consider now the K\H{o}nig graph $K(\RAF)=K(\Gamma')$ of the monocatalyzed RAF $\RAF$ simply as the one of its associated CRN $\Gamma'=(X,\mathcal{R}')$, which is the graph 
 $\king(\Gamma') \coloneqq (\closure{\RAF}{\food} \cup \CR', E)$. Its edge set $E\coloneqq E_1\cup E_2$, 
@@ -871,15 +870,7 @@ Note that the K\H{o}nig graph emerged under various names in the context of CRN 
 species-reaction (SR) graph \cite{craciun_multiple_2006} and also as Petri nets \cite{angeli_petri_2007}.
 
 
-
-
-
-
-
 \paragraph{Strong connectivity}
-
-
-
 
 A directed path $\gamma$ in $K(\RAF)$ between two vertices $v$ and $w$ is a sequence of vertices and edges $\gamma=(v_1,e_1,..., e_n, v_2)$, starting at $v_1$ and terminating at $v_2$, so that each edge $e=(x,r)$ (resp. $e=(r,x)$) is preceded by the vertex $x$ (resp. $r$) and followed by the vertex $r$ (resp. $x$). We note that, for a species $x_f \in \food$ in the food set, there may be no directed edge $(r,x_f)$, at all. Complementarily, we introduce the set $\mathbf{W}$ of \emph{waste species} as the species $x_w$ for which there is no directed edges $(x_w,r)$. Equivalently, in symbols:
 \begin{equation}\label{eq:Waste}
@@ -940,43 +931,99 @@ the set of F-reactions of this component would be food-generated, as all F-react
 all F-reactions would be satisfied by species from inside. That this result holds in general is summarized 
 in the following Lemma. 
 
+%\begin{figure}[bth]
+%  \begin{minipage}[c]{0.49\textwidth}
+%    \begin{equation}
+%      \begin{split}
+%	r_1& : f_1 + (x_1) \rightarrow  x_2 + (x_1) \\
+%	r_2& : f_2 + (x_4)\rightarrow x_3 + (x_4)\\
+%	r_3& : 2x_3 + (x_2) \rightarrow x_1 + x_4 + (x_2)
+%      \end{split}
+%    \end{equation}
+%  \end{minipage}%
+%  \hfill%
+%  \begin{minipage}[c]{0.49\textwidth}
+%    \begin{tikzpicture}
+%      \node[draw, circle] (f1) at (0,0) {$f_1$};
+%      \node[draw, circle] (f2) at (4,-2) {$f_2$};
+%      \node[draw, circle] (x1) at (2,0) {$x_1$};			
+%      \node[draw, circle] (x2) at (1,-1) {$x_2$};
+%      \node[draw, circle] (x3) at (3,-1) {$x_3$};
+%      \node[draw, circle] (x4) at (2,-2) {$x_4$};
+%      
+%      \node[draw, rectangle] (r1) at (1,0) {$r_1$};
+%      \node[draw, rectangle] (r2) at (2,-1) {$r_2$};
+%      \node[draw, rectangle] (r3) at (3,-2) {$r_3$};
+%      
+%      \draw[->] (f1) to (r1);
+%      \draw[->] (f2) to (r3);
+%      \draw[->] (x1) to [bend right = 30] (r1);
+%      \draw[->] (r1) to [bend right = 30] (x1);
+%      \draw[->] (r1) to (x2);			
+%      \draw[->] (x2) to (r2);
+%      \draw[->] (x3) to [bend right] (r2);
+%      \draw[->] (r2) to [bend right] (x3);
+%      \draw[->] (r2) to (x1);
+%      \draw[->] (r2) to (x4);
+%      \draw[->] (x4) to [bend right = 30] (r3);
+%      \draw[->] (r3) to [bend right = 30] (x4);
+%      \draw[->] (r3) to (x3);
+%    \end{tikzpicture}
+%  \end{minipage}
+%  \caption{\textit{(Left):} Example of an irreducible, monocatalyzed RAF written 
+%  as CRN reactions with a cut-vertex that has a single catalyst. Catalyzations are 
+%  indicated in brackets. \textit{(Right):} Depiction of the corresponding König graph.}
+%  \label{ex:CutVertex2}
+%\end{figure}
+
 \begin{figure}[bth]
   \begin{minipage}[c]{0.49\textwidth}
     \begin{equation}
       \begin{split}
 	r_1& : f_1 + (x_1) \rightarrow  x_2 + (x_1) \\
-	r_2& : f_2 + (x_4)\rightarrow x_3 + (x_4)\\
-	r_3& : 2x_3 + (x_2) \rightarrow x_1 + x_4 + (x_2)
+	r_2& : 2x_3 + (x_2) \rightarrow  x_4 + x_5 + (x_2) \\	
+	r_3& : f_2 + (x_4)\rightarrow x_1 + x_6 + (x_4)\\
+	r_4& : f_3 + (x_5)\rightarrow x_3 + (x_5)\\	
       \end{split}
     \end{equation}
   \end{minipage}%
   \hfill%
   \begin{minipage}[c]{0.49\textwidth}
     \begin{tikzpicture}
-      \node[draw, circle] (f1) at (0,0) {$f_1$};
-      \node[draw, circle] (f2) at (4,-2) {$f_2$};
-      \node[draw, circle] (x1) at (2,0) {$x_1$};			
-      \node[draw, circle] (x2) at (1,-1) {$x_2$};
-      \node[draw, circle] (x3) at (3,-1) {$x_3$};
-      \node[draw, circle] (x4) at (2,-2) {$x_4$};
+      \node[draw, circle] (f1) at (-1.5,0) {$f_1$};      
+      \node[draw, circle] (f2) at (3,-1.5) {$f_2$};
+      \node[draw, circle] (f3) at (-2.5,-4.5) {$f_3$};
+            
+      \node[draw, circle] (x1) at (1.5,0) {$x_1$};			
+      \node[draw, circle] (x2) at (0,-1.5) {$x_2$};      
+      \node[draw, circle] (x3) at (-1.5,-3) {$x_3$};
+      \node[draw, circle] (x4) at (1.5,-3) {$x_4$};
+      \node[draw, circle] (x5) at (0,-4.5) {$x_5$};
+      \node[draw, circle] (x6) at (3,0) {$x_6$};
       
-      \node[draw, rectangle] (r1) at (1,0) {$r_1$};
-      \node[draw, rectangle] (r2) at (2,-1) {$r_2$};
-      \node[draw, rectangle] (r3) at (3,-2) {$r_3$};
+      \node[draw, rectangle] (r1) at (0,0) {$r_1$};
+      \node[draw, rectangle] (r2) at (0,-3) {$r_2$};
+      \node[draw, rectangle] (r3) at (1.5,-1.5) {$r_3$};
+       \node[draw, rectangle] (r4) at (-1.5,-4.5) {$r_4$};
       
       \draw[->] (f1) to (r1);
-      \draw[->] (f2) to (r3);
       \draw[->] (x1) to [bend right = 30] (r1);
       \draw[->] (r1) to [bend right = 30] (x1);
-      \draw[->] (r1) to (x2);			
-      \draw[->] (x2) to (r2);
-      \draw[->] (x3) to [bend right] (r2);
-      \draw[->] (r2) to [bend right] (x3);
-      \draw[->] (r2) to (x1);
+      \draw[->] (r1) to (x2);
+      \draw[->] (x2) to [bend right = 30] (r2);	
+      \draw[->] (r2) to [bend right = 30] (x2);
+      \draw[->] (x3) to node[midway, above] {$2$} (r2);
       \draw[->] (r2) to (x4);
+      \draw[->] (r2) to (x5);
       \draw[->] (x4) to [bend right = 30] (r3);
       \draw[->] (r3) to [bend right = 30] (x4);
-      \draw[->] (r3) to (x3);
+      \draw[->] (f2) to (r3);
+      \draw[->] (r3) to (x1);
+      \draw[->] (r3) to (x6);
+      \draw[->] (x5) to [bend right = 30] (r4);
+      \draw[->] (r4) to [bend right = 30] (x5);      
+      \draw[->] (f3) to (r4);
+      \draw[->] (r4) to (x3);      
     \end{tikzpicture}
   \end{minipage}
   \caption{\textit{(Left):} Example of an irreducible, monocatalyzed RAF written 
@@ -984,6 +1031,8 @@ in the following Lemma.
   indicated in brackets. \textit{(Right):} Depiction of the corresponding König graph.}
   \label{ex:CutVertex2}
 \end{figure}
+
+
 
 \vspace{6pt}
 \begin{lemma}\label{lem:CutVertexReac}
