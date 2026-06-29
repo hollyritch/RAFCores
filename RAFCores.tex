@@ -339,20 +339,18 @@ RAFs} and \emph{autocatalytic cores}.
 \section{Two different Representations of Chemical Systems}
 
 Research on systems of chemical interactions has attracted
-considerable attention, although their formalization lacks
+considerable attention, although formalizations lack
 consistency throughout the various frameworks \cite{lohn_evolving_1998,
   steel_emergence_2000, feinberg_foundations_2019}. In particular,
 different authors have introduced different notions of reactions
-\cite{muller_what_2022}.
+\cite{muller_what_2022}. We briefly overview here two approaches: \emph{Chemical Reaction Networks} and \emph{Catalytic Reaction Systems}.
 
 \subsection{Chemical Reaction Networks (CRNs)}
 A chemical reaction network (CRN) $\Gamma \coloneqq (X,\CR)$ is a tuple of two finite
-sets, a set of species $X$ and a set of reactions $\CR$. A 
-\emph{sub-CRN} is a tuple $(X',\CR')$ with $X'\subseteq X$ and $\CR'\subseteq
-\CR$, where $r\in \CR'$ omits the reference to species $x\not\in X'$. 
+sets, a set of species $X$ and a set of reactions $\CR$. 
 For any $r \in \CR$, we can write a stoichiometric equation as an ordered association between a nonnegative combinations of reactant species to a nonnegative combinations of product species,
 \begin{equation}\label{eq:reaction}
-  r: \sum_{x\in X}\ s^-_{xr} \cdot x \rightarrow \quad \sum_{x\in X} \ s^+_{xr}\cdot x
+  \sum_{x\in X}\ s^-_{xr} \cdot x \quad \underset{r}{\rightarrow} \quad \sum_{x\in X} \ s^+_{xr}\cdot x
 \end{equation}
 where $s^{\pm}_{xr}$ are the reactant and product stoichiometry of the
 molecule $x$ in the reaction $r$. %Reactants and products of a 
@@ -385,6 +383,10 @@ all \emph{net-stoichiometries}:
 %respectively. Note, we thereby have $\net{\ceducts}(r) = \ceducts(\net{r})$
 %and $\net{\cproducts}(r) = \cproducts(\net{r})$.
 
+A 
+\emph{sub-CRN} is a tuple $(X',\CR')$ with $X'\subseteq X$ and $\CR'\subseteq
+\CR$, where $r\in \CR'$ omits the reference to species $x\not\in X'$, and the associated stoichiometric matrix is denoted as $S[X',\mathcal{R}']$.
+
 
 Clearly, stoichiometry and net-stoichiometry might not coincide, i.e.,  $s^{\pm}_{xr}\neq \mp S^{\pm}_{xr}$. One reasons is catalysis. From a chemical perspective, a \emph{catalyst} for $r$ is a species $x\in X$ that appears on both sides of the stoichiometric equation \eqref{eq:reaction}, i.e. with $s^-_{xr}s^+_{xr}\neq 0$, and that  additionally 
 ``increases the rate of a reaction without modifying the overall standard 
@@ -399,17 +401,17 @@ species plays, we partition stoichiometries as in \cite{golnik_bridging_2026} as
 \end{equation}
 It is readily verified that $\SM_{xr} = s^+_{xr}-s^-_{xr} = \sigma^+_{xr} - \sigma^-_{xr}$, 
 thus the stoichiometric matrix is identically encoded in the coefficients $\sigma^{\pm}_{xr}$. 
-The stoichiometric Eq.~\ref{eq:reaction} can then be rewritten as:
+Eq.~\ref{eq:reaction} can then be rewritten as:
 \begin{equation}\label{eq:Mod.SmEq}
-  r: \sum_{x\in X}\ \sigma^-_{xr} \cdot x + \left(\sum_{x\in X}\ k_{xr}
-  \cdot x\right) \rightarrow \quad \sum_{x\in X} \ \sigma^+_{xr} \cdot x +
+  \sum_{x\in X}\ \sigma^-_{xr} \cdot x + \left(\sum_{x\in X}\ k_{xr}
+  \cdot x\right) \quad \underset{r}{\rightarrow} \quad \sum_{x\in X} \ \sigma^+_{xr} \cdot x +
   \left(\sum_{x\in X}\ k_{xr} \cdot x\right),
 \end{equation}
 We refer to species appearing in Eq.~\ref{eq:Mod.SmEq} with $\sigma^{-}_{xr}>0$, 
 $\sigma^{+}_{xr}>0$, and $k_{xr}>0$ as F-reactants,
 F-products, and F-catalysts, respectively. The nomenclature `F-catalysts' is to 
-distinguish this notion from the more loose definition of a catalyst, just as a 
-species that is both reactant and product, which is often also found in literature. 
+distinguish this notion from the more loose definition of a catalyst as a 
+species that is both reactant and product, which is often also found in CRN literature. 
 We collect F-reactants, F-products, and F-catalysts in the following sets:
 \begin{equation}
   \begin{split}
@@ -418,7 +420,7 @@ We collect F-reactants, F-products, and F-catalysts in the following sets:
     \cat(r)&\coloneqq \{(x, k_{xr})\ | \ x\in X,\; k_{xr}>0\}.
   \end{split}
 \end{equation} 
-Note that the set of F-catalysts is defined as a set of pairs $(x,k_{xr})$ 
+For technical reasons, note that the set of F-catalysts is defined as a set of pairs $(x,k_{xr})$ 
 to encode also the respective coefficient. In a CRN, distinct reactions $r_1\neq r_2$
 may differ only in the F-catalysts $\kappa_F(r_1)\neq \kappa_F(r_2)$ 
 and share identical F-reactants and F-products. For example, 
@@ -442,11 +444,14 @@ where $X$ is again a set of species, and each $\fr\in\FR$ is defined as a net-mo
 where $\sigma^\pm_{x\fr}\ge 0$ are again nonnegative stoichiometric coefficients. 
 The \emph{catalyzation} set $\cat(\FR)=\{ \cat(\mathbf{r)} \}_{\fr\in\FR}$ constitutes the main difference with the CRN setting.
 For a single F-reaction $\fr$, the set of catalyzations $\cat(\fr)$ is defined as
-$\cat(\fr)=\{c_\fr\}$, where each catalyzation $c_\fr$ is in turn a set of pairs $(x,k_{x\mathbf{r}})$:
+$\cat(\fr)=\{c_\fr\}$, where each catalyzation $c_\fr$ is in turn a set of pairs $(x,k^{c}_{x\mathbf{r}})$:
 \begin{equation}
     c_\fr\coloneqq \{(x_1,k\TODO{^c}_{x_1\mathbf{r}}),\ldots, (x_n,k\TODO{^c}_{x_n\fr})\}.
 \end{equation}
-where $k_{x\fr}>0$ is a positive coefficient. We call an $\fr\in \FR$ \emph{F-reaction} to distinguish it from the CRN reactions \eqref{eq:Mod.SmEq}. Moreover, a comparison between a CRN reaction \eqref{eq:Mod.SmEq}  with a CRS F-reaction \eqref{eq:FReacEq} and the definition of catalyzations set $\cat$ suggests the following formalization of the relation between a CRN and a CRS.
+where $k^{c}_{x\fr}>0$ is a positive coefficient. We call an $\fr\in \FR$ \emph{F-reaction} to distinguish it from the CRN reactions \eqref{eq:Mod.SmEq}. A CRS $\mathbf{\Phi}'=(=(X', \FR', \cat'(\FR)')$ is a \emph{sub-CRS} of $\mathbf{\Phi}=(X, \FR, \cat(\FR))$ if $X\subseteq X'$, $\FR'\subseteq\FR$, $\cat'(\FR)'\subseteq \cat(\FR)$.
+
+
+Finally, a comparison between a CRN reaction \eqref{eq:Mod.SmEq}  with a CRS F-reaction \eqref{eq:FReacEq} and the definition of catalyzations set $\cat$ suggests the following formalization of the relation between a CRN and a CRS.
 
 {\textbf{From a CRN $\Gamma=(X,\mathcal{R})$ to a CRS $\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$.}  Consider the equivalence relation $\sim$ on CRN reactions defined as 
 \begin{equation}
@@ -848,45 +853,26 @@ To keep the exposition concise, we assume this exclusion throughout and do not r
 
 \subsection{The K\H{o}nig Graph of Monocatalyzed Irreducible RAFs}
 
-\NV{NV till here}
-
-\holy{
-Minimal \emph{stoichiometrically autocatalytic} CRN subnetworks, formally 
-introduced in Sec.~\ref{sec:AutoCatIrrRAF} and termed \emph{autocatalytic cores} 
-\cite{blokhuis_Universal_2020}, encompass a bipartite K\H{o}nig 
-graph representation of the corresponding CRN that includes the 
-property of being strong blocks - strongly connected subgraphs whose underlying 
-undirected graph is 2-connected \cite{golnik_enumeration_2026, golnik_using_2026, 
-golnik_autocatalytic_2026}. Taking into account that any RAF that is not itself a CAF 
-is stoichiometrically autocatalytic \cite{golnik_bridging_2026}, it will be of interest to 
-investigate the structure of the bipartite K\"onig graph representation of irreducible 
-RAFs.
-
-To this end, we will be concerned with CRS $\mathbf{\Phi}'$, with food-set $\food$,
-which themselves contain only the F-reactions of a monocatalyzed irreducible $\RAF$, i.e.
+Let $\mathbf{\Phi}=(X,\FR,\cat(\FR))$ be a CRS with food set $\food\subseteq X$. We consider now the sub-CRS $\mathbf{\Phi}'\subseteq \mathbf{\Phi'}$ induced by a monocatalyzed irreducible RAF $\RAF'$, i.e.
 \begin{equation}\label{eq:RAF-CRS}
-  \mathbf{\Phi}' \coloneqq (\closure{\RAF}{\food}, \RAF, \cat'(\RAF))
+  \mathbf{\Phi}' \coloneqq (\closure{\RAF}{\food}, \RAF, \cat'(\RAF)),
 \end{equation}
+where $|\cat'(\fr)|=1$ for each F-reaction $\fr\in \RAF$. Consider now the associated CRN $\Gamma'\coloneqq \Gamma(\mathbf{\Phi}')$. One central advantage of considering such monocatalyzed CRSs $\mathbf{\Phi}'$ is that the quotient map from $\Gamma(\mathbf{\Phi}')$ to $\mathbf{\Phi}'$ is a bijection. Indeed, the quotient construction becomes trivial, since every equivalence class, i.e. every F-reaction $\fr$, is a singleton $\fr=\{r\}$. Thus, the quotient CRS can be canonically identified with the underlying CRN and we can therefore naturally addressed `CRN' properties of $\mathbf{\Phi}'$ by studying these properties 
+in $\Gamma'$. To do so, we use the notation $\mathcal{R}'$ to identify the CRN reactions of $\Gamma'$, i.e. $\Gamma'=(X,\mathcal{R}')$. We repeat that each of such reactions $r\in \mathcal{R}'$, written as \eqref{eq:Mod.SmEq}, is in canonical bijection with an F-reaction $\fr\in \RAF$, written as \eqref{eq:FReacEq}, which is catalyzed by the singleton $\cat(\fr)=\{c\}$ with $c=\cat(r)$.
 
-where $|\cat'(\fr)|=1$ for each F-reaction $\fr\in \RAF$ and its corresponding CRN 
-$\Gamma'\coloneqq \Gamma(\Phi')\coloneqq (X, \CR')$. In this "monocatalytic" case, 
-each F-reaction is associated with a unique catalyzation, yielding a canonical identification 
-of $\Gamma'$ with $\mathbf{\Phi}'$. Accordingly, each equivalence class reduces to a 
-single element, so that CRN reaction and F-reactions are in bijective correspondence. 
-We can therefore equivalently study the properties of $\mathbf{\Phi}'$ by studying the 
-properties of $\Gamma'$, as $\mathbf{\Phi}'$ and $\Gamma'$ encode the same 
-network structure.
-
-We therefore consider only the K\H{o}nig graph of the CRN $\Gamma'$, which is the graph 
+We may consider now the K\H{o}nig graph of the CRN $\Gamma'=(X,\mathcal{R}')$, which is the graph 
 $\king(\Gamma') \coloneqq (X \cup \CR', E)$, whose edge set $E\coloneqq E_1\cup E_2$, 
-induced by the two disjoint vertex sets, is composed of two distinct types given as
+induced by the two disjoint vertex sets, is composed of two distinct types of edges given as
 \begin{equation}
-    \begin{cases} (x,r) \ | \ x\in X, r\in \CR: s^-_{xr}>0 \\
- 			(r, x) \ | \ x\in X, r\in \FR: s^+_{xr}>0. \end{cases}
+    \begin{cases} (x,r) \ | \ x\in X, r\in \CR': s^-_{xr}>0 \\
+ 			(r, x) \ | \ x\in X, r\in \CR': s^+_{xr}>0. \end{cases}
 \end{equation}
 Note that the K\H{o}nig graph emerged under various names in the context of CRN theory, as the 
-species-reaction (SR) graph \cite{craciun_multiple_2006}, metabolite-reaction (MR) graph 
-\cite{vassena_good_2020}, and also as Petri nets \cite{angeli_petri_2007}.}
+species-reaction (SR) graph \cite{craciun_multiple_2006} and also as Petri nets \cite{angeli_petri_2007}.
+
+
+
+
 
 
 \holy{
@@ -1099,6 +1085,19 @@ be the F-catalyst.
 }
 
 \subsection{Stoichiometric Autocatalysis of Irreducible RAFs}\label{sec:AutoCatIrrRAF}
+
+
+\holy{
+[Minimal \emph{stoichiometrically autocatalytic} CRN subnetworks, formally 
+introduced in Sec.~\ref{sec:AutoCatIrrRAF} and termed \emph{autocatalytic cores} 
+\cite{blokhuis_Universal_2020}, encompass a bipartite K\H{o}nig 
+graph representation of the corresponding CRN that includes the 
+property of being strong blocks - strongly connected subgraphs whose underlying 
+undirected graph is 2-connected \cite{golnik_enumeration_2026, golnik_using_2026, 
+golnik_autocatalytic_2026}. Taking into account that any RAF that is not itself a CAF 
+is stoichiometrically autocatalytic \cite{golnik_bridging_2026}, it will be of interest to 
+investigate the structure of the bipartite K\"onig graph representation of irreducible 
+RAFs.}]
 
 \holy{
 Liberal reactions play a crucial role in $\lord(\RAF)$. In particular, they can be 
