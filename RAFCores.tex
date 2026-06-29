@@ -909,6 +909,31 @@ Indirectly assume that there is no path from $v_1$ to $v_2$. \NV{[I think the st
 
 \end{proof}
 
+
+\NV{[Comment here on strong connectivity of the graph without food and waste molecule, so this points at cut-vertices. We see that cut-vertices may exists but they are always reaction-vertex.]}
+
+\vspace{6pt}
+\begin{lemma}
+  Every cut-vertex of $K(\RAF)$ is a reaction $r\in \mathcal{R}'$.
+\end{lemma}
+\begin{proof}
+    Extend proof below to include food / waste molecule (with natural cut vertices). 
+\end{proof}
+
+\NV{[Now we are in the posiiton to speak of strong blocks, and of maximal strong block. Maybe think of a different notation than $K'$ since there are many $K'$ for one $K(\Gamma')$. Not sure worth introducing notation for $V(K)$ but now a bit sloppy.]}
+
+TOBECORRECED, jUST AS AN IDEA
+
+\vspace{6pt}
+\begin{lemma}
+  Every maximal strong block $K'$ of $K(\RAF)$ either is a single species-vertex $K=\{x\}$ with $x\in \food \cup \mathbf{W}$, or $K'$ contains a cut-vertex $r$, which is a reaction with $ \feducts(r) \cap X(K')=\emptyset$, $\fproducts \cap X(K')\neq \emptyset$, and such that
+  $r\prec \tilde{r}$, for any $\tilde{r}\in \mathcal{R}(K')$.
+\end{lemma}
+
+
+
+
+
 %Before we proceed, we remark on an interesting consequence for the R-graph of 
 %an irreducible, monocatalyzed RAF $\RAF$, which has only F-reactions as 
 %vertices and directed edges from $\fr_1$ to $\fr_2$ whenever there is a species 
