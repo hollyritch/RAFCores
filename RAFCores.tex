@@ -895,7 +895,21 @@ We have now the following statement.
 %$(x_W,r)$, and for a food species $x_F$, there may be no directed edge $(r,x_F)$. We can, however, consider the subgraph of $\king(\RAF)$ that is void of food and waste molecules:
 %\begin{equation}\label{eq:PrinceGraph}    \lord(\RAF) \coloneqq \king[\closure{\RAF}{\food}\setminus (\food\cup W) \cup \CR'], \end{equation}where the general notation $\king[X'\cup \CR']$ refers to the subgraph of $\king$ \emph{induced} by the vertex sets $(X',\CR')$. We then have the following lemma.\begin{lemma}\label{lem:PSC} Let $\RAF$ be an irreducible, monocatalyzed RAF. Then $\lord(\RAF)$   is strongly connected.\end{lemma}
 \begin{proof}
-Indirectly assume that there is no path from $v_1$ to $v_2$. \NV{[I think the statement is correct, but it is not so obvious to prove it shortly. One needs to firstly distinguish whether $v_2$ is a species or a reaction. If $v_2$ is a reaction then we need to show that $\RAF \setminus v_2$ is an irreducible RAF against the assumption. This seems relatively direct. However, for the case $v_2$ is a species, we need to pick a reaction for which $x$ is a product, which must be there because otherwise $x$ would be in the food (but this last statement is maybe even a small proposition). and repeat the argument.}
+Indirectly assume that there is no path from $v_1$ to $v_2$. 
+\holy{First, we observe that since $v_1\notin \food, v_1\notin \mathbf{W}$, 
+$v_1$ has at least one incoming and one outgoing edge $(*)$. In addition, there are 
+at least two strongly connected components $K_1, K_2$ such that 
+$v_1\in K_1$ and $v_2\in K_2$. Then none of the species $x\in X(K_1)$ 
+is an F-catalyst or an F-reactant for a reaction in $\CR(K_2)$. If 
+$\CR(K_1)\neq \emptyset$, then $\RAF \setminus (\CR(K_1)/\sim)$ 
+is a RAF, which contradicts the irreducibility of $\RAF$. Otherwise
+$K_1=\{v_1\}\in X$, which implies $\CR(K_2)\neq \emptyset$. Due to $(*)$ there 
+is an $r_2\in \CR'\setminus \CR(K_2): (x,r_2)\in E(K)$. Then $r_2$ is 
+in another strongly connected component $K_3: K_3\neq K_2, 
+K_3\neq K_1$, which yields that either $\RAF\setminus (\CR(K_3)/\sim)$ 
+or (not mutually exclusive) $\RAF\setminus (\CR(K_2)/\sim)$ is a RAF, 
+either case contradicting the irreducibility of $\RAF$.}
+%\NV{[I think the statement is correct, but it is not so obvious to prove it shortly. One needs to firstly distinguish whether $v_2$ is a species or a reaction. If $v_2$ is a reaction then we need to show that $\RAF \setminus v_2$ is an irreducible RAF against the assumption. This seems relatively direct. However, for the case $v_2$ is a species, we need to pick a reaction for which $x$ is a product, which must be there because otherwise $x$ would be in the food (but this last statement is maybe even a small proposition). and repeat the argument.}
   
 
 \end{proof}
@@ -908,7 +922,31 @@ Indirectly assume that there is no path from $v_1$ to $v_2$. \NV{[I think the st
   Every cut-vertex of $K(\RAF)$ is a reaction $r\in \mathcal{R}'$.
 \end{lemma}
 \begin{proof}
-    Extend proof below to include food / waste molecule (with natural cut vertices). 
+	We start by considering the graph 
+	\begin{equation}
+		\lord(\RAF)\coloneqq \king[\closure{\RAF}{\food}\setminus (\food\cup W) \cup \CR'].
+	\end{equation}
+	Assume there is a cut-vertex $w\in X(\lord)$. Then there are at least two
+  	strongly connected components $\lord_1$ and $\lord_2$. Then for any two
+  	vertices $u\in V(\lord_1)$ and $v\in V(\lord_2)$ we have $w\in P_{uv}$
+  	and $w\in P_{vu}$ for arbitrary paths connecting $u$ and $v$ in $\lord(\RAF)$. 
+	Therefore, except $w$, there is no $x_1\in X(\lord_1)$ such that $x_1$ 
+	is an F-reactant, F-product, or F-catalyst for any reaction $r_2\in \CR(\lord_2)$, 
+	and there is no $x_2\in X(\lord_2)$ such that $x_2$ is an F-reactant,
+  	F-product, or F-catalyst for any reaction $r_1\in \CR(\lord_1)$.
+  	Then either $\closure{\CR(\lord_1)/\sim}{\food}\neq \emptyset$ or (not mutually exclusive) 
+	$\closure{\CR(\lord_2)/\sim}{\food}\neq \emptyset$, implying that
+  	$\CR(\lord_1)/\sim$ or $\CR(\lord_2)/\sim$ is a RAF, respectively. Either case 
+	contradicts the irreducibility of $\RAF$. Adding species vertices that have 
+	no incoming or no outgoing edges does not change the fact that all 
+	cut-vertices are reaction vertices; it may only increase the number of 
+	reaction cut-vertices since $\lord(\RAF)$ is bipartite. Adding species 
+	molecules $x_\food \in \food$ that not only have an outgoing but also 
+	an incoming edge increases connectivity; in particular, $x_\food
+	\in \food$ is no cut-vertex, as the graph was connected before and no 
+	species vertex $x'$ can become a cut-vertex upon the addition of $x_\food$ 
+	as this would imply that $x'$ was a cut-vertex already before addition 
+	of $x_\food$. 
 \end{proof}
 
 \NV{[Now we are in the posiiton to speak of strong blocks, and of maximal strong block. Maybe think of a different notation than $K'$ since there are many $K'$ for one $K(\Gamma')$. Not sure worth introducing notation for $V(K)$ but now a bit sloppy.]}
@@ -920,9 +958,6 @@ TOBECORRECED, jUST AS AN IDEA
   Every maximal strong block $K'$ of $K(\RAF)$ either is a single species-vertex $K=\{x\}$ with $x\in \food \cup \mathbf{W}$, or $K'$ contains a cut-vertex $r$, which is a reaction with $ \feducts(r) \cap X(K')=\emptyset$, $\fproducts \cap X(K')\neq \emptyset$, and such that
   $r\prec \tilde{r}$, for any $\tilde{r}\in \mathcal{R}(K')$.
 \end{lemma}
-
-
-
 
 
 %Before we proceed, we remark on an interesting consequence for the R-graph of 
