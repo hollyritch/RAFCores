@@ -860,12 +860,12 @@ Let $\mathbf{\Phi}=(X,\FR,\cat(\FR))$ be a CRS with food set $\food\subseteq X$.
 where $|\cat'(\fr)|=1$ for each F-reaction $\fr\in \RAF$. Consider now the associated CRN $\Gamma'\coloneqq \Gamma(\mathbf{\Phi}')$. One central advantage of considering such monocatalyzed CRSs $\mathbf{\Phi}'$ is that the quotient map from $\Gamma(\mathbf{\Phi}')$ to $\mathbf{\Phi}'$ is a bijection. Indeed, the quotient construction becomes trivial, since every equivalence class, i.e. every F-reaction $\fr$, is a singleton $\fr=\{r\}$. Thus, the quotient CRS can be canonically identified with the underlying CRN and we can therefore naturally addressed `CRN' properties of $\mathbf{\Phi}'$ by studying these properties 
 in $\Gamma'$. To do so, we use the notation $\mathcal{R}'$ to identify the CRN reactions of $\Gamma'$, i.e. $\Gamma'=(X,\mathcal{R}')$. We repeat that each of such reactions $r\in \mathcal{R}'$, written as \eqref{eq:Mod.SmEq}, is in canonical bijection with an F-reaction $\fr\in \RAF$, written as \eqref{eq:FReacEq}, which is catalyzed by the singleton $\cat(\fr)=\{c\}$ with $c=\cat(r)$.
 
-We may consider now the K\H{o}nig graph of the CRN $\Gamma'=(X,\mathcal{R}')$, which is the graph 
-$\king(\Gamma') \coloneqq (X \cup \CR', E)$, whose edge set $E\coloneqq E_1\cup E_2$, 
-induced by the two disjoint vertex sets, is composed of two distinct types of edges given as
+We may consider now the K\H{o}nig graph $K(\RAF)=K(\Gamma')$ of the monocatalyzed RAF $\RAF$ simply as the one of its associated CRN $\Gamma'=(X,\mathcal{R}')$, which is the graph 
+$\king(\Gamma') \coloneqq (\closure{\RAF}{\food} \cup \CR', E)$. Its edge set $E\coloneqq E_1\cup E_2$, 
+is partitioned into two distinct types of directed edges given as
 \begin{equation}
-    \begin{cases} (x,r) \ | \ x\in X, r\in \CR': s^-_{xr}>0 \\
- 			(r, x) \ | \ x\in X, r\in \CR': s^+_{xr}>0. \end{cases}
+    \begin{cases} (x,r) \ | \ x\in \closure{\RAF}{\food}, r\in \CR': s^-_{xr}>0 \\
+ 			(r, x) \ | \ x\in \closure{\RAF}{\food}, r\in \CR': s^+_{xr}>0. \end{cases}
 \end{equation}
 Note that the K\H{o}nig graph emerged under various names in the context of CRN theory, as the 
 species-reaction (SR) graph \cite{craciun_multiple_2006} and also as Petri nets \cite{angeli_petri_2007}.
@@ -875,40 +875,38 @@ species-reaction (SR) graph \cite{craciun_multiple_2006} and also as Petri nets 
 
 
 
-\holy{
+
 \paragraph{Strong connectivity}
 
-We recall that a directed graph $(V,E)$ is \emph{strongly connected} if, for any pair of 
-vertices $v_1,v_2\in V$, there exists a directed path from $v_1$ to $v_2$. In terms of 
-$\king(\RAF)$, we cannot hope to have strong-connectedness unless we remove food 
-and waste species, of which the latter are derived from the set
+
+
+
+A directed path $\gamma$ in $K(\RAF)$ between two vertices $v$ and $w$ is a sequence of vertices and edges $\gamma=(v_1,e_1,..., e_n, v_2)$, starting at $v_1$ and terminating at $v_2$, so that each edge $e=(x,r)$ (resp. $e=(r,x)$) is preceded by the vertex $x$ (resp. $r$) and followed by the vertex $r$ (resp. $x$). We note that, for a species $x_f \in \food$ in the food set, there may be no directed edge $(r,x_f)$, at all. Complementarily, we introduce the set $\mathbf{W}$ of \emph{waste species} as the species $x_w$ for which there is no directed edges $(x_w,r)$. Equivalently, in symbols:
 \begin{equation}\label{eq:Waste}
   \mathbf{W}\coloneqq \{x\in \closure{\RAF}{\food} \ | \ \nexists r \in \CR' \text{ s.t. } s^-_{xr}>0\}.
 \end{equation}
-For any $r\in \CR'$, by definition, for a waste species $x_W$, there is no directed edge 
-$(x_W,r)$, and for a food species $x_F$, there may be no directed edge $(r,x_F)$. We 
-can, however, consider the subgraph of $\king(\RAF)$ that is void of food and waste 
-molecules:
-\begin{equation}\label{eq:PrinceGraph}
-    \lord(\RAF) \coloneqq
-    \king[\closure{\RAF}{\food}\setminus (\food\cup W) \cup \CR'],
-  \end{equation}
-where the general notation $\king[X'\cup \CR']$ refers to the subgraph of 
-$\king$ \emph{induced} by the vertex sets $(X',\CR')$. We then have 
-the following lemma.
+We have now the following statement.
 \vspace{6pt}
 \begin{lemma}\label{lem:PSC}
-  Let $\RAF$ be an irreducible, monocatalyzed RAF. Then $\lord(\RAF)$ 
-  is strongly connected.
+  Let $\RAF$ be an irreducible, monocatalyzed RAF, and let $v_1,v_2$ be two vertices of $K(\RAF)$, which are not in the food and waste sets, i.e. 
+  \begin{equation}
+      v_1,v_2\in (\closure{\RAF}{\food} \cup \mathcal{R}') \setminus (\food \cup \mathbf{W}).
+  \end{equation} 
+  Then there is a directed path $\gamma$ from $v_1$ to $v_2$. 
 \end{lemma}
+
+
+%We recall that a directed graph $(V,E)$ is \emph{strongly connected} if, for any pair of 
+%%vertices $v_1,v_2\in V$, there exists a directed path from $v_1$ to $v_2$. The same definition applies identically for bipartite graphs.In terms of  $\king(\RAF)$, we cannot hope to have strong-connectedness unless we remove food  and waste species, of which the latter are derived from the set\begin{equation}\label{eq:Waste}
+ % \mathbf{W}\coloneqq \{x\in \closure{\RAF}{\food} \ | \ \nexists r \in \CR' \text{ s.t. } s^-_{xr}>0\}.
+%%\end{equation}
+%For any $r\in \CR'$, by definition, for a waste species $x_W$, there is no directed edge 
+%$(x_W,r)$, and for a food species $x_F$, there may be no directed edge $(r,x_F)$. We can, however, consider the subgraph of $\king(\RAF)$ that is void of food and waste molecules:
+%\begin{equation}\label{eq:PrinceGraph}    \lord(\RAF) \coloneqq \king[\closure{\RAF}{\food}\setminus (\food\cup W) \cup \CR'], \end{equation}where the general notation $\king[X'\cup \CR']$ refers to the subgraph of $\king$ \emph{induced} by the vertex sets $(X',\CR')$. We then have the following lemma.\begin{lemma}\label{lem:PSC} Let $\RAF$ be an irreducible, monocatalyzed RAF. Then $\lord(\RAF)$   is strongly connected.\end{lemma}
 \begin{proof}
-  Again, assume indirectly that this is not the case. Then there are two non-empty, 
-  strongly connected components $\lord_1,\lord_2$.  W.l.o.g., we assume 
-  that there is no path from any $u\in \lord_2$ to any $v\in \lord_1$. Then 
-  all paths from vertices of $\lord_2$ to vertices of $\lord_1$ in $\king(\RAF)$ 
-  pass through $\food$. This, however, implies that all F-catalysts and F-reactants 
-  for all F-reactions in $\lord_1$ are contained in $\food \cup \lord_1$. Then 
-  $R(\lord_1)/{\sim}$ is a non-empty RAF which contradicts the minimality of $\RAF$.
+Indirectly assume that there is no path from $v_1$ to $v_2$. \NV{[I think the statement is correct, but it is not so obvious to prove it shortly. One needs to firstly distinguish whether $v_2$ is a species or a reaction. If $v_2$ is a reaction then we need to show that $\RAF \setminus v_2$ is an irreducible RAF against the assumption. This seems relatively direct. However, for the case $v_2$ is a species, we need to pick a reaction for which $x$ is a product, which must be there because otherwise $x$ would be in the food (but this last statement is maybe even a small proposition). and repeat the argument.}
+  
+
 \end{proof}
 
 %Before we proceed, we remark on an interesting consequence for the R-graph of 
@@ -920,7 +918,8 @@ the following lemma.
 %(see SI Cor.~\TODO{TBA, will only add the Cor. to the SI if this is not removed}). 
 %Note that different notions of such a graph have been defined in the RAF 
 %universe, which not necessarily all lead to the same results \cite{steel_minimal_2013, 
-%steel_autocatalytic_2019}.
+%steel_autocatalytic_2019}. 
+  %Then all paths from vertices of $\lord_2$ to vertices of $\lord_1$ in $\king(\RAF)$  pass through $\food$. This, however, implies that all F-catalysts and F-reactants   for all F-reactions in $\lord_1$ are contained in $\food \cup \lord_1$. Then $R(\lord_1)/{\sim}$ is a non-empty RAF which contradicts the minimality of $\RAF$.
 }
 
 \holy{
@@ -990,6 +989,7 @@ in the following Lemma.
 \begin{lemma}\label{lem:CutVertexReac}
   Let $\RAF$ be an irreducible, monocatalyzed RAF. If $\lord(\RAF)$ is not
   a strong block, then every cut-vertex is a CRN reaction. 
+   \NV{[Is this not only: "every cut-vertex of $K(\RAF)$ is a reaction $r\in \mathcal{R}'$?]}
 \end{lemma}
 \begin{proof}
 	Assume there is a cut-vertex $w\in X(\lord)$. Then there are at least two
