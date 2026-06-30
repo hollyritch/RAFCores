@@ -899,9 +899,9 @@ Indirectly assume that there is no path from $v_1$ to $v_2$.
 \holy{First, we observe that since $v_1\notin \food, v_1\notin \mathbf{W}$, 
 $v_1$ has at least one incoming and one outgoing edge $(*)$. In addition, there are 
 at least two strongly connected components $K_1, K_2$ such that 
-$v_1\in K_1$ and $v_2\in K_2$. Then none of the species $x\in X(K_1)$ 
+$v_1\in K_1$ and $v_2\in K_2$. Then no species $x\in X(K_1)$ 
 is an F-catalyst or an F-reactant for a reaction in $\CR(K_2)$. If 
-$\CR(K_1)\neq \emptyset$, then $\RAF \setminus (\CR(K_1)/\sim)$ 
+$\CR(K_1)\neq \emptyset$, then $\RAF \setminus (\CR(K_1)/\sim)\subset \RAF$ 
 is a RAF, which contradicts the irreducibility of $\RAF$. Otherwise
 $K_1=\{v_1\}\in X$, which implies $\CR(K_2)\neq \emptyset$. Due to $(*)$ there 
 is an $r_2\in \CR'\setminus \CR(K_2): (x,r_2)\in E(K)$. Then $r_2$ is 
@@ -922,7 +922,7 @@ either case contradicting the irreducibility of $\RAF$.}
   Every cut-vertex of $K(\RAF)$ is a reaction $r\in \mathcal{R}'$.
 \end{lemma}
 \begin{proof}
-	We start by considering the graph 
+	\holy{We start by considering the graph 
 	\begin{equation}
 		\lord(\RAF)\coloneqq \king[\closure{\RAF}{\food}\setminus (\food\cup W) \cup \CR'].
 	\end{equation}
@@ -946,7 +946,7 @@ either case contradicting the irreducibility of $\RAF$.}
 	\in \food$ is no cut-vertex, as the graph was connected before and no 
 	species vertex $x'$ can become a cut-vertex upon the addition of $x_\food$ 
 	as this would imply that $x'$ was a cut-vertex already before addition 
-	of $x_\food$. 
+	of $x_\food$. }
 \end{proof}
 
 \NV{[Now we are in the posiiton to speak of strong blocks, and of maximal strong block. Maybe think of a different notation than $K'$ since there are many $K'$ for one $K(\Gamma')$. Not sure worth introducing notation for $V(K)$ but now a bit sloppy.]}
@@ -955,8 +955,15 @@ TOBECORRECED, jUST AS AN IDEA
 
 \vspace{6pt}
 \begin{lemma}
-  Every maximal strong block $K'$ of $K(\RAF)$ either is a single species-vertex $K=\{x\}$ with $x\in \food \cup \mathbf{W}$, or $K'$ contains a cut-vertex $r$, which is a reaction with $ \feducts(r) \cap X(K')=\emptyset$, $\fproducts \cap X(K')\neq \emptyset$, and such that
-  $r\prec \tilde{r}$, for any $\tilde{r}\in \mathcal{R}(K')$.
+  \holy{Every maximal strong block $\block$ of $K(\RAF)$ either is a single species-vertex 
+  $\block=\{x\}$ with $x\in \food \cup \mathbf{W}$, or $K'$ contains a cut-vertex $r$, which 
+  is a reaction that satisfies 
+  	\begin{itemize}
+		\item[i.]{$\feducts(r) \cap X(K')=\emptyset$,}
+		\item[ii.]{$\fproducts(r) \cap X(K')\neq \emptyset$,}
+		\item[iii.]{$\cat(r) \cap X(K')\neq \emptyset$,}
+		\item[iv.]{and $r\prec \tilde{r}$, for any $\tilde{r}\in \mathcal{R}(K')$.}
+	\end{itemize}  
 \end{lemma}
 
 
