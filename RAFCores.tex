@@ -869,8 +869,7 @@ is partitioned into two distinct types of directed edges given as
 Note that the K\H{o}nig graph emerged under various names in the context of CRN theory, as the 
 species-reaction (SR) graph \cite{craciun_multiple_2006} and also as Petri nets \cite{angeli_petri_2007}.
 
-
-\paragraph{Strong connectivity}
+\subsubsection{Properties of $K(\RAF)$}
 
 A \emph{directed path} $\mathcal{P}$ in $K(\RAF)$ between two vertices $v$ and $w$ is an ordered sequence of vertices and edges $\mathcal{P}=(v_1,e_1,..., e_n, v_2)$, starting at $v_1$ and terminating at $v_2$, so that each edge $e=(x,r)$ (resp. $e=(r,x)$) is preceded by the vertex $x$ (resp. $r$) and followed by the vertex $r$ (resp. $x$). $K(\RAF)$ is \emph{strongly connected} if, for every pair of vertices $v_1,v_2\in (X\cup\mathcal{R})$ there is a directed path from $v_1$ and $v_2$. If $K(\RAF)$ is not strongly connected, the \emph{maximal strongly connected component} containing a vertex $v_1$ is the maximal subgraph $K_{maxSC}(v_1)\subseteq K(\RAF)$ such that $K'$ is strongly connected and $v_1\in K'$. 
 
@@ -880,7 +879,7 @@ We note that, for a species $x_f \in \food$ in the food set, there may be no dir
 \end{equation}
 We have now the following statement.
 \vspace{6pt}
-\begin{lemma}\label{lem:PSC}
+\begin{lemma}[Strong connectivity]\label{lem:PSC}
   Let $\RAF$ be an irreducible, monocatalyzed RAF, and let $v_1,v_2$ be two vertices of $K(\RAF)$, which are not in the food and waste sets, i.e. 
   \begin{equation}
       v_1,v_2\in (\closure{\RAF}{\food} \cup \mathcal{R}') \setminus (\food \cup \mathbf{W}).
@@ -917,54 +916,44 @@ Lemma \ref{lem:PSC} is essentially a strong-connectivity result on $K(\RAF)$ wit
 
 
 \vspace{6pt}
-\begin{lemma}
+\begin{lemma}[Cut vertices]\label{lem:cutvert}
     Let $\RAF$ be an irreducible, monocatalyzed RAF. Every cut-vertex of $K(\RAF)$ is a reaction $r\in \mathcal{R}'$.
 \end{lemma}
 \begin{proof}
-
-Indirectly assume that there exists a cut vertex $x\in X(K(\RAF))$ that is a species and let $K_1(\RAF)$, $K_2(\RAF)$ denote two maximal connected component in $K(\RAF)\setminus \{x\}$ \NV{[I think here multiple could appear, and one needs to distinguish the food-generated ones from the one not food-generated, and we shall take at least one food-generated, wlog $K_1$]}. Lemma \ref{lem:PSC} yields that any path $P_{12}$ from any vertex in $K_1(\RAF)$ to $K_2(\RAF)$ must in particular contain the cut-vertex $x$, which moreover is not a food nor a waste molecule, $x\not\in \food \cup \mathbf{W}$. In particular, then, there is no other species in $X(K_1)$ which is an F-reactant or an F-catalyst of a reaction in $\mathcal{R}(K_2)$. \NV{[I still believe the statement is correct but the proof incomplete... Till the above I follow, the final implication I do not see yet so directly...]}
-
-
-
-
-
-
-	\holy{We start by considering the graph 
-	\begin{equation}
-		\lord(\RAF)\coloneqq \king[\closure{\RAF}{\food}\setminus (\food\cup W) \cup \CR'].
-	\end{equation}
-	Assume there is a cut-vertex $w\in X(\lord)$. Then there are at least two
-  	strongly connected components $\lord_1$ and $\lord_2$. Then for any two
-  	vertices $u\in V(\lord_1)$ and $v\in V(\lord_2)$ we have $w\in P_{uv}$
-  	and $w\in P_{vu}$ for arbitrary paths connecting $u$ and $v$ in $\lord(\RAF)$. 
-	Therefore, except $w$, there is no $x_1\in X(\lord_1)$ such that $x_1$ 
-	is an F-reactant, F-product, or F-catalyst for any reaction $r_2\in \CR(\lord_2)$, 
-	and there is no $x_2\in X(\lord_2)$ such that $x_2$ is an F-reactant,
-  	F-product, or F-catalyst for any reaction $r_1\in \CR(\lord_1)$.
-  	Then either $\closure{\CR(\lord_1)/\sim}{\food}\neq \emptyset$ or (not mutually exclusive) 
-	$\closure{\CR(\lord_2)/\sim}{\food}\neq \emptyset$, implying that
-  	$\CR(\lord_1)/\sim$ or $\CR(\lord_2)/\sim$ is a RAF, respectively. Either case 
-	contradicts the irreducibility of $\RAF$. Adding species vertices that have 
-	no incoming or no outgoing edges does not change the fact that all 
-	cut-vertices are reaction vertices; it may only increase the number of 
-	reaction cut-vertices since $\lord(\RAF)$ is bipartite. Adding species 
-	molecules $x_\food \in \food$ that not only have an outgoing but also 
-	an incoming edge increases connectivity; in particular, $x_\food
-	\in \food$ is no cut-vertex, as the graph was connected before and no 
-	species vertex $x'$ can become a cut-vertex upon the addition of $x_\food$ 
-	as this would imply that $x'$ was a cut-vertex already before addition 
-	of $x_\food$. }
+Indirectly assume that there exists a cut vertex $x\in X(K(\RAF))$ that is a species and let $K_1(\RAF)$ denote one maximal connected component in $K(\RAF)\setminus \{x\}$, which is food-generated \NV{[One may prove more explicitly that at least one actually exist]}. Lemma \ref{lem:PSC} yields that any directed path $\mathcal{P}$ from any vertex in $K(\RAF)\setminus K_1(\RAF)$ to $K_1(\RAF)$ must in particular contain the cut-vertex $x$, which moreover is not a food nor a waste molecule, $x\not\in \food \cup \mathbf{W}$. In particular, then, there is no species in $K(\RAF)\setminus K_1(\RAF)$ which is an F-catalyst of any reaction in $\mathcal{R}(K_1)$. Therefore, F-reactions associated to $\mathcal{R}(K_1(\RAF))\subset\mathcal{R}'$ constitute a RAF, contradicting the irreducibility of $\RAF$. 
 \end{proof}
 
-\NV{[Now we are in the posiiton to speak of strong blocks, and of maximal strong block. Maybe think of a different notation than $K'$ since there are many $K'$ for one $K(\Gamma')$. Not sure worth introducing notation for $V(K)$ but now a bit sloppy.]}
 
-TOBECORRECED, jUST AS AN IDEA
+
+
+
+	%\holy{We start by considering the graph 
+	%\begin{equation}
+	%	\lord(\RAF)\coloneqq \king[\closure{\RAF}{\food}\setminus (\food\cup W) \cup \CR'].
+	%\end{equation}
+	%Assume there is a cut-vertex $w\in X(\lord)$. Then there are at least two
+  	%strongly connected components $\lord_1$ and $\lord_2$. Then for any two
+  	%vertices $u\in V(\lord_1)$ and $v\in V(\lord_2)$ we have $w\in P_{uv}$
+  	%and $w\in P_{vu}$ for arbitrary paths connecting $u$ and $v$ in $\lord(\RAF)$. 
+	%Therefore, except $w$, there is no $x_1\in X(\lord_1)$ such that $x_1$ 
+	%is an F-reactant, F-product, or F-catalyst for any reaction $r_2\in \CR(\lord_2)$, 
+	%and there is no $x_2\in X(\lord_2)$ such that $x_2$ is an F-reactant,
+  	%F-product, or F-catalyst for any reaction $r_1\in \CR(\lord_1)$.
+  	%Then either $\closure{\CR(\lord_1)/\sim}{\food}\neq \emptyset$ or (not mutually exclusive) 
+	%$\closure{\CR(\lord_2)/\sim}{\food}\neq \emptyset$, implying that
+  	%$\CR(\lord_1)/\sim$ or $\CR(\lord_2)/\sim$ is a RAF, respectively. Either case 
+	%contradicts the irreducibility of $\RAF$. Adding species vertices that have 
+	%no incoming or no outgoing edges does not change the fact that all 
+	%cut-vertices are reaction vertices; it may only increase the number of 
+	%reaction cut-vertices since $\lord(\RAF)$ is bipartite. Adding species 	molecules $x_\food \in \food$ that not only have an outgoing but also 	an incoming edge increases connectivity; in particular, $x_\food 	\in \food$ is no cut-vertex, as the graph was connected before and no   	species vertex $x'$ can become a cut-vertex upon the addition of $x_\food$ 	as this would imply that $x'$ was a cut-vertex already before addition of $x_\food$. } \end{proof}
+
+Building on the perspectives of Lemmas \ref{lem:PSC} and \ref{lem:cutvert}, our third lemma considers \emph{maximal strong blocks} $\block$ of $K(\RAF)$, i.e. maximal strongly-connected subgraphs, which - viewed as a graph themselves - possess no cut-vertices. Strong blocks have been considered in the graph literature in TBACITATION.
+
 
 \vspace{6pt}
-\begin{lemma}
-  \holy{Every maximal strong block $\block$ of $K(\RAF)$ either is a single species-vertex 
-  $\block=\{x\}$ with $x\in \food \cup \mathbf{W}$, or $K'$ contains a cut-vertex $r$, which 
-  is a reaction that satisfies 
+\begin{lemma}[Strong blocks]
+Every maximal strong block $\block$ of $K(\RAF)$ either is a single species-vertex $\block=\{x\}$ with $x\in \food \cup \mathbf{W}$, or $\block$ contains a reaction-vertex $r\in \mathcal{R}'$, which 
+  is a cut-vertex for $K(\RAF)$ satisfying:
   	\begin{itemize}
 		\item[i.]{$\feducts(r) \cap X(K')=\emptyset$,}
 		\item[ii.]{$\fproducts(r) \cap X(K')\neq \emptyset$,}
@@ -972,6 +961,9 @@ TOBECORRECED, jUST AS AN IDEA
 		\item[iv.]{and $r\prec \tilde{r}$, for any $\tilde{r}\in \mathcal{R}(K')$.}
 	\end{itemize}  
 \end{lemma}
+
+\begin{proof}
+\NV{[SKETCHED, TBA.] Assume $\block$ is not the single species in food and waste. $\block$ cannot be a single-species, since this would make it a cut-vertex against Lemma \ref{lem:cutvert}. Then $\block$ contains reactions and in particular cut vertices of $K(\RAF)$. Pick the cut-vertex $r$ not necessarily unique minimum with respect to the generation order there, and show (i),(ii),(iii),(iv). (i): its F-reactants must be somewhere else, otherwise either minimality is broken or max-strong-block is broken. (iii): r must have at least an ingoing arrow and one outgoing, so this follows. (ii) NOT SURE about food-catalyst, TBC. (iv) must follow from the minimum condition together with (i). \end{proof}}
 
 
 %Before we proceed, we remark on an interesting consequence for the R-graph of 
@@ -985,7 +977,7 @@ TOBECORRECED, jUST AS AN IDEA
 %universe, which not necessarily all lead to the same results \cite{steel_minimal_2013, 
 %steel_autocatalytic_2019}. 
   %Then all paths from vertices of $\lord_2$ to vertices of $\lord_1$ in $\king(\RAF)$  pass through $\food$. This, however, implies that all F-catalysts and F-reactants   for all F-reactions in $\lord_1$ are contained in $\food \cup \lord_1$. Then $R(\lord_1)/{\sim}$ is a non-empty RAF which contradicts the minimality of $\RAF$.
-}
+
 
 \holy{
 \paragraph{Cut-vertices}
