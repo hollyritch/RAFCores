@@ -871,13 +871,20 @@ species-reaction (SR) graph \cite{craciun_multiple_2006} and also as Petri nets 
 
 \subsubsection{Properties of $K(\RAF)$}
 
-A \emph{directed path} $\mathcal{P}$ in $K(\RAF)$ between two vertices $v$ and $w$ is an ordered sequence of vertices and edges $\mathcal{P}=(v_1,e_1,..., e_n, v_2)$, starting at $v_1$ and terminating at $v_2$, so that each edge $e=(x,r)$ (resp. $e=(r,x)$) is preceded by the vertex $x$ (resp. $r$) and followed by the vertex $r$ (resp. $x$). $K(\RAF)$ is \emph{strongly connected} if, for every pair of vertices $v_1,v_2\in (X\cup\mathcal{R})$ there is a directed path from $v_1$ and $v_2$. If $K(\RAF)$ is not strongly connected, the \emph{maximal strongly connected component} containing a vertex $v_1$ is the maximal subgraph $K_{maxSC}(v_1)\subseteq K(\RAF)$ such that $K'$ is strongly connected and $v_1\in K'$. 
+A \emph{directed path} $\mathcal{P}$ in $K(\RAF)$ between two vertices $v$ and $w$ is an ordered sequence 
+of vertices \holy{$\mathcal{P}=(v_1,\ldots, v_n)$, starting at $v=v_1$ and terminating at $w=v_n$, such that 
+$(v_i,v_{i+1})\in E(K(\RAF)), 1\leq i\leq n-1$}. $K(\RAF)$ is \emph{strongly connected} if, for every pair of vertices 
+$v_1,v_2\in (X\cup\mathcal{R})$ there is a directed path from $v_1$ to $v_2$. If $K(\RAF)$ is not strongly 
+connected, the \holy{\emph{strongly connected component} containing a vertex $v_1$ is the maximum set 
+of vertices $V_1$ such that $K[V_1]$ is strongly connected $v_1\in V_1$.} 
 
-We note that, for a species $x_f \in \food$ in the food set, there may be no directed edge $(r,x_f)$, at all. Complementarily, we introduce the set $\mathbf{W}$ of \emph{waste species} as the species $x_w$ for which there is no directed edges $(x_w,r)$. Equivalently, in symbols:
+We note that, for a species $x_f \in \food$ in the food set, there may be no directed edge $(r,x_f)$ at all. 
+Complementarily, we introduce the set $\mathbf{W}$ of \emph{waste species} as the species $x_w$ for which 
+there is no directed edges $(x_w,r)$. Equivalently, in symbols:
 \begin{equation}\label{eq:Waste}
   \mathbf{W}\coloneqq \{x\in \closure{\RAF}{\food} \ | \ \nexists r \in \CR' \text{ s.t. } s^-_{xr}>0\}.
 \end{equation}
-We have now the following statement.
+We now have the following statement.
 \vspace{6pt}
 \begin{lemma}[Strong connectivity]\label{lem:PSC}
   Let $\RAF$ be an irreducible, monocatalyzed RAF, and let $v_1,v_2$ be two vertices of $K(\RAF)$, which are not in the food and waste sets, i.e. 
@@ -896,9 +903,31 @@ We have now the following statement.
 %$(x_W,r)$, and for a food species $x_F$, there may be no directed edge $(r,x_F)$. We can, however, consider the subgraph of $\king(\RAF)$ that is void of food and waste molecules:
 %\begin{equation}\label{eq:PrinceGraph}    \lord(\RAF) \coloneqq \king[\closure{\RAF}{\food}\setminus (\food\cup W) \cup \CR'], \end{equation}where the general notation $\king[X'\cup \CR']$ refers to the subgraph of $\king$ \emph{induced} by the vertex sets $(X',\CR')$. We then have the following lemma.\begin{lemma}\label{lem:PSC} Let $\RAF$ be an irreducible, monocatalyzed RAF. Then $\lord(\RAF)$   is strongly connected.\end{lemma}
 \begin{proof}
-Indirectly assume that there is no path $\mathcal{P}$  from $v_1$ to $v_2$. Then $K(\RAF)$ is not strongly connected and we may consider the maximal strongly connected components $K_{maxSC}(v_1)$ and $K_{maxSC}(v_2)$ of $v_1$ and $v_2$, respectively. Moreover, no species in $X(K_{maxSC}(v_1))$ 
-is an F-catalyst or an F-reactant for a reaction $\CR(K_{maxSC}(v_2)$ and we may therefore remove from $\RAF$ any F-reaction associated to $\mathcal{R}(K_{maxSC}(v_1))$ while preserving the RAF structure, which yields a contradiction to irreversibility of $\RAF$. \NV{[TOBEADDEDbetter:]Assume now that all paths go via food, then we could still remove from $\RAF$ any F-reaction associated to $\mathcal{R}(K_{maxSC}(v_1))$ while preserving the RAF structure, which yields a contradiction to irreversibility of $\RAF$.
-[the fact that strongly connected component of $v_1$ has nonempty reactions follows from an assumption - to be added - that we only consider non-singleton species in the food set, tba later somewhere]}
+Indirectly assume that there is no path $\mathcal{P}$  from $v_1$ to $v_2$. Then $\king(\RAF)$ 
+is not strongly connected, and we may consider the strongly connected components 
+$V_1$ and $V_2$ containing $v_1$ and $v_2$, respectively. Moreover, no species in 
+$X(V_1)$ is an F-catalyst or an F-reactant for a reaction in $\CR(V_2)$, and we may 
+therefore remove from $\RAF$ any F-reaction associated to $\mathcal{R}(V_1)$ 
+while preserving the RAF structure, which yields a contradiction to irreversibility 
+of $\RAF$. \holy{If $\CR(V_1)=\emptyset$ then $V_1=\{v_1\}$ and since $v_1\notin 
+\food\cup \mathbf{W}$ there is an $r\in \CR' \setminus \CR(V_2): (v_1,r)\in E(\king(\RAF))$ 
+and no species from the strongly connected component $V_3$ containing $r$ is 
+an F-catalyst or an F-reactant for a reaction in $\CR(V_2)$, and we may 
+therefore remove from $\RAF$ any F-reaction associated to $\mathcal{R}(V_3)$ 
+while preserving the RAF structure, which yields a contradiction to irreversibility 
+of $\RAF$.
+
+Assume now that for all directed paths $\mathcal{P}_{v_1v_2}$ from  $v_1$ to 
+$v_2$ $\mathcal{P}_{v_1v_2}\cap \food\neq \emptyset$. If $v_1$ 
+is a reaction, we could remove the F-reaction corresponding to $v_1$ from $\RAF$ 
+while preserving the RAF property and thereby contradicting irreversibility of $\RAF$. 
+If $v_1\in X(V_1)$, then there is $r\in \CR' \setminus \CR(V_2): (v_1,r)\in E(\king(\RAF))$ 
+such that none of its F-products that is not simultaneously an F-reactant for $r$ and that 
+is not a food molecule is an F-catalyst or an F-reactant for a reaction in 
+$\CR'\setminus \{r\}$, which implies that we can remove $\fr$ from $\RAF$ and preserve
+irreducibility.}
+
+%[the fact that strongly connected component of $v_1$ has nonempty reactions follows from an assumption - to be added - that we only consider non-singleton species in the food set, tba later somewhere]}
 \end{proof}
 
 Lemma \ref{lem:PSC} is essentially a strong-connectivity result on $K(\RAF)$ without food and waste species. However, strongly connected graphs may still have cut-vertices, namely vertices whose removal disconnects the underlying undirected graph.\NV{[Here again maybe a glossary in the SI, otherwise slightly unclear, maybe ok anyways]}. The next result shows however that for $K(\RAF)$ such cut-vertices can only be reaction-vertices $r\in \mathcal{R}'$.
