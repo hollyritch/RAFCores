@@ -871,12 +871,12 @@ species-reaction (SR) graph \cite{craciun_multiple_2006} and also as Petri nets 
 
 \subsubsection{Properties of $K(\RAF)$}
 
-A \emph{directed path} $\mathcal{P}$ in $K(\RAF)$ between two vertices $v$ and $w$ is an ordered sequence 
-of vertices \holy{$\mathcal{P}=(v_1,\ldots, v_n)$, starting at $v=v_1$ and terminating at $w=v_n$, such that 
-$(v_i,v_{i+1})\in E(K(\RAF)), 1\leq i\leq n-1$}. $K(\RAF)$ is \emph{strongly connected} if, for every pair of vertices 
-$v_1,v_2\in (X\cup\mathcal{R})$ there is a directed path from $v_1$ to $v_2$. If $K(\RAF)$ is not strongly 
-connected, the \holy{\emph{strongly connected component} containing a vertex $v_1$ is the maximum set 
-of vertices $V_1$ such that $K[V_1]$ is strongly connected $v_1\in V_1$.} 
+A \emph{directed path} $\mathcal{P}$ in $K(\RAF)$ is an ordered sequence 
+of vertices $\mathcal{P}=(v_1,\ldots, v_n)$, starting at $v_1$ and terminating at $v_n$, such that 
+$(v_i,v_{i+1})\in E(K(\RAF)), 1\leq i\leq n-1$. We say that such $\mathcal{P}$ is a path from $v_1$ to $v_2$. $K(\RAF)$ is \emph{strongly connected} if, for every pair of vertices 
+$v,w\in (X\cup\mathcal{R})$ there is a directed path from $v$ to $w$. If $K(\RAF)$ is not strongly 
+connected, the \emph{strongly connected component} containing a vertex $v_1$ is the maximum set 
+of vertices $V_1$ with $v_1\in V_1$ such that for any pair of vertices $v$ and $w$ in $V_1$ there is a directed path from $v$ to $w$. 
 
 We note that, for a species $x_f \in \food$ in the food set, there may be no directed edge $(r,x_f)$ at all. 
 Complementarily, we introduce the set $\mathbf{W}$ of \emph{waste species} as the species $x_w$ for which 
@@ -903,13 +903,19 @@ We now have the following statement.
 %$(x_W,r)$, and for a food species $x_F$, there may be no directed edge $(r,x_F)$. We can, however, consider the subgraph of $\king(\RAF)$ that is void of food and waste molecules:
 %\begin{equation}\label{eq:PrinceGraph}    \lord(\RAF) \coloneqq \king[\closure{\RAF}{\food}\setminus (\food\cup W) \cup \CR'], \end{equation}where the general notation $\king[X'\cup \CR']$ refers to the subgraph of $\king$ \emph{induced} by the vertex sets $(X',\CR')$. We then have the following lemma.\begin{lemma}\label{lem:PSC} Let $\RAF$ be an irreducible, monocatalyzed RAF. Then $\lord(\RAF)$   is strongly connected.\end{lemma}
 \begin{proof}
-Indirectly assume that there is no path $\mathcal{P}$  from $v_1$ to $v_2$. Then $\king(\RAF)$ 
-is not strongly connected, and we may consider the strongly connected components 
-$V_1$ and $V_2$ containing $v_1$ and $v_2$, respectively. Moreover, no species in 
-$X(V_1)$ is an F-catalyst or an F-reactant for a reaction in $\CR(V_2)$, and we may 
-therefore remove from $\RAF$ any F-reaction associated to $\mathcal{R}(V_1)$ 
+Indirectly assume that there is no path $\mathcal{P}$  from $v_1$ to $v_2$. If $v_1$ is a species-vertex, $v_1=x_1$, then $v_1\not\in \mathbf{W}$, and let $r_1$ be any reaction vertex such that $s^-_{x_1r_1}>0$. By indirect assumption, there is no path from $r_1$ to $v_2$. Thus, we may always reduce to the case of $v_1=r_1$ being a reaction vertex. 
+Since $\king(\RAF)$ 
+is not strongly connected,  we may consider the strongly connected components 
+$V_1$ and $V_2$ containing $r_1$ and $v_2$, respectively.  
+Moreover, no species in 
+$V_1 \cap X$ is an F-catalyst or an F-reactant for a reaction in $V_2\cap \mathcal{R}'$, and we may 
+therefore remove from $\RAF$ any F-reaction associated to $\mathcal{R}(V_1)\neq \emptyset$ 
 while preserving the RAF structure, which yields a contradiction to irreversibility 
-of $\RAF$. \holy{If $\CR(V_1)=\emptyset$ then $V_1=\{v_1\}$ and since $v_1\notin 
+of $\RAF$. 
+
+Finally indirectly assume now that all paths $\mathcal{P}$ from $r_1$ to $V_2$ contains a vertex in the food set. Then $V_2$
+
+\holy{If $\CR(V_1)=\emptyset$ then $V_1=\{v_1\}$ and since $v_1\notin 
 \food\cup \mathbf{W}$ there is an $r\in \CR' \setminus \CR(V_2): (v_1,r)\in E(\king(\RAF))$ 
 and no species from the strongly connected component $V_3$ containing $r$ is 
 an F-catalyst or an F-reactant for a reaction in $\CR(V_2)$, and we may 
@@ -926,6 +932,7 @@ such that none of its F-products that is not simultaneously an F-reactant for $r
 is not a food molecule is an F-catalyst or an F-reactant for a reaction in 
 $\CR'\setminus \{r\}$, which implies that we can remove $\fr$ from $\RAF$ and preserve
 irreducibility.}
+
 
 %[the fact that strongly connected component of $v_1$ has nonempty reactions follows from an assumption - to be added - that we only consider non-singleton species in the food set, tba later somewhere]}
 \end{proof}
