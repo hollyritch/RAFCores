@@ -928,75 +928,78 @@ $\RAF\setminus (\CR(\mathbf{D}_{\king''}))/\mathord{\sim})$ is a RAF, and thereb
 Lemma \ref{lem:PSC} is essentially a strong-connectivity result on $K(\RAF)$ without food and waste species. 
 However, strongly connected graphs may still have cut-vertices, namely, vertices whose removal disconnects 
 the underlying undirected graph (see SI Sec.~\ref{S-sec:Glossary}). The example in Fig.~\ref{ex:CutVertex2} 
-captures this situation, as each reaction vertex is a cut-vertex. The next result shows that, indeed, 
-for $K(\RAF)$ cut-vertices can only be reaction-vertices $r\in \mathcal{R}'$.
+captures this situation, as each reaction of the associated CRN of an irreducible, monocatalyzed RAF is a 
+cut-vertex in the bipartite K\H{o}nig graph $\king(\RAF)$. The next result shows that, indeed, for $K(\RAF)$ 
+cut-vertices can only be reaction-vertices $r\in \mathcal{R}'$.
 
 \vspace{6pt}
 \begin{lemma}[Cut vertices]\label{lem:cutvert}
     Let $\RAF$ be an irreducible, monocatalyzed RAF. Every cut-vertex of $K(\RAF)$ is a reaction $r\in \mathcal{R}'$.
 \end{lemma}
 \begin{proof}
-Indirectly assume that there exists a cut vertex $x\in X(K(\RAF))$ that is a species and let $K_1(\RAF)$ denote one 
-connected component in $K(\RAF)\setminus \{x\}$, which is \food-generated \NV{[One may prove more explicitly that 
-at least one actually exist]}. Lemma \ref{lem:PSC} yields that any directed path $\mathcal{P}$ from any vertex in 
-$K(\RAF)\setminus K_1(\RAF)$ to $K_1(\RAF)$ must in particular contain the cut-vertex $x$, which moreover is not 
-a food nor a waste molecule, $x\not\in \food \cup \mathbf{W}$. In particular, then, there is no species in 
-$K(\RAF)\setminus K_1(\RAF)$ which is an F-catalyst of any reaction in $\mathcal{R}(K_1)$. Therefore, F-reactions 
-associated to $\mathcal{R}(K_1(\RAF))\subset\mathcal{R}'$ constitute a RAF, contradicting the irreducibility of $\RAF$. 
+Indirectly assume that there exists a cut vertex $x\in X(\king(\RAF))$ that is a species. Then there is at least one connected 
+component $\king_1$ in \holy{$\king[V(\king(\RAF))\setminus \{x\}]$ such that $\RAF_1\coloneqq \CR(\king_1)/\mathord{\sim}$ is 
+\food-generated. Indeed, Lemma \ref{lem:PSC} yields that any directed path $\mathcal{P}$ from 
+any vertex in $V(\king(\RAF))\setminus K_1$ to $K_1$ must in particular contain the cut-vertex $x$, which moreover is not 
+a food nor a waste molecule, $x\not\in \food \cup \mathbf{W}$. In particular, then, there is no species in $X(\king(\RAF))\setminus 
+(\king_1\cup \{x\})$ which is an F-reactant or an F-catalyst for any reaction in $\mathcal{R}(K_1)$. Thereby, 
+$\feducts(\RAF_1)\subseteq \closure{\RAF_1}{\food}$ and $\RAF_1$ is $\food$-generated. In addition, 
+$\RAF_1 \subset \RAF$ then constitutes a RAF, contradicting the irreducibility of $\RAF$.}
 \end{proof}
 
-Building on the perspectives of Lemmas \ref{lem:PSC} and \ref{lem:cutvert}, our third lemma considers \emph{maximal 
-strong blocks} $\block$ of $K(\RAF)$, i.e. maximal strongly-connected subgraphs, which - viewed as a graph themselves - 
-possess no cut-vertices. Strong blocks have been considered in the graph literature in \cite{grotschel_minimal_1979}.
-
+Building on the perspectives of Lemmas \ref{lem:PSC} and \ref{lem:cutvert}, the third lemma considers \emph{maximal 
+strong blocks} $\block$ of $K(\RAF)$, i.e. maximal strongly-connected subgraphs, which possess no cut-vertices. 
+Various examples for strong blocks are depicted in different colours while the respective cut-vertices are depicted in black. 
+Strong blocks have been studied in the graph literature in \cite{grotschel_minimal_1979}.  To simplify notation, we may 
+write $\fr$ instead of $[r]_{\sim}$ for the equivalence class (F-reaction) of a CRN reaction $r$.
 
 \vspace{6pt}
 \begin{lemma}[Strong blocks]
-Every maximal strong block $\block$ of $K(\RAF)$ either is a single species-vertex $\block=\{x\}$ with $x\in \food \cup \mathbf{W}$, or $\block$ contains a reaction-vertex $r\in \mathcal{R}'$, which 
+Every maximal strong block $\block$ of $K(\RAF)$ either is a single species-vertex $\block=\{x\}$ with $x\in \food \cup \mathbf{W}$, 
+a digon $\block=\{r, x\}$ with $x\in \food$, or $\block$ contains a reaction-vertex $r\in \mathcal{R}'$, which 
   is a cut-vertex for $K(\RAF)$ satisfying:
   	\begin{itemize}
-		\item[i.]{$\feducts(r) \cap X(K')=\emptyset$,}
-		\item[ii.]{$\fproducts(r) \cap X(K')\neq \emptyset$,}
-		\item[iii.]{$\cat(r) \cap X(K')\neq \emptyset$,}
-		\item[iv.]{and $r\prec \tilde{r}$, for any $\tilde{r}\in \mathcal{R}(K')$.}
+		\item[i.]{$\feducts(r) \cap X(\block)=\emptyset$,}
+		\item[ii.]{$\fproducts(r) \cap X(\block)\neq \emptyset$,}
+		\item[iii.]{$X(\cat(r)) \cap X(\block)\neq \emptyset$,}
+		\item[iv.]{and $r\preceq \tilde{r}$, for any $\tilde{r}\in \mathcal{R}(\block)$.}
 	\end{itemize}  
 \end{lemma}
 
 \begin{proof}
-\NV{[SKETCHED, TBA.] Assume $\block$ is not the single species in food and waste. $\block$ cannot be a single-species, since this would make it a cut-vertex against Lemma \ref{lem:cutvert}. Then $\block$ contains reactions and in particular cut vertices of $K(\RAF)$. Pick the cut-vertex $r$ not necessarily unique minimum with respect to the generation order there, and show (i),(ii),(iii),(iv). (i): its F-reactants must be somewhere else, otherwise either minimality is broken or max-strong-block is broken. (iii): r must have at least an ingoing arrow and one outgoing, so this follows. (ii) NOT SURE about food-catalyst, TBC. (iv) must follow from the minimum condition together with (i). \end{proof}}
+Assume $\block$ is not the single species in food and waste. $\block$ cannot be a single-species, since this would make 
+it a cut-vertex contradicting Lemma \ref{lem:cutvert}. Then $\block$ contains reactions and in particular cut vertices of 
+$K(\RAF)$. \holy{We may choose a cut-vertex $r$ (not necessarily unique) such that $\gamma(\fr)\leq \gamma(\fr')$ for all $r'\in 
+\CR(\block)$ that are cut-vertices. We now show properties $i-iv$. First, assume, first, that there is an F-reactant 
+$x_1\in X$ for $r$ such that $x_1\in X(\block)$. Then $x_1$ is an F-product of some other reaction $r_1\in\CR(\block)$ with 
+$\rgen(\fr_1)<\rgen(\fr)$. But $r_1$ cannot be a cut-vertex since otherwise $\rgen(\fr_1)<\rgen(\fr)\leq 
+\rgen(\fr_1)$. Then $\fr_1$ has an F-reactant $x_2\in X(\block)$ that is an F-product of a reaction $\fr_2$. 
+Iterating this argument we obtain with the finiteness of $\CR(\block)$ a sequence of reactions:
+  \begin{equation}
+    \rgen(\fr_k)<\rgen(\fr_{k-1}) <\ldots < \rgen(\fr_l)
+  \end{equation}
+  such that $\fr_k=\fr_l$, which yields a contradiction and thereby
+  $\rgen(\fr)\leq \rgen(\tilde{\fr}) \ (\fr\preceq \tilde{\fr})$ for all $\tilde{r}\in \CR(\block)$. 
+  Hence, $r$ satisfies properties $i$ and $iv$. 
+  
+  Assume now indirectly that $\fproducts(r) \cap X(\block) = \emptyset$. Since $r$ has 
+  at least one incoming edge in $\block$, we have that $X(\cat(r))\cap X(\block)\neq \emptyset$. 
+  Then there are multiple cases. First, assume that $X(\cat(r))\cap X(\block)$ is a single 
+  species $x_c$. If $x_c\in \food$, then $\block = \{r,x\}$ is a digon because $r$ has no 
+  other incoming or outgoing edges. If $x_c\notin \food$ then $x_c\notin \fproducts(r)$
+  by assumption. However, then $x_c$ has to be an F-product of another reaction, which 
+  yields that $x_c$ is a cut-vertex contradicting Lemma~\ref{lem:cutvert}. Now assume that 
+  $X(\cat(r))\cap X(\block)$ contains more than $1$ species. Then each F-catalyst $\tilde{x}\in 
+  X(\cat(r))\cap X(\block)$ is an F-product of a reaction $\tilde{r}\in\CR(\block)$. In addition, since 
+  $\block$ is a strong block, for any $x,y\in X(\cat(r))\cap X(\block): x\neq y$ there is w.lo.og. 
+  a path $\mathcal{P}_{xy}$ from $x$ to $y$ such that $r\notin \mathcal{P}_{xy}$.
+  
+  Property iii. follows directly since $r$ has to have at least one incoming edge, and since 
+  $\feducts(r)\cap X(\block)= \emptyset$, $\cat(r)\cap X(\block)\neq \emptyset$}.
 
 
-%Before we proceed, we remark on an interesting consequence for the R-graph of 
-%an irreducible, monocatalyzed RAF $\RAF$, which has only F-reactions as 
-%vertices and directed edges from $\fr_1$ to $\fr_2$ whenever there is a species 
-%$x$ that is either an F-catalyst of $\fr_1$ and $\fr_2$ or $\sigma^+_{x\fr_1}>0$ 
-%and $\sigma^-_{x\fr_2}>0$. In fact, Lemma~\ref{lem:PSC} implies that, if $\RAF$ 
-%is an irreducible, monocatalyzed RAF, the R-graph is strongly connected 
-%(see SI Cor.~\TODO{TBA, will only add the Cor. to the SI if this is not removed}). 
-%Note that different notions of such a graph have been defined in the RAF 
-%universe, which not necessarily all lead to the same results \cite{steel_minimal_2013, 
-%steel_autocatalytic_2019}. 
-  %Then all paths from vertices of $\lord_2$ to vertices of $\lord_1$ in $\king(\RAF)$  pass through $\food$. This, however, implies that all F-catalysts and F-reactants   for all F-reactions in $\lord_1$ are contained in $\food \cup \lord_1$. Then $R(\lord_1)/{\sim}$ is a non-empty RAF which contradicts the minimality of $\RAF$.
-
-
-\holy{
-\paragraph{Cut-vertices}
-
-Strongly connected graphs are not necessarily strong blocks, as they can still contain cut-vertices. 
-A strong block $B$ of digraph $G=(V,E)$ is termed maximal if there is no vertex $v\in V$ such that 
-$G[B\cup \{v\}]$ is a strong block. The Example depicted in Fig.~\ref{ex:CutVertex2} illustrates an 
-irreducible RAF $\RAF$, with $\lord(\RAF)$ containing the cut-vertex $r_2$, whose removal would 
-disconnect the graph. $\lord(\RAF)$ of an irreducible, monocatalyzed RAF $\RAF$ is therefore either 
-a strong block itself or it contains a cut-vertex, but not both. In Fig.~\ref{ex:CutVertex2} both maximal 
-strong blocks $\lord[\{x_1,x_2\} \cup \{r_1,r_2\}]$ and $\lord[\{x_3,x_4\}\cup \{r_2,r_3\}]$ share the 
-common cut F-reaction vertex $r_2$. 
-
-The minimality condition on the set of F-reactions suggests that only CRN reactions can be cut-vertices. 
-If a species were a cut-vertex, separating $\lord(\RAF)$ into two strongly connected components, then 
-the set of F-reactions of this component would be food-generated, as all F-reactants and F-catalysts for 
-all F-reactions would be satisfied by species from inside. That this result holds in general is summarized 
-in the following Lemma. 
-
+minimum with respect to the generation order there, and show (i),(ii),(iii),(iv). (i): its F-reactants must be somewhere else, otherwise either minimality is broken or max-strong-block is broken. (iii): r must have at least an ingoing arrow and one outgoing, so this follows. (ii) NOT SURE about food-catalyst, TBC. (iv) must follow from the minimum condition together with (i). \end{proof}
+}
 %\begin{figure}[bth]
 %  \begin{minipage}[c]{0.49\textwidth}
 %    \begin{equation}
@@ -1043,29 +1046,31 @@ in the following Lemma.
 %\end{figure}
 
 \begin{figure}[bth]
-  \begin{minipage}[c]{0.49\textwidth}
-    \begin{equation}
+  \begin{minipage}[c]{0.45\textwidth}
+    \begin{equation*}
       \begin{split}
 	r_1& : f_1 + (x_1) \rightarrow  x_2 + (x_1) \\
 	r_2& : 2x_3 + (x_2) \rightarrow  x_4 + x_5 + (x_2) \\	
 	r_3& : f_2 + (x_4)\rightarrow x_1 + x_6 + (x_4)\\
-	r_4& : f_3 + (x_5)\rightarrow x_3 + (x_5)\\	
+	r_4& : f_3 + (f_4 + x_5)\rightarrow x_3 + (f_4 + x_5)\\	
       \end{split}
-    \end{equation}
+    \end{equation*}
   \end{minipage}%
   \hfill%
-  \begin{minipage}[c]{0.49\textwidth}
+  \begin{minipage}[c]{0.55\textwidth}
+  \centering
     \begin{tikzpicture}
-      \node[draw, circle] (f1) at (-1.5,0) {$f_1$};      
-      \node[draw, circle] (f2) at (3,-1.5) {$f_2$};
-      \node[draw, circle] (f3) at (-2.5,-4.5) {$f_3$};
+      \node[draw, circle, blue] (f1) at (-1.5,0) {$f_1$};      
+      \node[draw, circle, red] (f2) at (3,-1.5) {$f_2$};
+      \node[draw, circle, green] (f3) at (-3,-4.5) {$f_3$};
+      \node[draw, purple, circle] (f4) at (-3,-3) {$f_4$};
             
-      \node[draw, circle] (x1) at (1.5,0) {$x_1$};			
-      \node[draw, circle] (x2) at (0,-1.5) {$x_2$};      
-      \node[draw, circle] (x3) at (-1.5,-3) {$x_3$};
-      \node[draw, circle] (x4) at (1.5,-3) {$x_4$};
-      \node[draw, circle] (x5) at (0,-4.5) {$x_5$};
-      \node[draw, circle] (x6) at (3,0) {$x_6$};
+      \node[draw, orange, circle] (x1) at (1.5,0) {$x_1$};			
+      \node[draw, orange, circle] (x2) at (0,-1.5) {$x_2$};      
+      \node[draw, teal, circle] (x3) at (-1.5,-3) {$x_3$};
+      \node[draw, orange, circle] (x4) at (1.5,-3) {$x_4$};
+      \node[draw, teal, circle] (x5) at (0,-4.5) {$x_5$};
+      \node[draw, circle, violet] (x6) at (3,0) {$x_6$};
       
       \node[draw, rectangle] (r1) at (0,0) {$r_1$};
       \node[draw, rectangle] (r2) at (0,-3) {$r_2$};
@@ -1073,105 +1078,80 @@ in the following Lemma.
        \node[draw, rectangle] (r4) at (-1.5,-4.5) {$r_4$};
       
       \draw[->] (f1) to (r1);
-      \draw[->, dashed] (x1) to [bend right = 30] (r1);
-      \draw[->, dashed] (r1) to [bend right = 30] (x1);
-      \draw[->] (r1) to (x2);
-      \draw[->, dashed] (x2) to [bend right = 30] (r2);	
-      \draw[->, dashed] (r2) to [bend right = 30] (x2);
-      \draw[->] (x3) to node[midway, above] {$2$} (r2);
-      \draw[->] (r2) to (x4);
-      \draw[->] (r2) to (x5);
-      \draw[->, dashed] (x4) to [bend right = 30] (r3);
-      \draw[->, dashed] (r3) to [bend right = 30] (x4);
+      \draw[->, orange, dashed] (x1) to [bend right = 30] (r1);
+      \draw[->, orange, dashed] (r1) to [bend right = 30] (x1);
+      \draw[->, orange]  (r1) to (x2);
+      \draw[->, orange, dashed] (x2) to [bend right = 30] (r2);	
+      \draw[->, orange, dashed] (r2) to [bend right = 30] (x2);
+      \draw[->, teal] (x3) to node[midway, above] {$2$} (r2);
+      \draw[->, orange] (r2) to (x4);
+      \draw[->, teal ] (r2) to (x5);
+      \draw[->, orange, dashed] (x4) to [bend right = 30] (r3);
+      \draw[->, orange, dashed] (r3) to [bend right = 30] (x4);
       \draw[->] (f2) to (r3);
-      \draw[->] (r3) to (x1);
+      \draw[->, orange] (r3) to (x1);
       \draw[->] (r3) to (x6);
-      \draw[->, dashed] (x5) to [bend right = 30] (r4);
-      \draw[->, dashed] (r4) to [bend right = 30] (x5);      
+      \draw[->, teal, dashed] (x5) to [bend right = 30] (r4);
+      \draw[->, teal, dashed] (r4) to [bend right = 30] (x5);      
       \draw[->] (f3) to (r4);
-      \draw[->] (r4) to (x3);      
+      \draw[->, purple, dashed] (f4) to [bend right = 30] (r4);
+      \draw[->, purple, dashed] (r4) to [bend right = 30] (f4);      
+      \draw[->, teal] (r4) to (x3);      
     \end{tikzpicture}
   \end{minipage}
   \caption{\textit{(Left):} Example of an irreducible, monocatalyzed RAF written 
   as CRN reactions with a cut-vertex that has a single catalyst. Catalyzations are 
-  indicated in brackets and dashed in the graph illustration TBA. \textit{(Right):} Depiction of the corresponding König graph.}
+  indicated in brackets\textit{(Right):} Depiction of the corresponding König graph 
+  with catalyzations indicated as dashed lines. Different strong blocks are depicted
+  in different colours, while cut-vertices, which belong to at least two strong blocks, 
+  are coloured black.}
   \label{ex:CutVertex2}
 \end{figure}
 
+%Food-connected blocks of $\lord(\RAF)$ contain CRN reaction vertices whose 
+%F-reactants are all elements of $\food$ and thereby no vertices of the block itself. 
+%We call such reactions \emph{liberal} and collect them for each block $\lord'\subseteq 
+%\lord$ in the sets
+%\begin{equation}
+%    \CR_\ell(\lord')\coloneqq \{r\in \CR(\lord') \ | \ \nexists x\in X(\lord'): \sigma^-_{xr}>0\},
+%\end{equation}
+%which is, indeed, a non-empty set for each block. To simplify notation, we might 
+%write $\fr$ instead of $[r]_{\sim}$ for the equivalence class (F-reaction) of a CRN 
+%reaction $r$.
+%\vspace{6pt}
+%\begin{lemma}\label{lem:cutVertexPureCat}
+%  Every strong block $\lord'$ of $\lord(\RAF)$ contains a liberal reaction.
+%\end{lemma}
+%\begin{proof}
+%  Let $\lord'$ be a maximal strong block of $\lord(\RAF)$. If $\lord'$ contains 
+%  a CRN reaction $r: \rgen(\fr)=1$, all F-reactants of $r$ are elements of $\food$. 
+%  Otherwise, $\lord'$ contains a cut-vertex $r_1\in \CR(\lord')$. If $r_1$ is the only 
+%  cut-vertex in $\lord'$, then $\rgen(\fr_1)< \rgen(\fr)$, for all $r\in \CR(\lord') 
+%  \setminus \{r_1\}$. If some $x\in X(\lord')$ is an F-reactant for $r_1$, then
+%  $x$ is an F-product of another F-reaction $r_2\in \CR(\lord')\Rightarrow 
+%  \rgen(\fr_2)< \rgen(\fr_1)$, a contradiction. If $\lord'$ has cut-vertices 
+%  $\CR_\ell(\lord')\coloneqq \{r_{\ell_1}, \ldots, r_{\ell_k}\}$, we may choose 
+%  $r_{\ell_j}\in \CR_\ell(\lord')$ such that $\rgen(\fr_{\ell_j})\leq \rgen(\fr_{\ell_i})$ 
+%  for all $r_{\ell_i}\in\CR_\ell(\lord')$. Assume now that $r_{\ell_j}$ has an F-reactant 
+%  $x_j\in X(\lord')$. Then $x_j$ is an F-product of some reaction in $r_1$, and
+%  $\rgen(\fr_1)<\rgen(\fr_{\ell_j})$. Then $r_1$ cannot be a liberal reaction since
+%  otherwise $\rgen(\fr_1)<\rgen(\fr_{\ell_j})\leq \rgen(\fr_1)$. Thus, $r_1$ 
+%  has an F-reactant $x_1 \in X(\lord')$, which is an F-product of some
+%  reaction $r_2\in \FR(\lord')$. If $r_2=r_{\ell_j}$ then
+%  $\rgen(\fr_{\ell_j})< \rgen(\fr_1)<\rgen(\fr_{\ell_j})$, a contradiction. 
+%  Otherwise, $\rgen(\fr_2)<\rgen(\fr_1)<\rgen(\fr_{\ell_j})$ and by
+%  iterative application of the upper argument, we obtain with the finiteness of
+%  $\lord'$:
+%  \begin{equation}
+%    \rgen(\fr_k)<\rgen(\fr_{k-1}) <\ldots < \rgen(\fr_l)
+%  \end{equation}
+%  with $\fr_k=\fr_l$, which yields a contradiction and thereby
+%  $\rgen(\fr_{\ell_j})\leq \rgen(\fr)$ for all $r\in \CR_\ell(\lord')\setminus
+%  \{r_{\ell_j}\}$ and $\rgen(\fr_{\ell_j})< \rgen(\fr)$ for all $r\in
+%  \CR(\lord')\setminus \CR_\ell(\lord')$.
+%\end{proof}
+%\vspace{6pt}
 
-
-\vspace{6pt}
-\begin{lemma}\label{lem:CutVertexReac}
-  Let $\RAF$ be an irreducible, monocatalyzed RAF. If $\lord(\RAF)$ is not
-  a strong block, then every cut-vertex is a CRN reaction. 
-   \NV{[Is this not only: "every cut-vertex of $K(\RAF)$ is a reaction $r\in \mathcal{R}'$?]}
-\end{lemma}
-\begin{proof}
-	Assume there is a cut-vertex $w\in X(\lord)$. Then there are at least two
-  	strongly connected components $\lord_1$ and $\lord_2$. Then for any two
-  	vertices $u\in V(\lord_1)$ and $v\in V(\lord_2)$ we have $w\in P_{uv}$
-  	and $w\in P_{vu}$ for arbitrary paths connecting $u$ and $v$ in $\lord(\RAF)$. 
-	Therefore, except $w$, there is no $x_1\in X(\lord_1)$ such that $x_1$ 
-	is an F-reactant, F-product, or F-catalyst for any reaction $r_2\in \CR(\lord_2)$, 
-	and there is no $x_2\in X(\lord_2)$ such that $x_2$ is an F-reactant,
-  	F-product, or F-catalyst for any reaction $r_1\in \CR(\lord_1)$.
-  	Then either $\closure{\CR(\lord_1)/\sim}{\food}\neq \emptyset$ or (not mutually exclusive) 
-	$\closure{\CR(\lord_2)/\sim}{\food}\neq \emptyset$, implying that
-  	$\CR(\lord_1)/\sim$ or $\CR(\lord_2)/\sim$ is a RAF, respectively. Either case 
-	contradicts the irreducibility of $\RAF$.
-\end{proof}
-}
-\holy{
-\paragraph{Strong Blocks}
-
-The existence of cut-vertices, which can only be reaction vertices, allows for
-the decomposition of $\lord(\RAF)$ into maximal strong blocks $\lord_1,\ldots, 
-\lord_n$. Throughout, we will refer to maximal strong blocks simply as blocks. 
-
-Food-connected blocks of $\lord(\RAF)$ contain CRN reaction vertices whose 
-F-reactants are all elements of $\food$ and thereby no vertices of the block itself. 
-We call such reactions \emph{liberal} and collect them for each block $\lord'\subseteq 
-\lord$ in the sets
-\begin{equation}
-    \CR_\ell(\lord')\coloneqq \{r\in \CR(\lord') \ | \ \nexists x\in X(\lord'): \sigma^-_{xr}>0\},
-\end{equation}
-which is, indeed, a non-empty set for each block. To simplify notation, we might 
-write $\fr$ instead of $[r]_{\sim}$ for the equivalence class (F-reaction) of a CRN 
-reaction $r$.
-\vspace{6pt}
-\begin{lemma}\label{lem:cutVertexPureCat}
-  Every strong block $\lord'$ of $\lord(\RAF)$ contains a liberal reaction.
-\end{lemma}
-\begin{proof}
-  Let $\lord'$ be a maximal strong block of $\lord(\RAF)$. If $\lord'$ contains 
-  a CRN reaction $r: \rgen(\fr)=1$, all F-reactants of $r$ are elements of $\food$. 
-  Otherwise, $\lord'$ contains a cut-vertex $r_1\in \CR(\lord')$. If $r_1$ is the only 
-  cut-vertex in $\lord'$, then $\rgen(\fr_1)< \rgen(\fr)$, for all $r\in \CR(\lord') 
-  \setminus \{r_1\}$. If some $x\in X(\lord')$ is an F-reactant for $r_1$, then
-  $x$ is an F-product of another F-reaction $r_2\in \CR(\lord')\Rightarrow 
-  \rgen(\fr_2)< \rgen(\fr_1)$, a contradiction. If $\lord'$ has cut-vertices 
-  $\CR_\ell(\lord')\coloneqq \{r_{\ell_1}, \ldots, r_{\ell_k}\}$, we may choose 
-  $r_{\ell_j}\in \CR_\ell(\lord')$ such that $\rgen(\fr_{\ell_j})\leq \rgen(\fr_{\ell_i})$ 
-  for all $r_{\ell_i}\in\CR_\ell(\lord')$. Assume now that $r_{\ell_j}$ has an F-reactant 
-  $x_j\in X(\lord')$. Then $x_j$ is an F-product of some reaction in $r_1$, and
-  $\rgen(\fr_1)<\rgen(\fr_{\ell_j})$. Then $r_1$ cannot be a liberal reaction since
-  otherwise $\rgen(\fr_1)<\rgen(\fr_{\ell_j})\leq \rgen(\fr_1)$. Thus, $r_1$ 
-  has an F-reactant $x_1 \in X(\lord')$, which is an F-product of some
-  reaction $r_2\in \FR(\lord')$. If $r_2=r_{\ell_j}$ then
-  $\rgen(\fr_{\ell_j})< \rgen(\fr_1)<\rgen(\fr_{\ell_j})$, a contradiction. 
-  Otherwise, $\rgen(\fr_2)<\rgen(\fr_1)<\rgen(\fr_{\ell_j})$ and by
-  iterative application of the upper argument, we obtain with the finiteness of
-  $\lord'$:
-  \begin{equation}
-    \rgen(\fr_k)<\rgen(\fr_{k-1}) <\ldots < \rgen(\fr_l)
-  \end{equation}
-  with $\fr_k=\fr_l$, which yields a contradiction and thereby
-  $\rgen(\fr_{\ell_j})\leq \rgen(\fr)$ for all $r\in \CR_\ell(\lord')\setminus
-  \{r_{\ell_j}\}$ and $\rgen(\fr_{\ell_j})< \rgen(\fr)$ for all $r\in
-  \CR(\lord')\setminus \CR_\ell(\lord')$.
-\end{proof}
-\vspace{6pt}
-}
 \holy{
 The proof of Lemma~\ref{lem:cutVertexPureCat} has two important
 consequences. First, only cut-vertices can be liberal reactions, 

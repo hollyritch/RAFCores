@@ -249,7 +249,7 @@ $V'\subseteq V$ is the graph $G[V']\coloneqq (V', F)$ with $F\coloneqq \{ \{u,v\
 \{u,v\} \in E\}$ or in the directed case $F\coloneqq \{(u,v) \ \vert \ u,v\in V', (u,v) \in E\}$.
 
 \paragraph{Paths and Directed Paths} A (directed) path $\mathcal{P}_{v_1v_k}$ in a (directed) graph $G$ is 
-a sequence of vertices $(v_1,\ldots, v_k)$ such that $\{v_i, v_{i+1}\}\in E(G) \  ((v_i, v_{i+1})\in E(G)), 
+a sequence of pairwise distinct vertices $(v_1,\ldots, v_k)$ such that $\{v_i, v_{i+1}\}\in E(G) \  ((v_i, v_{i+1})\in E(G)), 
 1\leq i\leq k-1$.
 
 \paragraph{(Strongly) Connected (Sub-)Graphs} A subgraph $G'\coloneqq (V', E')$ of a (directed) graph 
@@ -266,6 +266,11 @@ disconnected.
 
 \paragraph{Strong blocks} For a digraph $G\coloneqq (V, E)$ a strongly connected subgraph $G'\subseteq G$ is 
 called a strongly connected block or strong block if it does not contain a cut-vertex.
+
+\paragraph{Elementary circuit} An elementary circuit of length $k$ in a digraph $G\coloneqq (V,E)$ is a sequence 
+of vertices $(v_1,\ldots, v_k, v_1)$ such that $(v_1,\ldots, v_k)$ is a path, $(v_k, v_1) \in E$. 
+
+\paragraph{Digon} A digon is an elementary circuit of length $2$.
 
 \section{RAFs}
 
