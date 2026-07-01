@@ -231,6 +231,42 @@
 
 \holy{}
 
+\section{Glossary on Graph Theory}
+
+\paragraph{Graphs} A graph $G=(V,E)$ is a tuple composed of a set of vertices and 
+a set of edges. Edges encode the adjacency of elements $u,v\in V$, i.e., $\{u,v\}\in E$ 
+whenever $u$ is adjacent to $v$. We write $V(G)$ and $E(G)$ for the set of vertices 
+and edges of a given graph $G$.
+ 
+\paragraph{Directed Graphs} In a directed graph $G\coloneqq (V,E)$, edges are ordered 
+pairs instead of unordered pairs, and $(u,v) \in E$ whenever there is an edge from $u$ to 
+$v$. The underyling undirected graph of $G$ is the graph $G_{\circ} \coloneqq (V, E_{\circ})$ with
+$E_{\circ}\coloneqq \{ \{u,v\} \ \vert \ (u,v) \in E(G) \}$.
+
+\paragraph{Subgraphs} A subgraph of a (directed) graph $G$, denoted as $G'\subseteq G$ is a graph $G=(V', E')$ 
+such that $V'\subseteq V$ and $E'\subseteq E$. A subgraph \emph{induced} by a set of vertices 
+$V'\subseteq V$ is the graph $G[V']\coloneqq (V', F)$ with $F\coloneqq \{ \{u,v\} \ \vert \ u,v\in V', 
+\{u,v\} \in E\}$ or in the directed case $F\coloneqq \{(u,v) \ \vert \ u,v\in V', (u,v) \in E\}$.
+
+\paragraph{Paths and Directed Paths} A (directed) path $\mathcal{P}_{v_1v_k}$ in a (directed) graph $G$ is 
+a sequence of vertices $(v_1,\ldots, v_k)$ such that $\{v_i, v_{i+1}\}\in E(G) \  ((v_i, v_{i+1})\in E(G)), 
+1\leq i\leq k-1$.
+
+\paragraph{(Strongly) Connected (Sub-)Graphs} A subgraph $G'\coloneqq (V', E')$ of a (directed) graph 
+$G=(V,E)$ is called (strongly) connected if for any two vertices $u,v\in V'$ there is a path 
+$\mathcal{P}_{uv}$, which, in the directed case, implies that there is a path from $u$ to $v$ and 
+from $v$ to $u$. If $G$ is directed, then $G'\subseteq G$ is called connected if $G'_\circ$ is connected. 
+If $G'$ is not connected, we may also write that $G$ is disconnected. $V'$ is called a (strongly) connected 
+component if $G[V']$ is (strongly) connected and maximal, i.e., if there is no $v\in V\setminus V': V'\cup \{v\}$ 
+is (strongly) connected. If $V'=V$ then we say that $G$ is (strongly) connected. 
+
+\paragraph{Cut vertex} For a graph $G\coloneqq (V, E)$ a vertex $v\in V$ is called a cut-vertex if $G[V\setminus \{v\}]$ 
+is disconnected. Accordingly, in the directed case, then $v\in V$ is a cut-vertex if $G_\circ[V\setminus \{v\}$ is 
+disconnected. 
+
+\paragraph{Strong blocks} For a digraph $G\coloneqq (V, E)$ a strongly connected subgraph $G'\subseteq G$ is 
+called a strongly connected block or strong block if it does not contain a cut-vertex.
+
 \section{RAFs}
 
 \subsection{A Partial Order on RAFs}
@@ -306,9 +342,6 @@ corollary follows.
 \vspace{6pt}
 \end{tiny}
 
-
-
-
 The sequence $(c^k(\food))_{k\in\mathbb{N}}$ therefore defines a sequence
 of reactions that can be executed in the $k$-th step, i.e., for which all
 reactants are contained in the set $\cl^k(\food)$:
@@ -375,6 +408,23 @@ denote this graph as $\queen'\coloneqq \queen(\closure{\RAF}{\food}, \RAF,
 \subsection{Minimal RAFs}
 
 \subsubsection{Strong-connectivity}
+
+\vspace{6pt}
+\begin{lemma}\label{lem:RGQSC}
+  Let $\RAF$ be an irreducible, monocatalyzed RAF and associated sub-CRS 
+  $\mathbf{\Phi'}$ (Eq.~\ref{eq:RAF-CRS}).Then $\RGraph(\mathbf{\Phi}')$ is
+  strongly connected.
+\end{lemma}
+\begin{proof}
+Indirectly assume that this is not the case. Then there are at least two non-empty, 
+strongly connected components $\RAF_1$ and $\RAF_2$. Assume w.l.o.g. that 
+there is no path from any $r_2\in \RAF_2$ to any $r_1\in \RAF_1$. Then all F-reactants 
+and F-catalysts of all F-reactions in $\RAF_1$ are in the closure $\closure{\RAF_1}{\food}$, 
+in symbols $\feducts(\RAF_1)\cup \cat(\RAF_1)\subseteq \closure{\RAF_1}{\food}$. With 
+$\RAF_1\subseteq \RAF$ and $\RAF$ being a RAF, this implies that $\RAF_1$ 
+is itself a RAF, which contradicts the minimality of $\RAF$.
+\end{proof}
+\vspace{6pt}
 
 \begin{mainitem}{Lemma}{M-lem:KSC}
   Let $\RAF$ be a non-trivial, minimal RAF. Then $\RGraph(\king')$ is
