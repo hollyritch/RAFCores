@@ -885,11 +885,11 @@ there is no directed edges $(x_w,r)$. Equivalently, in symbols:
   \mathbf{W}\coloneqq \{x\in \closure{\RAF}{\food} \ | \ \nexists r \in \CR' \text{ s.t. } s^-_{xr}>0\}.
 \end{equation}
 We recall that the predecessors (ascendants) and successors (descendants) 
-of a vertex $u\in \king$ are denoted as 
+of a vertex $u \in V(G)$ from a digraph $G$ are denoted as 
 \begin{equation}
 	\begin{split}
-		\mathbf{A}(u)& \coloneqq \{v_1 \in V \ \vert \ \text{exists path } \mathcal{P}=(v_1, \ldots, v_k, u)\} \cup\{u\} \quad \text{ and }\\
-		\mathbf{D}(u)& \coloneqq \{v_k \in V \ \vert \ \text{exists path } \mathcal{P}=(u, v_1, \ldots, v_k)\} \cup\{u\}.
+		\mathbf{A}_G(u)& \coloneqq \{v_1 \in V \ \vert \ \text{exists path } \mathcal{P}=(v_1, \ldots, v_k, u)\} \cup\{u\} \quad \text{ and }\\
+		\mathbf{D}_G(u)& \coloneqq \{v_k \in V \ \vert \ \text{exists path } \mathcal{P}=(u, v_1, \ldots, v_k)\} \cup\{u\}.
 	\end{split}
 \end{equation}
 We now have the following statement.
@@ -906,19 +906,26 @@ Indirectly assume that there is no path $\mathcal{P}$  from $v_1$ to $v_2$. If $
 is a species-vertex, $v_1=x_1$, then $v_1\not\in \mathbf{W}$, and let $r_1$ be any 
 reaction vertex such that $s^-_{x_1r_1}>0$. By indirect assumption, there is no path 
 from $r_1$ to $v_2$. Thus, we may always reduce to the case of $v_1=r_1$ being a 
-reaction vertex. \holy{Then $\mathbf{D}(r_1)\cap \mathbf{A}(v_2)=\emptyset$ $(*)$.
-Thus, no species from $\mathbf{D}(r_1)$ is an F-reactant or F-catalyst for a reaction from $\mathbf{A}(v_2)$
-because of $(*)$. In addition, no species from $\mathbf{D}(r_1)$ is an F-reactant or F-catalyst for a reaction 
-$r \in \CR(\mathbf{D}(v_2)\setminus \mathbf{D}(r_1))$ as this would imply that $r\in \mathbf{D}(r_1)$, a 
-contradiction. Therefore, $\RAF_1\coloneqq \RAF\setminus (\CR(D(r_1))/\mathord{\sim})$ satisfies 
+reaction vertex. \holy{Then $\mathbf{D}_{\king'}(r_1)\cap \mathbf{A}_{\king'}(v_2)=\emptyset$.
+Thus, no species from $\mathbf{D}(r_1)$ is an F-reactant or F-catalyst for a reaction from $\mathbf{A}(v_2)$. 
+In addition, no species from $\mathbf{D}(r_1)$ is an F-reactant or F-catalyst for a reaction 
+$r \in \CR(\mathbf{D}(v_2)\setminus \mathbf{D}_{\king'}(r_1))$ as this would imply that $r\in \mathbf{D}_{\king'}(r_1)$, a 
+contradiction. Therefore, $\RAF_1\coloneqq \RAF\setminus (\CR(\mathbf{D}_{\king'}(r_1))/\mathord{\sim})$ satisfies 
 $\rho(\RAF_1)\subseteq \closure{\RAF_1}{\food}$, i.e., Property~$ii.$ of Def.~\ref{def:RAF}. 
 In addition, for an arbitrary $\fr\in \RAF_1$, the catalysts $X(c)$ for the single catalyzation $c\in \cat(\fr)$ 
-are contained in $\closure{\RAF_1}{\food}$ as $X(c)\cap \mathbf{D}(r_1)=\emptyset$, which satisfies 
+are contained in $\closure{\RAF_1}{\food}$ as $X(c)\cap \mathbf{D}_{\king'}(r_1)=\emptyset$, which satisfies 
 Property~$i.$ of Def.~\ref{def:RAF}. Then $\RAF_1\subset \RAF$ is Reflexively Autocatalytic and
-\food-generated and thereby a RAF, which contradicts the irreducibility of $\RAF$.}
+\food-generated and thereby a RAF, which contradicts the irreducibility of $\RAF$.
+
+Assume now that all directed paths $\mathcal{P}_{r_1v_2}$ from $r_1$ to $v_2$ satisfy 
+$\mathcal{P}_{r_1v_2}\cap \food\neq \emptyset$ and consider the subgraph of $\king(\RAF)$ that is
+void of food molecules, i.e., $\king''\coloneqq \king(\RAF)[\closure{\RAF}{\food}\setminus \food \cup \CR']$. 
+Then, no species from $\mathbf{D}_{\king''}$ is an F-reactant or an F-catalyst for a reaction of
+$\mathbf{A}_{\king''}(v_2)$ in $\king''$. Therefore, with the same argument as above 
+$\RAF\setminus (\CR(\mathbf{D}_{\king''}))/\mathord{\sim})$ is a RAF, and thereby contradicts minimality of $\RAF$.}
 \end{proof}
 
-Lemma \ref{lem:PSC} is essentially a strong-connectivity result on $K(\RAF)$ without food and waste species. However, strongly connected graphs may still have cut-vertices, namely vertices whose removal disconnects the underlying undirected graph.\NV{[Here again maybe a glossary in the SI, otherwise slightly unclear, maybe ok anyways]}. The next result shows however that for $K(\RAF)$ such cut-vertices can only be reaction-vertices $r\in \mathcal{R}'$.
+Lemma \ref{lem:PSC} is essentially a strong-connectivity result on $K(\RAF)$ without food and waste species. However, strongly connected graphs may still have cut-vertices, namely vertices whose removal disconnects the underlying undirected graph.\NV{[Here again maybe a glossary in the SI, otherwise slightly unclear, maybe ok anyways]}. The next result shows, however, that for $K(\RAF)$ such cut-vertices can only be reaction-vertices $r\in \mathcal{R}'$.
 
 \vspace{6pt}
 \begin{lemma}[Cut vertices]\label{lem:cutvert}
