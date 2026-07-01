@@ -970,7 +970,8 @@ a digon $\block=\{r, x\}$ with $x\in \food$, or $\block$ contains a reaction-ver
 Assume $\block$ is not the single species in food and waste. $\block$ cannot be a single-species, since this would make 
 it a cut-vertex contradicting Lemma \ref{lem:cutvert}. Then $\block$ contains reactions and in particular cut vertices of 
 $K(\RAF)$. \holy{We may choose a cut-vertex $r$ (not necessarily unique) such that $\gamma(\fr)\leq \gamma(\fr')$ for all $r'\in 
-\CR(\block)$ that are cut-vertices. We now show properties $i-iv$. First, assume, first, that there is an F-reactant 
+\CR(\block)$ that are cut-vertices. Assume then further that $\block$ is not a digon composed of $r$ and a species $x\in \food$. 
+We may now show properties $i-iv$. First, assume, first, that there is an F-reactant 
 $x_1\in X$ for $r$ such that $x_1\in X(\block)$. Then $x_1$ is an F-product of some other reaction $r_1\in\CR(\block)$ with 
 $\rgen(\fr_1)<\rgen(\fr)$. But $r_1$ cannot be a cut-vertex since otherwise $\rgen(\fr_1)<\rgen(\fr)\leq 
 \rgen(\fr_1)$. Then $\fr_1$ has an F-reactant $x_2\in X(\block)$ that is an F-product of a reaction $\fr_2$. 
@@ -982,16 +983,24 @@ Iterating this argument we obtain with the finiteness of $\CR(\block)$ a sequenc
   $\rgen(\fr)\leq \rgen(\tilde{\fr}) \ (\fr\preceq \tilde{\fr})$ for all $\tilde{r}\in \CR(\block)$. 
   Hence, $r$ satisfies properties $i$ and $iv$. 
   
-  Assume now indirectly that $\fproducts(r) \cap X(\block) = \emptyset$. Since $r$ has 
-  at least one incoming edge in $\block$, we have that $X(\cat(r))\cap X(\block)\neq \emptyset$. 
-  Then there are multiple cases. First, assume that $X(\cat(r))\cap X(\block)$ is a single 
-  species $x_c$. If $x_c\in \food$, then $\block = \{r,x\}$ is a digon because $r$ has no 
-  other incoming or outgoing edges. If $x_c\notin \food$ then $x_c\notin \fproducts(r)$
-  by assumption. However, then $x_c$ has to be an F-product of another reaction, which 
-  yields that $x_c$ is a cut-vertex contradicting Lemma~\ref{lem:cutvert}. Now assume that 
-  $X(\cat(r))\cap X(\block)$ contains more than $1$ species. Then each F-catalyst $\tilde{x}\in 
-  X(\cat(r))\cap X(\block)$ is only one of the following: either an F-product of a reaction 
-  $\tilde{r}\in\CR(\block): \tilde{r}\neq r$ or $\tilde{x}\in \food$. \TODO{TBC}
+   Assume now indirectly that $\fproducts(r) \cap X(\block) = \emptyset$. 
+   Since $r$ has at least one incoming edge in $\block$, we have that 
+   $X(\cat(r))\cap X(\block)\neq \emptyset$. If $|\CR(\block)|=1$, then 
+   $\block$ is composed of $r$ and one of its catalyst $x_c\in X(\cat(r))$
+   and thereby a digon. Then $x_c\notin \food$ and $x_c\notin \fproducts(r)$
+   by assumption. However, then $x_c$ has to be an F-product of another 
+   reaction $r'\notin \CR(\block)$, which directly yields that $x_c$ is a 
+   cut-vertex contradicting Lemma~\ref{lem:cutvert}. 
+   
+%  yields that $x_c$ is a cut-vertex contradicting Lemma~\ref{lem:cutvert}.
+%  Then there are multiple cases. First, assume that $X(\cat(r))\cap X(\block)$ is a single 
+%  species $x_c$. If $x_c\in \food$, then $\block = \{r,x\}$ is a digon because $r$ has no 
+%  other incoming or outgoing edges. If $x_c\notin \food$ then $x_c\notin \fproducts(r)$
+%  by assumption. However, then $x_c$ has to be an F-product of another reaction, which 
+%  yields that $x_c$ is a cut-vertex contradicting Lemma~\ref{lem:cutvert}. Now assume that 
+%  $X(\cat(r))\cap X(\block)$ contains more than $1$ species. Then each F-catalyst $\tilde{x}\in 
+%  X(\cat(r))\cap X(\block)$ is only one of the following: either an F-product of a reaction 
+%  $\tilde{r}\in\CR(\block): \tilde{r}\neq r$ or $\tilde{x}\in \food$. \TODO{TBC}
   
   Property iii. follows directly since $r$ has to have at least one incoming edge, and since 
   $\feducts(r)\cap X(\block)= \emptyset$, $\cat(r)\cap X(\block)\neq \emptyset$}.
@@ -1062,7 +1071,7 @@ Iterating this argument we obtain with the finiteness of $\CR(\block)$ a sequenc
       \node[draw, circle, blue] (f1) at (-1.5,0) {$f_1$};      
       \node[draw, circle, red] (f2) at (3,-1.5) {$f_2$};
       \node[draw, circle, green] (f3) at (-3,-4.5) {$f_3$};
-      \node[draw, purple, circle] (f4) at (-3,-3) {$f_4$};
+      \node[draw, teal, circle] (f4) at (-3,-3) {$f_4$};
             
       \node[draw, orange, circle] (x1) at (1.5,0) {$x_1$};			
       \node[draw, orange, circle] (x2) at (0,-1.5) {$x_2$};      
@@ -1071,10 +1080,10 @@ Iterating this argument we obtain with the finiteness of $\CR(\block)$ a sequenc
       \node[draw, teal, circle] (x5) at (0,-4.5) {$x_5$};
       \node[draw, circle, violet] (x6) at (3,0) {$x_6$};
       
-      \node[draw, rectangle] (r1) at (0,0) {$r_1$};
+      \node[draw, orange, rectangle] (r1) at (0,0) {$r_1$};
       \node[draw, rectangle] (r2) at (0,-3) {$r_2$};
-      \node[draw, rectangle] (r3) at (1.5,-1.5) {$r_3$};
-       \node[draw, rectangle] (r4) at (-1.5,-4.5) {$r_4$};
+      \node[draw, orange, rectangle] (r3) at (1.5,-1.5) {$r_3$};
+       \node[draw, teal, rectangle] (r4) at (-1.5,-4.5) {$r_4$};
       
       \draw[->] (f1) to (r1);
       \draw[->, orange, dashed] (x1) to [bend right = 30] (r1);
@@ -1105,7 +1114,7 @@ Iterating this argument we obtain with the finiteness of $\CR(\block)$ a sequenc
   as CRN reactions with a cut-vertex that has a single catalyst. Catalyzations are 
   indicated in brackets\textit{(Right):} Depiction of the corresponding König graph 
   with catalyzations indicated as dashed lines. Different strong blocks are depicted
-  in different colours, while cut-vertices, which belong to at least two strong blocks, 
+  in different colours, while cut-vertices that belong to at least two strong blocks 
   are coloured black.}
   \label{ex:CutVertex2}
 \end{figure}
