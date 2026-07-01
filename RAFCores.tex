@@ -991,13 +991,13 @@ Iterating this argument we obtain with the finiteness of $\CR(\block)$ a sequenc
   yields that $x_c$ is a cut-vertex contradicting Lemma~\ref{lem:cutvert}. Now assume that 
   $X(\cat(r))\cap X(\block)$ contains more than $1$ species. Then each F-catalyst $\tilde{x}\in 
   X(\cat(r))\cap X(\block)$ is only one of the following: either an F-product of a reaction 
-  $\tilde{r}\in\CR(\block): \tilde{r}\neq r$ or $\tilde{x}\in \food$.
+  $\tilde{r}\in\CR(\block): \tilde{r}\neq r$ or $\tilde{x}\in \food$. \TODO{TBC}
   
   Property iii. follows directly since $r$ has to have at least one incoming edge, and since 
   $\feducts(r)\cap X(\block)= \emptyset$, $\cat(r)\cap X(\block)\neq \emptyset$}.
 
 
-minimum with respect to the generation order there, and show (i),(ii),(iii),(iv). (i): its F-reactants must be somewhere else, otherwise either minimality is broken or max-strong-block is broken. (iii): r must have at least an ingoing arrow and one outgoing, so this follows. (ii) NOT SURE about food-catalyst, TBC. (iv) must follow from the minimum condition together with (i). \end{proof}
+\NV{[We may choose a cut-vertex $r$ (not necessarily unique) minimum with respect to the generation order there, and show (i),(ii),(iii),(iv). (i): its F-reactants must be somewhere else, otherwise either minimality is broken or max-strong-block is broken. (iii): r must have at least an ingoing arrow and one outgoing, so this follows. (ii) NOT SURE about food-catalyst, TBC. (iv) must follow from the minimum condition together with (i).]} \end{proof}
 }
 %\begin{figure}[bth]
 %  \begin{minipage}[c]{0.49\textwidth}
@@ -1049,7 +1049,7 @@ minimum with respect to the generation order there, and show (i),(ii),(iii),(iv)
     \begin{equation*}
       \begin{split}
 	r_1& : f_1 + (x_1) \rightarrow  x_2 + (x_1) \\
-	r_2& : 2x_3 + (x_2) \rightarrow  x_4 + x_5 + (x_2) \\	
+	r_2& : 2x_3 + (x_2 + f_4) \rightarrow  x_4 + x_5 + (x_2 + f_4) \\	
 	r_3& : f_2 + (x_4)\rightarrow x_1 + x_6 + (x_4)\\
 	r_4& : f_3 + (f_4 + x_5)\rightarrow x_3 + (f_4 + x_5)\\	
       \end{split}
@@ -1093,8 +1093,11 @@ minimum with respect to the generation order there, and show (i),(ii),(iii),(iv)
       \draw[->, teal, dashed] (x5) to [bend right = 30] (r4);
       \draw[->, teal, dashed] (r4) to [bend right = 30] (x5);      
       \draw[->] (f3) to (r4);
-      \draw[->, purple, dashed] (f4) to [bend right = 30] (r4);
-      \draw[->, purple, dashed] (r4) to [bend right = 30] (f4);      
+      \draw[->, teal, dashed] (f4) to [bend right = 30] (r4);
+      \draw[->, teal, dashed] (r4) to [bend right = 30] (f4);
+      
+      \draw[->, teal, dashed] (f4) to [bend left = 60] (r2);
+      \draw[->, teal, dashed] (r2) to [bend right = 45] (f4);      
       \draw[->, teal] (r4) to (x3);      
     \end{tikzpicture}
   \end{minipage}
