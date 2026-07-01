@@ -925,41 +925,29 @@ $\mathbf{A}_{\king''}(v_2)$ in $\king''$. Therefore, with the same argument as a
 $\RAF\setminus (\CR(\mathbf{D}_{\king''}))/\mathord{\sim})$ is a RAF, and thereby contradicts minimality of $\RAF$.}
 \end{proof}
 
-Lemma \ref{lem:PSC} is essentially a strong-connectivity result on $K(\RAF)$ without food and waste species. However, strongly connected graphs may still have cut-vertices, namely vertices whose removal disconnects the underlying undirected graph.\NV{[Here again maybe a glossary in the SI, otherwise slightly unclear, maybe ok anyways]}. The next result shows, however, that for $K(\RAF)$ such cut-vertices can only be reaction-vertices $r\in \mathcal{R}'$.
+Lemma \ref{lem:PSC} is essentially a strong-connectivity result on $K(\RAF)$ without food and waste species. 
+However, strongly connected graphs may still have cut-vertices, namely, vertices whose removal disconnects 
+the underlying undirected graph (see SI Sec.~\ref{S-sec:Glossary}). The example in Fig.~\ref{ex:CutVertex2} 
+captures this situation, as each reaction vertex is a cut-vertex. The next result shows that, indeed, 
+for $K(\RAF)$ cut-vertices can only be reaction-vertices $r\in \mathcal{R}'$.
 
 \vspace{6pt}
 \begin{lemma}[Cut vertices]\label{lem:cutvert}
     Let $\RAF$ be an irreducible, monocatalyzed RAF. Every cut-vertex of $K(\RAF)$ is a reaction $r\in \mathcal{R}'$.
 \end{lemma}
 \begin{proof}
-Indirectly assume that there exists a cut vertex $x\in X(K(\RAF))$ that is a species and let $K_1(\RAF)$ denote one maximal connected component in $K(\RAF)\setminus \{x\}$, which is food-generated \NV{[One may prove more explicitly that at least one actually exist]}. Lemma \ref{lem:PSC} yields that any directed path $\mathcal{P}$ from any vertex in $K(\RAF)\setminus K_1(\RAF)$ to $K_1(\RAF)$ must in particular contain the cut-vertex $x$, which moreover is not a food nor a waste molecule, $x\not\in \food \cup \mathbf{W}$. In particular, then, there is no species in $K(\RAF)\setminus K_1(\RAF)$ which is an F-catalyst of any reaction in $\mathcal{R}(K_1)$. Therefore, F-reactions associated to $\mathcal{R}(K_1(\RAF))\subset\mathcal{R}'$ constitute a RAF, contradicting the irreducibility of $\RAF$. 
+Indirectly assume that there exists a cut vertex $x\in X(K(\RAF))$ that is a species and let $K_1(\RAF)$ denote one 
+connected component in $K(\RAF)\setminus \{x\}$, which is \food-generated \NV{[One may prove more explicitly that 
+at least one actually exist]}. Lemma \ref{lem:PSC} yields that any directed path $\mathcal{P}$ from any vertex in 
+$K(\RAF)\setminus K_1(\RAF)$ to $K_1(\RAF)$ must in particular contain the cut-vertex $x$, which moreover is not 
+a food nor a waste molecule, $x\not\in \food \cup \mathbf{W}$. In particular, then, there is no species in 
+$K(\RAF)\setminus K_1(\RAF)$ which is an F-catalyst of any reaction in $\mathcal{R}(K_1)$. Therefore, F-reactions 
+associated to $\mathcal{R}(K_1(\RAF))\subset\mathcal{R}'$ constitute a RAF, contradicting the irreducibility of $\RAF$. 
 \end{proof}
 
-
-
-
-
-	%\holy{We start by considering the graph 
-	%\begin{equation}
-	%	\lord(\RAF)\coloneqq \king[\closure{\RAF}{\food}\setminus (\food\cup W) \cup \CR'].
-	%\end{equation}
-	%Assume there is a cut-vertex $w\in X(\lord)$. Then there are at least two
-  	%strongly connected components $\lord_1$ and $\lord_2$. Then for any two
-  	%vertices $u\in V(\lord_1)$ and $v\in V(\lord_2)$ we have $w\in P_{uv}$
-  	%and $w\in P_{vu}$ for arbitrary paths connecting $u$ and $v$ in $\lord(\RAF)$. 
-	%Therefore, except $w$, there is no $x_1\in X(\lord_1)$ such that $x_1$ 
-	%is an F-reactant, F-product, or F-catalyst for any reaction $r_2\in \CR(\lord_2)$, 
-	%and there is no $x_2\in X(\lord_2)$ such that $x_2$ is an F-reactant,
-  	%F-product, or F-catalyst for any reaction $r_1\in \CR(\lord_1)$.
-  	%Then either $\closure{\CR(\lord_1)/\sim}{\food}\neq \emptyset$ or (not mutually exclusive) 
-	%$\closure{\CR(\lord_2)/\sim}{\food}\neq \emptyset$, implying that
-  	%$\CR(\lord_1)/\sim$ or $\CR(\lord_2)/\sim$ is a RAF, respectively. Either case 
-	%contradicts the irreducibility of $\RAF$. Adding species vertices that have 
-	%no incoming or no outgoing edges does not change the fact that all 
-	%cut-vertices are reaction vertices; it may only increase the number of 
-	%reaction cut-vertices since $\lord(\RAF)$ is bipartite. Adding species 	molecules $x_\food \in \food$ that not only have an outgoing but also 	an incoming edge increases connectivity; in particular, $x_\food 	\in \food$ is no cut-vertex, as the graph was connected before and no   	species vertex $x'$ can become a cut-vertex upon the addition of $x_\food$ 	as this would imply that $x'$ was a cut-vertex already before addition of $x_\food$. } \end{proof}
-
-Building on the perspectives of Lemmas \ref{lem:PSC} and \ref{lem:cutvert}, our third lemma considers \emph{maximal strong blocks} $\block$ of $K(\RAF)$, i.e. maximal strongly-connected subgraphs, which - viewed as a graph themselves - possess no cut-vertices. Strong blocks have been considered in the graph literature in TBACITATION.
+Building on the perspectives of Lemmas \ref{lem:PSC} and \ref{lem:cutvert}, our third lemma considers \emph{maximal 
+strong blocks} $\block$ of $K(\RAF)$, i.e. maximal strongly-connected subgraphs, which - viewed as a graph themselves - 
+possess no cut-vertices. Strong blocks have been considered in the graph literature in \cite{grotschel_minimal_1979}.
 
 
 \vspace{6pt}
@@ -1085,28 +1073,28 @@ in the following Lemma.
        \node[draw, rectangle] (r4) at (-1.5,-4.5) {$r_4$};
       
       \draw[->] (f1) to (r1);
-      \draw[->] (x1) to [bend right = 30] (r1);
-      \draw[->] (r1) to [bend right = 30] (x1);
+      \draw[->, dashed] (x1) to [bend right = 30] (r1);
+      \draw[->, dashed] (r1) to [bend right = 30] (x1);
       \draw[->] (r1) to (x2);
-      \draw[->] (x2) to [bend right = 30] (r2);	
-      \draw[->] (r2) to [bend right = 30] (x2);
+      \draw[->, dashed] (x2) to [bend right = 30] (r2);	
+      \draw[->, dashed] (r2) to [bend right = 30] (x2);
       \draw[->] (x3) to node[midway, above] {$2$} (r2);
       \draw[->] (r2) to (x4);
       \draw[->] (r2) to (x5);
-      \draw[->] (x4) to [bend right = 30] (r3);
-      \draw[->] (r3) to [bend right = 30] (x4);
+      \draw[->, dashed] (x4) to [bend right = 30] (r3);
+      \draw[->, dashed] (r3) to [bend right = 30] (x4);
       \draw[->] (f2) to (r3);
       \draw[->] (r3) to (x1);
       \draw[->] (r3) to (x6);
-      \draw[->] (x5) to [bend right = 30] (r4);
-      \draw[->] (r4) to [bend right = 30] (x5);      
+      \draw[->, dashed] (x5) to [bend right = 30] (r4);
+      \draw[->, dashed] (r4) to [bend right = 30] (x5);      
       \draw[->] (f3) to (r4);
       \draw[->] (r4) to (x3);      
     \end{tikzpicture}
   \end{minipage}
   \caption{\textit{(Left):} Example of an irreducible, monocatalyzed RAF written 
   as CRN reactions with a cut-vertex that has a single catalyst. Catalyzations are 
-  indicated in brackets \NV{[and dashed in the graph illustration TBA]}. \textit{(Right):} Depiction of the corresponding König graph.}
+  indicated in brackets and dashed in the graph illustration TBA. \textit{(Right):} Depiction of the corresponding König graph.}
   \label{ex:CutVertex2}
 \end{figure}
 
