@@ -969,7 +969,13 @@ a digon $\block=\{r, x\}$ with $x\in \food$, or $\block$ contains a reaction-ver
 \begin{proof}
 Assume $\block$ is not the single species in food and waste. $\block$ cannot be a single-species, since this would make 
 it a cut-vertex contradicting Lemma \ref{lem:cutvert}. Then $\block$ contains reactions and in particular cut vertices of 
-$K(\RAF)$. \holy{We may choose a cut-vertex $r$ (not necessarily unique) such that $\gamma(\fr)\leq \gamma(\fr')$ for all $r'\in 
+$K(\RAF)$. \holy{$\block$ can also not be a single reaction. To see this, assume $\block$ is a single reaction. Then there is 
+another distinct block $\block'$ such that $(r,x), (y,r)\in E(\king(\RAF))$ with $x,y\in \block'$. Then $x\neq y$, since otherwise 
+$(x,r)$ is a digon and part of the same block. However, since $\block'$ is strongly connected there is a path $\mathcal{P}_{xy}$ 
+from $x$ to $y$ in $\king[\block']$. However, since $(y,r,x)$ is a path connecting $y$ to $x$, $r$ is not a cut-vertex. Thus $\block$ 
+is not composed of a single reaction.
+
+We may now choose a cut-vertex $r$ (not necessarily unique) such that $\gamma(\fr)\leq \gamma(\fr')$ for all $r'\in 
 \CR(\block)$ that are cut-vertices. Assume then further that $\block$ is not a digon composed of $r$ and a species $x\in \food$. 
 We may now show properties $i-iv$. First, assume, first, that there is an F-reactant 
 $x_1\in X$ for $r$ such that $x_1\in X(\block)$. Then $x_1$ is an F-product of some other reaction $r_1\in\CR(\block)$ with 
@@ -983,9 +989,9 @@ Iterating this argument we obtain with the finiteness of $\CR(\block)$ a sequenc
   $\rgen(\fr)\leq \rgen(\tilde{\fr}) \ (\fr\preceq \tilde{\fr})$ for all $\tilde{r}\in \CR(\block)$. 
   Hence, $r$ satisfies properties $i$ and $iv$. 
   
-   Assume now indirectly that $\fproducts(r) \cap X(\block) = \emptyset$. 
-   Since $r$ has at least one incoming edge in $\block$, we have that 
-   $X(\cat(r))\cap X(\block)\neq \emptyset$. If $|\CR(\block)|=1$, then 
+   Assume now indirectly that $\fproducts(r) \cap X(\block) = \emptyset$.       
+   Since $r$ is not a singleton, it has at least one incoming edge in $\block$, 
+   we have that $X(\cat(r))\cap X(\block)\neq \emptyset$. If $|\CR(\block)|=1$, then 
    $\block$ is composed of $r$ and one of its catalyst $x_c\in X(\cat(r))$
    and thereby a digon. Then $x_c\notin \food$ and $x_c\notin \fproducts(r)$
    by assumption. However, then $x_c$ has to be an F-product of another 
