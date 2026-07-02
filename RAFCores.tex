@@ -1175,7 +1175,7 @@ strictly positive vector $v$ of reaction rates which satisfies $\SM[\closure{\RA
 \food, \CR]v>0$. A matrix $A$ satisfying $Aw>0$ for $w>0$ is called \emph{semi-positive}.
 
 \vspace{6pt}
-\begin{theorem}[Proof: SI]\label{thm:NonFoodSemipositiv}
+\begin{theorem}\label{thm:NonFoodSemipositiv}
   For an irreducible, monocatalyzed RAF $\RAF$, the matrix 
   $\SM[\closure{\RAF}{\food}\setminus \food, \CR']$ is semi-positive.
 \end{theorem}
@@ -1238,24 +1238,96 @@ We set:
 			       & > S_{xr} \overset{*}{>} 0.
 	\end{split}
    \end{equation}
-    We therefore obtain $f_{k_1}(x)>0$ for all $x\in X^{m}, m\geq k-1$. 
-    We can therefore conclude that we obtain $v\coloneqq v_{1}(r)$ is 
-    strictly positive, $f_1(x)>0$ and thereby $\SM[\closure{\RAF}{\food}\setminus \food, \CR']v>0$.
+    We therefore obtain $f_{k-1}(x)>0$ for all $x\in X^{m}, m\geq k-1$. 
+    We can therefore conclude that $v\coloneqq v_{1}(r)$ is 
+    strictly positive, and for each $x\in \closure{\RAF}{\food}\setminus \food$ 
+    it holds that $\SM[\closure{\RAF}{\food}\setminus \food, \CR']v = f_1(x)>0$, 
+    and thus $\SM[\closure{\RAF}{\food}\setminus \food, \CR']v>0$.
 \end{proof}
 
-That this does not necessarily holds true for $\SM[X(\block), \CR(\block)]$ is depicted 
-in the following example:
+We remark that the proof of Thm.~\ref{thm:NonFoodSemipositiv} can be applied
+to the reactions and non-food molecules of each non-trivial, maximal strong block 
+$\block$ of $\king(\RAF)$. Equivalently, every species of a block $\block$ is produced and 
+consumed only by reactions belonging to $\block$. Thereby, the vector $v'$ that denotes 
+the sub-vector of $v$ restricted to the reactions of $\block$ directly 
+yields for the submatrix restricted to the species and reactions of $\block$:
+\begin{equation}
+  \SM[X(\block)\setminus \food, \CR(\block)]v'>0.
+\end{equation}
+\vspace{6pt}
+\begin{corollary}\label{cor:blockSemiPositiv}
+	Let $\RAF$ be an irreducible, monocatalyzed RAF. Then for any non-trivial, maximal 
+	strong block $\block$ of $\king(\RAF)$ the stoichiometric submatrix 
+	$\SM[X(\block)\setminus \food, \CR')$ is semi-positive.
+\end{corollary}
+\vspace{6pt}
 
-%\begin{figure}
-%	\centering
-%	\begin{minipage}[c]{0.5\textwidth}
-%		
-%	\end{minipage}%
-%	\hfill%
-%\end{figure}
+That this does not necessarily holds true for $\SM[X(\block), \CR(\block)]$ is depicted 
+in the Example of Fig.~\ref{fig:foodBlock}.
+
+\begin{figure}[htb]
+	\centering
+	\begin{minipage}[c]{0.5\textwidth}
+		\centering
+		\begin{equation}
+			\begin{split}
+				r_1&: f + (x_1) \rightarrow x_2 + (x_1) \\[0.5em]
+				r_2&: x_2 + (x_2) \rightarrow x_1 + f + (x_2) \\[0.5em]
+			\end{split}
+		\end{equation}		
+	\end{minipage}%
+	\hfill%
+	\begin{minipage}[c]{0.5\textwidth}
+		\centering
+		\begin{tikzpicture}
+			\node[draw, circle] (f) at (-1.5,0) {$f$};
+			
+			\node[draw, circle] (x1) at (0,0) {$x_1$};
+			\node[draw, circle] (x2) at (1.5,0) {$x_2$};
+
+			\node[draw, rectangle] (r1) at (0,-1.5) {$r_1$};
+			\node[draw, rectangle] (r2) at (0,1.5) {$r_2$};
+			
+			\draw[->] (f) to (r1);
+			\draw[->] (r1) to [bend right = 30] (x1);
+			\draw[->] (x1) to [bend right = 30] (r1);
+			
+			\draw[->] (r1) to (x2);
+			\draw[->] (x2) to [bend right = 30] (r2);
+			\draw[->] (r2) to [bend right = 30] (x2);
+			\draw[->] (r2) to (x1);
+			\draw[->] (r2) to (f);
+		\end{tikzpicture}
+	\end{minipage}
+	\caption{}
+	\label{fig:foodBlock}
+\end{figure}
+
+Indeed, $\RAF\coloneqq \{\fr_1,\fr_2\}$ is an irreducible, monocatalyzed RAF and $\king(\RAF)$ is a strong 
+block. The stoichiometric matrix reads:
+\begin{equation}
+	\SM=\begin{pmatrix}
+			-1 & 1 \\
+			 0 & 1 \\
+			 1 & -1 \\
+		\end{pmatrix}
+\end{equation}
+
+which is not semi-positive as any $v>0$ yields for $v(r_1)=v(r_2): (\SM v)(x_2)=0$, for $v(r_1)>v(r_2): (\SM v)(f)<0$, and for $v(r_1)<v(r_2): (\SM v)(x_2)<0$, 
+thus $\SM$ is not semi-positive.
+}
+
+\holy{RG until here}
+
+
+Since strong blocks are strongly connected, each reaction vertex has at 
+least one incoming edge, i.e., from an F-reactant or an F-catalyst, and at least one outgoing edge, i.e., to an 
+F-catalyst or an F-product. Each reaction in the sub-network $(X(\lord'), \CR(\lord')$ 
+therefore has at least one reactant and one product. We say that such a sub-network 
+is \emph{well-formed}. 
 
 \vspace{6pt}
-}
+
 
 \subsection{Stoichiometric Autocatalysis of Irreducible RAFs}\label{sec:AutoCatIrrRAF}
 
@@ -1277,19 +1349,6 @@ RAFs.}]
 %As a remark, the proof can be applied to the sub-stoichiometric matrix
 %representing the species and reaction vertices of any block $L'$ of $\lord(\RAF)$ 
 %to show semi-positivity of $\SM[X(\lord'), R(\lord')]$. Equivalently, 
-Every species of a block $\lord'$ is produced and consumed only by 
-reactions belonging to $\lord'$. Thereby, the vector $v'$ that denotes 
-the sub-vector of $v$ restricted to the reactions of $\lord'$ directly 
-yields for the submatrix restricted to the species and reactions of $\lord'$:
-\begin{equation}
-  \SM[X(\lord'), \CR(\lord')]v'>0.
-\end{equation}
-Thus, each block has a semipositive stoichiometric submatrix. In addition, since strong 
-blocks are strongly connected, each reaction vertex has at least one incoming edge, 
-i.e., from an F-reactant or an F-catalyst, and at least one outgoing edge, i.e., to an 
-F-catalyst or an F-product. Each reaction in the sub-network $(X(\lord'), \CR(\lord')$ 
-therefore has at least one reactant and one product. We say that such a sub-network 
-is \emph{well-formed}. 
 
 In chemical reaction networks (CRN), a matrix-centered definition of 
 \emph{stoichiometric autocatalysis} was introduced by Blokhuis et al. 
