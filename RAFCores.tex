@@ -125,7 +125,7 @@
 \newcommand{\POR}[0]{\mathscr{R}}
 \newcommand{\POX}[0]{\mathscr{X}}
 \newcommand{\cat}{\kappa_F}
-\newcommand{\sgen}{g}
+\newcommand{\sgen}{\delta}
 \newcommand{\rgen}{\gamma}
 \newcommand{\ceducts}{\rho}
 \newcommand{\cproducts}{\pi}
@@ -947,7 +947,7 @@ $\feducts(\RAF_1)\subseteq \closure{\RAF_1}{\food}$ and $\RAF_1$ is $\food$-gene
 $\RAF_1 \subset \RAF$ then constitutes a RAF, contradicting the irreducibility of $\RAF$.}
 \end{proof}
 
-Building on the perspectives of Lemmas \ref{lem:PSC} and \ref{lem:cutvert}, the third Lemma of this 
+Building on the perspectives of Lemmas \ref{lem:PSC} and \ref{lem:cutvert}, the third and main result of this 
 section considers \emph{maximal strong blocks} $\block$ of $K(\RAF)$, i.e. maximal strongly-connected subgraphs 
 that possess no cut-vertices. An example of an irreducible, monocatalyzed RAF containing multiple strong blocks is 
 captured in Fig.~\ref{ex:CutVertex2}. Strong blocks have been studied in the graph literature in \cite{grotschel_minimal_1979}. 
@@ -959,9 +959,9 @@ Every maximal strong block $\block$ of $K(\RAF)$ either is a single species-vert
 a digon $\block=\{r, x\}$ with $x\in \food$, or $\block$ contains a reaction-vertex $r\in \mathcal{R}'$, which 
   is a cut-vertex for $K(\RAF)$ satisfying:
   	\begin{itemize}
-		\item[i.]{$\feducts(r) \cap X(\block)=\emptyset$,}
+		\item[i.]{$(\feducts(r)\setminus \food) \cap X(\block)=\emptyset$,}
 		\item[ii.]{$\fproducts(r) \cap X(\block)\neq \emptyset$,}
-		\item[iii.]{$X(\cat(r)) \cap X(\block)\neq \emptyset$,}
+		\item[iii.]{$(X(\cat(r)) \setminus \food)) \cap X(\block)\neq \emptyset$,}
 		\item[iv.]{and $\fr\preceq \tilde{\fr}$, for any $\tilde{r}\in \mathcal{R}(\block)$.}
 	\end{itemize}  
 \end{theorem}
@@ -975,11 +975,11 @@ $(x,r)$ is a digon and part of the same block. However, since $\block'$ is stron
 from $x$ to $y$ in $\king[\block']$. However, since $(y,r,x)$ is a path connecting $y$ to $x$, $r$ is not a cut-vertex. Thus $\block$ 
 is not composed of a single reaction.
 
-We start with showing property $i$ and $iv$. We may therefore choose a cut-vertex $r$ (not necessarily unique) such that $\gamma(\fr)\leq \gamma(\fr')$ for all $r'\in 
-\CR(\block)$ that are cut-vertices. Assume then further that $\block$ is not a digon composed of $r$ and a species $x\in \food$. 
-We may now show properties $i-iv$. First, assume, first, that there is an F-reactant 
-$x_1\in X$ for $r$ such that $x_1\in X(\block)$. Then $x_1$ is an F-product of some other reaction $r_1\in\CR(\block)$ with 
-$\rgen(\fr_1)<\rgen(\fr)$. But $r_1$ cannot be a cut-vertex since otherwise $\rgen(\fr_1)<\rgen(\fr)\leq 
+We start with showing property $i$ and $iv$. We may therefore choose a cut-vertex $r$ (not necessarily unique) such that 
+$\gamma(\fr)\leq \gamma(\fr')$ for all $r'\in \CR(\block)$ that are cut-vertices. Assume then further that $\block$ is not a digon 
+composed of $r$ and a species $x\in \food$. We may now show properties $i-iv$. First, assume, first, that there is an F-reactant 
+$x_1\in X\setminus \food$ for $r$ such that $x_1\in X(\block)$. Then $x_1$ is an F-product of some other reaction $r_1\in\CR(\block)$ 
+with $\rgen(\fr_1)<\rgen(\fr)$. But $r_1$ cannot be a cut-vertex since otherwise $\rgen(\fr_1)<\rgen(\fr)\leq 
 \rgen(\fr_1)$. Then $\fr_1$ has an F-reactant $x_2\in X(\block)$ that is an F-product of a reaction $\fr_2$. 
 Iterating this argument we obtain with the finiteness of $\CR(\block)$ a sequence of reactions:
   \begin{equation}
@@ -989,31 +989,34 @@ Iterating this argument we obtain with the finiteness of $\CR(\block)$ a sequenc
   $\rgen(\fr)\leq \rgen(\tilde{\fr}) \ (\fr\preceq \tilde{\fr})$ for all $\tilde{r}\in \CR(\block)$. 
   Hence, $r$ satisfies properties $i$ and $iv$. 
   
+  For $ii$ and $iii$ we distuingish two cases. If $|\CR(\block)|=1$, then $\block$ is 
+  composed of $r$ and one of its catalyst $x_c\in X(\cat(r))$ and thereby a digon, 
+  satisfying property $iii$. Since $x_c\notin \food$ by assumption, $x_c$ is an 
+  F-product of some reaction $\tilde{r}\in \CR'$. If $x_c\in \fproducts(r)$, then 
+  $x_c$ is an F-product of $r$ and $ii$ is satisfied. Otherwise, if $x_c\notin 
+  \fproducts(r)$, then $x_c$ is a cut-vertex, which contradicts Lemma~\ref{lem:cutvert}. 
+
+  $|\CR(\block)|>1$ directly yields that there is an $r'\in \CR(\block): r'\neq r$. 
+  Lemma~\ref{lem:PSC} guarantees that there is path $\mathcal{P}_{r'r}$ 
+  such that $\mathcal{P}_{r'r} \cap \food = \emptyset$. In addition, since all F-reactants 
+  of $r$ that are elements of $X(\block)$ are also elements of $\food$ (Property~$i$)   
+  we have that $(X(\cat(r))\setminus \food) \cap X(\block) \neq \emptyset$ and 
+  Property~$iii$ is satisfied. 
+  
    Assume now indirectly that $\fproducts(r) \cap X(\block) = \emptyset$.       
-   Since $r$ is not a singleton, it has at least one incoming edge in $\block$, 
-   and we have that $X(\cat(r))\cap X(\block)\neq \emptyset$. If $|\CR(\block)|=1$, 
-   then $\block$ is composed of $r$ and one of its catalyst $x_c\in X(\cat(r))$
-   and thereby a digon. Then $x_c\notin \food$ and $x_c\notin \fproducts(r)$
-   by assumption. This implies that $x_c$ is an F-product of another 
-   reaction $r'\notin \CR(\block)$, which directly yields that $x_c$ is a 
-   cut-vertex contradicting Lemma~\ref{lem:cutvert}. Therefore, 
-   we have $|\CR(\block)|>1$. Then none of the F-products of $r$ is 
-   an F-reactant or F-catalyst of any reaction $r'\in \CR(\block): r'\neq r$. 
-   This, however, implies that there is a connected component 
-   $\king_1$ of $\king[V(\king)\setminus \{r\}]$ such that $r'\in \king_1$ 
-   and $\RAF_1\coloneqq \CR(\king_1)/\mathord{\sim}$ is $\food$-generated. 
-   Indeed, Lemma \ref{lem:PSC} yields that any directed path $\mathcal{P}$ from 
-   any vertex in $V(\king(\RAF))\setminus K_1$ to $K_1$ must in 
-   particular contain the cut-vertex $r$. In particular, then, there is 
+   Then none of the F-products of $r$ is an F-reactant or F-catalyst of any 
+   reaction $r'\in \CR(\block): r'\neq r$. This, however, implies that there is 
+   a connected component $\king_1$ of $\king[V(\king)\setminus \{r\}]$ such 
+   that $r'\in \king_1$ and $\RAF_1\coloneqq \CR(\king_1)/\mathord{\sim}$ 
+   is $\food$-generated. Indeed, Lemma \ref{lem:PSC} yields that any directed 
+   path $\mathcal{P}$ from any vertex in $V(\king(\RAF))\setminus K_1$ to 
+   $K_1$ must in particular contain the cut-vertex $r$. In particular, then, there is 
    no species in $X(\king(\RAF))\setminus \king_1$ which is an 
    F-reactant or an F-catalyst for any reaction in $\mathcal{R}(K_1)$. 
    Thereby, $\feducts(\RAF_1)\subseteq \closure{\RAF_1}{\food}$ 
    and $\RAF_1$ is $\food$-generated. In addition, $\RAF_1 \subset 
    \RAF$ then constitutes a RAF, contradicting the irreducibility of $\RAF$.
-   In summary, thereby $r$ satisfies property $ii.$
-    
-   Property iii. follows directly since $r$ has to have at least one incoming edge, 
-   and since $\feducts(r)\cap X(\block)= \emptyset$, $\cat(r)\cap X(\block)\neq \emptyset$}.
+   Hence, $r$ satisfies property $iii$.}
 
 
 %\NV{[We may choose a cut-vertex $r$ (not necessarily unique) minimum with respect to the generation order there, and show (i),(ii),(iii),(iv). (i): its F-reactants must be somewhere else, otherwise either minimality is broken or max-strong-block is broken. (iii): r must have at least an ingoing arrow and one outgoing, so this follows. (ii) NOT SURE about food-catalyst, TBC. (iv) must follow from the minimum condition together with (i).]} 
@@ -1133,23 +1136,24 @@ Iterating this argument we obtain with the finiteness of $\CR(\block)$ a sequenc
 \holy{
 Lemma~\ref{lem:StrongBlocks} indicates that maximal strong block $\block$ 
 that are not a single species or a digon composed of a reaction and a $\food$-derived 
-F-catalyst - we may refer to them as non-trivial blocks - contain one, not necessarily 
-unique reaction cut-vertices $r_{\ell}$ that exhibits special properties. In particular, the 
-associated F-reaction of $r_{\ell}$ owns the lowest generation order of all F-reactions 
-associated to CRN reactions of $\block$. In addition, $r_{\ell}$ depends only on 
-F-reactants from outside of $\block$ and at least one F-product is located inside of 
-$\block$, which has direct consequences on the associated stoichiometric matrix:
+F-catalyst - we may refer to them as \emph{non-trivial} blocks - contain one, not necessarily 
+unique reaction cut-vertices $r^*$ that exhibits special properties. In particular, the 
+associated F-reaction of $r^*$ owns the lowest generation order of all F-reactions 
+associated to CRN reactions of $\block$. In addition, $r^*$ depends only on 
+F-reactants from outside of $\block$ and at least one F-product $y^*$ and one F-catalyst 
+$x^*$ is located inside of $\block$. This has direct consequences for the associated 
+stoichiometric matrix:
 \begin{equation}
   \SM[X(\block),\CR(\block)] = 
   \begin{array}{c c}
     & 	\begin{array}{c c c} 			
-	  & 	r_{\ell} 		& 
+	  & 	r^* 		& 
 	\end{array} \\
     \begin{array}{c} 
       \ \\ 
-      \ \\
+      x^* \ \\
       \ \\ [0.5em]
-      y \\
+      y^* \\
       \ \\
       \ \\		
     \end{array}
@@ -1157,7 +1161,7 @@ $\block$, which has direct consequences on the associated stoichiometric matrix:
 	\ddots 	& 	\vdots 			& \ddots \\
 	\ldots 	& 	0 				& \ldots \\
 	\ddots 	& 	\vdots 			& \ddots \\
-	\ldots 	& 	\sigma^+_{yr_\ell} 	& \ldots \\
+	\ldots 	& 	\sigma^+_{yr^*} 	& \ldots \\
 	\ldots 	& 	0 				& \ldots \\
 	\ddots 	& 	\vdots 			& \ddots 
       \end{pmatrix}
@@ -1165,13 +1169,78 @@ $\block$, which has direct consequences on the associated stoichiometric matrix:
 \end{equation}
 \vspace{6pt}
 
-In particular, they can be considered as inflow reactions for $\block$ as 
-they corresponds to a non-negative column in $\SM[X(\block),\CR(\block)]$ 
-with at least one positive entry that reflects the F-product $y \in X(\block)$ of 
-$r_{\ell}$, for which $\sigma^+_{yr_\ell}>0$. 
-}
-\subsection{Stoichiometric Autocatalysis of Irreducible RAFs}\label{sec:AutoCatIrrRAF}
+In particular, $r^*$ they can be considered as inflow reaction for $\block$ as 
+its corresponding column in $\SM[X(\block),\CR(\block)]$ is non-negative
+but contains at least one positive entry that reflects an F-product $y \in X(\block)$ of 
+$r^*$ for which $\sigma^+_{y}>0$. This allows us to construct a strictly positive 
+vector $v$ of reaction rates which satisfies $\SM[\closure{\RAF}{\food}\setminus \food, \CR]v>0$. 
+A matrix $A$ satisfying $Aw>0$ for $w>0$ is called \emph{semi-positive}.
 
+%This holds, not only for the stoichiometric 
+%matrices associated with each non-trivial block, but also to the stoichiometric matrix 
+%representing all reactions and all non-food molecules of the closure, i.e., 
+%$\SM[\closure{\RAF}{\food}\setminus \food, \CR']$. 
+%This allows us to construct a strictly positive vector $v$ of reaction rates which 
+%satisfies $\SM[\closure{\RAF}{\food}\setminus \food, \CR]v>0$. 
+%A matrix $A$ satisfying $Aw>0$ for $w>0$ is called \emph{semi-positive}.
+
+\vspace{6pt}
+\begin{theorem}[Proof: SI]\label{thm:NonFoodSemipositiv}
+  For an irreducible, monocatalyzed RAF $\RAF$, the matrix 
+  $\SM[\closure{\RAF}{\food}\setminus \food, \CR']$ is semi-positive.
+\end{theorem}
+\begin{proof}
+  We proceed by induction. We know that for some $n\in \mathbb{N}:
+  c^n(\food)=\closure{\RAF}{\food}\eqqcolon X'$ and we choose $n$ 
+  as the minimal positive integer satisfying this. First, we observe for
+    $x\in X'$, $r\in \CR'$:
+    \begin{equation}
+	\rgen(\fr)<\sgen(x) \quad \text{implies} \quad \SM_{xr}=0 \quad (*)
+    \end{equation}
+    since $x$ can only be an F-catalyst for $r$, but not an F-reactant.
+
+  We now initialize a map: $f: X'\times [1,\ldots, n] \rightarrow \CR'$, $f(x)\coloneqq 0$. 
+  We will use the notation $\CR^k\coloneqq \{r\in \CR' \ \vert \ \rgen(\fr)=k\}$, 
+  $1\leq k\leq n$, which collects all reactions with generation order $k$, and 
+  $X^k\coloneqq \{x\in X' \ \vert \ \sgen(x)=k\}$, $0\leq k \leq n$, which analogously 
+  collects all reactions with generation number $k$.
+	
+  We start with the set $R^n$. For each an $r\in R^n$, we let $v_r\coloneqq
+  1$, and update for each $x\in X'$:
+  \begin{equation}
+    \label{eq:update-f}
+    f(x) \leftarrow f(x) + \sum_{r\in R^n} \SM_{xr} v_r,
+  \end{equation}
+  which yields $f(x)>0$ for all $x\in X^n$.  Assume now that for some
+  $1\leq k\leq n$ it holds that $f(x)>0$, for all $x\in X^k$. Then, for
+  $k-1$ we choose an arbitrary ordering of $r\in R^{k-1}$, since each $x\in
+  X^{k-1}$ can only be a product of reactions in $R^{k-1}$ but never be a
+  reactant. We set:
+  \begin{equation}
+    v_r\coloneqq \left\vert \min_{x\in X^{k-1}}
+    \left(\frac{f(x)}{s_{\PFS{r}}}\right)\right \vert + 1,\qquad
+    s_{\PFS{r}}\coloneqq \begin{cases}\SM_{xr} & \text{if } \SM_{xr}\neq 0 \\ 1 &
+      \text{otherwise} \end{cases}
+  \end{equation}
+  Then we update again for each $x\in X'$ \PFS{according to
+    equ.(\ref{eq:update-f}). A short computation \TODO{to be on the save
+      side, check!} shows that
+%%  \begin{equation}
+%%    f(x) \leftarrow f(x) + \sum_{r\in R^n} v_r \cdot \SM_{xr}
+%%  \end{equation}	
+    we again have $f(x)>0$ for all $x\in X^{k-1}$. Using observation $(*)$
+    we obtain also $f(x)>0$ for $x \in X^{\ell}$ and $k-1\leq \ell \leq
+    n$. We therefore conclude \TODO{we should be more explicit here!! It
+      seems you construct $v$ and the sum of the $v'$ in each step. I think
+      we should rewrite this so that we have different $f()$ in each step
+      and similarly vectors $v$ in each interation.}
+    that} we obtain $v_r$ is strictly positive and $Av>0$.
+\end{proof}
+
+\vspace{6pt}
+}
+
+\subsection{Stoichiometric Autocatalysis of Irreducible RAFs}\label{sec:AutoCatIrrRAF}
 
 \holy{
 [Minimal \emph{stoichiometrically autocatalytic} CRN subnetworks, formally 
@@ -1187,21 +1256,6 @@ RAFs.}]
 
 \holy{
 
-The columns induced by liberal reactions are properties common 
-not only to the stoichiometric matrices associated with each block, 
-but also to the stoichiometric matrix representing all reactions and 
-all non-food molecules of the closure, i.e., 
-$\SM[\closure{\RAF}{\food}\setminus \food, \CR']$. This allows us 
-to construct a strictly positive vector $v$ of reaction rates which 
-satisfies $\SM[\closure{\RAF}{\food}\setminus \food, \CR]v>0$. 
-A matrix $A$ satisfying $Aw>0$ for $w>0$ is called \emph{semi-positive}.
-
-\vspace{6pt}
-\begin{theorem}[Proof: SI]\label{thm:NonFoodSemipositiv}
-  For an irreducible, monocatalyzed RAF $\RAF$, the matrix 
-  $\SM[\closure{\RAF}{\food}\setminus \food, \CR']$ is semi-positive.
-\end{theorem}
-\vspace{6pt}
 
 %As a remark, the proof can be applied to the sub-stoichiometric matrix
 %representing the species and reaction vertices of any block $L'$ of $\lord(\RAF)$ 
