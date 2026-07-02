@@ -1200,51 +1200,59 @@ Let:
 We will use the notation $\CR^k\coloneqq \{r\in \CR' \ \vert \ 
 \rgen(r)=k\}$, $1\leq k\leq n$, which collects all reactions with 
 generation order $k$, and $X^k\coloneqq \{x\in X' \ \vert \ \sgen(x)=k\}$, 
-$0\leq k \leq n$, which analogously collects all species of generation 
+$1\leq k \leq n$, which analogously collects all species of generation 
 order $k$.
 	
-We start with the set $R^n$. For each an $r\in R^n$, we let $v_n(r)\coloneqq
-1$, and set for each $x\in X'$:
+We start with the set $\CR^n$. For each an $r\in \CR$, we let $v_n(r)\coloneqq
+1>0$, and set for each $x\in X'$:
 \begin{equation}
     \label{eq:update-f}
    	f_n(x) \leftarrow \sum_{r\in R^n} \SM_{xr} v_n(r),
 \end{equation}
 which yields $f_n(x)>0$ for all $x\in X^n$. Assume now that for some
 $1< k\leq n$ it holds that $f_k(x)>0$, for all $x\in X^k$. For $k-1$ we 
-choose an arbitrary ordering of $r\in R^{k-1}$, since each $x\in X^{k-1}$ 
-can only be an F-product of reactions in $R^{k-1}$ but never be an F-reactant. 
+choose an arbitrary ordering of $r\in \CR^{k-1}$, since each $x\in X^{k-1}$ 
+can only be an F-product of reactions $r\in R^{k-1}$ but never be an F-reactant,
+thus $S_{xr}>0 \ (*)$.
 We set:
 \begin{equation}
-    v_{k-1}(r) \coloneqq \left\vert \min_{x\in X^{k-1}}
-    \left(\frac{f_{k-1}(x)}{s_{\PFS{r}}}\right)\right \vert + 1,\qquad
-    s_{\PFS{r}}\coloneqq \begin{cases}\SM_{xr} & \text{if } \SM_{xr}\neq 0 \\ 1 &
+    v_{k-1}(r) \coloneqq  \max_{x\in X^{k-1}}\left\vert
+    \left(\frac{f_{k}(x)}{s_{r}}\right)\right \vert + 1,\qquad
+    s_{r}\coloneqq \begin{cases}\SM_{xr} & \text{if } \SM_{xr}\neq 0 \\ 1 &
       \text{otherwise} \end{cases}
   \end{equation}
-  Then we update again for each $x\in X'$: \PFS{according to
-    equ.(\ref{eq:update-f}). A short computation \TODO{to be on the save
-      side, check!} shows that
-%%  \begin{equation}
-%%    f(x) \leftarrow f(x) + \sum_{r\in R^n} v_r \cdot \SM_{xr}
-%%  \end{equation}	
-    we again have $f(x)>0$ for all $x\in X^{k-1}$. Using observation $(*)$
-    we obtain also $f(x)>0$ for $x \in X^{\ell}$ and $k-1\leq \ell \leq
-    n$. We therefore conclude \TODO{we should be more explicit here!! It
-      seems you construct $v$ and the sum of the $v'$ in each step. I think
-      we should rewrite this so that we have different $f()$ in each step
-      and similarly vectors $v$ in each interation.}
-    that} we obtain $v_r$ is strictly positive and $Av>0$.
+  for all $r\in \CR^{k-1}$ and $v_{k-1}(r)=v_{k}(r)$. Therefore, $v_{k-1}(r)>0, \forall r\in \CR$. 
+  For each $x\in X'$ we let: 
+  \begin{equation}
+    f_{k-1}(x) \coloneqq f_k(x) + \sum_{r\in \CR^k} v_{k-1}(r) \cdot \SM_{xr}.
+  \end{equation}	
+   For all $x\in X^m, m\geq k$ it holds that $f_{k-1}(x)=f_k(x)>0$ as they cannot be neither be 
+   F-reactants nor F-products for any reaction $r\in \CR^k$, i.e., $S_{xr}=0$. A short 
+   computation shows for all $x\in X^{k-1}$:
+   \begin{equation}
+   	\begin{split}
+	   	f_{k-1}(x) & = f_k(x) + \sum_{r\in R^k} v_{k}(r) \cdot \SM_{xr} \\
+			       & = f_k(x) + \sum_{r\in R^k: S_{xr}\neq 0} v_{k-1}(r)\cdot S_{xr} \\
+			       & \geq f_k(x) + \sum_{r\in R^k: S_{xr}\neq 0} \left(\left \vert \frac{f_k(x)}{S_{xr}}  \right \vert +1\right) \cdot S_{xr} \\
+			       & \geq f_k(x) + \sum_{r\in R^k: S_{xr}\neq 0} \left \vert f_k(x) \right\vert + S_{xr} \\
+			       & > S_{xr} \overset{*}{>} 0.
+	\end{split}
+   \end{equation}
+    We therefore obtain $f_{k_1}(x)>0$ for all $x\in X^{m}, m\geq k-1$. 
+    We can therefore conclude that we obtain $v\coloneqq v_{1}(r)$ is 
+    strictly positive, $f_1(x)>0$ and thereby $\SM[\closure{\RAF}{\food}\setminus \food, \CR']v>0$.
 \end{proof}
 
 That this does not necessarily holds true for $\SM[X(\block), \CR(\block)]$ is depicted 
 in the following example:
 
-\begin{figure}
-	\centering
-	\begin{minipage}[c]{0.5\textwidth}
-		
-	\end{minipage}%
-	\hfill%
-\end{figure}
+%\begin{figure}
+%	\centering
+%	\begin{minipage}[c]{0.5\textwidth}
+%		
+%	\end{minipage}%
+%	\hfill%
+%\end{figure}
 
 \vspace{6pt}
 }
