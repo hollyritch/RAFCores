@@ -1168,9 +1168,11 @@ matrix of the block on all non-food molecules:
 In particular, $r^*$ they can then be considered as inflow reaction for $\block$ as 
 its corresponding column in $\SM[X(\block),\CR(\block)]$ is non-negative
 but contains at least one positive entry that reflects an F-product $y \in X(\block)$ of 
-$r^*$ for which $\sigma^+_{y}>0$. This allows us to construct a strictly positive 
-vector $v$ of reaction rates which satisfies $\SM[\closure{\RAF}{\food}\setminus \food, \CR]v>0$. 
-A matrix $A$ satisfying $Aw>0$ for $w>0$ is called \emph{semi-positive}.
+$r^*$ for which $\sigma^+_{yr^*}>0$. The same applies to the stoichiometric matrix 
+reflecting all reactions $\CR'$ and the species from $\closure{\RAF}{\food}\setminus \food$, 
+i.e., $\SM[\closure{\RAF}{\food}\setminus \food, \CR]v>0$. This allows us to construct a 
+strictly positive vector $v$ of reaction rates which satisfies $\SM[\closure{\RAF}{\food}\setminus 
+\food, \CR]v>0$. A matrix $A$ satisfying $Aw>0$ for $w>0$ is called \emph{semi-positive}.
 
 \vspace{6pt}
 \begin{theorem}[Proof: SI]\label{thm:NonFoodSemipositiv}
@@ -1183,34 +1185,42 @@ A matrix $A$ satisfying $Aw>0$ for $w>0$ is called \emph{semi-positive}.
   as the minimal positive integer satisfying this. First, we observe for
     $x\in X'$, $r\in \CR'$:
     \begin{equation}
-	\rgen(\fr)<\sgen(x) \quad \text{implies} \quad \SM_{xr}=0 \quad (*)
+	\rgen(r)<\sgen(x) \quad \text{implies} \quad \SM_{xr}=0 \quad (*)
     \end{equation}
-    since $x$ can only be an F-catalyst for $r$, but not an F-reactant.
-
-  We now initialize a map: $f: X'\times [1,\ldots, n] \rightarrow \CR'$, $f(x)\coloneqq 0$. 
-  We will use the notation $\CR^k\coloneqq \{r\in \CR' \ \vert \ \rgen(\fr)=k\}$, 
-  $1\leq k\leq n$, which collects all reactions with generation order $k$, and 
-  $X^k\coloneqq \{x\in X' \ \vert \ \sgen(x)=k\}$, $0\leq k \leq n$, which analogously 
-  collects all reactions with generation number $k$.
+    
+  since $x$ can only be an F-catalyst for $r$, but not an F-reactant.
+  
+Let: 
+\begin{equation}
+	\begin{split}
+  		f&: X'\times [1,\ldots, n] \rightarrow \mathbb{R} \\[0.5em]
+		v&: X'\times [1,\ldots, n] \rightarrow \mathbb{R} \\[0.5em]
+	\end{split}
+\end{equation}
+We will use the notation $\CR^k\coloneqq \{r\in \CR' \ \vert \ 
+\rgen(r)=k\}$, $1\leq k\leq n$, which collects all reactions with 
+generation order $k$, and $X^k\coloneqq \{x\in X' \ \vert \ \sgen(x)=k\}$, 
+$0\leq k \leq n$, which analogously collects all species of generation 
+order $k$.
 	
-  We start with the set $R^n$. For each an $r\in R^n$, we let $v_r\coloneqq
-  1$, and update for each $x\in X'$:
-  \begin{equation}
+We start with the set $R^n$. For each an $r\in R^n$, we let $v_n(r)\coloneqq
+1$, and set for each $x\in X'$:
+\begin{equation}
     \label{eq:update-f}
-    f(x) \leftarrow f(x) + \sum_{r\in R^n} \SM_{xr} v_r,
-  \end{equation}
-  which yields $f(x)>0$ for all $x\in X^n$.  Assume now that for some
-  $1\leq k\leq n$ it holds that $f(x)>0$, for all $x\in X^k$. Then, for
-  $k-1$ we choose an arbitrary ordering of $r\in R^{k-1}$, since each $x\in
-  X^{k-1}$ can only be a product of reactions in $R^{k-1}$ but never be a
-  reactant. We set:
-  \begin{equation}
-    v_r\coloneqq \left\vert \min_{x\in X^{k-1}}
-    \left(\frac{f(x)}{s_{\PFS{r}}}\right)\right \vert + 1,\qquad
+   	f_n(x) \leftarrow \sum_{r\in R^n} \SM_{xr} v_n(r),
+\end{equation}
+which yields $f_n(x)>0$ for all $x\in X^n$. Assume now that for some
+$1< k\leq n$ it holds that $f_k(x)>0$, for all $x\in X^k$. For $k-1$ we 
+choose an arbitrary ordering of $r\in R^{k-1}$, since each $x\in X^{k-1}$ 
+can only be an F-product of reactions in $R^{k-1}$ but never be an F-reactant. 
+We set:
+\begin{equation}
+    v_{k-1}(r) \coloneqq \left\vert \min_{x\in X^{k-1}}
+    \left(\frac{f_{k-1}(x)}{s_{\PFS{r}}}\right)\right \vert + 1,\qquad
     s_{\PFS{r}}\coloneqq \begin{cases}\SM_{xr} & \text{if } \SM_{xr}\neq 0 \\ 1 &
       \text{otherwise} \end{cases}
   \end{equation}
-  Then we update again for each $x\in X'$ \PFS{according to
+  Then we update again for each $x\in X'$: \PFS{according to
     equ.(\ref{eq:update-f}). A short computation \TODO{to be on the save
       side, check!} shows that
 %%  \begin{equation}
