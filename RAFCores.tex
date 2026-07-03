@@ -127,6 +127,7 @@
 \newcommand{\cat}{\kappa_F}
 \newcommand{\sgen}{\delta}
 \newcommand{\rgen}{\gamma}
+\newcommand{\crgen}{\beta}
 \newcommand{\ceducts}{\rho}
 \newcommand{\cproducts}{\pi}
 \newcommand{\feducts}{\rho_F}
@@ -969,7 +970,7 @@ section considers \emph{maximal strong blocks} $\block$ of $K(\RAF)$, i.e. maxim
 that possess no cut-vertices. Strong blocks have been studied in the graph literature in \cite{grotschel_minimal_1979}. 
 An example of an irreducible, monocatalyzed RAF containing multiple strong blocks is captured in Fig.~\ref{ex:CutVertex2}. 
 Since for monocatalyzed RAFs, CRN and F-reactions are in 1-to-1 correspondence, we may also speak about generation 
-order of CRN reactions instead of F-reactions and write $\rgen(r)$ for $\rgen([r]_\sim)$.
+order of CRN reactions instead of F-reactions and define $\crgen(r)\coloneqq \rgen([r]_\sim)$.
 
 \vspace{6pt}
 \begin{lemma}[Strong blocks]\label{lem:StrongBlocks}
@@ -992,13 +993,13 @@ $(x,r)$ is a digon and part of the same block. However, since $\block'$ is stron
 from $x$ to $y$ in $\king[\block']$. However, since $(y,r,x)$ is a path connecting $y$ to $x$, $r$ is not a cut-vertex. Thus $\block$ 
 is not composed of a single reaction. Assume then further that $\block$ is not a digon composed of $r$ and a species $x\in \food$.
 
-We start with showing property $i.$ and $iv.$ We may choose $r$ among all cut-vertices $r'\in \CR(\block)$ such that $\rgen(r)\leq \rgen(r')$. Assume indirectly that there is an F-reactant $x_1\in X\setminus \food$ for $r$ such that $x_1\in X(\block)$. Then $x_1$ is an F-product of some other reaction $r_1\in\CR(\block)$ with $\rgen(r_1)<\rgen(r)$. But $r_1$ cannot be a cut-vertex since otherwise $\rgen(r_1)<\rgen(r)\leq \rgen(r_1)$. Then $r_1$ 
-has an F-reactant $x_2\in X(\block)$ that is an F-product of a reaction $r_2$ such that $\rgen(r_2)<\rgen(r_1)<\rgen(r)$. Iterating this argument we obtain with the finiteness of 
+We start with showing property $i.$ and $iv.$ We may choose $r$ among all cut-vertices $r'\in \CR(\block)$ such that $\crgen(r)\leq \crgen(r')$. Assume indirectly that there is an F-reactant $x_1\in X\setminus \food$ for $r$ such that $x_1\in X(\block)$. Then $x_1$ is an F-product of some other reaction $r_1\in\CR(\block)$ with $\crgen(r_1)<\crgen(r)$. But $r_1$ cannot be a cut-vertex since otherwise $\crgen(r_1)<\crgen(r)\leq \crgen(r_1)$. Then $r_1$ 
+has an F-reactant $x_2\in X(\block)$ that is an F-product of a reaction $r_2$ such that $\crgen(r_2)<\crgen(r_1)<\crgen(r)$. Iterating this argument we obtain with the finiteness of 
 $\CR(\block)$ a sequence of reactions:
   \begin{equation}
-    \rgen(r_k)<\rgen(r_{k-1}) <\ldots < \rgen(r_l)
+   \crgen(r_k)<\crgen(r_{k-1}) <\ldots < \crgen(r_l)
   \end{equation}
-  such that $r_k=r_l$ (potentially $r_l=r$), which yields a contradiction and thereby $\rgen(r)\leq \rgen(\tilde{r}) \ (\fr\preceq \tilde{r})$ for all $\tilde{r}\in \CR(\block)$. 
+  such that $r_k=r_l$ (potentially $r_l=r$), which yields a contradiction and thereby $\crgen(r)\leq \crgen(\tilde{r}) \ (\fr\preceq \tilde{r})$ for all $\tilde{r}\in \CR(\block)$. 
   Hence, $r$ satisfies properties $i.$ and $iv.$ 
   
   For Properties~$ii.$ and $iii.$ we distuingish two cases. If $|\CR(\block)|=1$, then $\block$ is 
@@ -1168,7 +1169,7 @@ However, reactions $r\in \CR'$ with generation order $1$ exert the same effect o
   We proceed by induction. With Eq.~\eqref{eq:speciesSubSet}, we know that for some $n\in \mathbb{N}: X'_n=\closure{\RAF}{\food}\eqqcolon X'$ and we choose $n$ as the minimal positive integer satisfying $X'_n(\food)=\closure{\RAF}{\food}$. Then we observe for
     $x\in X'$, $r\in \CR'$:
     \begin{equation}
-	\rgen(r)<\sgen(x) \quad \text{implies} \quad \SM_{xr}=0 \quad (*)
+	\crgen(r)<\sgen(x) \quad \text{implies} \quad \SM_{xr}=0 \quad (*)
     \end{equation}
     
   since $x$ can only be an F-catalyst for $r$, but not an F-reactant.
@@ -1181,7 +1182,7 @@ Let:
 	\end{split}
 \end{equation}
 We will use the notation $\CR^k\coloneqq \{r\in \CR' \ \vert \ 
-\rgen(r)=k\}$, $1\leq k\leq n$, which collects all reactions with 
+\crgen(r)=k\}$, $1\leq k\leq n$, which collects all reactions with 
 generation order $k$, and $X^k\coloneqq \{x\in X' \ \vert \ \sgen(x)=k\}$, 
 $1\leq k \leq n$, which analogously collects all species of generation 
 order $k$.
@@ -1299,11 +1300,12 @@ Indeed, $\SM$ is not semi-positive as any $v>0$ yields for $v_{r_1}=v_{r_2}$ tha
 			\draw[->] (r2) to (f);
 		\end{tikzpicture}
 	\end{minipage}
+	\par\bigskip
 	\caption{An irreducible, monocatalyzed RAF $\RAF\coloneqq \{[r_1]_{\sim},[r_2]_{\sim}\}$ as CRN reactions (\textbf{left}) and its K\H{o}nig graph $\king(\RAF)$ (\textbf{right}). }
 	\label{fig:foodBlock}
 \end{figure}
 
-\holy{We conclude this section by commenting on another property of strong blocks $\block$. As they are strongly connected, each reaction vertex has at least one incoming edge, i.e., from an F-reactant or F-catalyst, and at least one outgoing edge, i.e., to an F-catalyst or F-product. Lemma~\ref{lem:StrongBlocks} additionally guarantees that his holds true also for the sub-network $(X(\block)\setminus \food, \CR(\block)$ of $\block$ that is void of food species. Therefore, each reaction has at least one reactant and at least one product. We say that such a sub-network is \emph{well-formed}. 
+\holy{We conclude this section by commenting on another property of strong blocks $\block$. As they are strongly connected, each reaction vertex has at least one incoming edge, from an F-reactant or F-catalyst, and at least one outgoing edge, to an F-catalyst or F-product. Lemma~\ref{lem:StrongBlocks} additionally guarantees that his holds true also for the sub-network $(X(\block)\setminus \food, \CR(\block)$ of $\block$ that is void of food species. Therefore, each reaction has at least one reactant and at least one product. We say that such a sub-network is \emph{well-formed}. 
 }
 
 \subsubsection{Stoichiometric Autocatalysis of Irreducible RAFs}\label{sec:AutoCatIrrRAF}
@@ -1333,11 +1335,10 @@ catalysts of the present paper \cite{golnik_autocatalytic_2026}. The central def
 \vspace{6pt}
 
 A sub-CRN $(X',\CR')$ that satisfies \textit{(i.)} and \textit{(ii.)}, while
-no proper subnetwork $(X'',\CR'')$ with $X''\subseteq X', \CR''\subseteq \CR'$
+no proper subnetwork $(X'',\CR'')$ with $X''\subset X', \CR''\subset \CR'$
 does, is called an \emph{autocatalytic core}. Any stoichiometric autocatalytic sub-CRN thereby contains an autocatalytic core. 
 
-The structural results obtained in Sec.~\ref{subsec:King}, i.e., Lemmata~\ref{lem:StrongBlocks} and \ref{lem:NonFoodSemipositiv} yield in combination with Def.~\ref{def:autSubRN} that each sub-CRN corresponding to a maximal strong block $\block$ without food species, i.e., $(X(\block)\setminus \food, \CR(\block))$ of an irreducible, monocatalyzed RAF $\RAF$ is
-\emph{stoichiometrically autocatalytic}. In particular, the main result of this section is the following. 
+The structural results obtained in Sec.~\ref{subsec:King}, i.e., Lemmata~\ref{lem:StrongBlocks} and \ref{lem:NonFoodSemipositiv} yield in combination with Def.~\ref{def:autSubRN} that each sub-CRN $(X(\block)\setminus \food, \CR(\block))$, corresponding to a maximal strong block $\block$ of the bipartite K\H{o}nig graph of an irreducible, monocatalyzed RAF $\RAF$, is \emph{stoichiometrically autocatalytic}. In particular, the main result of this section is the following. 
 
 \vspace{6pt}
 \begin{theorem}\label{Thm:StrBlockCore}
@@ -1348,40 +1349,138 @@ The structural results obtained in Sec.~\ref{subsec:King}, i.e., Lemmata~\ref{le
  }
 
 \holy{
-Thm.~\ref{Thm:StrBlockCore} provides only a partial explanation on the large number of autocatalytic cores observed in each irreducible RAF obtained from random instances of the binary polymer model \cite{kauffman_autocatalytic_1986}, which are shown in Fig.~\ref{fig:irrRAFCores}. Indeed, the number of autocatalytic cores per maximal strong block (\TODO{Fig.TBA}), still yields up to \TODO{TBA} autocatalytic cores per block. We will therefore aim to decipher the structures of each block that give rise to an autocatalytic core.
+Thm.~\ref{Thm:StrBlockCore} provides only partial explanation on the large number of autocatalytic cores observed in each irreducible RAF obtained from random instances of the binary polymer model \cite{kauffman_autocatalytic_1986}, which are shown in Fig.~\ref{fig:irrRAFCores}. Indeed, the number of autocatalytic cores per maximal strong block (\TODO{Fig.TBA}), still yields up to \TODO{TBA} autocatalytic cores per block. We will therefore aim to decipher the structures of each block that give rise to autocatalytic cores.
 
 
- In the proof of \cite[Thm.~3.1]{golnik_bridging_2026}, we have constructively shown that each RAF that is itself not a CAF contains an autocatalytic elementary circuit (SI Sec.~\ref{S-sec:Glossary}) in its directed bipartite K\H{o}nig graph representation (see also \cite[Remark~13]{golnik_bridging_2026}). We will adapt this construction to obtain such a circuit for each strong block.
+To this end, we revisit the proof of \cite[Thm.~3.1]{golnik_bridging_2026}. There, we have shown that each RAF $\RAF$ that is itself not a CAF is associated with an elementary circuit $C$ (SI Sec.~\ref{S-sec:Glossary}) in the directed bipartite K\H{o}nig graph of $\RAF$, whose species and reaction vertices $X(C)$ and $\CR(C)$, respectively, define an autocatalytic sub-CRN (see also \cite[Remark~13]{golnik_bridging_2026}). We adapt this construction to obtain such an \emph{autocatalytic} elementary circuit for each strong block.
 
-Since strong blocks are strongly connected, each vertex, and thus, also
-each of its \emph{entry reaction}, is located on an elementary circuit. Together with the partial order, this observation can be engaged to construct an elementary
-circuit $C$ for every strong block that gives rise to a stoichiometric
-submatrix $\tilde{\SM}(C)\coloneqq \SM[X(C), R(C)]$ in which each column
-and row has at most one negative entry, and one column is nonnegative with
-at least one positive entry. The columns of $\tilde{\SM}(C)$ can then be
-reordered to obtain a matrix $\SM(C)$ with nonpositive diagonal and
-nonnegative off-diagonal entries.  A matrix with nonnegative off-diagonal
-entries is called a \emph{Metzler} matrix. It is not hard to see that, in
-case $\tilde{\SM}(C)$ is semi-positive, $\SM(C)$ is semi-positive. In
-addition, the subnetwork of an elementary circuit $(X(C),R(C))$ is
-well-formed.
+By definition, every vertex of a maximal strong block, thus also each of its entry reaction, is located on an elementary circuit. Together with the pre-order of a RAF, this observation can be employed to construct an elementary circuit $C$ for every strong block that gives rise to a stoichiometric submatrix $\tilde{\SM}(C)\coloneqq \SM[X(C), R(C)]$ in which each column and row has at most one negative entry, and one column is non-negative with at least one positive entry. The columns of $\tilde{\SM}(C)$ can then be reordered to obtain the matrix $\SM(C)$ with non-positive diagonal and
+non-negative off-diagonal entries. A matrix with non-negative off-diagonal entries is called  \emph{Metzler} matrix. It is not hard to see that, in
+case $\tilde{\SM}(C)$ is semi-positive, $\SM(C)$ is semi-positive. In addition, the sub-CRN of an elementary circuit $(X(C),R(C))$ is, by definition, well-formed.
 }
 
 \vspace{6pt}
 \begin{lemma}[Proof: SI]\label{lem:MetzCircuit}
-  Let $B$ be a strong block of $\lord(\RAF)$. Then $B$ contains an
-  elementary circuit $C$ with one pure reaction vertex, and there is a
-  reordering of the columns of $ \SM[X(C), R(C)]$ that yields a Metzler
+  Let $\block$ be a maximal, non-trivial strong block of $\king(\RAF)$. Then $\block$ contains an elementary circuit $C$ with one reaction satisfying Properties~$i.$-$iii.$ of Lemma~\ref{lem:StrongBlocks}, and there is a reordering of the columns of $\SM[X(C), R(C)]$ that yields a Metzler
   matrix.
 \end{lemma}
+\begin{proof}
+	We start with the simple case, and assume there is only one reaction $r_1$ in $\block$ satisfying Properties~$i$ß$iii.$ of Lemma~\ref{lem:StrongBlocks}. We then have $\crgen(r_1)<\crgen(r)$ for all $r\in \CR(\block) \setminus \{r_1\}$. We may then construct the following elementary circuit:
+	\begin{equation}
+		r_1 \leftarrow x_1 \leftarrow r_2 \leftarrow x_2 \leftarrow \ldots r_n
+		\leftarrow x_m \leftarrow r_{m+1}
+	\end{equation}
+	where $x_1$ is an F-catalyst of $r_1$, and forall $1< k\leq m+1$: 
+	\begin{equation}
+		r_k =  \arg \min \{ \crgen(r) \ \vert \ r\in \CR(\block), \SM_{x_{k-1}r}>0\}
+	\end{equation}
+	and for all $1<k\leq m$:
+	\begin{equation}
+		x_k = \arg \min \{\sgen(x) \ \vert \ x\in X(\block)\setminus \food, s^-_{xr_k}>0\}.
+	\end{equation}
+	Since all reactions $r_k, 1< k\leq m$ are not entry reactions vertices, each of them has an F-reactant $x_k$ for which
+	$\sgen(x_k)<\crgen(r_k)$ and thereby:
+	\begin{equation}
+		\crgen(r_k) < \sgen(x_k) \leq \crgen(r_{k+1}), \quad 1\leq k < m-1.
+	\end{equation}
+	This generates a strictly monotone decreasing sequence
+	$(\crgen(r_k))_{1\leq k\leq m+1}$, which converges due to the finiteness of $\block$ and yields $r_{m+1}=r_1$.  Thus $C\coloneqq
+	(r_{m+1}, x_m, r_m, x_{m-1}, r_{m-1},\ldots, x_1,r_1)$ is an elementary circuit.
+	
+	Assume now that there is $i\neq j$ such that $s^-_{x_ir_j}>0$. If $i>j$ then $\sgen(x_i)<\sgen(x_j)$ which contradicts that $\sgen(x_j)=\min
+	\{\sgen(x) \ \vert \ x\in X(B), s^-_{xr_k}>0\}$. Thus $i<j$, which implies that $\sgen(x_i)\geq\delta(r_j)$ and that $x_i$ cannot be an F-reactant of $r_j$ but only an F-catalyst, thus:
+	\begin{equation}
+		\SM_{x_ir_j}=0.
+	\end{equation} 
+	
+	Therefore, the only positive reactant stoichiometries are of the form $s^-_{x_i,r_i}, 1<i<m$. We can then obtain $S(C)$ by reordering the columns of the submatrix $\SM[X(C), R(C)]$ such that $S(C)_{x_iy}\coloneqq \SM[X(C), \CR(C)]_{x_ir_i}$. Thereby, all diagonal entries of $\SM(C)$ are non-positive, $\SM(C)_{x_1r_1}=0$, and all off-diagonal entries of $\SM(C)$ are non-negative. Thus $\SM(C)$ is a Metzler matrix.
+	\vspace{6pt}
+	
+	We now turn to the general case and assume there are multiple
+	reactions satisfying Properties~$i.$-$iii.$ of Lemma~\ref{lem:StrongBlocks} and we collect them in $R^*(\block)$.  We may again choose $r_1\in R^*(\block):
+	\crgen(r_1)\leq \crgen(r_j), \forall r_j\in R^*(\block)$ and we have
+	$\delta(r_1)<\delta(r), \forall r\in R(\block)\setminus R^*(\block)$. We now apply
+	the same construction as above:
+	\begin{equation}
+		r_1 \leftarrow x_1 \leftarrow r_2 \leftarrow x_2 \leftarrow \ldots r_n \leftarrow x_m \leftarrow r_{m+1}
+	\end{equation}
+	such that $x_1$ is an F-catalyst of $r_1$, and for all $1< k\leq m+1$:
+	\begin{equation}
+		r_k = \arg \min \{ \crgen(r) \ | r\in R(\block), \SM_{x_{k-1}>0}\}
+	\end{equation}
+	and for all $1<k\leq m$:
+	\begin{equation}
+		x_k = \arg \min \{\delta (x) \ \vert \ x\in X(\block)\setminus\food, s^-_{xr_k}>0\}
+	\end{equation}
+	if $r_k \notin R^*(\block)$ or $x_k$ as an F-catalyst of $r_k$ otherwise. 
+	
+	\holy{RG until here} 
+	
+	We thereby obtain the following structure:
+	\begin{equation*}
+		(r_{l_0}, \leftarrow x_{l_0} \leftarrow\ldots \leftarrow x_{l_1})
+		\leftarrow \ldots \leftarrow (r_{l_p} \leftarrow x_{l_p} \leftarrow
+		\ldots \leftarrow x_{l_{p+1}}) \leftarrow r_{l_{p+1}}
+	\end{equation*}
+	where $r_{l_0} \coloneqq r_1, x_{l_0} \coloneqq x_1$ and each reaction vertex $r_{l_i+1}, 0\leq i\leq p$ is a pure reaction, and each species vertex $x_{l_i+1}, 0\leq i\leq p$ is an F-catalyst for the pure reaction
+	$r_{l_i+1}$. Then, by the same argument as above, we obtain a strictly
+	monotone decreasing sequence $(\delta(r_j))_{l_i\leq j \leq
+		_{l_{i+1}-1}}$ for each $(r_{l_i} \leftarrow x_{l_1+1} \leftarrow
+	\ldots x_{l_{i+1}}), 0\leq i\leq p$. By finiteness of $B$, we then obtain
+	that $r_{l_i}=r_{l_{p+1}}, 0\leq i\leq p$ yields an elementary circuit
+	\begin{equation}
+		C\coloneqq (r_{l_{p+1}}, x_{l_{p+1}}, \ldots x_{l_i},  r_{l_i})
+	\end{equation}
+	\vspace{6pt}
+	
+	With the same argument as above, for each $i\neq j: s^-_{x_ir_j}>0$ such
+	that there is a $k\in \{0,\ldots, p\}: l_k\leq i,j \leq l_{k+1}$ we
+	obtain that $\hat{s}_{x_ir_j}=0$.
+	
+	Assume now that there is no such $k$. If $\sgen(x_i)>\sgen(x_j)$ then
+	$\sgen(x_i)\geq \delta(r_j)$ which implies that $x_i$ cannot be an
+	F-reactant for $r_j$, thus $\hat{s}_{x_ir_j}=0$. The case
+	$\sgen(x_i)<\sgen(x_j)$ is impossible due to our choice of $x_j$. Then
+	the only remaining case is $\sgen(x_i)=\sgen(x_j)$ which is possible
+	since the minimum of $\{\sgen(x) \ \vert \ x\in X(B), s^-_{xr_j}>0\}$
+	might not be unique. This, however, implies that there is a smaller
+	elementary circuit containing a pure reaction vertex. If $i>j$ this
+	circuit can be obtained as $C'$ with:
+	\begin{equation}
+		\begin{split}
+			V(C')&\coloneqq V(C)\setminus \{x_i, r_i, \ldots, x_j\}\\[0.5em]
+			E(C')& \coloneqq E(C)\setminus \{(x_k, r_k) \ | \ j-1\leq k \leq i\} \cup \{(r_k, x_{k+1}) \ | \ j\leq k \leq i\}
+		\end{split}
+	\end{equation} 
+	or if $i<j$ then this circuit can be obtained as $C''$:
+	\begin{equation}
+		\begin{split}
+			V(C'') & \coloneqq \{r_j, x_{j-1}, \ldots, x_i\} \\
+			E(C'') & \coloneqq\{(x_k, r_k) \ | \ i \leq k \leq j-1\} \cup \{(x_i,r_j)\} \cup \{(r_k, x_{k-1}) \ | \ i+1\leq k \leq j\}
+		\end{split}
+	\end{equation} 
+	It holds by construction that either $r_1\in R(C')$ or that there is a
+	pure reaction vertex $r_{l_k} \in R(C''): i<l_k<j$. We may now repeat
+	this procedure until we can not find such a metabolite-to-reaction edge
+	anymore and obtain a final elementary circuit $\tilde{C}$.
+	
+	We can then obtain $S(\tilde{C})$ by reordering the columns of the
+	submatrix $\SM[X(\tilde{C}), R(\tilde{C})]$ such that
+	\begin{equation}
+		\SM(\tilde{C})_{xy}\coloneqq \SM[X(\tilde{C}), R(\tilde{C})]_{xv^{\tilde{C}}_{out}(x)}
+	\end{equation} 
+	where $v^{\tilde{C}}_{out}(x)$ is the unique reaction $r\in R(\tilde{C}$
+	such that $(x,r)\in E(\tilde{C})$. Thereby, all diagonal entries of
+	$\SM(\tilde{C})$ are nonpositive, i.e., all are negative except
+	$\SM(\tilde{C})_{x_1r_1}$, and all off-diagonal entries of
+	$\SM(\tilde{C})$ are nonnegative, thus $\SM(\tilde{C})$ is a Metzler
+	matrix.
+\end{proof}
+
 \vspace{6pt}
 
 We call an elementary circuit with the properties defined in
-Lemma~\ref{lem:MetzCircuit} a Metzler circuit. Unfortunately, such a
-Metzler circuit can, as shown in the proof, still contain a species-to-reaction 
-or, equivalently, metabolite-to-reaction (MR-) chord. The example in
-Sec.~\ref{sec:MetzNotCore} depicts such a scenario. Nevertheless, they are
-always \emph{stoichiometrically autocatalytic}.
+Lemma~\ref{lem:MetzCircuit} a Metzler circuit. Unfortunately, such a Metzler circuit can, as shown in the proof, still contain a species-to-reaction or, equivalently, metabolite-to-reaction (MR-) chord. The example in Sec.~\ref{sec:MetzNotCore} depicts such a scenario. Nevertheless, they are always \emph{stoichiometrically autocatalytic}.
 
 \vspace{6pt}
 \begin{lemma}[Proof: SI]\label{lem:MetzCircAut}
@@ -1390,8 +1489,7 @@ always \emph{stoichiometrically autocatalytic}.
 \end{lemma}
 \vspace{6pt} If the subnetwork induced by an elementary circuit $C$ is
 \emph{stoichiometrically autocatalytic}, we say that $C$ is
-\emph{stoichiometrically autocatalytic}. Elementary circuits free of
-MR-chords play an important role in enumerating autocatalytic cores
+\emph{stoichiometrically autocatalytic}. Elementary circuits free of MR-chords play an important role in enumerating autocatalytic cores
 \cite{golnik_using_2026}.  Since they are always Metzler circuits, we
 obtain the following corollary as a direct consequence.
 \vspace{6pt}
@@ -1401,8 +1499,7 @@ obtain the following corollary as a direct consequence.
 \end{corollary}
 \vspace{6pt}
 
-In case the strong block consists of a single reaction $r$ and a single
-species $x$, then $x$ is an F-catalyst and an F-product. In addition, there
+In case the strong block consists of a single reaction $r$ and a single species $x$, then $x$ is an F-catalyst and an F-product. In addition, there
 is only one elementary circuit, in particular, the digon $(x,r,x)$, which
 is by definition a Metzler circuit.
 \vspace{6pt}
