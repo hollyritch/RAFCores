@@ -852,7 +852,7 @@ Due to Prop.~\ref{prop:Caftrivial}, throughout the paper we exclude the trivial 
 To keep the exposition concise, we assume this exclusion throughout and do not repeat it explicitly in each statement.
 
 
-\subsection{The K\H{o}nig Graph of Monocatalyzed Irreducible RAFs}
+\subsection{The K\H{o}nig Graph of Monocatalyzed Irreducible RAFs}\label{subsec:King}
 
 Let $\mathbf{\Phi}=(X,\FR,\cat(\FR))$ be a CRS with food set $\food\subseteq X$. We consider now the sub-CRS $\mathbf{\Phi}'\subseteq \mathbf{\Phi'}$ induced by a monocatalyzed irreducible RAF $\RAF'$, i.e.
 \begin{equation}\label{eq:RAF-CRS}
@@ -956,7 +956,7 @@ Since for monocatalyzed RAFs, CRN and F-reactions are in 1-to-1 correspondence, 
 order of CRN reactions instead of F-reactions and write $\rgen(r)$ for $\rgen([r]_\sim)$.
 
 \vspace{6pt}
-\begin{theorem}[Strong blocks]\label{thm:StrongBlocks}
+\begin{lemma}[Strong blocks]\label{lem:StrongBlocks}
 Every maximal strong block $\block$ of $K(\RAF)$ either is a single species-vertex $\block=\{x\}$ with $x\in \food \cup \mathbf{W}$, 
 a digon $\block=\{r, x\}$ with $x\in \food$, or $\block$ contains a reaction-vertex $r\in \mathcal{R}'$, which 
   is a cut-vertex for $K(\RAF)$ satisfying:
@@ -966,7 +966,7 @@ a digon $\block=\{r, x\}$ with $x\in \food$, or $\block$ contains a reaction-ver
 		\item[iii.]{$(X(\cat(r)) \setminus \food)) \cap X(\block)\neq \emptyset$,}
 		\item[iv.]{and $\fr\preceq \tilde{\fr}$, for any $\tilde{r}\in \mathcal{R}(\block)$.}
 	\end{itemize}  
-\end{theorem}
+\end{lemma}
 
 \begin{proof}
 Assume $\block$ is not the single species in food and waste. $\block$ cannot be a single-species, since this would make 
@@ -1143,10 +1143,10 @@ In particular, $r^*$ can then be considered as an entry or inflow reaction for $
 \food, \CR]v>0$. A matrix $A$ satisfying $Aw>0$ for $w>0$ is called \emph{semi-positive}.
 
 \vspace{6pt}
-\begin{theorem}\label{thm:NonFoodSemipositiv}
+\begin{lemma}\label{lem:NonFoodSemipositiv}
   For an irreducible, monocatalyzed RAF $\RAF$, the matrix 
   $\SM[\closure{\RAF}{\food}\setminus \food, \CR']$ is semi-positive.
-\end{theorem}
+\end{lemma}
 \begin{proof}
   We proceed by induction. With Eq.~\eqref{eq:speciesSubSet}, we know that for some $n\in \mathbb{N}: X'_n=\closure{\RAF}{\food}\eqqcolon X'$ and we choose $n$ as the minimal positive integer satisfying $X'_n(\food)=\closure{\RAF}{\food}$. Then we observe for
     $x\in X'$, $r\in \CR'$:
@@ -1218,7 +1218,7 @@ We set:
     Hence, $\SM[\closure{\RAF}{\food}\setminus \food, \CR']v>0$ and thereby $\SM[\closure{\RAF}{\food}\setminus \food, \CR']$ is semi-positive.
 \end{proof}
 
-We remark that the proof of Thm.~\ref{thm:NonFoodSemipositiv} can be applied
+We remark that the proof of Lemma~\ref{lem:NonFoodSemipositiv} can be applied
 to the reactions and non-food molecules of each non-trivial, maximal strong block $\block$ of $\king(\RAF)$. Equivalently, every species of a block $\block$ is produced and consumed only by reactions belonging to $\block$. Consequently, the sub-vector $v'$, obtained by restricting $v$ to the reactions of $\block$ yields:
 \begin{equation}
   \SM[X(\block)\setminus \food, \CR(\block)]v'>0.
@@ -1288,7 +1288,7 @@ which is not semi-positive as any $v>0$ yields for $v_{r_1}=v_{r_2}$ that $(\SM 
 \end{figure}
 
 \holy{
-We conclude this section by commenting on another property of strong blocks $\block$. As they are strongly connected, each reaction vertex has at least one incoming edge, i.e., from an F-reactant or F-catalyst, and at least one outgoing edge, i.e., to an F-catalyst or F-product. Theorem~\ref{thm:StrongBlocks} additionally guarantees that his holds true also for the sub-network $(X(\block)\setminus \food, \CR(\block)$ of $\block$ that is void of food species. Therefore, each reaction has at least one reactant and at least one product. We say that such a sub-network is \emph{well-formed}. 
+We conclude this section by commenting on another property of strong blocks $\block$. As they are strongly connected, each reaction vertex has at least one incoming edge, i.e., from an F-reactant or F-catalyst, and at least one outgoing edge, i.e., to an F-catalyst or F-product. Lemma~\ref{lem:StrongBlocks} additionally guarantees that his holds true also for the sub-network $(X(\block)\setminus \food, \CR(\block)$ of $\block$ that is void of food species. Therefore, each reaction has at least one reactant and at least one product. We say that such a sub-network is \emph{well-formed}. 
 }
 
 \subsection{Stoichiometric Autocatalysis of Irreducible RAFs}\label{sec:AutoCatIrrRAF}
@@ -1309,36 +1309,31 @@ catalysts of the present paper \cite{golnik_autocatalytic_2026}. The central def
 
 \vspace{6pt}
 \begin{definition}\label{def:autSubRN}
-  A CRN $(X,R)$ is \emph{\NV{stoichiometric} autocatalytic} if it contains a sub-CRN $(X',R')$
-  such that
+  A CRN $(X,R)$ is \emph{stoichiometric autocatalytic} if it contains a sub-CRN $(X',R')$ such that
 \begin{enumerate}
  \item[(i)]  $(X',R')$ is  well-formed;
- \item[(ii)]  \NV{the associated stoichiometric matrix} $\SM'\coloneqq \SM[X',R']$ is semi-positive, i.e., there exists $v\in \mathbb{R}_{>0}^{|R'|}: \SM'v>0$.
+ \item[(ii)] the associated stoichiometric matrix $\SM'\coloneqq \SM[X',R']$ is semi-positive, i.e., there exists $v\in \mathbb{R}_{>0}^{|R'|}: \SM'v>0$.
 \end{enumerate}
 \end{definition}
 \vspace{6pt}
 
 A sub-CRN $(X',R')$ that satisfies \textit{(i.)} and \textit{(ii.)}, while
 no proper subnetwork $(X'',R'')$ with $X''\subseteq X', R''\subseteq R'$
-does, is called an \emph{autocatalytic core}. 
+does, is called an \emph{autocatalytic core}. Any stoichiometric autocatalytic sub-CRN thereby contains an autocatalytic core. 
 
-From the obtained results above and the Def.~\ref{def:autSubRN} it follows that
-for an irreducible, monocatalyzed RAF $\RAF$ the subnetworks corresponding 
-to $(\closure{\RAF}{\food\setminus \food\cup W, \CR})$ and to each 
-maximal strong block $\lord'$ of $\lord(\RAF)$, i.e., $(X(\lord'), \CR(\lord'))$, are 
-\emph{stoichiometrically autocatalytic}. In particular, each block contains 
-an \emph{autocatalytic core}. 
+The structural results obtained in Sec.~\ref{subsec:King}, i.e., Lemmata~\ref{lem:StrongBlocks} and \ref{lem:NonFoodSemipositiv} and the Def.~\ref{def:autSubRN} directly yield that each sub-CRN corresponding to a maximal strong block $\block$ without food species, i.e., $(X(\block)\setminus \food, \CR(\block))$ of an irreducible, monocatalyzed RAF $\RAF$ is
+\emph{stoichiometrically autocatalytic}. In particular, $(X(\block), \CR(\block)$ contains an \emph{autocatalytic core}. 
 
 \vspace{6pt}
-\begin{corollary}\label{Thm:StrBlockCore}
-  Every strong block $\lord'$ of $\lord(\RAF)$ of an irreducible, monocatalyzed
+\begin{theorem}\label{Thm:StrBlockCore}
+  Every strong block $\block$ of $\king(\RAF)$ of an irreducible, monocatalyzed
   RAF $\RAF$ contains an autocatalytic core.
-\end{corollary}
+\end{theorem}
 \vspace{6pt}
 
 However, random instances of the binary polymer model \cite{kauffman_autocatalytic_1986} 
 irreducible RAFs reveal a remarkably rich structure, comprising up to thousands of autocatalytic 
-cores, as shown in Fig.~\ref{fig:irrRAFCores}. }
+cores, as shown in Fig.~\ref{fig:irrRAFCores}.}
 
 \begin{figure}[htb]
 	\centering
