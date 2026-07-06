@@ -1361,11 +1361,11 @@ case $\tilde{\SM}(C)$ is semi-positive, $\SM(C)$ is semi-positive. In addition, 
 
 \vspace{6pt}
 \begin{lemma}[Proof: SI]\label{lem:MetzCircuit}
-  Let $\block$ be a maximal, non-trivial strong block of $\king(\RAF)$. Then $\block$ contains an elementary circuit $C$ with one reaction satisfying Properties~$i.$-$iii.$ of Lemma~\ref{lem:StrongBlocks}, and there is a reordering of the columns of $\SM[X(C), R(C)]$ that yields a Metzler
-  matrix.
+  \holy{Let $\block$ be a maximal, non-trivial strong block of $\king(\RAF)$. Then $\block$ contains an elementary circuit $C$ with one reaction satisfying Properties~$i.$-$iii.$ of Lemma~\ref{lem:StrongBlocks}, and there is a reordering of the columns of $\SM[X(C), R(C)]$ that yields a Metzler
+  matrix.}
 \end{lemma}
 \begin{proof}
-	We start with the simple case, and assume there is only one reaction $r_1$ in $\block$ satisfying Properties~$i$ß$iii.$ of Lemma~\ref{lem:StrongBlocks}. We then have $\crgen(r_1)<\crgen(r)$ for all $r\in \CR(\block) \setminus \{r_1\}$. We may then construct the following elementary circuit:
+	\holy{We start with the simple case, and assume there is only one reaction $r_1$ in $\block$ satisfying Properties~$i$-$iii.$ of Lemma~\ref{lem:StrongBlocks}. We then have $\crgen(r_1)<\crgen(r)$ for all $r\in \CR(\block) \setminus \{r_1\}$. We may then construct the following elementary circuit:
 	\begin{equation}
 		r_1 \leftarrow x_1 \leftarrow r_2 \leftarrow x_2 \leftarrow \ldots r_n
 		\leftarrow x_m \leftarrow r_{m+1}
@@ -1379,23 +1379,23 @@ case $\tilde{\SM}(C)$ is semi-positive, $\SM(C)$ is semi-positive. In addition, 
 		x_k = \arg \min \{\sgen(x) \ \vert \ x\in X(\block)\setminus \food, s^-_{xr_k}>0\}.
 	\end{equation}
 	Since all reactions $r_k, 1< k\leq m$ are not entry reactions vertices, each of them has an F-reactant $x_k$ for which
-	$\sgen(x_k)<\crgen(r_k)$ and thereby:
+	$\crgen(r_k)>\sgen(x_k)$ and thereby:
 	\begin{equation}
-		\crgen(r_k) < \sgen(x_k) \leq \crgen(r_{k+1}), \quad 1\leq k < m-1.
+		\crgen(r_k) > \sgen(x_k) \geq \crgen(r_{k+1}), \quad 1< k < m.
 	\end{equation}
-	This generates a strictly monotone decreasing sequence
-	$(\crgen(r_k))_{1\leq k\leq m+1}$, which converges due to the finiteness of $\block$ and yields $r_{m+1}=r_1$.  Thus $C\coloneqq
-	(r_{m+1}, x_m, r_m, x_{m-1}, r_{m-1},\ldots, x_1,r_1)$ is an elementary circuit.
+	$(\crgen(r_k))_{1< k\leq m+1}$ is then a strictly monotone decreasing sequence which converges -- due to the finiteness of $\block$ and positivity of $\beta$ and $\delta$ restricted to the non-food species -- and thereby yields $r_{m+1}=r_1$.  Thus $C\coloneqq
+	(r_{m+1}, x_m, r_m, x_{m-1}, r_{m-1},\ldots, x_1,r_1)$ is an elementary circuit in $\king(\RAF)$.
 	
 	Assume now that there is $i\neq j$ such that $s^-_{x_ir_j}>0$. If $i>j$ then $\sgen(x_i)<\sgen(x_j)$ which contradicts that $\sgen(x_j)=\min
 	\{\sgen(x) \ \vert \ x\in X(B), s^-_{xr_k}>0\}$. Thus $i<j$, which implies that $\sgen(x_i)\geq\delta(r_j)$ and that $x_i$ cannot be an F-reactant of $r_j$ but only an F-catalyst, thus:
 	\begin{equation}
 		\SM_{x_ir_j}=0.
 	\end{equation} 
-	
-	Therefore, the only positive reactant stoichiometries are of the form $s^-_{x_i,r_i}, 1<i<m$. We can then obtain $S(C)$ by reordering the columns of the submatrix $\SM[X(C), R(C)]$ such that $S(C)_{x_iy}\coloneqq \SM[X(C), \CR(C)]_{x_ir_i}$. Thereby, all diagonal entries of $\SM(C)$ are non-positive, $\SM(C)_{x_1r_1}=0$, and all off-diagonal entries of $\SM(C)$ are non-negative. Thus $\SM(C)$ is a Metzler matrix.
+
+	Therefore, the only positive reactant stoichiometries are of the form $s^-_{x_i,r_i}, 1<i\leq m$. We can then obtain $S(C)$ by reordering the columns of the submatrix $\SM[X(C), R(C)]$ such that $S(C)_{x_iy}\coloneqq \SM[X(C), \CR(C)]_{x_ir_i}$. Thereby, all diagonal entries of $\SM(C)$ are non-positive, $\SM(C)_{x_1r_1}=0$, and all off-diagonal entries of $\SM(C)$ are non-negative. Thus $\SM(C)$ is a Metzler matrix.
 	\vspace{6pt}
-	
+}
+
 	We now turn to the general case and assume there are multiple
 	reactions satisfying Properties~$i.$-$iii.$ of Lemma~\ref{lem:StrongBlocks} and we collect them in $R^*(\block)$.  We may again choose $r_1\in R^*(\block):
 	\crgen(r_1)\leq \crgen(r_j), \forall r_j\in R^*(\block)$ and we have
