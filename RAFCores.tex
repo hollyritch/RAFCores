@@ -1394,7 +1394,6 @@ case $\tilde{\SM}(C)$ is semi-positive, $\SM(C)$ is semi-positive. In addition, 
 
 	Therefore, the only positive reactant stoichiometries are of the form $s^-_{x_i,r_i}, 1<i\leq m$. We can then obtain $S(C)$ by reordering the columns of the submatrix $\SM[X(C), R(C)]$ such that $S(C)_{x_iy}\coloneqq \SM[X(C), \CR(C)]_{x_ir_i}$. Thereby, all diagonal entries of $\SM(C)$ are non-positive, $\SM(C)_{x_1r_1}=0$, and all off-diagonal entries of $\SM(C)$ are non-negative. Thus $\SM(C)$ is a Metzler matrix.
 	\vspace{6pt}
-}
 
 	We now turn to the general case and assume there are multiple
 	reactions satisfying Properties~$i.$-$iii.$ of Lemma~\ref{lem:StrongBlocks} and we collect them in $R^*(\block)$.  We may again choose $r_1\in R^*(\block):
@@ -1414,38 +1413,22 @@ case $\tilde{\SM}(C)$ is semi-positive, $\SM(C)$ is semi-positive. In addition, 
 	\end{equation}
 	if $r_k \notin R^*(\block)$ or $x_k$ as an F-catalyst of $r_k$ otherwise. 
 	
-	\holy{RG until here} 
-	
 	We thereby obtain the following structure:
 	\begin{equation*}
-		(r_{l_0}, \leftarrow x_{l_0} \leftarrow\ldots \leftarrow x_{l_1})
-		\leftarrow \ldots \leftarrow (r_{l_p} \leftarrow x_{l_p} \leftarrow
-		\ldots \leftarrow x_{l_{p+1}}) \leftarrow r_{l_{p+1}}
+		(r_{1,1}, \leftarrow x_{1,1} \leftarrow\ldots \leftarrow x_{1,k_1})
+		\leftarrow \ldots \leftarrow (r_{l,1} \leftarrow x_{l,1} \leftarrow
+		\ldots \leftarrow x_{l,k_l}) \leftarrow r_{l+1}
 	\end{equation*}
-	where $r_{l_0} \coloneqq r_1, x_{l_0} \coloneqq x_1$ and each reaction vertex $r_{l_i+1}, 0\leq i\leq p$ is a pure reaction, and each species vertex $x_{l_i+1}, 0\leq i\leq p$ is an F-catalyst for the pure reaction
-	$r_{l_i+1}$. Then, by the same argument as above, we obtain a strictly
-	monotone decreasing sequence $(\delta(r_j))_{l_i\leq j \leq
-		_{l_{i+1}-1}}$ for each $(r_{l_i} \leftarrow x_{l_1+1} \leftarrow
-	\ldots x_{l_{i+1}}), 0\leq i\leq p$. By finiteness of $B$, we then obtain
-	that $r_{l_i}=r_{l_{p+1}}, 0\leq i\leq p$ yields an elementary circuit
+	where $r_{1,1} \coloneqq r_1, x_{1,1} \coloneqq x_1$, $r_{l+1}\coloneqq r_{m+1}$ and each reaction vertex $r_{i,1}, 1\leq i\leq l$ is a a reaction $r\in R^*(\block)$, and each species vertex $x_{i,1}, 1\leq i\leq l$ is an F-catalyst for $r_{i,1}$. Then, by the same argument as above, we obtain a strictly monotone decreasing sequence $(\delta(r_{i,j}))_{1\leq j \leq k_i}$ for each $i\in \{1,\ldots l\}$. Again finiteness of $\block$ guarantees 
+	$r_{i,1}=r_{l+1}$ for some $i\in \{1,\,\ldots, l\}$, which yields the elementary circuit
 	\begin{equation}
-		C\coloneqq (r_{l_{p+1}}, x_{l_{p+1}}, \ldots x_{l_i},  r_{l_i})
+		C\coloneqq (r_{l+1}, x_{l,k_l}, \ldots x_{i,1},  r_{i,1}).
 	\end{equation}
-	\vspace{6pt}
-	
-	With the same argument as above, for each $i\neq j: s^-_{x_ir_j}>0$ such
-	that there is a $k\in \{0,\ldots, p\}: l_k\leq i,j \leq l_{k+1}$ we
-	obtain that $\hat{s}_{x_ir_j}=0$.
-	
-	Assume now that there is no such $k$. If $\sgen(x_i)>\sgen(x_j)$ then
-	$\sgen(x_i)\geq \delta(r_j)$ which implies that $x_i$ cannot be an
-	F-reactant for $r_j$, thus $\hat{s}_{x_ir_j}=0$. The case
-	$\sgen(x_i)<\sgen(x_j)$ is impossible due to our choice of $x_j$. Then
-	the only remaining case is $\sgen(x_i)=\sgen(x_j)$ which is possible
-	since the minimum of $\{\sgen(x) \ \vert \ x\in X(B), s^-_{xr_j}>0\}$
-	might not be unique. This, however, implies that there is a smaller
-	elementary circuit containing a pure reaction vertex. If $i>j$ this
-	circuit can be obtained as $C'$ with:
+	Assume now again that we have $i\neq j$ such that $s^-_{x_ir_j}>0$. In the first case, if $x_i, r_j\in (r_{n,1},x_{n,1},\ldots, x_{n_k})$ for some $n\in \{1,\ldots, l\}$, we obtain with the same arguments as in the trivial case that $S_{x_ir_j}=0$.
+
+	Assume now that there is no such $n$. If $\sgen(x_i)>\sgen(x_j)$ then $\sgen(x_i)\geq \delta(r_j)$ which implies that $x_i$ cannot be an F-reactant for $r_j$, thus $S_{x_ir_j}=0$. The case
+	$\sgen(x_i)<\sgen(x_j)$ is impossible due to our choice of $x_j$. Then the only remaining case is $\sgen(x_i)=\sgen(x_j)$ which is possible since the minimum of $\{\sgen(x) \ \vert \ x\in X(B), s^-_{xr_j}>0\}$ is not necessarily unique. This, however, implies that there is a smaller elementary circuit containing a reaction from $\CR^*(\block)$. If $i>j$ this circuit can be obtained as $C'$ with:
+}
 	\begin{equation}
 		\begin{split}
 			V(C')&\coloneqq V(C)\setminus \{x_i, r_i, \ldots, x_j\}\\[0.5em]
