@@ -1424,43 +1424,40 @@ case $\tilde{\SM}(C)$ is semi-positive, $\SM(C)$ is semi-positive. In addition, 
 	\begin{equation}
 		C\coloneqq (r_{l+1}, x_{l,k_l}, \ldots x_{i,1},  r_{i,1}).
 	\end{equation}
-	Assume now again that we have $i\neq j$ such that $s^-_{x_ir_j}>0$. In the first case, if $x_i, r_j\in (r_{n,1},x_{n,1},\ldots, x_{n_k})$ for some $n\in \{1,\ldots, l\}$, we obtain with the same arguments as in the trivial case that $S_{x_ir_j}=0$.
+	Assume now again that we have $i\neq j$ such that $s^-_{x_ir_j}>0$. In the first case, if $x_i, r_j\in (r_{n,1},x_{n,1},\ldots, x_{n,n_k})$ for some $n\in \{1,\ldots, l\}$, we obtain with the same arguments as in the trivial case that $S_{x_ir_j}=0$.
 
 	Assume now that there is no such $n$. If $\sgen(x_i)>\sgen(x_j)$ then $\sgen(x_i)\geq \delta(r_j)$ which implies that $x_i$ cannot be an F-reactant for $r_j$, thus $S_{x_ir_j}=0$. The case
 	$\sgen(x_i)<\sgen(x_j)$ is impossible due to our choice of $x_j$. Then the only remaining case is $\sgen(x_i)=\sgen(x_j)$ which is possible since the minimum of $\{\sgen(x) \ \vert \ x\in X(B), s^-_{xr_j}>0\}$ is not necessarily unique. This, however, implies that there is a smaller elementary circuit containing a reaction from $\CR^*(\block)$. If $i>j$ this circuit can be obtained as $C'$ with:
-}
+
 	\begin{equation}
 		\begin{split}
-			V(C')&\coloneqq V(C)\setminus \{x_i, r_i, \ldots, x_j\}\\[0.5em]
-			E(C')& \coloneqq E(C)\setminus \{(x_k, r_k) \ | \ j-1\leq k \leq i\} \cup \{(r_k, x_{k+1}) \ | \ j\leq k \leq i\}
+			V(C')&\coloneqq V(C)\setminus \{x_j, r_{j+1}, \ldots, x_{i-1}\}\\[0.5em]
+			E(C')& \coloneqq E(C)\setminus \left(\{(x_k, r_k) \ | \ j\leq k < i\} \cup \{(r_k, x_{k-1}) \ | \ j< k \leq i\}\right),
 		\end{split}
 	\end{equation} 
-	or if $i<j$ then this circuit can be obtained as $C''$:
+	or if $i<j$ then this circuit can be obtained as $C'$:
 	\begin{equation}
 		\begin{split}
-			V(C'') & \coloneqq \{r_j, x_{j-1}, \ldots, x_i\} \\
-			E(C'') & \coloneqq\{(x_k, r_k) \ | \ i \leq k \leq j-1\} \cup \{(x_i,r_j)\} \cup \{(r_k, x_{k-1}) \ | \ i+1\leq k \leq j\}
+			V(C'') & \coloneqq \{x_i, r_{i+1}, \ldots, x_{j-1}, r_{j}\} \\
+			E(C'') & \coloneqq\{(x_k, r_k) \ | \ i < k < j\} \cup \{(x_i,r_j)\} \cup \{(r_k, x_{k-1}) \ | \ i < k \leq j\}
 		\end{split}
 	\end{equation} 
-	It holds by construction that either $r_1\in R(C')$ or that there is a
-	pure reaction vertex $r_{l_k} \in R(C''): i<l_k<j$. We may now repeat
-	this procedure until we can not find such a metabolite-to-reaction edge
-	anymore and obtain a final elementary circuit $\tilde{C}$.
-	
+	It holds by construction that either $r_1\in R(C')$ or that there is another reaction $r_{l,1} \in R(C''): i<l\leq j$. We may now repeat
+	this procedure until we can not find such a metabolite-to-reaction edge anymore and obtain a final elementary circuit $\tilde{C}$.
+
 	We can then obtain $S(\tilde{C})$ by reordering the columns of the
 	submatrix $\SM[X(\tilde{C}), R(\tilde{C})]$ such that
 	\begin{equation}
 		\SM(\tilde{C})_{xy}\coloneqq \SM[X(\tilde{C}), R(\tilde{C})]_{xv^{\tilde{C}}_{out}(x)}
 	\end{equation} 
-	where $v^{\tilde{C}}_{out}(x)$ is the unique reaction $r\in R(\tilde{C}$
-	such that $(x,r)\in E(\tilde{C})$. Thereby, all diagonal entries of
-	$\SM(\tilde{C})$ are nonpositive, i.e., all are negative except
-	$\SM(\tilde{C})_{x_1r_1}$, and all off-diagonal entries of
-	$\SM(\tilde{C})$ are nonnegative, thus $\SM(\tilde{C})$ is a Metzler
-	matrix.
+	where $v^{\tilde{C}}_{out}(x)$ is the unique reaction $r\in R(\tilde{C})$ such that $(x,r)\in E(\tilde{C})$. Thereby, all diagonal entries of
+	$\SM(\tilde{C})$ are non-positive, with at least one $0$  diagonal entrz, and all off-diagonal entries of $\SM(\tilde{C})$ are nonnegative, thus $\SM(\tilde{C})$ is a Metzler matrix.
+}
 \end{proof}
 
 \vspace{6pt}
+
+\holy{RG until here}
 
 We call an elementary circuit with the properties defined in
 Lemma~\ref{lem:MetzCircuit} a Metzler circuit. Unfortunately, such a Metzler circuit can, as shown in the proof, still contain a species-to-reaction or, equivalently, metabolite-to-reaction (MR-) chord. The example in Sec.~\ref{sec:MetzNotCore} depicts such a scenario. Nevertheless, they are always \emph{stoichiometrically autocatalytic}.
