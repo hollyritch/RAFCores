@@ -869,7 +869,7 @@ To keep the exposition concise, we assume this exclusion throughout and do not r
 \end{figure}
 }
 
-\subsubsection{The K\H{o}nig Graph of Monocatalyzed Irreducible RAFs}\label{subsec:King}
+\subsubsection{The K\H{o}nig Graph of monocatalyzed, irreducible RAFs}\label{subsec:King}
 
 Let $\mathbf{\Phi}=(X,\FR,\cat(\FR))$ be a CRS with food set $\food\subseteq X$. We consider now the sub-CRS $\mathbf{\Phi}'\subseteq \mathbf{\Phi'}$ induced by a monocatalyzed irreducible RAF $\RAF'$, i.e.
 \begin{equation}\label{eq:RAF-CRS}
@@ -1177,8 +1177,8 @@ However, reactions $r\in \CR'$ with generation order $1$ exert the same effect o
 Let: 
 \begin{equation}
 	\begin{split}
-  		f&: X'\times [1,\ldots, n] \rightarrow \mathbb{R} \\[0.5em]
-		v&: X'\times [1,\ldots, n] \rightarrow \mathbb{R} \\[0.5em]
+  		f&: X'\times \{1, \ldots, n\} \rightarrow \mathbb{R} \\[0.5em]
+		v&: X'\times \{1,\ldots, n\} \rightarrow \mathbb{R} \\[0.5em]
 	\end{split}
 \end{equation}
 We will use the notation $\CR^k\coloneqq \{r\in \CR' \ \vert \ 
@@ -1308,7 +1308,7 @@ Indeed, $\SM$ is not semi-positive as any $v>0$ yields for $v_{r_1}=v_{r_2}$ tha
 \holy{We conclude this section by commenting on another property of strong blocks $\block$. As they are strongly connected, each reaction vertex has at least one incoming edge, from an F-reactant or F-catalyst, and at least one outgoing edge, to an F-catalyst or F-product. Lemma~\ref{lem:StrongBlocks} additionally guarantees that his holds true also for the sub-network $(X(\block)\setminus \food, \CR(\block)$ of $\block$ that is void of food species. Therefore, each reaction has at least one reactant and at least one product. We say that such a sub-network is \emph{well-formed}. 
 }
 
-\subsubsection{Stoichiometric Autocatalysis of Irreducible RAFs}\label{sec:AutoCatIrrRAF}
+\subsubsection{Autocatalytic capacity of monocatalyzed, irreducible RAFs}\label{sec:AutoCatIrrRAF}
 
 %\holy{Minimal \emph{stoichiometrically autocatalytic} CRN sub-networks, formally 
 %introduced in Sec.~\ref{sec:AutoCatIrrRAF} and termed \emph{autocatalytic cores} 
@@ -1336,25 +1336,22 @@ catalysts of the present paper \cite{golnik_autocatalytic_2026}. The central def
 
 A sub-CRN $(X',\CR')$ that satisfies \textit{(i.)} and \textit{(ii.)}, while no proper sub-CRN $(X'',\CR'')$ with $X''\subset X', \CR''\subset \CR'$ does, is called an \emph{autocatalytic core}. Any stoichiometric autocatalytic sub-CRN thereby contains an autocatalytic core. An autocatalytic core of size $1$, i.e., $|X'|=|R'|=1$, is called an \emph{explicit autocatalytic reaction}.  
 
-The structural results obtained in Sec.~\ref{subsec:King}, i.e., Lemmata~\ref{lem:StrongBlocks} and \ref{lem:NonFoodSemipositiv} yield in combination with Def.~\ref{def:autSubRN} that each sub-CRN $(X(\block)\setminus \food, \CR(\block))$, corresponding to a maximal strong block $\block$ of the bipartite K\H{o}nig graph of an irreducible, monocatalyzed RAF $\RAF$, is \emph{stoichiometrically autocatalytic}. In particular, the main result of this section is the following. 
+The structural results obtained in Sec.~\ref{subsec:King}, i.e., Lemmata~\ref{lem:StrongBlocks} and \ref{lem:NonFoodSemipositiv} yield in combination with Def.~\ref{def:autSubRN} that each sub-CRN $(X(\block)\setminus \food, \CR(\block))$, corresponding to a maximal, non-trivial, strong block $\block$ of the bipartite K\H{o}nig graph of an irreducible, monocatalyzed RAF $\RAF$, is \emph{stoichiometrically autocatalytic}. 
 
 \vspace{6pt}
 \begin{theorem}\label{Thm:StrBlockCore}
-  Every strong block $\block$ of $\king(\RAF)$ of an irreducible, monocatalyzed
-  RAF $\RAF$ contains an autocatalytic core.
+  Let $\RAF$ be an irreducible, monocatalyzed RAF. Then every maximal, non-trivial strong block $\block$ of $\king(\RAF)$ contains an autocatalytic core.
 \end{theorem}
 \vspace{6pt}
- }
+}
 
 \holy{
-Thm.~\ref{Thm:StrBlockCore} provides only partial explanation on the large number of autocatalytic cores observed in each irreducible RAF obtained from random instances of the binary polymer model \cite{kauffman_autocatalytic_1986}, which are shown in Fig.~\ref{fig:irrRAFCores}. Indeed, the number of autocatalytic cores per maximal strong block (\TODO{Fig.TBA}), still yields up to \TODO{TBA} autocatalytic cores per block. We will therefore aim to decipher the structures of each block that give rise to autocatalytic cores.
+This result provides, however, only partial explanation on the large number of autocatalytic cores observed in each irreducible RAF obtained from random instances of the binary polymer model \cite{kauffman_autocatalytic_1986}, which are shown in Fig.~\ref{fig:irrRAFCores}. Indeed, the number of autocatalytic cores per maximal strong block (\TODO{Fig.TBA}), still yields up to \TODO{TBA} autocatalytic cores per block. It is, therefore, consequential to further investigate the structures of each block that give rise to autocatalytic cores.
 
 
-To this end, we revisit the proof of \cite[Thm.~3.1]{golnik_bridging_2026}. We have shown that each RAF $\RAF$ that is itself not a CAF is associated with an elementary circuit $C$ (SI Sec.~\ref{S-sec:Glossary}) in the directed bipartite K\H{o}nig graph of $\RAF$, whose species and reaction vertices $X(C)$ and $\CR(C)$, respectively, define an autocatalytic sub-CRN (see also \cite[Remark~13]{golnik_bridging_2026}). We adapt this construction to obtain such an \emph{autocatalytic} elementary circuit for each strong block.
+To this end, we revisit the proof of \cite[Thm.~3.1]{golnik_bridging_2026}, where we have shown that each RAF $\RAF$ that is itself not a CAF is associated with an elementary circuit $C$ (SI Sec.~\ref{S-sec:Glossary}) in the directed bipartite K\H{o}nig graph of $\RAF$, whose species and reaction vertices $X(C)$ and $\CR(C)$, respectively, define an autocatalytic sub-CRN (see also \cite[Remark~13]{golnik_bridging_2026}). We adapt this construction to obtain such an \emph{autocatalytic} elementary circuit for each strong block.
 
-By definition, every vertex of a maximal strong block, and thereby also each of its entry reaction, is located on an elementary circuit. Together with the pre-order of a RAF, this observation can be employed to construct an elementary circuit $C$ for every strong block that gives rise to a stoichiometric submatrix $\tilde{\SM}(C)\coloneqq \SM[X(C), R(C)]$ in which each column and row has at most one negative entry, and one column is non-negative with at least one positive entry. The columns of $\tilde{\SM}(C)$ can then be reordered to obtain the matrix $\SM(C)$ with non-positive diagonal and
-non-negative off-diagonal entries. A matrix with non-negative off-diagonal entries is called  \emph{Metzler} matrix. It is not hard to see that, in
-case $\tilde{\SM}(C)$ is semi-positive, $\SM(C)$ is semi-positive. In addition, the sub-CRN of an elementary circuit $(X(C),R(C))$ is, by definition, well-formed.
+%By definition, every vertex of a maximal strong block, and thereby also each of its entry reaction, is located on an elementary circuit. IN combination with the pre-order of a RAF, this observation can be used to construct an elementary circuit $C$ for every strong block that gives rise to a stoichiometric submatrix $\tilde{\SM}(C)\coloneqq \SM[X(C), R(C)]$ in which each column and row has at most one negative entry, and one column is non-negative with at least one positive entry. The columns of $\tilde{\SM}(C)$ can then be reordered to obtain the matrix $\SM(C)$ with non-positive diagonal and non-negative off-diagonal entries. A matrix with non-negative off-diagonal entries is called  \emph{Metzler} matrix. It is not hard to see that, in case $\tilde{\SM}(C)$ is semi-positive, $\SM(C)$ is semi-positive. In addition, the sub-CRN of an elementary circuit $(X(C),R(C))$ is, by definition, well-formed.
 }
 
 \vspace{6pt}
@@ -1461,10 +1458,10 @@ We call an elementary circuit associated with a stoichiometric Metzler sub-matri
 
 \vspace{6pt}
 \begin{lemma}[Proof: SI]\label{lem:MetzCircAut}
-  Let $\RAF$ be an irreducible, monocatalyzed RAF. If $C$ is a Metzler circuit that contains a \emph{reaction} satisfying Properties~$i.$-$iii.$ and $X(C)\cap \food=\emptyset$, then $(X(C), R(C))$ is \emph{stoichiometrically autocatalytic}.
+  Let $\RAF$ be an irreducible, monocatalyzed RAF. If $C$ is a Metzler circuit that contains a \emph{reaction} satisfying Properties~$i.$-$iii.$, then $(X(C), R(C))$ is \emph{stoichiometrically autocatalytic}.
 \end{lemma}
 \begin{proof}
-	If $C$ is a Metzler circuit that contains a reaction satisfying Properties~$i.$-$iii.$ and $X(C)\setminus \food=\emptyset$, then there is a reordering of the columns of the stoichiometric submatrix $\SM[X(C),R(C)]$ that reads
+	If $C$ is a Metzler circuit that contains a reaction satisfying Properties~$i.$-$iii.$, then there is a reordering of the columns of the stoichiometric submatrix $\SM[X(C),R(C)]$ that reads
 	\begin{equation}
 		\SM(C) = 
 		\begin{pmatrix}
@@ -1491,7 +1488,7 @@ We call an elementary circuit associated with a stoichiometric Metzler sub-matri
 \holy{
 \vspace{6pt} If the sub-CRN induced by an elementary circuit $C$ is
 \emph{stoichiometrically autocatalytic}, we say that $C$ is
-\emph{stoichiometrically autocatalytic}. Metzler circuits can, as shown in the proof of Lemma~\ref{lem:MetzCircuit}, still contain a species-to-reaction or, equivalently, a metabolite-to-reaction (MR-)chord. However, these chords are neutral in their impact on the stoichiometric matrix as they are always induced by an F-catalyst. Thus the associated entry in the stoichiometric matrix is $0$. The example in Sec.~\ref{sec:MetzNotCore} depicts such a scenario. 
+\emph{stoichiometrically autocatalytic}. Metzler circuits can, as shown in the proof of Lemma~\ref{lem:MetzCircuit}, still contain a species-to-reaction or, equivalently, a metabolite-to-reaction (MR-)chord. They are, however, neutral in their impact on the stoichiometric matrix as the involved species is an F-catalyst and the corresponding entry in the stoichiometric matrix is $0$. The example in Sec.~\ref{sec:MetzNotCore} depicts such a scenario. 
 
 Elementary circuits free of MR-chords play an important role in enumerating autocatalytic cores \cite{golnik_using_2026}. As they are always Metzler circuits, the following corollary is a direct consequence.
 \vspace{6pt}
@@ -1502,15 +1499,11 @@ Elementary circuits free of MR-chords play an important role in enumerating auto
 \vspace{6pt}
 }
 
-In case the strong block consists of a single reaction $r$ and a single species $x$, then $x$ is an F-catalyst and an F-product. In addition, there
-is only one elementary circuit, in particular, the digon $(x,r,x)$, which
-is by definition a Metzler circuit.
+\holy{
+In case the maximal strong block $\block$ consists of a single reaction $r$ and a single species $x\notin \food$, Lemma~\ref{lem:StrongBlocks} guarantees $x$ is being an F-catalyst and an F-product at the same time. In addition, there is only one elementary circuit, in particular, the digon $(x,r,x)$, which is by definition a Metzler circuit.
 \vspace{6pt}
 \begin{corollary}\label{cor:AutoCatReac}
-  Let $\RAF$ be a non-trivial, irreducible RAF and $B$ be a strong block of
-  $L(\RAF)$.  If $r$ is composed of a single reaction $r$ and a single
-  species $x$, then $r$ is an explicit autocatalytic reaction, and $x$ is
-  an F-catalyst and an F-product of $r$.
+  Let $\RAF$ be an irreducible, monocatalyzed RAF and $\block$ a maximal strong block of $\king(\RAF)$. If $|\CR(\block)|=|X(\block)|=1$ and $X(\block)\cap \food=\emptyset$, then $r$ is an explicit autocatalytic reaction.
 \end{corollary}
 %\begin{proof}
 %	Assume first that $x$ is not a catalyst. Since $B$ is strongly connected, there is an edge $(x,r)$ and $(r,x)$. Assume now that 
@@ -1563,35 +1556,38 @@ The following example illustrates such a situation.
     $r_2$.}
   \label{Fig:ExplAutocatReac}
 \end{figure}
-\FloatBarrier Indeed, $B=\{x_3, r_2\}$ is a strong block and $r_2$ is an
-explicit autocatalytic reaction.
+\FloatBarrier Indeed, $\block\coloneqq \{x_3, r_2\}$ is a maximal strong block and $r_2$ is an explicit autocatalytic reaction.
+}
 
+\holy{
 Lemma~\ref{lem:MetzCircuit}, \ref{lem:MetzCircAut}, and
-Cor.~\ref{cor:AutoCatReac}, together yield the main result of this
-contribution.
+Cor.~\ref{cor:AutoCatReac}, together yield the following main result.
 
 \vspace{6pt}
 \begin{theorem}
-  Let $\RAF$ be a non-trivial, irreducible RAF. Then every strong block $B$
-  of $L(\RAF)$ contains an autocatalytic Metzler circuit. In case $B$ is
-  composed of a single reaction $r$ and a single species $x$, then $r$ is
-  an explicit autocatalytic reaction and $x$ is an F-catalyst and an
-  F-product of $r$.
+  Let $\RAF$ be an irreducible, monocatalyzed RAF. Then every maximal strong block $\block$ of $\king(\RAF)$ contains an autocatalytic Metzler circuit. If $\block$ is composed of a single reaction $r$ and a single species $x\notin \food$, $r$ is an explicit autocatalytic reaction.
 \end{theorem} 
 \vspace{6pt}
 
 As noted, these elementary circuits need not be autocatalytic cores, for
-various reasons.  One is digons, i.e., elementary circuits of length $2$
+various reasons. One is digons, i.e., elementary circuits of length $2$
 where the species-to-reaction edge is not located along the original
 Metzler circuit. An example of this situation is shown in
 Sec.~\ref{sec:MetzNotCore}.  Another reason is non-unit stoichiometries,
 which can give rise to strictly smaller circuits inside the constructed
 \emph{stoichiometrically autocatalytic} Metzler circuit. The example in
-Sec.~\ref{sec:NonUnStoich} captures such a scenario. As the K\H{o}nig graph
-is a simple digraph, stoichiometries are naturally not encoded besides
+Sec.~\ref{sec:NonUnStoich} captures such a scenario. As the K\H{o}nig 
+is simple, stoichiometries are naturally not encoded besides
 being specified as edge labels. We can, therefore, not hope to find a
 general construction method that identifies autocatalytic cores
 immediately.
+
+To lift the secret on the number of autocatalytic cores inside an irreducible RAF, we can now engage the obtained results to consider irreducible RAFs that are not necessarily monocatalyzed.
+}
+
+\subsubsection{Autocatalytic Cores of irreducible RAFs}\label{sec:AutoCatIrrRAF}
+
+We have seen that each maximal, non-trivial strong block of an irreducible, monocatalyzed contains an autocatalytic core. 
 
 \section{Examples}
 
