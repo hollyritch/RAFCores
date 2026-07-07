@@ -1486,8 +1486,7 @@ We call an elementary circuit associated with a stoichiometric Metzler sub-matri
 \vspace{6pt}
 }
 \holy{
-\vspace{6pt} If the sub-CRN induced by an elementary circuit $C$ is
-\emph{stoichiometrically autocatalytic}, we say that $C$ is
+\vspace{6pt} Whenever the sub-CRN induced by an elementary circuit $C$ is \emph{stoichiometrically autocatalytic}, we call that $C$ 
 \emph{stoichiometrically autocatalytic}. Metzler circuits can, as shown in the proof of Lemma~\ref{lem:MetzCircuit}, still contain a species-to-reaction or, equivalently, a metabolite-to-reaction (MR-)chord. They are, however, neutral in their impact on the stoichiometric matrix as the involved species is an F-catalyst and the corresponding entry in the stoichiometric matrix is $0$. The example in Sec.~\ref{sec:MetzNotCore} depicts such a scenario. 
 
 Elementary circuits free of MR-chords play an important role in enumerating autocatalytic cores \cite{golnik_using_2026}. As they are always Metzler circuits, the following corollary is a direct consequence.
@@ -1561,7 +1560,7 @@ The following example illustrates such a situation.
 
 \holy{
 Lemma~\ref{lem:MetzCircuit}, \ref{lem:MetzCircAut}, and
-Cor.~\ref{cor:AutoCatReac}, together yield the following main result.
+Cor.~\ref{cor:AutoCatReac}, together, yield the following main result.
 
 \vspace{6pt}
 \begin{theorem}
@@ -1585,9 +1584,34 @@ immediately.
 To lift the secret on the number of autocatalytic cores inside an irreducible RAF, we can now engage the obtained results to consider irreducible RAFs that are not necessarily monocatalyzed.
 }
 
+\holy{
 \subsubsection{Autocatalytic Cores of irreducible RAFs}\label{sec:AutoCatIrrRAF}
 
-We have seen that each maximal, non-trivial strong block of an irreducible, monocatalyzed contains an autocatalytic core. 
+We have seen that each maximal, non-trivial strong block of an irreducible, monocatalyzed RAF $\RAF$ contains an autocatalytic core, that is a sub-CRN $(X'(C),\CR'(C))$ of an autocatalytic elementary circuit $(X(C), \CR(C))$. Adapting the result of Lemma~\ref{lem:ExpoSubCRS} yields the following Lemma.
+
+\vspace{6pt}
+\begin{lemma}
+	Let $\mathbf{\Phi}\coloneqq (X,\FR,\cat(\FR))$ be a CRS with specified \emph{food set} $\food\subseteq X$, $\RAF$ an irreducible RAF, and $\cat'(\RAF) \coloneqq \{ c \in\cat(\fr) \; \mid\; c \subseteq \closure{\RAF}{\food} \}$. Let further $\block$ be a non-trivial strong block in $\king(\Gamma(\mathbf{\Phi}'))$ with $\mathbf{\Phi}'\coloneqq (\closure{\RAF}{\food},\RAF, \cat'(\RAF))$ and $(X, R')$ an autocatalytic core such that $X'\subseteq X(\block), \CR'\subseteq \CR(\block)$. Then $\Gamma(\mathbf{\Phi})$ contains at least 
+	\begin{equation}
+		n \coloneqq \prod_{r\in \CR'} \vert \{ c \in\cat(\fr) \; \mid\; c \subseteq \closure{\RAF}{\food} \} \vert 
+	\end{equation}
+	autocatalytic cores.
+\end{lemma}
+\begin{proof}
+	Lemma~\ref{lem:ExpoSubCRS} guarantees that $\RAF$ is an irreducible, monocatalyzed RAF in $\mathbf{\Phi}'$. Therefore, according to Thm.~\ref{Thm:StrBlockCore} $\king(\Gamma(\mathbf{\Phi}'))$ consists of at least one maximal, non-trivial strong block $\block$ that contains an autocatalytic core, $(X', \CR')$. Then each $(X', \tilde{\CR}')$ with:
+	\begin{equation}
+		\tilde{\CR}'\coloneqq \{\tilde{r} \in [r]_{\sim} \ \vert \ r \in \CR'\}
+	\end{equation}
+	is an autocatalytic core. Thus, there are at least
+	\begin{equation}
+		n'=\prod_{r\in \CR'} \left \vert [r]_{\sim} \right \vert
+	\end{equation}
+	autocatalytic cores in $\Gamma(\mathbf{\Phi})$. Since, CRN reactions are in 1-to-1 correspondence with catalyzations of their respective F-reactions, indeed, $n'=n$.
+\end{proof}
+\vspace{6pt}
+}
+
+\holy{RG until here}
 
 \section{Examples}
 
