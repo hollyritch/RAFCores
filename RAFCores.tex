@@ -238,104 +238,48 @@
 Wilhelm Ostwald's considerations in 1890 on whether chemical reactions
 could be catalyzed by one of their own products \cite{Ostwald:90} marked
 the provenance of autocatalysis. In its simplest form, \NV{a}utocatalysis
-appears as an autocatalytic reaction where one participating species drives
-its own formation, fueled by a sufficient supply of food molecules. In
-subsequent decades, \emph{autocatalytic reactions} appeared, either
-explicitly or implicitly, in the literature across a wide range of
-reaction-network settings, including chemistry, ecology, population
-dynamics, and epidemiology \cite{lotka_contribution_1910,
-  lotka_analytical_1920, lotka1925elements, volterra1926variazioni,
-  kermack_contributions_1991}. One of the most convincing examples is the
-transmission of viral infections from one individual to another
-\cite{kermack_contributions_1991}, resulting in an exponential explosion of
-numbers of infected individuals, e.g., as observed during the COVID-19
-pandemic \cite{saxena_propagation_2021}.
+appears as an autocatalytic reaction where one participating species drives its own formation, fueled by a sufficient supply of food molecules. In subsequent decades, \emph{autocatalytic reactions} appeared, either explicitly or implicitly, in the literature across a wide range of reaction-network settings, including chemistry, ecology, population dynamics, and epidemiology \cite{lotka_contribution_1910,
+lotka_analytical_1920, lotka1925elements, volterra1926variazioni,  kermack_contributions_1991}. One of the most convincing examples is the transmission of viral infections from one individual to another
+\cite{kermack_contributions_1991}, resulting in an exponential explosion of numbers of infected individuals, e.g., as observed during the COVID-19 pandemic \cite{saxena_propagation_2021}.
 
 From the simple idea of an autocatalytic reaction, a growing field of
 research has developed over the past decades, resulting in different
-concepts of autocatalysis \cite{andersen_defining_2021}.  A first line of
-studies focused on entities driving their own reproduction in complex
-networks, so-called \emph{replicators}, such as Eigen's quasi-species, an
-ensemble of genotypes that arrange themselves around a common species of
-which they differ by a series of mutations
+concepts of autocatalysis \cite{andersen_defining_2021}.  A first line of studies focused on entities driving their own reproduction in complex
+networks, so-called \emph{replicators}, such as Eigen's quasi-species, an ensemble of genotypes that arrange themselves around a common species of which they differ by a series of mutations
 \cite{eigen_selforganization_1971}.  Subsequent research applied this
 concept to metabolic networks to identify important metabolic
-\emph{autocatalytic replicators} such as ATP
-\cite{kun_computational_2008}. In a more general way, sequences of
+\emph{autocatalytic replicators} such as ATP \cite{kun_computational_2008}. In a more general way, sequences of
 reactions whose combined net reaction is autocatalytic have been termed
 autocatalytic cycles, and shown to be prevalent in the central carbon
 metabolism of \emph{Escherichia coli} \cite{barenholz_design_2017,
   smith_universality_2004}. Similar ideas have been studied subsequently
-\cite{joshi_autocatalytic_2021}, as they relate closely to the hypercycle
-concept originally proposed by Eigen and Schuster
+\cite{joshi_autocatalytic_2021}, as they relate closely to the hypercycle concept originally proposed by Eigen and Schuster
 \cite{eigen_principle_1977}.
 
-\PFS{A concise definition of \emph{stoichiometric autocatalysis} was
-  proposed in \cite{blokhuis_Universal_2020}, as a generalization of the
-  idea of an autocatalytic cycle in accordance with the IUPAC definition of
-  autocatalytic reactions \cite{gold_iupac_2025}.}  This formalization has
-recently received increasing attention \PFS{since its conception in
-  2020. It has lead to} the development of algorithms for enumerating
+A concise definition of \emph{stoichiometric autocatalysis} was
+proposed in \cite{blokhuis_Universal_2020}, as a generalization of the
+idea of an autocatalytic cycle in accordance with the IUPAC definition of autocatalytic reactions \cite{gold_iupac_2025}.  This formalization has recently received increasing attention since its conception in
+2020. It has lead to the development of algorithms for enumerating
 minimal and irreducible autocatalytic subsystems in fully reversible
 \cite{kosc_thermodynamic_2025} CRNs and CRNs with reversible and
 irreversible reactions \cite{gagrani_polyhedral_2024, golnik_birne_2025,
-  golnik_enumeration_2026, golnik_using_2026}.  \emph{Stoichiometric
-autocatalysis} was introduced in \cite{blokhuis_Universal_2020} for fully
-reversible CRNs lacking explicit catalysis. Recently, the theory has been
-extended to CRNs containing both reversible and irreversible as well as
-explicitly catalyzed reactions \cite{golnik_autocatalytic_2026}.
+golnik_enumeration_2026, golnik_using_2026}. Originally introduced in fully reversible CRNs lacking explicit catalysis \cite{blokhuis_Universal_2020}, the theory on stoichiometric autocatalysis has recently been extended to CRNs containing both reversible and irreversible as well as explicitly catalyzed reactions \cite{golnik_autocatalytic_2026}.
 
-An alternative approach \PFS{to formalize system-level autocatalysis}
+An alternative approach to formalize system-level autocatalysis
 focused on systems of chemical reactions in which every reaction is, in
 general, catalyzed \cite{lohn_evolving_1998, steel_emergence_2000}. The
 original idea dates back to Kauffman's considerations
-\cite{kauffman_autocatalytic_1986} about how life on Earth may have emerged
-as a metabolism-first event rather than a genetics-first one. Kauffman
-explored the idea of whether sets of polypeptide complexes that were
-generated via reactions that are exclusively catalyzed by members of the
-set could have led to collectively self-reproducing systems.  Under
-reasonable assumptions and a sufficient supply of amino acid monomers,
-surprisingly, their existence becomes almost guaranteed as long as
-polypeptide chains exceed a certain length. These ideas built the
-foundation for later work on \textsc{Reflexively Autocatalytic
-  Food-generated sets} (RAF), which were studied extensively in many
-variations \cite{steel_emergence_2000, mossel_random_2005, steel_minimal_2013,
-  smith_autocatalytic_2014, hordijk_history_2019, steel20}.
+\cite{kauffman_autocatalytic_1986} about how life on Earth may have emerged as a metabolism-first event rather than a genetics-first one. Kauffman explored the idea of whether sets of polypeptide complexes that were generated via reactions that are exclusively catalyzed by members of the set could have led to collectively self-reproducing systems.  Under reasonable assumptions and a sufficient supply of amino acid monomers, surprisingly, their existence becomes almost guaranteed as long as polypeptide chains exceed a certain length. These ideas laid the foundation for later work on \textsc{Reflexively Autocatalytic
+Food-generated sets} (RAF), which were studied extensively in many
+variations \cite{steel_emergence_2000, mossel_random_2005, steel_minimal_2013, smith_autocatalytic_2014, hordijk_history_2019, steel20}.
 
-Related to different approaches to thinking about the problem of how life
-has emerged on a primordial Earth \cite{kauffman_autocatalytic_1986,
-  unterberger_stoechiometric_2022}, \textsc{RAF sets} and
-\emph{stoichiometric autocatalysis} differ substantially in their
-motivation, setting, and mathematical formalization. \PFS{Notably,
-  \textsc{RAF} theory is phrased in terms of catalytic reaction systems
-  (CRS) \textit{sensu} Lohn \cite{lohn_evolving_1998}, while
-  \emph{stoichiometric autocatalysis} is grounded in the tradition of
-  chemical reaction network theory, tracing back to Rutherford Aris
-  \cite{aris_prolegomena_1965}. A meaningful connection between these 
-  two frameworks has been investigated} only very recently
-\cite{golnik_bridging_2026}. Notably, the RAF framework, in its original
-formulation, allows reactions to also occur uncatalyzed, at least
-initially, which seems reasonable from a chemical perspective and
-considering the time life required to develop. In a more restrictive
+Related to different approaches to thinking about the problem of how life has emerged on a primordial Earth \cite{kauffman_autocatalytic_1986, unterberger_stoechiometric_2022}, \textsc{RAF sets} and \emph{stoichiometric autocatalysis} differ substantially in their motivation, setting, and mathematical formalization. Notably, \textsc{RAF} theory is phrased in terms of catalytic reaction systems (CRS) \textit{sensu} Lohn \cite{lohn_evolving_1998}, while \emph{stoichiometric autocatalysis} is grounded in the tradition of chemical reaction network theory, tracing back to Rutherford Aris \cite{aris_prolegomena_1965}. A meaningful connection between these two frameworks has been investigated only very recently \cite{golnik_bridging_2026}. Notably, the RAF framework, in its original formulation, allows reactions to also occur uncatalyzed, at least initially, which seems reasonable from a chemical perspective and considering the time life required to develop. In a more restrictive
 setting, i.e., in \textsc{Constructively Autocatalytic F-generated sets}
-(CAFs), reactions can only be executed if all catalysts have been generated
-beforehand. Interestingly, a RAF that is itself not entirely constrained in
-such a manner is always \emph{stoichiometrically autocatalytic}
-\cite{golnik_bridging_2026}.
+(CAFs), reactions can only be executed if catalysts have been generated beforehand. Interestingly, a RAF that is itself not entirely constrained in such a manner is always \emph{stoichiometrically autocatalytic} \cite{golnik_bridging_2026}.
 
 
 In this contribution, we extend this theory and set out to identify the
-underlying structures carrying the autocatalytic capacity of a RAF that is
-itself not a CAF. As an initial step, we overcome the menacing obstacle
-that \textsc{RAFs} are embedded in catalytic reaction systems (CRS), while
-\emph{stoichiometric autocatalysis} was derived from chemical reaction
-networks (CRNs). It turns out that the set of reactions of a CRS can be
-obtained as the quotient set of the reactions in the underlying CRN. In
-addition, we show that requiring minimality, with respect to the RAF
-property, imposes remarkable constraints on the emerging graph
-structures. Finally, we explore how these consequences impact on the
-correspondence between the two notions of minimality: \textsc{irreducible
-RAFs} and \emph{autocatalytic cores}. 
+underlying structures carrying the autocatalytic capacity of a RAF that is itself not a CAF. As an initial step, we overcome the menacing obstacle that \textsc{RAFs} are embedded in catalytic reaction systems (CRS), while \emph{stoichiometric autocatalysis} was derived from chemical reaction networks (CRNs). It turns out that CRS reflect the quotient structure of its associated CRN. In addition, we show that requiring minimality, with respect to the RAF property, imposes remarkable constraints on the emerging graph structures. Finally, we explore how these consequences impact on the correspondence between the two notions of minimality: \textsc{irreducible RAFs} and \emph{autocatalytic cores}. 
 
 \section{Two different Representations of Chemical Systems}
 
@@ -410,10 +354,7 @@ Eq.~\ref{eq:reaction} can then be rewritten as:
 \end{equation}
 We refer to species appearing in Eq.~\ref{eq:Mod.SmEq} with $\sigma^{-}_{xr}>0$, 
 $\sigma^{+}_{xr}>0$, and $k_{xr}>0$ as F-reactants,
-F-products, and F-catalysts, respectively. The nomenclature `F-catalysts' is to 
-distinguish this notion from the more loose definition of a catalyst as a 
-species that is both reactant and product, which is often also found in CRN literature. 
-We collect F-reactants, F-products, and F-catalysts in the following sets:
+F-products, and F-catalysts, respectively. The nomenclature ``F-catalysts'' is to distinguish this notion from the more loose definition of a catalyst as a species that is both reactant and product, which is often also found in CRN literature. We collect F-reactants, F-products, and F-catalysts in the following sets:
 \begin{equation}
   \begin{split}
     \feducts(r) & \coloneqq \{x\in X \ | \ \sigma^-_{xr} > 0\}; \\
@@ -447,9 +388,9 @@ The \emph{catalyzation} set $\cat(\FR)=\{ \cat(\mathbf{r)} \}_{\fr\in\FR}$ const
 For a single F-reaction $\fr$, the set of catalyzations $\cat(\fr)$ is defined as
 $\cat(\fr)=\{c_\fr\}$, where each catalyzation $c_\fr$ is in turn a set of pairs $(x,k^{c}_{x\mathbf{r}})$:
 \begin{equation}
-    c_\fr\coloneqq \{(x_1,k\TODO{^c}_{x_1\mathbf{r}}),\ldots, (x_n,k\TODO{^c}_{x_n\fr})\}.
+    c_\fr\coloneqq \{(x_1,k^c_{x_1\mathbf{r}}),\ldots, (x_n,k^c_{x_n\fr})\}.
 \end{equation}
-where $k^{c}_{x\fr}>0$ is a positive coefficient. We call an $\fr\in \FR$ \emph{F-reaction} to distinguish it from the CRN reactions \eqref{eq:Mod.SmEq}. A CRS $\mathbf{\Phi}'=(=(X', \FR', \cat'(\FR)')$ is a \emph{sub-CRS} of $\mathbf{\Phi}=(X, \FR, \cat(\FR))$ if $X\subseteq X'$, $\FR'\subseteq\FR$, $\cat'(\FR)'\subseteq \cat(\FR)$.
+where $k^{c}_{x\fr}>0$ is a positive coefficient. We call an $\fr\in \FR$ \emph{F-reaction} to distinguish it from the CRN reactions \eqref{eq:Mod.SmEq}. A CRS $\mathbf{\Phi}'\coloneqq (X', \FR', \cat'(\FR)')$ is a \emph{sub-CRS} of $\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$ if $X\subseteq X'$, $\FR'\subseteq\FR$, $\cat'(\FR)'\subseteq \cat(\FR)$.
 
 
 Finally, a comparison between a CRN reaction \eqref{eq:Mod.SmEq}  with a CRS F-reaction \eqref{eq:FReacEq} and the definition of catalyzations set $\cat$ suggests the following formalization of the relation between a CRN and a CRS.
@@ -462,8 +403,7 @@ To each CRN $\Gamma=(X,\mathcal{R})$ we can associate a CRS $\mathbf{\Phi}(\Gamm
 \begin{equation}
     \FR=\dfrac{\mathcal{R}}{\sim}.
 \end{equation}
-In particular, an F-reaction in a CRS is just an equivalence class of CRN reactions, $\fr=[r]_{\sim}$. Each catalyzation $c$ is then just the set of F-catalysts
-$c(\mathbf{r})=\cup_ {r\in \fr}\{\cat(r)\}$. 
+In particular, an F-reaction in a CRS is just an equivalence class of CRN reactions, $\fr=[r]_{\sim}$. Each catalyzation $c$ is then just the set of F-catalysts $c(\mathbf{r})=\cup_ {r\in \fr}\{\cat(r)\}$. 
 
 
 \textbf{From a CRS $\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$ to a CRN $\Gamma=(X,\mathcal{R})$.} Viceversa, by rolling back the previous argument, to each CRS $\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$ we may associate a CRN $\Gamma (\mathbf{\Phi})=(X,\mathcal{R})$, where each reaction $r\in \mathcal{R}$ corresponds to a pair $(\fr,c_\fr)$, naturally defined from \eqref{eq:FReacEq}, setting  $\cat(r)=c_\fr$, and defining $r$ via \eqref{eq:Mod.SmEq} with $\sigma^{\pm}_{xr}=\sigma^{\pm}_{x\fr}$. 
@@ -848,7 +788,7 @@ $c\in \cat(\fr)$ are in the food set $\food$. Therefore $\fr$ is a CAF (and RAF)
 Due to Prop.~\ref{prop:Caftrivial}, throughout the paper we exclude the trivial CAF case whenever making statements about irreducible RAFs. 
 To keep the exposition concise, we assume this exclusion throughout and do not repeat it explicitly in each statement.
 
-\holy{We conclude this section with a remarkable result. Minimal \emph{stoichiometrically autocatalytic} CRN sub-networks, formally introduced in Sec.~\ref{sec:AutoCatIrrRAF} Def.~\ref{def:autSubRN}, are termed \emph{autocatalytic cores} \cite{blokhuis_Universal_2020}. RAFs that are themselves CAFs were shown to be \emph{stoichiometrically autocatalytic}, and therefore contain an autocatalytic core In \cite{golnik_bridging_2026}. Driven by this result, we used \texttt{autogatito} \cite{golnik_using_2026} to compute autocatalytic cores in irreducible RAFs generated from random instances of the binary polymer model \cite{kauffman_autocatalytic_1986}. Strikingly, even irreducible RAFs already exhibit a remarkably rich internal structure, comprising up to thousands of distinct autocatalytic cores, as shown in Fig.~\ref{fig:irrRAFCores}. This astonishing observation motivates the remainder of this contribution, in which  we investigate the structural properties of irreducible RAFs that give rise to such unexpectedly large numbers of autocatalytic cores.
+\holy{We conclude this section with a remarkable result. Minimal \emph{stoichiometrically autocatalytic} CRN sub-networks, formally introduced in Sec.~\ref{sec:AutoCatIrrRAF} Def.~\ref{def:autSubRN}, are termed \emph{autocatalytic cores} \cite{blokhuis_Universal_2020}. RAFs that are themselves CAFs were shown to be \emph{stoichiometrically autocatalytic}, and therefore contain an autocatalytic core in \cite{golnik_bridging_2026}. Driven by this result, we used \texttt{autogatito} \cite{golnik_using_2026} to compute autocatalytic cores in irreducible RAFs generated from random instances of the binary polymer model \cite{kauffman_autocatalytic_1986}. Strikingly, even irreducible RAFs already exhibit a remarkably rich internal structure, comprising up to thousands of distinct autocatalytic cores, as shown in Fig.~\ref{fig:irrRAFCores}. This astonishing observation motivates the remainder of this contribution, in which  we investigate the structural properties of irreducible RAFs that give rise to such unexpectedly large numbers of autocatalytic cores.
 
 \begin{figure}[htb]
 	\centering
@@ -871,7 +811,7 @@ To keep the exposition concise, we assume this exclusion throughout and do not r
 
 \subsubsection{The K\H{o}nig Graph of monocatalyzed, irreducible RAFs}\label{subsec:King}
 
-Let $\mathbf{\Phi}=(X,\FR,\cat(\FR))$ be a CRS with food set $\food\subseteq X$. We consider now the sub-CRS $\mathbf{\Phi}'\subseteq \mathbf{\Phi'}$ induced by a monocatalyzed irreducible RAF $\RAF'$, i.e.
+Let $\mathbf{\Phi}=(X,\FR,\cat(\FR))$ be a CRS with food set $\food\subseteq X$. We consider now the sub-CRS $\mathbf{\Phi}'\subseteq \mathbf{\Phi'}$ induced by a monocatalyzed irreducible RAF $\RAF$, i.e.
 \begin{equation}\label{eq:RAF-CRS}
   \mathbf{\Phi}' \coloneqq (\closure{\RAF}{\food}, \RAF, \cat'(\RAF)),
 \end{equation}
@@ -1156,7 +1096,7 @@ that are not a single species or a digon composed of a reaction and an $\food$-d
 \end{equation}
 \vspace{6pt}
 
-In particular, $r^*$ can be considered as an \emph{inflow reaction} for $\block$ as its corresponding column in $\SM[X(\block)\setminus \food,\CR(\block)]$ is non-negative but contains at least one positive entry that reflects an F-product $y^* \in X(\block)$ of $r^*$ for which $\sigma^+_{y^*r^*}>0$. This property of $r^*$ is, nevertheless, block specific, as there is at least one other block $\block'\neq \block$, which contains an F-reactant of $r^*$ that is not an F-product such that the corresponding column in $\SM[X(\block'),\CR(\block')]$ exhibits at least one negative entry. We therefore call $r^*$ an entry reaction for $\block$.
+In particular, $r^*$ can be considered as an \emph{inflow reaction} for $\block$ as its corresponding column in $\SM[X(\block)\setminus \food,\CR(\block)]$ is nonnegative but contains at least one positive entry that reflects an F-product $y^* \in X(\block)$ of $r^*$ for which $\sigma^+_{y^*r^*}>0$. This property of $r^*$ is, nevertheless, block specific, as there is at least one other block $\block'\neq \block$, which contains an F-reactant of $r^*$ that is not an F-product such that the corresponding column in $\SM[X(\block'),\CR(\block')]$ exhibits at least one negative entry. We therefore call $r^*$ an entry reaction for $\block$.
 
 However, reactions $r\in \CR'$ with generation order $1$ exert the same effect onto the stoichiometric matrix that represents all reactions from $\CR'$ and all the species from $\closure{\RAF}{\food}\setminus \food$, i.e., $\SM[\closure{\RAF}{\food}\setminus \food, \CR]$. This allows us to construct a strictly positive vector $v$ of reaction rates which satisfies $\SM[\closure{\RAF}{\food}\setminus \food, \CR]v>0$. A matrix $A$ satisfying $Aw>0$ for $w>0$ is called \emph{semi-positive}.
 
@@ -1334,7 +1274,7 @@ catalysts of the present paper \cite{golnik_autocatalytic_2026}. The central def
 \end{definition}
 \vspace{6pt}
 
-A sub-CRN $(X',\CR')$ that satisfies \textit{(i.)} and \textit{(ii.)}, while no proper sub-CRN $(X'',\CR'')$ with $X''\subset X', \CR''\subset \CR'$ does, is called an \emph{autocatalytic core}. Any stoichiometric autocatalytic sub-CRN thereby contains an autocatalytic core. An autocatalytic core of size $1$, i.e., $|X'|=|R'|=1$, is called an \emph{explicit autocatalytic reaction}.  
+A sub-CRN $(X',\CR')$ that satisfies \textit{(i.)} and \textit{(ii.)}, while no proper sub-CRN $(X'',\CR'')$ with $X''\subset X', \CR''\subset \CR'$ does, is called an \emph{autocatalytic core}. Any stoichiometric autocatalytic sub-CRN thereby contains an autocatalytic core. For the associated stoichiometric submatrix of an autocatalytic core exists a reordering of the columns such that all diagonal entries are nonpositive while all off-diagonal entries are nonnegative \cite{blokhuis_Universal_2020, vassena_unstable_2024}. Such matrices are called Metzler matrices. Autocatalytic cores of size $1$, i.e., $|X'|=|R'|=1$, are called an \emph{autocatalytic reaction}.  
 
 The structural results obtained in Sec.~\ref{subsec:King}, i.e., Lemmata~\ref{lem:StrongBlocks} and \ref{lem:NonFoodSemipositiv} yield in combination with Def.~\ref{def:autSubRN} that each sub-CRN $(X(\block)\setminus \food, \CR(\block))$, corresponding to a maximal, non-trivial, strong block $\block$ of the bipartite K\H{o}nig graph of an irreducible, monocatalyzed RAF $\RAF$, is \emph{stoichiometrically autocatalytic}. 
 
@@ -1387,7 +1327,7 @@ To this end, we revisit the proof of \cite[Thm.~3.1]{golnik_bridging_2026}, wher
 		\SM_{x_ir_j}=0.
 	\end{equation} 
 
-	Therefore, the only positive reactant stoichiometries are of the form $s^-_{x_i,r_i}, 1<i\leq m$. We can then obtain $S(C)$ by reordering the columns of the submatrix $\SM[X(C), R(C)]$ such that $S(C)_{x_iy}\coloneqq \SM[X(C), \CR(C)]_{x_ir_i}$. Thereby, all diagonal entries of $\SM(C)$ are non-positive, $\SM(C)_{x_1r_1}=0$, and all off-diagonal entries of $\SM(C)$ are non-negative. Thus $\SM(C)$ is a Metzler matrix.
+	Therefore, the only positive reactant stoichiometries are of the form $s^-_{x_i,r_i}, 1<i\leq m$. We can then obtain $S(C)$ by reordering the columns of the submatrix $\SM[X(C), R(C)]$ such that $S(C)_{x_iy}\coloneqq \SM[X(C), \CR(C)]_{x_ir_i}$. Thereby, all diagonal entries of $\SM(C)$ are nonpositive, $\SM(C)_{x_1r_1}=0$, and all off-diagonal entries of $\SM(C)$ are nonnegative. Thus $\SM(C)$ is a Metzler matrix.
 	\vspace{6pt}
 
 	We now turn to the general case and assume there are multiple
@@ -1446,7 +1386,7 @@ To this end, we revisit the proof of \cite[Thm.~3.1]{golnik_bridging_2026}, wher
 		\SM(\tilde{C})_{xy}\coloneqq \SM[X(\tilde{C}), R(\tilde{C})]_{xv^{\tilde{C}}_{out}(x)}
 	\end{equation} 
 	where $v^{\tilde{C}}_{out}(x)$ is the unique reaction $r\in R(\tilde{C})$ such that $(x,r)\in E(\tilde{C})$. Thereby, all diagonal entries of
-	$\SM(\tilde{C})$ are non-positive of which at least one is $0$, and all off-diagonal entries of $\SM(\tilde{C})$ are nonnegative, thus $\SM(\tilde{C})$ is a Metzler matrix.
+	$\SM(\tilde{C})$ are nonpositive of which at least one is $0$, and all off-diagonal entries of $\SM(\tilde{C})$ are nonnegative, thus $\SM(\tilde{C})$ is a Metzler matrix.
 }
 \end{proof}
 
@@ -1473,7 +1413,7 @@ We call an elementary circuit associated with a stoichiometric Metzler sub-matri
 		\end{pmatrix},
 	\end{equation}
 	with $\{r_i\}\in \mathbb{R}_{\geq 0}, i=2,\ldots, k$ and $\{p_i\}\in \mathbb{R}_{>0},i=1,\ldots, k$ 
-	and non-negative entries in $P'$ and $P''$. We may then construct $v\in \mathbb{R}^{k}_{>0}$ as $v(r_k)\coloneqq 1$ 
+	and nonnegative entries in $P'$ and $P''$. We may then construct $v\in \mathbb{R}^{k}_{>0}$ as $v(r_k)\coloneqq 1$ 
 	and 
 	\begin{equation}
 		v_{i}=\begin{cases}
@@ -1481,12 +1421,12 @@ We call an elementary circuit associated with a stoichiometric Metzler sub-matri
 			\frac{v_{i+1}}{p_{i+1}} +1 & \text{if } r_{i+1}=0
 		\end{cases}
 	\end{equation}
-	Then $v>0$ and by construction we directly obtain $\SM(C)v>0$ since $P'$ and $P''$ contain only non-negative entries and every row of $S(C)$ contains a strictly positive entry.
+	Then $v>0$ and by construction we directly obtain $\SM(C)v>0$ since $P'$ and $P''$ contain only nonnegative entries and every row of $S(C)$ contains a strictly positive entry.
 \end{proof}
 \vspace{6pt}
 }
 \holy{
-\vspace{6pt} Whenever the sub-CRN induced by an elementary circuit $C$ is \emph{stoichiometrically autocatalytic}, we call that $C$ 
+\vspace{6pt} Whenever the sub-CRN induced by an elementary circuit $C$ is \emph{stoichiometrically autocatalytic}, we call $C$ 
 \emph{stoichiometrically autocatalytic}. Metzler circuits can, as shown in the proof of Lemma~\ref{lem:MetzCircuit}, still contain a species-to-reaction or, equivalently, a metabolite-to-reaction (MR-)chord. They are, however, neutral in their impact on the stoichiometric matrix as the involved species is an F-catalyst and the corresponding entry in the stoichiometric matrix is $0$. The example in Fig.~\ref{fig:RAFContAutCyc} depicts such a scenario. 
 
 \begin{figure}[h]
@@ -1526,19 +1466,15 @@ We call an elementary circuit associated with a stoichiometric Metzler sub-matri
 			\draw[->] (r3) to [bend right = 30] (x3);
 		\end{tikzpicture}
 	\end{minipage}
-	\caption{Example of a non-trivial, irreducible RAF with four reactions on
-		4 species vertices, where the spanning autocatalytic Metzler circuit as
-		constructed by the proof of Lemma~\ref{lem:MetzCircuit} is not an
-		autocatalytic core.}
+	\caption{Example of a non-trivial, irreducible RAF with three reactions on four species vertices, where the spanning autocatalytic Metzler circuit as constructed by the proof of Lemma~\ref{lem:MetzCircuit} is not an autocatalytic core.}
 	\label{fig:RAFContAutCyc}
 \end{figure}
 
 
-Elementary circuits free of MR-chords play an important role in enumerating autocatalytic cores \cite{golnik_using_2026}. As they are always Metzler circuits, the following corollary is a direct consequence.
+Elementary circuits free of MR-chords play an important role in enumerating autocatalytic cores \cite{golnik_using_2026}. As they are always Metzler circuits, the following corollary is a direct consequence of Lemma~\ref{lem:MetzCircuit}.
 \vspace{6pt}
 \begin{corollary}
-  Any MR-chordless elementary circuit $C$ of a strong block in $\block$
-  containing a reaction satisfying Properties~$i.$-$iii.$ is autocatalytic.
+  Any MR-chordless elementary circuit $C$ of a maximal, non-trival strong block $\block$ containing a reaction satisfying Properties~$i.$-$iii.$ is autocatalytic.
 \end{corollary}
 \vspace{6pt}
 }
@@ -1547,7 +1483,7 @@ Elementary circuits free of MR-chords play an important role in enumerating auto
 In case the maximal strong block $\block$ consists of a single reaction $r$ and a single species $x\notin \food$, Lemma~\ref{lem:StrongBlocks} guarantees $x$ is being an F-catalyst and an F-product at the same time. In addition, there is only one elementary circuit, in particular, the digon $(x,r,x)$, which is by definition a Metzler circuit.
 \vspace{6pt}
 \begin{corollary}\label{cor:AutoCatReac}
-  Let $\RAF$ be an irreducible, monocatalyzed RAF and $\block$ a maximal strong block of $\king(\RAF)$. If $|\CR(\block)|=|X(\block)|=1$ and $X(\block)\cap \food=\emptyset$, then $r$ is an explicit autocatalytic reaction.
+  Let $\RAF$ be an irreducible, monocatalyzed RAF and $\block$ a maximal strong block of $\king(\RAF)$. If $|\CR(\block)|=|X(\block)|=1$ and $X(\block)\cap \food=\emptyset$, then $r$ is an autocatalytic reaction.
 \end{corollary}
 %\begin{proof}
 %	Assume first that $x$ is not a catalyst. Since $B$ is strongly connected, there is an edge $(x,r)$ and $(r,x)$. Assume now that 
@@ -1596,20 +1532,19 @@ The following example illustrates such a situation.
       \draw[->] (r3) to (x1);
     \end{tikzpicture}
   \end{minipage}
-  \caption{Non-trivial irreducible RAF with an autocatalytic reaction
-    $r_2$.}
+  \caption{An irreducible, monocatalyzed RAF with an autocatalytic reaction $r_2$.}
   \label{Fig:ExplAutocatReac}
 \end{figure}
-\FloatBarrier Indeed, $\block\coloneqq \{x_3, r_2\}$ is a maximal strong block and $r_2$ is an explicit autocatalytic reaction.
+\FloatBarrier Indeed, $\block\coloneqq \{x_3, r_2\}$ is a maximal strong block and $r_2$ is an autocatalytic reaction.
 }
 
 \holy{
 Lemma~\ref{lem:MetzCircuit}, \ref{lem:MetzCircAut}, and
-Cor.~\ref{cor:AutoCatReac}, together, yield the following main result.
+Cor.~\ref{cor:AutoCatReac}, together, yield then the following main result.
 
 \vspace{6pt}
 \begin{theorem}
-  Let $\RAF$ be an irreducible, monocatalyzed RAF. Then every maximal strong block $\block$ of $\king(\RAF)$ contains an autocatalytic Metzler circuit. If $\block$ is composed of a single reaction $r$ and a single species $x\notin \food$, $r$ is an explicit autocatalytic reaction.
+  Let $\RAF$ be an irreducible, monocatalyzed RAF. Then every maximal, non-trivial strong block $\block$ of $\king(\RAF)$ contains an autocatalytic Metzler circuit. If $\block$ is composed of a single reaction $r$ and a single species $x\notin \food$, $r$ is an autocatalytic reaction.
 \end{theorem} 
 \vspace{6pt}
 
@@ -2142,7 +2077,7 @@ and waste molecules, $\lord(\RAF)$, \PFS{is not only strongly connected but
 Strong blocks are, by definition, well-formed. In addition, some of their
 cut vertices, so-called \emph{pure reactions}, which have only F-catalysts
 as reactants inside the corresponding block $B$, can act as import
-reactions as they induce a non-negative column in the stoichiometric
+reactions as they induce a nonnegative column in the stoichiometric
 submatrix $\SM(B)$. In theory, this would allow for an infinitely high
 in-flow such that all species inside the block are net-produced. Indeed,
 $\SM(B)$ is semi-positive for any strong block $B$, such that each block is
