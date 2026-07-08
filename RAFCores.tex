@@ -1548,7 +1548,7 @@ Cor.~\ref{cor:AutoCatReac}, together, yield then the following main result.
 \end{theorem} 
 \vspace{6pt}
 
-As noted, these autocatalytic elementary circuits are not necessarily cores for various reasons. One is digons, i.e., elementary circuits of length $2$ where the species-to-reaction edge is not located along the original Metzler circuit. An example of this situation is shown in Fig.~\ref{fig:RAFContAutCyc}.  Another reason is non-unit stoichiometries, which can give rise to strictly smaller circuits inside the constructed \emph{stoichiometrically autocatalytic} Metzler circuit. The example in Sec.~\ref{fig:NonUnStoich} captures such a scenario. As the K\H{o}nig is simple, stoichiometries are naturally not encoded besides being specified as edge labels. We can, therefore, not hope to find a general construction method that identifies autocatalytic cores immediately.
+As noted, these autocatalytic elementary circuits are not necessarily cores for various reasons. One is MR-chords that appear as digons, i.e., elementary circuits of length $2$ whose species-to-reaction edge is not located along the original Metzler circuit (Fig.~\ref{fig:RAFContAutCyc}). Another reason is non-unit stoichiometries, which can give rise to strictly smaller circuits inside the constructed \emph{stoichiometrically autocatalytic} Metzler circuit (see Fig.~\ref{fig:NonUnStoich}). As the K\H{o}nig is simple, stoichiometries are naturally not encoded besides being specified as edge labels. We can, therefore, not hope to find a general construction method that identifies autocatalytic cores immediately.
 
 \begin{figure}[htb]
 	\begin{minipage}[c]{0.5\textwidth}
@@ -1588,36 +1588,41 @@ As noted, these autocatalytic elementary circuits are not necessarily cores for 
 	\end{minipage}
 	\caption{Example of an irreducible, monocatalyzed RAF that contains an autocatalytic core $\{x_2,r_2,x_3,r_3\}$ with non-unit stoichiometries, that would not be constructed by the proof of Lemma~\ref{lem:MetzCircuit} as it would return the autocatalytic
 	Metzler circuit $C\coloneqq (r_1,x_2,r_2,x_3,r_3,x_1,r_1)$}
+	\label{fig:NonUnStoich}
 \end{figure}
 
-However, for an irreducible, monocatalyzed RAF, each maximal, non-trivial strong block of its K\H{o}nig graph representation  contains an autocatalytic core. In addition, Lemma~\ref{lem:ExpoSubCRS} suggests that for an irreducible RAF $\RAF$, there is an exponential number of sub-CRS, each induced by a unique combination of catalyzations, in which $\RAF$ is monocatalzyed and irreducible. Translating this argument to maximal strong blocks yields the following result.
+However, for an irreducible, monocatalyzed RAF, each maximal, non-trivial strong block of its K\H{o}nig graph representation  contains an autocatalytic core. In addition, Lemma~\ref{lem:ExpoSubCRS} suggests that for an irreducible RAF $\RAF$, there is an exponential number of sub-CRS, each induced by a unique combination of catalyzations, in which $\RAF$ is monocatalyzed and irreducible. Translating this argument to maximal strong blocks yields the following result.
 
 \vspace{6pt}
 \begin{lemma}\label{lem:ExpNoCores}
 	Let $\mathbf{\Phi}\coloneqq (X,\FR,\cat(\FR))$ be a CRS with specified \emph{food set} $\food\subseteq X$, $\RAF$ an irreducible RAF, and 
 	\begin{equation}
 		\cat'(\RAF) \coloneqq \{ c \in\cat(\fr) \; \mid\; c \subseteq \closure{\RAF}{\food} \}.
-	\end{equation} Let further $\block$ be a maximal, non-trivial strong block in $\king(\Gamma(\mathbf{\Phi}'))$ with $\mathbf{\Phi}'\coloneqq (\closure{\RAF}{\food},\RAF, \cat'(\RAF))$ and $(X', \CR')$ an autocatalytic core in $\block$. Then $\Gamma(\mathbf{\Phi})$ contains at least 
+	\end{equation} Let further $\block$ be a maximal, non-trivial strong block in $\king(\Gamma(\mathbf{\Phi}'))$ with $\mathbf{\Phi}'\coloneqq (\closure{\RAF}{\food},\RAF, \cat'(\RAF))$ and $(X'', \CR'')$ an autocatalytic core in $\block$. Then $\Gamma(\mathbf{\Phi})$ contains at least 
 	\begin{equation}
-		n \coloneqq \prod_{r\in \CR'} \vert \{ c \in\cat(\fr) \; \mid\; c \subseteq \closure{\RAF}{\food} \} \vert 
+		n \coloneqq \prod_{r\in \CR''} \vert \{ c \in\cat(\fr) \; \mid\; c \subseteq \closure{\RAF}{\food} \} \vert 
 	\end{equation}
 	autocatalytic cores.
 \end{lemma}
 \begin{proof}
-	Lemma~\ref{lem:ExpoSubCRS} guarantees that $\RAF$ is an irreducible, monocatalyzed RAF in $\mathbf{\Phi}'$. Therefore, according to Lemma~\ref{lem:PSC} and Thm.~\ref{Thm:StrBlockCore} $\king(\Gamma(\mathbf{\Phi}'))$ consists of at least one maximal, non-trivial strong block $\block$ that contains an autocatalytic core, $(X', \CR')$. Then each choice:
+	Lemma~\ref{lem:ExpoSubCRS} guarantees that $\RAF$ is an irreducible, monocatalyzed RAF in $\mathbf{\Phi}'$. Therefore, according to Lemma~\ref{lem:PSC} and Thm.~\ref{Thm:StrBlockCore} $\king(\Gamma(\mathbf{\Phi}'))$ consists of at least one maximal, non-trivial strong block $\block$ that contains an autocatalytic core, $(X'', \CR'')$. Each choice:
+	
 	\begin{equation}
-		\tilde{\CR}'\coloneqq \{\tilde{r} \in [r]_{\sim} \ \vert \ r \in \CR'\}
+		\tilde{\CR}''\coloneqq \{\tilde{r} \in [r]_{\sim} \ \vert \ r \in \CR''\}
 	\end{equation}
-	yields an autocatalytic core $(X', \tilde{\CR}')$. Thus, there are at least
+	
+	yields an autocatalytic core $(X'', \tilde{\CR}'')$ in $(\closure{\food}{\RAF})$. Thus, there are at least
+	
 	\begin{equation}
-		\tilde{n}=\prod_{r\in \CR'} \left \vert [r]_{\sim} \right \vert
+		\tilde{n}=\prod_{r\in \CR''} \left \vert [r]_{\sim} \right \vert
 	\end{equation}
-	autocatalytic cores in $\Gamma(\mathbf{\Phi})$. Since, CRN reactions are in 1-to-1 correspondence with catalyzations of their respective F-reactions, restricting the product in Eq.~\eqref{eq:ExpoNum} to $\CR'$ yields $\tilde{n}=n$.
+	
+	autocatalytic cores in $\Gamma(\mathbf{\Phi})$. Since, CRN reactions are in 1-to-1 correspondence with catalyzations of their respective F-reactions, restricting the product in Eq.~\eqref{eq:ExpoNum} to $\CR''$ yields $\tilde{n}=n$.
 \end{proof}
 \vspace{6pt}
 
 
-Lemma~\ref{lem:ExpNoCores} in combination with Thm.~\ref{Thm:StrBlockCore} finally provides the explanation the observation made in Fig.~\ref{fig:irrRAFCores}.  In fact, each maximal, non-trivial strong block of the bipartite K\H{o}nig graph of an irreducible, monocatayzed RAF contains at least one autocatalytic core. An irreducible RAF, whose reactions are potentially associated to multiple catalyzations is a monocatalyzed, irreducible RAF in an exponential number of sub-CRS (see Lemma~\ref{lem:ExpNoCores}). if the F-reactions are associated to multiple each of these cores might be associated to an exponential number of c Not only that each irreducible RAF contains, an irreducible RAF might be composed 
+Lemma~\ref{lem:ExpNoCores} in combination with Thm.~\ref{Thm:StrBlockCore} finally explains the observation made in Fig.~\ref{fig:irrRAFCores}. An irreducible RAF, whose reactions are potentially associated to multiple catalyzations is a monocatalyzed, irreducible RAF in an exponential number of sub-CRS (see Lemma~\ref{lem:ExpNoCores}). Each maximal, non-trivial strong block of the bipartite K\H{o}nig graph of such an irreducible, monocatayzed RAF contains at least one autocatalytic core. Each such core then gives rise to an exponential number of autocatalytic cores that share the same species and F-reactions but differ in their combination of catalyzations or equivalently CRN reactions (Lemma~\ref{lem:ExpNoCores}). In fact, the number of cores that actually share different species and different F-reactions for the same random instances of the binary polymer model of Fig.~\ref{fig:irrRAFCores} is depicted in Fig.~\TODO{TBA}.
 }
 
 %\section{Examples}
