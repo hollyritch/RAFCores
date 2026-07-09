@@ -1283,7 +1283,6 @@ This result provides, however, only partial explanation on the large number of a
 
 To this end, we revisit the proof of \cite[Thm.~3.1]{golnik_bridging_2026}, where we have shown that each RAF $\RAF$ that is itself not a CAF is associated with an elementary circuit $C$ (SI Sec.~\ref{S-sec:Glossary}) in the directed bipartite K\H{o}nig graph of $\RAF$, whose species and reaction vertices $X(C)$ and $\CR(C)$, respectively, define an autocatalytic sub-CRN (see also \cite[Remark~13]{golnik_bridging_2026}). We adapt this construction to obtain such an \emph{autocatalytic} elementary circuit for each strong block.
 
-%By definition, every vertex of a maximal strong block, and thereby also each of its entry reaction, is located on an elementary circuit. IN combination with the pre-order of a RAF, this observation can be used to construct an elementary circuit $C$ for every strong block that gives rise to a stoichiometric submatrix $\tilde{\SM}(C)\coloneqq \SM[X(C), R(C)]$ in which each column and row has at most one negative entry, and one column is non-negative with at least one positive entry. The columns of $\tilde{\SM}(C)$ can then be reordered to obtain the matrix $\SM(C)$ with non-positive diagonal and non-negative off-diagonal entries. A matrix with non-negative off-diagonal entries is called  \emph{Metzler} matrix. It is not hard to see that, in case $\tilde{\SM}(C)$ is semi-positive, $\SM(C)$ is semi-positive. In addition, the sub-CRN of an elementary circuit $(X(C),R(C))$ is, by definition, well-formed.
 }
 
 \vspace{6pt}
@@ -1297,7 +1296,7 @@ To this end, we revisit the proof of \cite[Thm.~3.1]{golnik_bridging_2026}, wher
 		r_1 \leftarrow x_1 \leftarrow r_2 \leftarrow x_2 \leftarrow \ldots r_n
 		\leftarrow x_m \leftarrow r_{m+1}
 	\end{equation}
-	where $x_1$ is an F-catalyst of $r_1$, and forall $1< k\leq m+1$: 
+	such that $x_1$ is an F-catalyst for $r_1$ with the lowest generation order $\sgen(x_1)$ of all F-catalyst of $r_1$, and forall $1< k\leq m+1$: 
 	\begin{equation}
 		r_k =  \arg \min \{ \crgen(r) \ \vert \ r\in \CR(\block), \SM_{x_{k-1}r}>0\}
 	\end{equation}
@@ -1310,11 +1309,9 @@ To this end, we revisit the proof of \cite[Thm.~3.1]{golnik_bridging_2026}, wher
 	\begin{equation}
 		\crgen(r_k) > \sgen(x_k) \geq \crgen(r_{k+1}), \quad 1< k < m.
 	\end{equation}
-	$(\crgen(r_k))_{1< k\leq m+1}$ is then a strictly monotone decreasing sequence which converges -- due to the finiteness of $\block$ and positivity of $\beta$ and $\delta$ restricted to the non-food species -- and thereby yields $r_{m+1}=r_1$.  Thus $C\coloneqq
-	(r_{m+1}, x_m, r_m, x_{m-1}, r_{m-1},\ldots, x_1,r_1)$ is an elementary circuit in $\king(\RAF)$.
+	$(\crgen(r_k))_{1< k\leq m+1}$ is then a strictly monotone decreasing sequence which converges -- due to the finiteness of $\block$ and positivity of $\beta$ and $\delta$ restricted to the non-food species -- and thereby yields $r_{m+1}=r_1$.  Thus $C\coloneqq (r_{m+1}, x_m, r_m, x_{m-1}, r_{m-1},\ldots, x_1,r_1)$ is an elementary circuit in $\king(\RAF)$.
 	
-	Assume now that there is $i\neq j$ such that $s^-_{x_ir_j}>0$. If $i>j$ then $\sgen(x_i)<\sgen(x_j)$ which contradicts that $\sgen(x_j)=\min
-	\{\sgen(x) \ \vert \ x\in X(B), s^-_{xr_k}>0\}$. Thus $i<j$, which implies that $\sgen(x_i)\geq\delta(r_j)$ and that $x_i$ cannot be an F-reactant of $r_j$ but only an F-catalyst, thus:
+	Assume now that there is $i\neq j$ such that $s^-_{x_ir_j}>0$. If $i>j$ then $\sgen(x_i)<\sgen(x_j)$ which contradicts that $\sgen(x_j)=\min \{\sgen(x) \ \vert \ x\in X(B), s^-_{xr_k}>0\}$. Thus $i<j$, which implies that $\sgen(x_i)\geq\delta(r_j)$ and that $x_i$ cannot be an F-reactant of $r_j$ but only an F-catalyst, thus:
 	\begin{equation}
 		\SM_{x_ir_j}=0.
 	\end{equation} 
@@ -1323,14 +1320,13 @@ To this end, we revisit the proof of \cite[Thm.~3.1]{golnik_bridging_2026}, wher
 	\vspace{6pt}
 
 	We now turn to the general case and assume there are multiple
-	reactions satisfying Properties~$i.$-$iii.$ of Lemma~\ref{lem:StrongBlocks} and we collect them in $R^*(\block)$.  We may again choose $r_1\in R^*(\block):
+	reactions satisfying Properties~$i.$-$iii.$ of Lemma~\ref{lem:StrongBlocks} and we collect them in $R^*(\block)$. We may again choose $r_1\in R^*(\block):
 	\crgen(r_1)\leq \crgen(r_j), \forall r_j\in R^*(\block)$ and we have
-	$\delta(r_1)<\delta(r), \forall r\in R(\block)\setminus R^*(\block)$. We now apply
-	the same construction as above:
+	$\delta(r_1)<\delta(r), \forall r\in R(\block)\setminus R^*(\block)$. We now apply the same construction as above:
 	\begin{equation}
 		r_1 \leftarrow x_1 \leftarrow r_2 \leftarrow x_2 \leftarrow \ldots r_n \leftarrow x_m \leftarrow r_{m+1}
 	\end{equation}
-	such that $x_1$ is an F-catalyst of $r_1$, and for all $1< k\leq m+1$:
+	such that $x_1$ is an F-catalyst for $r_1$ with the lowest generation order $\sgen(x_1)$ of all F-catalyst of $r_1$, and for all $1< k\leq m+1$:
 	\begin{equation}
 		r_k = \arg \min \{ \crgen(r) \ | r\in R(\block), \SM_{x_{k-1}>0}\}
 	\end{equation}
@@ -1372,8 +1368,7 @@ To this end, we revisit the proof of \cite[Thm.~3.1]{golnik_bridging_2026}, wher
 	It holds by construction that either $r_1\in R(C')$ or that there is another reaction $r_{l,1} \in R(C''): i<l\leq j$. We may now repeat
 	this procedure until we can not find such a metabolite-to-reaction edge anymore and obtain a final elementary circuit $\tilde{C}$.
 
-	We can then obtain $S(\tilde{C})$ by reordering the columns of the
-	submatrix $\SM[X(\tilde{C}), R(\tilde{C})]$ such that
+	We can then obtain $S(\tilde{C})$ by reordering the columns of the submatrix $\SM[X(\tilde{C}), R(\tilde{C})]$ such that
 	\begin{equation}
 		\SM(\tilde{C})_{xy}\coloneqq \SM[X(\tilde{C}), R(\tilde{C})]_{xv^{\tilde{C}}_{out}(x)}
 	\end{equation} 
@@ -1540,7 +1535,7 @@ Cor.~\ref{cor:AutoCatReac}, together, yield then the following main result.
 \end{theorem} 
 \vspace{6pt}
 
-As noted, these autocatalytic elementary circuits are not necessarily cores for various reasons. One is MR-chords that appear as digons, i.e., elementary circuits of length $2$ whose species-to-reaction edge is not located along the original Metzler circuit (Fig.~\ref{fig:RAFContAutCyc}). Another reason is non-unit stoichiometries, which can give rise to strictly smaller circuits inside the constructed \emph{stoichiometrically autocatalytic} Metzler circuit (see Fig.~\ref{fig:NonUnStoich}). As the K\H{o}nig is simple, stoichiometries are naturally not encoded besides being specified as edge labels. We can, therefore, not hope to find a general construction method that identifies autocatalytic cores immediately.
+As noted, these autocatalytic elementary circuits are not necessarily cores for various reasons. One is MR-chords that appear as digons, i.e., elementary circuits of length $2$ whose species-to-reaction edge is not located along the original Metzler circuit (Fig.~\ref{fig:RAFContAutCyc}). Another reason is non-unit stoichiometries, which can give rise to strictly smaller circuits inside the constructed \emph{stoichiometrically autocatalytic} Metzler circuit (see Fig.~\ref{fig:NonUnStoich}). As the K\H{o}nig graph is a simple digraph, stoichiometries are naturally not encoded besides being specified as edge labels. As in \cite{golnik_autocatalytic_2026}, we can, therefore, not hope to find a general construction method that identifies autocatalytic cores directly.
 
 \begin{figure}[htb]
 	\begin{minipage}[c]{0.5\textwidth}
@@ -1583,7 +1578,10 @@ As noted, these autocatalytic elementary circuits are not necessarily cores for 
 	\label{fig:NonUnStoich}
 \end{figure}
 
-However, each maximal, non-trivial strong block of the K\H{o}nig graph representation of an irreducible, monocatalyzed RAF,  contains an autocatalytic core, which is an elementary circuit -- a consequence of Lemmata~\ref{lem:MetzCircuit} and \ref{lem:MetzCircuitAut}. In addition, each autocatalytic core can be considered as an element of an equivalence class w.r.t. to the equivalence relation defined in Eq.~\eqref{eq:EqRel}. From this perspective, autocatalytic cores of the same equivalence class promote the increase of the same set of species, however via different catalyzations. Each possible combination, of potentially exponentially many, catalyzations, however, defines a unique autocatalytic core. This, finally, explains the tremendously large number of autocatalytic cores observed in random instances of the binary polymer model that were shown in Fig.~\ref{fig:irrRAFCores}. Indeed, the number of equivalence classes, shown in Fig.~\TODO{TBA} shows a tremendous reduction, \TODO{which is at least in the same order of magnitude as the number of maximal, non-trivial strong blocks.}
+However, each maximal, non-trivial strong block of the K\H{o}nig graph representation of an irreducible, monocatalyzed RAF,  contains an autocatalytic core (Thm.~\ref{Thm:StrBlockCore}). Such a core is a strongly connected subgraph of an autocatalytic elementary circuit $C$ (Lemmata~\ref{lem:MetzCircuit} and \ref{lem:MetzCircAut}). However, any strongly connected subgraph of the induced subgraph $\king[X(C)\cup \CR(C)]$ has a spanning circuit. Thus, any autocatalytic core is simple elementary circuit 
+
+
+ only possibility that such an autocatalytic elementary circuit is not an autocatalytic core itself, relies in the existence of an MR-chords.  In addition, each autocatalytic core can be considered as an element of an equivalence class w.r.t. to the equivalence relation defined in Eq.~\eqref{eq:EqRel}. From this perspective, autocatalytic cores of the same equivalence class promote the increase of the same set of species, however via different catalyzations. Each possible combination, of potentially exponentially many, catalyzations, however, defines a unique autocatalytic core. This, finally, explains the tremendously large number of autocatalytic cores observed in random instances of the binary polymer model that were shown in Fig.~\ref{fig:irrRAFCores}. Indeed, the number of equivalence classes, shown in Fig.~\TODO{TBA} shows a tremendous reduction, \TODO{which is at least in the same order of magnitude as the number of maximal, non-trivial strong blocks.}
 }
 
 %\section{Examples}
@@ -2013,7 +2011,7 @@ frameworks.
 
 In the present contribution we examine this relationship in greater
 detail, focusing in particular on the interplay between the minimal
-structures arising in both frameworks.  \PFS{To this end we started from
+structures arising in both frameworks.  \PFS{To this end we started from 
   Thm.~3.1 in \cite{golnik_bridging_2026}, which asserts that every
   \textsc{RAF} that is not a \textsc{CAF} is \emph{stoichiometrically
   autocatalytic}. As an immediate consequence, \emph{irreducible RAFs}
