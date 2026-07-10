@@ -1205,15 +1205,11 @@ Indeed, $\SM$ is not semi-positive as any $v>0$ yields for $v_{r_1}=v_{r_2}$ tha
 %undirected graph is 2-connected \cite{golnik_enumeration_2026, golnik_using_2026, golnik_autocatalytic_2026}. Taking into account that any RAF that is not itself a CAF is stoichiometrically autocatalytic \cite{golnik_bridging_2026}, it will be of interest to investigate the structure of the bipartite K\"onig graph representation of irreducible 
 %RAFs.}]
 
-\holy{In chemical reaction networks (CRN), a matrix-centered definition of 
-\emph{stoichiometric autocatalysis} was introduced by Blokhuis et al. 
-\cite{blokhuis_Universal_2020} in reversible setting and without 
-catalysis. This framework was recently adapted to the irreversible setting with 
-catalysts of the present paper \cite{golnik_autocatalytic_2026}. The central definition is as follows.
+\holy{In chemical reaction networks (CRN), a matrix-centered definition of \emph{stoichiometric autocatalysis} was introduced by Blokhuis et al. \cite{blokhuis_Universal_2020} in reversible setting and without catalysis. This framework was recently adapted to the irreversible setting with catalysts of the present paper \cite{golnik_autocatalytic_2026}. The central definition is as follows.
 
 \vspace{6pt}
 \begin{definition}\label{def:autSubRN}
-  A CRN $(X,\CR)$ is \emph{stoichiometric autocatalytic} if it contains a sub-CRN $(X',\CR')$ such that
+  A CRN $\Gamma\coloneqq (X,\CR)$ is \emph{stoichiometric autocatalytic} if it contains a sub-CRN $(X',\CR')$ such that
 \begin{enumerate}
  \item[i.]  $(X',\CR')$ is  well-formed;
  \item[ii.] the associated stoichiometric matrix $\SM'\coloneqq \SM[X',\CR']$ is semi-positive, i.e., there exists $v\in \mathbb{R}_{>0}^{|\CR'|}: \SM'v>0$.
@@ -1221,7 +1217,13 @@ catalysts of the present paper \cite{golnik_autocatalytic_2026}. The central def
 \end{definition}
 \vspace{6pt}
 
-A sub-CRN $(X',\CR')$ that satisfies \textit{(i.)} and \textit{(ii.)}, while no proper sub-CRN $(X'',\CR'')$ with $X''\subset X', \CR''\subset \CR'$ does, is called an \emph{autocatalytic core}. Any stoichiometric autocatalytic sub-CRN thereby contains an autocatalytic core. For the associated stoichiometric submatrix of an autocatalytic core exists a reordering of the columns such that all diagonal entries are nonpositive while all off-diagonal entries are nonnegative \cite{blokhuis_Universal_2020, vassena_unstable_2024}. Such matrices are called \emph{Metzler matrices}. Autocatalytic cores of size $1$, i.e., $|X'|=|R'|=1$, are called an \emph{autocatalytic reaction}.  
+A sub-CRN $(X',\CR')$ that satisfies \textit{(i.)} and \textit{(ii.)}, while no proper sub-CRN $(X'',\CR'')$ with $X''\subset X', \CR''\subset \CR'$ does, is called an \emph{autocatalytic core}. Any autocatalytic sub-CRN thereby contains an autocatalytic core. The directed bipartite K\H{o}nig graph representation of autocataltyic cores $(X',\CR')$ are \emph{flufflee} \cite{golnik_autocatalytic_2026}, induced subgraphs $G\coloneqq \king(\Gamma)[X'\cup\CR']$ that exhibit the following three properties: 
+\begin{itemize}
+	\item[F1)] {$|X'|=|\CR'|$,}
+	\item[F2)] {$\text{deg}^G_{\text{out}}(x)=1, \forall x \in X'$ and $\text{deg}^G_{\text{in}}(r)=1, \forall r \in \CR'$}
+	\item[F3)]{$G$ is a strongly connected block.}
+\end{itemize}
+For the associated stoichiometric submatrix of an autocatalytic core exists a reordering of the columns such that all diagonal entries are nonpositive while all off-diagonal entries are nonnegative \cite{blokhuis_Universal_2020, vassena_unstable_2024}. Such matrices are called \emph{Metzler matrices}. Autocatalytic cores of size $1$, i.e., $|X'|=|R'|=1$, are called an \emph{autocatalytic reaction}.  
 
 The structural results obtained in Sec.~\ref{subsec:King}, i.e., Lemmata~\ref{lem:StrongBlocks} and \ref{lem:NonFoodSemipositiv} yield in combination with Def.~\ref{def:autSubRN} that each sub-CRN $(X(\block)\setminus \food, \CR(\block))$, corresponding to a maximal, non-trivial, strong block $\block$ of the bipartite K\H{o}nig graph of an irreducible, monocatalyzed RAF $\RAF$, is \emph{stoichiometrically autocatalytic}. 
 
@@ -1541,26 +1543,28 @@ However, each maximal, non-trivial strong block $\block$ of the K\H{o}nig graph 
 }
 
 \holy{
-Finally, we are able to shed light on the unexpectedly large number of autocatalytic cores associated with each irreducible RAF in random instances of the binary polymer model, as shown in Fig.~\ref{fig:irrRAFCores}. Disregarding the structure, each autocatalytic core can be considered an element of an equivalence class w.r.t. to the relation: 
+Finally, we are able to shed light on the unexpectedly large number of autocatalytic cores associated with each irreducible RAF in random instances of the binary polymer model, as shown in Fig.~\ref{fig:irrRAFCores}. \TODO{Adress strong blocks in $\king(\RAF)$} Disregarding the structure, each autocatalytic core can be considered an element of an equivalence class w.r.t. to the relation: 
 \begin{equation}\label{eq:CoreEquiv}
 	(X_1,\CR_1)\simeq (X_2,\CR_2) \Leftrightarrow X_1=X_2, \exists \lambda: \CR_1\rightarrow \CR_2, \text{ s.t. } [r]_{\mathord{\sim}}=[\lambda(r)]_{\mathord{\sim}}, \forall r\in \CR_1
 \end{equation}
-with $\sim$ defined in Eq.~\eqref{eq:EqRel}. Cores of the same equivalence class convey the net-increase of the same set of species, however, via a different combination of potentially, exponentially many catalyzations. Eq.~\eqref{eq:CoreEquiv} allows to exchange each reaction $r$, whose unique incoming edge originates in an F-reactant of $r$, can be substituted by any $r'\in [r]_\sim$ without leaving the $\simeq$- equivalence class. 
+with $\sim$ as defined in Eq.~\eqref{eq:EqRel}. Eq.~\eqref{eq:CoreEquiv} allows to exchange each reaction $r$, whose unique incoming edge (\emph{fluffle} property~F3) originates from an F-reactant of $r$, can be substituted by any $r'\in [r]_\sim$, ensuring that the modified core exists in $\king(\RAF)$ and is an element of the same $\simeq$-equivalence class. 
 
 \vspace{6pt}
 \begin{lemma}\label{prop:ExpoNoCores}
-	Let	$\RAF$ be an irreducible RAF, $(\tilde{X},\tilde{\CR})$ an autocatalytic core in $\king(\RAF)$, and 
+	Let	$\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$ be a CRS with specified food-set $\food$, $\RAF$ an irreducible RAF, $(\tilde{X},\tilde{\CR})$ an autocatalytic core in $\Gamma(\mathbf{\Phi})$, and 
 	\begin{equation}
 		\tilde{\CR}_F\coloneqq \{r\in \tilde{\CR} \ \vert \ \forall x\in X: s^-_{xr} \Rightarrow \sigma^-_{xr}>0 \}.
 	\end{equation}
-	Then 
+	Then it holds that
 	\begin{equation}
-		|[(\tilde{X}, \tilde{\CR})]|_{\mathord{\simeq}} = \prod_{r\in\toilde{\CR}_F}|[r]_{\mathord{\sim}}|
+		|[(\tilde{X}, \tilde{\CR})]|_{\mathord{\simeq}} = \prod_{r\in\tilde{\CR}_F}|[r]_{\mathord{\sim}}|.
 	\end{equation}
 \end{lemma}
 \vspace{6pt}
 
-Denoting the set of maximal strong blocks in $\king(\RAF)$ bz Indeed, the number of equivalence classes, shown in Fig.~\TODO{TBA} shows a tremendous , \TODO{which is at least in the same order of magnitude as the number of maximal, non-trivial strong blocks.}
+Additionally, summing over all maximal, non-trivial strong blocks in $\king(\RAF)$, then yields a lower bound for the number of autocatalytic cores in the CRN $(\closure{\food}{\RAF}, \CR')$. 
+
+Cores of the same equivalence class provide self-sustainability for the same set of species, however, via a different combination of potentially exponentially many catalyzations. Indeed, the number of equivalence classes, shown in Fig.~\TODO{TBA}, show a tremendous reduction in contrast to the number of autocatalytic cores in each irreducible RAF. In line with the theoretical results obtained so far, \TODO{their abundance is at least in the same order of magnitude as the number of maximal, non-trivial strong blocks.}
 }
 
 %\section{Examples}
