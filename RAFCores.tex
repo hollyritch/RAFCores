@@ -862,8 +862,7 @@ order of CRN reactions instead of F-reactions and define $\crgen(r)\coloneqq \rg
 
 \vspace{6pt}
 \begin{lemma}[Strong blocks]\label{lem:StrongBlocks}
-Every maximal strong block $\block$ of $K(\RAF)$ either is a single species-vertex $\block=\{x\}$ with $x\in \food \cup \mathbf{W}$, 
-a digon $\block=\{r, x\}$ with $x\in \food$, or $\block$ contains a reaction-vertex $r\in \mathcal{R}'$, which 
+Every maximal strong block $\block$ of $K(\RAF)$ either is a single species-vertex $\block=(x, \{\})$ with $x\in \food \cup \mathbf{W}$, a digon $\block=(\{r, x\}, \{(r,x),(x,r)\}$ with $x\in \food$, or $\block$ contains a reaction-vertex $r\in \mathcal{R}'$, which 
   is a cut-vertex for $K(\RAF)$ satisfying:
   	\begin{itemize}
 		\item[i.]{$(\feducts(r)\setminus \food) \cap X(\block)=\emptyset$,}
@@ -1485,11 +1484,11 @@ Cor.~\ref{cor:AutoCatReac}, together, yield then the following main result.
 
 \vspace{6pt}
 \begin{theorem}
-  Let $\RAF$ be an irreducible, monocatalyzed RAF. Then every maximal, non-trivial strong block $\block$ of $\king(\RAF)$ contains an autocatalytic Metzler circuit. If $\block$ is composed of a single reaction $r$ and a single species $x\notin \food$, $r$ is an autocatalytic reaction.
+  Let $\RAF$ be an irreducible, monocatalyzed RAF. Then every maximal, non-trivial strong block $\block$ of $\king(\RAF)$ contains an autocatalytic Metzler circuit. If $V(\block)={x,r}$ such that $x\notin \food$, $r$ is an autocatalytic reaction.
 \end{theorem} 
 \vspace{6pt}
 
-As noted, these autocatalytic elementary circuits are not necessarily cores for various reasons. One is MR-chords that appear as digons, i.e., elementary circuits of length $2$ whose species-to-reaction edge is not located along the original Metzler circuit (Fig.~\ref{fig:RAFContAutCyc}). Another reason is non-unit stoichiometries, which can give rise to strictly smaller circuits inside the constructed \emph{stoichiometrically autocatalytic} Metzler circuit (see Fig.~\ref{fig:NonUnStoich}). As the K\H{o}nig graph is a simple digraph, stoichiometries are naturally not encoded besides being specified as edge labels. As in \cite{golnik_autocatalytic_2026}, we can, therefore, not hope to find a general construction method that identifies autocatalytic cores directly.
+The autocatalytic elementary circuits, as constructed in the proof of Lemma.~\ref{lem:MetzCircuit} are not necessarily autocatalytic cores for various reasons. One is MR-chords that appear as digons, i.e., elementary circuits of length $2$ whose species-to-reaction edge is not located along the original Metzler circuit (Fig.~\ref{fig:RAFContAutCyc}). Another reason is non-unit stoichiometries, which can give rise to strictly smaller circuits inside the constructed \emph{stoichiometrically autocatalytic} Metzler circuit (see Fig.~\ref{fig:NonUnStoich}). As the K\H{o}nig graph is a simple digraph, stoichiometries are naturally not encoded besides being specified as edge labels. As in \cite{golnik_autocatalytic_2026}, we can, therefore, not hope to find a general construction method that identifies autocatalytic cores directly.
 
 \begin{figure}[htb]
 	\begin{minipage}[c]{0.5\textwidth}
@@ -1532,17 +1531,36 @@ As noted, these autocatalytic elementary circuits are not necessarily cores for 
 	\label{fig:NonUnStoich}
 \end{figure}
 
-However, each maximal, non-trivial strong block $\block$ of the K\H{o}nig graph representation of an irreducible, monocatalyzed RAF $\RAF$,  contains an autocatalytic core (Thm.~\ref{Thm:StrBlockCore}). Such a core is a strongly connected subgraph \cite{golnik_autocatalytic_2026} of an autocatalytic elementary circuit $C$ (Lemmata~\ref{lem:MetzCircuit} and \ref{lem:MetzCircAut}). In fact, every strongly connected subgraph of the induced subgraph $\king(\RAF)[X(C)\cup \CR(C)]$ has a spanning circuit \cite{Bang‐Jensen_locally_1990}, which implies that any autocatalytic core derived in this way is Hamiltonian, i.e., it has a spanning elementary circuit. If the core contains an entry reaction for $\block$, Cor.~\ref{cor:MRChordlessAutocat} together with the minimality of autocatalytic cores yields that it is free of reaction-to-metabolite (RM)-chords except the digon induced by the F-catalyst of the entry reaction.
+However, each maximal, non-trivial strong block $\block$ of the K\H{o}nig graph representation of an irreducible, monocatalyzed RAF $\RAF$,  contains an autocatalytic core (Thm.~\ref{Thm:StrBlockCore}). Such a core is a strongly connected subgraph \cite{golnik_autocatalytic_2026} of an autocatalytic elementary circuit $C$ (Lemmata~\ref{lem:MetzCircuit} and \ref{lem:MetzCircAut}). In fact, every strongly connected subgraph of$\king(\RAF)[X(C)\cup \CR(C)]$, and thereby each autocatalytic core derived in this way, has a spanning elementary circuit \cite{Bang‐Jensen_locally_1990}. A digraph containing a spanning elementary circuit is called Hamiltonian. If the core contains an entry reaction for $\block$, Cor.~\ref{cor:MRChordlessAutocat} in combination with the minimality of autocatalytic cores yields that it is free of reaction-to-metabolite (RM)-chords except of the digon induced one that connects the entry reaction to its F-catalyst.
 
 \vspace{6pt}
-\begin{proposition}
-	Let $\RAF$ be an irreducible, monocatalyzed RAF. Every maximal, non-trivial strong block $\block$ of $\king(\RAF)$ contains an autocatalytic core $(X'',\CR'')$ whose induced subgraph $G\coloneqq\king(\RAF)[X''\cup \CR'']$ is Hamiltonian. If there is an entry reaction $r\in \CR''$ for $\block$, the $G$ is an elementary circuit with exactly one RM-chord $(r,x)$, where $x$ is the F-catalyst of $r$. 
+\begin{proposition}\label{Prop:OneCircCorePerBlock}
+	Let $\RAF$ be an irreducible, monocatalyzed RAF. Every maximal, non-trivial strong block $\block$ of $\king(\RAF)$ contains an autocatalytic core $(X'',\CR'')$ whose induced subgraph $G\coloneqq\king(\RAF)[X''\cup \CR'']$ is Hamiltonian. If there is an entry reaction for $\block$ s.t. $r\in \CR''$, $G$ is an elementary circuit with exactly one RM-chord $(r,x)$, where $x$ is the F-catalyst of $r$. 
 \end{proposition}
 \vspace{6pt}
 }
 
 \holy{
-Finally, we shed light on the unexpectedly large number of autocatalytic cores associated with each irreducible RAF in random instances of the binary polymer model, as shown in Fig.~\ref{fig:irrRAFCores}. Disregarding the structure, each autocatalytic core can be considered an element of an equivalence class w.r.t. to the relation defined in Eq.~\eqref{eq:EqRel}. Cores of the same equivalence class convey the net-increase of the same set of species via a different combination of catalyzations, of which there might be exponentially many.  Each unique combination, however, defines a unique autocatalytic core in the associated CRN. Indeed, the number of equivalence classes, shown in Fig.~\TODO{TBA} shows a tremendous , \TODO{which is at least in the same order of magnitude as the number of maximal, non-trivial strong blocks.}
+Finally, we are able to shed light on the unexpectedly large number of autocatalytic cores associated with each irreducible RAF in random instances of the binary polymer model, as shown in Fig.~\ref{fig:irrRAFCores}. Disregarding the structure, each autocatalytic core can be considered an element of an equivalence class w.r.t. to the relation: 
+\begin{equation}\label{eq:CoreEquiv}
+	(X_1,\CR_1)\simeq (X_2,\CR_2) \Leftrightarrow X_1=X_2, \exists \lambda: \CR_1\rightarrow \CR_2, \text{ s.t. } [r]_{\mathord{\sim}}=[\lambda(r)]_{\mathord{\sim}}, \forall r\in \CR_1
+\end{equation}
+with $\sim$ defined in Eq.~\eqref{eq:EqRel}. Cores of the same equivalence class convey the net-increase of the same set of species, however, via a different combination of potentially, exponentially many catalyzations. Eq.~\eqref{eq:CoreEquiv} allows to exchange each reaction $r$, whose unique incoming edge originates in an F-reactant of $r$, can be substituted by any $r'\in [r]_\sim$ without leaving the $\simeq$- equivalence class. 
+
+\vspace{6pt}
+\begin{lemma}\label{prop:ExpoNoCores}
+	Let	$\RAF$ be an irreducible RAF, $(\tilde{X},\tilde{\CR})$ an autocatalytic core in $\king(\RAF)$, and 
+	\begin{equation}
+		\tilde{\CR}_F\coloneqq \{r\in \tilde{\CR} \ \vert \ \forall x\in X: s^-_{xr} \Rightarrow \sigma^-_{xr}>0 \}.
+	\end{equation}
+	Then 
+	\begin{equation}
+		|[(\tilde{X}, \tilde{\CR})]|_{\mathord{\simeq}} = \prod_{r\in\toilde{\CR}_F}|[r]_{\mathord{\sim}}|
+	\end{equation}
+\end{lemma}
+\vspace{6pt}
+
+Denoting the set of maximal strong blocks in $\king(\RAF)$ bz Indeed, the number of equivalence classes, shown in Fig.~\TODO{TBA} shows a tremendous , \TODO{which is at least in the same order of magnitude as the number of maximal, non-trivial strong blocks.}
 }
 
 %\section{Examples}
