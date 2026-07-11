@@ -109,6 +109,7 @@
 \newcommand{\lord}{L}
 \newcommand{\food}{\ensuremath{\mathbf{F}}}
 \newcommand{\SM}{S}
+\newcommand{\CRS}{\ensuremath{\mathbf{\Phi}}}
 \newcommand{\closure}[2]{\mathscr{C}_{#1}(#2)}
 \newcommand{\cl}[0]{c}
 \newcommand{\CR}[0]{\mathcal{R}}
@@ -1486,7 +1487,7 @@ Cor.~\ref{cor:AutoCatReac}, together, yield then the following main result.
 
 \vspace{6pt}
 \begin{theorem}
-  Let $\RAF$ be an irreducible, monocatalyzed RAF. Then every maximal, non-trivial strong block $\block$ of $\king(\RAF)$ contains an autocatalytic Metzler circuit. If $V(\block)={x,r}$ such that $x\notin \food$, $r$ is an autocatalytic reaction.
+  Let $\RAF$ be an irreducible, monocatalyzed RAF. Then every maximal, non-trivial strong block $\block$ of $\king(\RAF)$ contains an autocatalytic Metzler circuit. If $V(\block)=\{x,r\}$ such that $x\notin \food$, $r$ is an autocatalytic reaction.
 \end{theorem} 
 \vspace{6pt}
 
@@ -1542,15 +1543,14 @@ However, each maximal, non-trivial strong block $\block$ of the K\H{o}nig graph 
 \vspace{6pt}
 }
 
-\holy{
-Finally, we are able to shed light on the unexpectedly large number of autocatalytic cores associated with each irreducible RAF in random instances of the binary polymer model, as shown in Fig.~\ref{fig:irrRAFCores}. \TODO{Adress strong blocks in $\king(\RAF)$} Disregarding the structure, each autocatalytic core can be considered an element of an equivalence class w.r.t. to the relation: 
+\holy{Finally, we are able to shed light on the unexpectedly large number of autocatalytic cores associated with each irreducible RAF in random instances of the binary polymer model, as shown in Fig.~\ref{fig:irrRAFCores}. Disregarding the structure, each autocatalytic core can be considered an element of an equivalence class w.r.t. to the relation: 
 \begin{equation}\label{eq:CoreEquiv}
 	(X_1,\CR_1)\simeq (X_2,\CR_2) \Leftrightarrow X_1=X_2, \exists \lambda: \CR_1\rightarrow \CR_2, \text{ s.t. } [r]_{\mathord{\sim}}=[\lambda(r)]_{\mathord{\sim}}, \forall r\in \CR_1
 \end{equation}
-with $\sim$ as defined in Eq.~\eqref{eq:EqRel}. Eq.~\eqref{eq:CoreEquiv} allows to exchange each reaction $r$, whose unique incoming edge (\emph{fluffle} property~F3) originates from an F-reactant of $r$, can be substituted by any $r'\in [r]_\sim$, ensuring that the modified core exists in $\king(\RAF)$ and is an element of the same $\simeq$-equivalence class. 
+with $\sim$ as defined in Eq.~\eqref{eq:EqRel}.  Eq.~\eqref{eq:CoreEquiv} allows to exchange each reaction $r$, whose unique incoming edge (\emph{fluffle} property~F3) originates from an F-reactant of $r$, by any $r'\in [r]_\sim$, ensuring that the modified core exists in $\Gamma(\CRS)$ and is an element of the same $\simeq$-equivalence class. The number of equivalent cores for each equivalence class can then be easily computed.
 
 \vspace{6pt}
-\begin{lemma}\label{prop:ExpoNoCores}
+\begin{proposition}\label{prop:ExpoNoCores}
 	Let	$\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$ be a CRS with specified food-set $\food$, $\RAF$ an irreducible RAF, $(\tilde{X},\tilde{\CR})$ an autocatalytic core in $\Gamma(\mathbf{\Phi})$, and 
 	\begin{equation}
 		\tilde{\CR}_F\coloneqq \{r\in \tilde{\CR} \ \vert \ \forall x\in X: s^-_{xr} \Rightarrow \sigma^-_{xr}>0 \}.
@@ -1559,10 +1559,10 @@ with $\sim$ as defined in Eq.~\eqref{eq:EqRel}. Eq.~\eqref{eq:CoreEquiv} allows 
 	\begin{equation}
 		|[(\tilde{X}, \tilde{\CR})]|_{\mathord{\simeq}} = \prod_{r\in\tilde{\CR}_F}|[r]_{\mathord{\sim}}|.
 	\end{equation}
-\end{lemma}
+\end{proposition}
 \vspace{6pt}
 
-Additionally, summing over all maximal, non-trivial strong blocks in $\king(\RAF)$, then yields a lower bound for the number of autocatalytic cores in the CRN $(\closure{\food}{\RAF}, \CR')$. 
+The fact that each maximal, non-trivial strong block in $\king(\Gamma(\CRS'))$ of monocatalyzed sub-CRS $\CRS'$, as specified in Lemma~\ref{lem:ExpoSubCRS}, contains at least one autocatalytic core, indicates the large number of cores. In this way,, however, only a lower bound can be obtained as additional cores not captured by the theoretical results might exist. 
 
 Cores of the same equivalence class provide self-sustainability for the same set of species, however, via a different combination of potentially exponentially many catalyzations. Indeed, the number of equivalence classes, shown in Fig.~\TODO{TBA}, show a tremendous reduction in contrast to the number of autocatalytic cores in each irreducible RAF. In line with the theoretical results obtained so far, \TODO{their abundance is at least in the same order of magnitude as the number of maximal, non-trivial strong blocks.}
 }
