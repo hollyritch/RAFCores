@@ -334,10 +334,10 @@ where $X$ is again a set of species, and each $\fr\in\FR$ is defined as a net-mo
 	\sum_{x\in X}\ \sigma^-_{x\fr} \cdot x \quad \underset{\fr}\rightarrow \quad \sum_{x\in X}\ \sigma^-_{x\fr} \cdot x,
 \end{equation}
 where $\sigma^\pm_{x\fr}\ge 0$ are again nonnegative stoichiometric coefficients. 
-The \emph{catalyzation} set $\cat(\FR)=\{ \cat(\mathbf{r)} \}_{\fr\in\FR}$ constitutes the main difference with the CRN setting.
+The \emph{catalyzation} set $\cat(\FR)=\{ \cat(\fr) \}_{\fr\in\FR}$ constitutes the main difference with the CRN setting.
 For a single F-reaction $\fr$, the set of catalyzations $\cat(\fr)$ is defined as
 $\cat(\fr)=\{c_\fr\}$, where each catalyzation $c_\fr$ is in turn a set of pairs $(x,k^{c}_{x\mathbf{r}})$:
-\begin{equation}
+\begin{equation}\label{eq:CatCFR}
     c_\fr\coloneqq \{(x_1,k^c_{x_1\mathbf{r}}),\ldots, (x_n,k^c_{x_n\fr})\}.
 \end{equation}
 where $k^{c}_{x\fr}>0$ is a positive coefficient. We call an $\fr\in \FR$ \emph{F-reaction} to distinguish it from the CRN reactions \eqref{eq:Mod.SmEq}. A CRS $\mathbf{\Phi}'\coloneqq (X', \FR', \cat'(\FR)')$ is a \emph{sub-CRS} of $\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$ if $X\subseteq X'$, $\FR'\subseteq\FR$, $\cat'(\FR)'\subseteq \cat(\FR)$.
@@ -1386,7 +1386,7 @@ The autocatalytic elementary circuits, as constructed in the proof of Lemma~\ref
 	\label{fig:NonUnStoich}
 \end{figure}
 
-However, each maximal, non-trivial strong block $\block$ of the K\H{o}nig graph representation of an irreducible, monocatalyzed RAF $\RAF$ contains an autocatalytic core (Thm.~\ref{Thm:StrBlockCore}). Such a core is a strongly connected subgraph \cite{golnik_autocatalytic_2026} of an autocatalytic elementary circuit $C$ (Lemmata~\ref{lem:MetzCircuit} and \ref{lem:MetzCircAut}). In fact, every strongly connected subgraph of $\king(\RAF)[X(C)\cup \CR(C)]$, and thereby each autocatalytic core derived in this way, has a spanning elementary circuit \cite{bang-jensen_digraphs_2002}, an elementary circuit passing each vertex. Such graphs are called Hamiltonian. If the core contains an entry reaction for $\block$, Cor.~\ref{cor:MRChordlessAutocat} in combination with the minimality of autocatalytic cores yields that the spanning circuit is free of reaction-to-metabolite (RM)-chords except for the digon-induced one that connects the entry reaction to its F-catalyst.
+However, each maximal, non-trivial strong block $\block$ of the K\H{o}nig graph representation of an irreducible, monocatalyzed RAF $\RAF$ contains an autocatalytic core (Thm.~\ref{Thm:StrBlockCore}), which is a strongly connected subgraph \cite{golnik_autocatalytic_2026} of an autocatalytic elementary circuit $C$ (Lemmata~\ref{lem:MetzCircuit} and \ref{lem:MetzCircAut}). Since every strongly connected subgraph of $\king(\RAF)[X(C)\cup \CR(C)]$ is Hamiltonian \cite{bang-jensen_digraphs_2002}, i.e., it encompasses an elementary circuit passing each vertex, also referred to as \emph{spanning circuit}, each autocatalytic core derived in this way is Hamiltonian. If the core contains an entry reaction for $\block$, Cor.~\ref{cor:MRChordlessAutocat} in combination with the minimality of autocatalytic cores yields that the spanning circuit is free of reaction-to-metabolite (RM)-chords except for the digon-induced one that connects the entry reaction to its F-catalyst.
 
 \vspace{6pt}
 \begin{proposition}\label{Prop:OneCircCorePerBlock}
@@ -1395,11 +1395,11 @@ However, each maximal, non-trivial strong block $\block$ of the K\H{o}nig graph 
 \vspace{6pt}
 }
 
-\holy{Finally, we can shed light on the unexpectedly large number of autocatalytic cores associated with each irreducible RAF in random instances of the binary polymer model, as shown in Fig.~\ref{fig:irrRAFCores}. Disregarding the structure, each autocatalytic core can be considered an element of an equivalence class w.r.t. the relation: 
+\holy{Finally, we can shed light on the unexpectedly large number of autocatalytic cores associated with each irreducible RAF in random instances of the binary polymer model, as shown in Fig.~\ref{fig:irrRAFCores}. Every autocatalytic core can be considered an element of an equivalence class w.r.t. the relation: 
 \begin{equation}\label{eq:CoreEquiv}
 	(X_1,\CR_1)\simeq (X_2,\CR_2) \Leftrightarrow X_1=X_2, \exists \lambda: \CR_1\rightarrow \CR_2, \text{ s.t. } [r]_{\mathord{\sim}}=[\lambda(r)]_{\mathord{\sim}}, \forall r\in \CR_1
 \end{equation}
-with $\sim$ as defined in Eq.~\eqref{eq:EqRel}. Eq.~\eqref{eq:CoreEquiv} allows for exchanging each reaction $r$, whose unique incoming edge (\emph{fluffle} property~F3) originates from an F-reactant of $r$, with any $r'\in [r]_\sim$, ensuring that the modified sub-CRN exists in $\Gamma(\CRS)$ and is an element of the same $\simeq$-equivalence class. 
+with $\sim$ as defined in Eq.~\eqref{eq:EqRel}. Eq.~\eqref{eq:CoreEquiv} allows for exchanging each reaction $r$, whose unique incoming edge (\emph{fluffle} property~F3) originates from an F-reactant of $r$, with any $r'\in [r]_\sim$, ensuring that the modified sub-CRN exists in $\Gamma(\CRS)$, is autocatalytic, and an element of the same $\simeq$-equivalence class. 
 
 \vspace{6pt}
 \begin{proposition}\label{prop:ExpoNoCores}
@@ -1415,7 +1415,7 @@ with $\sim$ as defined in Eq.~\eqref{eq:EqRel}. Eq.~\eqref{eq:CoreEquiv} allows 
 \end{proposition}
 \vspace{6pt}
 
-However, not every element of an equivalence class is actually a core as the following example shows:
+However, not every element of a $\simeq$-equivalence class is necessarily a core, as the following example illustrates:
 
 \begin{figure}[htb]
 	\centering
@@ -1471,10 +1471,11 @@ However, not every element of an equivalence class is actually a core as the fol
 	\caption{Depiction of }
 \end{figure}
 
-While $(\{x_1, x_2, x_3\}, \{r_1,r_2'', r_3\})$ is an autocatalytic core, $(\{x_1, x_2, x_3\}, \{r_1,r_2', r_3\})$ is not, since the F-catalyst $x_1$ of $r'_2$ induces an MR-chord. In this case $(\{x_1,x_3\}, \{r'_2, r_3\})$ is the autocatalytic core. By this example, it becomes evident that the minimality of autocatalytic cores is dependent on the catalyzation. We can therefore only obtain an upper bound for the number of autocatalytic cores in each $\simeq$-equivalence class. Clearly, the number of autocatalytic cores in $\king(\Gamma(\CRS))$ scales with the number of $\simeq$ equivalence classes. 
+While $(\{x_1, x_2, x_3\}, \{r_1,r_2'', r_3\})$ is an autocatalytic core, $(\{x_1, x_2, x_3\}, \{r_1,r_2', r_3\})$ is not, since the F-catalyst $x_1$ of $r'_2$ induces an MR-chord. In this case $(\{x_1,x_3\}, \{r'_2, r_3\})$ is the autocatalytic core. It becomes evident that the minimality of autocatalytic cores in irreducible RAFs is dependent on the catalyzation. We can therefore only obtain an upper bound for the number of autocatalytic cores in each $\simeq$-equivalence class. Clearly, the number of autocatalytic cores in $\Gamma(\CRS)$ scales with the number of $\simeq$ equivalence classes.
 
-Cores of the same equivalence class provide self-sustainability for the same set of species; however, via a different combination of potentially exponentially many catalyzations. In contrast to the number of autocatalytic cores in each irreducible RAF, the number of equivalence classes is, indeed, tremendously reduced (Fig.~\ref{fig:UniqueFReactionCores}). Still, as each of the depicted irreducible RAFs consists of exactly one maximal, non-trivial strong block, additional cores, not captured by the theoretical results, still exist.
+Cores in the same equivalence class support self-sustainability for an identical set of species; however, they can achieve this through different combinations of catalyzations, of which there may be exponentially many. In contrast to the number of autocatalytic cores in each irreducible RAF, the number of equivalence classes is, indeed, tremendously reduced (Fig.~\ref{fig:UniqueFReactionCores}). Still, as each of the depicted irreducible RAFs consists of exactly one maximal, non-trivial strong block, additional cores that are not captured by the constructive results (Lemmata~\ref{lem:MetzCircuit} and ~\ref{lem:MetzCircAut}) still exist.
 }
+
 \begin{figure}[htb]
 	\centering
 	\begin{minipage}[c]{0.5\textwidth}
@@ -1845,31 +1846,18 @@ Cores of the same equivalence class provide self-sustainability for the same set
 
 \section{Discussion}
 
-\textsc{Reflexively autocatalytic sets (RAFs)} and  \emph{stoichiometric autocatalysis} are grounded in different
-formalizations of chemical reaction systems that lead to inequivalent concepts of reactions, distinguished mainly by the manner in which catalysis is handled. While in CRNs, underlying the theory of \emph{stoichiometric autocatalysis}, catalysts are not formally distinguished from other reactants and products, the CRS framework focuses on net F-reactions considering catalysts as external to the F-reactions. In addition, in CRS species can appear on both sides of the stoichiometric equation, without being considered a catalyst. As a consequence,  F-reactions are equivalence classes of (CRN) reactions with respect to the equivalence relation $\sim$ describing reactions that share, the same non-catalyst reactants (F-reactants) and the same non-catalyst products (F-products), with identical stoichiometries, see Sec.~\ref{sec:CRNCRS}. From a set of CRN reactions $\CR$, the set of corresponding F-reactions $\FR$ can as the quotient set of $\CR$, i.e.
+\textsc{Reflexively autocatalytic sets (RAFs)} and  \emph{stoichiometric autocatalysis} are grounded in different formalizations of chemical reaction systems that lead to inequivalent concepts of reactions, distinguished mainly by the manner in which catalysis is handled. While in CRNs, underlying the theory of \emph{stoichiometric autocatalysis}, catalysts are not formally distinguished from other reactants and products, the CRS framework focuses on net F-reactions, considering catalysts as external to the F-reactions. In addition, in CRS, species can appear on both sides of the stoichiometric equation without being considered a catalyst. As a consequence, F-reactions are equivalence classes of (CRN) reactions with respect to the equivalence relation $\sim$ (Eq.~\eqref{eq:EqRel}) describing reactions that share the same non-catalyst reactants (F-reactants) and the same non-catalyst products (F-products), with identical stoichiometries, see Sec.~\ref{sec:CRNCRS}. From a set of CRN reactions $\CR$, the set of corresponding F-reactions $\FR$ can be obtained as the quotient set of $\CR$, i.e.
 \begin{equation}
 	\FR=\CR/\mathord{\sim}.
 \end{equation} 
-This observation implies that the CRS $\mathbf(Phi)\coloneqq \mathbf(\Phi)(\Gamma)$ reflects the quotient structure of the associated CRN $\Gamma$. Most importantly, the directed bipartite K\H{o}nig representation of a CRS $\queen(\Phi)$ is the quotient graph of the K\H{o}nig graph associated with its underlying CRN,
-  $\king(\Gamma(\Phi))$. The equation
+This observation implies that the CRS $\mathbf(\Phi)(\Gamma)= (X, \FR, \kappa_F(\FR))$, with $\kappa_F(\FR)$ determined as described in Eq.~\eqref{eq:CatCFR}, reflects the quotient structure of the CRN $\Gamma=(X, \CR)$. In turn, the reactions of the CRN $\Gamma(\mathbf{\Phi})$ associated with a given CRS $\mathbf{\Phi}\coloneqq (X, \FR, \kappa_F(\FR))$ can be obtained from $\FR$ and $\kappa_F(\FR)$, since each catalyzation of an F-reaction specifies a unique reaction. Most importantly, the CRN and F-reactions are in one-to-one correspondence if each equivalence class consists of a single element. In this case, CRN and CRS can be canonically identified with each other and represent equivalent objects for modelling systems of chemical reactions. 
+
+To facilitate our  K\H{o}nig representation of a CRS $\queen(\Phi)$ is the quotient graph of the K\H{o}nig graph associated with its underlying CRN, $\king(\Gamma(\Phi))$. The equation
   \begin{equation*}
     \queen(\Phi) = \king(\Gamma(\Phi))/\sim
   \end{equation*}
-  establishing the formal mathematical correspondence between CRSs and CRNs
-  that we then leveraged to analyze autocatalytic substructures.}
+  establishes the formal mathematical correspondence between CRSs and CRNs that we then leveraged to analyze autocatalytic substructures.}
   
-%% \textsc{Reflexively autocatalytic sets (RAFs)}
-%% \cite{kauffman_autocatalytic_1986, steel_emergence_2000} and
-%% \emph{stoichiometric autocatalysis} \cite{blokhuis_Universal_2020}
-%% represent two different interpretations of the concept of an explicit
-%% autocatalytic reaction, which was first discussed in 1890 by Wilhelm
-%% Ostwald \cite{Ostwald:90}. While RAFs are defined in catalytic reaction
-%% systems (CRS), in which each reaction is explicitly catalyzed,
-%% \emph{stoichiometric autocatalysis} developed, in accordance with the IUPAC
-%% definition of an autocatalytic reaction \cite{gold_iupac_2025}, from
-%% chemical reaction networks (CRN), where reactions can but don't have to be
-%% catalyzed.
-
 
 Although inherently distinct, it was recently demonstrated that
 every \textsc{RAF} that is not a \textsc{CAF} is nevertheless
