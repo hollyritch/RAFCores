@@ -167,7 +167,7 @@
 
 \begin{document}
 
-\title{Minimality in RAF sets and Stoichiometric Autocatalysis} 
+\title{Minimality in Reflexive and Stoichiometric Autocatalysis} 
 
 %% comment: 
 
@@ -1236,10 +1236,7 @@ The structural results obtained in Sec.~\ref{subsec:King}, i.e., Lemmata~\ref{le
 }
 
 \holy{
-This result provides, however, only partial explanation on the large number of autocatalytic cores observed in each irreducible RAF obtained from random instances of the binary polymer model \cite{kauffman_autocatalytic_1986}, which are shown in Fig.~\ref{fig:irrRAFCores}. Indeed, the number of autocatalytic cores per maximal strong block (\TODO{Fig.TBA}), still yields up to \TODO{TBA} autocatalytic cores per block. It is, therefore, consequential to further investigate the structures of each block that give rise to autocatalytic cores.
-
-
-To this end, we revisit the proof of \cite[Thm.~3.1]{golnik_bridging_2026}, where we have shown that each RAF $\RAF$ that is itself not a CAF is associated with an elementary circuit $C$ (SI Sec.~\ref{S-sec:Glossary}) in the directed bipartite K\H{o}nig graph of $\RAF$, whose species and reaction vertices $X(C)$ and $\CR(C)$, respectively, define an autocatalytic sub-CRN (see also \cite[Remark~13]{golnik_bridging_2026}). We adapt this construction to obtain such an elementary circuit for each strong block.
+Indeed, Fig.~\ref{fig:irrRAFCores} (\textbf{right}) shows at least one autocatalytic core per irreducible RAF. In particular, each instance consists of exactly one maximal, non-trivial strong block. The result of Thm.~\ref{StrBlockCore}, thereby, provides only partial explanation on the large number of autocatalytic cores observed in each irreducible RAF obtained from random instances of the binary polymer model \cite{kauffman_autocatalytic_1986}, which are shown in Fig.~\ref{fig:irrRAFCores}. It is, therefore, consequential to further investigate the structures of each block that give rise to autocatalytic cores. To this end, we revisit the proof of \cite[Thm.~3.1]{golnik_bridging_2026}, where we have shown that each RAF $\RAF$ that is itself not a CAF is associated with an elementary circuit $C$ (SI Sec.~\ref{S-sec:Glossary}) in the directed bipartite K\H{o}nig graph of $\RAF$, whose species and reaction vertices $X(C)$ and $\CR(C)$, respectively, define an autocatalytic sub-CRN (see also \cite[Remark~13]{golnik_bridging_2026}). We adapt this construction to obtain such an elementary circuit for each strong block.
 
 }
 
@@ -1306,8 +1303,8 @@ To this end, we revisit the proof of \cite[Thm.~3.1]{golnik_bridging_2026}, wher
 	\end{equation}
 	Assume now again that we have $i\neq j$ such that $s^-_{x_ir_j}>0$. In the first case, if $x_i, r_j\in (r_{n,1},x_{n,1},\ldots, x_{n,n_k})$ for some $n\in \{1,\ldots, l\}$, we obtain with the same arguments as in the trivial case that $S_{x_ir_j}=0$.
 
-	Assume now that there is no such $n$. If $\sgen(x_i)>\sgen(x_j)$ then $\sgen(x_i)\geq \delta(r_j)$ which implies that $x_i$ cannot be an F-reactant for $r_j$, thus $S_{x_ir_j}=0$. The case
-	$\sgen(x_i)<\sgen(x_j)$ is impossible due to our choice of $x_j$. Then the only remaining case is $\sgen(x_i)=\sgen(x_j)$ which is possible since the minimum of $\{\sgen(x) \ \vert \ x\in X(B), s^-_{xr_j}>0\}$ is not necessarily unique. This, however, implies that there is a smaller elementary circuit containing a reaction from $\CR^*(\block)$. If $i>j$ this circuit can be obtained as $C'$ with:
+Assume now that there is no such $n$. If $\sgen(x_i)>\sgen(x_j)$ then $\sgen(x_i)\geq \delta(r_j)$ which implies that $x_i$ cannot be an F-reactant for $r_j$, thus $S_{x_ir_j}=0$. The case
+$\sgen(x_i)<\sgen(x_j)$ is impossible due to our choice of $x_j$. Then the only remaining case is $\sgen(x_i)=\sgen(x_j)$ which is possible since the minimum of $\{\sgen(x) \ \vert \ x\in X(B), s^-_{xr_j}>0\}$ is not necessarily unique. This, however, implies that there is a smaller elementary circuit containing a reaction from $\CR^*(\block)$. If $i>j$ this circuit can be obtained as $C'$ with:
 
 	\begin{equation}
 		\begin{split}
@@ -1547,11 +1544,11 @@ However, each maximal, non-trivial strong block $\block$ of the K\H{o}nig graph 
 \begin{equation}\label{eq:CoreEquiv}
 	(X_1,\CR_1)\simeq (X_2,\CR_2) \Leftrightarrow X_1=X_2, \exists \lambda: \CR_1\rightarrow \CR_2, \text{ s.t. } [r]_{\mathord{\sim}}=[\lambda(r)]_{\mathord{\sim}}, \forall r\in \CR_1
 \end{equation}
-with $\sim$ as defined in Eq.~\eqref{eq:EqRel}.  Eq.~\eqref{eq:CoreEquiv} allows to exchange each reaction $r$, whose unique incoming edge (\emph{fluffle} property~F3) originates from an F-reactant of $r$, by any $r'\in [r]_\sim$, ensuring that the modified core exists in $\Gamma(\CRS)$ and is an element of the same $\simeq$-equivalence class. The number of equivalent cores for each equivalence class can then be easily computed.
+with $\sim$ as defined in Eq.~\eqref{eq:EqRel}.  Eq.~\eqref{eq:CoreEquiv} allows for exchanging each reaction $r$, whose unique incoming edge (\emph{fluffle} property~F3) originates from an F-reactant of $r$, with any $r'\in [r]_\sim$, ensuring that the modified core exists in $\Gamma(\CRS)$ and is an element of the same $\simeq$-equivalence class. Computing the number of cores for each equivalence class is then straightforward. \TODO{Eample of the two cores where minimality changes}
 
 \vspace{6pt}
 \begin{proposition}\label{prop:ExpoNoCores}
-	Let	$\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$ be a CRS with specified food-set $\food$, $\RAF$ an irreducible RAF, $(\tilde{X},\tilde{\CR})$ an autocatalytic core in $\Gamma(\mathbf{\Phi})$, and 
+	Let $\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$ be a CRS with specified food-set $\food$, $\RAF$ an irreducible RAF, $(\tilde{X},\tilde{\CR})$ an autocatalytic core in $\Gamma(\mathbf{\Phi})		$, and 
 	\begin{equation}
 		\tilde{\CR}_F\coloneqq \{r\in \tilde{\CR} \ \vert \ \forall x\in X: s^-_{xr} \Rightarrow \sigma^-_{xr}>0 \}.
 	\end{equation}
@@ -1562,10 +1559,26 @@ with $\sim$ as defined in Eq.~\eqref{eq:EqRel}.  Eq.~\eqref{eq:CoreEquiv} allows
 \end{proposition}
 \vspace{6pt}
 
-The fact that each maximal, non-trivial strong block in $\king(\Gamma(\CRS'))$ of monocatalyzed sub-CRS $\CRS'$, as specified in Lemma~\ref{lem:ExpoSubCRS}, contains at least one autocatalytic core, indicates the large number of cores. In this way,, however, only a lower bound can be obtained as additional cores not captured by the theoretical results might exist. 
-
-Cores of the same equivalence class provide self-sustainability for the same set of species, however, via a different combination of potentially exponentially many catalyzations. Indeed, the number of equivalence classes, shown in Fig.~\TODO{TBA}, show a tremendous reduction in contrast to the number of autocatalytic cores in each irreducible RAF. In line with the theoretical results obtained so far, \TODO{their abundance is at least in the same order of magnitude as the number of maximal, non-trivial strong blocks.}
+Summing over each maximal, non-trivial strong block in $\king(\Gamma(\CRS))$ then yields a lower bound on the number of autocatalytic cores. Cores of the same equivalence class provide self-sustainability for the same set of species; however, via a different combination of potentially exponentially many catalyzations. In contrast to the number of autocatalytic cores in each irreducible RAF, the number of equivalence classes is, indeed, tremendously reduced (Fig.~\ref{fig:UniqueFReactionCores}). Still, as each of the depicted irreducible RAFs consists of exactly one maximal, non-trivial strong block, additional cores, not captured by the theoretical results, still exist.
 }
+\begin{figure}[htb]
+	\centering
+	\begin{minipage}[c]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./Pictures/UniqueFReactionCoresn5rev.png}
+	\end{minipage}%
+	\hfill%
+	\begin{minipage}[c]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./Pictures/UniqueFReactionCoresn5rev2.png}
+	\end{minipage}
+	\caption{Number of autocatalytic cores and autocatalytic core equivalence classes according 
+		to Eq.~\eqref{eq:CoreEquiv} among non-food molecules in 50 different irreducible RAFs from 
+		two random instances of the binary polymer model with a fixed probability for any non-food 
+		species to catalyze any reaction of $p=0.01$ (\textbf{right}) and $p=0.008$ (\textbf{left}) and 
+		maximum polymer-length $5$.}
+	\label{fig:UniqueFReactionCores}
+\end{figure}
 
 %\section{Examples}
 %
