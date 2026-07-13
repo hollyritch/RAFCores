@@ -590,22 +590,51 @@ To keep the exposition concise, we assume this exclusion throughout and do not r
 
 \begin{figure}[htb]
 	\centering
-	\begin{minipage}[c]{0.5\textwidth}
+	\begin{minipage}[c]{\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{./Pictures/IrrRAFCoresn5rev2.png}
-	\end{minipage}%
-	\hfill%
-	\begin{minipage}[c]{0.5\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{./Pictures/IrrRAFCoresn5rev.png}
+		\begin{minipage}[c]{0.5\textwidth}
+			\centering
+			\includegraphics[width=0.8\textwidth]{./Pictures/IrrRAFCoresn5rev2.png}
+		\end{minipage}%
+		\hfill%
+		\begin{minipage}[c]{0.5\textwidth}
+			\centering
+			\includegraphics[width=0.8\textwidth]{./Pictures/IrrRAFCoresn5rev.png}
+		\end{minipage}
 	\end{minipage}
-	\caption{Depiction of the number of autocatalytic cores among non-food molecules 
-		in 50 different irreducible RAFs from two random instances of the binary polymer model 
-		with a fixed probability for any non-food species to catalyze any reaction of $p=0.01$ 
-		(\textbf{right}) and $p=0.008$ (\textbf{left}) and maximum polymer-length $5$.}
+	\begin{minipage}[c]{\textwidth}
+		\centering
+		\begin{minipage}[c]{0.5\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{./Pictures/n5rev_overlap.pdf}
+		\end{minipage}%
+		\hfill%
+		\begin{minipage}[c]{0.5\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{./Pictures/n5rev2_overlap.pdf}
+		\end{minipage}
+	\end{minipage}
+	\begin{minipage}[c]{\textwidth}
+		\centering
+		\begin{minipage}[c]{0.5\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{./Pictures/n5rev_present.pdf}
+		\end{minipage}%
+		\hfill%
+		\begin{minipage}[c]{0.5\textwidth}
+			\centering
+			\includegraphics[width=0.9\textwidth]{./Pictures/n5rev2_present.pdf}
+		\end{minipage}
+	\end{minipage}	
+	\caption{Depiction of the number of autocatalytic cores among non-food species (\textbf{upper}),
+		the pairwise overlap of F-reactions (\textbf{middle}), and the presence of F-reactions from 
+		the maximal RAF (\textbf{lower}) in 50 different irreducible RAFs from two random instances 
+		of the binary polymer model with a fixed probability for any non-food species to catalyze any 
+		reaction of $p=0.01$ (\textbf{right}) and $p=0.008$ (\textbf{left}) and maximum polymer-length $5$.}
 	\label{fig:irrRAFCores}
 \end{figure}
 }
+
 
 \subsubsection{The K\H{o}nig Graph of monocatalyzed, irreducible RAFs}\label{subsec:King}
 
@@ -622,6 +651,7 @@ is partitioned into two distinct types of directed edges given as
     \begin{cases} (x,r) \ | \ x\in \closure{\RAF}{\food}, r\in \CR': s^-_{xr}>0 \\
  			(r, x) \ | \ x\in \closure{\RAF}{\food}, r\in \CR': s^+_{xr}>0. \end{cases}
 \end{equation}
+\FloatBarrier
 Note that the K\H{o}nig graph emerged under various names in the context of CRN theory, as the 
 species-reaction (SR) graph \cite{craciun_multiple_2006} and also as Petri nets \cite{angeli_petri_2007}.
 
@@ -1097,8 +1127,7 @@ To this end, we revisit the proof of \cite[Thm.~3.1]{golnik_bridging_2026}, wher
 
 \vspace{6pt}
 \begin{lemma}\label{lem:MetzCircuit}
-  \holy{Let $\block$ be a maximal, non-trivial strong block of $\king(\RAF)$. Then $\block$ contains an elementary circuit $C$ with one entry reaction for $\block$ of, and there is a reordering of the columns of $\SM[X(C), R(C)]$ that yields a Metzler
-  matrix.}
+  \holy{Let $\block$ be a maximal, non-trivial strong block of $\king(\RAF)$. Then $\block$ contains an elementary circuit $C$ with one entry reaction for $\block$, and there is a reordering of the columns of $\SM[X(C), R(C)]$ that yields a Metzler matrix.}
 \end{lemma}
 \begin{proof}
 	\holy{We start with the simple case, and assume there is only one reaction $r_1$ in $\block$ satisfying Properties~$i$-$iii.$ of Lemma~\ref{lem:StrongBlocks}. We then have $\crgen(r_1)<\crgen(r)$ for all $r\in \CR(\block) \setminus \{r_1\}$. We may then construct the following elementary circuit:
@@ -1386,20 +1415,20 @@ The autocatalytic elementary circuits, as constructed in the proof of Lemma~\ref
 	\label{fig:NonUnStoich}
 \end{figure}
 
-However, each maximal, non-trivial strong block $\block$ of the K\H{o}nig graph representation of an irreducible, monocatalyzed RAF $\RAF$ contains an autocatalytic core (Thm.~\ref{Thm:StrBlockCore}), which is a strongly connected subgraph \cite{golnik_autocatalytic_2026} of an autocatalytic elementary circuit $C$ (Lemmata~\ref{lem:MetzCircuit} and \ref{lem:MetzCircAut}). Since every strongly connected subgraph of $\king(\RAF)[X(C)\cup \CR(C)]$ is Hamiltonian \cite{bang-jensen_digraphs_2002}, i.e., it encompasses an elementary circuit passing each vertex, also referred to as \emph{spanning circuit}, each autocatalytic core derived in this way is Hamiltonian. If the core contains an entry reaction for $\block$, Cor.~\ref{cor:MRChordlessAutocat} in combination with the minimality of autocatalytic cores yields that the spanning circuit is free of reaction-to-metabolite (RM)-chords except for the digon-induced one that connects the entry reaction to its F-catalyst.
+However, each maximal, non-trivial strong block $\block$ of the K\H{o}nig graph representation of an irreducible, monocatalyzed RAF $\RAF$ contains an autocatalytic core (Thm.~\ref{Thm:StrBlockCore}), which is a strongly connected subgraph \cite{golnik_autocatalytic_2026} of an autocatalytic elementary circuit $C$ (Lemmata~\ref{lem:MetzCircuit} and \ref{lem:MetzCircAut}). Since every strongly connected subgraph of $\king(\RAF)[X(C)\cup \CR(C)]$ is \emph{Hamiltonian} \cite{bang-jensen_digraphs_2002} -- which means that it encompasses an elementary circuit passing each vertex, also referred to as \emph{spanning circuit} -- each autocatalytic core derived in this way is Hamiltonian. If the core contains an entry reaction for $\block$, Cor.~\ref{cor:MRChordlessAutocat} in combination with the minimality of autocatalytic cores yields that the spanning circuit is free of reaction-to-metabolite (RM)-chords except for the digon-induced one that connects the entry reaction to its F-catalyst.
 
 \vspace{6pt}
 \begin{proposition}\label{Prop:OneCircCorePerBlock}
-	Let $\RAF$ be an irreducible, monocatalyzed RAF. Every maximal, non-trivial strong block $\block$ of $\king(\RAF)$ contains an autocatalytic core $(X'',\CR'')$ whose induced subgraph $G\coloneqq\king(\RAF)[X''\cup \CR'']$ is Hamiltonian. If there is an entry reaction for $\block$ s.t. $r\in \CR''$, $G$ is an elementary circuit with exactly one RM-chord $(r,x)$, where $x$ is the F-catalyst of $r$. 
+	Let $\RAF$ be an irreducible, monocatalyzed RAF. Every maximal, non-trivial strong block $\block$ of $\king(\RAF)$ contains an autocatalytic core $(\tilde{X},\tilde{\CR})$ whose induced subgraph $G\coloneqq\king(\RAF)[\tilde{X}\cup \tilde{\CR}]$ is Hamiltonian. If there is an entry reaction for $\block$ s.t. $r\in \tilde{\CR}$, $G$ is an elementary circuit with exactly one RM-chord $(r,x)$, where $x$ is the F-catalyst of $r$. 
 \end{proposition}
 \vspace{6pt}
 }
 
-\holy{Finally, we can shed light on the unexpectedly large number of autocatalytic cores associated with each irreducible RAF in random instances of the binary polymer model, as shown in Fig.~\ref{fig:irrRAFCores}. Every autocatalytic core can be considered an element of an equivalence class w.r.t. the relation: 
+\holy{Finally, we shed light on the unexpectedly large number of autocatalytic cores associated with each irreducible RAF in random instances of the binary polymer model, as shown in Fig.~\ref{fig:irrRAFCores}. Every autocatalytic core can be considered an element of an equivalence class w.r.t. the relation: 
 \begin{equation}\label{eq:CoreEquiv}
 	(X_1,\CR_1)\simeq (X_2,\CR_2) \Leftrightarrow X_1=X_2, \exists \lambda: \CR_1\rightarrow \CR_2, \text{ s.t. } [r]_{\mathord{\sim}}=[\lambda(r)]_{\mathord{\sim}}, \forall r\in \CR_1
 \end{equation}
-with $\sim$ as defined in Eq.~\eqref{eq:EqRel}. Eq.~\eqref{eq:CoreEquiv} allows for exchanging each reaction $r$, whose unique incoming edge (\emph{fluffle} property~F3) originates from an F-reactant of $r$, with any $r'\in [r]_\sim$, ensuring that the modified sub-CRN exists in $\Gamma(\CRS)$, is autocatalytic, and an element of the same $\simeq$-equivalence class. 
+with $\sim$ as defined in Eq.~\eqref{eq:EqRel}. Accordingly, each reaction $r$, whose unique incoming edge (\emph{fluffle} property~F3) originates from an F-reactant of $r$, can be substituted by any $r'\in [r]_\sim$, ensuring that the modified sub-CRN exists in $\Gamma(\CRS)$, is autocatalytic, and an element of the same $\simeq$-equivalence class. 
 
 \vspace{6pt}
 \begin{proposition}\label{prop:ExpoNoCores}
@@ -1409,13 +1438,13 @@ with $\sim$ as defined in Eq.~\eqref{eq:EqRel}. Eq.~\eqref{eq:CoreEquiv} allows 
 		\tilde{\CR}_F\coloneqq \{r\in \tilde{\CR} \ \vert \ \forall x\in X: s^-_{xr} \Rightarrow \sigma^-_{xr}>0 \}.
 	\end{equation}
 	Then it holds that
-	\begin{equation}
+	\begin{equation}\label{eq:NoEquivAutoCatCycles}
 		|[(\tilde{X}, \tilde{\CR})]|_{\mathord{\simeq}} = \prod_{r\in\tilde{\CR}_F}|[r]_{\mathord{\sim}}|.
 	\end{equation}
 \end{proposition}
 \vspace{6pt}
 
-However, not every element of a $\simeq$-equivalence class is necessarily a core, as the following example illustrates:
+Unfortunately, not every element of a $\simeq$-equivalence class is necessarily a core, as the following example illustrates:
 
 \begin{figure}[htb]
 	\centering
@@ -1468,10 +1497,10 @@ However, not every element of a $\simeq$-equivalence class is necessarily a core
 
 		\end{tikzpicture}
 	\end{minipage}
-	\caption{Depiction of }
+	\caption{Illustration of CRN reactions (\textbf{left}) and the bipartite K\H{o}nig graph (\textbf{right}) of an irreducible RAF in which two catalyzations for one F-reaction influence minimality of an autocatalytic subsystem and give rise to two distinct autocatalytic cores of different size.}
 \end{figure}
 
-While $(\{x_1, x_2, x_3\}, \{r_1,r_2'', r_3\})$ is an autocatalytic core, $(\{x_1, x_2, x_3\}, \{r_1,r_2', r_3\})$ is not, since the F-catalyst $x_1$ of $r'_2$ induces an MR-chord. In this case $(\{x_1,x_3\}, \{r'_2, r_3\})$ is the autocatalytic core. It becomes evident that the minimality of autocatalytic cores in irreducible RAFs is dependent on the catalyzation. We can therefore only obtain an upper bound for the number of autocatalytic cores in each $\simeq$-equivalence class. Clearly, the number of autocatalytic cores in $\Gamma(\CRS)$ scales with the number of $\simeq$ equivalence classes.
+While $(\{x_1, x_2, x_3\}, \{r_1,r_2'', r_3\})$ is an autocatalytic core, $(\{x_1, x_2, x_3\}, \{r_1,r_2', r_3\})$ is not, since the F-catalyst $x_1$ of $r'_2$ induces an MR-chord. In this case $(\{x_1,x_3\}, \{r'_2, r_3\})$ is the autocatalytic core. It becomes evident that the minimality of autocatalytic cores in irreducible RAFs is dependent on the catalyzation. Eq.\eqref{eq:NoEquivAutoCatCycles} then only informs on an upper bound for the number of autocatalytic cores in each $\simeq$-equivalence class. The number of autocatalytic cores in $\Gamma(\CRS)$ scales with the number of $\simeq$ equivalence classes. 
 
 Cores in the same equivalence class support self-sustainability for an identical set of species; however, they can achieve this through different combinations of catalyzations, of which there may be exponentially many. In contrast to the number of autocatalytic cores in each irreducible RAF, the number of equivalence classes is, indeed, tremendously reduced (Fig.~\ref{fig:UniqueFReactionCores}). Still, as each of the depicted irreducible RAFs consists of exactly one maximal, non-trivial strong block, additional cores that are not captured by the constructive results (Lemmata~\ref{lem:MetzCircuit} and ~\ref{lem:MetzCircAut}) still exist.
 }
