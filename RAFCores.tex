@@ -1873,23 +1873,22 @@ Cores in the same equivalence class support self-sustainability for an identical
 %$C_1=(x_1,r_1,x_2,r_2,x_3,r_3,x_1)$ and $C_2=(x_1,r_1,x_2,r_2,x_4,r_4,x_1)$
 %could be obtained, and both are autocatalytic cores.
 
+\holy{
+
 \section{Discussion}
 
-\textsc{Reflexively autocatalytic sets (RAFs)} and  \emph{stoichiometric autocatalysis} are grounded in different formalizations of chemical reaction systems that lead to inequivalent concepts of reactions, distinguished mainly by the manner in which catalysis is handled. While in CRNs, underlying the theory of \emph{stoichiometric autocatalysis}, catalysts are not formally distinguished from other reactants and products, the CRS framework focuses on net F-reactions, considering catalysts as external to the F-reactions. In addition, in CRS, species can appear on both sides of the stoichiometric equation without being considered a catalyst. As a consequence, F-reactions are equivalence classes of (CRN) reactions with respect to the equivalence relation $\sim$ (Eq.~\eqref{eq:EqRel}) describing reactions that share the same non-catalyst reactants (F-reactants) and the same non-catalyst products (F-products), with identical stoichiometries, see Sec.~\ref{sec:CRNCRS}. From a set of CRN reactions $\CR$, the set of corresponding F-reactions $\FR$ can be obtained as the quotient set of $\CR$, i.e.
+\textsc{Reflexively autocatalytic sets (RAFs)} and  \emph{stoichiometric autocatalysis} are grounded in different formalizations of chemical reaction systems that lead to inequivalent concepts of reactions, distinguished mainly by the manner in which catalysis is handled. While in CRNs, underlying the theory of \emph{stoichiometric autocatalysis}, catalysts are not formally distinguished from other reactants and products, the CRS framework focuses on net F-reactions, considering catalysts as external to the F-reactions. In addition, in CRS, species can appear on both sides of the stoichiometric equation without being considered a catalyst. As a consequence, F-reactions are equivalence classes of (CRN) reactions with respect to the equivalence relation $\sim$ (Eq.~\eqref{eq:EqRel}),  describing reactions that share the same non-catalyst reactants (F-reactants) and the same non-catalyst products (F-products), with identical stoichiometries, see Sec.~\ref{sec:CRNCRS}. From a set of CRN reactions $\CR$, the set of corresponding F-reactions $\FR$ can be obtained as the quotient set of $\CR$, i.e.
 \begin{equation}
 	\FR=\CR/\mathord{\sim}.
 \end{equation} 
-This observation implies that the CRS $\mathbf(\Phi)(\Gamma)= (X, \FR, \kappa_F(\FR))$, with $\kappa_F(\FR)$ determined as described in Eq.~\eqref{eq:CatCFR}, reflects the quotient structure of the CRN $\Gamma=(X, \CR)$. In turn, the reactions of the CRN $\Gamma(\mathbf{\Phi})$ associated with a given CRS $\mathbf{\Phi}\coloneqq (X, \FR, \kappa_F(\FR))$ can be obtained from $\FR$ and $\kappa_F(\FR)$, since each catalyzation of an F-reaction specifies a unique reaction. Most importantly, the CRN and F-reactions are in one-to-one correspondence if each equivalence class consists of a single element. In this case, CRN and CRS can be canonically identified with each other and represent equivalent objects for modelling systems of chemical reactions. 
+This observation implies that the CRS $\mathbf{\Phi}(\Gamma)= (X, \CR/\mathord{\sim}, \kappa_F(\CR/\mathord{\sim}))$, with $\kappa_F(\CR/\mathord{\sim})$ determined as described in Eq.~\eqref{eq:CatCFR}, reflects the quotient structure of the CRN $\Gamma=(X, \CR)$. In turn, the reactions of the CRN $\Gamma(\mathbf{\Phi})$ associated with a given CRS $\mathbf{\Phi}\coloneqq (X, \FR, \kappa_F(\FR))$ can be obtained from $\kappa_F(\FR)$, since each catalyzation of an F-reaction specifies a unique reaction. Most importantly, the CRN and F-reactions are in one-to-one correspondence if each equivalence class consists of a single element. In this case, CRN and CRS can be canonically identified with each other and represent equivalent objects for modelling systems of chemical reactions. 
 
-\TODO{Justify consideration of monocatalyzations} To facilitate our  K\H{o}nig representation of a CRS $\queen(\Phi)$ is the quotient graph of the K\H{o}nig graph associated with its underlying CRN, $\king(\Gamma(\Phi))$. The equation
-  \begin{equation*}
-    \queen(\Phi) = \king(\Gamma(\Phi))/\sim
-  \end{equation*}
-  establishes the formal mathematical correspondence between CRSs and CRNs that we then leveraged to analyze autocatalytic substructures.}
-  
+Although inherently distinct, it was recently demonstrated that every \textsc{RAF} that is not a \textsc{CAF} is \emph{stoichiometrically autocatalytic} \cite{golnik_bridging_2026}. In the present contribution, we examine this relationship in greater detail, focusing in particular on the interplay between the minimal structures arising in both frameworks, i.e., \textsc{irreducible RAFs} and \emph{autocatalytic cores}. Subjecting \texttt{autogatito} to irreducible RAFs obtained from random instances of the binary polymer model \cite{kauffman_autocatalytic_1986} revealed an unexpectedly huge amount of autocatalytic cores in each irreducible RAF, which could not be explained by the theoretical results obtained in \cite{golnik_bridging_2026}.
 
-Although inherently distinct, it was recently demonstrated that every \textsc{RAF} that is not a \textsc{CAF} is nevertheless \emph{stoichiometrically autocatalytic} \cite{golnik_bridging_2026}. 
-Here, we continued examining this relationship in greater detail, focusing in particular on the interplay between the minimal structures arising in both frameworks.
+Since \emph{autocatalytic cores} correspond to \emph{fluffles} in the bipartite K\H{o}nig graph -- that is, strongly connected blocks containing equal numbers of species and reaction vertices, in which every species vertex has out-degree~1 and every reaction vertex has in-degree~1 -- it was natural to identify analogous patterns in irreducible RAFs. CRN and CRS are in one-to-one correspondence whenever each equivalence class consists of a single element. We therefore focused on monocatalyzed, irreducible RAFs and investigated their properties by examining the structure of the bipartite K\H{o}nig graph $\king(\RAF)$ of their corresponding CRN representation. 
+
+Importantly, $\king(\RAF)$ of an irreducible, monocatalyzed RAF inherits three cardinal properties (Lemmata~\ref{lem:PSC} - \ref{lem:StrongBlocks}). First, the subgraph of $\king(\RAF)$ induced by all non-food and non-waste species is strongly connected. Secondly, all cut-vertices of $\king(\RAF)$ are reactions. Finally, each strong block $\block$ of $\king(\RAF)$ that is not a single species vertex or a digon composed of a reaction and a food species, contains a reaction vertex $r^*$ that acts as an inflow reaction for $\block$ -- that is, all F-reactants of $r^*$ are located outside, at least one F-product is located inside and one F-catalyst that is not a food-species is located inside of $\block$, and $r^*$ has the lowest generation order of all reactions among $\block$. 
+}
 
 \TODO{Describe irreducible RAFs and the number of cores}
 
@@ -1923,9 +1922,7 @@ Here, we continued examining this relationship in greater detail, focusing in pa
 %% chemical reaction systems. Moreover, it facilitates the transfer of results
 %% obtained in one framework to the other, and vice versa.
 
-In the present contribution, we examine this relationship in greater
-detail, focusing in particular on the interplay between the minimal
-structures arising in both frameworks.  \PFS{To this end we started from 
+  \PFS{To this end we started from 
   Thm.~3.1 in \cite{golnik_bridging_2026}, which asserts that every
   \textsc{RAF} that is not a \textsc{CAF} is \emph{stoichiometrically
   autocatalytic}. As an immediate consequence, \emph{irreducible RAFs}
