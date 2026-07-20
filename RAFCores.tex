@@ -962,7 +962,7 @@ We start with the set $\CR^n$. For each an $r\in \CR$, we let $v_n(r)\coloneqq
 1>0$, and set for each $x\in X'$:
 \begin{equation}
     \label{eq:update-f}
-   	f_n(x) \leftarrow \sum_{r\in R^n} \SM_{xr} v_n(r),
+   	f_n(x) \coloneqq \sum_{r\in R^n} \SM_{xr} v_n(r),
 \end{equation}
 which yields $f_n(x)>0$ for all $x\in X^n$. Assume now that for some
 $1< k\leq n$ it holds that $f_k(x)>0$, for all $x\in X^k$. For $k-1$ we 
@@ -1310,12 +1310,6 @@ In case the maximal strong block $\block$ consists of a single reaction $r$ and 
 \begin{corollary}\label{cor:AutoCatReac}
   Let $\RAF$ be an irreducible, monocatalyzed RAF and $\block$ a maximal strong block of $\king(\RAF)$. If $|\CR(\block)|=|X(\block)|=1$ and $X(\block)\cap \food=\emptyset$, then $r$ is an autocatalytic reaction.
 \end{corollary}
-%\begin{proof}
-%	Assume first that $x$ is not a catalyst. Since $B$ is strongly connected, there is an edge $(x,r)$ and $(r,x)$. Assume now that 
-%	$x$ is not a net product of $r$. Then $x$ is produced by a reaction of another block $B'$. Then there is another path connecting 
-%	$B$ to $B'$ since otherwise $x$ would be a cut-vertex, which is not possible by Lemma~\ref{lem:CutVertexReac}. Then 
-%	$r$ is an explicit autocatalytic reaction. 
-%\end{proof}
 \vspace{6pt}
 
 The following example illustrates such a situation. 
@@ -1885,73 +1879,47 @@ This observation implies that the CRS $\mathbf{\Phi}(\Gamma)= (X, \CR/\mathord{\
 
 Although inherently distinct, it was recently demonstrated that every \textsc{RAF} that is not a \textsc{CAF} is \emph{stoichiometrically autocatalytic} \cite{golnik_bridging_2026}. In the present contribution, we examine this relationship in greater detail, focusing in particular on the interplay between the minimal structures arising in both frameworks, i.e., \textsc{irreducible RAFs} and \emph{autocatalytic cores}. Subjecting \texttt{autogatito} to irreducible RAFs obtained from random instances of the binary polymer model \cite{kauffman_autocatalytic_1986} revealed an unexpectedly huge amount of autocatalytic cores in each irreducible RAF, which could not be explained by the theoretical results obtained in \cite{golnik_bridging_2026}.
 
-Since \emph{autocatalytic cores} correspond to \emph{fluffles} in the bipartite K\H{o}nig graph -- that is, strongly connected blocks containing equal numbers of species and reaction vertices, in which every species vertex has out-degree~1 and every reaction vertex has in-degree~1 -- it was natural to identify analogous patterns in irreducible RAFs. CRN and CRS are in one-to-one correspondence whenever each equivalence class consists of a single element. We therefore focused on monocatalyzed, irreducible RAFs and investigated their properties by examining the structure of the bipartite K\H{o}nig graph $\king(\RAF)$ of their corresponding CRN representation. 
+Since \emph{autocatalytic cores} correspond to \emph{fluffles} in the bipartite K\H{o}nig graph -- that is, strongly connected blocks containing equal numbers of species and reaction vertices, in which every species vertex has out-degree~1 and every reaction vertex has in-degree~1 (F1 - F3) -- it seemed natural to identify analogous patterns in irreducible RAFs. CRN and CRS are in one-to-one correspondence whenever each equivalence class consists of a single element. We therefore focused on monocatalyzed, irreducible RAFs $\RAF$ and investigated their properties by examining the structure of the bipartite K\H{o}nig graph $\king(\RAF)$ of the corresponding CRN representation. 
 
-Importantly, $\king(\RAF)$ of an irreducible, monocatalyzed RAF inherits three cardinal properties (Lemmata~\ref{lem:PSC} - \ref{lem:StrongBlocks}). First, the subgraph of $\king(\RAF)$ induced by all non-food and non-waste species is strongly connected. Secondly, all cut-vertices of $\king(\RAF)$ are reactions. Finally, each strong block $\block$ of $\king(\RAF)$ that is not a single species vertex or a digon composed of a reaction and a food species, contains a reaction vertex $r^*$ that acts as an inflow reaction for $\block$ -- that is, all F-reactants of $r^*$ are located outside, at least one F-product is located inside and one F-catalyst that is not a food-species is located inside of $\block$, and $r^*$ has the lowest generation order of all reactions among $\block$. 
+Irreducibility endows $\king(\RAF)$ with three fundamental properties for any irreducible, monocatalyzed RAF $\RAF$. 
+	\begin{itemize}
+		\item[I1.]{The subgraph of $\king(\RAF)$ induced by all species that are neither food nor waste is strongly connected.}
+		\item[I2.]{Every cut vertex of $\king(\RAF)$ is a reaction.}
+		\item[I3.]{Every strong block $\block$ of $\king(\RAF)$ that is non-trivial, i.e., not a single species vertex nor a digon composed of a reaction and a food species, contains a reaction $r^*$, also referred to as \emph{entry reaction}, that exertes the function of an inflow reaction for $\block$ -- that is, all F-reactants of $r^*$ are located outside, at least one F-product and one F-catalyst that is not a food-species is located inside, and $r^*$ has the lowest generation order among all reactions of $\block$.} 
+	\end{itemize}
+Properties I1 and I2 imply a partition of $\king(\RAF)$ into strong blocks that are separated by reaction vertices. Property I3 guarantees that each of the non-trivial strong blocks is \emph{stoichiometrically autocatalytic}. 
+
+In fact, strong blocks are, by definition, well-formed. In addition, \emph{entry reactions}, which have only F-catalysts as reactants and at least one F-product inside the corresponding block $\block$, induce a nonnegative column in the stoichiometric submatrix $\SM[X(\block),\CR(\block)]$. This alone is indeed sufficient to guarantee that $\SM[X(\block),\CR(\block)]$ for any non-trivial, strong block $\block$ is semi-positive (Lemma~\ref{lem:NonFoodSemipositiv} and Cor.~\ref{cor:blockSemiPositiv}). Well-formedness and semipositivity of the associated stoichiometric submatrix are the required conditions for a sub-CRN to be autocatalytic (Def.~\ref{def:autSubRN}). Each block is therefore \emph{stoichiometrically autocatalytic} and contains an autocatalytic core  (Thm.~\ref{Thm:StrBlockCore}).
+
+
+
 }
 
-\TODO{Describe irreducible RAFs and the number of cores}
-
-%% The principal obstacle to a direct comparison between the two frameworks
-%% lies in their divergent interpretations of chemical reactions. In CRNs,
-%% reactions are defined via their associated stoichiometric equations
-%% \cite{muller_what_2022}. Therefore, each equation reflects a different
-%% chemical reaction, which we call a \emph{reaction}. In particular,
-%% reactions that share the same net stoichiometries but engage a different
-%% set of catalysts or involve species that appear on both sides of the
-%% reaction with identical stoichiometry, albeit being considered catalysts,
-%% are unique mathematical objects. In contrast, reactions in CRS
-%% \cite{lohn_evolving_1998}, referred to here as \emph{F-reactions}, treat
-%% reactions that differ solely in their catalysts as identical. Accordingly,
-%% an F-reaction can be viewed as an equivalence class of reactions that share
-%% the same non-catalyst reactants (F-reactants) and the same non-catalyst
-%% products (F-products).
-
-%% Building on this observation, we defined an equivalence relation, denoted
-%% by $\sim$, on the set of reactions based exclusively on their F-reactants
-%% and F-products. Under this relation, reactions are mapped to the set of
-%% F-reactions and can be identified as representatives of their corresponding
-%% $\sim$-equivalence classes, that is, their associated F-reaction images.
-%% As a convenient consequence, we obtained the directed bipartite K\H{o}nig
-%% representation of a CRS $\queen(\Phi)$, as the quotient graph of the
-%% K\H{o}nig graph associated with its underlying CRN, $\king(\Gamma(\Phi))$,
-%% thereby establishing a formal mathematical correspondence between CRSs and
-%% CRNs. This result was not only essential for the results presented in this
-%% contribution, but also provides a foundation for future research aimed at
-%% further exploring the relationship between these two interpretations of
-%% chemical reaction systems. Moreover, it facilitates the transfer of results
-%% obtained in one framework to the other, and vice versa.
-
-  \PFS{To this end we started from 
-  Thm.~3.1 in \cite{golnik_bridging_2026}, which asserts that every
-  \textsc{RAF} that is not a \textsc{CAF} is \emph{stoichiometrically
-  autocatalytic}. As an immediate consequence, \emph{irreducible RAFs}
-  \cite{steel_minimal_2013}, i.e., \textsc{RAF}s that do not contain proper
-  sub-RAFs, are \emph{stoichiometrically autocatalytic} as long as they are
-  not CAFs.} Lemma~\ref{lem:trivRAFCAF} show that irreducible RAFs are CAFs
-if and only if they are trivial, i.e., consisting of a single reaction.
-
-The minimality of non-trivial, irreducible RAFs
-implies strong connectivity on both the R-graph of the CRS and the
-underlying CRN. 
-
-Since strong connectivity is a also prerequisite for autocatalytic cores.
-Their bipartite digraph representation in CRNs with explicit catalysis are
-\emph{fluffles}, and thus in particular strong blocks
-\cite{golnik_autocatalytic_2026}. The bipartite K\H{o}nig graph of
-non-trivial, irreducible RAFs, reflecting the underlying CRN without food
-and waste molecules, $\lord(\RAF)$, \PFS{is not only strongly connected but
-  composed of strong blocks that are separated by cut vertices that are
-  always reaction vertices and never species vertices
-  (Lemma~\ref{lem:CutVertexReac}).}
+%  \PFS{To this end we started from 
+%  Thm.~3.1 in \cite{golnik_bridging_2026}, which asserts that every
+%  \textsc{RAF} that is not a \textsc{CAF} is \emph{stoichiometrically
+%  autocatalytic}. As an immediate consequence, \emph{irreducible RAFs}
+%  \cite{steel_minimal_2013}, i.e., \textsc{RAF}s that do not contain proper
+%  sub-RAFs, are \emph{stoichiometrically autocatalytic} as long as they are
+%  not CAFs.} Lemma~\ref{lem:trivRAFCAF} show that irreducible RAFs are CAFs
+%if and only if they are trivial, i.e., consisting of a single reaction.
+%
+%The minimality of non-trivial, irreducible RAFs
+%implies strong connectivity on both the R-graph of the CRS and the
+%underlying CRN. 
+%
+%Since strong connectivity is a also prerequisite for autocatalytic cores.
+%Their bipartite digraph representation in CRNs with explicit catalysis are
+%\emph{fluffles}, and thus in particular strong blocks
+%\cite{golnik_autocatalytic_2026}. The bipartite K\H{o}nig graph of
+%non-trivial, irreducible RAFs, reflecting the underlying CRN without food
+%and waste molecules, $\lord(\RAF)$, \PFS{is not only strongly connected but
+%  composed of strong blocks that are separated by cut vertices that are
+%  always reaction vertices and never species vertices
+%  (Lemma~\ref{lem:CutVertexReac}).}
 %See also Fig.~\ref{ex:CutVertex} for an example. 
 
-Strong blocks are, by definition, well-formed. In addition, some of their
-cut vertices, so-called \emph{pure reactions}, which have only F-catalysts
-as reactants inside the corresponding block $B$, can act as import
-reactions as they induce a nonnegative column in the stoichiometric
-submatrix $\SM(B)$. In theory, this would allow for an infinitely high
-in-flow such that all species inside the block are net-produced. Indeed, $\SM(B)$ is semi-positive for any strong block $B$, such that each block is \emph{stoichiometrically autocatalytic} (Thm.~\ref{Thm:StrBlockCore}).
+
 
 The structures responsible for each strong block being
 \emph{stoichiometrically autocatalytic} are \emph{Metzler circuits};
