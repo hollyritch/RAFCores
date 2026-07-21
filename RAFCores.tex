@@ -1377,7 +1377,7 @@ However, each maximal, non-trivial strong block $\block$ of the K\H{o}nig graph 
 \begin{equation}\label{eq:CoreEquiv}
 	(X_1,\CR_1)\simeq (X_2,\CR_2) \Leftrightarrow X_1=X_2, \exists \lambda: \CR_1\rightarrow \CR_2, \text{ s.t. } [r]_{\mathord{\sim}}=[\lambda(r)]_{\mathord{\sim}}, \forall r\in \CR_1
 \end{equation}
-with $\sim$ as defined in Eq.~\eqref{eq:EqRel}. Accordingly, each reaction $r$, whose unique incoming edge (\emph{fluffle} property~F3) originates from an F-reactant of $r$, can be substituted by any $r'\in [r]_\sim$, ensuring that the modified sub-CRN exists in $\Gamma(\CRS)$, is autocatalytic, and an element of the same $\simeq$-equivalence class. 
+with $\sim$ as defined in Eq.~\eqref{eq:EqRel}. Accordingly, each reaction $r$, whose unique incoming edge (\emph{fluffle} property~F3) originates from an F-reactant of $r$, can be substituted by any $r'\in [r]_\sim$, ensuring that the modified sub-CRN exists in $\Gamma(\CRS)$, is autocatalytic, and is an element of the same $\simeq$-equivalence class. 
 
 \vspace{6pt}
 \begin{proposition}\label{prop:ExpoNoCores}
@@ -1547,27 +1547,14 @@ The structures responsible for each strong block being \emph{stoichiometrically 
   \label{ex:CutVertex3}
 \end{figure}
 
-The existence of a Metzler circuit with a pure reaction has already been shown to exist for any RAF that is itself not a CAF \cite{golnik_bridging_2026}. However, in the proof of \cite[Thm.~3.1]{golnik_bridging_2026}, the construction follows the F-catalysts as
-reactants for each reaction, and thereby not necessarily the reactant with the lowest generation order. However, irreducible RAFs exist, where this construction would not yield a \emph{stoichiometrically autocatalytic} Metzler circuit for each strong block $B$. Such an example is depicted in Fig.~\ref{ex:CutVertex3}. Indeed, the block $(\{x_1,x_2\}, \{r_1,r_2\})$ does not contain an elementary circuit, where each species vertex is the F-catalyst of its appurtenant reaction. Nevertheless, $C\coloneqq (x_1,r_1,x_2,r_2,x_1)$ is still a Metzler circuit with entry reaction $r_1$, and thereby \emph{stoichiometrically autocatalytic} (Lemma.~\ref{lem:MetzCircAut}). In addition, $(x_3,r_2,x_4,r_3, x_3)$ satisfies the construction of \cite[Thm.~3.1]{golnik_bridging_2026}.
-}
+The existence of a Metzler circuit containing an entry reaction has already been shown to exist for any RAF that is itself not a CAF \cite[Thm.~3.1]{golnik_bridging_2026}. However, in the proof, the construction proceeds along the F-catalysts as reactants for each reaction, and thus not necessarily the reactant with the lowest generation order. Indeed, irreducible RAFs exist, where this construction fails to construct such a circuit for each non-trivial, strong block $\block$. An example, capturing this situation, is depicted in Fig.~\ref{ex:CutVertex3}. The block $(\{x_1,x_2\}, \{r_1,r_2\})$ does not contain an elementary circuit, where each species vertex is the F-catalyst of its appurtenant reaction. Nevertheless, $C\coloneqq (x_1,r_1,x_2,r_2,x_1)$ is still a Metzler circuit with entry reaction $r_1$, and thereby \emph{stoichiometrically autocatalytic} (Lemma.~\ref{lem:MetzCircAut}). In addition, $(x_3,r_2,x_4,r_3, x_3)$ satisfies the construction of \cite[Thm.~3.1]{golnik_bridging_2026}.}
 
+\holy{
 The example depicted in Fig.~\ref{fig:RAFContAutCyc} clearly illustrates, however, that these \emph{stoichiometrically autocatalytic} Metzler circuits are not necessarily autocatalytic cores. Similarly, non-trivial stoichiometries can give rise to strictly smaller cores that can be contained inside the constructed circuits \ref{fig:NonUnStoich}. Especially the latter does not allow for a general construction of autocatalytic cores directly. 
 
-Independent of the core's structure, different catalyzations can give rise to equivalent cores. In fact, considering each autocatalytic core as a simple element of equivalence classes that contains sub-CRNs on the same set of species vertices and sets of reaction vertices that share the same set of F-reactions (see Eq.~\eqref{eq:CoreEquiv}).
+Independent of the core's structure, different catalyzations can give rise to equivalent autocatalytic cores. In fact, each autocatalytic core is an element of equivalence classes that contain sub-CRNs on the same set of species vertices and sets of reaction vertices that share the same set of F-reactions (see Eq.~\eqref{eq:CoreEquiv}). The size of such an $\simeq$-equivalence class grows exponentially with the product of the sizes of $\sim$-equivalence classes of participating reactions (Prop.~\ref{prop:ExpoNoCores}), which correlates with the large number of autocatalytic cores observed and the reduced number of $\simeq$-equivalence classes (Fig.~\ref{fig:UniqueFReactionCores}) in irreducible RAFs of random instances of the binary polymer model \cite{kauffman_autocatalytic_1986}. 
 
-\PFS{The results obtained here show that there are meaningful connections
-  between the CRS and CRN formalisms that also imply strong
-  similarities between notions of autocatalysis, in particular between
-  non-trivial irreducible RAFs and autocatalytic cores. While our results
-  yield useful implications, they are still far from establishing 1-1
-  correspondences between concepts in the two alternative formal
-  frameworks. While the present results in essence characterize non-trivial
-  minimal RAFs in terms of CRNs, the consverse, i.e., a characterization of
-  autocatalytic cores in the language of CRS remains an open reseach
-  project. Given the differences between the two formalisms, it is not
-  clear 1-1 correspondences exist, in particular since \emph{stoichiometric
-    autocatalysis} depends on the numerical values of the stoichiometric
-  coefficient.}
+Even though all elements of the same $\simeq$-equivalence class are autocatalytic whenever one element is autocatalytic, not all of them are necessarily cores. The example illustrated in Fig.~\ref{fig:Minimality} demonstrates how catalyzations impact the minimality property of autocatalytic cores, as one element of an equivalence class is a core, while the other is not. This observation originates from the way catalysts are handled within CRNs, i.e., as reactants and products directly participating in a reaction and thereby affecting the uniqueness of reactants for each reaction inside a core.}
 
 \bibliography{RAFCores}
 
