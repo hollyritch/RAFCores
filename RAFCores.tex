@@ -783,51 +783,6 @@ $\CR(\block)$ a sequence of reactions:
 %\NV{[We may choose a cut-vertex $r$ (not necessarily unique) minimum with respect to the generation order there, and show (i),(ii),(iii),(iv). (i): its F-reactants must be somewhere else, otherwise either minimality is broken or max-strong-block is broken. (iii): r must have at least an ingoing arrow and one outgoing, so this follows. (ii) NOT SURE about food-catalyst, TBC. (iv) must follow from the minimum condition together with (i).]} 
 \end{proof}
 
-%\begin{figure}[bth]
-%  \begin{minipage}[c]{0.49\textwidth}
-%    \begin{equation}
-%      \begin{split}
-%	r_1& : f_1 + (x_1) \rightarrow  x_2 + (x_1) \\
-%	r_2& : f_2 + (x_4)\rightarrow x_3 + (x_4)\\
-%	r_3& : 2x_3 + (x_2) \rightarrow x_1 + x_4 + (x_2)
-%      \end{split}
-%    \end{equation}
-%  \end{minipage}%
-%  \hfill%
-%  \begin{minipage}[c]{0.49\textwidth}
-%    \begin{tikzpicture}
-%      \node[draw, circle] (f1) at (0,0) {$f_1$};
-%      \node[draw, circle] (f2) at (4,-2) {$f_2$};
-%      \node[draw, circle] (x1) at (2,0) {$x_1$};			
-%      \node[draw, circle] (x2) at (1,-1) {$x_2$};
-%      \node[draw, circle] (x3) at (3,-1) {$x_3$};
-%      \node[draw, circle] (x4) at (2,-2) {$x_4$};
-%      
-%      \node[draw, rectangle] (r1) at (1,0) {$r_1$};
-%      \node[draw, rectangle] (r2) at (2,-1) {$r_2$};
-%      \node[draw, rectangle] (r3) at (3,-2) {$r_3$};
-%      
-%      \draw[->] (f1) to (r1);
-%      \draw[->] (f2) to (r3);
-%      \draw[->] (x1) to [bend right = 30] (r1);
-%      \draw[->] (r1) to [bend right = 30] (x1);
-%      \draw[->] (r1) to (x2);			
-%      \draw[->] (x2) to (r2);
-%      \draw[->] (x3) to [bend right] (r2);
-%      \draw[->] (r2) to [bend right] (x3);
-%      \draw[->] (r2) to (x1);
-%      \draw[->] (r2) to (x4);
-%      \draw[->] (x4) to [bend right = 30] (r3);
-%      \draw[->] (r3) to [bend right = 30] (x4);
-%      \draw[->] (r3) to (x3);
-%    \end{tikzpicture}
-%  \end{minipage}
-%  \caption{\textit{(Left):} Example of an irreducible, monocatalyzed RAF written 
-%  as CRN reactions with a cut-vertex that has a single catalyst. Catalyzations are 
-%  indicated in brackets. \textit{(Right):} Depiction of the corresponding König graph.}
-%  \label{ex:CutVertex2}
-%\end{figure}
-
 \begin{figure}[bth]
   \begin{minipage}[c]{0.45\textwidth}
     \begin{equation*}
@@ -1358,7 +1313,7 @@ The following example illustrates such a situation.
 }
 
 \holy{Lemma~\ref{lem:MetzCircuit}, \ref{lem:MetzCircAut}, and
-Cor.~\ref{cor:AutoCatReac}, together, yield then the following main result.
+Cor.~\ref{cor:AutoCatReac}, together, yield the following main result.
 
 \vspace{6pt}
 \begin{theorem}
@@ -1409,7 +1364,7 @@ The autocatalytic elementary circuits, as constructed in the proof of Lemma~\ref
 	\label{fig:NonUnStoich}
 \end{figure}
 
-However, each maximal, non-trivial strong block $\block$ of the K\H{o}nig graph representation of an irreducible, monocatalyzed RAF $\RAF$ contains an autocatalytic core (Thm.~\ref{Thm:StrBlockCore}), which is a strongly connected subgraph \cite{golnik_autocatalytic_2026} of an autocatalytic elementary circuit $C$ (Lemmata~\ref{lem:MetzCircuit} and \ref{lem:MetzCircAut}). Since every strongly connected subgraph of $\king(\RAF)[X(C)\cup \CR(C)]$ is \emph{Hamiltonian} \cite{bang-jensen_digraphs_2002} -- which means that it encompasses an elementary circuit passing each vertex, also referred to as \emph{spanning circuit} -- each autocatalytic core derived in this way is Hamiltonian. If the core contains an entry reaction for $\block$, Cor.~\ref{cor:MRChordlessAutocat} in combination with the minimality of autocatalytic cores yields that the spanning circuit is free of reaction-to-metabolite (RM)-chords except for the digon-induced one that connects the entry reaction to its F-catalyst.
+However, each maximal, non-trivial strong block $\block$ of the K\H{o}nig graph representation of an irreducible, monocatalyzed RAF $\RAF$ contains an autocatalytic core (Thm.~\ref{Thm:StrBlockCore}), which is a strongly connected subgraph \cite{golnik_autocatalytic_2026} of an autocatalytic elementary circuit $C$ (Lemmata~\ref{lem:MetzCircuit} and \ref{lem:MetzCircAut}). Since every strongly connected subgraph of $\king(\RAF)[X(C)\cup \CR(C)]$ is \emph{Hamiltonian} \cite{bang-jensen_digraphs_2002} -- which means that it encompasses an elementary circuit passing each vertex, also referred to as a \emph{spanning circuit} -- each autocatalytic core derived in this way is Hamiltonian. If the core contains an entry reaction for $\block$, Cor.~\ref{cor:MRChordlessAutocat} in combination with the minimality of autocatalytic cores yields that the spanning circuit is free of reaction-to-metabolite (RM)-chords except for the digon-induced one that connects the entry reaction to its F-catalyst.
 
 \vspace{6pt}
 \begin{proposition}\label{Prop:OneCircCorePerBlock}
@@ -1492,6 +1447,7 @@ Unfortunately, not every element of a $\simeq$-equivalence class is necessarily 
 		\end{tikzpicture}
 	\end{minipage}
 	\caption{Illustration of CRN reactions (\textbf{left}) and the bipartite K\H{o}nig graph (\textbf{right}) of an irreducible RAF in which two catalyzations for one F-reaction influence minimality of an autocatalytic subsystem and give rise to two distinct autocatalytic cores of different size.}
+	\label{fig:Minimality}
 \end{figure}
 
 While $(\{x_1, x_2, x_3\}, \{r_1,r_2'', r_3\})$ is an autocatalytic core, $(\{x_1, x_2, x_3\}, \{r_1,r_2', r_3\})$ is not, since the F-catalyst $x_1$ of $r'_2$ induces an MR-chord. In this case $(\{x_1,x_3\}, \{r'_2, r_3\})$ is the autocatalytic core. It becomes evident that the minimality of autocatalytic cores in irreducible RAFs is dependent on the catalyzation. Eq.\eqref{eq:NoEquivAutoCatCycles} then only informs on an upper bound for the number of autocatalytic cores in each $\simeq$-equivalence class. The number of autocatalytic cores in $\Gamma(\CRS)$ scales with the number of $\simeq$ equivalence classes. 
@@ -1517,371 +1473,23 @@ Cores in the same equivalence class support self-sustainability for an identical
 		maximum polymer-length $5$.}
 	\label{fig:UniqueFReactionCores}
 \end{figure}
-
-%\section{Examples}
-%
-%\subsection{Autocatalytic Metzler circuits, but not autocatalytic cores}\label{sec:MetzNotCore}
-%
-%The first two examples capture the situation where an autocalytic Metzler circuit, as constructed in the proof of Lemma~\ref{lem:MetzCircuit}, inside a non-trivial, irreducible RAF, is not an autocatalytic core.
-%
-%\subsubsection{Species (Metabolite)-to-Reaction Chords}\label{sec:MRChords}
-%
-%In the first example, an additional catalyzation, cutting through the circuit, is
-%destroying the core property.
-
-
-%$\RAF=\{r_1,r_2,r_3,r_4\}$ is a non-trivial, irreducible RAF. The
-%elementary circuit $C\coloneqq (r_1, x_2,r_2,x_3,r_3,x_1,r_1)$, as
-%constructed in the proof of Lemma~\ref{lem:MetzCircuit}, has the following
-%stoichiometric submatrix:
-%\begin{equation}
-%  \SM[(X),R(C)] = \begin{pmatrix}
-%    0 & 0  &  1  \\
-%    1 & -1 &  0   \\		
-%    0 & 1 &  -1   \\
-%  \end{pmatrix},
-%\end{equation}
-%which is a Metzler matrix, thus $C$ is a Metzler circuit. In addition,
-%$\SM[(X),R(C)]$ is semi-positive with $v\coloneqq \begin{pmatrix} 3 & 2 &
-%  1 \end{pmatrix}^T$ and $(X(C),R(C))$ an autocatalytic sub-CRN.
-
-%\subsubsection{Non-unit stoichiometries}\label{sec:NonUnStoich}
-%
-%An even simpler example, where this is unavoidable due to unknown
-%stoichiometries, is depicted in the following.
-
-%\begin{figure}[htb]
-%  \begin{minipage}[c]{0.5\textwidth}
-%    \begin{equation}
-%      \begin{split}
-%	r_1&: f + (x_1) \rightarrow x_2 + (x_1) \\
-%	r_2&: x_2 + (x_2) \rightarrow x_3 + (x_2) \\
-%	r_3&: x_3 + (x_3) \rightarrow x_1 + 2x_2 + (x_3) 				  
-%      \end{split}
-%    \end{equation}
-%  \end{minipage}%
-%  \hfill%
-%  \begin{minipage}[c]{0.5\textwidth}
-%    \centering
-%    \begin{tikzpicture}
-%      \node[draw, circle] (f) at (0,0) {$f$};
-%      \node[draw, circle] (x1) at (1,1) {$x_1$};
-%      \node[draw, circle] (x2) at (1,-1) {$x_2$};
-%      \node[draw, circle] (x3) at (3,0) {$x_3$};
-%			
-%      \node[draw, rectangle] (r1) at (1,0) {$r_1$};
-%      \node[draw, rectangle] (r2) at (2,-1) {$r_2$};
-%      \node[draw, rectangle] (r3) at (2,1) {$r_3$};
-%			
-%      \draw[->] (f) to (r1);
-%      \draw[->] (x1) to [bend right = 20] (r1);
-%      \draw[->] (r1) to [bend right = 20] (x1);
-%      \draw[->] (r1) to (x2);
-%      \draw[->] (x2) to [bend right = 30] (r2);
-%      \draw[->] (r2) to [bend right = 30] (x2);			
-%      \draw[->] (r2) to(x3);			
-%      \draw[->] (x3) to [bend right = 30] (r3);
-%      \draw[->] (r3) to [bend right = 30] (x3);
-%      \draw[->] (r3) to (x1);
-%      \draw[->] (r3) to (x2);			
-%    \end{tikzpicture}
-%  \end{minipage}
-%\end{figure}
-%\FloatBarrier
-%
-%The proof for Lemma~\ref{lem:MetzCircuit} would construct the following
-%Metzler circuit $C\coloneqq (r_1,x_2,r_2,x_3,r_3,x_1,r_1)$, whose
-%substoichiometric matrix reads:
-%\begin{equation}
-%  \begin{pmatrix}
-%    0 & 0 & 1 \\
-%    1 & -1 & 2 \\
-%    0 & 1 & -1
-%  \end{pmatrix},
-%\end{equation}
-%which is Metzler and thus stoichimetrially autocatalytic according to
-%Lemma~\ref{lem:MetzCircAut}.  However, in this case, the core is the
-%Metzler circuit $C'=(x_2,r_2,x_3,r_3,x_2)$ and has the following
-%substoichiometric matrix:
-%\begin{equation}
-%  \SM[X(C'),R(C')]=
-%  \begin{pmatrix}		
-%    -1 & 2 \\
-%    1 & -1
-%  \end{pmatrix},
-%\end{equation}
-
-%\subsection{One irreducible RAF, many autocatalytic cores}\label{subsec:OneRAFManyCores}
-%
-%The following example depicts a non-trivial, irreducible RAF that contains
-%two autocatalytic cores.
-%\begin{figure}[h]
-%\begin{minipage}[c]{\textwidth}
-%  \begin{equation}
-%    \begin{split}
-%      r_1&: f + (x_1) \rightarrow x_2 +(x_1) \\
-%      r_2&: x_2 + (x_2) \rightarrow x_3 + (x_2) \\
-%      r_3&: x_3 + (x_3) \rightarrow 2x_2 + x_4 + (x_3)\\
-%      r_4&: x_4 + (x_4) \rightarrow x_1 + 2x_3 + (x_3)		  
-%    \end{split}
-%  \end{equation}
-%\end{minipage}
-%\par\bigskip
-%\begin{minipage}[c]{0.5\textwidth}
-%  \begin{equation}
-%    \SM[X(C),R(C)=\begin{pmatrix} 
-%      0  &  0  &  0  & 1 \\
-%      1  & -1  &  2  & 0 \\
-%      0  &  1  & -1  & 2 \\
-%      0  &  0  &  1  & -1
-%      \end{pmatrix}
-%  \end{equation}
-%\end{minipage}%
-%\hfill%
-%\begin{minipage}[c]{0.5\textwidth}
-%  \centering
-%  \begin{tikzpicture}
-%    
-%    \node[draw, circle] (f) at (0,0) {$f$};
-%    \node[draw, circle] (x1) at (1,1) {$x_1$};
-%    \node[draw, circle] (x2) at (1,-1) {$x_2$};
-%    \node[draw, circle] (x3) at (3,-1) {$x_3$};
-%    \node[draw, circle] (x4) at (3,1) {$x_4$};
-%    
-%    \node[draw, rectangle] (r1) at (1,0) {$r_1$};
-%    \node[draw, rectangle] (r2) at (2,-1) {$r_2$};
-%    \node[draw, rectangle] (r3) at (3,0) {$r_3$};
-%    \node[draw, rectangle] (r4) at (2,1) {$r_4$};
-%    
-%    \draw[->] (f) to (r1);
-%    \draw[->] (x1) to [bend right = 20] (r1);
-%    \draw[->] (r1) to [bend right = 20] (x1);
-%    \draw[->] (r1) to (x2);
-%    \draw[->] (x2) to [bend right = 30] (r2);
-%    \draw[->] (r2) to [bend right = 30] (x2);			
-%    \draw[->] (r2) to(x3);			
-%    \draw[->] (x3) to [bend right = 30] (r3);
-%    \draw[->] (r3) to [bend right = 30] (x3);
-%    \draw[->] (r3) to (x4);
-%    \draw[->] (r3) to [bend right = 10] (x2);
-%    \draw[->] (x4) to [bend right = 30] (r4);
-%    \draw[->] (r4) to [bend right = 30](x4);
-%    \draw[->] (r4) to [bend right =10](x3);	
-%    \draw[->] (r4) to (x1);	
-%  \end{tikzpicture}
-%\end{minipage}
-%\caption{}
-%\label{}
-%\end{figure}
-%\FloatBarrier
-
-%The construction of Lemma~\ref{lem:MetzCircuit} would yield a spanning
-%circuit as $C=(x_1,r_1,x_2,r_2,x_3,r_3,x_4, r_4)$ but contains two
-%autocatalytic cores, i.e., $({x_2,x_3},{r_2,r_3})$ and $({x_3,x_4},
-%{r_3,r_4})$. Both have a corresponding submatrix that reads:
-%\begin{equation}
-%  \begin{pmatrix}
-%    -1 & 2 \\
-%    1  & -1
-%  \end{pmatrix}
-%\end{equation}
-
-%\subsection{One autocatalytic core in many irreducible RAFs}
-%\label{subsec:ManyRAFsOneCore}
-%
-%The following example depicts the situation where one RAF
-%$\RAF=\{\fr_1,\fr_2,\fr_3,\fr_4,\fr_5,\fr_6\}$ with $\food\coloneqq
-%\{f_1,f_2,f_3,f_4\}$ contains one autocatalytic core but multiple
-%irreducible RAFs.  In addition, the corresponding stoichiometric submatrix
-%$\SM[\closure{\RAF}{\food}\setminus \food,\RAF$ on the non-food molecules
-%  and the bipartite K\H{o}nig graph $\king(\RAF)$ are shown.
-%
-%\begin{minipage}[c]{0.5\textwidth}
-%  \begin{equation}
-%    \begin{split}
-%      r_1&: f_1  + (x_2) \rightarrow x_3 + (x_2) \\
-%      r_2&: f_2  + (x_2) \rightarrow x_3 + (x_2) \\
-%      r_3&: f_3  + (x_1) \rightarrow x_2 + (x_1) \\			
-%      r_4&: f_4  + (x_1) \rightarrow x_2 + (x_1) \\
-%      r_5&: x_3 + (x_2) \rightarrow x_1 + (x_4) \\
-%      r_6&: x_2 + (x_3) \rightarrow x_4 + (x_3) 
-%    \end{split}
-%  \end{equation}
-%\end{minipage}%
-%\hfill%
-%\begin{minipage}[c]{0.5\textwidth}
-%  \begin{equation*}
-%    \SM=
-%    \begin{pmatrix}
-%      0 & 0  &  0 & 0 & 1  & 0 \\
-%      0 & 0  &  0 & 0 & 0  & 1 \\
-%      1 & 1  &  0 & 0 & -1 & 0 \\
-%      0 & 0  &  1 & 1 & 0  & -1 
-%    \end{pmatrix}
-%  \end{equation*}	
-%\end{minipage}
-%
-%\begin{figure}[h]
-%  \centering
-%  \begin{tikzpicture}
-%    \node[draw, circle] (f1) at (0,0) {$f_1$};
-%    \node[draw, circle] (f2) at (2,0) {$f_2$};
-%    \node[draw, circle] (f3) at (4,0) {$f_3$};
-%    \node[draw, circle] (f4) at (6,0) {$f_4$};
-%    
-%    \node[draw, circle] (x1) at (1,4) {$x_1$};
-%    \node[draw, circle] (x2) at (5,4) {$x_2$};
-%    \node[draw, circle] (x3) at (1,2) {$x_3$};
-%    \node[draw, circle] (x4) at (5,2) {$x_4$};
-%    
-%    \node[draw, rectangle] (r1) at (0,1) {$r_1$};
-%    \node[draw, rectangle] (r2) at (2,1) {$r_2$};
-%    \node[draw, rectangle] (r3) at (4,1) {$r_3$};
-%    \node[draw, rectangle] (r4) at (6,1) {$r_4$};
-%    
-%    \node[draw, rectangle] (r5) at (1,3) {$r_5$};
-%    \node[draw, rectangle] (r6) at (5,3) {$r_6$};
-%    
-%    \draw[->] (f1) to (r1);
-%    \draw[->] (f2) to (r2);
-%    \draw[->] (f3) to (r3);
-%    \draw[->] (f4) to (r4);
-%    \draw[-, dashed] (x1) to (1.6, 3.3);
-%    \draw[->, dashed] (1.7, 3.4) to (x1);
-%    \draw[-, dashed] (x1) to (1.8, 3.55);
-%    \draw[->, dashed] (1.85, 3.6) to (x1);
-%    \draw[-, dashed] (x1) to (2.0, 3.7);
-%    \draw[->, dashed] (2.05, 3.75) to (x1);						
-%    
-%    \draw[->, dashed] (0.8,1.4) to (r1);			
-%    \draw[-, dashed] (r1) to (0.8,1.5);
-%    
-%    \draw[-, dashed] (r2) to (2.7,1.8);			
-%    \draw[->, dashed] (2.7,1.7) to (r2);		
-%    
-%    \draw[->, dashed] (3.5,1.5) to (r3);			
-%    \draw[-, dashed] (r3) to (3.6,1.5);
-%    
-%    \draw[->, dashed] (5.0,1.5) to [bend right = 2.5] (r4);
-%    \draw[-, dashed] (r4) to [bend right = 2.5] (5.2,1.6);
-%    
-%    \draw[->, dashed] (2.0,3.2) to [bend right = 2.5] (r5);
-%    \draw[-, dashed] (r5) to [bend right = 2.5] (2.1,3.3);
-%    
-%    \draw[->, dashed] (4.2,3.1) to [bend right = 2.5] (r6);
-%    \draw[-, dashed] (r6) to [bend right = 2.5] (4.3,3.2);
-%    
-%    \draw[-, dashed] (x2) to (4.1, 3.2);
-%    \draw[->, dashed] (4.1, 3.3) to (x2);
-%    \draw[-, dashed] (x2) to (3.9, 3.4);
-%    \draw[->, dashed] (3.9, 3.5) to (x2);
-%    \draw[-, dashed] (x2) to (3.9, 3.7);
-%    \draw[->, dashed] (3.9, 3.8) to (x2);	
-%    
-%    \draw[->] (x3) to (r5);
-%    \draw[->] (x4) to (r6);
-%    
-%    \draw[->] (r1) to (x3);
-%    \draw[->] (r2) to (x3);
-%    \draw[->] (r3) to (x4);
-%    \draw[->] (r4) to (x4);
-%    \draw[->] (r5) to (x1);
-%    \draw[->] (r6) to (x2);
-%  \end{tikzpicture}
-%\end{figure}
-%\FloatBarrier
-%%
-%This example consists of $4$ irreducible RAFs, $\RAF_1\coloneqq
-%\{r_1,r_3,r_5,r_6\}, \RAF_2\coloneqq \{r_1,r_4,r_5,r_6\}, \RAF_1\coloneqq
-%\{r_2,r_3,r_5,r_6\}$, and $\RAF_1\coloneqq \{r_2,r_4,r_5,r_6\}$, but only
-%one autocatalytic core, i.e., $(\{x_1,r_5\}\{x_2,r_6,x_1\})$ with
-%stoichiometric matrix:
-%\begin{equation}
-%  \begin{pmatrix}
-%    0 & 1\\
-%    1 & 0
-%  \end{pmatrix}
-%\end{equation}
-%
-%\subsection{One irreducible RAF and two equivalent autocatalytic cores}
-%\label{subsec:IrrEquivCores}
-%
-%\begin{minipage}[c]{0.5\textwidth}
-%\begin{equation}
-%  \begin{split}
-%    r_1&: f_1 + (x_1) \rightarrow x_2 + (x_1) \\ r_2&: x_2 +
-%    (x_2) \rightarrow x_3 + x_4 + (x_2) \\ r_3&: x_3 + (x_3)
-%    \rightarrow x_1 + (x_3) \\ r_4&: x_4 + (x_4) \rightarrow
-%    x_1 + (x_4) \\
-%  \end{split}
-%\end{equation}
-%\end{minipage}%
-%\hfill%
-%\begin{minipage}[c]{0.5\textwidth}
-%  \begin{equation}
-%    \begin{pmatrix}
-%      0 &  0 & 1 & 1 \\
-%      1 & -1 & 0 & 0 \\
-%      0 & 1 & -1 & 0 \\
-%      0 & 1 & 0 & -1 \\
-%    \end{pmatrix}
-%  \end{equation}
-%\end{minipage}%
-%
-%\begin{figure}[h]
-%  \centering
-%  \begin{tikzpicture}
-%    \node[draw, circle] (f) at (0,1.5) {$f$};
-%    \node[draw, circle] (x1) at (3,1.5) {$x_1$};
-%    \node[draw, circle] (x2) at (1,-2) {$x_2$};
-%    \node[draw, circle] (x3) at (2,-0.5) {$x_3$};
-%    \node[draw, circle] (x4) at (4,-0.5) {$x_4$};
-%    
-%    \node[draw, rectangle] (r1) at (1,1.5) {$r_1$};
-%    \node[draw, rectangle] (r2) at (3,-2) {$r_2$};
-%    \node[draw, rectangle] (r3) at (2,0.5) {$r_3$};
-%    \node[draw, rectangle] (r4) at (4,0.5) {$r_4$};
-%    
-%    \draw[->] (f) to (r1);
-%    \draw[->] (x1) to [bend right = 20] (r1);
-%    \draw[->] (r1) to [bend right = 20] (x1);
-%    \draw[->] (r1) to (x2);
-%    \draw[->] (x2) to [bend right = 30] (r2);
-%    \draw[->] (r2) to [bend right = 30] (x2);			
-%    \draw[->] (r2) to(x3);
-%    \draw[->] (r2) to(x4);			
-%    \draw[->] (x3) to [bend right = 30] (r3);
-%    \draw[->] (r3) to [bend right = 30] (x3);
-%    \draw[->] (r3) to (x1);
-%    
-%    \draw[->] (x4) to [bend right = 30] (r4);
-%    \draw[->] (r4) to [bend right = 30](x4);
-%    \draw[->] (r4) to  (x1);	
-%    
-%  \end{tikzpicture}
-%\end{figure}
-%\FloatBarrier
-%
-%Indeed, the construction of Lemma~\ref{lem:MetzCircuit} inherits some
-%arbitrarieness as both elementary circuits
-%$C_1=(x_1,r_1,x_2,r_2,x_3,r_3,x_1)$ and $C_2=(x_1,r_1,x_2,r_2,x_4,r_4,x_1)$
-%could be obtained, and both are autocatalytic cores.
-
 \holy{
 
 \section{Discussion}
 
-\textsc{Reflexively autocatalytic sets (RAFs)} and  \emph{stoichiometric autocatalysis} are grounded in different formalizations of chemical reaction systems that lead to inequivalent concepts of reactions, distinguished mainly by the manner in which catalysis is handled. While in CRNs, underlying the theory of \emph{stoichiometric autocatalysis}, catalysts are not formally distinguished from other reactants and products, the CRS framework focuses on net F-reactions, considering catalysts as external to the F-reactions. In addition, in CRS, species can appear on both sides of the stoichiometric equation without being considered a catalyst. As a consequence, F-reactions are equivalence classes of (CRN) reactions with respect to the equivalence relation $\sim$ (Eq.~\eqref{eq:EqRel}),  describing reactions that share the same non-catalyst reactants (F-reactants) and the same non-catalyst products (F-products), with identical stoichiometries, see Sec.~\ref{sec:CRNCRS}. From a set of CRN reactions $\CR$, the set of corresponding F-reactions $\FR$ can be obtained as the quotient set of $\CR$, i.e.
+\textsc{Reflexively autocatalytic sets (RAFs)} and  \emph{stoichiometric autocatalysis} are grounded in different formalizations of chemical reaction systems that lead to inequivalent concepts of reactions, distinguished mainly by the manner in which catalysis is handled. While in CRNs, underlying the theory of \emph{stoichiometric autocatalysis}, catalysts are not formally distinguished from other reactants and products, the CRS framework focuses on net F-reactions, considering catalysts as external to the F-reactions. In addition, in CRS, species can appear on both sides of the stoichiometric equation without being considered a catalyst. As a consequence, F-reactions are equivalence classes of (CRN) reactions with respect to the equivalence relation $\sim$ (Eq.~\eqref{eq:EqRel}),  describing reactions that share the same non-catalyst reactants (F-reactants) and the same non-catalyst products (F-products), with identical stoichiometries, see Sec.~\ref{sec:CRNCRS}. 
+
+From a set of CRN reactions $\CR$, the set of corresponding F-reactions $\FR$ can be obtained as the quotient set of $\CR$, i.e.
 \begin{equation}
 	\FR=\CR/\mathord{\sim}.
 \end{equation} 
-This observation implies that the CRS $\mathbf{\Phi}(\Gamma)= (X, \CR/\mathord{\sim}, \kappa_F(\CR/\mathord{\sim}))$, with $\kappa_F(\CR/\mathord{\sim})$ determined as described in Eq.~\eqref{eq:CatCFR}, reflects the quotient structure of the CRN $\Gamma=(X, \CR)$. In turn, the reactions of the CRN $\Gamma(\mathbf{\Phi})$ associated with a given CRS $\mathbf{\Phi}\coloneqq (X, \FR, \kappa_F(\FR))$ can be obtained from $\kappa_F(\FR)$, since each catalyzation of an F-reaction specifies a unique reaction. Most importantly, the CRN and F-reactions are in one-to-one correspondence if each equivalence class consists of a single element. In this case, CRN and CRS can be canonically identified with each other and represent equivalent objects for modelling systems of chemical reactions. 
+This implies that the CRS $\mathbf{\Phi}(\Gamma)= (X, \CR/\mathord{\sim}, \kappa_F(\CR/\mathord{\sim}))$, with $\kappa_F(\CR/\mathord{\sim})$ determined as described in Eq.~\eqref{eq:CatCFR}, reflects the quotient structure of the CRN $\Gamma=(X, \CR)$. In turn, the reactions of the CRN $\Gamma(\mathbf{\Phi})$ associated with a given CRS $\mathbf{\Phi}\coloneqq (X, \FR, \kappa_F(\FR))$ can be obtained from $\kappa_F(\FR)$, since each catalyzation of an F-reaction specifies a unique CRN reaction. In case each F-reaction is associated with a single catalyzation (monocatalyzation), CRN and F-reactions are in one-to-one correspondence; each equivalence class consists of a single element. 
 
-Although inherently distinct, it was recently demonstrated that every \textsc{RAF} that is not a \textsc{CAF} is \emph{stoichiometrically autocatalytic} \cite{golnik_bridging_2026}. In the present contribution, we examine this relationship in greater detail, focusing in particular on the interplay between the minimal structures arising in both frameworks, i.e., \textsc{irreducible RAFs} and \emph{autocatalytic cores}. Subjecting \texttt{autogatito} to irreducible RAFs obtained from random instances of the binary polymer model \cite{kauffman_autocatalytic_1986} revealed an unexpectedly huge amount of autocatalytic cores in each irreducible RAF, which could not be explained by the theoretical results obtained in \cite{golnik_bridging_2026}.
+Although inherently distinct, it was recently demonstrated that every \textsc{RAF} that is not a \textsc{CAF} is \emph{stoichiometrically autocatalytic} \cite{golnik_bridging_2026}. In the present contribution, we examine this relationship in greater detail, focusing in particular on the interplay between the minimal structures arising in both frameworks, i.e., \textsc{irreducible RAFs} and \emph{autocatalytic cores}. Subjecting \texttt{autogatito} to irreducible RAFs, obtained from random instances of the binary polymer model \cite{kauffman_autocatalytic_1986}, revealed an unexpectedly large amount of autocatalytic cores in each irreducible RAF (Fig.~\ref{fig:irrRAFCores}), which was so far unexplainable by the theoretical results stated in \cite{golnik_bridging_2026}.
 
-Since \emph{autocatalytic cores} correspond to \emph{fluffles} in the bipartite K\H{o}nig graph -- that is, strongly connected blocks containing equal numbers of species and reaction vertices, in which every species vertex has out-degree~1 and every reaction vertex has in-degree~1 (F1 - F3) -- it seemed natural to identify analogous patterns in irreducible RAFs. CRN and CRS are in one-to-one correspondence whenever each equivalence class consists of a single element. We therefore focused on monocatalyzed, irreducible RAFs $\RAF$ and investigated their properties by examining the structure of the bipartite K\H{o}nig graph $\king(\RAF)$ of the corresponding CRN representation. 
+\emph{Autocatalytic cores} correspond to \emph{fluffles} in the bipartite K\H{o}nig graph -- that is, strongly connected blocks containing equal numbers of species and reaction vertices, in which every species vertex has out-degree~1, and every reaction vertex has in-degree~1 (F1 - F3). It, therefore, seemed natural to identify analogous patterns in irreducible RAFs. As CRN and CRS can be canonically identified with each other whenever each equivalence class is trivial, we focused on monocatalyzed, irreducible RAFs $\RAF$. This allowed us to investigate their properties by examining the structure of the bipartite K\H{o}nig graph $\king(\RAF)$ of the corresponding CRN representation. 
 
-Irreducibility endows $\king(\RAF)$ with three fundamental properties for any irreducible, monocatalyzed RAF $\RAF$. 
+Irreducibility endows $\king(\RAF)$ with three fundamental properties for any irreducible, monocatalyzed RAF $\RAF$ (Lemmata~\ref{lem:PSC} - \ref{lem:StrongBlocks}). 
 	\begin{itemize}
 		\item[I1.]{The subgraph of $\king(\RAF)$ induced by all species that are neither food nor waste is strongly connected.}
 		\item[I2.]{Every cut vertex of $\king(\RAF)$ is a reaction.}
@@ -1889,80 +1497,66 @@ Irreducibility endows $\king(\RAF)$ with three fundamental properties for any ir
 	\end{itemize}
 Properties I1 and I2 imply a partition of $\king(\RAF)$ into strong blocks that are separated by reaction vertices. Property I3 guarantees that each of the non-trivial strong blocks is \emph{stoichiometrically autocatalytic}. 
 
-In fact, strong blocks are, by definition, well-formed. In addition, \emph{entry reactions}, which have only F-catalysts as reactants and at least one F-product inside the corresponding block $\block$, induce a nonnegative column in the stoichiometric submatrix $\SM[X(\block),\CR(\block)]$. This alone is indeed sufficient to guarantee that $\SM[X(\block),\CR(\block)]$ for any non-trivial, strong block $\block$ is semi-positive (Lemma~\ref{lem:NonFoodSemipositiv} and Cor.~\ref{cor:blockSemiPositiv}). Well-formedness and semipositivity of the associated stoichiometric submatrix are the required conditions for a sub-CRN to be autocatalytic (Def.~\ref{def:autSubRN}). Each block is therefore \emph{stoichiometrically autocatalytic} and contains an autocatalytic core  (Thm.~\ref{Thm:StrBlockCore}).
+In fact, strong blocks are, by definition, well-formed. In addition, \emph{entry reactions}, which have only F-catalysts as reactants and at least one F-product inside the corresponding block $\block$, induce a nonnegative column in the stoichiometric submatrix $\SM[X(\block),\CR(\block)]$. This alone is indeed sufficient to guarantee that $\SM[X(\block),\CR(\block)]$ for any non-trivial, strong block $\block$ is semi-positive (Lemma~\ref{lem:NonFoodSemipositiv} and Cor.~\ref{cor:blockSemiPositiv}). Well-formedness and semipositivity of the associated stoichiometric submatrix -- the required conditions for a sub-CRN to be autocatalytic (Def.~\ref{def:autSubRN}) -- yield that each block is \emph{stoichiometrically autocatalytic} and therefore contains an autocatalytic core  (Thm.~\ref{Thm:StrBlockCore}).}
 
+\holy{
+The structures responsible for each strong block being \emph{stoichiometrically autocatalytic} are \emph{Metzler circuits}; elementary circuits that allow for a column-reordering of their associated stoichiometric submatrix such that the resulting Matrix is a Metzler matrix (Lemma~\ref{lem:MetzCircuit}). Such an ordering can be obtained by arranging the columns according to the direction of the circuit. In the proof of Lemma~\ref{lem:MetzCircuit}, we provided a construction of a Metzler circuit that always contains an entry reaction.
 
+\begin{figure}[bth]
+  \begin{minipage}[c]{0.49\textwidth}
+    \begin{equation}
+      \begin{split}
+	r_1& : f_1 + (x_1) \rightarrow  x_2 + (x_1) \\
+	r_2& : f_2 + (x_4)\rightarrow x_3 + (x_4)\\
+	r_3& : 2x_3 + (x_2) \rightarrow x_1 + x_4 + (x_2)
+      \end{split}
+    \end{equation}
+  \end{minipage}%
+  \hfill%
+  \begin{minipage}[c]{0.49\textwidth}
+    \begin{tikzpicture}
+      \node[draw, circle] (f1) at (0,0) {$f_1$};
+      \node[draw, circle] (f2) at (4,-2) {$f_2$};
+      \node[draw, circle] (x1) at (2,0) {$x_1$};			
+      \node[draw, circle] (x2) at (1,-1) {$x_2$};
+      \node[draw, circle] (x3) at (3,-1) {$x_3$};
+      \node[draw, circle] (x4) at (2,-2) {$x_4$};
+      
+      \node[draw, rectangle] (r1) at (1,0) {$r_1$};
+      \node[draw, rectangle] (r2) at (2,-1) {$r_2$};
+      \node[draw, rectangle] (r3) at (3,-2) {$r_3$};
+      
+      \draw[->] (f1) to (r1);
+      \draw[->] (f2) to (r3);
+      \draw[->] (x1) to [bend right = 30] (r1);
+      \draw[->] (r1) to [bend right = 30] (x1);
+      \draw[->] (r1) to (x2);			
+      \draw[->] (x2) to (r2);
+      \draw[->] (x3) to [bend right] (r2);
+      \draw[->] (r2) to [bend right] (x3);
+      \draw[->] (r2) to (x1);
+      \draw[->] (r2) to (x4);
+      \draw[->] (x4) to [bend right = 30] (r3);
+      \draw[->] (r3) to [bend right = 30] (x4);
+      \draw[->] (r3) to (x3);
+    \end{tikzpicture}
+  \end{minipage}
+  \caption{\textit{(Left):} Example of an irreducible, monocatalyzed RAF written 
+  as CRN reactions with a cut-vertex that has a single catalyst. Catalyzations are 
+  indicated in brackets. \textit{(Right):} Depiction of the corresponding König graph.}
+  \label{ex:CutVertex3}
+\end{figure}
 
+The existence of a Metzler circuit with a pure reaction has already been shown to exist for any RAF that is itself not a CAF \cite{golnik_bridging_2026}. However, in the proof of \cite[Thm.~3.1]{golnik_bridging_2026}, the construction follows the F-catalysts as
+reactants for each reaction, and thereby not necessarily the reactant with the lowest generation order. However, irreducible RAFs exist, where this construction would not yield a \emph{stoichiometrically autocatalytic} Metzler circuit for each strong block $B$. Such an example is depicted in Fig.~\ref{ex:CutVertex3}. Indeed, the block $(\{x_1,x_2\}, \{r_1,r_2\})$ does not contain an elementary circuit, where each species vertex is the F-catalyst of its appurtenant reaction. Nevertheless, $C\coloneqq (x_1,r_1,x_2,r_2,x_1)$ is still a Metzler circuit with entry reaction $r_1$, and thereby \emph{stoichiometrically autocatalytic} (Lemma.~\ref{lem:MetzCircAut}). In addition, $(x_3,r_2,x_4,r_3, x_3)$ satisfies the construction of \cite[Thm.~3.1]{golnik_bridging_2026}.
 }
 
-%  \PFS{To this end we started from 
-%  Thm.~3.1 in \cite{golnik_bridging_2026}, which asserts that every
-%  \textsc{RAF} that is not a \textsc{CAF} is \emph{stoichiometrically
-%  autocatalytic}. As an immediate consequence, \emph{irreducible RAFs}
-%  \cite{steel_minimal_2013}, i.e., \textsc{RAF}s that do not contain proper
-%  sub-RAFs, are \emph{stoichiometrically autocatalytic} as long as they are
-%  not CAFs.} Lemma~\ref{lem:trivRAFCAF} show that irreducible RAFs are CAFs
-%if and only if they are trivial, i.e., consisting of a single reaction.
-%
-%The minimality of non-trivial, irreducible RAFs
-%implies strong connectivity on both the R-graph of the CRS and the
-%underlying CRN. 
-%
-%Since strong connectivity is a also prerequisite for autocatalytic cores.
-%Their bipartite digraph representation in CRNs with explicit catalysis are
-%\emph{fluffles}, and thus in particular strong blocks
-%\cite{golnik_autocatalytic_2026}. The bipartite K\H{o}nig graph of
-%non-trivial, irreducible RAFs, reflecting the underlying CRN without food
-%and waste molecules, $\lord(\RAF)$, \PFS{is not only strongly connected but
-%  composed of strong blocks that are separated by cut vertices that are
-%  always reaction vertices and never species vertices
-%  (Lemma~\ref{lem:CutVertexReac}).}
-%See also Fig.~\ref{ex:CutVertex} for an example. 
+The example depicted in Fig.~\ref{fig:RAFContAutCyc} clearly illustrates, however, that these \emph{stoichiometrically autocatalytic} Metzler circuits are not necessarily autocatalytic cores. Similarly, non-trivial stoichiometries can give rise to strictly smaller cores that can be contained inside the constructed circuits \ref{fig:NonUnStoich}. Especially the latter does not allow for a general construction of autocatalytic cores directly. 
 
-
-
-The structures responsible for each strong block being
-\emph{stoichiometrically autocatalytic} are \emph{Metzler circuits};
-elementary circuits that allow for a column-reordering of their associated
-stoichiometric submatrix such that the resulting Matrix is a Metzler matrix
-(Lemma~\ref{lem:MetzCircuit}). Such an ordering can be obtained by
-arranging the columns according to the direction of the circuit. In the
-proof of Lemma~\ref{lem:MetzCircuit}, we provided a construction of a
-Metzler circuit that always contains a pure reaction.
-
-The existence of a Metzler circuit with a pure reaction has already been
-shown to exist for any RAF that is itself not a CAF
-\cite{golnik_bridging_2026}. However, in the proof of Thm.~3.1 of
-\cite{golnik_bridging_2026}, the construction follows the F-catalysts as
-reactants for each reaction, and thereby not necessarily the reactant with
-the lowest generation number. Non-trivial minimal RAFs exist, where this
-construction would not yield a \emph{stoichiometrically autocatalytic}
-Metzler circuit for each strong block $B$. Such an example is depicted in
-Fig.~\ref{ex:CutVertex2}. Indeed, the block $(\{x_1,x_2\}, \{r_1,r_2\})$
-does not contain an elementary circuit, where each species vertex is the
-F-catalyst of its appurtenant reaction. Nevertheless, $C\coloneqq
-(x_1,r_1,x_2,r_2,x_1)$ is still a Metzler circuit with a pure reaction
-($r_1$), and thereby \emph{stoichiometrically autocatalytic}
-(Lemma.~\ref{lem:MetzCircAut}). In addition, $(x_3,r_2,x_4,r_3, x_3)$
-satisfies the construction of Thm.~3.1 of \cite{golnik_bridging_2026}.
-
-The example depicted in Fig.~\ref{fig:AutCircNotCore} clearly illustrates,
-however, that these \emph{stoichiometrically autocatalytic} Metzler
-circuits are not necessarily autocatalytic cores. On the one hand,
-non-trivial stoichiometries can give rise to strictly smaller cores that
-can be contained inside the constructed circuits. An example of this case
-is shown in Sec.~\ref{subsec:OneRAFManyCores}. In turn, \PFS{the same} core
-can be contained in \PFS{more than one} irreducible RAFs (see
-Sec.~\ref{subsec:ManyRAFsOneCore}) or the construction in
-Lemma~\ref{lem:MetzCircuit} can yield two equivalent autocatalytic cores
-(see Sec.~\ref{subsec:IrrEquivCores}). We might also find autocatalytic
-reactions in trivial and non-trivial irreducible RAFs (see Eq.~4.18,
-\cite{golnik_bridging_2026} and Fig.~\ref{Fig:ExplAutocatReac}).
-
-%\section{Concluding Remarks}
+Independent of the core's structure, different catalyzations can give rise to equivalent cores. In fact, considering each autocatalytic core as a simple element of equivalence classes that contains sub-CRNs on the same set of species vertices and sets of reaction vertices that share the same set of F-reactions (see Eq.~\eqref{eq:CoreEquiv}).
 
 \PFS{The results obtained here show that there are meaningful connections
-  between the the CRS and CRN formalisms that also imply strong
+  between the CRS and CRN formalisms that also imply strong
   similarities between notions of autocatalysis, in particular between
   non-trivial irreducible RAFs and autocatalytic cores. While our results
   yield useful implications, they are still far from establishing 1-1
