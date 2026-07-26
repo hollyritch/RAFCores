@@ -694,7 +694,7 @@ from $r_1$ to $v_2$. Thus, we may always reduce to the case of $v_1=r_1$ being a
 reaction vertex. The reachable set of \emph{descendant vertices} 
 from a vertex $u$ is denoted as 
 \begin{equation}
-		\mathbf{D}(u) \coloneqq \{v_k \in V \ \vert \ \text{there exists path } \mathcal{P}=(u, v_1, \ldots, v_k)\}.
+		\mathbf{D}(v_1) \coloneqq \{v \in V \ \vert \ \text{there exists path } \mathcal{P}=(u, \ldots, v)\}.
 \end{equation}
 Consider now $\RAF_1$ as the set of F-reactions in canonical bijection with the reactions $\mathcal{R}'_1\coloneqq \mathcal{R}' \setminus \mathbf{D}(r_1)$. Our indirect assumption implies that $v_2\not\in\mathbf{D}(r_1)$, and thus it follows that, for any F-reaction $\fr\in \RAF_1$, $\kappa'_F(\fr)\cup \rho_F(\fr)\subseteq \closure{\RAF_1}{\food}$. In particular, $\RAF_1$ satisfies the RAF Def.~\ref{def:RAF}, which contradicts the irreducibility of $\RAF$:  $\RAF_1\subset \RAF$ is a strict subset of $\RAF$ since it does not contain $\mathbf{r}_1$. Finally, $\kappa'_F(\fr)\cup \rho_F(\fr)\subseteq \closure{\RAF_1}{\food}$  holds for any $\fr\in \RAF_1$ also whenever all paths $\mathcal{P}$ from $v_1$ to $v_2$ are such that $\mathcal{P}\cap \food \neq \emptyset$, thus the full statement follows again by contradiction.}
 \end{proof}
