@@ -715,15 +715,13 @@ cut-vertices can only be reaction-vertices $r\in \mathcal{R}'$.
     Let $\RAF$ be an irreducible, monocatalyzed RAF. Every cut-vertex of $K(\RAF)$ is a reaction $r\in \mathcal{R}'$.
 \end{lemma}
 \begin{proof}
-Indirectly assume that there exists a cut vertex $x\in X(\king(\RAF))$ that is a species. Then there is at least one connected 
-component $\king_1$ in \holy{$\king[V(\king(\RAF))\setminus \{x\}]$ such that $\RAF_1\coloneqq \CR(\king_1)/\mathord{\sim}$ is 
-\food-generated. Indeed, Lemma \ref{lem:PSC} yields that any directed path $\mathcal{P}$ from 
-any vertex in $V(\king(\RAF))\setminus K_1$ to $K_1$ must in particular contain the cut-vertex $x$, which moreover is not 
-a food nor a waste molecule, $x\not\in \food \cup \mathbf{W}$. In particular, then, there is no species in $X(\king(\RAF))\setminus 
-(\king_1\cup \{x\})$ which is an F-reactant or an F-catalyst for any reaction in $\mathcal{R}(K_1)$. Thereby, 
-$\feducts(\RAF_1)\subseteq \closure{\RAF_1}{\food}$ and $\RAF_1$ is $\food$-generated. In addition, 
-$\RAF_1 \subset \RAF$ then constitutes a RAF, contradicting the irreducibility of $\RAF$.}
+\NV{Indirectly assume that there exists a cut vertex $x^*$ of $\king(\RAF)$ that is a species. Consider now the connected components $\tilde{K}_1,...,\tilde{K}_n$ of the bipartite subgraph $\tilde{K}$ obtained from $\king(\RAF)$ by removing $x^*$ and all adjacent edges $(x^*,r)$ or $(r,x^*)$. Note that - by construction - no species-vertex in any component $\tilde{K}_i$ is an F-reactant or an F-catalyst for any reaction-vertex in any component $\tilde{K}_j$, with $i\neq j$. In particular, from $\RAF$ being a RAF, it follows that there is at least one of such connected component $\tilde{K}_1$ whose associated F-reaction set $\RAF_1$ is a RAF as well [Very compact, one may want to add an explanatory sentence, but also fine this way]. Since any other $\tilde{K}_i \neq \tilde{K}_1$ contains by construction a reaction-vertex, then the RAF $\RAF_1$ is a strict subset of $\RAF$, which leads to a contradiction.
+[BE AWARE OF SINGLETON FOOD VERTICES add a disclaimer early on on this].}
 \end{proof}
+
+
+%\holy{$\king[V(\king(\RAF))\setminus \{x\}]$ such that $\RAF_1\coloneqq \CR(\king_1)/\mathord{\sim}$ is %\food-generated. Indeed, Lemma \ref{lem:PSC} yields that any directed path $\mathcal{P}$ from 
+%%any vertex in $V(\king(\RAF))\setminus K_1$ to $K_1$ must in particular contain the cut-vertex $x$, which moreover is not a food nor a waste molecule, $x\not\in \food \cup \mathbf{W}$. In particular, then, there is no species in $X(\king(\RAF))\setminus (\king_1\cup \{x\})$ which is an F-reactant or an F-catalyst for any reaction in $\mathcal{R}(K_1)$. Thereby, $\feducts(\RAF_1)\subseteq \closure{\RAF_1}{\food}$ and $\RAF_1$ is $\food$-generated. In addition, $\RAF_1 \subset \RAF$ then constitutes a RAF, contradicting the irreducibility of $\RAF$.}
 
 Building on the perspectives of Lemmas \ref{lem:PSC} and \ref{lem:cutvert}, the third and main result of this 
 section considers \emph{maximal strong blocks} $\block$ of $K(\RAF)$, i.e. maximal strongly-connected subgraphs 
