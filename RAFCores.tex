@@ -236,30 +236,30 @@
 
 \section{Introduction}
 
-Wilhelm Ostwald's considerations in 1890 on whether chemical reactions could be catalyzed by one of their own products \cite{Ostwald:90} marked the provenance of autocatalysis. In its simplest form, \NV{a}utocatalysis appears as an autocatalytic reaction where one participating species drives its own formation, fueled by a sufficient supply of food molecules. In subsequent decades, \emph{autocatalytic reactions} appeared, either explicitly or implicitly, in the literature across a wide range of reaction-network settings, including chemistry, ecology, population dynamics, and epidemiology \cite{lotka_contribution_1910,
+Wilhelm Ostwald's considerations in 1890 on whether chemical reactions could be catalyzed by one of their own products \cite{Ostwald:90} marked the provenance of autocatalysis. In its simplest form, autocatalysis appears as an autocatalytic reaction where one participating species drives its own formation, fueled by a sufficient supply of food molecules. In subsequent decades, \emph{autocatalytic reactions} appeared, either explicitly or implicitly, in the literature across a wide range of reaction-network settings, including chemistry, ecology, population dynamics, and epidemiology \cite{lotka_contribution_1910,
 lotka_analytical_1920, lotka1925elements, volterra1926variazioni,  kermack_contributions_1991}. One of the most convincing examples is the transmission of viral infections from one individual to another
-\cite{kermack_contributions_1991}, resulting in an exponential explosion of numbers of infected individuals, e.g., as observed during the COVID-19 pandemic \cite{saxena_propagation_2021}.
+\cite{kermack_contributions_1991}, potentially resulting in an exponential explosion of numbers of infected individuals, e.g., as observed during the COVID-19 pandemic \cite{saxena_propagation_2021}.
 
-From the simple idea of an autocatalytic reaction, a growing field of research has developed over the past decades, resulting in different concepts of autocatalysis \cite{andersen_defining_2021}.  A first line of studies focused on entities driving their own reproduction in complex networks, so-called \emph{replicators}, such as Eigen's quasi-species, an ensemble of genotypes that arrange themselves around a common species of which they differ by a series of mutations \cite{eigen_selforganization_1971}.  Subsequent research applied this concept to metabolic networks to identify important metabolic \emph{autocatalytic replicators} such as ATP \cite{kun_computational_2008}. In a more general way, sequences of reactions whose combined net reaction is autocatalytic have been termed autocatalytic cycles, and shown to be prevalent in the central carbon metabolism of \emph{Escherichia coli} \cite{barenholz_design_2017, smith_universality_2004}. Similar ideas have been studied subsequently
-\cite{joshi_autocatalytic_2021}, as they relate closely to the hypercycle concept originally proposed by Eigen and Schuster
+From the simple idea of an autocatalytic reaction, a growing field of research has developed over the past decades, resulting in different concepts of autocatalysis \cite{andersen_defining_2021}.  A first line of studies focused on entities driving their own reproduction in complex networks, so-called \emph{replicators}, such as Eigen's quasi-species \cite{eigen_selforganization_1971}, an ensemble of genotypes that arrange themselves around a common species of which they differ by a series of mutations.  Subsequent research applied this concept to metabolic networks to identify important metabolic \emph{autocatalytic replicators} such as ATP \cite{kun_computational_2008}. More generally, sequences of reactions whose combined net reaction is autocatalytic have been termed autocatalytic cycles, and shown to be prevalent in the central carbon metabolism of \emph{Escherichia coli} \cite{barenholz_design_2017, smith_universality_2004}. Similar ideas have subsequently been studied
+\cite{joshi_autocatalytic_2021}, as they closely relate to the hypercycle concept originally proposed by Eigen and Schuster
 \cite{eigen_principle_1977}.
 
 A concise definition of \emph{stoichiometric autocatalysis} was
-proposed in \cite{blokhuis_Universal_2020}, as a generalization of the idea of an autocatalytic cycle in accordance with the IUPAC definition of autocatalytic reactions \cite{gold_iupac_2025}.  This formalization has recently received increasing attention since its conception in 2020. It has lead to the development of algorithms for enumerating minimal and irreducible autocatalytic subsystems in fully reversible \cite{kosc_thermodynamic_2025} CRNs and CRNs with reversible and irreversible reactions \cite{gagrani_polyhedral_2024, golnik_birne_2025,
-golnik_enumeration_2026, golnik_using_2026}. Originally introduced in fully reversible CRNs lacking explicit catalysis \cite{blokhuis_Universal_2020}, the theory on stoichiometric autocatalysis has recently been extended to CRNs containing both reversible and irreversible as well as explicitly catalyzed reactions \cite{golnik_autocatalytic_2026}.
+proposed in \cite{blokhuis_Universal_2020} as a generalization of the idea of an autocatalytic cycle in accordance with the IUPAC definition of autocatalytic reactions \cite{gold_iupac_2025}.  This formalization has received increasing attention since its conception in 2020. It has lead to the development of algorithms for enumerating minimal and irreducible autocatalytic subsystems in fully reversible \cite{kosc_thermodynamic_2025} CRNs and CRNs with reversible and irreversible reactions \cite{gagrani_polyhedral_2024, golnik_birne_2025,
+golnik_enumeration_2026, golnik_using_2026}. Originally introduced in fully reversible CRNs lacking explicitly catalyzed reactions \cite{blokhuis_Universal_2020}, the theory on stoichiometric autocatalysis has recently been extended to CRNs containing both reversible and irreversible as well as explicit catalysis  \cite{golnik_autocatalytic_2026}.
 
 An alternative approach to formalize system-level autocatalysis
 focused on systems of chemical reactions in which every reaction is, in
-general, catalyzed \cite{lohn_evolving_1998, steel_emergence_2000}. The
+general, explicitly catalyzed \cite{lohn_evolving_1998, steel_emergence_2000}. The
 original idea dates back to Kauffman's considerations
-\cite{kauffman_autocatalytic_1986} about how life on Earth may have emerged as a metabolism-first event rather than a genetics-first one. Kauffman explored the idea of whether sets of polypeptide complexes that were generated via reactions that are exclusively catalyzed by members of the set could have led to collectively self-reproducing systems.  Under reasonable assumptions and a sufficient supply of amino acid monomers, surprisingly, their existence becomes almost guaranteed as long as polypeptide chains exceed a certain length. These ideas laid the foundation for later work on \textsc{Reflexively Autocatalytic
+\cite{kauffman_autocatalytic_1986} about how life on Earth may have emerged as a metabolism-first event rather than a genetics-first one. Kauffman explored whether sets of polypeptide complexes, generated via reactions that are exclusively catalyzed by members of the set, could lead to collectively self-reproducing systems.  Remarkably, under reasonable assumptions and a sufficient supply of amino acid monomers, their existence becomes almost guaranteed as long as the polypeptide chains exceed a certain length. These ideas laid the foundation for later work on \textsc{Reflexively Autocatalytic
 Food-generated sets} (RAF), which were studied extensively in many
 variations \cite{steel_emergence_2000, mossel_random_2005, steel_minimal_2013, smith_autocatalytic_2014, hordijk_history_2019, steel20}.
 
-Related to different approaches to thinking about the problem of how life has emerged on a primordial Earth \cite{kauffman_autocatalytic_1986, unterberger_stoechiometric_2022}, \textsc{RAF sets} and \emph{stoichiometric autocatalysis} differ substantially in their motivation, setting, and mathematical formalization. Notably, \textsc{RAF} theory is phrased in terms of catalytic reaction systems (CRS) \textit{sensu} Lohn \cite{lohn_evolving_1998}, while \emph{stoichiometric autocatalysis} is grounded in the tradition of chemical reaction network theory, tracing back to Rutherford Aris \cite{aris_prolegomena_1965}. A meaningful connection between these two frameworks has been investigated only very recently \cite{golnik_bridging_2026}. Notably, the RAF framework, in its original formulation, allows reactions to also occur uncatalyzed, at least initially, which seems reasonable from a chemical perspective and considering the time life required to develop. In a more restrictive setting, i.e., in \textsc{Constructively Autocatalytic F-generated sets} (CAFs), reactions can only be executed if catalysts have been generated beforehand. Interestingly, a RAF that is itself not entirely constrained in such a manner is always \emph{stoichiometrically autocatalytic} \cite{golnik_bridging_2026}.
+Related to different approaches to thinking about the problem of how life has emerged on a primordial Earth \cite{kauffman_autocatalytic_1986, unterberger_stoechiometric_2022}, \textsc{RAF sets} and \emph{stoichiometric autocatalysis} differ substantially in their motivation, setting, and mathematical formalization. Notably, \textsc{RAF} theory is phrased in terms of catalytic reaction systems (CRS) \textit{sensu} Lohn \cite{lohn_evolving_1998}, while \emph{stoichiometric autocatalysis} is grounded in the tradition of chemical reaction network theory, tracing back to Rutherford Aris \cite{aris_prolegomena_1965}. A meaningful connection between these two frameworks has been investigated only very recently \cite{golnik_bridging_2026}. Notably, the RAF framework allows reactions to also occur uncatalyzed, at least initially, which seems reasonable from a chemical perspective and considering the time life required to develop. In a more restrictive setting, i.e., in \textsc{Constructively Autocatalytic F-generated sets} (CAFs), reactions can only be executed if catalysts have been generated beforehand. Any RAF that is itself not entirely a CAF is always \emph{stoichiometrically autocatalytic} \cite{golnik_bridging_2026}.
 
 
-In this contribution, we extend this theory and set out to identify the underlying structures carrying the autocatalytic capacity of a RAF that is itself not a CAF. As an initial step, we overcome the menacing obstacle that \textsc{RAFs} are embedded in catalytic reaction systems (CRS), while \emph{stoichiometric autocatalysis} was derived from chemical reaction networks (CRNs). It turns out that CRS reflect the quotient structure of its associated CRN. In addition, we show that requiring minimality, with respect to the RAF property, imposes remarkable constraints on the emerging graph structures. Finally, we explore how these consequences impact on the correspondence between the two notions of minimality: \textsc{irreducible RAFs} and \emph{autocatalytic cores}. 
+In this contribution, we extend this theory and set out to describe the underlying structures carrying the autocatalytic capacity of a RAF that is itself not a CAF. As an initial step, we overcome the menacing obstacle that \textsc{RAFs} are embedded in catalytic reaction systems (CRS), while \emph{stoichiometric autocatalysis} was derived from chemical reaction networks (CRNs). It turns out that CRS reflect the quotient structure of its associated CRN. In addition, we show that requiring minimality, with respect to the RAF property, imposes remarkable constraints on the emerging graph structures. Finally, we explore how these consequences impact on the correspondence between the two notions of minimality: \textsc{irreducible RAFs} and \emph{autocatalytic cores}. 
 
 \section{Two different Representations of Chemical Systems}\label{sec:CRNCRS}
 
@@ -271,9 +271,9 @@ different authors have introduced different notions of reactions
 \cite{muller_what_2022}. We briefly overview here two approaches: \emph{Chemical Reaction Networks} and \emph{Catalytic Reaction Systems}.
 
 \subsection{Chemical Reaction Networks (CRNs)}
-A chemical reaction network (CRN) $\Gamma \coloneqq (X,\CR)$ is a tuple of two finite
+A \emph{chemical reaction network} (CRN) $\Gamma \coloneqq (X,\CR)$ is a tuple of two finite
 sets, a set of species $X$ and a set of reactions $\CR$. 
-For any $r \in \CR$, we can write a stoichiometric equation as an ordered association between a nonnegative combinations of reactant species to a nonnegative combinations of product species,
+Any $r \in \CR$ is represented as an ordered association between a nonnegative combination of reactant species to a nonnegative combination of product species,
 \begin{equation}\label{eq:reaction}
   \sum_{x\in X}\ s^-_{xr} \cdot x \quad \underset{r}{\rightarrow} \quad \sum_{x\in X} \ s^+_{xr}\cdot x
 \end{equation}
@@ -312,7 +312,7 @@ F-products, and F-catalysts, respectively. The nomenclature ``F-catalysts'' is t
     \cat(r)&\coloneqq \{(x, k_{xr})\ | \ x\in X,\; k_{xr}>0\}.
   \end{split}
 \end{equation} 
-For technical reasons, note that the set of F-catalysts is defined as a set of pairs $(x,k_{xr})$ 
+For technical reasons (to be clarified below in Sec.~\ref{sec:CRS}), note that the set of F-catalysts is defined as a set of pairs $(x,k_{xr})$ 
 to encode also the respective coefficient. In a CRN, distinct reactions $r_1\neq r_2$
 may differ only in the F-catalysts $\kappa_F(r_1)\neq \kappa_F(r_2)$ 
 and share identical F-reactants and F-products. For example, 
@@ -325,7 +325,7 @@ acetaldehyde \cite{jira_acetaldehyde_2009}. The idea that one `same' chemical pr
 
 \subsection{Catalytic Reaction Systems (CRS)}\label{sec:CRS}
 
-Catalytic Reaction Systems (CRS) \textit{sensu} 
+\emph{Catalytic Reaction Systems} (CRS) \textit{sensu} 
 Lohn \cite{lohn_evolving_1998} are defined as a triple 
 \begin{equation}\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR)),
 \end{equation}
@@ -334,13 +334,13 @@ where $X$ is again a set of species, and each $\fr\in\FR$ is defined as a net-mo
 	\sum_{x\in X}\ \sigma^-_{x\fr} \cdot x \quad \underset{\fr}\rightarrow \quad \sum_{x\in X}\ \sigma^-_{x\fr} \cdot x,
 \end{equation}
 where $\sigma^\pm_{x\fr}\ge 0$ are again nonnegative stoichiometric coefficients. 
-The \emph{catalyzation} set $\cat(\FR)=\{ \cat(\fr) \}_{\fr\in\FR}$ constitutes the main difference with the CRN setting.
+The \emph{catalyzation set} $\cat(\FR)=\{ \cat(\fr) \}_{\fr\in\FR}$ constitutes the main difference with the CRN setting.
 For a single F-reaction $\fr$, the set of catalyzations $\cat(\fr)$ is defined as
 $\cat(\fr)=\{c_\fr\}$, where each catalyzation $c_\fr$ is in turn a set of pairs $(x,k^{c}_{x\mathbf{r}})$:
 \begin{equation}\label{eq:CatCFR}
     c_\fr\coloneqq \{(x_1,k^c_{x_1\mathbf{r}}),\ldots, (x_n,k^c_{x_n\fr})\}.
 \end{equation}
-where $k^{c}_{x\fr}>0$ is a positive coefficient. We call an $\fr\in \FR$ \emph{F-reaction} to distinguish it from the CRN reactions \eqref{eq:Mod.SmEq}. A CRS $\mathbf{\Phi}'\coloneqq (X', \FR', \cat'(\FR)')$ is a \emph{sub-CRS} of $\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$ if $X\subseteq X'$, $\FR'\subseteq\FR$, $\cat'(\FR)'\subseteq \cat(\FR)$.
+where $k^{c}_{x\fr}>0$ is a positive coefficient. \NV{[Throughout: be careful, be define catalyzation as a set of pairs, not as a set of species, check consistency! maybe introduce `support of catalyzation' or mention `with abuse of notation or so...]} We call an $\fr\in \FR$ \emph{F-reaction} to distinguish it from the CRN reactions \eqref{eq:Mod.SmEq}. A CRS $\mathbf{\Phi}'\coloneqq (X', \FR', \cat'(\FR)')$ is a \emph{sub-CRS} of $\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$ if $X\subseteq X'$, $\FR'\subseteq\FR$, $\cat'(\FR)'\subseteq \cat(\FR)$.
 
 Finally, a comparison between a CRN reaction \eqref{eq:Mod.SmEq}  with a CRS F-reaction \eqref{eq:FReacEq} and the definition of catalyzations set $\cat$ suggests the following formalization of the relation between a CRN and a CRS.
 
@@ -554,7 +554,7 @@ Let $(X,\FR,\cat(\FR))$ be a CRS with specified \emph{food set} $\food\subseteq 
 RAF} if it is a RAF and it holds $|\cat(\fr)|=1$ for all F-reactions $\fr \in \RAF$.
 \end{definition}
 
-We stress that a monocatalyzed RAF may include, nevertheless, F-reactions $\fr$, whose unique catalyzation $c$ is a set of multiple species, i.e. $c=\{x_1,..., x_n\}$. Lemma \ref{lem:mono} implies that, for a CRS $\mathbf{\Phi}=(X,\FR,\cat(\FR))$ with irreducible RAF $\RAF\subseteq\FR$, there exists exponentially many sub-CRS $\Phi'_i$ for which $\RAF$ is a monocatalyzed irreducible RAF. This is formalized in the following lemma.
+We stress that a monocatalyzed RAF may include, nevertheless, F-reactions $\fr$, whose unique catalyzation $c$ is a set of multiple pairs $(x_i, k^c_{x_i\fr})$, i.e. $c=\{((x_1, k^c_{x_1\fr}),..., (x_n, k^c_{x_n\fr})\}$. Lemma \ref{lem:mono} implies that, for a CRS $\mathbf{\Phi}=(X,\FR,\cat(\FR))$ with irreducible RAF $\RAF\subseteq\FR$, there exists exponentially many sub-CRS $\Phi'_i$ for which $\RAF$ is a monocatalyzed irreducible RAF. This is formalized in the following lemma.
 
 \vspace{6pt}
 \begin{lemma}\label{lem:ExpoSubCRS}
@@ -572,7 +572,7 @@ We stress that a monocatalyzed RAF may include, nevertheless, F-reactions $\fr$,
 	monocatalyzed irreducible RAF.
 \end{proof}
 
-Finally, we underline that irreducibility is a property that is of interest only for RAFs that are not CAFs. We have the following proposition indeed:
+Finally, we underline that irreducibility is a property that is of interest only for RAFs that are not CAFs:
 \vspace{6pt}
 \begin{proposition}\label{prop:Caftrivial}
 Any irreducible RAF $\RAF$ that is itself a CAF is a single F-reaction $\RAF=\{\fr\}$.
@@ -586,7 +586,7 @@ $c\in \cat(\fr)$ are in the food set $\food$. Therefore $\fr$ is a CAF (and RAF)
 Due to Prop.~\ref{prop:Caftrivial}, throughout the paper we exclude the trivial CAF case whenever making statements about irreducible RAFs. 
 To keep the exposition concise, we assume this exclusion throughout and do not repeat it explicitly in each statement.
 
-\holy{We conclude this section with a remarkable result. Minimal \emph{stoichiometrically autocatalytic} CRN sub-networks, formally introduced in Sec.~\ref{sec:AutoCatIrrRAF} Def.~\ref{def:autSubRN}, are termed \emph{autocatalytic cores} \cite{blokhuis_Universal_2020}. RAFs that are themselves CAFs were shown to be \emph{stoichiometrically autocatalytic}, and therefore contain an autocatalytic core in \cite{golnik_bridging_2026}. Driven by this result, we used \texttt{autogatito} \cite{golnik_using_2026} to compute autocatalytic cores in irreducible RAFs generated from random instances of the binary polymer model \cite{kauffman_autocatalytic_1986}. Strikingly, even irreducible RAFs already exhibit a remarkably rich internal structure, comprising up to thousands of distinct autocatalytic cores, as shown in Fig.~\ref{fig:irrRAFCores}. This astonishing observation motivates the remainder of this contribution, in which  we investigate the structural properties of irreducible RAFs that give rise to such unexpectedly large numbers of autocatalytic cores.
+\NV{[Ponder further whether here is the right place, or rather earlier or later]} \holy{We conclude this section with a remarkable result. Minimal \emph{stoichiometrically autocatalytic} CRN sub-networks, formally introduced in Sec.~\ref{sec:AutoCatIrrRAF} Def.~\ref{def:autSubRN}, are termed \emph{autocatalytic cores} \cite{blokhuis_Universal_2020}. In turn, RAFs that are themselves not CAFs were shown to be \emph{stoichiometrically autocatalytic}, and therefore contain an autocatalytic core in \cite{golnik_bridging_2026}. Driven by this result, we used \texttt{autogatito} \cite{golnik_using_2026} to compute autocatalytic cores in irreducible RAFs generated from random instances of the binary polymer model \cite{kauffman_autocatalytic_1986}. Strikingly, even irreducible RAFs already exhibit a remarkably rich internal structure, comprising up to thousands of distinct autocatalytic cores, as shown in Fig.~\ref{fig:irrRAFCores}. This astonishing observation motivates the remainder of this contribution, in which  we investigate the structural properties of irreducible RAFs that give rise to such unexpectedly large numbers of autocatalytic cores.
 
 \begin{figure}[htb]
 	\centering
@@ -644,22 +644,22 @@ Let $\mathbf{\Phi}=(X,\FR,\cat(\FR))$ be a CRS with food set $\food\subseteq X$.
 \end{equation}
 where $|\cat'(\fr)|=1$ for each F-reaction $\fr\in \RAF$. Consider now the associated CRN $\Gamma'\coloneqq \Gamma(\mathbf{\Phi}')$. One central advantage of considering such monocatalyzed CRSs $\mathbf{\Phi}'$ is that the quotient map from $\Gamma(\mathbf{\Phi}')$ to $\mathbf{\Phi}'$ is a bijection. Indeed, the quotient construction becomes trivial, since every equivalence class, i.e. every F-reaction $\fr$, is a singleton $\fr=\{r\}$. Thus, the quotient CRS can be canonically identified with the underlying CRN and we can therefore naturally address properties of $\mathbf{\Phi}'$ by studying them in $\Gamma'$. To do so, we use the notation $\mathcal{R}'$ to identify the CRN reactions of $\Gamma'$, i.e. $\Gamma'=(X,\mathcal{R}')$. We repeat that each of such reactions $r\in \mathcal{R}'$, written as \eqref{eq:Mod.SmEq}, is in canonical bijection with an F-reaction $\fr\in \RAF$, written as \eqref{eq:FReacEq}, which is catalyzed by the singleton $\cat(\fr)=\{c\}$ with $c=\cat(r)$.
 
-We may consider now the K\H{o}nig graph $K(\RAF)=K(\Gamma')$ of the monocatalyzed RAF $\RAF$ simply as the one of its associated CRN $\Gamma'=(X,\mathcal{R}')$, which is the graph 
-$\king(\Gamma') \coloneqq (\closure{\RAF}{\food} \cup \CR', E)$. Its edge set $E\coloneqq E_1\cup E_2$, 
+We may consider now the K\H{o}nig graph $K(\RAF)=K(\Gamma')$ of the monocatalyzed RAF $\RAF$ simply as the one of its associated CRN $\Gamma'=(X,\mathcal{R}')$. This is the graph 
+$\king(\Gamma') \coloneqq (\closure{\RAF}{\food} \cup \CR', E)$, whose edge set $E\coloneqq E_1\cup E_2$, 
 is partitioned into two distinct types of directed edges given as
 \begin{equation}
     \begin{cases} (x,r) \ | \ x\in \closure{\RAF}{\food}, r\in \CR': s^-_{xr}>0 \\
  			(r, x) \ | \ x\in \closure{\RAF}{\food}, r\in \CR': s^+_{xr}>0. \end{cases}
 \end{equation}
 \FloatBarrier
-Note that the K\H{o}nig graph emerged under various names in the context of CRN theory, as the 
+The K\H{o}nig graph emerged under various names in the context of CRN theory, as the 
 species-reaction (SR) graph \cite{craciun_multiple_2006} and also as Petri nets \cite{angeli_petri_2007}.
 
 %\subsubsection{Properties of $K(\RAF)$}
 
 A \emph{directed path} $\mathcal{P}$ in $K(\RAF)$ is an ordered sequence 
 of vertices $\mathcal{P}=(v_1,\ldots, v_n)$, starting at $v_1$ and terminating at $v_n$, such that 
-$(v_i,v_{i+1})\in E(K(\RAF)), 1\leq i\leq n-1$. We say that such $\mathcal{P}$ is a path from $v_1$ to $v_2$. $K(\RAF)$ is \emph{strongly connected} if, for every pair of vertices 
+$(v_i,v_{i+1})\in E(K(\RAF)), 1\leq i\leq n-1$. We say that such $\mathcal{P}$ is a path from $v_1$ to $v_n$. $K(\RAF)$ is \emph{strongly connected} if, for every pair of vertices 
 $v,w\in (X\cup\mathcal{R})$ there is a directed path from $v$ to $w$. If $K(\RAF)$ is not strongly 
 connected, the \emph{strongly connected component} containing a vertex $v_1$ is the maximum set 
 of vertices $V_1$ with $v_1\in V_1$ such that for any pair of vertices $v$ and $w$ in $V_1$ there is a directed path from $v$ to $w$. 
@@ -670,14 +670,12 @@ there is no directed edges $(x_w,r)$. Equivalently, in symbols:
 \begin{equation}\label{eq:Waste}
   \mathbf{W}\coloneqq \{x\in \closure{\RAF}{\food} \ | \ \nexists r \in \CR' \text{ s.t. } s^-_{xr}>0\}.
 \end{equation}
-We recall that the predecessors (ascendants) and successors (descendants) 
-of a vertex $u \in V(G)$ from a digraph $G$ are denoted as 
-\begin{equation}
-	\begin{split}
-		\mathbf{A}_G(u)& \coloneqq \{v_1 \in V \ \vert \ \text{exists path } \mathcal{P}=(v_1, \ldots, v_k, u)\} \cup\{u\} \quad \text{ and }\\
-		\mathbf{D}_G(u)& \coloneqq \{v_k \in V \ \vert \ \text{exists path } \mathcal{P}=(u, v_1, \ldots, v_k)\} \cup\{u\}.
-	\end{split}
-\end{equation}
+%We recall that the predecessors (ascendants) and successors (descendants) of a vertex $u \in V(G)$ from a digraph $G$ are denoted as \begin{equation}
+	%\begin{split}
+	%	\mathbf{A}_G(u)& \coloneqq \{v_1 \in V \ \vert \ \text{exists path } \mathcal{P}=(v_1, \ldots, v_k, u)\} \cup\{u\} \quad \text{ and }\\
+	%	\mathbf{D}_G(u)& \coloneqq \{v_k \in V \ \vert \ \text{exists path } \mathcal{P}=(u, v_1, \ldots, v_k)\} \cup\{u\}.
+	%\end{split}
+%\end{equation}
 We now have the following statement.
 \vspace{6pt}
 \begin{lemma}[Strong connectivity]\label{lem:PSC}
@@ -688,28 +686,22 @@ We now have the following statement.
   Then there is a directed path $\mathcal{P}$ from $v_1$ to $v_2$ such that $\mathcal{P}\cap \food =\emptyset$. 
 \end{lemma}
 \begin{proof}
+\NV{
 Indirectly assume that there is no path $\mathcal{P}$  from $v_1$ to $v_2$. If $v_1$ 
 is a species-vertex, $v_1=x_1$, then $v_1\not\in \mathbf{W}$, and let $r_1$ be any 
 reaction vertex such that $s^-_{x_1r_1}>0$. By indirect assumption, there is no path 
 from $r_1$ to $v_2$. Thus, we may always reduce to the case of $v_1=r_1$ being a 
-reaction vertex. \holy{Then $\mathbf{D}_{\king'}(r_1)\cap \mathbf{A}_{\king'}(v_2)=\emptyset$.
-Thus, no species from $\mathbf{D}(r_1)$ is an F-reactant or F-catalyst for a reaction from $\mathbf{A}(v_2)$. 
-In addition, no species from $\mathbf{D}(r_1)$ is an F-reactant or F-catalyst for a reaction 
-$r \in \CR(\mathbf{D}(v_2)\setminus \mathbf{D}_{\king'}(r_1))$ as this would imply that $r\in \mathbf{D}_{\king'}(r_1)$, a 
-contradiction. Therefore, $\RAF_1\coloneqq \RAF\setminus (\CR(\mathbf{D}_{\king'}(r_1))/\mathord{\sim})$ satisfies 
-$\rho(\RAF_1)\subseteq \closure{\RAF_1}{\food}$, i.e., Property~$ii.$ of Def.~\ref{def:RAF}. 
-In addition, for an arbitrary $\fr\in \RAF_1$, the catalysts $X(c)$ for the single catalyzation $c\in \cat(\fr)$ 
-are contained in $\closure{\RAF_1}{\food}$ as $X(c)\cap \mathbf{D}_{\king'}(r_1)=\emptyset$, which satisfies 
-Property~$i.$ of Def.~\ref{def:RAF}. Then $\RAF_1\subset \RAF$ is Reflexively Autocatalytic and
-\food-generated and thereby a RAF, which contradicts the irreducibility of $\RAF$.
-
-Assume now that all directed paths $\mathcal{P}_{r_1v_2}$ from $r_1$ to $v_2$ satisfy 
-$\mathcal{P}_{r_1v_2}\cap \food\neq \emptyset$ and consider the subgraph of $\king(\RAF)$ that is
-void of food molecules, i.e., $\king''\coloneqq \king(\RAF)[\closure{\RAF}{\food}\setminus \food \cup \CR']$. 
-Then, no species from $\mathbf{D}_{\king''}$ is an F-reactant or an F-catalyst for a reaction of
-$\mathbf{A}_{\king''}(v_2)$ in $\king''$. Therefore, with the same argument as above 
-$\RAF\setminus (\CR(\mathbf{D}_{\king''}))/\mathord{\sim})$ is a RAF, and thereby contradicts minimality of $\RAF$.}
+reaction vertex. The reachable set of \emph{descendant vertices} 
+from a vertex $u$ is denoted as 
+\begin{equation}
+		\mathbf{D}(v_1) \coloneqq \{v \in V \ \vert \ \text{there exists path } \mathcal{P}=(u, \ldots, v)\}.
+\end{equation}
+Consider now $\RAF_1$ as the set of F-reactions in canonical bijection with the reactions $\mathcal{R}'_1\coloneqq \mathcal{R}' \setminus \mathbf{D}(r_1)$. Our indirect assumption implies that $v_2\not\in\mathbf{D}(r_1)$, and thus it follows that, for any F-reaction $\fr\in \RAF_1$, $\kappa'_F(\fr)\cup \rho_F(\fr)\subseteq \closure{\RAF_1}{\food}$. In particular, $\RAF_1$ satisfies the RAF Def.~\ref{def:RAF}, which contradicts the irreducibility of $\RAF$:  $\RAF_1\subset \RAF$ is a strict subset of $\RAF$ since it does not contain $\mathbf{r}_1$. Finally, $\kappa'_F(\fr)\cup \rho_F(\fr)\subseteq \closure{\RAF_1}{\food}$  holds for any $\fr\in \RAF_1$ also whenever all paths $\mathcal{P}$ from $v_1$ to $v_2$ are such that $\mathcal{P}\cap \food \neq \emptyset$, thus the full statement follows again by contradiction.}
 \end{proof}
+
+
+%\holy{Then $\mathbf{D}_{\king'}(r_1)\cap \mathbf{A}_{\king'}(v_2)=\emptyset$. Thus, no species from $\mathbf{D}(r_1)$ is an F-reactant or F-catalyst for a reaction from $\mathbf{A}(v_2)$. In addition, no species from $\mathbf{D}(r_1)$ is an F-reactant or F-catalyst for a reaction $r \in \CR(\mathbf{D}(v_2)\setminus \mathbf{D}_{\king'}(r_1))$ as this would imply that $r\in \mathbf{D}_{\king'}(r_1)$, a contradiction. Therefore, $\RAF_1\coloneqq \RAF\setminus (\CR(\mathbf{D}_{\king'}(r_1))/\mathord{\sim})$ satisfies $\rho(\RAF_1)\subseteq \closure{\RAF_1}{\food}$, i.e., Property~$ii.$ of Def.~\ref{def:RAF}. In addition, for an arbitrary $\fr\in \RAF_1$, the catalysts $X(c)$ for the single catalyzation $c\in \cat(\fr)$ are contained in $\closure{\RAF_1}{\food}$ as $X(c)\cap \mathbf{D}_{\king'}(r_1)=\emptyset$, which satisfies Property~$i.$ of Def.~\ref{def:RAF}. Then $\RAF_1\subset \RAF$ is Reflexively Autocatalytic and\food-generated and thereby a RAF, which contradicts the irreducibility of $\RAF$.Assume now that all directed paths $\mathcal{P}_{r_1v_2}$ from $r_1$ to $v_2$ satisfy $\mathcal{P}_{r_1v_2}\cap \food\neq \emptyset$ and consider the subgraph of $\king(\RAF)$ that isvoid of food molecules, i.e., $\king''\coloneqq \king(\RAF)[\closure{\RAF}{\food}\setminus \food \cup \CR']$. Then, no species from $\mathbf{D}_{\king''}$ is an F-reactant or an F-catalyst for a reaction of$\mathbf{A}_{\king''}(v_2)$ in $\king''$. Therefore, with the same argument as above $\RAF\setminus (\CR(\mathbf{D}_{\king''}))/\mathord{\sim})$ is a RAF, and thereby contradicts minimality of $\RAF$.}
+
 
 Lemma \ref{lem:PSC} is essentially a strong-connectivity result on $K(\RAF)$ without food and waste species. 
 However, strongly connected graphs may still have cut-vertices, namely, vertices whose removal disconnects 
@@ -723,15 +715,13 @@ cut-vertices can only be reaction-vertices $r\in \mathcal{R}'$.
     Let $\RAF$ be an irreducible, monocatalyzed RAF. Every cut-vertex of $K(\RAF)$ is a reaction $r\in \mathcal{R}'$.
 \end{lemma}
 \begin{proof}
-Indirectly assume that there exists a cut vertex $x\in X(\king(\RAF))$ that is a species. Then there is at least one connected 
-component $\king_1$ in \holy{$\king[V(\king(\RAF))\setminus \{x\}]$ such that $\RAF_1\coloneqq \CR(\king_1)/\mathord{\sim}$ is 
-\food-generated. Indeed, Lemma \ref{lem:PSC} yields that any directed path $\mathcal{P}$ from 
-any vertex in $V(\king(\RAF))\setminus K_1$ to $K_1$ must in particular contain the cut-vertex $x$, which moreover is not 
-a food nor a waste molecule, $x\not\in \food \cup \mathbf{W}$. In particular, then, there is no species in $X(\king(\RAF))\setminus 
-(\king_1\cup \{x\})$ which is an F-reactant or an F-catalyst for any reaction in $\mathcal{R}(K_1)$. Thereby, 
-$\feducts(\RAF_1)\subseteq \closure{\RAF_1}{\food}$ and $\RAF_1$ is $\food$-generated. In addition, 
-$\RAF_1 \subset \RAF$ then constitutes a RAF, contradicting the irreducibility of $\RAF$.}
+\NV{Indirectly assume that there exists a cut vertex $x^*$ of $\king(\RAF)$ that is a species. Consider now the connected components $\tilde{K}_1,...,\tilde{K}_n$ of the bipartite subgraph $\tilde{K}$ obtained from $\king(\RAF)$ by removing $x^*$ and all adjacent edges $(x^*,r)$ or $(r,x^*)$. Note that - by construction - no species-vertex in any component $\tilde{K}_i$ is an F-reactant or an F-catalyst for any reaction-vertex in any component $\tilde{K}_j$, with $i\neq j$. In particular, from $\RAF$ being a RAF, it follows that there is at least one of such connected component $\tilde{K}_1$ whose associated F-reaction set $\RAF_1$ is a RAF as well [Very compact, one may want to add an explanatory sentence, but also fine this way]. Since any other $\tilde{K}_i \neq \tilde{K}_1$ contains by construction a reaction-vertex, then the RAF $\RAF_1$ is a strict subset of $\RAF$, which leads to a contradiction.
+[BE AWARE OF SINGLETON FOOD VERTICES add a disclaimer early on on this].}
 \end{proof}
+
+
+%\holy{$\king[V(\king(\RAF))\setminus \{x\}]$ such that $\RAF_1\coloneqq \CR(\king_1)/\mathord{\sim}$ is %\food-generated. Indeed, Lemma \ref{lem:PSC} yields that any directed path $\mathcal{P}$ from 
+%%any vertex in $V(\king(\RAF))\setminus K_1$ to $K_1$ must in particular contain the cut-vertex $x$, which moreover is not a food nor a waste molecule, $x\not\in \food \cup \mathbf{W}$. In particular, then, there is no species in $X(\king(\RAF))\setminus (\king_1\cup \{x\})$ which is an F-reactant or an F-catalyst for any reaction in $\mathcal{R}(K_1)$. Thereby, $\feducts(\RAF_1)\subseteq \closure{\RAF_1}{\food}$ and $\RAF_1$ is $\food$-generated. In addition, $\RAF_1 \subset \RAF$ then constitutes a RAF, contradicting the irreducibility of $\RAF$.}
 
 Building on the perspectives of Lemmas \ref{lem:PSC} and \ref{lem:cutvert}, the third and main result of this 
 section considers \emph{maximal strong blocks} $\block$ of $K(\RAF)$, i.e. maximal strongly-connected subgraphs 
