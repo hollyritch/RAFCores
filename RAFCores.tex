@@ -686,7 +686,6 @@ We now have the following statement.
   Then there is a directed path $\mathcal{P}$ from $v_1$ to $v_2$ such that $\mathcal{P}\cap \food =\emptyset$. 
 \end{lemma}
 \begin{proof}
-\NV{
 Indirectly assume that there is no path $\mathcal{P}$  from $v_1$ to $v_2$. If $v_1$ 
 is a species-vertex, $v_1=x_1$, then $v_1\not\in \mathbf{W}$, and let $r_1$ be any 
 reaction vertex such that $s^-_{x_1r_1}>0$. By indirect assumption, there is no path 
@@ -696,7 +695,7 @@ from a vertex $u$ is denoted as
 \begin{equation}
 		\mathbf{D}(v_1) \coloneqq \{v \in V \ \vert \ \text{there exists path } \mathcal{P}=(u, \ldots, v)\}.
 \end{equation}
-Consider now $\RAF_1$ as the set of F-reactions in canonical bijection with the reactions $\mathcal{R}'_1\coloneqq \mathcal{R}' \setminus \mathbf{D}(r_1)$. Our indirect assumption implies that $v_2\not\in\mathbf{D}(r_1)$, and thus it follows that, for any F-reaction $\fr\in \RAF_1$, $\kappa'_F(\fr)\cup \rho_F(\fr)\subseteq \closure{\RAF_1}{\food}$. In particular, $\RAF_1$ satisfies the RAF Def.~\ref{def:RAF}, which contradicts the irreducibility of $\RAF$:  $\RAF_1\subset \RAF$ is a strict subset of $\RAF$ since it does not contain $\mathbf{r}_1$. Finally, $\kappa'_F(\fr)\cup \rho_F(\fr)\subseteq \closure{\RAF_1}{\food}$  holds for any $\fr\in \RAF_1$ also whenever all paths $\mathcal{P}$ from $v_1$ to $v_2$ are such that $\mathcal{P}\cap \food \neq \emptyset$, thus the full statement follows again by contradiction.}
+Consider now $\RAF_1$ as the set of F-reactions in canonical bijection with the reactions $\mathcal{R}'_1\coloneqq \mathcal{R}' \setminus \mathbf{D}(r_1)$. Our indirect assumption implies that $v_2\not\in\mathbf{D}(r_1)$, and thus it follows that, for any F-reaction $\fr\in \RAF_1$, $\kappa'_F(\fr)\cup \rho_F(\fr)\subseteq \closure{\RAF_1}{\food}$. In particular, $\RAF_1$ satisfies the RAF Def.~\ref{def:RAF}, which contradicts the irreducibility of $\RAF$:  $\RAF_1\subset \RAF$ is a strict subset of $\RAF$ since it does not contain $\mathbf{r}_1$. Finally, $\kappa'_F(\fr)\cup \rho_F(\fr)\subseteq \closure{\RAF_1}{\food}$  holds for any $\fr\in \RAF_1$ also whenever all paths $\mathcal{P}$ from $v_1$ to $v_2$ are such that $\mathcal{P}\cap \food \neq \emptyset$, thus the full statement follows again by contradiction.
 \end{proof}
 
 
@@ -715,8 +714,7 @@ cut-vertices can only be reaction-vertices $r\in \mathcal{R}'$.
     Let $\RAF$ be an irreducible, monocatalyzed RAF. Every cut-vertex of $K(\RAF)$ is a reaction $r\in \mathcal{R}'$.
 \end{lemma}
 \begin{proof}
-\NV{Indirectly assume that there exists a cut vertex $x^*$ of $\king(\RAF)$ that is a species. Consider now the connected components $\tilde{K}_1,...,\tilde{K}_n$ of the bipartite subgraph $\tilde{K}$ obtained from $\king(\RAF)$ by removing $x^*$ and all adjacent edges $(x^*,r)$ or $(r,x^*)$. Note that - by construction - no species-vertex in any component $\tilde{K}_i$ is an F-reactant or an F-catalyst for any reaction-vertex in any component $\tilde{K}_j$, with $i\neq j$. In particular, from $\RAF$ being a RAF, it follows that there is at least one of such connected component $\tilde{K}_1$ whose associated F-reaction set $\RAF_1$ is a RAF as well [Very compact, one may want to add an explanatory sentence, but also fine this way]. Since any other $\tilde{K}_i \neq \tilde{K}_1$ contains by construction a reaction-vertex, then the RAF $\RAF_1$ is a strict subset of $\RAF$, which leads to a contradiction.
-[BE AWARE OF SINGLETON FOOD VERTICES add a disclaimer early on on this].}
+\NV{Indirectly assume that there exists a cut vertex $x^*$ of $\king(\RAF)$ that is a species. Consider now the connected components $\tilde{K}_1,...,\tilde{K}_n$ of the bipartite subgraph $\tilde{K}$ obtained from $\king(\RAF)$ by removing $x^*$ and all adjacent edges $(x^*,r)$ or $(r,x^*)$. Note that - by construction - no species-vertex in any component $\tilde{K}_i$ is an F-reactant or an F-catalyst for any reaction-vertex in any component $\tilde{K}_j$, with $i\neq j$. In particular, from $\RAF$ being a RAF, it follows that there is at least one of such connected component $\tilde{K}_1$ whose associated F-reaction set $\RAF_1$ is a RAF as well. Since any other $\tilde{K}_i \neq \tilde{K}_1$ contains, by construction, a reaction-vertex, then the RAF $\RAF_1$ is a strict subset of $\RAF$, which leads to a contradiction. [BE AWARE OF SINGLETON FOOD VERTICES add a disclaimer early on on this].}
 \end{proof}
 
 
@@ -732,8 +730,7 @@ order of CRN reactions instead of F-reactions and define $\crgen(r)\coloneqq \rg
 
 \vspace{6pt}
 \begin{lemma}[Strong blocks]\label{lem:StrongBlocks}
-Every maximal strong block $\block$ of $K(\RAF)$ either is a single species-vertex $\block=(x, \{\})$ with $x\in \food \cup \mathbf{W}$, a digon $\block=(\{r, x\}, \{(r,x),(x,r)\}$ with $x\in \food$, or $\block$ contains a reaction-vertex $r\in \mathcal{R}'$, which 
-  is a cut-vertex for $K(\RAF)$ satisfying:
+Every maximal strong block $\block$ of $K(\RAF)$ either is a single species-vertex $\block=(x, \{\})$ with $x\in \food \cup \mathbf{W}$, a digon $\block=(\{r, x\}, \{(r,x),(x,r)\}$ with $x\in \food$, or $\block$ contains a reaction-vertex $r\in \mathcal{R}'$ satisfying:
   	\begin{itemize}
 		\item[i.]{$(\feducts(r)\setminus \food) \cap X(\block)=\emptyset$,}
 		\item[ii.]{$\fproducts(r) \cap X(\block)\neq \emptyset$,}
@@ -1447,20 +1444,34 @@ Cores in the same equivalence class support self-sustainability for an identical
 
 \begin{figure}[htb]
 	\centering
-	\begin{minipage}[c]{0.5\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{./Pictures/UniqueFReactionCoresn5rev.png}
-	\end{minipage}%
-	\hfill%
-	\begin{minipage}[c]{0.5\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{./Pictures/UniqueFReactionCoresn5rev2.png}
+	\begin{minipage}[c]{\textwidth}
+		\begin{minipage}[c]{0.5\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{./Pictures/UniqueFReactionCoresn5rev.png}
+		\end{minipage}%
+		\hfill%
+		\begin{minipage}[c]{0.5\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{./Pictures/UniqueFReactionCoresn5rev2.png}
+		\end{minipage}
 	\end{minipage}
-	\caption{Number of autocatalytic cores and autocatalytic core equivalence classes according 
+	\begin{minipage}[c]{\textwidth}
+		\begin{minipage}[c]{0.5\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{./Pictures/CoreReusageIrrRAFn5rev.png}
+		\end{minipage}%
+		\hfill%
+		\begin{minipage}[c]{0.5\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{./Pictures/CoreReusageIrrRAFn5rev2.png}
+		\end{minipage}	
+	\end{minipage}
+	\caption{\textbf{Upper:} Number of autocatalytic cores and autocatalytic core equivalence classes according 
 		to Eq.~\eqref{eq:CoreEquiv} among non-food molecules in 50 different irreducible RAFs from 
 		two random instances of the binary polymer model with a fixed probability for any non-food 
 		species to catalyze any reaction of $p=0.01$ (\textbf{right}) and $p=0.008$ (\textbf{left}) and 
-		maximum polymer-length $5$.}
+		maximum polymer-length $5$. \textbf{Lower:} Appearance of autocatalytic cores in irreducible 
+		RAFs. }
 	\label{fig:UniqueFReactionCores}
 \end{figure}
 \holy{
