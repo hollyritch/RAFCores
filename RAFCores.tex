@@ -664,7 +664,7 @@ $v,w\in (X\cup\mathcal{R})$ there is a directed path from $v$ to $w$. If $K(\RAF
 connected, the \emph{strongly connected component} containing a vertex $v_1$ is the maximum set 
 of vertices $V_1$ with $v_1\in V_1$ such that for any pair of vertices $v$ and $w$ in $V_1$ there is a directed path from $v$ to $w$. 
 
-We note that, for a species $x_f \in \food$ in the food set, there may be no directed edge $(r,x_f)$ at all. 
+\NV{[HERE TBA: the set of waste species is dependent on the RAF set!!!]} We note that, for a species $x_f \in \food$ in the food set, there may be no directed edge $(r,x_f)$ at all. 
 Complementarily, we introduce the set $\mathbf{W}$ of \emph{waste species} as the species $x_w$ for which 
 there is no directed edges $(x_w,r)$. Equivalently, in symbols:
 \begin{equation}\label{eq:Waste}
@@ -721,25 +721,33 @@ cut-vertices can only be reaction-vertices $r\in \mathcal{R}'$.
 %\holy{$\king[V(\king(\RAF))\setminus \{x\}]$ such that $\RAF_1\coloneqq \CR(\king_1)/\mathord{\sim}$ is %\food-generated. Indeed, Lemma \ref{lem:PSC} yields that any directed path $\mathcal{P}$ from 
 %%any vertex in $V(\king(\RAF))\setminus K_1$ to $K_1$ must in particular contain the cut-vertex $x$, which moreover is not a food nor a waste molecule, $x\not\in \food \cup \mathbf{W}$. In particular, then, there is no species in $X(\king(\RAF))\setminus (\king_1\cup \{x\})$ which is an F-reactant or an F-catalyst for any reaction in $\mathcal{R}(K_1)$. Thereby, $\feducts(\RAF_1)\subseteq \closure{\RAF_1}{\food}$ and $\RAF_1$ is $\food$-generated. In addition, $\RAF_1 \subset \RAF$ then constitutes a RAF, contradicting the irreducibility of $\RAF$.}
 
-Building on the perspectives of Lemmas \ref{lem:PSC} and \ref{lem:cutvert}, the third and main result of this 
+Building on the perspectives of Lemmata \ref{lem:PSC} and \ref{lem:cutvert}, the third and main result of this 
 section considers \emph{maximal strong blocks} $\block$ of $K(\RAF)$, i.e. maximal strongly-connected subgraphs 
 that possess no cut-vertices. Strong blocks have been studied in the graph literature in \cite{grotschel_minimal_1979}. 
 An example of an irreducible, monocatalyzed RAF containing multiple strong blocks is captured in Fig.~\ref{ex:CutVertex2}. 
-Since for monocatalyzed RAFs, CRN and F-reactions are in 1-to-1 correspondence, we may also speak about generation 
-order of CRN reactions instead of F-reactions and define $\crgen(r)\coloneqq \rgen([r]_\sim)$.
+\NV{[The next move at the beginning with CRN vs CRS, and use same notation, {\tiny Since for monocatalyzed RAFs, CRN and F-reactions are in 1-to-1 correspondence, we may also speak about generation 
+order of CRN reactions instead of F-reactions and define $\crgen(r)\coloneqq \rgen([r]_\sim)$.}]}
 
 \vspace{6pt}
 \begin{lemma}[Strong blocks]\label{lem:StrongBlocks}
-Every maximal strong block $\block$ of $K(\RAF)$ either is a single species-vertex $\block=(x, \{\})$ with $x\in \food \cup \mathbf{W}$, a digon $\block=(\{r, x\}, \{(r,x),(x,r)\}$ with $x\in \food$, or $\block$ contains a reaction-vertex $r\in \mathcal{R}'$ satisfying:
+Let $\block$ be a maximal strong block of $K(\RAF)$ such that $\block$  contains a species-vertex $x^*$, which is not in the food and waste sets, i.e. $x^*\notin \food \cup \mathbf{W}$, and let $r^*\in \mathcal{R}(\block)$ be a reaction satisfying $r^* \preceq r$, for any $r\in \mathcal{R}(\block)$. Then,
   	\begin{itemize}
-		\item[i.]{$(\feducts(r)\setminus \food) \cap X(\block)=\emptyset$,}
-		\item[ii.]{$\fproducts(r) \cap X(\block)\neq \emptyset$,}
-		\item[iii.]{$(X(\cat(r)) \setminus \food)) \cap X(\block)\neq \emptyset$,}
-		\item[iv.]{and $\fr\preceq \tilde{\fr}$, for any $\tilde{r}\in \mathcal{R}(\block)$.}
-	\end{itemize}  
+		\item[i.]{$\feducts(r^*)\cap X(\block) \quad \subseteq  \quad \food;$}
+        \item[ii.]
+        {$(\cat(r^*) \setminus \food) \cap X(\block)\quad \neq \quad \emptyset;$}
+		\item[iii.]{($\fproducts(r^*) \setminus \food) \cap X(\block)\quad \neq \quad \emptyset$.}
+	\end{itemize} 
 \end{lemma}
 
 \begin{proof}
+
+(i) indirectly assume exists a species vertex $x\not\in \food$ in $\block$ such that $x$ is an F-reactant of $r^*$. Lemma \ref{lem:cutvert} excludes that $x$ is a cut-vertex for $K(\RAF)$, and therefore all reactions $\tilde{r}\in \mathcal{R}'$ for which $x$ is an F-product must be vertices in $\block$, contradicting the assumed $\preceq$-minimality of $r^*$ in $\block$.\\
+(ii) since $x^*$ is a species vertex of the maximal strong block $\block$, it follows that any directed path from $r^*$ to $x^*$ and from $x^*$ to $r^*$ touches only vertices in $\block$ (ear-decomposition of strong blocks). Via Lemma \ref{lem:PSC}, there exists at least one directed path $\mathcal{P}$ from $x^*$ to $r^*$ such that $\mathcal{P}\cap \food =\emptyset$, i.e. there exists species-vertex $x\not\in\food$ in $\block$ which is either an F-reactant or an F-catalyst of $r^*$. Statement (i), proved above, excludes that such $x$ is an F-reactant, so (ii) follows.\\
+(iii) ...
+
+\end{proof}
+
+
 Assume $\block$ is not the single species in food and waste. $\block$ cannot be a single-species, since this would make 
 it a cut-vertex contradicting Lemma \ref{lem:cutvert}. Then $\block$ contains reactions and in particular cut vertices of 
 $K(\RAF)$. \holy{Assume indirectly that $\block$ is a single reaction. Then there is a block $\block'\neq \block$ such that $(r,x), (y,r)\in E(\king(\RAF))$ with $x,y\in \block'$. Then $x\neq y$, since otherwise 
@@ -768,7 +776,7 @@ $\CR(\block)$ a sequence of reactions:
    Then none of the F-products of $r$ is an F-reactant or F-catalyst of any 
    reaction $\tilde{r} \in \CR(\block): \tilde{r}\neq r$. This, however, implies that there is a connected component $\king_1$ of $\king[V(\king)\setminus \{\tilde{r}\}]$ such that $\tilde{r}\in \king_1$ and $\RAF_1\coloneqq \CR(\king_1)/\mathord{\sim}$ is $\food$-generated. Indeed, Lemma \ref{lem:PSC} yields that any directed path $\mathcal{P}$ from any vertex in $V(\king(\RAF))\setminus K_1$ to $K_1$ must contain the cut-vertex $r$. Then no species in $X(\king(\RAF))\setminus \king_1$ is F-reactant or F-catalyst for any reaction in  $\mathcal{R}(K_1)$. Thereby, $\feducts(\RAF_1)\subseteq \closure{\RAF_1}{\food}$ and $\RAF_1$ is $\food$-generated. In addition, $\RAF_1 \subset \RAF$ then constitutes a RAF, contradicting the irreducibility of $\RAF$. Hence, $r$ satisfies property $ii$.}
 %\NV{[We may choose a cut-vertex $r$ (not necessarily unique) minimum with respect to the generation order there, and show (i),(ii),(iii),(iv). (i): its F-reactants must be somewhere else, otherwise either minimality is broken or max-strong-block is broken. (iii): r must have at least an ingoing arrow and one outgoing, so this follows. (ii) NOT SURE about food-catalyst, TBC. (iv) must follow from the minimum condition together with (i).]} 
-\end{proof}
+
 
 \begin{figure}[bth]
   \begin{minipage}[c]{0.45\textwidth}
