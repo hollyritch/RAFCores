@@ -642,9 +642,9 @@ Let $\mathbf{\Phi}=(X,\FR,\cat(\FR))$ be a CRS with food set $\food\subseteq X$.
 \begin{equation}\label{eq:RAF-CRS}
   \mathbf{\Phi}' \coloneqq (\closure{\RAF}{\food}, \RAF, \cat'(\RAF)),
 \end{equation}
-where $|\cat'(\fr)|=1$ for each F-reaction $\fr\in \RAF$. Consider now the associated CRN $\Gamma'\coloneqq \Gamma(\mathbf{\Phi}')$. One central advantage of considering such monocatalyzed CRSs $\mathbf{\Phi}'$ is that the quotient map from $\Gamma(\mathbf{\Phi}')$ to $\mathbf{\Phi}'$ is a bijection. Indeed, the quotient construction becomes trivial, since every equivalence class, i.e. every F-reaction $\fr$, is a singleton $\fr=\{r\}$. Thus, the quotient CRS can be canonically identified with the underlying CRN and we can therefore naturally address properties of $\mathbf{\Phi}'$ by studying them in $\Gamma'$. To do so, we use the notation $\mathcal{R}'$ to identify the CRN reactions of $\Gamma'$, i.e. $\Gamma'=(X,\mathcal{R}')$. We repeat that each of such reactions $r\in \mathcal{R}'$, written as \eqref{eq:Mod.SmEq}, is in canonical bijection with an F-reaction $\fr\in \RAF$, written as \eqref{eq:FReacEq}, which is catalyzed by the singleton $\cat(\fr)=\{c\}$ with $c=\cat(r)$.
+where $|\cat'(\fr)|=1$ for each F-reaction $\fr\in \RAF$. Consider now the associated CRN $\Gamma'\coloneqq \Gamma(\mathbf{\Phi}')$. One central advantage of considering such monocatalyzed CRSs $\mathbf{\Phi}'$ is that the quotient map from $\Gamma(\mathbf{\Phi}')$ to $\mathbf{\Phi}'$ is a bijection. Indeed, the quotient construction becomes trivial, since every equivalence class, i.e. every F-reaction $\fr$, is a singleton $\fr=\{r\}$. Thus, the quotient CRS can be canonically identified with the underlying CRN and we can therefore naturally address properties of $\mathbf{\Phi}'$ by studying them in $\Gamma'$. To do so, we use the notation $\mathcal{R}'$ to identify the CRN reactions of $\Gamma'$, i.e. $\Gamma'=(\closure{\RAF}{\food},\mathcal{R}')$. We repeat that each of such reactions $r\in \mathcal{R}'$, written as \eqref{eq:Mod.SmEq}, is in canonical bijection with an F-reaction $\fr\in \RAF$, written as \eqref{eq:FReacEq}, which is catalyzed by the singleton $\cat(\fr)=\{c\}$ with $c=\cat(r)$.
 
-We may consider now the K\H{o}nig graph $K(\RAF)=K(\Gamma')$ of the monocatalyzed RAF $\RAF$ simply as the one of its associated CRN $\Gamma'=(X,\mathcal{R}')$. This is the graph 
+We may consider now the K\H{o}nig graph $K(\RAF)=K(\Gamma')$ of the monocatalyzed RAF $\RAF$ simply as the one of its associated CRN $\Gamma'=(\closure{\RAF}{\food},\mathcal{R}')$. This is the graph 
 $\king(\Gamma') \coloneqq (\closure{\RAF}{\food} \cup \CR', E)$, whose edge set $E\coloneqq E_1\cup E_2$, 
 is partitioned into two distinct types of directed edges given as
 \begin{equation}
@@ -740,42 +740,21 @@ Let $\block$ be a maximal strong block of $K(\RAF)$ such that $\block$  contains
 \end{lemma}
 
 \begin{proof}
-(i) Indirectly assume there is a species vertex $x\not\in \food$ in $\block$ such that $x$ is an F-reactant of $r^*$. Lemma \ref{lem:cutvert} excludes that $x$ is a cut-vertex for $K(\RAF)$, and therefore all reactions $\tilde{r}\in \mathcal{R}'$ for which $x$ is an F-product must be vertices in $\block$, contradicting the assumed $\preceq$-minimality of $r^*$ in $\block$.\\
+\NV{(i) Indirectly assume there is a species vertex $x\not\in \food$ in $\block$ such that $x$ is an F-reactant of $r^*$. Lemma \ref{lem:cutvert} excludes that $x$ is a cut-vertex for $K(\RAF)$, and therefore all reactions $\tilde{r}\in \mathcal{R}'$ for which $x$ is an F-product must be vertices in $\block$, contradicting the assumed $\preceq$-minimality of $r^*$ in $\block$.\\
 (ii) Since $x^*$ is a species vertex of the maximal strong block $\block$, it follows that any directed path from $r^*$ to $x^*$ and from $x^*$ to $r^*$ touches only vertices in $\block$ (ear-decomposition of strong blocks). Via Lemma \ref{lem:PSC}, there exists at least one directed path $\mathcal{P}$ from $x^*$ to $r^*$ such that $\mathcal{P}\cap \food =\emptyset$, i.e. there exists species-vertex $x\not\in\food$ in $\block$ which is either an F-reactant or an F-catalyst of $r^*$. Statement (i), proved above, excludes that such $x$ is an F-reactant, so (ii) follows.\\
-(iii) preliminarily observe that $r^*$ possesses an F-product $x_\pi \not\in \food$, since otherwise  $\RAF \setminus r^*$ would still be a RAF, contradicting irreducibility of $\RAF$. Let then $x_\pi$ indicate an F-product of $r^*$ and $x_\kappa$ and F-catalyst of $r^*$ in $\block$, whose existence we proved above in (ii). Assume now indirectly that (iii) does not hold, then $x_\pi\neq x_\kappa$ and there is no directed path $\mathcal{P}$ $(r^*, x_\pi,...,x_\kappa)$ since otherwise $x_\pi$ would be in $\block$ as well, against the indirect assumption. Consider any reaction $\tilde{r}$ which has $x_\kappa$ as F-product and construct iteratively a family of sets $\tilde{\mathbf{R}}_n$ of F-reactions from $\tilde{\mathbf{R}}_0=\{\tilde{r}\}$ as follows:
+(iii) preliminarily observe that $r^*$ possesses an F-product $x_\pi \not\in \food$, since otherwise  $\RAF \setminus r^*$ would still be a RAF, contradicting irreducibility of $\RAF$. Let then $x_\pi$ indicate an F-product of $r^*$ and $x_\kappa$ and F-catalyst of $r^*$ in $\block$, whose existence we proved above in (ii). Assume now indirectly that (iii) does not hold, then $x_\pi\neq x_\kappa$ and there is no directed path $\mathcal{P}$ $(r^*, x_\pi,...,x_\kappa)$ since otherwise $x_\pi$ would be in $\block$ as well, against the indirect assumption. Consider any reaction $\tilde{r}$ which has $x_\kappa$ as F-product and construct iteratively a family of sets $\tilde{\mathbf{R}}_n$ of F-reactions from $\tilde{\mathbf{R}}_0=\{\tilde{\fr}\}$ as follows:
 \begin{equation}
 \tilde{\mathbf{R}}_{n}=\tilde{\mathbf{R}}_{n-1}\cup \bigg\{\fr\in \RAF \;|\;\bigcup_{\hat{\fr}\in \mathbf{R}_{n-1}} \bigg(\feducts(\hat{\fr}) \cup \cat(\hat{\fr})\bigg) \bigcap \fproducts (\fr) \neq \emptyset\bigg\}.
 \end{equation}
 Since $\RAF$ is a finite set, the iteration converges at a finite step $\bar{n}$ to a set $\RAF'\coloneqq \tilde{\mathbf{R}}_{\bar{n}}$. 
-By construction and the fact that $\RAF$ is a RAF, $\RAF'$ is a RAF itself. However, no direct path $\mathcal{P}=(r^*, x_\pi,..., \tilde{r},x_\kappa)$ exists, and thus $r^*\not\in \RAF'$, in contradiction with the assumption of irreducibility of $\RAF$.
-\end{proof}
+By construction and the fact that $\RAF$ is a RAF, $\RAF'$ is a RAF itself. However, no direct path $\mathcal{P}=(r^*, x_\pi,..., \tilde{r},x_\kappa)$ exists, and thus $\fr^*\not\in \RAF'$, in contradiction with the assumption of irreducibility of $\RAF$.
+\end{proof}}
 
-{\tiny
-Assume $\block$ is not the single species in food and waste. $\block$ cannot be a single-species, since this would make 
-it a cut-vertex contradicting Lemma \ref{lem:cutvert}. Then $\block$ contains reactions and in particular cut vertices of 
-$K(\RAF)$. \holy{Assume indirectly that $\block$ is a single reaction. Then there is a block $\block'\neq \block$ such that $(r,x), (y,r)\in E(\king(\RAF))$ with $x,y\in \block'$. Then $x\neq y$, since otherwise 
-$(x,r)$ is a digon and part of the same block. However, since $\block'$ is strongly connected there is a path $\mathcal{P}_{xy}$ 
-from $x$ to $y$ in $\king[\block']$. However, since $(y,r,x)$ is a path connecting $y$ to $x$, $r$ is not a cut-vertex. Thus $\block$ 
-is not composed of a single reaction. Assume then further that $\block$ is not a digon composed of $r$ and a species $x\in \food$.
-We start with showing property $i.$ and $iv.$ We may choose $r$ among all cut-vertices $r'\in \CR(\block)$ such that $\crgen(r)\leq \crgen(r')$. Assume indirectly that there is an F-reactant $x_1\in X\setminus \food$ for $r$ such that $x_1\in X(\block)$. Then $x_1$ is an F-product of some other reaction $r_1\in\CR(\block)$ with $\crgen(r_1)<\crgen(r)$. But $r_1$ cannot be a cut-vertex since otherwise $\crgen(r_1)<\crgen(r)\leq \crgen(r_1)$. Then $r_1$ 
-has an F-reactant $x_2\in X(\block)$ that is an F-product of a reaction $r_2$ such that $\crgen(r_2)<\crgen(r_1)<\crgen(r)$. Iterating this argument we obtain with the finiteness of 
-$\CR(\block)$ a sequence of reactions:
-  \begin{equation}
-   \crgen(r_k)<\crgen(r_{k-1}) <\ldots < \crgen(r_l)
-  \end{equation}
-  such that $r_k=r_l$ (potentially $r_l=r$), which yields a contradiction and thereby $\crgen(r)\leq \crgen(\tilde{r}) \ (\fr\preceq \tilde{r})$ for all $\tilde{r}\in \CR(\block)$. 
-  Hence, $r$ satisfies properties $i.$ and $iv.$ 
-  
-  For Properties~$ii.$ and $iii.$ we distuingish two cases. If $|\CR(\block)|=1$, then $\block$ is 
-  composed of $r$ and one of its catalyst $x_c\in X(\cat(r))$ and thereby a digon, 
-  satisfying property $iii.$ Since $x_c\notin \food$ by assumption, $x_c$ is an 
-  F-product of some reaction $\tilde{r}\in \CR'$. If $x_c\in \fproducts(r)$, then 
-  $x_c$ is an F-product of $r$ and $ii.$ is satisfied. Otherwise, if $x_c\notin 
-  \fproducts(r)$, then $x_c$ is a cut-vertex, which contradicts Lemma~\ref{lem:cutvert}. 
-  $|\CR(\block)|>1$ directly yields that there is an $r'\in \CR(\block): r'\neq r$. Lemma~\ref{lem:PSC} guarantees that there is path $\mathcal{P}_{r'r}$ 
-  such that $\mathcal{P}_{r'r} \cap \food = \emptyset$. In addition, since for all F-reactants $x$ of $r$ that satisfy $x\in X(\block)$ also $x\in \food$ (Property~$i.$), we have that $(X(\cat(r))\setminus \food) \cap X(\block) \neq \emptyset$ and Property~$iii.$ is satisfied. Assume now indirectly that $\fproducts(r) \cap X(\block) = \emptyset$.       
-   Then none of the F-products of $r$ is an F-reactant or F-catalyst of any 
-   reaction $\tilde{r} \in \CR(\block): \tilde{r}\neq r$. This, however, implies that there is a connected component $\king_1$ of $\king[V(\king)\setminus \{\tilde{r}\}]$ such that $\tilde{r}\in \king_1$ and $\RAF_1\coloneqq \CR(\king_1)/\mathord{\sim}$ is $\food$-generated. Indeed, Lemma \ref{lem:PSC} yields that any directed path $\mathcal{P}$ from any vertex in $V(\king(\RAF))\setminus K_1$ to $K_1$ must contain the cut-vertex $r$. Then no species in $X(\king(\RAF))\setminus \king_1$ is F-reactant or F-catalyst for any reaction in  $\mathcal{R}(K_1)$. Thereby, $\feducts(\RAF_1)\subseteq \closure{\RAF_1}{\food}$ and $\RAF_1$ is $\food$-generated. In addition, $\RAF_1 \subset \RAF$ then constitutes a RAF, contradicting the irreducibility of $\RAF$. Hence, $r$ satisfies property $ii$.}}
+%{\tiny
+%Assume $\block$ is not the single species in food and waste. $\block$ cannot be a single-species, since this would make it a cut-vertex contradicting Lemma \ref{lem:cutvert}. Then $\block$ contains reactions and in particular cut vertices of $K(\RAF)$. \holy{Assume indirectly that $\block$ is a single reaction. Then there is a block $\block'\neq \block$ such that $(r,x), (y,r)\in E(\king(\RAF))$ with $x,y\in \block'$. Then $x\neq y$, since otherwise  $(x,r)$ is a digon and part of the same block. However, since $\block'$ is strongly connected there is a path $\mathcal{P}_{xy}$ from $x$ to $y$ in $\king[\block']$. However, since $(y,r,x)$ is a path connecting $y$ to $x$, $r$ is not a cut-vertex. Thus $\block$  is not composed of a single reaction. Assume then further that $\block$ is not a digon composed of $r$ and a species $x\in \food$. We start with showing property $i.$ and $iv.$ We may choose $r$ among all cut-vertices $r'\in \CR(\block)$ such that $\crgen(r)\leq \crgen(r')$. Assume indirectly that there is an F-reactant $x_1\in X\setminus \food$ for $r$ such that $x_1\in X(\block)$. Then $x_1$ is an F-product of some other reaction $r_1\in\CR(\block)$ with $\crgen(r_1)<\crgen(r)$. But $r_1$ cannot be a cut-vertex since otherwise $\crgen(r_1)<\crgen(r)\leq \crgen(r_1)$. Then $r_1$ has an F-reactant $x_2\in X(\block)$ that is an F-product of a reaction $r_2$ such that $\crgen(r_2)<\crgen(r_1)<\crgen(r)$. Iterating this argument we obtain with the finiteness of  $\CR(\block)$ a sequence of reactions:   \begin{equation}   \crgen(r_k)<\crgen(r_{k-1}) <\ldots < \crgen(r_l) \end{equation}
+ % such that $r_k=r_l$ (potentially $r_l=r$), which yields contradiction and thereby $\crgen(r)\leq \crgen(\tilde{r}) \ (\fr\preceq \tilde{r})$ for all $\tilde{r}\in \CR(\block)$. 
+ % Hence, $r$ satisfies properties $i.$ and $iv.$ 
+  %For Properties~$ii.$ and $iii.$ we distuingish two cases. If $|\CR(\block)|=1$, then $\block$ is composed of $r$ and one of its catalyst $x_c\in X(\cat(r))$ and thereby a digon, satisfying property $iii.$ Since $x_c\notin \food$ by assumption, $x_c$ is an F-product of some reaction $\tilde{r}\in \CR'$. If $x_c\in \fproducts(r)$, then $x_c$ is an F-product of $r$ and $ii.$ is satisfied. Otherwise, if $x_c\notin \fproducts(r)$, then $x_c$ is a cut-vertex, which contradicts Lemma~\ref{lem:cutvert}. $|\CR(\block)|>1$ directly yields that there is an $r'\in \CR(\block): r'\neq r$. Lemma~\ref{lem:PSC} guarantees that there is path $\mathcal{P}_{r'r}$ such that $\mathcal{P}_{r'r} \cap \food = \emptyset$. In addition, since for all F-reactants $x$ of $r$ that satisfy $x\in X(\block)$ also $x\in \food$ (Property~$i.$), we have that $(X(\cat(r))\setminus \food) \cap X(\block) \neq \emptyset$ and Property~$iii.$ is satisfied. Assume now indirectly that $\fproducts(r) \cap X(\block) = \emptyset$.       Then none of the F-products of $r$ is an F-reactant or F-catalyst of any reaction $\tilde{r} \in \CR(\block): \tilde{r}\neq r$. This, however, implies that there is a connected component $\king_1$ of $\king[V(\king)\setminus \{\tilde{r}\}]$ such that $\tilde{r}\in \king_1$ and $\RAF_1\coloneqq \CR(\king_1)/\mathord{\sim}$ is $\food$-generated. Indeed, Lemma \ref{lem:PSC} yields that any directed path $\mathcal{P}$ from any vertex in $V(\king(\RAF))\setminus K_1$ to $K_1$ must contain the cut-vertex $r$. Then no species in $X(\king(\RAF))\setminus \king_1$ is F-reactant or F-catalyst for any reaction in  $\mathcal{R}(K_1)$. Thereby, $\feducts(\RAF_1)\subseteq \closure{\RAF_1}{\food}$ and $\RAF_1$ is $\food$-generated. In addition, $\RAF_1 \subset \RAF$ then constitutes a RAF, contradicting the irreducibility of $\RAF$. Hence, $r$ satisfies property $ii$.}}
 
 
 
@@ -838,54 +817,47 @@ $\CR(\block)$ a sequence of reactions:
   \end{minipage}
   \caption{\textit{(Left):} Example of an irreducible, monocatalyzed RAF written 
   as CRN reactions with a cut-vertex that has a single catalyst. Catalyzations are 
-  indicated in brackets\textit{(Right):} Depiction of the corresponding König graph 
+  indicated in brackets. \textit{(Right):} Depiction of the corresponding König graph 
   with catalyzations indicated as dashed lines. Different strong blocks are depicted
-  in different colours, while cut-vertices that belong to at least two strong blocks 
-  are coloured black.}
+  in different colours, while the cut-vertices $r_2$, belonging to two strong blocks (teal and orange) 
+  is coloured black. \NV{For the teal strong block, $r_4$ is the `$r^*$' reaction expected via Lemma \ref{lem:StrongBlocks} and for the orange strong block it is $r_2$.}}
   \label{ex:CutVertex2}
 \end{figure}
 
+
+
+By an inspection of the example in Fig.~\ref{ex:CutVertex2} we underline that such $r^*$ reactions mentioned in Lemma~\ref{lem:StrongBlocks} appear in intimate relation with cut-vertices of the bipartite graph $K(\mathcal{R}')$. For brevity, besides such an intuition, we do not investigate this formally here \NV{[or yes? in case add lemma, probably more demanding than interesting]}. We stress however that such reactions $r^*$ identify a column in the associated stoichiometric matrix $S[X(\block)\setminus \food, \mathcal{R}(\block)]$ of $\Gamma'=(\closure{\RAF}{\food},\mathcal{R}')$, restricted to the non-food species in $\block$, which is nonnegative (property (i) in Lemma~\ref{lem:StrongBlocks}) and it has at least one positive entry (property (ii) in Lemma~\ref{lem:StrongBlocks}). Such an observation will be pivotal to prove stoichiometric autocatalysis in each of such strong blocks $\block$. We proceed by introducing formally stoichiometric autocatalysis in the next section.
+
+
+\section{Stoichiometric Autocatalysis}\label{sec:AutoCatIrrRAF}
+
+
+In chemical reaction networks (CRN), a matrix-centered definition of \emph{stoichiometric autocatalysis} was introduced by Blokhuis et al. \cite{blokhuis_Universal_2020}  without catalysis and recently adapted to the catalytic setting of the present paper \cite{golnik_autocatalytic_2026}, where a reactant can also be product of the same reaction. The central definition is as follows.
+
+\vspace{6pt}
+\begin{definition}\label{def:autSubRN}
+  A CRN $\Gamma\coloneqq (X,\CR)$ is \emph{stoichiometric autocatalytic} if it contains a sub-CRN $(X',\CR')$ such that
+\begin{enumerate}
+ \item[i.] \emph{Well-formedness:} For any $r\in \mathcal{R}'$, there exists $x_1, x_2 \in X'$, not necessarily distinct, such that $s^-_{x_1r}s^+_{x_2r}\neq 0$;
+ \item[ii.] \emph{Semi-positivity:} for the associated stoichiometric matrix $\SM'\coloneqq \SM[X',\CR']$ there exists $v\in \mathbb{R}_{>0}^{|\CR'|}$ such that $\SM'v>0$.
+\end{enumerate}
+\end{definition}
+\vspace{6pt}
+
+
+A minimality concept for stoichiometrically autocatalytic CRN is expressed in terms of subnetworks. A sub-CRN $(X',\CR')$ that satisfies \textit{(i.)} and \textit{(ii.)}, while no proper sub-CRN $(X'',\CR'')$ %with X''\subset X', \CR''\subset \CR'$ 
+does, is called an \emph{autocatalytic core}. 
+Any autocatalytic sub-CRN thereby contains an autocatalytic core. The stoichiometric submatrix associated to an autocatalytic core admits a reordering of the columns such that all diagonal entries are nonpositive while all off-diagonal entries are nonnegative \cite{blokhuis_Universal_2020, vassena_unstable_2024,golnik_autocatalytic_2026}. Matrices with nonnegative off-diagonal entries are called \emph{Metzler matrices} in the literature. An autocatalytic core of size $1$, i.e., $|X'|=|R'|=1$, is thus simply an \emph{autocatalytic reaction} of the type:
+\begin{equation}
+    s^-_{x_1r}x_1+\ldots \rightarrow s^+_{x_1r}x_2+\ldots\quad\quad\quad\text{with $s^+_{x_1r}>s^-_{x_1r}$.}
+\end{equation}
+By this simple example, it appears evident the quantitative role of the stoichiometric coefficients in the definition of stoichiometric autocatalysis (via the semipositivity condition). In RAF, in turn, the quantitative value of the stoichiometry is irrelevant. However, semipositivity of the stoichiometric matrix restricted to the non-food molecules follows naturally for any food-generated set of reactions, as the next lemma shows. ADD SPECIFICATION ON THE F-REACTION ANNOYANCE
+
 \holy{
-Lemma~\ref{lem:StrongBlocks} indicates that maximal strong blocks $\block$ 
-that are not a single species or a digon composed of a reaction and an $\food$-derived F-catalyst - we may refer to them as \emph{non-trivial} blocks - contain one, not necessarily unique $r^*$ that is a cut-vertex and that exhibits special properties. In particular, $r^*$ possesses the lowest generation order of all reactions of $\block$. In addition, it depends only on non-food F-reactants from outside of $\block$, and at least one F-product $y^*$ and one F-catalyst $x^*$ are located inside of $\block$. This has direct consequences for the associated stoichiometric matrix of the block on all non-food molecules:
-\begin{equation}
-  \SM[X(\block)\setminus \food,\CR(\block)] = 
-  \begin{array}{c c}
-    & 	\begin{array}{c c c} 			
-	  & 	r^* 		& 
-	\end{array} \\
-    \begin{array}{c} 
-      \ \\ 
-      x^* \ \\
-      \ \\ [0.5em]
-      y^* \\
-      \ \\
-      \ \\		
-    \end{array}
-    & \begin{pmatrix}						
-	\ddots 	& 	\vdots 			& \ddots \\
-	\ldots 	& 	0 				& \ldots \\
-	\ddots 	& 	\vdots 			& \ddots \\
-	\ldots 	& 	\sigma^+_{yr^*} 	& \ldots \\
-	\ldots 	& 	0 				& \ldots \\
-	\ddots 	& 	\vdots 			& \ddots 
-      \end{pmatrix}
-  \end{array}.
-\end{equation}
 \vspace{6pt}
-
-In particular, $r^*$ can be considered as an \emph{inflow reaction} for $\block$ as its corresponding column in $\SM[X(\block)\setminus \food,\CR(\block)]$ is nonnegative but contains at least one positive entry that reflects an F-product $y^* \in X(\block)$ of $r^*$ for which $\sigma^+_{y^*r^*}>0$. This property of $r^*$ is, nevertheless, block specific, as there is at least one other block $\block'\neq \block$, which contains an F-reactant of $r^*$ that is not an F-product such that the corresponding column in $\SM[X(\block'),\CR(\block')]$ exhibits at least one negative entry. We therefore call $r^*$ an \emph{entry reaction} for $\block$.
-
-Reactions $r\in \CR'$ with generation order $1$ exert the same effect on the stoichiometric matrix representing all reactions in $\CR'$ and all species in $\closure{\RAF}{\food}\setminus \food$, namely $\SM[\closure{\RAF}{\food}\setminus \food, \CR']$. Consequently, we can construct a strictly positive reaction-rate vector $v$ such that 
-\begin{equation}
-	\SM[\closure{\RAF}{\food}\setminus \food, \CR]v>0.
-\end{equation}
-A matrix $A$ for which there exists a strictly positive vector $w$ satisfying $Aw>0$ is called \emph{semi-positive}.
-
-\vspace{6pt}
-\begin{lemma}\label{lem:NonFoodSemipositiv}
-  For an irreducible, monocatalyzed RAF $\RAF$, the matrix 
-  $\SM[\closure{\RAF}{\food}\setminus \food, \CR']$ is semi-positive.
+\begin{lemma}\label{lem:NonFoodSemipositiv2}
+  Let $\mathbf{R}$ be a food-generated set of reactions. Then 
+  $\SM[\closure{\RAF}{\food}\setminus \food, \CR']$ is semi-positive, and a positive vector $v$ that realizes $\SM[\closure{\RAF}{\food}\setminus \food, \CR']v>0$ is ... .
 \end{lemma}
 \begin{proof}
   We proceed by induction. With Eq.~\eqref{eq:speciesSubSet}, we know that for some $n\in \mathbb{N}: X'_n=\closure{\RAF}{\food}\eqqcolon X'$ and we choose $n$ as the minimal positive integer satisfying $X'_n(\food)=\closure{\RAF}{\food}$. Then we observe for
@@ -956,121 +928,39 @@ We set:
     \end{equation}
     
     Hence, $\SM[\closure{\RAF}{\food}\setminus \food, \CR']v>0$ and thereby $\SM[\closure{\RAF}{\food}\setminus \food, \CR']$ is semi-positive.
-\end{proof}
+\end{proof}}
 
-The proof of Lemma~\ref{lem:NonFoodSemipositiv} also applies to the reactions and non-food molecules in any non-trivial, maximal strong block $\block$ of $\king(\RAF)$. Equivalently, every species in $\block$ is produced and consumed only by reactions within $\block$. Consequently, the sub-vector $v'$, obtained by restricting $v$ to the reactions of $\block$ yields:
-\begin{equation}
-  \SM[X(\block)\setminus \food, \CR(\block)]v'>0.
-\end{equation}
-\begin{corollary}\label{cor:blockSemiPositiv}
-	Let $\RAF$ be an irreducible, monocatalyzed RAF. The stoichiometric submatrix $\SM[X(\block)\setminus \food, \CR(\block)]$ of any non-trivial, maximal strong block $\block$ 
-	of $\king(\RAF)$ is semi-positive.
-\end{corollary}
-\vspace{6pt}
 
-That this is not necessarily true for $\SM[X(\block), \CR(\block)]$ is depicted in the Example of Fig.~\ref{fig:foodBlock}. Indeed, $\RAF\coloneqq \{\fr_1,\fr_2\}$ is an irreducible, monocatalyzed RAF, with $\food=\{f\}$. Moreover, $\king(\RAF)$ is a strong block and its associated stoichiometric matrix with rows $(f, x_1, x_2)$ and columns $(r_1, r_2)$ reads
-\begin{equation}
-	\SM=\begin{pmatrix}
-		-1 & 1 \\
-		0 & 1 \\
-		1 & -1 \\
-	\end{pmatrix}.
-\end{equation}
 
-But $\SM$ is not semi-positive since $v>0$ yields for $v_{r_1}=v_{r_2}$ that $(\SM v)(x_2)=0$, for $v_{r_1}>v_{r_2}$ that $(\SM v)(f)<0$, and for $v_{r_1}<v_{r_2}$ that $(\SM v)(x_2)<0$. The sub-matrix with rows $(x_1,x_2)$ and columns $(r_1, r_2)$, i.e. 
-\begin{equation}
-	\SM'=\begin{pmatrix}
-		0 & 1 \\
-		1 & -1 \\
-	\end{pmatrix},
-\end{equation}
-however, is semi-positive since $v\coloneqq 
-\begin{pmatrix}
- 	2 & 1
- \end{pmatrix}$ implies $\SM'v = (1,1)>0$.}
-\begin{figure}[htb]
-	\centering
-	\begin{minipage}[c]{0.5\textwidth}
-		\centering
-		\begin{equation}
-			\begin{split}
-				r_1&: f + (x_1) \rightarrow x_2 + (x_1) \\[0.5em]
-				r_2&: x_2 + (x_2) \rightarrow x_1 + f + (x_2) \\[0.5em]
-			\end{split}
-		\end{equation}		
-	\end{minipage}%
-	\hfill%
-	\begin{minipage}[c]{0.5\textwidth}
-		\centering
-		\begin{tikzpicture}
-			\node[draw, circle] (f) at (-1.5,0) {$f$};
-			
-			\node[draw, circle] (x1) at (0,0) {$x_1$};
-			\node[draw, circle] (x2) at (1.5,0) {$x_2$};
 
-			\node[draw, rectangle] (r1) at (0,-1.5) {$r_1$};
-			\node[draw, rectangle] (r2) at (0,1.5) {$r_2$};
-			
-			\draw[->] (f) to (r1);
-			\draw[->] (r1) to [bend right = 30] (x1);
-			\draw[->] (x1) to [bend right = 30] (r1);
-			
-			\draw[->] (r1) to (x2);
-			\draw[->] (x2) to [bend right = 30] (r2);
-			\draw[->] (r2) to [bend right = 30] (x2);
-			\draw[->] (r2) to (x1);
-			\draw[->] (r2) to (f);
-		\end{tikzpicture}
-	\end{minipage}
-	\par\bigskip
-	\caption{An irreducible, monocatalyzed RAF $\RAF\coloneqq \{[r_1]_{\sim},[r_2]_{\sim}\}$ as CRN reactions (\textbf{left}) and its K\H{o}nig graph $\king(\RAF)$ (\textbf{right}). }
-	\label{fig:foodBlock}
-\end{figure}
+%The directed bipartite K\H{o}nig graph representation of autocatalytic cores $(X',\CR')$ are \emph{fluffles} \cite{golnik_autocatalytic_2026}, induced subgraphs $G\coloneqq \king(\Gamma)[X'\cup\CR']$ that exhibit the following three properties: \begin{itemize}\item[F1)] {$|X'|=|\CR'|$,}\\[-1.0em]\item[F2)] {$\text{deg}^G_{\text{out}}(x)=1, \forall x \in X'$ and $\text{deg}^G_{\text{in}}(r)=1, \forall r \in \CR'$}\\[-1.0em]\item[F3)]{$G$ is a strong block.}\end{itemize}
 
-\holy{We conclude this section by commenting on another property of strong blocks $\block$. The strong connectivity implies that each reaction vertex has at least one incoming edge, from an F-reactant or F-catalyst, and at least one outgoing edge, to an F-catalyst or F-product. Lemma~\ref{lem:StrongBlocks} additionally guarantees that his holds true also for the sub-network $(X(\block)\setminus \food, \CR(\block))$ of $\block$ that is void of food species. Therefore, each reaction has at least one reactant and at least one product. We say that such a sub-network is \emph{well-formed}. 
-}
-
-\subsubsection{Autocatalytic capacity of monocatalyzed, irreducible RAFs}\label{sec:AutoCatIrrRAF}
-
-%\holy{Minimal \emph{stoichiometrically autocatalytic} CRN sub-networks, formally 
-%introduced in Sec.~\ref{sec:AutoCatIrrRAF} and termed \emph{autocatalytic cores} 
-%\cite{blokhuis_Universal_2020}, encompass a bipartite K\H{o}nig 
-%graph representation of the corresponding CRN that includes the 
-%property of being strong blocks - strongly connected subgraphs whose underlying 
-%undirected graph is 2-connected \cite{golnik_enumeration_2026, golnik_using_2026, golnik_autocatalytic_2026}. Taking into account that any RAF that is not itself a CAF is stoichiometrically autocatalytic \cite{golnik_bridging_2026}, it will be of interest to investigate the structure of the bipartite K\"onig graph representation of irreducible 
-%RAFs.}]
-
-\holy{In chemical reaction networks (CRN), a matrix-centered definition of \emph{stoichiometric autocatalysis} was introduced by Blokhuis et al. \cite{blokhuis_Universal_2020} in reversible setting and without catalysis. This framework was recently adapted to the irreversible setting with catalysts of the present paper \cite{golnik_autocatalytic_2026}. The central definition is as follows.
-
-\vspace{6pt}
-\begin{definition}\label{def:autSubRN}
-  A CRN $\Gamma\coloneqq (X,\CR)$ is \emph{stoichiometric autocatalytic} if it contains a sub-CRN $(X',\CR')$ such that
-\begin{enumerate}
- \item[i.]  $(X',\CR')$ is  well-formed;
- \item[ii.] the associated stoichiometric matrix $\SM'\coloneqq \SM[X',\CR']$ is semi-positive, i.e., there exists $v\in \mathbb{R}_{>0}^{|\CR'|}: \SM'v>0$.
-\end{enumerate}
-\end{definition}
-\vspace{6pt}
-
-A sub-CRN $(X',\CR')$ that satisfies \textit{(i.)} and \textit{(ii.)}, while no proper sub-CRN $(X'',\CR'')$ with $X''\subset X', \CR''\subset \CR'$ does, is called an \emph{autocatalytic core}. Any autocatalytic sub-CRN thereby contains an autocatalytic core. The directed bipartite K\H{o}nig graph representation of autocatalytic cores $(X',\CR')$ are \emph{fluffles} \cite{golnik_autocatalytic_2026}, induced subgraphs $G\coloneqq \king(\Gamma)[X'\cup\CR']$ that exhibit the following three properties: 
-\begin{itemize}
-	\item[F1)] {$|X'|=|\CR'|$,}\\[-1.0em]
-	\item[F2)] {$\text{deg}^G_{\text{out}}(x)=1, \forall x \in X'$ and $\text{deg}^G_{\text{in}}(r)=1, \forall r \in \CR'$}\\[-1.0em]
-	\item[F3)]{$G$ is a strong block.}
-\end{itemize}
-For the associated stoichiometric submatrix of an autocatalytic core exists a reordering of the columns such that all diagonal entries are nonpositive while all off-diagonal entries are nonnegative \cite{blokhuis_Universal_2020, vassena_unstable_2024}. Such matrices are called \emph{Metzler matrices}. An autocatalytic cores of size $1$, i.e., $|X'|=|R'|=1$, is an \emph{autocatalytic reaction}.  
-
-The structural results obtained in Sec.~\ref{subsec:King}, i.e., Lemmata~\ref{lem:StrongBlocks} and \ref{lem:NonFoodSemipositiv} yield in combination with Def.~\ref{def:autSubRN} that each sub-CRN $(X(\block)\setminus \food, \CR(\block))$, corresponding to a maximal, non-trivial strong block $\block$ of $\king(\RAF)$ of an irreducible, monocatalyzed RAF $\RAF$, is \emph{stoichiometrically autocatalytic}. 
+Lemma~\ref{lem:NonFoodSemipositiv2} shows that semipositivity is a natural property also for RAFs. Moreover, the structural result Lemma~\ref{lem:StrongBlocks} yields our main result: each sub-CRN $(X(\block)\setminus \food, \CR(\block))$, corresponding to a maximal, non-trivial strong block $\block$ of $\king(\RAF)$ of an irreducible, monocatalyzed RAF $\RAF$, is \emph{stoichiometrically autocatalytic}. 
 
 \vspace{6pt}
 \begin{theorem}\label{Thm:StrBlockCore}
   Let $\RAF$ be an irreducible, monocatalyzed RAF. Then every maximal, non-trivial strong block $\block$ of $\king(\RAF)$ contains an autocatalytic core.
 \end{theorem}
 \vspace{6pt}
-}
+
+\begin{proof}
+\NV{TBA: Semipositivity follows analogously as in Lemma \ref{lem:NonFoodSemipositiv2}, and well-formedness is for free (!!!) because it is a strong block.}
+\end{proof}
+
+
+
+
+\NV{[What about stopping more or less here, and discussing more actual examples on the comparisons of the numbers of autocat cores and irr RAFs? The Metzler circuit option (Thm.~\ref{thm:mainsecond}) seems an alternative - more constructive and technical - proof of essentially same result. Unless that construction is of some further use, to me it appears a bit a repetition. There are the two propositions that are somewhat different, but not sure it is worth the effort. One can choose: the proof of Thm. \ref{Thm:StrBlockCore} is rather clean and elegant, the one of Thm. \ref{thm:mainsecond} is contructive and not that dissimilar from the Bridging paper, but it leads to the proposotions (which we know already anyways that most autocatalytic cores are hamiltonian). I am open to both.]}
+
+
+
+
+
+
 
 \holy{
-Indeed, Fig.~\ref{fig:irrRAFCores} (\textbf{left}) shows at least one autocatalytic core per irreducible RAF. The result of Thm.~\ref{Thm:StrBlockCore} thereby provides only a partial explanation for the large number of autocatalytic cores. It is, therefore, consequential to further investigate the structures of each block that give rise to autocatalytic cores. 
+Thm.~\ref{Thm:StrBlockCore}  provides only a partial explanation for the large number of autocatalytic cores found e.g. in the examples depicted in Fig.~\ref{fig:irrRAFCores}. It is, therefore, consequential to further investigate the structures of each block that give rise to autocatalytic cores. 
+
 
 To this end, we revisit the proof of \cite[Thm.~3.1]{golnik_bridging_2026}, where we have shown that each RAF $\RAF$ that is itself not a CAF is associated with an elementary circuit $C$ (SI Sec.~\ref{S-sec:Glossary}) in $\king(\RAF)$, whose species and reaction vertices $X(C)$ and $\CR(C)$, respectively, define an autocatalytic sub-CRN (see also \cite[Remark~13]{golnik_bridging_2026}). We adapt this construction to obtain such an elementary circuit for each strong block.
 
@@ -1312,7 +1202,7 @@ The following example illustrates such a situation.
 Cor.~\ref{cor:AutoCatReac}, together, yield the following main result.
 
 \vspace{6pt}
-\begin{theorem}
+\begin{theorem}\label{thm:mainsecond}
   Let $\RAF$ be an irreducible, monocatalyzed RAF. Then every maximal, non-trivial strong block $\block$ of $\king(\RAF)$ contains an autocatalytic Metzler circuit. If $V(\block)=\{x,r\}$ such that $x\notin \food$, $r$ is an autocatalytic reaction.
 \end{theorem} 
 \vspace{6pt}
@@ -1567,6 +1457,195 @@ Independent of the core's structure, different catalyzations can give rise to eq
 Even though all elements of the same $\simeq$-equivalence class are autocatalytic whenever one element is autocatalytic, not all of them are necessarily cores. The example illustrated in Fig.~\ref{fig:Minimality} demonstrates how catalyzations impact the minimality property of autocatalytic cores, as one element of an equivalence class is a core, while the other is not. This observation originates from the way catalysts are handled within CRNs, i.e., as reactants and products directly participating in a reaction and thereby affecting the uniqueness of reactants for each reaction inside a core.}
 
 \PFS{The results obtained here demonstrate that there are meaningful connections between the CRS and CRN formalisms that translate into strong similarities between two different notions of autocatalysis, in particular between \textsc{irreducible RAFs} and \emph{autocatalytic cores}. Although our results yield astonishing insights as well as useful implications, they are still far from establishing 1-to-1 correspondences between concepts in the two alternative formal frameworks. While the present results in essence characterize minimal RAFs in terms of CRNs, the converse, i.e., a characterization of autocatalytic cores in the language of CRS, remains an open research project.}
+
+\section{Parking lot}
+
+
+\holy{
+Lemma~\ref{lem:StrongBlocks} indicates that maximal strong blocks $\block$ 
+that are not a single species or a digon composed of a reaction and an $\food$-derived F-catalyst - we may refer to them as \emph{non-trivial} blocks - contain one, not necessarily unique $r^*$ that is a cut-vertex and that exhibits special properties. In particular, $r^*$ possesses the lowest generation order of all reactions of $\block$. In addition, it depends only on non-food F-reactants from outside of $\block$, and at least one F-product $y^*$ and one F-catalyst $x^*$ are located inside of $\block$. This has direct consequences for the associated stoichiometric matrix of the block on all non-food molecules:
+\begin{equation}
+  \SM[X(\block)\setminus \food,\CR(\block)] = 
+  \begin{array}{c c}
+    & 	\begin{array}{c c c} 			
+	  & 	r^* 		& 
+	\end{array} \\
+    \begin{array}{c} 
+      \ \\ 
+      x^* \ \\
+      \ \\ [0.5em]
+      y^* \\
+      \ \\
+      \ \\		
+    \end{array}
+    & \begin{pmatrix}						
+	\ddots 	& 	\vdots 			& \ddots \\
+	\ldots 	& 	0 				& \ldots \\
+	\ddots 	& 	\vdots 			& \ddots \\
+	\ldots 	& 	\sigma^+_{yr^*} 	& \ldots \\
+	\ldots 	& 	0 				& \ldots \\
+	\ddots 	& 	\vdots 			& \ddots 
+      \end{pmatrix}
+  \end{array}.
+\end{equation}
+\vspace{6pt}
+
+In particular, $r^*$ can be considered as an \emph{inflow reaction} for $\block$ as its corresponding column in $\SM[X(\block)\setminus \food,\CR(\block)]$ is nonnegative but contains at least one positive entry that reflects an F-product $y^* \in X(\block)$ of $r^*$ for which $\sigma^+_{y^*r^*}>0$. This property of $r^*$ is, nevertheless, block specific, as there is at least one other block $\block'\neq \block$, which contains an F-reactant of $r^*$ that is not an F-product such that the corresponding column in $\SM[X(\block'),\CR(\block')]$ exhibits at least one negative entry. We therefore call $r^*$ an \emph{entry reaction} for $\block$.
+
+Reactions $r\in \CR'$ with generation order $1$ exert the same effect on the stoichiometric matrix representing all reactions in $\CR'$ and all species in $\closure{\RAF}{\food}\setminus \food$, namely $\SM[\closure{\RAF}{\food}\setminus \food, \CR']$. Consequently, we can construct a strictly positive reaction-rate vector $v$ such that 
+\begin{equation}
+	\SM[\closure{\RAF}{\food}\setminus \food, \CR]v>0.
+\end{equation}
+A matrix $A$ for which there exists a strictly positive vector $w$ satisfying $Aw>0$ is called \emph{semi-positive}.
+
+\vspace{6pt}
+\begin{lemma}\label{lem:NonFoodSemipositiv}
+  For an irreducible, monocatalyzed RAF $\RAF$, the matrix 
+  $\SM[\closure{\RAF}{\food}\setminus \food, \CR']$ is semi-positive.
+\end{lemma}
+\begin{proof}
+  We proceed by induction. With Eq.~\eqref{eq:speciesSubSet}, we know that for some $n\in \mathbb{N}: X'_n=\closure{\RAF}{\food}\eqqcolon X'$ and we choose $n$ as the minimal positive integer satisfying $X'_n(\food)=\closure{\RAF}{\food}$. Then we observe for
+    $x\in X'$, $r\in \CR'$:
+    \begin{equation}
+	\crgen(r)<\sgen(x) \quad \text{implies} \quad \SM_{xr}=0 \quad (*)
+    \end{equation}
+    
+  since $x$ can only be an F-catalyst for $r$, but not an F-reactant.
+  
+Let: 
+\begin{equation}
+	\begin{split}
+  		f&: X'\times \{1, \ldots, n\} \rightarrow \mathbb{R} \\[0.5em]
+		v&: X'\times \{1,\ldots, n\} \rightarrow \mathbb{R} \\[0.5em]
+	\end{split}
+\end{equation}
+We will use the notation $\CR^k\coloneqq \{r\in \CR' \ \vert \ 
+\crgen(r)=k\}$, $1\leq k\leq n$, which collects all reactions with 
+generation order $k$, and $X^k\coloneqq \{x\in X' \ \vert \ \sgen(x)=k\}$, 
+$1\leq k \leq n$, which analogously collects all species of generation 
+order $k$.
+	
+We start with the set $\CR^n$. For each an $r\in \CR$, we let $v_n(r)\coloneqq
+1>0$, and set for each $x\in X'$:
+\begin{equation}
+    \label{eq:update-f}
+   	f_n(x) \coloneqq \sum_{r\in R^n} \SM_{xr} v_n(r),
+\end{equation}
+which yields $f_n(x)>0$ for all $x\in X^n$. Assume now that for some
+$1< k\leq n$ it holds that $f_k(x)>0$, for all $x\in X^k$. For $k-1$ we 
+choose an arbitrary ordering of $r\in \CR^{k-1}$, since each $x\in X^{k-1}$ 
+can only be an F-product of reactions $r\in R^{k-1}$ but never be an F-reactant,
+thus $S_{xr}>0 \ (*)$.
+We set:
+\begin{equation}
+    v_{k-1}(r) \coloneqq  \max_{x\in X^{k-1}}\left\vert
+    \left(\frac{f_{k}(x)}{s_{r}}\right)\right \vert + 1,\qquad
+    s_{r}\coloneqq \begin{cases}\SM_{xr} & \text{if } \SM_{xr}\neq 0 \\ 1 &
+      \text{otherwise} \end{cases}
+  \end{equation}
+  for all $r\in \CR^{k-1}$ and $v_{k-1}(r)=v_{k}(r)$. Therefore, $v_{k-1}(r)>0, \forall r\in \CR$. 
+  For each $x\in X'$ we let: 
+  \begin{equation}
+    f_{k-1}(x) \coloneqq f_k(x) + \sum_{r\in \CR^{k-1}} \SM_{xr} \cdot v_{k-1}(r).
+  \end{equation}	
+   For all $x\in X^m, m\geq k$ it holds that $f_{k-1}(x)=f_k(x)>0$ as they can be neither be F-reactants nor F-products for any reaction $r\in \CR^k$, i.e., $S_{xr}=0$. In addition,all $x\in X^{k-1}$ are F-products but not F-reactants of a reaction $r\in R^{k-1}$, thus $S_{xr}>0$ $(*)$. A short computation then shows for all $x\in X^{k-1}$:
+   \begin{equation}
+   	\begin{split}
+	   	f_{k-1}(x) & = f_k(x) + \sum_{r\in \CR^{k-1}} \SM_{xr} \cdot v_{k}(r)\\
+			       & = f_k(x) + \sum_{r\in \CR^{k-1}: S_{xr}\neq 0} S_{xr} \cdot  v_{k-1}(r)\\
+			       & \geq f_k(x) + \sum_{r\in \CR^{k-1}: S_{xr}\neq 0} S_{xr} \cdot  \left(\left \vert \frac{f_k(x)}{S_{xr}}  \right \vert +1\right)  \\
+			       & \geq f_k(x) + \sum_{r\in \CR^{k-1}: S_{xr}\neq 0}  S_{xr} + \left \vert f_k(x) \right\vert\\
+			       & > S_{xr} \overset{*}{>} 0.
+	\end{split}
+   \end{equation}
+    We therefore obtain $f_{k-1}(x)>0$ for all $x\in X^{m}, m\geq k-1$ and thus by induction conclusion that $f_1(x)>0$ for each $x \in \closure{\RAF}{\food}\setminus \food$. In addition, we have that $v\coloneqq v_{1}(r)$ is strictly positive, $v_r=v_{\gamma(r)}(r)$, by construction, and for all $x \in \closure{\RAF}{\food}$:
+    \begin{equation}
+    	\begin{split}
+    		0 < f_1(x) & = f_2(x) + \sum_{r\in \CR^k} \SM_{xr} \cdot v_2(r)  \\[0.5em]
+    		 & = f_2(x) + \sum_{r\in \CR^k} \SM_{xr} \cdot v_r  \\[0.5em]
+    		 & \qquad \qquad \vdots \\[0.5em]
+    		 & =  f_n(x) + \sum_{k=1}^{n-1} \ \sum_{r\in \CR^k} \SM_{xr} \cdot v_r \\[0.5em]
+    		 & = \sum_{r\in \CR^n} \SM_{xr} \cdot v_n(r)+ \sum_{k=1}^{n-1} \ \sum_{r\in \CR^k} \SM_{xr} \cdot v_r\\[0.5em] 
+    		 & = \sum_{k=1}^{n} \ \sum_{r\in \CR^k} \SM_{xr} \cdot v_r \\[0.5em]
+    		 & = (Sv)(x) 	
+    	\end{split}
+    \end{equation}
+    
+    Hence, $\SM[\closure{\RAF}{\food}\setminus \food, \CR']v>0$ and thereby $\SM[\closure{\RAF}{\food}\setminus \food, \CR']$ is semi-positive.
+\end{proof}
+
+The proof of Lemma~\ref{lem:NonFoodSemipositiv} also applies to the reactions and non-food molecules in any non-trivial, maximal strong block $\block$ of $\king(\RAF)$. Equivalently, every species in $\block$ is produced and consumed only by reactions within $\block$. Consequently, the sub-vector $v'$, obtained by restricting $v$ to the reactions of $\block$ yields:
+\begin{equation}
+  \SM[X(\block)\setminus \food, \CR(\block)]v'>0.
+\end{equation}
+\begin{corollary}\label{cor:blockSemiPositiv}
+	Let $\RAF$ be an irreducible, monocatalyzed RAF. The stoichiometric submatrix $\SM[X(\block)\setminus \food, \CR(\block)]$ of any non-trivial, maximal strong block $\block$ 
+	of $\king(\RAF)$ is semi-positive.
+\end{corollary}
+\vspace{6pt}
+
+That this is not necessarily true for $\SM[X(\block), \CR(\block)]$ is depicted in the Example of Fig.~\ref{fig:foodBlock}. Indeed, $\RAF\coloneqq \{\fr_1,\fr_2\}$ is an irreducible, monocatalyzed RAF, with $\food=\{f\}$. Moreover, $\king(\RAF)$ is a strong block and its associated stoichiometric matrix with rows $(f, x_1, x_2)$ and columns $(r_1, r_2)$ reads
+\begin{equation}
+	\SM=\begin{pmatrix}
+		-1 & 1 \\
+		0 & 1 \\
+		1 & -1 \\
+	\end{pmatrix}.
+\end{equation}
+
+But $\SM$ is not semi-positive since $v>0$ yields for $v_{r_1}=v_{r_2}$ that $(\SM v)(x_2)=0$, for $v_{r_1}>v_{r_2}$ that $(\SM v)(f)<0$, and for $v_{r_1}<v_{r_2}$ that $(\SM v)(x_2)<0$. The sub-matrix with rows $(x_1,x_2)$ and columns $(r_1, r_2)$, i.e. 
+\begin{equation}
+	\SM'=\begin{pmatrix}
+		0 & 1 \\
+		1 & -1 \\
+	\end{pmatrix},
+\end{equation}
+however, is semi-positive since $v\coloneqq 
+\begin{pmatrix}
+ 	2 & 1
+ \end{pmatrix}$ implies $\SM'v = (1,1)>0$.}
+\begin{figure}[htb]
+	\centering
+	\begin{minipage}[c]{0.5\textwidth}
+		\centering
+		\begin{equation}
+			\begin{split}
+				r_1&: f + (x_1) \rightarrow x_2 + (x_1) \\[0.5em]
+				r_2&: x_2 + (x_2) \rightarrow x_1 + f + (x_2) \\[0.5em]
+			\end{split}
+		\end{equation}		
+	\end{minipage}%
+	\hfill%
+	\begin{minipage}[c]{0.5\textwidth}
+		\centering
+		\begin{tikzpicture}
+			\node[draw, circle] (f) at (-1.5,0) {$f$};
+			
+			\node[draw, circle] (x1) at (0,0) {$x_1$};
+			\node[draw, circle] (x2) at (1.5,0) {$x_2$};
+
+			\node[draw, rectangle] (r1) at (0,-1.5) {$r_1$};
+			\node[draw, rectangle] (r2) at (0,1.5) {$r_2$};
+			
+			\draw[->] (f) to (r1);
+			\draw[->] (r1) to [bend right = 30] (x1);
+			\draw[->] (x1) to [bend right = 30] (r1);
+			
+			\draw[->] (r1) to (x2);
+			\draw[->] (x2) to [bend right = 30] (r2);
+			\draw[->] (r2) to [bend right = 30] (x2);
+			\draw[->] (r2) to (x1);
+			\draw[->] (r2) to (f);
+		\end{tikzpicture}
+	\end{minipage}
+	\par\bigskip
+	\caption{An irreducible, monocatalyzed RAF $\RAF\coloneqq \{[r_1]_{\sim},[r_2]_{\sim}\}$ as CRN reactions (\textbf{left}) and its K\H{o}nig graph $\king(\RAF)$ (\textbf{right}). }
+	\label{fig:foodBlock}
+\end{figure}
+
+\holy{We conclude this section by commenting on another property of strong blocks $\block$. The strong connectivity implies that each reaction vertex has at least one incoming edge, from an F-reactant or F-catalyst, and at least one outgoing edge, to an F-catalyst or F-product. Lemma~\ref{lem:StrongBlocks} additionally guarantees that his holds true also for the sub-network $(X(\block)\setminus \food, \CR(\block))$ of $\block$ that is void of food species. Therefore, each reaction has at least one reactant and at least one product. We say that such a sub-network is \emph{well-formed}. 
+}
+
 
 \bibliography{RAFCores}
 
