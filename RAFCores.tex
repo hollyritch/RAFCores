@@ -741,26 +741,22 @@ Let $\block$ be a maximal strong block of $K(\RAF)$ such that $\block$  contains
 
 \begin{proof}
 (i) Indirectly assume there is a species vertex $x\not\in \food$ in $\block$ such that $x$ is an F-reactant of $r^*$. Lemma \ref{lem:cutvert} excludes that $x$ is a cut-vertex for $K(\RAF)$, and therefore all reactions $\tilde{r}\in \mathcal{R}'$ for which $x$ is an F-product must be vertices in $\block$, contradicting the assumed $\preceq$-minimality of $r^*$ in $\block$.\\
-(ii) since $x^*$ is a species vertex of the maximal strong block $\block$, it follows that any directed path from $r^*$ to $x^*$ and from $x^*$ to $r^*$ touches only vertices in $\block$ (property of maximal strong blocks \NV{[If there is, add reference]}). Via Lemma \ref{lem:PSC}, there exists at least one directed path $\mathcal{P}$ from $x^*$ to $r^*$ such that $\mathcal{P}\cap \food =\emptyset$, i.e. there exists species-vertex $x\not\in\food$ in $\block$ which is either an F-reactant or an F-catalyst of $r^*$. Statement (i), proved above, excludes that such $x$ is an F-reactant, so (ii) follows.\\
-(iii) preliminarily observe that $r^*$ possesses an F-product $x_\pi \not\in \food$, since otherwise  $\RAF \setminus r^*$ would still be a RAF, contradicting irreducibility of $\RAF$. Let then $x_\pi$ indicate an F-product of $r^*$ and $x_\kappa$ and F-catalyst of $r^*$ in $\block$, whose existence we proved above in (ii). Assume now indirectly that (iii) does not hold, then $x_\pi\neq x_\kappa$ and there is no directed path $\mathcal{P}$ $(r^*, x_\pi,...,x_\kappa)$ since otherwise $x_\pi$ would be in $\block$ as well, against the indirect assumption. Consider any reaction $\tilde{r}$ which has $x_\kappa$ as F-product: similarly, there is no directed path $\mathcal{P}$ $(r^*, x_\pi,..., \tilde{r})$. Now, we construct iteratively a family of sets $\tilde{\mathbf{R}}_n$ of F-reactions as follows:
+(ii) Since $x^*$ is a species vertex of the maximal strong block $\block$, it follows that any directed path from $r^*$ to $x^*$ and from $x^*$ to $r^*$ touches only vertices in $\block$ (ear-decomposition of strong blocks). Via Lemma \ref{lem:PSC}, there exists at least one directed path $\mathcal{P}$ from $x^*$ to $r^*$ such that $\mathcal{P}\cap \food =\emptyset$, i.e. there exists species-vertex $x\not\in\food$ in $\block$ which is either an F-reactant or an F-catalyst of $r^*$. Statement (i), proved above, excludes that such $x$ is an F-reactant, so (ii) follows.\\
+(iii) preliminarily observe that $r^*$ possesses an F-product $x_\pi \not\in \food$, since otherwise  $\RAF \setminus r^*$ would still be a RAF, contradicting irreducibility of $\RAF$. Let then $x_\pi$ indicate an F-product of $r^*$ and $x_\kappa$ and F-catalyst of $r^*$ in $\block$, whose existence we proved above in (ii). Assume now indirectly that (iii) does not hold, then $x_\pi\neq x_\kappa$ and there is no directed path $\mathcal{P}$ $(r^*, x_\pi,...,x_\kappa)$ since otherwise $x_\pi$ would be in $\block$ as well, against the indirect assumption. Consider any reaction $\tilde{r}$ which has $x_\kappa$ as F-product and construct iteratively a family of sets $\tilde{\mathbf{R}}_n$ of F-reactions from $\tilde{\mathbf{R}}_0=\{\tilde{r}\}$ as follows:
 \begin{equation}
-    \begin{cases}
-     \tilde{\mathbf{R}}_0=\{\tilde{r}\}\\
-     
-     \vdots\\  \tilde{\mathbf{R}}_{n}=\tilde{\mathbf{R}_{n-1}}\cup \{\fr\in \RAF \;|\;\bigcup_{\hat{\fr}\in \mathbf{R}_{n-1}} \bigg(\feducts(\hat{\fr}) \cup \cat(\hat{\fr})\bigg) \bigcap \fproducts (\fr) \neq \emptyset\}.
-    \end{cases}
+\tilde{\mathbf{R}}_{n}=\tilde{\mathbf{R}}_{n-1}\cup \bigg\{\fr\in \RAF \;|\;\bigcup_{\hat{\fr}\in \mathbf{R}_{n-1}} \bigg(\feducts(\hat{\fr}) \cup \cat(\hat{\fr})\bigg) \bigcap \fproducts (\fr) \neq \emptyset\bigg\}.
 \end{equation}
 Since $\RAF$ is a finite set, the iteration converges at a finite step $\bar{n}$ to a set $\RAF'\coloneqq \tilde{\mathbf{R}}_{\bar{n}}$. 
-By construction and the fact that $\RAF$ is a RAF, such a set $\RAF'$ is a RAF itself. However, since no direct path $\mathcal{P}=(r^*, x_\pi,..., \tilde{r})$ exists, $r^*\not\in \RAF'$, contradicting the assumption of irreducibility of $\RAF$.
+By construction and the fact that $\RAF$ is a RAF, $\RAF'$ is a RAF itself. However, no direct path $\mathcal{P}=(r^*, x_\pi,..., \tilde{r},x_\kappa)$ exists, and thus $r^*\not\in \RAF'$, in contradiction with the assumption of irreducibility of $\RAF$.
 \end{proof}
 
+{\tiny
 Assume $\block$ is not the single species in food and waste. $\block$ cannot be a single-species, since this would make 
 it a cut-vertex contradicting Lemma \ref{lem:cutvert}. Then $\block$ contains reactions and in particular cut vertices of 
 $K(\RAF)$. \holy{Assume indirectly that $\block$ is a single reaction. Then there is a block $\block'\neq \block$ such that $(r,x), (y,r)\in E(\king(\RAF))$ with $x,y\in \block'$. Then $x\neq y$, since otherwise 
 $(x,r)$ is a digon and part of the same block. However, since $\block'$ is strongly connected there is a path $\mathcal{P}_{xy}$ 
 from $x$ to $y$ in $\king[\block']$. However, since $(y,r,x)$ is a path connecting $y$ to $x$, $r$ is not a cut-vertex. Thus $\block$ 
 is not composed of a single reaction. Assume then further that $\block$ is not a digon composed of $r$ and a species $x\in \food$.
-
 We start with showing property $i.$ and $iv.$ We may choose $r$ among all cut-vertices $r'\in \CR(\block)$ such that $\crgen(r)\leq \crgen(r')$. Assume indirectly that there is an F-reactant $x_1\in X\setminus \food$ for $r$ such that $x_1\in X(\block)$. Then $x_1$ is an F-product of some other reaction $r_1\in\CR(\block)$ with $\crgen(r_1)<\crgen(r)$. But $r_1$ cannot be a cut-vertex since otherwise $\crgen(r_1)<\crgen(r)\leq \crgen(r_1)$. Then $r_1$ 
 has an F-reactant $x_2\in X(\block)$ that is an F-product of a reaction $r_2$ such that $\crgen(r_2)<\crgen(r_1)<\crgen(r)$. Iterating this argument we obtain with the finiteness of 
 $\CR(\block)$ a sequence of reactions:
@@ -776,12 +772,11 @@ $\CR(\block)$ a sequence of reactions:
   F-product of some reaction $\tilde{r}\in \CR'$. If $x_c\in \fproducts(r)$, then 
   $x_c$ is an F-product of $r$ and $ii.$ is satisfied. Otherwise, if $x_c\notin 
   \fproducts(r)$, then $x_c$ is a cut-vertex, which contradicts Lemma~\ref{lem:cutvert}. 
-
   $|\CR(\block)|>1$ directly yields that there is an $r'\in \CR(\block): r'\neq r$. Lemma~\ref{lem:PSC} guarantees that there is path $\mathcal{P}_{r'r}$ 
   such that $\mathcal{P}_{r'r} \cap \food = \emptyset$. In addition, since for all F-reactants $x$ of $r$ that satisfy $x\in X(\block)$ also $x\in \food$ (Property~$i.$), we have that $(X(\cat(r))\setminus \food) \cap X(\block) \neq \emptyset$ and Property~$iii.$ is satisfied. Assume now indirectly that $\fproducts(r) \cap X(\block) = \emptyset$.       
    Then none of the F-products of $r$ is an F-reactant or F-catalyst of any 
-   reaction $\tilde{r} \in \CR(\block): \tilde{r}\neq r$. This, however, implies that there is a connected component $\king_1$ of $\king[V(\king)\setminus \{\tilde{r}\}]$ such that $\tilde{r}\in \king_1$ and $\RAF_1\coloneqq \CR(\king_1)/\mathord{\sim}$ is $\food$-generated. Indeed, Lemma \ref{lem:PSC} yields that any directed path $\mathcal{P}$ from any vertex in $V(\king(\RAF))\setminus K_1$ to $K_1$ must contain the cut-vertex $r$. Then no species in $X(\king(\RAF))\setminus \king_1$ is F-reactant or F-catalyst for any reaction in  $\mathcal{R}(K_1)$. Thereby, $\feducts(\RAF_1)\subseteq \closure{\RAF_1}{\food}$ and $\RAF_1$ is $\food$-generated. In addition, $\RAF_1 \subset \RAF$ then constitutes a RAF, contradicting the irreducibility of $\RAF$. Hence, $r$ satisfies property $ii$.}
-%\NV{[We may choose a cut-vertex $r$ (not necessarily unique) minimum with respect to the generation order there, and show (i),(ii),(iii),(iv). (i): its F-reactants must be somewhere else, otherwise either minimality is broken or max-strong-block is broken. (iii): r must have at least an ingoing arrow and one outgoing, so this follows. (ii) NOT SURE about food-catalyst, TBC. (iv) must follow from the minimum condition together with (i).]} 
+   reaction $\tilde{r} \in \CR(\block): \tilde{r}\neq r$. This, however, implies that there is a connected component $\king_1$ of $\king[V(\king)\setminus \{\tilde{r}\}]$ such that $\tilde{r}\in \king_1$ and $\RAF_1\coloneqq \CR(\king_1)/\mathord{\sim}$ is $\food$-generated. Indeed, Lemma \ref{lem:PSC} yields that any directed path $\mathcal{P}$ from any vertex in $V(\king(\RAF))\setminus K_1$ to $K_1$ must contain the cut-vertex $r$. Then no species in $X(\king(\RAF))\setminus \king_1$ is F-reactant or F-catalyst for any reaction in  $\mathcal{R}(K_1)$. Thereby, $\feducts(\RAF_1)\subseteq \closure{\RAF_1}{\food}$ and $\RAF_1$ is $\food$-generated. In addition, $\RAF_1 \subset \RAF$ then constitutes a RAF, contradicting the irreducibility of $\RAF$. Hence, $r$ satisfies property $ii$.}}
+
 
 
 \begin{figure}[bth]
