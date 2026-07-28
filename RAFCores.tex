@@ -741,11 +741,18 @@ Let $\block$ be a maximal strong block of $K(\RAF)$ such that $\block$  contains
 
 \begin{proof}
 (i) Indirectly assume there is a species vertex $x\not\in \food$ in $\block$ such that $x$ is an F-reactant of $r^*$. Lemma \ref{lem:cutvert} excludes that $x$ is a cut-vertex for $K(\RAF)$, and therefore all reactions $\tilde{r}\in \mathcal{R}'$ for which $x$ is an F-product must be vertices in $\block$, contradicting the assumed $\preceq$-minimality of $r^*$ in $\block$.\\
-(ii) Since $x^*$ is a species vertex of the maximal strong block $\block$, it follows that any directed path from $r^*$ to $x^*$ and from $x^*$ to $r^*$ touches only vertices in $\block$ (ear-decomposition of strong blocks). Via Lemma \ref{lem:PSC}, there exists at least one directed path $\mathcal{P}$ from $x^*$ to $r^*$ such that $\mathcal{P}\cap \food =\emptyset$, i.e. there exists species-vertex $x\not\in\food$ in $\block$ which is either an F-reactant or an F-catalyst of $r^*$. Statement (i), proved above, excludes that such $x$ is an F-reactant, so (ii) follows.\\
-(iii) ...
-
+(ii) since $x^*$ is a species vertex of the maximal strong block $\block$, it follows that any directed path from $r^*$ to $x^*$ and from $x^*$ to $r^*$ touches only vertices in $\block$ (property of maximal strong blocks \NV{[If there is, add reference]}). Via Lemma \ref{lem:PSC}, there exists at least one directed path $\mathcal{P}$ from $x^*$ to $r^*$ such that $\mathcal{P}\cap \food =\emptyset$, i.e. there exists species-vertex $x\not\in\food$ in $\block$ which is either an F-reactant or an F-catalyst of $r^*$. Statement (i), proved above, excludes that such $x$ is an F-reactant, so (ii) follows.\\
+(iii) preliminarily observe that $r^*$ possesses an F-product $x_\pi \not\in \food$, since otherwise  $\RAF \setminus r^*$ would still be a RAF, contradicting irreducibility of $\RAF$. Let then $x_\pi$ indicate an F-product of $r^*$ and $x_\kappa$ and F-catalyst of $r^*$ in $\block$, whose existence we proved above in (ii). Assume now indirectly that (iii) does not hold, then $x_\pi\neq x_\kappa$ and there is no directed path $\mathcal{P}$ $(r^*, x_\pi,...,x_\kappa)$ since otherwise $x_\pi$ would be in $\block$ as well, against the indirect assumption. Consider any reaction $\tilde{r}$ which has $x_\kappa$ as F-product: similarly, there is no directed path $\mathcal{P}$ $(r^*, x_\pi,..., \tilde{r})$. Now, we construct iteratively a family of sets $\tilde{\mathbf{R}}_n$ of F-reactions as follows:
+\begin{equation}
+    \begin{cases}
+     \tilde{\mathbf{R}}_0=\{\tilde{r}\}\\
+     
+     \vdots\\  \tilde{\mathbf{R}}_{n}=\tilde{\mathbf{R}_{n-1}}\cup \{\fr\in \RAF \;|\;\bigcup_{\hat{\fr}\in \mathbf{R}_{n-1}} \bigg(\feducts(\hat{\fr}) \cup \cat(\hat{\fr})\bigg) \bigcap \fproducts (\fr) \neq \emptyset\}.
+    \end{cases}
+\end{equation}
+Since $\RAF$ is a finite set, the iteration converges at a finite step $\bar{n}$ to a set $\RAF'\coloneqq \tilde{\mathbf{R}}_{\bar{n}}$. 
+By construction and the fact that $\RAF$ is a RAF, such a set $\RAF'$ is a RAF itself. However, since no direct path $\mathcal{P}=(r^*, x_\pi,..., \tilde{r})$ exists, $r^*\not\in \RAF'$, contradicting the assumption of irreducibility of $\RAF$.
 \end{proof}
-
 
 Assume $\block$ is not the single species in food and waste. $\block$ cannot be a single-species, since this would make 
 it a cut-vertex contradicting Lemma \ref{lem:cutvert}. Then $\block$ contains reactions and in particular cut vertices of 
