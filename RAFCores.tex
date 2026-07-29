@@ -254,10 +254,61 @@ original idea dates back to Kauffman's considerations
 Food-generated sets} (RAF), which were studied extensively in many
 variations \cite{steel_emergence_2000, mossel_random_2005, steel_minimal_2013, smith_autocatalytic_2014, hordijk_history_2019, steel20}.
 
-Related to different approaches to thinking about the problem of how life has emerged on a primordial Earth \cite{kauffman_autocatalytic_1986, unterberger_stoechiometric_2022}, \textsc{RAF sets} and \emph{stoichiometric autocatalysis} differ substantially in their motivation, setting, and mathematical formalization. Notably, \textsc{RAF} theory is phrased in terms of catalytic reaction systems (CRS) \textit{sensu} Lohn \cite{lohn_evolving_1998}, while \emph{stoichiometric autocatalysis} is grounded in the tradition of chemical reaction network theory, tracing back to Rutherford Aris \cite{aris_prolegomena_1965}. A meaningful connection between these two frameworks has been investigated only very recently \cite{golnik_bridging_2026}. Notably, the RAF framework allows reactions to also occur uncatalyzed, at least initially, which seems reasonable from a chemical perspective and considering the time life required to develop. In a more restrictive setting, i.e., in \textsc{Constructively Autocatalytic F-generated sets} (CAFs), reactions can only be executed if catalysts have been generated beforehand. Any RAF that is itself not entirely a CAF is always \emph{stoichiometrically autocatalytic} \cite{golnik_bridging_2026}.
+Related to different approaches to thinking about the problem of how life has emerged on a primordial Earth \cite{kauffman_autocatalytic_1986, unterberger_stoechiometric_2022}, \textsc{RAF sets} and \emph{stoichiometric autocatalysis} differ substantially in their motivation, setting, and mathematical formalization. Notably, \textsc{RAF} theory is phrased in terms of catalytic reaction systems (CRS) \textit{sensu} Lohn \cite{lohn_evolving_1998}, while \emph{stoichiometric autocatalysis} is grounded in the tradition of chemical reaction network theory, tracing back to Rutherford Aris \cite{aris_prolegomena_1965}. Notably, the RAF framework allows reactions to also occur uncatalyzed, at least initially, which seems reasonable from a chemical perspective and considering the time life required to develop. In a more restrictive setting, i.e., in \textsc{Constructively Autocatalytic F-generated sets} (CAFs), reactions can only be executed if catalysts have been generated beforehand. A meaningful connection between these two frameworks has been investigated only very recently \cite{golnik_bridging_2026}, where it is shown that any RAF that is itself not entirely a CAF is always \emph{stoichiometrically autocatalytic}.
+
+\NV{
+\textbf{Motivation: minimal autocatalytic structures.} TBPolished. Both frameworks have developed parallel concepts of `minimal’ autocatalytic sub-systems. Although they differ substantially, the shared notion of minimality refers to an autocatalytic sub-system that does not itself contain any autocatalytic sub-system. These concepts are respectively termed \emph{autocatalytic cores} in stoichiometric autocatalysis and \emph{irreducible} RAFs in RAF theory. The recently developed algorithmic tool \texttt{autogatito} \cite{golnik_using_2026} can enumerate autocatalytic cores in large chemical reaction networks, for example of metabolic type. A naive and informal application of \texttt{autogatito} to the chemical reaction networks associated with irreducible RAFs generated from random instances of the binary polymer model \cite{kauffman_autocatalytic_1986} produced an unexpected observation: each irreducible RAF contains on the order of $10^4$ autocatalytic cores; see Fig.\ref{fig:irrRAFCores}. Explaining this apparent discrepancy motivates the present contribution, in which we investigate the structural properties of irreducible RAFs that give rise to such large numbers of autocatalytic cores. To this end, we first clarify in Sec.~\ref{sec:CRNCRS} the formal relationship between the two underlying frameworks, chemical reaction networks (CRNs) and catalytic reaction systems (CRSs), so that we may move freely between them. Intuitively, CRSs can be viewed as quotient structures of associated CRNs. We then study the structure of irreducible RAFs, particularly from a graph-theoretic perspective, in Sec.~\ref{sec:RAF}. Through this analysis, we associate an exponentially large family of certain bipartite König graphs with each irreducible RAF. Our main result proves that every strong block of each such bipartite graph contains an autocatalytic core. This exponential correspondence provides an intuition for the large number of autocatalytic cores observed in the irreducible RAFs of Fig.\ref{fig:irrRAFCores}. We comment extensively on this aspect in Sec.~…. Nevertheless, we also show that this relationship depends strongly on the type of network: in … we construct an example of a chemical system containing arbitrarily many irreducible RAFs, yet invariably only a single autocatalytic core. We conclude with a discussion of future directions.}
+ 
+ 
 
 
-In this contribution, we extend this theory and set out to describe the underlying structures carrying the autocatalytic capacity of a RAF that is itself not a CAF. As an initial step, we overcome the menacing obstacle that \textsc{RAFs} are embedded in catalytic reaction systems (CRS), while \emph{stoichiometric autocatalysis} was derived from chemical reaction networks (CRNs). It turns out that CRS reflect the quotient structure of its associated CRN. In addition, we show that requiring minimality, with respect to the RAF property, imposes remarkable constraints on the emerging graph structures. Finally, we explore how these consequences impact on the correspondence between the two notions of minimality: \textsc{irreducible RAFs} and \emph{autocatalytic cores}. 
+\begin{figure}[htb]
+	\centering
+	\begin{minipage}[c]{\textwidth}
+		\centering
+		\begin{minipage}[c]{0.5\textwidth}
+			\centering
+			\includegraphics[width=0.8\textwidth]{./Pictures/IrrRAFCoresn5rev2.png}
+		\end{minipage}%
+		\hfill%
+		\begin{minipage}[c]{0.5\textwidth}
+			\centering
+			\includegraphics[width=0.8\textwidth]{./Pictures/IrrRAFCoresn5rev.png}
+		\end{minipage}
+	\end{minipage}
+	\begin{minipage}[c]{\textwidth}
+		\centering
+		\begin{minipage}[c]{0.5\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{./Pictures/n5rev_overlap.pdf}
+		\end{minipage}%
+		\hfill%
+		\begin{minipage}[c]{0.5\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{./Pictures/n5rev2_overlap.pdf}
+		\end{minipage}
+	\end{minipage}
+	\begin{minipage}[c]{\textwidth}
+		\centering
+		\begin{minipage}[c]{0.5\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{./Pictures/n5rev_present.pdf}
+		\end{minipage}%
+		\hfill%
+		\begin{minipage}[c]{0.5\textwidth}
+			\centering
+			\includegraphics[width=0.9\textwidth]{./Pictures/n5rev2_present.pdf}
+		\end{minipage}
+	\end{minipage}	
+	\caption{Depiction of the number of autocatalytic cores among non-food species (\textbf{upper}),
+		the pairwise overlap of F-reactions (\textbf{middle}), and the presence of F-reactions from 
+		the maximal RAF (\textbf{lower}) in 50 different irreducible RAFs from two random instances 
+		of the binary polymer model with a fixed probability for any non-food species to catalyze any 
+		reaction of $p=0.01$ (\textbf{right}) and $p=0.008$ (\textbf{left}) and maximum polymer-length $5$.}
+	\label{fig:irrRAFCores}
+\end{figure}
+
+
 
 \section{Two different Representations of Chemical Systems}\label{sec:CRNCRS}
 
@@ -367,7 +418,7 @@ Moreover, since $\FR$ is a quotient set from $\mathcal{R}$, we have that:
 with equality achieved if, and only if, each F-reaction $\fr$, viewed as an equivalence on $\mathcal{R}$, consists only of one element, i.e.
 $\fr=[r]_{\sim}=\{r\}$.
 
-\section{Reflexively Autocatalytic Food-Generated Sets}
+\section{Reflexively Autocatalytic Food-Generated Sets}\label{sec:RAF}
 
 Catalytic Reaction Systems $(X,\FR,\cat(\FR))$ are the fundamental structure on which the
 notion of \emph{Reflexively Autocatalytic F-generated Sets} (RAFs) is built
@@ -458,7 +509,7 @@ Clearly, the total order $\le$ on the natural numbers induces a preorder $\precc
   \fr_1\preceq \fr_2 \quad &\text{if}\quad \rgen(\fr_1) \leq \rgen(\fr_2)
 \end{cases},
 \end{equation}
-which we refer to as \emph{generation orders} on species and F-reactions, respectively.
+which we refer to as \emph{generation orders} on species and F-reactions, respectively. \NV{[HERE TBA COMMENT ON THE FACT THAT WE MAY USE SAME INDEX ALSO FOR REACTION IN CRN]}
 
 We conclude this section with a further definition.
 \vspace{6pt}
@@ -584,54 +635,7 @@ $c\in \cat(\fr)$ are in the food set $\food$. Therefore $\fr$ is a CAF (and RAF)
 Due to Prop.~\ref{prop:Caftrivial}, throughout the paper we exclude the trivial CAF case whenever making statements about irreducible RAFs. 
 To keep the exposition concise, we assume this exclusion throughout and do not repeat it explicitly in each statement.
 
-\NV{[Ponder further whether here is the right place, or rather earlier or later]} \holy{We conclude this section with a remarkable result. Minimal \emph{stoichiometrically autocatalytic} CRN sub-networks, formally introduced in Sec.~\ref{sec:AutoCatIrrRAF} Def.~\ref{def:autSubRN}, are termed \emph{autocatalytic cores} \cite{blokhuis_Universal_2020}. In turn, RAFs that are themselves not CAFs were shown to be \emph{stoichiometrically autocatalytic}, and therefore contain an autocatalytic core in \cite{golnik_bridging_2026}. Driven by this result, we used \texttt{autogatito} \cite{golnik_using_2026} to compute autocatalytic cores in irreducible RAFs generated from random instances of the binary polymer model \cite{kauffman_autocatalytic_1986}. Strikingly, even irreducible RAFs already exhibit a remarkably rich internal structure, comprising up to thousands of distinct autocatalytic cores, as shown in Fig.~\ref{fig:irrRAFCores}. This astonishing observation motivates the remainder of this contribution, in which  we investigate the structural properties of irreducible RAFs that give rise to such unexpectedly large numbers of autocatalytic cores.
 
-\begin{figure}[htb]
-	\centering
-	\begin{minipage}[c]{\textwidth}
-		\centering
-		\begin{minipage}[c]{0.5\textwidth}
-			\centering
-			\includegraphics[width=0.8\textwidth]{./Pictures/IrrRAFCoresn5rev2.png}
-		\end{minipage}%
-		\hfill%
-		\begin{minipage}[c]{0.5\textwidth}
-			\centering
-			\includegraphics[width=0.8\textwidth]{./Pictures/IrrRAFCoresn5rev.png}
-		\end{minipage}
-	\end{minipage}
-	\begin{minipage}[c]{\textwidth}
-		\centering
-		\begin{minipage}[c]{0.5\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{./Pictures/n5rev_overlap.pdf}
-		\end{minipage}%
-		\hfill%
-		\begin{minipage}[c]{0.5\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{./Pictures/n5rev2_overlap.pdf}
-		\end{minipage}
-	\end{minipage}
-	\begin{minipage}[c]{\textwidth}
-		\centering
-		\begin{minipage}[c]{0.5\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{./Pictures/n5rev_present.pdf}
-		\end{minipage}%
-		\hfill%
-		\begin{minipage}[c]{0.5\textwidth}
-			\centering
-			\includegraphics[width=0.9\textwidth]{./Pictures/n5rev2_present.pdf}
-		\end{minipage}
-	\end{minipage}	
-	\caption{Depiction of the number of autocatalytic cores among non-food species (\textbf{upper}),
-		the pairwise overlap of F-reactions (\textbf{middle}), and the presence of F-reactions from 
-		the maximal RAF (\textbf{lower}) in 50 different irreducible RAFs from two random instances 
-		of the binary polymer model with a fixed probability for any non-food species to catalyze any 
-		reaction of $p=0.01$ (\textbf{right}) and $p=0.008$ (\textbf{left}) and maximum polymer-length $5$.}
-	\label{fig:irrRAFCores}
-\end{figure}
-}
 
 
 \subsubsection{The K\H{o}nig Graph of monocatalyzed, irreducible RAFs}\label{subsec:King}
@@ -651,7 +655,7 @@ is partitioned into two distinct types of directed edges given as
 \end{equation}
 \FloatBarrier
 The K\H{o}nig graph emerged under various names in the context of CRN theory, as the 
-species-reaction (SR) graph \cite{craciun_multiple_2006} and also as Petri nets \cite{angeli_petri_2007}.
+species-reaction (SR) graph \cite{craciun_multiple_2006} and Petri nets \cite{angeli_petri_2007}.
 
 %\subsubsection{Properties of $K(\RAF)$}
 
@@ -723,8 +727,7 @@ Building on the perspectives of Lemmata \ref{lem:PSC} and \ref{lem:cutvert}, the
 section considers \emph{maximal strong blocks} $\block$ of $K(\RAF)$, i.e. maximal strongly-connected subgraphs 
 that possess no cut-vertices. Strong blocks have been studied in the graph literature in \cite{grotschel_minimal_1979}. 
 An example of an irreducible, monocatalyzed RAF containing multiple strong blocks is captured in Fig.~\ref{ex:CutVertex2}. 
-\NV{[The next move at the beginning with CRN vs CRS, and use same notation, {\tiny Since for monocatalyzed RAFs, CRN and F-reactions are in 1-to-1 correspondence, we may also speak about generation 
-order of CRN reactions instead of F-reactions and define $\crgen(r)\coloneqq \rgen([r]_\sim)$.}]}
+
 
 \vspace{6pt}
 \begin{lemma}[Strong blocks]\label{lem:StrongBlocks}
