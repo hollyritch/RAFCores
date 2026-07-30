@@ -69,7 +69,7 @@
 \makeatother
 \theoremstyle{examplesty}%
 \newtheorem{example}{Example}%
-%\newtheorem{remark}{Remark}%
+\newtheorem{remark}{Remark}%
 %
 \theoremstyle{thmstylethree}%
 \newtheorem{definition}[theorem]{Definition}%
@@ -324,7 +324,7 @@ A \emph{chemical reaction network} (CRN) $\Gamma \coloneqq (X,\CR)$ is a tuple o
 sets, a set of species $X$ and a set of reactions $\CR$. 
 Any $r \in \CR$ is represented as an ordered association between a nonnegative combination of reactant species to a nonnegative combination of product species,
 \begin{equation}\label{eq:reaction}
-  \sum_{x\in X}\ s^-_{xr} \cdot x \quad \underset{r}{\rightarrow} \quad \sum_{x\in X} \ s^+_{xr}\cdot x
+r:\qquad  \sum_{x\in X}\ s^-_{xr} \cdot x \quad \underset{r}{\rightarrow} \quad \sum_{x\in X} \ s^+_{xr}\cdot x
 \end{equation}
 where $s^{\pm}_{xr}$ are the reactant and product stoichiometry of the
 molecule $x$ in the reaction $r$. The $|X|\times|\CR|$ \emph{stoichiometric matrix} $\SM$ encodes 
@@ -335,7 +335,7 @@ all \emph{net-stoichiometries}:
 
 A \emph{sub-CRN} is a tuple $(X',\CR')$ with $X'\subseteq X$ and $\CR'\subseteq \CR$, where $r\in \CR'$ omits the reference to species $x\not\in X'$, and the associated stoichiometric matrix is denoted as $S[X',\mathcal{R}']$.
 
-Clearly, stoichiometry and net-stoichiometry might not coincide, i.e.,  $s^{\pm}_{xr}\neq \mp S^{\pm}_{xr}$. One reasons is catalysis. From a chemical perspective, a \emph{catalyst} for $r$ is a species $x\in X$ that appears on both sides of the stoichiometric equation \eqref{eq:reaction}, i.e. with $s^-_{xr}s^+_{xr}\neq 0$, and that  additionally 
+Clearly, stoichiometry and net-stoichiometry might not coincide, i.e.,  $s^{\pm}_{xr}\neq \pm S^{\pm}_{xr}$. One reasons is catalysis. From a chemical perspective, a \emph{catalyst} for $r$ is a species $x\in X$ that appears on both sides of the stoichiometric equation \eqref{eq:reaction}, i.e. with $s^-_{xr}s^+_{xr}\neq 0$, and that  additionally 
 ``increases the rate of a reaction without modifying the overall standard 
 Gibbs energy change in the reaction'' \cite{gold_iupac_2025}. 
 
@@ -362,7 +362,7 @@ F-products, and F-catalysts, respectively. The nomenclature ``F-catalysts'' is t
   \end{split}
 \end{equation} 
 For technical reasons (to be clarified below in Sec.~\ref{sec:CRS}), note that the set of F-catalysts is defined as a set of pairs $(x,k_{xr})$ 
-to encode also the respective coefficient. In a CRN, distinct reactions $r_1\neq r_2$
+to encode also the respective coefficient. \NV{For simplicity, with an abuse of notation, we will write $x\in \cat(r)$ to refer to species $x$ for which there exists a pair $(x,k_{xr})\in \cat(r)$.} In a CRN, distinct reactions $r_1\neq r_2$
 may differ only in the F-catalysts $\kappa_F(r_1)\neq \kappa_F(r_2)$ 
 and share identical F-reactants and F-products. For example, 
 the hydrogenation of ethene to ethane can be mediated by platinum, 
@@ -383,13 +383,13 @@ where $X$ is again a set of species, and each $\fr\in\FR$ is defined as a net-mo
 	\sum_{x\in X}\ \sigma^-_{x\fr} \cdot x \quad \underset{\fr}\rightarrow \quad \sum_{x\in X}\ \sigma^-_{x\fr} \cdot x,
 \end{equation}
 where $\sigma^\pm_{x\fr}\ge 0$ are again nonnegative stoichiometric coefficients. 
-The \emph{catalyzation set} $\cat(\FR)=\{ \cat(\fr) \}_{\fr\in\FR}$ constitutes the main difference with the CRN setting.
+The \emph{catalyzations} $\cat(\FR)=\{ \cat(\fr) \}_{\fr\in\FR}$ constitutes the main difference with the CRN setting.
 For a single F-reaction $\fr$, the set of catalyzations $\cat(\fr)$ is defined as
 $\cat(\fr)=\{c_\fr\}$, where each catalyzation $c_\fr$ is in turn a set of pairs $(x,k^{c}_{x\mathbf{r}})$:
 \begin{equation}\label{eq:CatCFR}
     c_\fr\coloneqq \{(x_1,k^c_{x_1\mathbf{r}}),\ldots, (x_n,k^c_{x_n\fr})\}.
 \end{equation}
-where $k^{c}_{x\fr}>0$ is a positive coefficient. \NV{[Throughout: be careful, be define catalyzation as a set of pairs, not as a set of species, check consistency! maybe introduce `support of catalyzation' or mention `with abuse of notation or so...]} We call an $\fr\in \FR$ \emph{F-reaction} to distinguish it from the CRN reactions \eqref{eq:Mod.SmEq}. A CRS $\mathbf{\Phi}'\coloneqq (X', \FR', \cat'(\FR)')$ is a \emph{sub-CRS} of $\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$ if $X\subseteq X'$, $\FR'\subseteq\FR$, $\cat'(\FR)'\subseteq \cat(\FR)$.
+where $k^{c}_{x\fr}>0$ is a positive coefficient. \NV{Again, for simplicity and with abuse of notation, we will write $x\in c_\fr$ for a species $x$ such that there exists $k^c_{x\fr}$ for which $(x,k^c_{x\fr})\in c_{\fr}$.}\\ We call an $\fr\in \FR$ \emph{F-reaction} to distinguish it from the CRN reactions \eqref{eq:Mod.SmEq}. A CRS $\mathbf{\Phi}'\coloneqq (X', \FR', \cat'(\FR'))$ is a \emph{sub-CRS} of $\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$ if $X\subseteq X'$, $\FR'\subseteq\FR$, $\cat'(\FR')\subseteq \cat(\FR)$.
 
 Finally, a comparison between a CRN reaction \eqref{eq:Mod.SmEq}  with a CRS F-reaction \eqref{eq:FReacEq} and the definition of catalyzations set $\cat$ suggests the following formalization of the relation between a CRN and a CRS.
 
@@ -397,31 +397,29 @@ Finally, a comparison between a CRN reaction \eqref{eq:Mod.SmEq}  with a CRS F-r
 \begin{equation}\label{eq:EqRel}
     r_1 \sim r_2 \quad \text{if $\sigma_{xr_1}^{\pm}=\sigma_{xr_2}^{\pm}$ for any $x\in X$.}
 \end{equation}
-To each CRN $\Gamma=(X,\mathcal{R})$ we can associate a CRS $\mathbf{\Phi}(\Gamma)\coloneqq (X, \FR, \cat(\FR))$ where $\FR$ is just the quotient set of $\mathcal{R}$ over the equivalence relation $\sim$, i.e.
+To each CRN $\Gamma=(X,\mathcal{R})$ we associate a CRS $\mathbf{\Phi}(\Gamma)\coloneqq (X, \FR, \cat(\FR))$ where $\FR$ is just the quotient set of $\mathcal{R}$ over the equivalence relation $\sim$, i.e.
 \begin{equation}
     \FR=\dfrac{\mathcal{R}}{\sim}.
 \end{equation}
 In particular, an F-reaction in a CRS is just an equivalence class of CRN reactions, $\fr=[r]_{\sim}$. Each catalyzation $c$ is then just the set of F-catalysts $c(\mathbf{r})=\cup_ {r\in \fr}\{\cat(r)\}$. 
 
 
-\textbf{From a CRS $\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$ to a CRN $\Gamma=(X,\mathcal{R})$.} Viceversa, by rolling back the previous argument, to each CRS $\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$ we may associate a CRN $\Gamma (\mathbf{\Phi})=(X,\mathcal{R})$, where each reaction $r\in \mathcal{R}$ corresponds to a pair $(\fr,c_\fr)$, naturally defined from \eqref{eq:FReacEq}, setting  $\cat(r)=c_\fr$, and defining $r$ via \eqref{eq:Mod.SmEq} with $\sigma^{\pm}_{xr}=\sigma^{\pm}_{x\fr}$. 
+\textbf{From a CRS $\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$ to a CRN $\Gamma=(X,\mathcal{R})$.} Viceversa, by rolling back the previous argument, to each CRS $\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$ we associate a CRN $\Gamma (\mathbf{\Phi})=(X,\mathcal{R})$, where each reaction $r\in \mathcal{R}$ corresponds to a pair $(\fr,c_\fr)$, naturally defined from \eqref{eq:FReacEq}, setting  $\cat(r)=c_\fr$, and defining $r$ via \eqref{eq:Mod.SmEq} with $\sigma^{\pm}_{xr}=\sigma^{\pm}_{x\fr}$. 
 
 
 By construction, it is clear that 
 \begin{equation}
     \Gamma(\mathbf{\Phi}(\Gamma))=\Gamma \quad \text{and} \quad \mathbf{\Phi}(\Gamma(\mathbf{\Phi))}=\mathbf{\Phi}.
 \end{equation}
-Moreover, since $\FR$ is a quotient set from $\mathcal{R}$, we have that:
-\begin{equation}
-   |\FR| \le |\mathcal{R}|,
-\end{equation}
+Moreover, since $\FR$ is a quotient set from $\mathcal{R}$, we have that
+$|\FR| \le |\mathcal{R}|$,
 with equality achieved if, and only if, each F-reaction $\fr$, viewed as an equivalence on $\mathcal{R}$, consists only of one element, i.e.
 $\fr=[r]_{\sim}=\{r\}$.
 
 \section{Reflexively Autocatalytic Food-Generated Sets}\label{sec:RAF}
 
-Catalytic Reaction Systems $(X,\FR,\cat(\FR))$ are the fundamental structure on which the
-notion of \emph{Reflexively Autocatalytic F-generated Sets} (RAFs) is built
+Catalytic Reaction Systems $(X,\FR,\cat(\FR))$ are the framework  on which the
+notion of \emph{Reflexively Autocatalytic F-generated Sets} (RAFs) has been introduced
 \cite{steel_emergence_2000, hordijk_detecting_2004}. Their definition relies
 on the concept of \emph{closure}. The closure  $\closure{\RAF}{X'}$ of a species set $X' \subseteq X$ w.r.t.\ to a F-reaction set $\RAF \subseteq
 \FR$ is the unique inclusion-minimal subset $Y\subseteq X$
@@ -437,7 +435,7 @@ A Reflexively Autocatalytic F-generated set (RAF) is then defined as follows \ho
 
 \vspace{6pt}
 \begin{definition}[RAF]\label{def:RAF}
-  Let $(X,\FR,\cat(\FR))$ be a CRS with specified \emph{food set} $\food\subseteq X$. A 
+  Let $(X,\FR,\cat(\FR))$ be a CRS with a specified \emph{food set} $\food\subseteq X$. A 
   set $\RAF\subseteq \FR$ is called
   \vspace{6pt}
   \begin{itemize} 
@@ -450,15 +448,16 @@ A Reflexively Autocatalytic F-generated set (RAF) is then defined as follows \ho
     (RAF) if both i. and ii. hold.}
   \end{itemize}
 \end{definition}
-\vspace{6pt}
+%\vspace{6pt}
 
-We remark that Property~$ii.$ together with the definition of the closure, Eq.~\eqref{eq:Closure}, directly implies 
+\begin{remark}\label{rmk:RAFCRN}
+\NV{Def.~\ref{def:RAF} does not formally require the formalism of CRS, and it can identically be stated for CRN so that we may naturally speak of sets of food-generated CRN reactions, as well. This route was undertaken e.g. in \cite{golnik_bridging_2026}.}
+\end{remark}
+We also remark that Property~$ii.$ together with the definition of the closure, Eq.~\eqref{eq:Closure}, directly implies 
 that all F-products of any F-reaction $\fr\in \RAF$ are also contained in $\closure{\RAF}{\food}$, thus $\fproducts(\fr)\subseteq
-\closure{\RAF}{\food}$. It is also worthwhile noting that Property~$i.$ and ~$ii.$ are essentially independent of each other. In 
+\closure{\RAF}{\food}$. Finally, it is also worthwhile noting that Property~$i.$ and ~$ii.$ are independent of each other. In 
 particular, Property~$ii.$ depends only on $\food$ and $\RAF$, and not on the catalyzations. This reveals an inherent freedom in 
 the definition of catalyzations of a RAF, as the following Lemma underlines.
-
-
 
 \vspace{6pt}
 \begin{lemma}\label{lem:ArbCat}
@@ -509,9 +508,9 @@ Clearly, the total order $\le$ on the natural numbers induces a preorder $\precc
   \fr_1\preceq \fr_2 \quad &\text{if}\quad \rgen(\fr_1) \leq \rgen(\fr_2)
 \end{cases},
 \end{equation}
-which we refer to as \emph{generation orders} on species and F-reactions, respectively. \NV{[HERE TBA COMMENT ON THE FACT THAT WE MAY USE SAME INDEX ALSO FOR REACTION IN CRN]}
+which we refer to as \emph{generation orders} on species and F-reactions, respectively. \NV{Via Remark~\ref{rmk:RAFCRN}, we will use the index $\gamma$ indistinctly also for reactions \eqref{eq:Mod.SmEq} in a CRN setting. In particular, from the definition of $\gamma$ it follows consistently that $\gamma(r_1)=\gamma(r_2)$ whenever $r_1\sim r_2$ and thus $\gamma(r_1)=\gamma(\fr)$ for $\fr=[r_1]_\sim$. [TBA comment on preorder vs partial order?]} 
 
-We conclude this section with a further definition.
+We conclude this section with the formal definition of CAFs sets.
 \vspace{6pt}
 \begin{definition}\label{def:CAF}
   A \emph{constructively autocatalytic and food-generated} set (CAF) is a
