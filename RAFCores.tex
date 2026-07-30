@@ -529,8 +529,7 @@ notion of \emph{irreducible RAFs} has been introduced.
 
 \vspace{3mm}
 \begin{definition}[Irreducible RAF]\label{def:irrerRAF}
-  A RAF $\RAF$ is irreducible if no subset $\RAF'\subset \RAF$ of 
-  F-reactions determines a RAF. 
+  Let $\RAF$ be a RAF of the CRS $(X,\FR,\cat(\FR))$. $\RAF$ is \emph{irreducible} if no subset $\RAF'\subset \RAF$  determines a RAF. 
 \end{definition}
 
 \emph{Example.} Consider a species set $X=\{x_0,...,x_{n+1}\}$ with food 
@@ -564,12 +563,12 @@ and (ii) is $\food$-generated; in particular, $\RAF'$ is a RAF which contradicts
 \end{proof}
 
 Since a RAF is defined in Def.~\ref{def:RAF} as a subset of F-reactions, Def.~\ref{def:irrerRAF} imposes 
-a minimality condition only on the set of F-reactions. However, motivated by the fact that in the CRN setting 
-different catalyzations correspond to different reactions, we also consider irreducible RAFs $\RAF$ with a 
+a minimality condition only on the set of F-reactions. However, motivated by the fact that in the CRN-setting 
+different catalyzationsof the same F-reaction correspond to different reactions, we also consider irreducible RAFs $\RAF$ with a 
 minimal number of catalyzations while conserving irreducibility. 
 
 For any $\food$-generated set $\RAF$, Lemma~\ref{lem:ArbCat} shows indeed that infinitely many 
-catalyzations exist that render $\RAF$ a RAF. Complementarily, here we address which catalyzation 
+catalyzations exist that render $\RAF$ a RAF. Complementarily, we address which catalyzation 
 subsets $\cat'(\FR)\subset \cat(\FR)$ preserve the fact that an $\food$-generated set $\RAF$, which is 
 an irreducible RAF in the CRS $(X,\FR, \cat(\FR))$, is still an irreducible RAF in the CRS $(X,\FR, \cat'(\FR))$. 
 The following Lemma shows that $\cat'(\FR)$ can always be chosen such that $|\cat'(\fr)|=1$  for all 
