@@ -254,7 +254,7 @@ original idea dates back to Kauffman's considerations
 Food-generated sets} (RAF), which were studied extensively in many
 variations \cite{steel_emergence_2000, mossel_random_2005, steel_minimal_2013, smith_autocatalytic_2014, hordijk_history_2019, steel20}.
 
-Related to different approaches to thinking about the problem of how life has emerged on a primordial Earth \cite{kauffman_autocatalytic_1986, unterberger_stoechiometric_2022}, \emph{stoichiometric autocatalysis} and \textsc{RAF sets} differ substantially in their motivation, setting, and mathematical formalization. Notably, \emph{stoichiometric autocatalysis} is grounded in the tradition of chemical reaction network theory, tracing back to Rutherford Aris \cite{aris_prolegomena_1965}, while \textsc{RAF} theory is phrased in terms of catalytic reaction systems (CRS) \textit{sensu} Lohn \cite{lohn_evolving_1998}. In particular, the RAF framework allows reactions to also occur uncatalyzed, at least initially, which is reasonable from a chemical perspective and considering the time life required to develop. In a more restrictive setting, i.e., in \textsc{Constructively Autocatalytic F-generated sets} (CAFs), reactions can only be executed if catalysts have been generated beforehand. A meaningful connection between stoichiometric autocatalysis and RAF theory has been investigated only very recently \cite{golnik_bridging_2026}, where it is shown that any RAF that is itself not entirely a CAF is always \emph{stoichiometrically autocatalytic}.
+Related to different approaches to thinking about the problem of how life has emerged on a primordial Earth \cite{kauffman_autocatalytic_1986, peng2022hierarchical, unterberger_stoechiometric_2022}, \emph{stoichiometric autocatalysis} and \textsc{RAF sets} differ substantially in their motivation, setting, and mathematical formalization. Notably, \emph{stoichiometric autocatalysis} is grounded in the tradition of chemical reaction network theory, tracing back to Rutherford Aris \cite{aris_prolegomena_1965}, while \textsc{RAF} theory is phrased in terms of catalytic reaction systems (CRS) \textit{sensu} Lohn \cite{lohn_evolving_1998}. In particular, the RAF framework allows reactions to also occur uncatalyzed, at least initially, which is reasonable from a chemical perspective and considering the time life required to develop. In a more restrictive setting, i.e., in \textsc{Constructively Autocatalytic F-generated sets} (CAFs), reactions can only be executed if catalysts have been generated beforehand. A meaningful connection between stoichiometric autocatalysis and RAF theory has been investigated only very recently \cite{golnik_bridging_2026}, where it is shown that any RAF that is itself not entirely a CAF is always \emph{stoichiometrically autocatalytic}.
 
 \NV{
 \textbf{Motivation: minimal autocatalytic structures.}  Both frameworks have developed parallel concepts of `minimal’ autocatalytic sub-systems. Although they differ substantially, the shared notion of minimality consists of an autocatalytic sub-system that does not itself contain any autocatalytic sub-system. These concepts are respectively termed \emph{autocatalytic cores} in stoichiometric autocatalysis and \emph{irreducible} RAFs in RAF theory. The recently developed algorithmic tool \texttt{autogatito} \cite{golnik_using_2026} can enumerate autocatalytic cores in large chemical reaction networks, for example of metabolic type. A naive and informal application of \texttt{autogatito} to the chemical reaction networks associated with irreducible RAFs generated from random instances of the binary polymer model \cite{kauffman_autocatalytic_1986} produced an outcome, which we did not expect: each of such irreducible RAFs contains up to $10^4$ autocatalytic cores; see Fig.\ref{fig:irrRAFCores}. Explaining this apparent discrepancy motivates the present contribution, in which we investigate the structural properties of irreducible RAFs. To this end, we first clarify in Sec.~\ref{sec:CRNCRS} the formal relationship between the two underlying frameworks, chemical reaction networks (CRNs) and catalytic reaction systems (CRSs), so that we may move freely between them: Intuitively, CRSs can be viewed as quotient structures of associated CRNs. We then study the structure of irreducible RAFs, particularly from a graph-theoretic perspective, in Sec.~\ref{sec:RAF}. Through the quotient relation between CRN and CRS, to each irreducible RAF we will associate an exponentially large family of certain bipartite König graphs. Sec.~\ref{sec:AutoCatIrrRAF} introduces stoichiometric autocatalysis and our main result, Thm.~\ref{Thm:StrBlockCore}, which states that every maximal \emph{strong block} \cite{grotschel_minimal_1979} of each such bipartite graph contains an autocatalytic core. This exponential correspondence provides an intuition for the large number of autocatalytic cores observed in the irreducible RAFs of Fig.\ref{fig:irrRAFCores}. We comment extensively on this aspect in Sec.~\ref{sec:examples}. Nevertheless, we also show that this relationship depends strongly on the type of network: we present an artificial construction, which can produce examples containing any arbitrary number of irreducible RAFs, yet invariably only one single autocatalytic core. We conclude with a discussion of future directions.}
@@ -324,7 +324,7 @@ A \emph{chemical reaction network} (CRN) $\Gamma \coloneqq (X,\CR)$ is a tuple o
 sets, a set of species $X$ and a set of reactions $\CR$. 
 Any $r \in \CR$ is represented as an ordered association between a nonnegative combination of reactant species to a nonnegative combination of product species,
 \begin{equation}\label{eq:reaction}
-r:\qquad  \sum_{x\in X}\ s^-_{xr} \cdot x \quad \underset{r}{\rightarrow} \quad \sum_{x\in X} \ s^+_{xr}\cdot x
+\sum_{x\in X}\ s^-_{xr} \cdot x \quad \underset{r}{\longrightarrow} \quad \sum_{x\in X} \ s^+_{xr}\cdot x
 \end{equation}
 where $s^{\pm}_{xr}$ are the reactant and product stoichiometry of the
 molecule $x$ in the reaction $r$. The $|X|\times|\CR|$ \emph{stoichiometric matrix} $\SM$ encodes 
@@ -380,7 +380,7 @@ Lohn \cite{lohn_evolving_1998} are defined as a triple
 \end{equation}
 where $X$ is again a set of species, and each $\fr\in\FR$ is defined as a net-molecule transformation
 \begin{equation}\label{eq:FReacEq}
-	\sum_{x\in X}\ \sigma^-_{x\fr} \cdot x \quad \underset{\fr}\rightarrow \quad \sum_{x\in X}\ \sigma^-_{x\fr} \cdot x,
+	\sum_{x\in X}\ \sigma^-_{x\fr} \cdot x \quad \underset{\fr}\longrightarrow \quad \sum_{x\in X}\ \sigma^-_{x\fr} \cdot x,
 \end{equation}
 where $\sigma^\pm_{x\fr}\ge 0$ are again nonnegative stoichiometric coefficients. 
 The \emph{catalyzations} $\cat(\FR)=\{ \cat(\fr) \}_{\fr\in\FR}$ constitutes the main difference with the CRN setting.
@@ -536,10 +536,9 @@ notion of \emph{irreducible RAFs} has been introduced.
 \emph{Example.} Consider a species set $X=\{x_0,...,x_{n+1}\}$ with food 
 set $\food=\{x_0\}$ and a sequence of $n+1$ F-reactions
 \begin{equation}\label{eq:ExReacSeq}
- \fr_i:\qquad x_i\longrightarrow x_{i+1},
+x_i + (x_{i+1})\quad\underset{\fr_i}\longrightarrow\quad x_{i+1}+(x_{i+1}),
 \end{equation}
-such that $c=\{x_{i+1}\} \in \kappa_F(\fr_i)$, i.e. for each F-reaction $\fr_i$ 
-there exists a catalyzation which consists of its F-product.
+such that the F-product $x_{i+1}$ is also the F-catalyst (indicated in brackets).
 Clearly, any set $\RAF_k$ of the form $\RAF_k\coloneqq \{\fr_0,\ldots, \fr_k\}$, 
 with $k\leq n$ satisfies Def.~\ref{def:RAF} and it is thus a RAF. In particular, 
 $\RAF_0=\{\fr_0\}$ is an irreducible RAF.
@@ -762,10 +761,10 @@ By construction and the fact that $\RAF$ is a RAF, $\RAF'$ is a RAF itself. Howe
   \begin{minipage}[c]{0.45\textwidth}
     \begin{equation*}
       \begin{split}
-	r_1& : f_1 + (x_1) \rightarrow  x_2 + (x_1) \\
-	r_2& : 2x_3 + (x_2 + f_4) \rightarrow  x_4 + x_5 + (x_2 + f_4) \\	
-	r_3& : f_2 + (x_4)\rightarrow x_1 + x_6 + (x_4)\\
-	r_4& : f_3 + (f_4 + x_5)\rightarrow x_3 + (f_4 + x_5)\\	
+	f_1 + (x_1) \quad&\underset{r_1}\longrightarrow \quad x_2 + (x_1) \\
+	2x_3 + (x_2 + f_4) \quad&\underset{r_2}\longrightarrow\quad x_4 + x_5 + (x_2 + f_4) \\	
+	f_2 + (x_4)\quad&\underset{r_3}\longrightarrow \quad x_1 + x_6 + (x_4)\\
+	f_3 + (f_4 + x_5)\quad &\underset{r_4}\longrightarrow \quad x_3 + (f_4 + x_5)\\	
       \end{split}
     \end{equation*}
   \end{minipage}%
@@ -847,9 +846,9 @@ In chemical reaction networks (CRN), a matrix-centered definition of \emph{stoic
 
 A minimality concept for stoichiometrically autocatalytic CRN is expressed in terms of subnetworks. A sub-CRN $(X',\CR')$ that satisfies \textit{(i.)} and \textit{(ii.)}, while no proper sub-CRN $(X'',\CR'')$ %with X''\subset X', \CR''\subset \CR'$ 
 does, is called an \emph{autocatalytic core}. 
-Any autocatalytic sub-CRN thereby contains an autocatalytic core. The stoichiometric submatrix associated to an autocatalytic core admits a reordering of the columns such that all diagonal entries are nonpositive while all off-diagonal entries are nonnegative \cite{blokhuis_Universal_2020, vassena_unstable_2024,golnik_autocatalytic_2026}. Matrices with nonnegative off-diagonal entries are called \emph{Metzler matrices} in the literature. An autocatalytic core of size $1$, i.e., $|X'|=|R'|=1$, is thus simply an \emph{autocatalytic reaction} of the type:
+Any autocatalytic sub-CRN thereby contains an autocatalytic core. The stoichiometric submatrix associated to an autocatalytic core admits a reordering of the columns such that all diagonal entries are nonpositive while all off-diagonal entries are nonnegative \cite{blokhuis_Universal_2020, vassena_unstable_2024,golnik_autocatalytic_2026}. Matrices with nonnegative off-diagonal entries are called \emph{Metzler matrices} in the literature. An autocatalytic core of size $1$, i.e., $|X'|=|R'|=1$, is thus simply an \emph{autocatalytic reaction} $r$ of the type:
 \begin{equation}
-    s^-_{x_1r}x_1+\ldots \rightarrow s^+_{x_1r}x_2+\ldots\quad\quad\quad\text{with $s^+_{x_1r}>s^-_{x_1r}$.}
+    s^-_{x_1r}x_1+\ldots \quad\underset{r}\longrightarrow \quad s^+_{x_1r}x_2+\ldots\quad\quad\quad\text{with $s^+_{x_1r}>s^-_{x_1r}$.}
 \end{equation}
 By this simple example, it appears evident the quantitative role of the stoichiometric coefficients in the definition of stoichiometric autocatalysis (via the semipositivity condition). In RAF, in turn, the quantitative value of the stoichiometry is irrelevant. However, semipositivity of the stoichiometric matrix restricted to the non-food molecules follows naturally for any food-generated set of reactions, as the next lemma shows. \NV{ADD SPECIFICATION ON THE F-REACTION ANNOYANCE}
 
