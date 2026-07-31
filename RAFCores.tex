@@ -495,19 +495,16 @@ $\gamma(\mathbf{r})$ where an F-reaction $\mathbf{r}$ happens for the first time
     \gamma(\mathbf{r})\coloneqq \operatorname{min} \{i \; | \; \feducts(\mathbf{r})\subseteq X'_i\} + 1,
 \end{equation} 
 where the index is shifted by one for normalization, so that the \emph{first} generation corresponds to 
-index $\gamma(\mathbf{r})=1$. Similarly, the sequences define a \emph{generation species-index} $g(x)$
- where a non-food species $x\not\in \food$ is produced for the first time, i.e.
-\begin{equation}
-   g(x)= \operatorname{min} \{i \; | \; x\in X'_i\}.
-\end{equation}
-Clearly, the total order $\le$ on the natural numbers induces a preorder $\preccurlyeq$ on $X\setminus \food$ and a preorder $\preceq$ on $\mathbf{R}$ as:
-\begin{equation}
-\begin{cases}
-  x_1\preccurlyeq x_2 \quad&\text{if}\quad \sgen(x_1) \leq \sgen(x_2)\\
-  \fr_1\preceq \fr_2 \quad &\text{if}\quad \rgen(\fr_1) \leq \rgen(\fr_2)
-\end{cases},
-\end{equation}
-which we refer to as \emph{generation orders} on species and F-reactions, respectively. \NV{Via Remark~\ref{rmk:RAFCRN}, we will use the index $\gamma$ indistinctly also for reactions \eqref{eq:Mod.SmEq} in a CRN setting. In particular, from the definition of $\gamma$ it follows consistently that $\gamma(r_1)=\gamma(r_2)$ whenever $r_1\sim r_2$ and thus $\gamma(r_1)=\gamma(\fr)$ for $\fr=[r_1]_\sim$. [TBA comment on preorder vs partial order?]} 
+index $\gamma(\mathbf{r})=1$.% Similarly, the sequences define a \emph{generation species-index} $g(x)$  where a non-food species $x\not\in \food$ is produced for the first time, i.e. \begin{equation} g(x)= \operatorname{min} \{i \; | \; x\in X'_i\}.\end{equation}
+Clearly, the total order $\le$ on the natural numbers induces a %preorder $\preccurlyeq$ on $X\setminus \food$ and 
+a preorder $\preceq$ on $\mathbf{R}$ as $\fr_1\preceq \fr_2$ if $\rgen(\fr_1) \leq \rgen(\fr_2)$.
+%\begin{equation}
+%\begin{cases}
+%  x_1\preccurlyeq x_2 \quad&\text{if}\quad \sgen(x_1) \leq \sgen(x_2)\\
+  
+%end{cases},
+%\end{equation}
+which we refer to as \emph{generation orders} on F-reactions, respectively. \NV{Via Remark~\ref{rmk:RAFCRN}, we will use the index $\gamma$ indistinctly also for reactions \eqref{eq:Mod.SmEq} in a CRN setting. In particular, from the definition of $\gamma$ it follows consistently that $\gamma(r_1)=\gamma(r_2)$ whenever $r_1\sim r_2$ and thus $\gamma(r_1)=\gamma(\fr)$ for $\fr=[r_1]_\sim$. [TBA comment on preorder vs partial order?]} 
 
 We conclude this section with the formal definition of CAFs sets.
 \vspace{6pt}
@@ -543,23 +540,31 @@ $\RAF_0=\{\fr_0\}$ is an irreducible RAF.
 
 
 The minimality condition imposed on the set of F-reactions via Def.~\ref{def:irrerRAF} 
-directly yields the following structural lemma.
-\vspace{6pt}
+directly yields the following two structural lemma.
+\NV{\vspace{6pt}
 \begin{lemma}\label{lem:OneFReacPerRAF}
-  Let $(X,\FR,\cat(\FR))$ be a CRS with food-set $\food\subseteq X$. An irreducible RAF $\RAF$ never contains two F-reactions 
-  $\fr_1$ and $\fr_2$ such that its net-stoichiometry coincides: 
+  Let $(X,\FR,\cat(\FR))$ be a CRS with food-set $\food\subseteq X$. An irreducible RAF $\RAF$ never contains two distinct F-reactions 
+  $\fr_1$ and $\fr_2$ such that either of the following conditions hold:
+  \begin{enumerate}
+      \item their F-reactants and F-products coincide: 
   \begin{equation}\label{eq:netreaction}
-      \sigma^+_{x\fr_1}-\sigma^-_{x\fr_1}=\sigma^+_{x\fr_2}-\sigma^-_{x\fr_2} \quad \quad \text{for all $x\in X$}.
+      \feducts(\fr_1)=\feducts(\fr_2) \qquad\text{and}\qquad \fproducts(\fr_1)=\fproducts(\fr_2) 
   \end{equation}
+  \item the F-reactants of $\fr_1$ coincides with the F-products of $\fr_2$, and vice versa:
+   \begin{equation}\label{eq:inverse}
+      \feducts(\fr_1)=\fproducts(\fr_2) \qquad\text{and}\qquad \feducts(\fr_2)=\fproducts(\fr_1) 
+  \end{equation}
+  \end{enumerate}
 \end{lemma}
 \begin{proof}
-Indirectly assume there exist two F-reactions $\fr_1,\fr_2\in \RAF$ such that \eqref{eq:netreaction} 
+Indirectly assume there exist two F-reactions $\fr_1,\fr_2\in \RAF$ such that either \eqref{eq:netreaction} or \eqref{eq:inverse}
 holds and assume, without loss of generality, that $\fr_1\preceq \fr_2$. Consider the set 
-$\RAF'\coloneqq \RAF \setminus \fr_2$. Since \eqref{eq:netreaction} holds, it follows that 
+$\RAF'\coloneqq \RAF \setminus \fr_2$. Since \eqref{eq:netreaction} (resp. \eqref{eq:inverse} holds, it follows that 
 $\closure{\RAF}{\food} = \closure{\RAF'}{\food}$, since $\fr_1$ and $\fr_2$ have the same 
-F-reactants and F-products. Therefore, $\RAF'$ is (i) Reflexively Autocatalytic, since $\RAF$ is, 
+F-reactants and F-products (resp. since the F-products of $\fr_2$ are F-reactants of $\fr_1$). Therefore, $\RAF'$ is (i) Reflexively Autocatalytic, since $\RAF$ is, 
 and (ii) is $\food$-generated; in particular, $\RAF'$ is a RAF which contradicts $\RAF$ being irreducible.
 \end{proof}
+We remark that \eqref{eq:inverse} in particular formally excludes the presence, in any irreducible RAF, of two reactions that are one the reverse of the other.}
 
 Since a RAF is defined in Def.~\ref{def:RAF} as a subset of F-reactions, Def.~\ref{def:irrerRAF} imposes 
 a minimality condition only on the set of F-reactions. However, motivated by the fact that in the CRN-setting 
