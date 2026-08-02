@@ -333,7 +333,7 @@ all \emph{net-stoichiometries}:
   		\SM_{xr} \coloneqq s^+_{xr}-s^-_{xr}.
 \end{equation}
 
-A \emph{sub-CRN} is a tuple $(X',\CR')$ with $X'\subseteq X$ and $\CR'\subseteq \CR$, where $r\in \CR'$ omits the reference to species $x\not\in X'$, and the associated stoichiometric matrix is denoted as $S[X',\mathcal{R}']$.
+A \emph{sub-CRN} $\Gamma'\subseteq \Gamma$ is a tuple $\Gamma'=(X',\CR')$ with $X'\subseteq X$ and $\CR'\subseteq \CR$, where $r\in \CR'$ omits the reference to species $x\not\in X'$, and the associated stoichiometric matrix is denoted as $S[X',\mathcal{R}']$.
 
 Clearly, stoichiometry and net-stoichiometry might not coincide, i.e.,  $s^{\pm}_{xr}\neq \pm S^{\pm}_{xr}$. One reasons is catalysis. From a chemical perspective, a \emph{catalyst} for $r$ is a species $x\in X$ that appears on both sides of the stoichiometric equation \eqref{eq:reaction}, i.e. with $s^-_{xr}s^+_{xr}\neq 0$, and that  additionally 
 ``increases the rate of a reaction without modifying the overall standard 
@@ -495,16 +495,16 @@ $\gamma(\mathbf{r})$ where an F-reaction $\mathbf{r}$ happens for the first time
     \gamma(\mathbf{r})\coloneqq \operatorname{min} \{i \; | \; \feducts(\mathbf{r})\subseteq X'_i\} + 1,
 \end{equation} 
 where the index is shifted by one for normalization, so that the \emph{first} generation corresponds to 
-index $\gamma(\mathbf{r})=1$.% Similarly, the sequences define a \emph{generation species-index} $g(x)$  where a non-food species $x\not\in \food$ is produced for the first time, i.e. \begin{equation} g(x)= \operatorname{min} \{i \; | \; x\in X'_i\}.\end{equation}
-Clearly, the total order $\le$ on the natural numbers induces a %preorder $\preccurlyeq$ on $X\setminus \food$ and 
-a preorder $\preceq$ on $\mathbf{R}$ as $\fr_1\preceq \fr_2$ if $\rgen(\fr_1) \leq \rgen(\fr_2)$.
-%\begin{equation}
-%\begin{cases}
-%  x_1\preccurlyeq x_2 \quad&\text{if}\quad \sgen(x_1) \leq \sgen(x_2)\\
-  
-%end{cases},
-%\end{equation}
-which we refer to as \emph{generation orders} on F-reactions, respectively. \NV{Via Remark~\ref{rmk:RAFCRN}, we will use the index $\gamma$ indistinctly also for reactions \eqref{eq:Mod.SmEq} in a CRN setting. In particular, from the definition of $\gamma$ it follows consistently that $\gamma(r_1)=\gamma(r_2)$ whenever $r_1\sim r_2$ and thus $\gamma(r_1)=\gamma(\fr)$ for $\fr=[r_1]_\sim$. [TBA comment on preorder vs partial order?]} 
+index $\gamma(\mathbf{r})=1$.  Similarly, the sequences define a \emph{generation species-index} $g(x)$  where a non-food species $x\not\in \food$ is produced for the first time, i.e. \begin{equation} g(x)= \operatorname{min} \{i \; | \; x\in X'_i\}.\end{equation}
+Clearly, the total order $\le$ on the natural numbers induces a preorder $\preccurlyeq$ on $X\setminus \food$ and 
+a preorder $\preceq$ on $\mathbf{R}$ 
+\begin{equation}
+\begin{cases}
+  x_1\preccurlyeq x_2 \quad&\text{if}\quad \sgen(x_1) \leq \sgen(x_2);\\
+  \fr_1\preceq \fr_2 \quad &\text{if} \quad \rgen(\fr_1) \leq \rgen(\fr_2).
+\end{cases},
+\end{equation}
+which we refer to as \emph{generation orders} on species and F-reactions, respectively. \NV{Via Remark~\ref{rmk:RAFCRN}, we will use the index $\gamma$ indistinctly also for reactions \eqref{eq:Mod.SmEq} in a CRN setting. In particular, from the definition of $\gamma$ it follows consistently that $\gamma(r_1)=\gamma(r_2)$ whenever $r_1\sim r_2$ and thus $\gamma(r_1)=\gamma(\fr)$ for $\fr=[r_1]_\sim$. [TBA comment on preorder vs partial order?]} 
 
 We conclude this section with the formal definition of CAFs sets.
 \vspace{6pt}
@@ -865,21 +865,21 @@ Finally, we stress that entry reactions always identify a column in the associat
 \section{Stoichiometric Autocatalysis}\label{sec:AutoCatIrrRAF}
 
 
-In chemical reaction networks (CRN), a matrix-centered definition of \emph{stoichiometric autocatalysis} was introduced by Blokhuis et al. \cite{blokhuis_Universal_2020}  without catalysis and recently adapted to the catalytic setting of the present paper \cite{golnik_autocatalytic_2026}, where a reactant can also be product of the same reaction. The central definition is as follows.
+In chemical reaction networks (CRN), a matrix-based definition of \emph{stoichiometric autocatalysis} was introduced by Blokhuis et al. \cite{blokhuis_Universal_2020} for networks without catalysis, and was recently extended to the catalytic setting considered in the present paper \cite{golnik_autocatalytic_2026}, where a reactant may also be a product of the same reaction. The  definition is as follows.
 
 \vspace{6pt}
 \begin{definition}\label{def:autSubRN}
-  A CRN $\Gamma\coloneqq (X,\CR)$ is \emph{stoichiometric autocatalytic} if it contains a sub-CRN $(X',\CR')$ such that
+  A CRN $\Gamma\coloneqq (X,\CR)$ is \emph{stoichiometric autocatalytic} if it contains a sub-CRN $\Gamma'=(X',\CR')$ such that
 \begin{enumerate}
  \item[i.] \emph{Well-formedness:} For any $r\in \mathcal{R}'$, there exists $x_1, x_2 \in X'$, not necessarily distinct, such that $s^-_{x_1r}s^+_{x_2r}\neq 0$;
- \item[ii.] \emph{Semi-positivity:} for the associated stoichiometric matrix $\SM'\coloneqq \SM[X',\CR']$ there exists $v\in \mathbb{R}_{>0}^{|\CR'|}$ such that $\SM'v>0$.
+ \item[ii.] \emph{Semi-positivity:} For the associated stoichiometric matrix $\SM'\coloneqq \SM[X',\CR']$ there exists $v\in \mathbb{R}_{>0}^{|\CR'|}$ such that $\SM'v>0$.
 \end{enumerate}
 \end{definition}
 \vspace{6pt}
 
 
-A minimality concept for stoichiometrically autocatalytic CRN is expressed in terms of subnetworks. A sub-CRN $(X',\CR')$ that satisfies \textit{(i.)} and \textit{(ii.)}, while no proper sub-CRN $(X'',\CR'')$ %with X''\subset X', \CR''\subset \CR'$ 
-does, is called an \emph{autocatalytic core}. 
+A minimality concept for stoichiometrically autocatalytic CRN is expressed in terms of subnetworks. A sub-CRN $\Gamma'$ that satisfies \textit{(i.)} and \textit{(ii.)}, while no proper sub-CRN $\Gamma''\subset\Gamma'$ %with X''\subset X', \CR''\subset \CR'$ 
+ does, is called an \emph{autocatalytic core}. 
 Any autocatalytic sub-CRN thereby contains an autocatalytic core. The stoichiometric submatrix associated to an autocatalytic core admits a reordering of the columns such that all diagonal entries are nonpositive while all off-diagonal entries are nonnegative \cite{blokhuis_Universal_2020, vassena_unstable_2024,golnik_autocatalytic_2026}. Matrices with nonnegative off-diagonal entries are called \emph{Metzler matrices} in the literature. An autocatalytic core of size $1$, i.e., $|X'|=|R'|=1$, is thus simply an \emph{autocatalytic reaction} $r$ of the type:
 \begin{equation}
     s^-_{x_1r}x_1+\ldots \quad\underset{r}\longrightarrow \quad s^+_{x_1r}x_2+\ldots\quad\quad\quad\text{with $s^+_{x_1r}>s^-_{x_1r}$.}
@@ -1032,7 +1032,7 @@ Since \(x\in X'\setminus\food\) is arbitrary, $\SM[X'\setminus\food,\mathcal R']
 
 %The directed bipartite K\H{o}nig graph representation of autocatalytic cores $(X',\CR')$ are \emph{fluffles} \cite{golnik_autocatalytic_2026}, induced subgraphs $G\coloneqq \king(\Gamma)[X'\cup\CR']$ that exhibit the following three properties: \begin{itemize}\item[F1)] {$|X'|=|\CR'|$,}\\[-1.0em]\item[F2)] {$\text{deg}^G_{\text{out}}(x)=1, \forall x \in X'$ and $\text{deg}^G_{\text{in}}(r)=1, \forall r \in \CR'$}\\[-1.0em]\item[F3)]{$G$ is a strong block.}\end{itemize}
 
-Lemma~\ref{lem:NonFoodSemipositiv2} shows that semipositivity is a natural property also for RAFs. Moreover, the structural result Lemma~\ref{lem:StrongBlocks} yields our main result: each sub-CRN $(X(\block)\setminus \food, \CR(\block))$, corresponding to a maximal, non-trivial strong block $\block$ of $\king(\RAF)$ of an irreducible, monocatalyzed RAF $\RAF$, is \emph{stoichiometrically autocatalytic}. 
+Lemma~\ref{lem:NonFoodSemipositiv2} shows that semipositivity is a natural property also for RAFs. Moreover, the structural result Lemma~\ref{lem:StrongBlocks} yields the following theorem: each sub-CRN $(X(\block)\setminus \food, \CR(\block))$, corresponding to a maximal, non-trivial strong block $\block$ of $\king(\RAF)$ of an irreducible, monocatalyzed RAF $\RAF$, is \emph{stoichiometrically autocatalytic}. 
 
 \vspace{6pt}
 \begin{theorem}\label{Thm:StrBlockCore}
@@ -1041,10 +1041,10 @@ Lemma~\ref{lem:NonFoodSemipositiv2} shows that semipositivity is a natural prope
 \vspace{6pt}
 
 \begin{proof}
-\NV{TO BE POLISHED.}
 We show that the subnetwork identified by $\block$ is stoichiometrically autocatalytic.\\
-Well-formedness follows naturally from the fact that any reaction-vertex $r$ in a strong-block $\block$ has at least one ingoing edge $(x_1,r)$ and one outgoing edge $(r,x_2)$, with $x_1$ not necessarily distinct from $x_2$ but both $x_1,x_2\not \food \cup\mathbf{W}_{\RAF}$ via Lemma \ref{lem:StrongBlocks}.\\
-To show semi-positivity, consider an enlarged food set $\tilde{\food}:=\food\cup\{x\in \closure{\RAF}{\food}\;|\; x\not\in X(\block)\}$. Lemma \ref{lem:StrongBlocks} guarantees that the set ... is $\tilde{\food}$-generated as any $r^*$ has F-reactants only in $\tilde{\food}$. Lemma~\ref{lem:NonFoodSemipositiv2} yields semipositivity of ... .
+Well-formedness follows naturally from the fact that any reaction-vertex $r$ in a strong-block $\block$ has at least one ingoing edge $(x_1,r)$ and one outgoing edge $(r,x_2)$, with $x_1$ not necessarily distinct from $x_2$ but both $x_1,x_2\not\in \food \cup\mathbf{W}_{\RAF}$ via Lemma \ref{lem:StrongBlocks}.\\
+To show semi-positivity, consider an enlarged food set \begin{equation}\tilde{\food}:=\food\cup\{x\in \closure{\RAF}{\food}\;|\; x\not\in X(\block)\}.\end{equation} Lemma \ref{lem:StrongBlocks} guarantees that the set $\mathcal{R}(\block)$ is $\tilde{\food}$-generated as any entry reaction (with respect to the food set $\tilde{\food}$) $r^*$ has F-reactants only in $\tilde{\food}$. Since $\closure{\mathbf{R}'(\block}{\tilde{\food}})=X(\block)\setminus \tilde{\food}$, Lemma~\ref{lem:NonFoodSemipositiv2} yields semipositivity of $S[X(\block)\setminus \tilde{\food},\mathcal{R}(\block)]$
+.
 \end{proof}
 
 \section{Two different kinds of examples.}\label{sec:examples}
@@ -1075,8 +1075,7 @@ Properties I1 and I2 imply a partition of $\king(\RAF)$ into strong blocks that 
 
 In fact, strong blocks are, by definition, well-formed. In addition, \emph{entry reactions}, which have only F-catalysts as reactants and at least one F-product inside the corresponding block $\block$, induce a nonnegative column in the stoichiometric submatrix $\SM[X(\block),\CR(\block)]$. This alone is indeed sufficient to guarantee that $\SM[X(\block),\CR(\block)]$ for any non-trivial, strong block $\block$ is semi-positive (Lemma~\ref{lem:NonFoodSemipositiv} and Cor.~\ref{cor:blockSemiPositiv}). Well-formedness and semipositivity of the associated stoichiometric submatrix -- the required conditions for a sub-CRN to be autocatalytic (Def.~\ref{def:autSubRN}) -- yield that each block is \emph{stoichiometrically autocatalytic} and therefore contains an autocatalytic core  (Thm.~\ref{Thm:StrBlockCore}).}
 
-\holy{
-The structures responsible for each strong block being \emph{stoichiometrically autocatalytic} are \emph{Metzler circuits}; elementary circuits that allow for a column-reordering of their associated stoichiometric submatrix such that the resulting Matrix is a Metzler matrix (Lemma~\ref{lem:MetzCircuit}). Such an ordering can be obtained by arranging the columns according to the direction of the circuit. In the proof of Lemma~\ref{lem:MetzCircuit}, we provided a construction of a Metzler circuit that always contains an entry reaction.
+
 
 \begin{figure}[bth]
   \begin{minipage}[c]{0.49\textwidth}
@@ -1123,12 +1122,9 @@ The structures responsible for each strong block being \emph{stoichiometrically 
   \label{ex:CutVertex3}
 \end{figure}
 
-The existence of a Metzler circuit containing an entry reaction has already been shown to exist for any RAF that is itself not a CAF \cite[Thm.~3.1]{golnik_bridging_2026}. However, in the proof, the construction proceeds along the F-catalysts as reactants for each reaction, and thus not necessarily the reactant with the lowest generation order. Indeed, irreducible RAFs exist, where this construction fails to construct such a circuit for each non-trivial, strong block $\block$. An example, capturing this situation, is depicted in Fig.~\ref{ex:CutVertex3}. The block $(\{x_1,x_2\}, \{r_1,r_2\})$ does not contain an elementary circuit, where each species vertex is the F-catalyst of its appurtenant reaction. Nevertheless, $C\coloneqq (x_1,r_1,x_2,r_2,x_1)$ is still a Metzler circuit with entry reaction $r_1$, and thereby \emph{stoichiometrically autocatalytic} (Lemma.~\ref{lem:MetzCircAut}). In addition, $(x_3,r_2,x_4,r_3, x_3)$ satisfies the construction of \cite[Thm.~3.1]{golnik_bridging_2026}.}
 
-\holy{
-The example depicted in Fig.~\ref{fig:RAFContAutCyc} clearly illustrates, however, that these \emph{stoichiometrically autocatalytic} Metzler circuits are not necessarily autocatalytic cores. Similarly, non-trivial stoichiometries can give rise to strictly smaller cores that can be contained inside the constructed circuits \ref{fig:NonUnStoich}. Especially the latter does not allow for a general construction of autocatalytic cores directly. 
 
-Independent of the core's structure, different catalyzations can give rise to equivalent autocatalytic cores. In fact, each autocatalytic core is an element of equivalence classes that contain sub-CRNs on the same set of species vertices and sets of reaction vertices that share the same set of F-reactions (see Eq.~\eqref{eq:CoreEquiv}). The size of such an $\simeq$-equivalence class grows exponentially with the product of the sizes of $\sim$-equivalence classes of participating reactions (Prop.~\ref{prop:ExpoNoCores}), which correlates with the large number of autocatalytic cores observed and the reduced number of $\simeq$-equivalence classes (Fig.~\ref{fig:UniqueFReactionCores}) in irreducible RAFs of random instances of the binary polymer model \cite{kauffman_autocatalytic_1986}. 
+\holy{Independent of the core's structure, different catalyzations can give rise to equivalent autocatalytic cores. In fact, each autocatalytic core is an element of equivalence classes that contain sub-CRNs on the same set of species vertices and sets of reaction vertices that share the same set of F-reactions (see Eq.~\eqref{eq:CoreEquiv}). The size of such an $\simeq$-equivalence class grows exponentially with the product of the sizes of $\sim$-equivalence classes of participating reactions (Prop.~\ref{prop:ExpoNoCores}), which correlates with the large number of autocatalytic cores observed and the reduced number of $\simeq$-equivalence classes (Fig.~\ref{fig:UniqueFReactionCores}) in irreducible RAFs of random instances of the binary polymer model \cite{kauffman_autocatalytic_1986}. 
 
 Even though all elements of the same $\simeq$-equivalence class are autocatalytic whenever one element is autocatalytic, not all of them are necessarily cores. The example illustrated in Fig.~\ref{fig:Minimality} demonstrates how catalyzations impact the minimality property of autocatalytic cores, as one element of an equivalence class is a core, while the other is not. This observation originates from the way catalysts are handled within CRNs, i.e., as reactants and products directly participating in a reaction and thereby affecting the uniqueness of reactants for each reaction inside a core.}
 

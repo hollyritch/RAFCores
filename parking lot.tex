@@ -781,6 +781,15 @@ Cores in the same equivalence class support self-sustainability for an identical
 	\label{fig:UniqueFReactionCores}
 \end{figure}
 
+\section{discussion}
+\holy{
+The structures responsible for each strong block being \emph{stoichiometrically autocatalytic} are \emph{Metzler circuits}; elementary circuits that allow for a column-reordering of their associated stoichiometric submatrix such that the resulting Matrix is a Metzler matrix (Lemma~\ref{lem:MetzCircuit}). Such an ordering can be obtained by arranging the columns according to the direction of the circuit. In the proof of Lemma~\ref{lem:MetzCircuit}, we provided a construction of a Metzler circuit that always contains an entry reaction.}
+
+\holy{The existence of a Metzler circuit containing an entry reaction has already been shown to exist for any RAF that is itself not a CAF \cite[Thm.~3.1]{golnik_bridging_2026}. However, in the proof, the construction proceeds along the F-catalysts as reactants for each reaction, and thus not necessarily the reactant with the lowest generation order. Indeed, irreducible RAFs exist, where this construction fails to construct such a circuit for each non-trivial, strong block $\block$. An example, capturing this situation, is depicted in Fig.~\ref{ex:CutVertex3}. The block $(\{x_1,x_2\}, \{r_1,r_2\})$ does not contain an elementary circuit, where each species vertex is the F-catalyst of its appurtenant reaction. Nevertheless, $C\coloneqq (x_1,r_1,x_2,r_2,x_1)$ is still a Metzler circuit with entry reaction $r_1$, and thereby \emph{stoichiometrically autocatalytic} (Lemma.~\ref{lem:MetzCircAut}). In addition, $(x_3,r_2,x_4,r_3, x_3)$ satisfies the construction of \cite[Thm.~3.1]{golnik_bridging_2026}.
+
+
+The example depicted in Fig.~\ref{fig:RAFContAutCyc} clearly illustrates, however, that these \emph{stoichiometrically autocatalytic} Metzler circuits are not necessarily autocatalytic cores. Similarly, non-trivial stoichiometries can give rise to strictly smaller cores that can be contained inside the constructed circuits \ref{fig:NonUnStoich}. Especially the latter does not allow for a general construction of autocatalytic cores directly.} 
+
 \bibliography{RAFCores}
 
 \end{document}
