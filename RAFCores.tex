@@ -831,7 +831,7 @@ and of generation reaction-index $\gamma$ (Eq.~\eqref{def:genreactionindex}), it
 $c\in \cat(\fr)$ are in the food set $\food$. Therefore $\fr$ is a CAF (and RAF) itself, and $\RAF=\{\fr\}$ by irreducibility of $\RAF$.
 \end{proof}
 
-Due to Prop.~\ref{prop:Caftrivial}, throughout the paper we exclude the trivial CAF case whenever making statements about irreducible RAFs. 
+In turn, Example \eqref{eq:ExReacSeq} shows that we may have single-reaction irreducible RAFs, which are not CAF. Due to Prop.~\ref{prop:Caftrivial}, throughout the paper we exclude the trivial CAF case whenever making statements about irreducible RAFs. 
 To keep the exposition concise, we assume this exclusion throughout and do not repeat it explicitly in each statement.
 
 
@@ -843,7 +843,7 @@ Let $\mathbf{\Phi}=(X,\FR,\cat(\FR))$ be a CRS with food set $\food\subseteq X$.
 \begin{equation}\label{eq:RAF-CRS}
   \mathbf{\Phi}' \coloneqq (\closure{\RAF}{\food}, \RAF, \cat'(\RAF)),
 \end{equation}
-where $|\cat'(\fr)|=1$ for each F-reaction $\fr\in \RAF$. \NV{In the following, without loss of generality, we assume that each species $x\in\food$ participates as an F-reactant, F-product, or F-catalyst in at least one F-reaction $\fr\in\RAF$. This excludes isolated food species for simplicity, as they play no role in the subsequent constructions and statements.}
+where $|\cat'(\fr)|=1$ for each F-reaction $\fr\in \RAF$. In the following, without loss of generality, we assume that each food species $x\in\food$ participates as an F-reactant, F-product, or F-catalyst in at least one F-reaction $\fr\in\RAF$. This excludes isolated food species for simplicity, as they play no role in the subsequent constructions and statements.
 
 Consider now the associated CRN $\Gamma'\coloneqq \Gamma(\mathbf{\Phi}')$. One central advantage of considering such monocatalyzed CRSs $\mathbf{\Phi}'$ is that the quotient map from $\Gamma(\mathbf{\Phi}')$ to $\mathbf{\Phi}'$ is a bijection. Indeed, the quotient construction becomes trivial, since every equivalence class, i.e. every F-reaction $\fr$, is a singleton $\fr=\{r\}$. Thus, the quotient CRS can be canonically identified with the underlying CRN and we can therefore naturally address properties of $\mathbf{\Phi}'$ by studying them in $\Gamma'$. To do so, we use the notation $\mathcal{R}'$ to identify the CRN reactions of $\Gamma'$, i.e. $\Gamma'=(\closure{\RAF}{\food},\mathcal{R}')$. We repeat that each of such reactions $r\in \mathcal{R}'$, written as \eqref{eq:Mod.SmEq}, is in canonical bijection with an F-reaction $\fr\in \RAF$, written as \eqref{eq:FReacEq}, which is catalyzed by the singleton $\cat(\fr)=\{c\}$ with $c=\cat(r)$.
 
@@ -934,10 +934,10 @@ An example of an irreducible, monocatalyzed RAF containing multiple strong block
 \begin{lemma}[Strong blocks]\label{lem:StrongBlocks}
 Consider an irreducible, monocatalyzed RAF $\RAF$. Let $\block$ be a maximal strong block of $K(\RAF)$ such that $\block$  contains a species-vertex $x^*$, which is not in the food and waste sets, i.e. $x^*\notin \food \cup\mathbf{W}_{\RAF}$, and let $r^*\in \mathcal{R}(\block)$ be a reaction satisfying $r^* \preceq r$, for any $r\in \mathcal{R}(\block)$. Then,
   	\begin{itemize}
-		\item[i.]{$\feducts(r^*)\cap X(\block) \quad \subseteq  \quad \food;$}
-        \item[ii.]
-        {$(\cat(r^*) \setminus \food) \cap X(\block)\quad \neq \quad \emptyset;$}
-		\item[iii.]{($\fproducts(r^*) \setminus \food) \cap X(\block)\quad \neq \quad \emptyset$.}
+		\item[i.] All F-reactants of $r^*$ in $\block$ belong to the food set:{$$\feducts(r^*)\cap X(\block) \quad \subseteq  \quad \food;$$}
+        \item[ii.] There is at least a non-food F-catalyst of $r^*$ in $\block$:
+        $$(\cat(r^*) \setminus \food) \cap X(\block)\quad \neq \quad \emptyset;$$
+		\item[iii.]There is at least a non-food F-product of $r^*$ in $\block$:$$(\fproducts(r^*) \setminus \food) \cap X(\block)\quad \neq \quad \emptyset.$$
 	\end{itemize} 
 \end{lemma}
 
