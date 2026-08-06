@@ -817,6 +817,22 @@ and $P''$ contain only non-negative entries \PFS{and very row of $S(C)$
 \vspace{6pt}
 
 
+\subsection{The Binary Polymer Model}
+
+The binary polymer model is an abstract model of polymer chemistry that was introduced to argue about the probability of emergence of autocatalytic sets in random reaction networks. The set of molecules $X$ consists of all binary strings up to a given length $n$. The reaction set $\FR$ consists of all possible ligation reactions concatenating two bit strings together into a longer one (as long as the product is not longer than $n$), together with their reverse cleavage reactions cutting a bit string into two shorter ones. The food set $\food$ consists of all binary strings up to a given length $t$, here always $t=2$, i.e., the food set consists of the monomer and dimers.
+
+Catalysis is assigned randomly. In particular, there is a fixed probability $p$ that a given molecule (binary string) can catalyze a given ligation/cleavage reaction. In other words, to create an instance of the model (given $n$ and $t$), each molecule-reaction pair $(x,\fr), x \in X, \fr \in \FR$ is included in the set of catalyzations $\cat(\FR)$ with probability $p$.
+
+More formally, an instance of the binary polymer model forms a CRS $\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$, where
+\begin{itemize}
+  \item $X = \{0,1\}^{\leq n}$
+  \item $\FR = \{x_i + x_j \leftrightarrow x_i \cdot x_j : (x_i, x_j \in X) \wedge (|x_i \cdot x_j| \leq n)\}$
+  \item $\mathbb{P}[(x \in X, \fr \in \FR) \in \cat(\FR)] = p$
+  \item $\food = \{0,1\}^{\leq t}$
+\end{itemize}
+
+
+
 \bibliography{RAFCores}
 
 \end{document}
