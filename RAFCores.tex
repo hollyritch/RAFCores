@@ -343,32 +343,32 @@ autocatalytic cores; see Fig.\ref{fig:irrRAFCores}. \PFS{The need to
   explain this} apparent discrepancy motivates the present contribution, in
 which we investigate the structural properties of irreducible RAFs.
 
-\begin{figure}[p]
+\begin{figure}[htb]
   \centering
   \begin{minipage}[c]{\textwidth}
     \centering
     \begin{minipage}[c]{0.5\textwidth}
       \centering
-      \includegraphics[width=0.8\textwidth]{./Pictures/IrrRAFCoresn5rev2.png}
+      \includegraphics[width=0.9\textwidth]{./Pictures/IrrRAFCoresn5rev2.png}
     \end{minipage}%
     \hfill%
     \begin{minipage}[c]{0.5\textwidth}
       \centering
-      \includegraphics[width=0.8\textwidth]{./Pictures/IrrRAFCoresn5rev.png}
+      \includegraphics[width=0.9\textwidth]{./Pictures/IrrRAFCoresn5rev.png}
     \end{minipage}
   \end{minipage}
-  \begin{minipage}[c]{\textwidth}
-    \centering
-    \begin{minipage}[c]{0.5\textwidth}
-      \centering
-      \includegraphics[width=\textwidth]{./Pictures/n5rev_overlap.pdf}
-    \end{minipage}%
-    \hfill%
-    \begin{minipage}[c]{0.5\textwidth}
-      \centering
-      \includegraphics[width=\textwidth]{./Pictures/n5rev2_overlap.pdf}
-    \end{minipage}
-  \end{minipage}
+%  \begin{minipage}[c]{\textwidth}
+%    \centering
+%    \begin{minipage}[c]{0.5\textwidth}
+%      \centering
+%      \includegraphics[width=\textwidth]{./Pictures/n5rev_overlap.pdf}
+%    \end{minipage}%
+%    \hfill%
+%    \begin{minipage}[c]{0.5\textwidth}
+%      \centering
+%      \includegraphics[width=\textwidth]{./Pictures/n5rev2_overlap.pdf}
+%    \end{minipage}
+%  \end{minipage}
   \begin{minipage}[c]{\textwidth}
     \centering
     \begin{minipage}[c]{0.5\textwidth}
@@ -395,6 +395,7 @@ which we investigate the structural properties of irreducible RAFs.
   \label{fig:irrRAFCores}
 \end{figure}
 
+
 We first clarify in Sec.~\ref{sec:CRNCRS} the formal relationship between
 the two underlying frameworks, chemical reaction networks (CRNs) and
 catalytic reaction systems (CRSs), so that we may move freely between them:
@@ -416,7 +417,6 @@ construction, which can produce examples containing any arbitrary number of
 irreducible RAFs, yet invariably only one single autocatalytic core. We
 conclude with a discussion of future directions.
  
-%\FloatBarrier
 
 
 \section{Two Representations of Chemical Systems}\label{sec:CRNCRS}
@@ -1401,6 +1401,20 @@ monocatalyzed RAF $\RAF$, is \emph{stoichiometrically autocatalytic}.
   \tilde{\food}$, Lemma~\ref{lem:NonFoodSemipositiv2} yields semipositivity
   of $S[X(\block)\setminus \tilde{\food},\mathcal{R}(\block)]$ .
 \end{proof}
+
+\begin{figure}
+	\centering
+	\begin{minipage}[c]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./Pictures/IrrRAFCoresn5revWithVsWithoutFood.png}
+	\end{minipage}%
+	\hfill%
+	\begin{minipage}[c]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./Pictures/IrrRAFCoresn5rev2WithVsWithoutFood.png}
+	\end{minipage}%
+	\caption{Autocatalytic cores in irreducible RAFs from two random instances of the binary polymer model with and without food molecules.} 
+\end{figure}
 
 \section{Two different kinds of examples.}
 \label{sec:examples}
