@@ -236,7 +236,7 @@
 
 \section{Introduction}
 
-Wilhelm Ostwald's \PFS{reflections} in 1890 on whether chemical reactions
+Wilhelm Ostwald's reflections in 1890 on whether chemical reactions
 could be catalyzed by one of their own products \cite{Ostwald:90} marked
 the provenance of autocatalysis. In its simplest form, autocatalysis
 appears as an autocatalytic reaction where one participating species drives
@@ -289,8 +289,8 @@ An alternative approach to formalize system-level autocatalysis focused on
 systems of chemical reactions in which every reaction is, in general,
 explicitly catalyzed \cite{lohn_evolving_1998, steel_emergence_2000}. The
 original idea dates back to Kauffman's \cite{kauffman_autocatalytic_1986}
-\PFS{ideas} about how life on Earth might have emerged as a
-metabolism-first event rather than a genetics-first one. Kauffman explored
+ideas about how life on Earth might have emerged as a metabolism-first 
+event rather than a genetics-first one. Kauffman explored
 whether sets of polypeptide complexes, generated via reactions that are
 exclusively catalyzed by members of the set, could lead to collectively
 self-reproducing systems.  Remarkably, under reasonable assumptions and a
@@ -324,23 +324,25 @@ it is shown that any RAF that is itself not entirely a CAF is always
 
 % \textbf{Motivation: minimal autocatalytic structures.}
 
-\PFS{Both, the CRN and the CRS} frameworks have developed parallel concepts
-of `minimal’ autocatalytic sub-systems. Although they \PFS{differ
-  substantially, they share the notion of minimality by considering}
-autocatalytic sub-systems that do not themselves contain \PFS{even smaller}
-autocatalytic sub-system. \PFS{The resulting minimal structures} are termed
+Both the CRN and the CRS frameworks have developed parallel concepts
+of `minimal’ autocatalytic sub-systems. Although they differ
+substantially, they share the notion of minimality by considering
+autocatalytic sub-systems that do not themselves contain even smaller
+autocatalytic sub-systems. The resulting minimal structures are termed
 \emph{autocatalytic cores} in stoichiometric autocatalysis and
-\emph{irreducible} RAFs in RAF theory. \PFS{Computational tools have been
-  developped to identify minimal minimal structures in both frameworks.}
+\emph{irreducible} RAFs in RAF theory. Computational tools have been
+developed to identify minimal structures in both frameworks 
+\cite{kosc_thermodynamic_2025, gagrani_polyhedral_2024, 
+golnik_using_2026, hordijk_algorithms_2026}.
 Developed only recently, \texttt{autogatito} \cite{golnik_using_2026} can
 enumerate autocatalytic cores in large chemical reaction networks, for
 example of metabolic type. A na{\"\i}ve and informal application of
 \texttt{autogatito} to the chemical reaction networks associated with
 irreducible RAFs generated from random instances of the binary polymer
-model \cite{kauffman_autocatalytic_1986} produced an \PFS{unexpected
-  outcome:} each irreducible RAF contains a large number (up to $10000$)
-autocatalytic cores; see Fig.\ref{fig:irrRAFCores}. \PFS{The need to
-  explain this} apparent discrepancy motivates the present contribution, in
+model \cite{kauffman_autocatalytic_1986} produced an unexpected
+outcome: each irreducible RAF contains a large number (up to $1000$)
+autocatalytic cores; see Fig.~\ref{fig:irrRAFCores}. The need to
+explain this apparent discrepancy motivates the present contribution, in
 which we investigate the structural properties of irreducible RAFs.
 
 \begin{figure}[htb]
@@ -1273,8 +1275,8 @@ does, is called an \emph{autocatalytic core}.  Any autocatalytic sub-CRN
 thereby contains an autocatalytic core. The stoichiometric submatrix
 associated to an autocatalytic core admits a reordering of the columns such
 that all diagonal entries are nonpositive while all off-diagonal entries
-are nonnegative \cite{blokhuis_Universal_2020,
-  vassena_unstable_2024,golnik_autocatalytic_2026}. Matrices with
+are nonnegative \cite{blokhuis_Universal_2020, golnik_autocatalytic_2026, 
+vassena_unstable_2024}. Matrices with
 nonnegative off-diagonal entries are called \emph{Metzler matrices} in the
 literature. An autocatalytic core of size $1$, i.e.,
 $|X'|=|R'|=1$, is thus simply an \emph{autocatalytic reaction}
@@ -1403,6 +1405,20 @@ monocatalyzed RAF $\RAF$, is \emph{stoichiometrically autocatalytic}.
   of $S[X(\block)\setminus \tilde{\food},\mathcal{R}(\block)]$ .
 \end{proof}
 
+\section{Two different kinds of examples.}
+\label{sec:examples}
+
+Thm.~\ref{Thm:StrBlockCore} guarantees that each maximal strong block that 
+contains at least one species-vertex that does not represent a food or waste 
+molecule is a stoichiometric autocatalytic sub-CRN. In addition, at least one 
+autocatalytic core does not contain any food molecules. To this end, we constrained 
+the CRNs generated from each irreducible RAF of random instances of the binary 
+polymer model from FIg.~\ref{fig:fig:irrRAFCores} to include only non-food molecules. 
+Importantly, as Fig.~\ref{FoodVsNonFood} shows, these restricted networks still
+exhibit large numbers of autocatalytic cores, which is not attributable to large numbers 
+of maximal strong blocks, as each such irreducible RAF comprises only one 
+maximal strong block that contains at least one non-food, non-waste species-vertex. 
+
 \begin{figure}
 	\centering
 	\begin{minipage}[c]{0.5\textwidth}
@@ -1414,11 +1430,11 @@ monocatalyzed RAF $\RAF$, is \emph{stoichiometrically autocatalytic}.
 		\centering
 		\includegraphics[width=\textwidth]{./Pictures/IrrRAFCoresn5rev2WithVsWithoutFood.png}
 	\end{minipage}%
-	\caption{Autocatalytic cores in irreducible RAFs from two random instances of the binary polymer model with and without food molecules.} 
+	\caption{Autocatalytic cores in different irreducible RAFs from two independent instances 
+	of the binary polymer model (see Fig.~\ref{fig:irrRAFCores} and Sect.~\ref{S-sec:BinPol}) with 
+	and without food molecules.}
+	\label{fig:FoodVsNonFood} 
 \end{figure}
-
-\section{Two different kinds of examples.}
-\label{sec:examples}
 
 \TODO{***}
 
