@@ -356,7 +356,7 @@ which we investigate the structural properties of irreducible RAFs.
     \hfill%
     \begin{minipage}[c]{0.5\textwidth}
       \centering
-      \includegraphics[width=0.9\textwidth]{./Pictures/n7iRAFirrevCoresWFood.png}
+      \includegraphics[width=0.9\textwidth]{./Pictures/n6iRAFirrevCoresWFoodRelevant.png}
     \end{minipage}
   \end{minipage}
 %  \begin{minipage}[c]{\textwidth}
@@ -390,9 +390,10 @@ which we investigate the structural properties of irreducible RAFs.
       individual irreducible RAFs.  The figure shows two instances of the
       binary polymer model with a fixed probability for any non-food species
       to catalyze any reaction of $p=0.01$ (\textbf{right}) and $p=0.008$
-      (\textbf{left}) and maximum polymer length $5$.  See
-      Sect.~\ref{sect:term} for the definition of terminology and
-      SI Sect.~\ref{S-sec:BinPol} for simulation details.}
+      (\textbf{left}) and maximum polymer length $6$. While the \textbf{right} 
+      includes only ligation reactions, the \textbf{left} includes both ligation and
+      cleavage reaction. See Sect.~\ref{sect:term} for the definition of terminology 
+      and SI Sect.~\ref{S-sec:BinPol} for simulation details.}
   \label{fig:irrRAFCores}
 \end{figure}
 
@@ -1232,6 +1233,38 @@ then \eqref{eq:condmanysb} is satisfied and thus $K(\RAF)$ is essentially
 one single strong block. Here, `essentially' simply means by not
 considering strong blocks involving only food and waste species.
 
+%\begin{figure}[htb]
+%	\begin{minipage}[c]{0.5\textwidth}
+%		\centering
+%	\includegraphics[width=\textwidth]{./Pictures/n6iRAFrevWFoodRelevantStrongBlocks.png}
+%	\end{minipage}%
+%	\hfill%
+%	\begin{minipage}[c]{0.5\textwidth}
+%		\centering
+%		\includegraphics[width=\textwidth]{./Pictures/n6iRAFirrevWFoodRelevantStrongBlocks.png}
+%	\end{minipage}
+%	\caption{Number of strong blocks ....}
+%	\label{fig:StrongBlocks}
+%\end{figure}
+
+\holy{Although RAFs can, in principle, be composed of multiple 
+maximal strong blocks that contain at least one non-food, non-waste 
+species-vertex, any irreducible RAF of the two instances of the binary 
+polymer model depicted in Fig.~\ref{fig:irrRAFCores} consists of only 
+one such block. According to Cor.~\ref{cor:strongblock2}, this is not 
+surprising for instances containing only ligation F-reactions 
+(Fig.~\ref{Fig:IrrRAFCores}, right panels), which all have only 
+one F-product. However, even for the presence of both cleavage and 
+ligation reactions, we could not find an instance for maximal polymer 
+sizes of 5,6, and 7, where any of the collected irreducible RAF was 
+composed of more than one maximal strong block that contained at 
+least one non-food, non-waste species-vertex (see Fig.~\ref{S-fig:}\TODO{TBA}), 
+although this is in principle possible as depicted in Fig.~\ref{fig:BPM}. 
+The uniformly distributed probability of catalysis assignment results in 
+densely connected networks, which was already reported in 
+\TODO{Ask Wim for reference}. Nevertheless, the large number of 
+autocatalytic cores in each irreducible RAF remains unexplained.}
+
 Finally, we stress that entry reactions always identify a column in the
 associated stoichiometric matrix
 $S[X(\block)\setminus \food, \mathcal{R}(\block)]$ of
@@ -1429,20 +1462,10 @@ maximal strong block that contains at least one non-food, non-waste species-vert
 		\hfill%
 		\begin{minipage}[c]{0.5\textwidth}
 			\centering
-			\includegraphics[width=\textwidth]{./Pictures/n7iRAFirrevWithVsWOFood.png}
+			\includegraphics[width=\textwidth]{./Pictures/n6iRAFirrevCoresWvsWOFood.png}
 		\end{minipage}
 	\end{minipage}
-	\begin{minipage}[c]{\textwidth}	
-		\begin{minipage}[c]{0.5\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{./Pictures/n6iRAFrevWFoodRelevantStrongBlocks.png}
-		\end{minipage}%
-		\hfill%
-		\begin{minipage}[c]{0.5\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{./Pictures/n5Rev2StrongBlocks.png}
-		\end{minipage}
-	\end{minipage}
+
 	
 	\caption{Autocatalytic cores in different irreducible RAFs from two independent instances 
 	of the binary polymer model (see Fig.~\ref{fig:irrRAFCores} and Sect.~\ref{S-sec:BinPol}) with 
