@@ -740,7 +740,7 @@ is an irreducible RAF.
 
 
 The minimality condition imposed on the set of F-reactions via
-Def.~\ref{def:irrerRAF} directly yields the following two structural lemma.
+Def.~\ref{def:irrerRAF} directly yields the following two structural lemmas.
 \vspace{6pt}
 \begin{lemma}\label{lem:OneFReacPerRAF}
   Let $(X,\FR,\cat(\FR))$ be a CRS with food-set $\food\subseteq X$. An
@@ -773,11 +773,24 @@ Def.~\ref{def:irrerRAF} directly yields the following two structural lemma.
   $\food$-generated; in particular, $\RAF'$ is a RAF which contradicts
   $\RAF$ being irreducible.
 \end{proof}
-We remark that \eqref{eq:inverse} in particular formally excludes the
-presence, in any irreducible RAF, of two reactions that are one the reverse
-of the other.
-
-\Wim{To add as a follow-up result: an irreducible RAF is also unique in the sense of its set of ``reversible'' reactions. More specifically, it cannot be the case that there is another irreducible RAF with the same set of reactions (in the reversible sense), but with any subset of the reactions going in the reverse direction. The only exception is a trivial irreducible RAF where all molecules involved are in the food set. To be stated more formally...}
+We remark that \eqref{eq:inverse} in particular formally excludes the presence in any irreducible RAF of two F-reactions that are each other's reverse. Writing a pair of reverse F-reactions as defined by \eqref{eq:inverse} as
+\begin{equation}\label{eq:reversereac}
+  \fr_1 = \bar{\fr}_2  \qquad\text{and}\qquad \fr_2 = \bar{\fr}_1
+\end{equation}
+and a set of reverse F-reactions as
+\begin{equation}\label{eq:reverseset}
+  S = \{\fr_1,\fr_2,\ldots,\fr_k\} \Rightarrow \bar{S} = \{\bar{\fr}_1,\bar{\fr}_2,\ldots,\bar{\fr}_k\}
+\end{equation}
+we can also state the following result.
+\vspace{6pt}
+\begin{lemma}\label{lem:noReverseIrrRAF}
+  Let $(X,\FR,\cat(\FR))$ be a CRS with food-set $\food\subseteq X$, and $\RAF \subset \FR$ a (non-trivial) irreducible RAF. For any subset $S \subseteq \RAF$, the set $\RAF' = (\RAF \setminus S) \cup \bar{S}$ is not an irreducible RAF.
+\end{lemma}
+\begin{proof}
+  First assume that $\RAF$ with one (arbitrary) F-reaction $\fr_i$ reversed is an irreducible RAF $\RAF'$. That means that $\feducts(\bar{\fr}_i) = \fproducts(\fr_i) \subset \closure{\RAF}{\food}$. However, that means that $\RAF \setminus \{\fr_i\}$ is also a RAF, contradicting the fact that $\RAF$ is irreducible.
+  Alternatively, it could be that $\feducts(\bar{\fr}_i) \not\subset \closure{\RAF}{\food}$, but that by reversing some other F-reaction $\fr_j \in \RAF$ it will be. But then the first argument can be applied to $\fr_j$, or otherwise it leads to an increasing sequence of reversed F-reactions where (i) some reversed F-reaction $\bar{\fr}_k$ requires an F-reactant that is an F-product of an earlier reversed F-reaction, or (2) for some reversed F-reaction $\bar{\fr}_k$ it is the case that $\feducts(\bar{\fr}_k) \subset \food$. In case (i) $\RAF'$ cannot be an irreducible RAF as it is not $\food$-generated (having a cycle of F-reactions where each F-reaction has an F-reactant that is only produced by the previous F-reaction in the cycle), and in case (ii) it follows that $\fproducts(\fr_k) \subset \food$, which contradicts the fact that $\RAF$ is irreducible.
+\end{proof}
+In words, given an irreducible RAF $\RAF$, there is no subset of F-reactions $S \subseteq \RAF$ such that when all F-reactions in the subset $S$ are reversed, the resulting set is also an irreducible RAF. The only exception is an irreducible RAF consiting of a single reaction where all F-reactants, F-products, and at least one catalyst are all in the food set $\food$.
 
 Since a RAF is defined in Def.~\ref{def:RAF} as a subset of F-reactions,
 Def.~\ref{def:irrerRAF} imposes a minimality condition only on the set of
