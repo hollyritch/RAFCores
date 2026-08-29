@@ -1475,6 +1475,100 @@ maximal strong block that contains at least one non-food, non-waste species-vert
 
 \TODO{***}
 
+\begin{figure}
+	\begin{minipage}[l]{0.52\textwidth}
+		\begin{equation*}
+			\begin{split}
+				r_1&: f + (x_1) \rightarrow x_2 + (x_1)\\[0.5em]
+				r'_2&: x_2 + (x'_2) \rightarrow x_3 + (x'_2) \\[0.5em]
+				r''_2&: x_2 + (x''_2) \rightarrow x_3 + (x''_2) \\[0.5em]
+				r'_3&: x_3 + (x'_3) \rightarrow x_4 + x'_2 + x''_2 + (x'_3) \\[0.5em]
+				r''_3&: x_3 + (x''_3) \rightarrow x_4 + x'_2 + x''_2 + (x''_3) \\[0.5em]
+				& \hspace{3pt} \vdots \\[0.5em]
+				r_n&:  x_n + (x'_n) \rightarrow x_1 + x'_{n-1} + x''_{n-1} + x'_n + (x'_n) \\[0.5em]
+			\end{split}
+		\end{equation*}
+	\end{minipage}%
+	\hfill%
+	\begin{minipage}[r]{0.48\textwidth}
+		\begin{tikzpicture}
+			\node[draw, circle] (f) at (0,0) {$f$};
+			\node[draw, circle] (x1) at (1,1) {$x_1$};
+			\node[draw, circle] (x2) at (1,-1) {$x_2$};
+			\node[draw, circle] (x'2) at (-0.5,-1) {$x'_2$};
+			\node[draw, circle] (x''2) at (2.5,-1) {$x''_2$};
+			\node[draw, circle] (x3) at (1,-5) {$x_3$};
+			\node[draw, circle] (x'3) at (2,-6.5) {$x'_3$};
+			\node[draw, circle] (x''3) at (2,-3.5) {$x''_3$};
+			\node[draw, circle] (x4) at (4.5,-5) {$x_3$};
+			\node[draw, circle] (xn) at (4.5,1) {$x_n$};			
+			\node[draw, circle] (x'n) at (3.5,2.5) {$x'_n$};
+			\node[draw, circle] (x''n) at (3.5,-0.5) {$x''_n$};
+			
+			\node[draw, rectangle] (r1) at (1,0) {$r_1$};
+			\node[draw, rectangle] (r'2) at (0.5,-2.5) {$r'_2$};
+			\node[draw, rectangle] (r''2) at (1.5,-2.5) {$r''_2$};			
+			\node[draw, rectangle] (r'3) at (2.5,-5.5) {$r'_3$};
+			\node[draw, rectangle] (r''3) at (2.5,-4.5) {$r''_3$};
+			
+			\node[draw, rectangle] (r'k) at (4,-1.5) {$\cdots$};
+			\node[draw, rectangle] (r''k) at (5,-1.5) {$\cdots$};
+			
+			\node[draw, rectangle] (r'n) at (2.75,1.5) {$r'_n$};
+			\node[draw, rectangle] (r''n) at (2.75,0.5) {$r''_n$};			
+			
+			\draw[->] (f) to (r1);
+			\draw[->] (x1) to [bend right = 30](r1);
+			\draw[->] (r1) to [bend right = 30] (x1);
+			\draw[->] (r1) to (x2);
+			\draw[->] (x2) to [bend right = 15] (r'2);
+			\draw[->] (x2) to [bend left = 15] (r''2);			
+			\draw[->] (x'2) to [bend right = 30] (r'2);
+			\draw[->] (r'2) to [bend right = 30] (x'2);
+			\draw[->] (x''2) to [bend right = 30] (r''2);
+			\draw[->] (r''2) to [bend right = 30] (x''2);			
+			\draw[->] (r'2) to [bend right = 15] (x3);
+			\draw[->] (r''2) to [bend left = 15] (x3);
+			
+			\draw[->] (x3) to [bend right=15] (r'3);
+			\draw[->] (x3) to [bend left=15] (r''3);
+			\draw[->] (r'3) to [bend right=15] (x4);
+			\draw[->] (r''3) to [bend left=15] (x4);			
+			\draw[->] (r''3) to [bend right=15] (x''2);
+			\draw[->] (r'3) to [bend left=60, looseness=1.35] (x'2);
+			\draw[->, dashed] (r'3) to [bend right=30] (x''2);
+			\draw[->, dashed] (r''3) to [bend left=45] (x'2);
+			
+			\draw[->] (x'3) to [bend right=15] (r'3);
+			\draw[->] (r'3) to [bend right=15] (x'3);
+			\draw[->] (x''3) to [bend right=15] (r''3);
+			\draw[->] (r''3) to [bend right=15] (x''3);
+						
+			\draw[->] (x4) to [bend left=10] (r'k);
+			\draw[->] (x4) to [bend right=10] (r''k);
+			
+			\draw[->] (r'k) to [bend left=10] (xn);
+			\draw[->] (r''k) to [bend right=10] (xn);
+			
+			\draw[->] (xn) to [bend right=15] (r'n);
+			\draw[->] (xn) to [bend left=10] (r''n);
+			
+			\draw[->] (r'n) to [bend right=10] (x1);
+			\draw[->] (r''n) to [bend left=10] (x1);
+			
+			\draw[->] (r'n) to [bend right=30] node[midway, right]{$2$} (x'n);
+			\draw[->] (x'n) to [bend right=30] (r'n);
+			
+			\draw[->] (r''n) to [bend right=30] node[midway, left]{$2$} (x''n);
+			\draw[->] (x''n) to [bend right=30] (r''n);
+											
+		\end{tikzpicture}		
+	\end{minipage}
+	\caption{The necklace RAF}
+	\label{fig:NecklaceRAF}
+\end{figure}
+
+
 \section{Discussion}
 
 \textsc{Reflexively autocatalytic sets (RAFs)} and \emph{stoichiometric
