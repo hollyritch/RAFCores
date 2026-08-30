@@ -1486,7 +1486,7 @@ maximal strong block that contains at least one non-food, non-waste species-vert
 	\label{fig:FoodVsNonFood} 
 \end{figure}
 
-\TODO{***}
+\subsection{The necklace RAF}
 
 \begin{figure}
 	\begin{minipage}[c]{\textwidth}
@@ -1498,8 +1498,8 @@ maximal strong block that contains at least one non-food, non-waste species-vert
 					r''_2&: x_2 + (x''_2) \rightarrow x_3 + (x''_2) \\[0.5em]
 					r'_3&: x_3 + (x'_3) \rightarrow x_4 + x'_2 + x''_2 + (x'_3) \\[0.5em]
 					r''_3&: x_3 + (x''_3) \rightarrow x_4 + x'_2 + x''_2 + (x''_3) \\[0.5em]
-					& \hspace{3pt} \vdots \\[0.5em]
-					r_n&:  x_n + (x'_n) \rightarrow x_1 + x'_{n-1} + x''_{n-1} + x'_n + (x'_n) \\[0.5em]
+					r'_4&:  x_4 + (x'_4) \rightarrow x_1 + x'_3 + x''_3 + x'_4 + (x'_4) \\[0.5em]
+					r''_4&:  x_4 + (x''_4) \rightarrow x_1 + x'_3 + x''_3 + x''_4 + (x''_4) \\[0.5em]
 				\end{split}
 			\end{equation*}
 		\end{minipage}%
@@ -1508,18 +1508,16 @@ maximal strong block that contains at least one non-food, non-waste species-vert
 			\begin{equation*}
 				\SM=
 					\begin{pmatrix} 
-						0 		& 0  		& 	0 		& 	0 		& \ldots 	& 	0	& 1 \\ 
-						1 		& -1 		& 	0 		& 	0 		& \ldots 	&	0	& 0 \\
-						0 		& 0  		& 	1 		& 	0 		& \ldots 	& 	0	& 0 \\
-						0 		& 0  		& 	1 		& 	0 		& \ldots 	& 	0	& 0 \\
-						0 		& 1 	 	& 	-1 		& 	0 		& \ldots 	& 	0	& 0 \\
-						0 		& 0		&	0		& 	1 		& \ldots 	& 	0	& 0 \\
-						0 		& 0		&	0		&	 1 		& \ldots 	& 	0	& 0 \\
-						0 		& 0		&	1		& 	-1 		& \ldots 	& 	0	& 0 \\
-						\vdots	& \vdots	&	\vdots	&	\vdots 	& \ddots	& 	-1	& 0\\
-						0		& 0		&	0		&	0 		& \ldots	& 	0	& 1\\
-						0		& 0		&	0		&	0 		& \ldots	& 	0	& 1\\
-						0		& 0		&	0		&	0 		& \ldots	& 	1	& -1\\
+						0 	& 	0  	& 	0	&	0 	&	0	& 	1 	& 	1 	 \\ 	 
+						1 	& 	-1 	& 	-1	&	0 	&	0	& 	0 	&	0	 \\
+						0 	& 	0  	& 	0	&	1 	&	1	& 	0 	&	0	 \\
+						0 	& 	0  	& 	0	&	1 	&	1	& 	0 	&	0	 \\
+						0 	& 	1 	 & 	1	&	-1 	&	-1	& 	0 	&	0	 \\
+						0 	& 	0	&	0	&	0	&	0	& 	1 	&	1	 \\
+						0 	& 	0	&	0	&	0	&	0	&	1 	&	1	 \\
+						0 	& 	0	&	0	&	1	&	1	& 	-1 	&	-1	 \\
+						0	& 	0	&	0	&	0	&	0	&	1 	&	1	\\
+						0	& 	0	&	0	&	0	&	0	&	1 	&	1	\\
 					\end{pmatrix}
 			\end{equation*}
 		\end{minipage}
@@ -1528,32 +1526,32 @@ maximal strong block that contains at least one non-food, non-waste species-vert
 	\begin{minipage}[c]{\textwidth}
 		\centering
 		\begin{tikzpicture}
-			\node[draw, circle] (f) at (-1,0) {$f$};
+			\node[draw, circle] (f) at (-1,-2) {$f$};
 			\node[draw, circle] (x1) at (1,1) {$x_1$};
-			\node[draw, circle] (x2) at (1,-1) {$x_2$};
-			\node[draw, circle] (x'2) at (-1.5,-2.5) {$x'_2$};
-			\node[draw, circle] (x''2) at (3.5,-2.5) {$x''_2$};
-			\node[draw, circle] (x3) at (1,-5) {$x_3$};
-			\node[draw, circle] (x'3) at (7,-7) {$x'_3$};
-			\node[draw, circle] (x''3) at (7,-3) {$x''_3$};
-			\node[draw, circle] (x4) at (10,-5) {$x_3$};
-			\node[draw, circle] (xn) at (10,1) {$x_n$};			
-			\node[draw, circle] (x'n) at (7,3) {$x'_n$};
-			\node[draw, circle] (x''n) at (7,-1) {$x''_n$};
+			\node[draw, circle] (x2) at (1,-5) {$x_2$};
+			\node[draw, circle] (x'2) at (3,-7) {$x'_2$};
+			\node[draw, circle] (x''2) at (3,-3) {$x''_2$};
+			\node[draw, circle] (x3) at (8,-5) {$x_3$};
+			\node[draw, circle] (x'3) at (10.4,-3) {$x'_3$};
+			\node[draw, circle] (x''3) at (6,-3) {$x''_3$};
+			\node[draw, circle] (x4) at (8,1) {$x_4$};
+			\node[draw, circle] (x'4) at (5.5,3) {$x'_n$};
+			\node[draw, circle] (x''4) at (5.5,-1) {$x''_n$};
 			
-			\node[draw, rectangle] (r1) at (1,0) {$r_1$};
-			\node[draw, rectangle] (r'2) at (0,-3) {$r'_2$};
-			\node[draw, rectangle] (r''2) at (2,-3) {$r''_2$};			
-			\node[draw, rectangle] (r'3) at (5.5,-6) {$r'_3$};
-			\node[draw, rectangle] (r''3) at (5.5,-4) {$r''_3$};
+			\node[draw, rectangle] (r1) at (1,-2) {$r_1$};
+			\node[draw, rectangle] (r'2) at (4.5,-6) {$r'_2$};
+			\node[draw, rectangle] (r''2) at (4.5,-4) {$r''_2$};			
+			\node[draw, rectangle] (r'3) at (9,-1.75) {$r'_3$};
+			\node[draw, rectangle] (r''3) at (7,-1.75) {$r''_3$};
 			
-			\node[draw, minimum size=0.55cm] (r'k) at (9,-1.75) {};
-			\node[draw, minimum size=0.55cm] (r''k) at (11,-1.75) {};
-			\node[draw, circle] (r'k) at (9,-1.75) {$\cdots$};
-			\node[draw, circle] (r''k) at (11,-1.75) {$\cdots$};			
 			
-			\node[draw, rectangle] (r'n) at (5.5,2) {$r'_n$};
-			\node[draw, rectangle] (r''n) at (5.5,0) {$r''_n$};			
+%			\node[draw, minimum size=0.55cm] (r'3) at (9,-1.75) {};
+%			\node[draw, minimum size=0.55cm] (r''3) at (11,-1.75) {};
+%			\node[draw, circle] (r'3) at (9,-1.75) {$\cdots$};
+%			\node[draw, circle] (r''3) at (11,-1.75) {$\cdots$};			
+			
+			\node[draw, rectangle] (r'4) at (4.5,2) {$r'_4$};
+			\node[draw, rectangle] (r''4) at (4.5,0) {$r''_4$};			
 			
 			\draw[->] (f) to (r1);
 			\draw[->, dashed] (x1) to [bend right = 30](r1);
@@ -1572,37 +1570,37 @@ maximal strong block that contains at least one non-food, non-waste species-vert
 			\draw[->] (x3) to [bend left=15] (r''3);
 			\draw[->] (r'3) to [bend right=15] (x4);
 			\draw[->] (r''3) to [bend left=15] (x4);			
-			\draw[->, opacity=0.3] (r''3) to [bend right = 30] (x''2);
-			\draw[->, opacity=0.3] (r'3) to [bend left=60, looseness=1.35] (x'2);
-			\draw[->, opacity=0.3] (r'3) to [bend left = 30] (x''2);
-			\draw[->, opacity=0.3] (r''3) to [bend left=60, looseness=1.5] (x'2);
+			\draw[->, opacity=0.3] (r''3) to [bend left = 10] (x''2);
+			\draw[->, opacity=0.3] (r'3) to [bend left=60, looseness=1.2] (x'2);
+			\draw[->, opacity=0.3] (r'3) to [bend left = 35] (x''2);
+			\draw[->, opacity=0.3] (r''3) to [bend left=60] (x'2);
 			
 			\draw[->, dashed] (x'3) to [bend right=15] (r'3);
 			\draw[->, dashed] (r'3) to [bend right=15] (x'3);
 			\draw[->, dashed] (x''3) to [bend right=15] (r''3);
 			\draw[->, dashed] (r''3) to [bend right=15] (x''3);
 						
-			\draw[->] (x4) to [bend left=10] (r'k);
-			\draw[->] (x4) to [bend right=10] (r''k);
+			\draw[->, opacity=0.3] (r'4) to [bend left=60, looseness=1.2] (x'3);
+			\draw[->, opacity=0.3] (r'4) to [bend right = 45] (x''3);
+			\draw[->, opacity=0.3] (r''4) to [bend left=70, looseness=1.5] (x'3);
+			\draw[->, opacity=0.3] (r''4) to [bend right = 20] (x''3);
+												
+			\draw[->] (x4) to [bend right=10] (r'4);
+			\draw[->] (x4) to [bend left=10] (r''4);
 			
-			\draw[->] (r'k) to [bend left=10] (xn);
-			\draw[->] (r''k) to [bend right=10] (xn);
+			\draw[->] (r'4) to [bend right=10] (x1);
+			\draw[->] (r''4) to [bend left=10] (x1);
 			
-			\draw[->] (xn) to [bend right=10] (r'n);
-			\draw[->] (xn) to [bend left=10] (r''n);
+			\draw[->, dashed] (r'4) to [bend left=15] node[midway, left]{$2$} (x'4);
+			\draw[->, dashed] (x'4) to [bend left=15] (r'4);
 			
-			\draw[->] (r'n) to [bend right=10] (x1);
-			\draw[->] (r''n) to [bend left=10] (x1);
-			
-			\draw[->, dashed] (r'n) to [bend right=15] node[midway, right]{$2$} (x'n);
-			\draw[->, dashed] (x'n) to [bend right=15] (r'n);
-			
-			\draw[->, dashed] (r''n) to [bend right=15] node[midway, left]{$2$} (x''n);
-			\draw[->, dashed] (x''n) to [bend right=15] (r''n);
+			\draw[->, dashed] (r''4) to [bend left=15] node[midway, right]{$2$} (x''4);
+			\draw[->, dashed] (x''4) to [bend left=15] (r''4);
 											
 		\end{tikzpicture}		
 	\end{minipage}
-	\caption{The necklace RAF}
+	\caption{\textbf{The necklace RAF of size $n=4$}. CRN reactions and the associated stoichiometric matrix are given in the 
+	\textbf{upper left} and \textbf{upper right} panels, respectively. The associated K\"onig graph of the CRN is depicted in the \textbf{lower} panel.}
 	\label{fig:NecklaceRAF}
 \end{figure}
 
