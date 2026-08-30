@@ -1488,6 +1488,8 @@ maximal strong block that contains at least one non-food, non-waste species-vert
 
 \subsection{The necklace RAF}
 
+
+ 
 \begin{figure}
 	\begin{minipage}[c]{\textwidth}
 		\begin{minipage}[l]{0.5\textwidth}
@@ -1599,12 +1601,26 @@ maximal strong block that contains at least one non-food, non-waste species-vert
 											
 		\end{tikzpicture}		
 	\end{minipage}
-	\caption{\textbf{The necklace RAF of size $n=4$}. CRN reactions and the associated stoichiometric matrix are given in the 
-	\textbf{upper left} and \textbf{upper right} panels, respectively. The associated K\"onig graph of the CRN is depicted in the \textbf{lower} panel.}
+	\caption{\textbf{The necklace RAF of size $n=4$}. CRN reactions, the associated stoichiometric matrix and the 
+	corresponding K\"onig graph for an irreducible RAF are denoted in the \textbf{upper left}, \textbf{upper right} and 
+	\textbf{lower} panels, respectively.}
 	\label{fig:NecklaceRAF}
 \end{figure}
-
-
+\holy{So far we have restricted our attention to monocatalyzed, irreducible RAFs and derived examples where the 
+number of autocatalytic cores grows proportional to the number of F-reactions. However, not every irreducible RAF
+is necessarily monocatalyzed. In particular, the ones derived from instances of the binary polymer model 
+(see Fig.~\ref{fig:irrRAFCores} include reactions that are associated with multiple catalyzations. Although they 
+are composed of not more than 60 CRN reactions, they contain up to 1000 autocatalytic cores even if all food-species 
+have been removed. Indeed, the number of autocatalytic cores can rise exponentially as the following example shows.
+In the necklace RAF of size $4$ there are $2^3$ autocatalytic cores of size $4$, i.e., 
+$(\{x_1,x_2,x_3,x_4\} \{r_1, r^*_2, r^*_3, r^*_4\}, \kappa(x_i)\coloneqq r^*_i)$, whereby $r_i^*=r'_i$ or $r_i^*=r''_i$. We 
+remark that this example not only contains autocatalytic cores of size $4$ but also $2\cdot 2\cdot 2=8$ autocatalytic cores 
+of size $2$ and $2$ of size $1$. Clearly, the example can be generalized to any number of reactions such that the number 
+of autocatalytic cores of size $n$ is determined in general by $2^{n-1}$, while the number of autocatalytic cores of size $2$ 
+grows as $(n-1)\cdot 2\cdot 2$. However, the number of catalyzations may not be restricted to two. In this way, we obtain 
+$\prod_{i=1}^{n} |\cat(\fr_i)|$ and $\sum_{i=2}^{n-1} |\cat(\fr_i)|\cdot |\cat(\fr_{i+1})|$ number of autocatalytic cores of sizes 
+$n$ and $2$, respectively.}
+\FloatBarrier
 \section{Discussion}
 
 \textsc{Reflexively autocatalytic sets (RAFs)} and \emph{stoichiometric
