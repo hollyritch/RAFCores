@@ -528,9 +528,10 @@ net-molecule transformation
   \sum_{x\in X}\ \sigma^-_{x\fr} \cdot x,
 \end{equation}
 where $\sigma^\pm_{x\fr}\ge 0$ are again nonnegative stoichiometric
-coefficients. \NV{[Ponder: I think originally the coefficients are not even here, at least in the RAF framework, maybe comment on this.]} The sets of F-reactants $\feducts(\fr)$ and F-products
+coefficients. \NV{In the original framework of Lohn, general stoichiometric coefficients are not specified, as reactions are defined through polymer transformations with unit stoichiometry $\sigma^\pm_{x\fr}\in \{0,1\}$. Here, to
+bring the CRS formalism closer to the general CRN setting, we allow arbitrary stoichiometry $\sigma^\pm_{x\fr}\in \mathbb{N}_0$.}  The sets of F-reactants $\feducts(\fr)$ and F-products
 $\fproducts(\fr)$ of an F-reaction $\fr$ are defined identically as in
-\eqref{eq:setsdef} for CRNs.  The main difference with the CRN setting are
+\eqref{eq:setsdef} for CRNs. The main difference with the CRN setting are
 the \emph{catalyzations} $\cat(\FR)=\{ \cat(\fr) \}_{\fr\in\FR}$.  For a
 single F-reaction $\fr$, the set of catalyzations $\cat(\fr)$ is defined as
 $\cat(\fr)=\{c_\fr\}$, where each catalyzation $c_\fr$ is in turn a set of
@@ -699,9 +700,7 @@ indistinctly also for reactions \eqref{eq:Mod.SmEq} in a CRN setting. In
 particular, from the definition of $\gamma$ it follows consistently that
 $\gamma(r_1)=\gamma(r_2)$ whenever $r_1\sim r_2$ and thus
 $\gamma(r_1)=\gamma(\fr)$ for $\fr=[r_1]_\sim$.
-
-\TODO{[TBA comment on preorder vs partial order?]}
-
+%\TODO{[TBA comment on preorder vs partial order?]}
 We conclude this section with the formal definition of CAFs sets.
 \vspace{6pt}
 \begin{definition}\label{def:CAF}
@@ -771,29 +770,26 @@ Def.~\ref{def:irrerRAF} directly yields the following two structural lemmas.
   $\food$-generated; in particular, $\RAF'$ is a RAF which contradicts
   $\RAF$ being irreducible.
 \end{proof}
-We remark that \eqref{eq:inverse} in particular formally excludes the presence in any irreducible RAF of two F-reactions that are each other's reverse. Writing a pair of reverse F-reactions as defined by \eqref{eq:inverse} as
-\begin{equation}\label{eq:reversereac}
-  \fr_1 = \bar{\fr}_2  \qquad\text{and}\qquad \fr_2 = \bar{\fr}_1
-\end{equation}
-and a set of reverse F-reactions as
-\begin{equation}\label{eq:reverseset}
-  S = \{\fr_1,\fr_2,\ldots,\fr_k\} \Rightarrow \bar{S} = \{\bar{\fr}_1,\bar{\fr}_2,\ldots,\bar{\fr}_k\}
-\end{equation}
-we can also state the following result.
+We remark that \eqref{eq:inverse} in particular formally excludes the presence in any irreducible RAF of two F-reactions that are each other's inverse. \NV{More specifically, for an F-reaction $\fr=\fr_1$, we write $\bar{\fr}=\fr_2$ for its reverse reaction satisfying \eqref{eq:inverse}. Similarly, for a set of F-reactions $
+  \RAF' = \{\fr_1,\fr_2,\ldots,\fr_k\}$, we write $\bar{\FR}'' = \{\bar{\fr}_1,\bar{\fr}_2,\ldots,\bar{\fr}_k\}$ for the set of the reverse F-reactions of $\RAF'$. We state then the following result.
 \vspace{6pt}
 \begin{lemma}\label{lem:noReverseIrrRAF}
-  Let $(X,\FR,\cat(\FR))$ be a CRS with food-set $\food\subseteq X$, and $\RAF \subset \FR$ a (non-trivial) irreducible RAF. For any subset $S \subseteq \RAF$, the set $\RAF' = (\RAF \setminus S) \cup \bar{S}$ is not an irreducible RAF.
+  Let $(X,\FR,\cat(\FR))$ be a CRS with food-set $\food\subseteq X$, and $\RAF \subset \FR$ an irreducible RAF with $|\RAF|>1$. For any subset $\RAF' \subseteq \RAF$, the set $\widetilde{\RAF}:=(\RAF \setminus \RAF') \cup \bar{\FR}''$ is not an irreducible RAF.
 \end{lemma}
 \begin{proof}
-  First assume that $\RAF$ with one (arbitrary) F-reaction $\fr_i$ reversed is an irreducible RAF $\RAF'$. That means that $\feducts(\bar{\fr}_i) = \fproducts(\fr_i) \subset \closure{\RAF}{\food}$. However, that means that $\RAF \setminus \{\fr_i\}$ is also a RAF, contradicting the fact that $\RAF$ is irreducible.
-  Alternatively, it could be that $\feducts(\bar{\fr}_i) \not\subset \closure{\RAF}{\food}$, but that by reversing some other F-reaction $\fr_j \in \RAF$ it will be. But then the first argument can be applied to $\fr_j$, or otherwise it leads to an increasing sequence of reversed F-reactions where (i) some reversed F-reaction $\bar{\fr}_k$ requires an F-reactant that is an F-product of an earlier reversed F-reaction, or (2) for some reversed F-reaction $\bar{\fr}_k$ it is the case that $\feducts(\bar{\fr}_k) \subset \food$. In case (i) $\RAF'$ cannot be an irreducible RAF as it is not $\food$-generated (having a cycle of F-reactions where each F-reaction has an F-reactant that is only produced by the previous F-reaction in the cycle), and in case (ii) it follows that $\fproducts(\fr_k) \subset \food$, which contradicts the fact that $\RAF$ is irreducible.
+Indirectly assume that $\widetilde{\RAF}$ is an irreducible RAF and pick an F-reaction $\bar{\fr}_i$ as
+\[\bar{\fr}_i\in
+\operatorname{argmin}_{\bar{\fr}\in\bar{\FR}''}\gamma(\bar{\fr}),\]
+where $\gamma$ is the generation order defined in \eqref{def:genreactionindex}.
+By construction, $\rho_F(\bar{\fr}_i)\subseteq \closure{\RAF \setminus \RAF'}{\food}$, and thus $\pi_F(\fr_i)\subseteq \closure{\RAF \setminus \RAF'}{\food}$. Consequently, $\closure{\RAF}{\food}=\closure{\RAF \setminus \{\fr_i\}}{\food}$. Since $|\RAF|>1$, $\RAF\setminus\{\fr_1\}$ is nonempty and thus a RAF, contradicting the irreducibility of $\RAF$.
 \end{proof}
-In words, given an irreducible RAF $\RAF$, there is no subset of F-reactions $S \subseteq \RAF$ such that when all F-reactions in the subset $S$ are reversed, the resulting set is also an irreducible RAF. The only exception is an irreducible RAF consiting of a single reaction where all F-reactants, F-products, and at least one catalyst are all in the food set $\food$.
+  %First assume that $\RAF$ with one (arbitrary) F-reaction $\fr_i$ reversed is an irreducible RAF $\RAF'$. That means that $\feducts(\bar{\fr}_i) = \fproducts(\fr_i) \subset \closure{\RAF}{\food}$. However, that means that $\RAF \setminus \{\fr_i\}$ is also a RAF, contradicting the fact that $\RAF$ is irreducible. Alternatively, it could be that $\feducts(\bar{\fr}_i) \not\subset \closure{\RAF}{\food}$, but that by reversing some other F-reaction $\fr_j \in \RAF$ it will be. But then the first argument can be applied to $\fr_j$, or otherwise it leads to an increasing sequence of reversed F-reactions where (i) some reversed F-reaction $\bar{\fr}_k$ requires an F-reactant that is an F-product of an earlier reversed F-reaction, or (2) for some reversed F-reaction $\bar{\fr}_k$ it is the case that $\feducts(\bar{\fr}_k) \subset \food$. In case (i) $\RAF'$ cannot be an irreducible RAF as it is not $\food$-generated (having a cycle of F-reactions where each F-reaction has an F-reactant that is only produced by the previous F-reaction in the cycle), and in case (ii) it follows that $\fproducts(\fr_k) \subset \food$, which contradicts the fact that $\RAF$ is irreducible.
+In words, given an irreducible RAF $\RAF$, there is no subset of F-reactions $\RAF' \subseteq \RAF$ such that when all F-reactions in the subset $\RAF'$ are reversed, the resulting set is also an irreducible RAF. The only admissible exception is an irreducible RAF consisting of a single reaction where all F-reactants, F-products, and at least one catalyst are all in the food set $\food$.}
 
 Since a RAF is defined in Def.~\ref{def:RAF} as a subset of F-reactions,
 Def.~\ref{def:irrerRAF} imposes a minimality condition only on the set of
 F-reactions. However, motivated by the fact that in the CRN-setting
-different catalyzationsof the same F-reaction correspond to different
+different catalyzations of the same F-reaction correspond to different
 reactions, we also consider irreducible RAFs $\RAF$ with a minimal number
 of catalyzations while conserving irreducibility.
 
