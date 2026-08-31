@@ -258,7 +258,7 @@ concepts of autocatalysis \cite{andersen_defining_2021}.  A first line of
 studies focused on entities driving their own reproduction in complex
 networks, so-called \emph{replicators}, such as Eigen's quasi-species
 \cite{eigen_selforganization_1971}, an ensemble of genotypes that arrange
-themselves around a common species of which they differ by a series of
+themselves around a common species from which they differ by a series of
 mutations.  Subsequent research applied this concept to metabolic networks
 to identify important metabolic \emph{autocatalytic replicators} such as
 ATP \cite{kun_computational_2008}. More generally, sequences of reactions
@@ -276,13 +276,12 @@ autocatalytic cycle in accordance with the IUPAC definition of
 autocatalytic reaction \cite{gold_iupac_2025}.  This formalization has
 received increasing attention since its conception in 2020. It has lead to
 the development of algorithms for enumerating minimal autocatalytic
-subsystems in fully reversible \cite{kosc_thermodynamic_2025} CRNs and CRNs
+subsystems in fully reversible \cite{kosc_thermodynamic_2025} CRNs and
 with reversible and irreversible reactions \cite{gagrani_polyhedral_2024,
   golnik_birne_2025, golnik_enumeration_2026,
-  golnik_using_2026}. Originally introduced in fully reversible CRNs
+  golnik_using_2026}. Originally introduced in CRNs
 lacking explicitly catalyzed reactions, the theory on stoichiometric
-autocatalysis has recently been extended to CRNs containing both reversible
-and irreversible reactions as well as explicit catalysis
+autocatalysis has recently been extended to CRNs allowing explicit catalysis as well
 \cite{golnik_autocatalytic_2026}.
 
 An alternative approach to formalize system-level autocatalysis focused on
@@ -424,11 +423,10 @@ conclude with a discussion of future directions.
 \section{Two Representations of Chemical Systems}\label{sec:CRNCRS}
 
 Research on systems of chemical interactions has attracted considerable
-attention, although formalizations lack consistency throughout the various
+attention, but formalizations lack consistency throughout the various
 frameworks \cite{lohn_evolving_1998, steel_emergence_2000,
   feinberg_foundations_2019}. In particular, different authors have
-introduced different notions of reactions \cite{muller_what_2022}. We
-briefly overview here two approaches: \emph{Chemical Reaction Networks} and
+introduced different notions of reactions \cite{muller_what_2022}. Here, we overview two approaches: \emph{Chemical Reaction Networks} and
 \emph{Catalytic Reaction Systems}.
 
 \subsection{Chemical Reaction Networks (CRNs)}
@@ -436,7 +434,7 @@ briefly overview here two approaches: \emph{Chemical Reaction Networks} and
 A \emph{chemical reaction network} (CRN) $\Gamma \coloneqq (X,\CR)$ is a
 tuple of two finite sets, a set of species $X$ and a set of reactions
 $\CR$.  Any $r \in \CR$ is represented as an ordered association between a
-nonnegative combination of reactant species to a nonnegative combination of
+nonnegative combination of reactant species and a nonnegative combination of
 product species,
 \begin{equation}\label{eq:reaction}
   \sum_{x\in X}\ s^-_{xr} \cdot x \quad
@@ -512,9 +510,9 @@ orchestrated cooperation of two catalysts is required, is the dual-catalyst
 system of palladium and copper in the Hoechst-Wacker process, where ethene
 is oxidized to acetaldehyde \cite{jira_acetaldehyde_2009}. The idea that
 one `same' chemical process, intended as a net-molecule transformation, can
-be catalyzed by different catalysts has led to the different, although much
+be catalyzed by different catalysts has led to the different, although
 related, concept of Catalytic Reaction Systems, which we overview in the
-text section.
+next section.
 
 \subsection{Catalytic Reaction Systems (CRS)}\label{sec:CRS}
 
@@ -530,7 +528,7 @@ net-molecule transformation
   \sum_{x\in X}\ \sigma^-_{x\fr} \cdot x,
 \end{equation}
 where $\sigma^\pm_{x\fr}\ge 0$ are again nonnegative stoichiometric
-coefficients. The sets of F-reactants $\feducts(\fr)$ and F-products
+coefficients. \NV{[Ponder: I think originally the coefficients are not even here, at least in the RAF framework, maybe comment on this.]} The sets of F-reactants $\feducts(\fr)$ and F-products
 $\fproducts(\fr)$ of an F-reaction $\fr$ are defined identically as in
 \eqref{eq:setsdef} for CRNs.  The main difference with the CRN setting are
 the \emph{catalyzations} $\cat(\FR)=\{ \cat(\fr) \}_{\fr\in\FR}$.  For a
@@ -546,8 +544,8 @@ that there exists $k^c_{x\fr}$ for which $(x,k^c_{x\fr})\in c_{\fr}$.  We
 call an $\fr\in \FR$ \emph{F-reaction} to distinguish it from the CRN
 reactions \eqref{eq:Mod.SmEq}. A CRS
 $\mathbf{\Phi}'\coloneqq (X', \FR', \cat'(\FR'))$ is a \emph{sub-CRS} of
-$\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$ if $X\subseteq X'$,
-$\FR'\subseteq\FR$, $\cat'(\FR')\subseteq \cat(\FR)$.
+$\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$ if \[X\subseteq X',\quad
+\FR'\subseteq\FR,\quad \cat'(\FR')\subseteq \cat(\FR).\]
 
 Finally, a comparison between a CRN reaction \eqref{eq:Mod.SmEq} with a CRS
 F-reaction \eqref{eq:FReacEq} and the definition of catalyzations set
@@ -572,7 +570,7 @@ reactions, $\fr=[r]_{\sim}$. Each catalyzation $c$ is then just the set of
 F-catalysts $c(\mathbf{r})=\cup_ {r\in \fr}\{\cat(r)\}$.
 
 \paragraph{From a CRS $\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$ to a CRN
-  $\Gamma=(X,\mathcal{R})$.} Viceversa, by rolling back the previous
+  $\Gamma=(X,\mathcal{R})$.} Rolling back the previous
 argument, to each CRS $\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$ we
 associate a CRN $\Gamma (\mathbf{\Phi})=(X,\mathcal{R})$, where each
 reaction $r\in \mathcal{R}$ corresponds to a pair $(\fr,c_\fr)$, naturally
