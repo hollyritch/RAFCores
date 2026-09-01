@@ -467,7 +467,7 @@ theory \cite{eigen_proton_1964}. To be specific on the catalytic role a
 species plays, we partition stoichiometries as in
 \cite{golnik_bridging_2026} as
 \begin{equation}
-  s^{\pm}_{xr}=\sigma^{\pm}_{xr} + k_{xr}.
+  s^{\pm}_{xr}=\sigma^{\pm}_{xr} + k_{xr},\qquad \sigma^{\pm}_{xr}, k_{xr}\ge0.
 \end{equation}
 It is readily verified that
 $\SM_{xr} = s^+_{xr}-s^-_{xr} = \sigma^+_{xr} - \sigma^-_{xr}$, thus the
@@ -500,7 +500,7 @@ encode also the respective coefficient. For simplicity, with an abuse of
 notation, we will write $x\in \cat(r)$ to refer to species $x$ for which
 there exists a pair $(x,k_{xr})\in \cat(r)$. In a CRN, distinct reactions
 $r_1\neq r_2$ may differ only in the F-catalysts
-$\kappa_F(r_1)\neq \kappa_F(r_2)$ and share identical F-reactants and
+$\cat(r_1)\neq \cat(r_2)$ and share identical F-reactants and
 F-products. For example, the hydrogenation of ethene to ethane can be
 mediated by platinum, palladium, or nickel separately
 \cite{crampton_ethylene_2016}. An example for co-catalysis, i.e., where the
@@ -523,7 +523,7 @@ net-molecule transformation
 \begin{equation}\label{eq:FReacEq}
   \sum_{x\in X}\ \sigma^-_{x\fr} \cdot x \quad
   \underset{\fr}\longrightarrow \quad
-  \sum_{x\in X}\ \sigma^-_{x\fr} \cdot x,
+  \sum_{x\in X}\ \sigma^+_{x\fr} \cdot x,
 \end{equation}
 where $\sigma^\pm_{x\fr}\ge 0$ are again nonnegative stoichiometric
 coefficients. \NV{In the original framework of Lohn, general stoichiometric coefficients are not specified, as reactions are defined through polymer transformations with unit stoichiometry $\sigma^\pm_{x\fr}\in \{0,1\}$. Here, to
@@ -532,10 +532,10 @@ $\fproducts(\fr)$ of an F-reaction $\fr$ are defined identically as in
 \eqref{eq:setsdef} for CRNs. The main difference with the CRN setting are
 the \emph{catalyzations} $\cat(\FR)=\{ \cat(\fr) \}_{\fr\in\FR}$.  For a
 single F-reaction $\fr$, the set of catalyzations $\cat(\fr)$ is defined as
-$\cat(\fr)=\{c_\fr\}$, where each catalyzation $c_\fr$ is in turn a set of
+$\cat(\fr)=\{c_{\fr,i}\}$, where each catalyzation $c_{\fr,i}$ is in turn a set of
 pairs $(x,k^{c}_{x\mathbf{r}})$:
 \begin{equation}\label{eq:CatCFR}
-    c_\fr\coloneqq \{(x_1,k^c_{x_1\mathbf{r}}),\ldots, (x_n,k^c_{x_n\fr})\}.
+    c_{\fr,i}\coloneqq \{(x_1,k^c_{x_1\mathbf{r}}),\ldots, (x_n,k^c_{x_n\fr})\}.
 \end{equation}
 where $k^{c}_{x\fr}>0$ is a positive coefficient. Again, for simplicity and
 with abuse of notation, we will write $x\in c_\fr$ for a species $x$ such
@@ -543,7 +543,7 @@ that there exists $k^c_{x\fr}$ for which $(x,k^c_{x\fr})\in c_{\fr}$.  We
 call an $\fr\in \FR$ \emph{F-reaction} to distinguish it from the CRN
 reactions \eqref{eq:Mod.SmEq}. A CRS
 $\mathbf{\Phi}'\coloneqq (X', \FR', \cat'(\FR'))$ is a \emph{sub-CRS} of
-$\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$ if \[X\subseteq X',\quad
+$\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$ if \[X'\subseteq X,\quad
 \FR'\subseteq\FR,\quad \cat'(\FR')\subseteq \cat(\FR).\]
 
 Finally, a comparison between a CRN reaction \eqref{eq:Mod.SmEq} with a CRS
@@ -578,7 +578,7 @@ via \eqref{eq:Mod.SmEq} with $\sigma^{\pm}_{xr}=\sigma^{\pm}_{x\fr}$.
 
 By construction, it is clear that 
 \begin{equation}
-  \Gamma(\mathbf{\Phi}(\Gamma))=\Gamma \quad \text{and}
+  \Gamma(\mathbf{\Phi}(\Gamma))\Gamma \quad \text{and}
   \quad \mathbf{\Phi}(\Gamma(\mathbf{\Phi))}=\mathbf{\Phi}.
 \end{equation}
 Moreover, since $\FR$ is a quotient set from $\mathcal{R}$, we have that
@@ -683,7 +683,7 @@ where the index is shifted by one for normalization, so that the
 Similarly, the sequences define a \emph{generation species-index} $g(x)$
 where a non-food species $x\not\in \food$ is produced for the first time,
 i.e. \begin{equation} g(x)= \operatorname{min} \{i \; | \; x\in
-  X'_i\}.\end{equation} Clearly, the total order $\le$ on the natural
+  X'_i\}.\end{equation} \NV{We further consider $g(x)=0$ for $x\in\food$.} Clearly, the total order $\le$ on the natural
 numbers induces a preorder $\preccurlyeq$ on $X\setminus \food$ and a
 preorder $\preceq$ on $\mathbf{R}$
 \begin{equation}
@@ -698,7 +698,7 @@ indistinctly also for reactions \eqref{eq:Mod.SmEq} in a CRN setting. In
 particular, from the definition of $\gamma$ it follows consistently that
 $\gamma(r_1)=\gamma(r_2)$ whenever $r_1\sim r_2$ and thus
 $\gamma(r_1)=\gamma(\fr)$ for $\fr=[r_1]_\sim$.
-%\TODO{[TBA comment on preorder vs partial order?]}
+
 We conclude this section with the formal definition of CAFs sets.
 \vspace{6pt}
 \begin{definition}\label{def:CAF}
@@ -820,7 +820,7 @@ $|\cat'(\fr)|=1$ for all F-reactions $\fr\in \RAF$.
   Reflexively Autocatalytic, being an irreducible RAF only depends on the
   $\food$-generated property, which - in turn - is independent from the
   catalyzations. Therefore, $\RAF$ is an irreducible RAF in
-  $(X, \FR,\cat'(\FR))$
+  $(X, \FR,\cat'(\FR))$.
 \end{proof}
 
 \vspace{6pt}
@@ -837,7 +837,7 @@ $\fr$, whose unique catalyzation $c$ is a set of multiple pairs
 $(x_i, k^c_{x_i\fr})$, i.e.
 $c=\{((x_1, k^c_{x_1\fr}),..., (x_n, k^c_{x_n\fr})\}$. Lemma \ref{lem:mono}
 implies that, for a CRS $\mathbf{\Phi}=(X,\FR,\cat(\FR))$ with irreducible
-RAF $\RAF\subseteq\FR$, there exists exponentially many sub-CRS $\Phi'_i$
+RAF $\RAF\subseteq\FR$, there exists potentiall exponentially many sub-CRS $\Phi'_i$
 for which $\RAF$ is a monocatalyzed irreducible RAF. This is formalized in
 the following lemma.
 
@@ -1177,7 +1177,7 @@ an inspection of the example in Fig.~\ref{ex:CutVertex2} we \PFS{observe}
 that such entry reactions appear in intimate relation with cut-vertices of
 the bipartite graph $K(\mathcal{R}')$. For brevity, we investigate this
 intuition only via the following two corollaries of
-Lemma~\ref{lem:StrongBlocks}.  \vspace{6pt}
+Lemma~\ref{lem:StrongBlocks}.  \NV{[SOME MISTAKE HERE TO BE CORRECT, $r_4$ in the figure contradicts the corollary]} \vspace{6pt}
 \begin{corollary}\label{cor:strongblock1}
   Let $\RAF$ be an irreducible monocatalyzed RAF. Let $\block$ be a maximal
   strong block of $K(\RAF)$ containing at least one species-vertex outside
@@ -1185,7 +1185,7 @@ Lemma~\ref{lem:StrongBlocks}.  \vspace{6pt}
   $ X(\block)\not\subseteq \food\cup\mathbf{W}_{\RAF}.$ Further assume that
   there exists a species $\tilde{x}\notin\food\cup\mathbf{W}_{\RAF}$ with
   $\tilde{x}\notin\block$. Then every entry reaction $r^*$ of $\block$ has
-  at least two distinct F-products..
+  at least two distinct F-products.
 \end{corollary}
 \begin{proof}
   Consider any entry reaction $r^*$ of
@@ -1248,14 +1248,14 @@ considering strong blocks involving only food and waste species.
 		\centering
 		\includegraphics[width=\textwidth]{./Pictures/iRAFirrevStrongBlocks.png}
 	\end{minipage}
-	\caption{Number of maximal strong blocks that contain at least one non-food, non-waste species 
+	\caption{\NV{[I do not understand this fingerprints:) what they are]} Number of maximal strong blocks that contain at least one non-food, non-waste species 
 	vertex in irreducible RAFs from two instances of the binary polymer model containing either both 
 	ligation and cleavage reactions (\textbf{right}) or only ligation reactions (\textbf{right}) as described 
 	in Fig.~\ref{fig:irrRAFCores}.} 
 	\label{fig:StrongBlocks}
 \end{figure}
 
-\holy{Although RAFs can, in principle, be composed of multiple 
+\NV{[Move to example section]}\holy{Although RAFs can, in principle, be composed of multiple 
 maximal strong blocks that contain at least one non-food, non-waste 
 species-vertex, any irreducible RAF of the two instances of the binary 
 polymer model depicted in Fig.~\ref{fig:irrRAFCores} consists of only 
