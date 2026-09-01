@@ -1223,43 +1223,8 @@ For example, if all F-reactions $\fr\in\RAF$ are of the form
   x_\pi + (x_\kappa)
 \end{equation*}
 then \eqref{eq:condmanysb} is satisfied and thus $K(\RAF)$ is essentially
-one single strong block. Here, `essentially' simply means by not
+one single strong block. Here, `essentially' means by not
 considering strong blocks involving only food and waste species.
-
-\begin{figure}[htb]
-	\begin{minipage}[c]{0.5\textwidth}
-		\centering
-	\includegraphics[width=\textwidth]{./Pictures/iRAFrevStrongBlocks.png}
-	\end{minipage}%
-	\hfill%
-	\begin{minipage}[c]{0.5\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{./Pictures/iRAFirrevStrongBlocks.png}
-	\end{minipage}
-	\caption{\NV{[I do not understand this fingerprints:) what they are]} Number of maximal strong blocks that contain at least one non-food, non-waste species 
-	vertex in irreducible RAFs from two instances of the binary polymer model containing either both 
-	ligation and cleavage reactions (\textbf{right}) or only ligation reactions (\textbf{right}) as described 
-	in Fig.~\ref{fig:irrRAFCores}.} 
-	\label{fig:StrongBlocks}
-\end{figure}
-
-\NV{[Move to example section]}\holy{Although RAFs can, in principle, be composed of multiple 
-maximal strong blocks that contain at least one non-food, non-waste 
-species-vertex, any irreducible RAF of the two instances of the binary 
-polymer model depicted in Fig.~\ref{fig:irrRAFCores} consists of only 
-one such block. According to Cor.~\ref{cor:strongblock2}, this is not 
-surprising for instances containing only ligation F-reactions 
-(Fig.~\ref{fig:irrRAFCores}, right panels), which all have only 
-one F-product. However, even for the presence of both cleavage and 
-ligation reactions, we could not find an instance for maximal polymer 
-sizes of 4, 5, 6, 7, and 8, where any of the collected irreducible RAFs 
-was composed of more than one maximal strong block that contained at 
-least one non-food, non-waste species-vertex (see Fig.~\ref{fig:StrongBlocks}). 
-Although in principle possible, as depicted in Fig.~\ref{fig:BPM} 
-Sect.~\ref{sec:examples}, the network structure is related to the nature and 
-generating procedure of the binary polymer model and is beyond the scope 
-of this contribution; however, leaving the large number of autocatalytic cores 
-in each irreducible RAF unexplained.}
 
 Finally, we stress that entry reactions always identify a column in the
 associated stoichiometric matrix
@@ -1436,6 +1401,46 @@ monocatalyzed RAF $\RAF$, is \emph{stoichiometrically autocatalytic}.
 
 \section{Three different kinds of examples.}
 \label{sec:examples}
+
+\subsection{Irreducible RAFs from the binary polymer model}
+
+\holy{Although RAFs can, in principle, be composed of multiple 
+maximal strong blocks that contain at least one non-food, non-waste 
+species-vertex, any irreducible RAF of the two instances of the binary 
+polymer model depicted in Fig.~\ref{fig:irrRAFCores} consists of only 
+one such block. According to Cor.~\ref{cor:strongblock2}, this is not 
+surprising for instances containing only ligation F-reactions 
+(Fig.~\ref{fig:irrRAFCores}, right panels), which all have only 
+one F-product. However, even for the presence of both cleavage and 
+ligation reactions, we could not find an instance for maximal polymer 
+sizes of 4, 5, 6, 7, and 8, where any of the collected irreducible RAFs 
+was composed of more than one maximal strong block that contained at 
+least one non-food, non-waste species-vertex (see Fig.~\ref{fig:StrongBlocks}). 
+Although in principle possible, as depicted in Fig.~\ref{fig:BPM} 
+Sect.~\ref{sec:examples}, the network structure is related to the nature and 
+generating procedure of the binary polymer model and is beyond the scope 
+of this contribution; however, leaving the large number of autocatalytic cores 
+in each irreducible RAF unexplained.}
+
+\begin{figure}[htb]
+	\begin{minipage}[c]{0.5\textwidth}
+		\centering
+	\includegraphics[width=\textwidth]{./Pictures/iRAFrevStrongBlocks.png}
+	\end{minipage}%
+	\hfill%
+	\begin{minipage}[c]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./Pictures/iRAFirrevStrongBlocks.png}
+	\end{minipage}
+	\caption{Number of maximal strong blocks that contain at least one non-food, 
+	non-waste species vertex in irreducible RAFs from different instances of the 
+	binary polymer model containing either both ligation and cleavage reactions 
+	(\textbf{left}) or only ligation reactions (\textbf{right}) as described in 
+	Fig.~\ref{fig:irrRAFCores}. To represent each irreducible RAF individually within 
+	the plot, dots are depicted in a non-overlapping manner; however, values are 
+	discrete.} 
+	\label{fig:StrongBlocks}
+\end{figure}
 
 Thm.~\ref{Thm:StrBlockCore} guarantees that each maximal strong block that 
 contains at least one species-vertex that does not represent a food or waste 
