@@ -1402,38 +1402,16 @@ monocatalyzed RAF $\RAF$, is \emph{stoichiometrically autocatalytic}.
 \section{Three different kinds of examples.}
 \label{sec:examples}
 
+\subsection{Autocatalytic cores in }
+
 \subsection{Irreducible RAFs from the binary polymer model}
 
-As a starting point for this contribution, we computed the number 
+\holy{As a starting point for this contribution, we computed the number 
 of autocatalytic cores for 50 arbitrarily chosen irreducible RAFs in 
 two instances of the binary polymer model, one containing both 
 cleavage and ligation, while the other containing only ligation 
 F-reactions. A surprisingly large number of autocatalytic cores were 
-detected in each irreducible RAF, which is depicted in Fig.~\ref{fig:irrRAFCores}. 
-
-As one explanation, we established in Sec.~\ref{subsec:King} that any 
-monocatalyzed, irreducible RAF can be composed of multiple, maximal 
-strong blocks that contain at least one non-food, non-waste species, each of which 
-is stoichiometrically autocatalytic. However, every irreducible RAF 
-that is represented in Fig.~\ref{fig:irrRAFCores} consists of only one such block. 
-According to Cor.~\ref{cor:strongblock2}, this is not surprising for instances containing 
-only ligation F-reactions (Fig.~\ref{fig:irrRAFCores}, right panels), which 
-all have only one F-product. However, even for the presence of both 
-cleavage and ligation reactions, we examined irreducible RAFs for 
-instances of the binary polymer model with maximal polymer sizes of 
-4, 5, 6, 7, and 8. None of the collected irreducible RAFs was composed 
-of more than one maximal strong block that contained at least one non-food, 
-non-waste species-vertex (see Fig.~\ref{fig:StrongBlocks}). We remark that 
-irreducible RAFs represented in Fig.~\ref{fig:irrRAFCores} might contain 
-F-reactions associated with more than one catalyzation. However, only those 
-catalyzations were included for which all catalysts are elements of the closure
-of the particular set of F-reactions, and food-species had been excluded a 
-priori from being catalysts. In this case, the number of maximal strong blocks 
-containing at least one non-food, non-waste species might be reduced in 
-contrast to a corresponding irreducible, monocatalyzed RAF obtained by 
-an arbitrary choice of single catalyzations for each F-reaction as a result 
-of increased connectivity. 
-
+detected in each irreducible RAF, which is depicted in Fig.~\ref{fig:irrRAFCores}.}
 
 \begin{figure}[htb]
 	\begin{minipage}[c]{0.5\textwidth}
@@ -1445,21 +1423,16 @@ of increased connectivity.
 		\centering
 		\includegraphics[width=\textwidth]{./Pictures/iRAFirrevStrongBlocks.png}
 	\end{minipage}
-	\caption{Number of maximal strong blocks that contain at least one non-food, 
+	\caption{\holy{Number of maximal strong blocks that contain at least one non-food, 
 	non-waste species vertex in irreducible RAFs from different instances of the 
 	binary polymer model containing either both ligation and cleavage reactions 
 	(\textbf{left}) or only ligation reactions (\textbf{right}) as described in 
-	Fig.~\ref{fig:irrRAFCores}. To represent each irreducible RAF individually within 
-	the plot, dots are depicted in a non-overlapping manner; however, values are 
-	discrete.} 
+	SI Sect.~\ref{S-sec:BinPol} and SI Table~\ref{tab:SimulationDetails}. To represent 
+	each irreducible RAF individually within the plot, dots are depicted in a non-overlapping 
+	manner; however, values are discrete.}} 
 	\label{fig:StrongBlocks}
 \end{figure}
 
-
-Although in principle possible, as depicted in Fig.~\ref{fig:BPMMultipleStrongBlocks}, 
-the network structure is related to the nature and generating procedure of 
-the binary polymer model and is beyond the scope of this contribution; however, 
-leaving the large number of autocatalytic cores in each irreducible RAF unexplained.
 
 \begin{figure}
 	\begin{minipage}[c]{0.4\textwidth}
@@ -1560,35 +1533,64 @@ leaving the large number of autocatalytic cores in each irreducible RAF unexplai
 	\label{fig:BPMMultipleStrongBlocks}	
 \end{figure}
 
-Thm.~\ref{Thm:StrBlockCore} guarantees that each maximal strong block that 
+\holy{As one explanation, we established in Sec.~\ref{subsec:King} that any 
+monocatalyzed, irreducible RAF can be composed of multiple, maximal 
+strong blocks that contain at least one non-food, non-waste species, each of which 
+is stoichiometrically autocatalytic. However, every irreducible RAF 
+that is represented in Fig.~\ref{fig:irrRAFCores} consists of only one such block. 
+According to Cor.~\ref{cor:strongblock2}, this is not surprising for instances containing 
+only ligation F-reactions (Fig.~\ref{fig:irrRAFCores}, right panels), which 
+all have only one F-product. However, even for the presence of both 
+cleavage and ligation reactions, we examined irreducible RAFs for 
+instances of the binary polymer model with maximal polymer sizes of 
+4, 5, 6, 7, and 8. None of the collected irreducible RAFs was composed 
+of more than one maximal strong block that contained at least one non-food, 
+non-waste species-vertex (see Fig.~\ref{fig:StrongBlocks}). We remark that 
+irreducible RAFs represented in Fig.~\ref{fig:irrRAFCores} might contain 
+F-reactions associated with more than one catalyzation. However, only those 
+catalyzations were included for which all catalysts are elements of the closure
+of the particular set of F-reactions, and food-species had been excluded a 
+priori from being catalysts. In this case, the number of maximal strong blocks 
+containing at least one non-food, non-waste species might be reduced in 
+contrast to a corresponding irreducible, monocatalyzed RAF obtained by 
+an arbitrary choice of single catalyzations for each F-reaction as a result 
+of increased connectivity.}
+
+\holy{Although in principle possible, as depicted in Fig.~\ref{fig:BPMMultipleStrongBlocks}, 
+the network structure is related to the nature and generating procedure of 
+the binary polymer model; nevertheless, it is beyond the scope of this contribution. 
+Importantly, the large number of autocatalytic cores in each irreducible RAF remains
+therefore unexplained.}
+
+
+\holy{Thm.~\ref{Thm:StrBlockCore} guarantees that each maximal strong block that 
 contains at least one species-vertex that does not represent a food or waste 
-molecule is a stoichiometric autocatalytic sub-CRN. In addition, at least one 
-autocatalytic core does not contain any food molecules. To this end, we constrained 
-the CRNs generated from each irreducible RAF of random instances of the binary 
-polymer model from FIg.~\ref{fig:fig:irrRAFCores} to include only non-food molecules. 
-Importantly, as Fig.~\ref{FoodVsNonFood} shows, these restricted networks still
-exhibit large numbers of autocatalytic cores, which is not attributable to large numbers 
-of maximal strong blocks, as each such irreducible RAF comprises only one 
-maximal strong block that contains at least one non-food, non-waste species-vertex. 
+molecule is a stoichiometric autocatalytic sub-CRN. In addition, at least one  
+autocatalytic core in such a block does not contain any food molecule. We therefore filtered 
+autocatalytic cores for the presence of food species. As shown in Fig.~\ref{fig:FoodVsNonFood}, food molecules 
+account for a large number of autocatalytic cores, at least in irreducible RAFs containing both 
+ligation and cleavage reactions. In contrast, irreducible RAFs composed of ligation reactions only 
+exhibit the same number of autocatalytic cores, disregarding the presence of food species. 
+This is, indeed, not surprising, as ligation F-reactions having only food species as F-products would 
+not be part of an irreducible RAF. However, many instances of both models still comprise hundreds of 
+autocatalytic cores, and in case of the presence of ligation and cleavage reactions, some instances 
+contain over a thousand autocatalytic cores. We will therefore examine next how such a large number 
+of autocatalytic cores can be a result of polycatalyzation.}
 
 \begin{figure}
 	\centering
-	\begin{minipage}[c]{\textwidth}	
-		\begin{minipage}[c]{0.5\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{./Pictures/n6iRAFrevSplitWithVsWOFood.png}
-		\end{minipage}%
-		\hfill%
-		\begin{minipage}[c]{0.5\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{./Pictures/n6iRAFirrevCoresWvsWOFood.png}
-		\end{minipage}
+	\begin{minipage}[c]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./Pictures/n6iRAFrevSplitWithVsWOFood.png}
+	\end{minipage}%
+	\hfill%
+	\begin{minipage}[c]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./Pictures/n6iRAFirrevCoresWvsWOFood.png}
 	\end{minipage}
-
-	
-	\caption{Autocatalytic cores in different irreducible RAFs from two independent instances 
-	of the binary polymer model (see Fig.~\ref{fig:irrRAFCores} and Sect.~\ref{S-sec:BinPol}) with 
-	and without food molecules.}
+	\caption{Autocatalytic cores in 50 different arbitrarily chosen irreducible RAFs from two independent 
+	instances of the binary polymer model depicted and described in Fig.~\ref{fig:irrRAFCores} and 
+	Sect.~\ref{S-sec:BinPol}) with and without food molecules.}
 	\label{fig:FoodVsNonFood} 
 \end{figure}
 
@@ -1616,8 +1618,8 @@ maximal strong block that contains at least one non-food, non-waste species-vert
 			\begin{equation*}
 				\SM=\left(
 					\begin{array}{c|c} 
-					&	\begin{array}{cccccccc}
-						r'_1 	\hspace{3pt} & \hspace{3pt} r''_1 & \hspace{3pt} r'_2	& \hspace{3pt}	r''_2 	& \hspace{3pt}	r'_3 	& \hspace{3pt}	r''_3 	& \hspace{3pt} r'_4 & \hspace{3pt} r''_4  
+					&	\begin{array}{cccccc}
+						r'_1 	\hspace{3pt} & \hspace{3pt} r''_1 & \hspace{3pt} r'_2	& \hspace{3pt}	r''_2 	& \hspace{3pt}	r'_3 	& \hspace{3pt}	r''_3 
 					\end{array} \\
 					\hline 
 					\begin{array}{c}
@@ -1630,53 +1632,47 @@ maximal strong block that contains at least one non-food, non-waste species-vert
 					x_3 \\
 					x'_3 \\
 					x''_3 \\
-					x_4\\
-					x'_4 \\
-					x''_4 \\
 					\end{array}
 					& 
-					\begin{array}{cccccccc}
-						-1	&	-1	&	0	&	0	&	0	&	0	&	0	&	0	\\
-						0 	& 	0	& 	0  	& 	0	&	0 	&	0	& 	1 	& 	1 	 \\
-						0 	& 	0	& 	0  	& 	0	&	0 	&	0	& 	1 	& 	1 	 \\ 	 
-						1 	&	1	& 	-1 	& 	-1	&	0 	&	0	& 	0 	&	0	 \\
-						0 	&	0	& 	0  	& 	0	&	1 	&	1	& 	0 	&	0	 \\
-						0 	&	0	& 	0  	& 	0	&	1 	&	1	& 	0 	&	0	 \\
-						0 	&	0	& 	1 	 & 	1	&	-1 	&	-1	& 	0 	&	0	 \\
-						0 	&	0	& 	0	&	0	&	0	&	0	& 	1 	&	1	 \\
-						0 	&	0	& 	0	&	0	&	0	&	0	&	1 	&	1	 \\
-						0 	&	0	& 	0	&	0	&	1	&	1	& 	-1 	&	-1	 \\
-						0	&	0	& 	0	&	0	&	0	&	0	&	1 	&	1	\\
-						0	&	0	& 	0	&	0	&	0	&	0	&	1 	&	1	\\
+					\begin{array}{cccccc}
+						-1	&	-1	&	0	&	0	&	0	&	0	\\
+						0 	& 	0	& 	0  	& 	0	&	0 	&	0	\\
+						0 	& 	0	& 	0  	& 	0	&	0 	&	0	\\
+						1 	&	1	& 	-1 	& 	-1	&	0 	&	0	\\
+						0 	&	0	& 	0  	& 	0	&	1 	&	1	\\
+						0 	&	0	& 	0  	& 	0	&	1 	&	1	\\
+						0 	&	0	& 	1 	 & 	1	&	-1 	&	-1	\\
+						0 	&	0	& 	0	&	0	&	1	&	1	\\
+						0 	&	0	& 	0	&	0	&	1	&	1	
 					\end{array} 
 				\end{array}
 				\right)
 			\end{equation*}
 		\end{minipage}
 	\end{minipage}
-	\hfill
+	\par \bigskip
 	\begin{minipage}[c]{\textwidth}
 		\centering
 		\begin{tikzpicture}
 			\node[draw, circle] (f) at (1,-1.5) {$f$};
-			\node[draw, circle] (x'1) at (2,1) {$x'_1$};
-			\node[draw, circle] (x''1) at (0,1) {$x''_1$};
+			\node[draw, circle] (x'1) at (0,1) {$x'_1$};
+			\node[draw, circle] (x''1) at (2,1) {$x''_1$};
 			\node[draw, circle] (x2) at (1,-5) {$x_2$};
-			\node[draw, circle] (x'2) at (3,-7) {$x'_2$};
-			\node[draw, circle] (x''2) at (3,-3) {$x''_2$};
+			\node[draw, circle] (x'2) at (6,-5) {$x'_2$};
+			\node[draw, circle] (x''2) at (6,-3) {$x''_2$};
 			\node[draw, circle] (x3) at (8,-5) {$x_3$};
-			\node[draw, circle] (x'3) at (10.4,-3) {$x'_3$};
-			\node[draw, circle] (x''3) at (6,-3) {$x''_3$};
-			\node[draw, circle] (x4) at (8,1) {$x_4$};
-			\node[draw, circle] (x'4) at (5.5,3) {$x'_n$};
-			\node[draw, circle] (x''4) at (5.5,-1) {$x''_n$};
+			\node[draw, circle] (x'3) at (5,1) {$x'_3$};
+			\node[draw, circle] (x''3) at (5,-1) {$x''_3$};
+%			\node[draw, circle] (x4) at (8,1) {$x_4$};
+%			\node[draw, circle] (x'4) at (5.5,3) {$x'_n$};
+%			\node[draw, circle] (x''4) at (5.5,-1) {$x''_n$};
 			
-			\node[draw, rectangle] (r'1) at (2,-2) {$r'_1$};
-			\node[draw, rectangle] (r''1) at (0,-2) {$r''_1$};
+			\node[draw, rectangle] (r'1) at (0,-2) {$r'_1$};
+			\node[draw, rectangle] (r''1) at (2,-2) {$r''_1$};
 			\node[draw, rectangle] (r'2) at (4.5,-6) {$r'_2$};
 			\node[draw, rectangle] (r''2) at (4.5,-4) {$r''_2$};			
-			\node[draw, rectangle] (r'3) at (9,-1.75) {$r'_3$};
-			\node[draw, rectangle] (r''3) at (7,-1.75) {$r''_3$};
+			\node[draw, rectangle] (r'3) at (7,2) {$r'_3$};
+			\node[draw, rectangle] (r''3) at (7,0) {$r''_3$};
 			
 			
 %			\node[draw, minimum size=0.55cm] (r'3) at (9,-1.75) {};
@@ -1684,8 +1680,8 @@ maximal strong block that contains at least one non-food, non-waste species-vert
 %			\node[draw, circle] (r'3) at (9,-1.75) {$\cdots$};
 %			\node[draw, circle] (r''3) at (11,-1.75) {$\cdots$};			
 			
-			\node[draw, rectangle] (r'4) at (4.5,2) {$r'_4$};
-			\node[draw, rectangle] (r''4) at (4.5,0) {$r''_4$};			
+%			\node[draw, rectangle] (r'4) at (4.5,2) {$r'_4$};
+%			\node[draw, rectangle] (r''4) at (4.5,0) {$r''_4$};			
 			
 			\draw[->] (f) to (r'1);
 			\draw[->] (f) to (r''1);
@@ -1705,45 +1701,49 @@ maximal strong block that contains at least one non-food, non-waste species-vert
 			\draw[->] (r'2) to [bend right = 15] (x3);
 			\draw[->] (r''2) to [bend left = 15] (x3);
 			
-			\draw[->] (x3) to [bend right=15] (r'3);
+			\draw[->] (x3) to [bend right=30] (r'3);
 			\draw[->] (x3) to [bend left=15] (r''3);
-			\draw[->] (r'3) to [bend right=15] (x4);
-			\draw[->] (r''3) to [bend left=15] (x4);			
-			\draw[->, opacity=0.3] (r''3) to [bend left = 10] (x''2);
-			\draw[->, opacity=0.3] (r'3) to [bend left=60, looseness=1.2] (x'2);
-			\draw[->, opacity=0.3] (r'3) to [bend left = 35] (x''2);
-			\draw[->, opacity=0.3] (r''3) to [bend left=60] (x'2);
+			\draw[->] (r'3) to [bend right=15] (x'1);
+			\draw[->] (r'3) to [bend right=15] (x''1);
+			\draw[->] (r''3) to [bend left=15] (x''1);
+			\draw[->] (r''3) to [bend left=15] (x'1);			
+%			\draw[->, opacity=0.3] (r''3) to [bend left = 10] (x''2);
+%			\draw[->, opacity=0.3] (r'3) to [bend left=60, looseness=1.5] (x'2);
+%			\draw[->, opacity=0.3] (r'3) to [bend left = 35] (x''2);
+%			\draw[->, opacity=0.3] (r''3) to [bend left=60, looseness=1.4] (x'2);
 			
-			\draw[->, dashed] (x'3) to [bend right=15] (r'3);
-			\draw[->, dashed] (r'3) to [bend right=15] (x'3);
-			\draw[->, dashed] (x''3) to [bend right=15] (r''3);
-			\draw[->, dashed] (r''3) to [bend right=15] (x''3);
+			\draw[->, dashed] (x'3) to [bend left=15] (r'3);
+			\draw[->, dashed] (r'3) to [bend left=15] node[midway, below] {$2$} (x'3);
+			\draw[->, dashed] (x''3) to [bend left=15] (r''3);
+			\draw[->, dashed] (r''3) to [bend left=15] node[midway, below] {$2$} (x''3);
 						
-			\draw[->, opacity=0.3] (r'4) to [bend left=60, looseness=1.2] (x'3);
-			\draw[->, opacity=0.3] (r'4) to [bend right = 45] (x''3);
-			\draw[->, opacity=0.3] (r''4) to [bend left=70, looseness=1.5] (x'3);
-			\draw[->, opacity=0.3] (r''4) to [bend right = 20] (x''3);
+%			\draw[->, opacity=0.3] (r'4) to [bend left=60, looseness=1.2] (x'3);
+%			\draw[->, opacity=0.3] (r'4) to [bend right = 45] (x''3);
+%			\draw[->, opacity=0.3] (r''4) to [bend left=70, looseness=1.5] (x'3);
+%			\draw[->, opacity=0.3] (r''4) to [bend right = 20] (x''3);
 												
-			\draw[->] (x4) to [bend right=10] (r'4);
-			\draw[->] (x4) to [bend left=10] (r''4);
+%			\draw[->] (x4) to [bend right=10] (r'4);
+%			\draw[->] (x4) to [bend left=10] (r''4);
 			
-			\draw[->] (r'4) to [bend right=10] (x'1);
-			\draw[->] (r''4) to [bend left=10] (x'1);
-			
-			\draw[->] (r'4) to [bend right=10] (x''1);
-			\draw[->] (r''4) to [bend left=10] (x''1);
-			
-			\draw[->, dashed] (r'4) to [bend left=15] node[midway, left]{$2$} (x'4);
-			\draw[->, dashed] (x'4) to [bend left=15] (r'4);
-			
-			\draw[->, dashed] (r''4) to [bend left=15] node[midway, right]{$2$} (x''4);
-			\draw[->, dashed] (x''4) to [bend left=15] (r''4);
+%			\draw[->] (r'4) to [bend right=10] (x'1);
+%			\draw[->] (r''4) to [bend left=10] (x'1);
+%			
+%			\draw[->] (r'4) to [bend right=10] (x''1);
+%			\draw[->] (r''4) to [bend left=10] (x''1);
+%			
+%			\draw[->, dashed] (r'4) to [bend left=15] node[midway, left]{$2$} (x'4);
+%			\draw[->, dashed] (x'4) to [bend left=15] (r'4);
+%			
+%			\draw[->, dashed] (r''4) to [bend left=15] node[midway, right]{$2$} (x''4);
+%			\draw[->, dashed] (x''4) to [bend left=15] (r''4);
 											
 		\end{tikzpicture}		
 	\end{minipage}
-	\caption{\textbf{The necklace RAF of size $n=4$}. CRN reactions, the associated stoichiometric matrix and the 
-	corresponding K\"onig graph for an irreducible RAF are denoted in the \textbf{upper left}, \textbf{upper right} and 
-	\textbf{lower} panels, respectively.}
+	\caption{\holy{\textbf{The necklace RAF}. \textbf{Upper left}: CRN reactions for an irreducible RAF, where each 
+	F-reaction is associated with two catalyzations, referred to as the \emph{necklace RAF} of size $n$. 
+	The \textbf{upper right} panel represents the associated stoichiometric matrix of a necklace RAF of size $n=4$, 
+	while its corresponding K\"onig graph is depicted in the \textbf{lower} panel. The edges $(r'_3, x'_2), (r'_3, x''_2), 
+	(r''_3, x'_2)$, and $(r'_3, x''_2)$ were ommitted for increased visbility.}}
 	\label{fig:NecklaceRAF}
 \end{figure}
 \holy{So far we have restricted our attention to monocatalyzed, irreducible RAFs and derived examples where the 
@@ -1752,15 +1752,19 @@ is necessarily monocatalyzed. In particular, the ones derived from instances of 
 (see Fig.~\ref{fig:irrRAFCores} include reactions that are associated with multiple catalyzations. Although they 
 are composed of not more than 60 CRN reactions, they contain up to 1000 autocatalytic cores even if all food-species 
 have been removed. Indeed, the number of autocatalytic cores can rise exponentially as the following example shows.
-In the necklace RAF of size $4$ there are $2^3$ autocatalytic cores of size $4$, i.e., 
-$(\{x_1,x_2,x_3,x_4\} \{r_1, r^*_2, r^*_3, r^*_4\}, \kappa(x_i)\coloneqq r^*_i)$, whereby $r_i^*=r'_i$ or $r_i^*=r''_i$. We 
-remark that this example not only contains autocatalytic cores of size $4$ but also $2\cdot 2\cdot 2=8$ autocatalytic cores 
-of size $2$ and $2$ of size $1$. Clearly, the example can be generalized to any number of reactions such that the number 
-of autocatalytic cores of size $n$ is determined in general by $2^{n-1}$, while the number of autocatalytic cores of size $2$ 
-grows as $(n-1)\cdot 2\cdot 2$. However, the number of catalyzations may not be restricted to two. In this way, we obtain 
-$\prod_{i=1}^{n} |\cat(\fr_i)|$ and $\sum_{i=2}^{n-1} |\cat(\fr_i)|\cdot |\cat(\fr_{i+1})|$ number of autocatalytic cores of sizes 
-$n$ and $2$, respectively.}
+In the necklace RAF of size $n=3$ there are $2^3$ autocatalytic cores of size $3$, i.e., 
+$(\{x'_1,x_2,x_3\} \{r'_1, r^*_2, r^*_3\}, \kappa(x'_1)\coloneqq r'_1, \kappa(x_i)\coloneqq r^*_i, i=2,3)$, whereby $r_i^*=r'_i$ 
+or $r_i^*=r''_i$ as well as $(\{x''_1,x_2,x_3\} \{r''_1, r^*_2, r^*_3\}, \kappa(x''_1)\coloneqq r''_1, \kappa(x_i)\coloneqq r^*_i, i=2,3)$, 
+whereby $r_i^*=r'_i$ or $r_i^*=r''_i$. We remark that this example not only contains autocatalytic cores of size $3$ but also 
+$2\cdot 2=4$ autocatalytic cores of size $2$ and $2$ of size $1$. As the \textbf{upper left} panel of Fig.~\ref{fig:NecklaceRAF} 
+indicates, the example can be generalized to any number of reactions such that the number of autocatalytic cores of size $n$ 
+is determined in general by $2^n$, while the number of autocatalytic cores of size $2$ grows as $(n-1)\cdot 2\cdot 2$. However, 
+the number of catalyzations may not be restricted to two. In this way, we obtain $\prod_{i=1}^{n} |\cat(\fr_i)|$ and 
+$\sum_{i=1}^{n} |\cat(\fr_i)|\cdot |\cat(\fr_{i+1})|$ number of autocatalytic cores of sizes $n$ and $2$, respectively.}
 \FloatBarrier
+
+\subsection{Irreducible RAFs from the binary polymer model}
+
 \section{Discussion}
 
 \textsc{Reflexively autocatalytic sets (RAFs)} and \emph{stoichiometric
