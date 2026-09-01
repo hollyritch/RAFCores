@@ -929,7 +929,7 @@ The K\H{o}nig graph emerged under various names in CRN theory, as the
 
 A \emph{directed path} $\mathcal{P}$ in $K(\RAF)$ is an ordered sequence of
 vertices $\mathcal{P}=(v_1,\ldots, v_n)$, starting at $v_1$ and terminating
-at $v_n$, such that $(v_i,v_{i+1})\in E(K(\RAF)), 1\leq i\leq n-1$. We say
+at $v_n$, such that $(v_i,v_{i+1})\in E(K(\RAF)), 1\leq i\leq n-1$, \NV{and no vertices are repeated}. We say
 that such $\mathcal{P}$ is a path from $v_1$ to $v_n$. $K(\RAF)$ is
 \emph{strongly connected} if, for every pair of vertices
 $v,w\in (X\cup\mathcal{R})$ there is a directed path from $v$ to $w$. If
@@ -1165,41 +1165,34 @@ an inspection of the example in Fig.~\ref{ex:CutVertex2} we \PFS{observe}
 that such entry reactions appear in intimate relation with cut-vertices of
 the bipartite graph $K(\mathcal{R}')$. For brevity, we investigate this
 intuition only via the following two corollaries of
-Lemma~\ref{lem:StrongBlocks}.  \NV{[SOME MISTAKE HERE TO BE CORRECT, $r_4$ in the figure contradicts the corollary]} \vspace{6pt}
+Lemma~\ref{lem:StrongBlocks}.   \vspace{6pt}
 \begin{corollary}\label{cor:strongblock1}
-  Let $\RAF$ be an irreducible monocatalyzed RAF. Let $\block$ be a maximal
+ \NV{ Let $\RAF$ be an irreducible monocatalyzed RAF. Let $\block_1$ be a maximal
   strong block of $K(\RAF)$ containing at least one species-vertex outside
-  the food and waste sets, i.e.,
-  $ X(\block)\not\subseteq \food\cup\mathbf{W}_{\RAF}.$ Further assume that
-  there exists a species $\tilde{x}\notin\food\cup\mathbf{W}_{\RAF}$ with
-  $\tilde{x}\notin\block$. Then every entry reaction $r^*$ of $\block$ has
-  at least two distinct F-products.
+  the food and waste sets. Let $r^*$ be an entry reaction of $\block_1$ and assume there exists a distinct maximal strong block $\block_2$ of $K(\RAF)$, also containing at least one non-food, non-waste species, and such that  such that $\block_1\cap \block_2=\{r^*\}$. Then $r^*$ has at least two distinct non-food F-products.}
 \end{corollary}
 \begin{proof}
-  Consider any entry reaction $r^*$ of
-  $\block$. Lemma~\ref{lem:StrongBlocks} yields that $r^*$ has an F-product
-  $x_{\pi_1}$ in $\block$. In turn, via Lemma~\ref{lem:PSC}, there exists a
+\NV{Let $\{r^*\}=\block_1\cap \block_2$. Lemma~\ref{lem:StrongBlocks} yields that $r^*$ has an F-product
+  $x_{\pi_1}$ in $\block_1$. In turn, via Lemma~\ref{lem:PSC}, there exists a
   directed path $\mathcal{P}$ in $K(\RAF)$ from $r^*$ to
-  $\tilde{x}\not\in X(\block)$, with $\mathcal{P}\cap
-  \food=\emptyset$. Since $\block$ is a strong block and
-  $r^*\in \mathcal{R}(\block)$, it follows that
-  $\mathcal{P}\cap \block=\{r^*\}$. Let $\tilde{\tilde{x}}$ be the first
+  $\tilde{x}\in X(\block_2)\setminus(\food \cup \mathbf{W}_{\RAF})$, with $\mathcal{P}\cap
+  \food=\emptyset$. Since $\block_2$ is  a strong block, $\mathcal{P}$ is entirely inside $\block_2$. %Since $\block_1\cap\block_2={r^*}$, it follows that $\mathcal P\cap\block_1={r^*}$.
+Let $\tilde{\tilde{x}}$ be the first
   species-vertex after $r^*$ in $\mathcal{P}$. By construction,
   $\tilde{\tilde{x}}\not \in \mathbf{W}_{\RAF}$. Moreover, via Lemma
-  \ref{lem:cutvert}, $\tilde{\tilde{x}}$ cannot be a cut-vertex and thus
-  there exists a maximal strong block $\tilde{\block} \neq \block $ which
-  contains both vertices $r^*$ and $\tilde{\tilde{x}}$.  If
+  \ref{lem:cutvert}, $\tilde{\tilde{x}}$ cannot be a cut-vertex and thus the maximal strong block containing both
+$r^*$ and $\tilde{\tilde{x}}$ is $\block_2$.  If
   $\{r^*, \tilde{\tilde{x}}\}$ are the only two vertices in
-  $\tilde{\block}$, then $\tilde{\tilde{x}}$ is an F-product of $r^*$, and
+  $\block_2$, then $\tilde{\tilde{x}}$ is an F-product of $r^*$, and
   we are done. Otherwise, there exists at least another reaction
-  $\tilde{r}\in \mathcal{R}(\block)$, $\tilde{r}\neq r^*$. Indirectly
-  assume there exists no F-product $x_{\pi_2}$ of $r^*$, which is not in
-  $\block$. Arguing exactly as in the proof of Lemma
+  $\tilde{r}\in \mathcal{R}(\block_2)$, $\tilde{r}\neq r^*$, which has $\tilde{\tilde{x}}$ as an F-product.
+  Indirectly
+  assume there exists no non-food F-product $x_{\pi_2}$ of $r^*$ in $\block_2$. Arguing exactly as in the proof of Lemma
   \ref{lem:StrongBlocks}, starting from
   $\tilde{\mathbf{R}}_0=\{\tilde{\fr}\}$ and building a RAF via
   \eqref{RAFbuild}, we construct a nonempty
   $\RAF'\subseteq \RAF\setminus \fr^* \subset \RAF$, leading to
-  contradiction.
+  contradiction.}
 \end{proof}
 Corollary~\ref{cor:strongblock1} directly yields the following statement,
 which gives an easy-to-check structural necessary condition for the
