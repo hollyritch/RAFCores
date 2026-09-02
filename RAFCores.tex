@@ -514,10 +514,14 @@ net-molecule transformation
   \sum_{x\in X}\ \sigma^+_{x\fr} \cdot x,
 \end{equation}
 where $\sigma^\pm_{x\fr}\ge 0$ are again nonnegative stoichiometric
-coefficients. \NV{In the original framework of Lohn, general stoichiometric coefficients are not specified, as reactions are defined through polymer transformations with unit stoichiometry $\sigma^\pm_{x\fr}\in \{0,1\}$. Here, to
-bring the CRS formalism closer to the general CRN setting, we allow arbitrary stoichiometry $\sigma^\pm_{x\fr}\in \mathbb{N}_0$.}  The sets of F-reactants $\feducts(\fr)$ and F-products
+coefficients. In the original framework of Lohn, general stoichiometric 
+coefficients are not specified, as reactions are defined through polymer 
+transformations with unit stoichiometry $\sigma^\pm_{x\fr}\in \{0,1\}$. 
+Here, to bring the CRS formalism closer to the general CRN setting, 
+we allow arbitrary stoichiometry $\sigma^\pm_{x\fr}\in \mathbb{N}_0$. 
+The sets of F-reactants $\feducts(\fr)$ and F-products
 $\fproducts(\fr)$ of an F-reaction $\fr$ are defined identically as in
-\eqref{eq:setsdef} for CRNs. The main difference with the CRN setting are
+\eqref{eq:setsdef} for CRNs. The main difference with the CRN setting is
 the \emph{catalyzations} $\cat(\FR)=\{ \cat(\fr) \}_{\fr\in\FR}$.  For a
 single F-reaction $\fr$, the set of catalyzations $\cat(\fr)$ is defined as
 $\cat(\fr)=\{c_{\fr,i}\}$, where each catalyzation $c_{\fr,i}$ is in turn a set of
@@ -671,9 +675,9 @@ where the index is shifted by one for normalization, so that the
 Similarly, the sequences define a \emph{generation species-index} $g(x)$
 where a non-food species $x\not\in \food$ is produced for the first time,
 i.e. \begin{equation} g(x)= \operatorname{min} \{i \; | \; x\in
-  X'_i\}.\end{equation} \NV{We further consider $g(x)=0$ for $x\in\food$.} Clearly, the total order $\le$ on the natural
-numbers induces a preorder $\preccurlyeq$ on $X\setminus \food$ and a
-preorder $\preceq$ on $\mathbf{R}$
+X'_i\}.\end{equation} We further set $g(x)=0$ for $x\in\food$. Clearly, the 
+total order $\le$ on the natural numbers induces a preorder $\preccurlyeq$ 
+on $X\setminus \food$ and a preorder $\preceq$ on $\mathbf{R}$
 \begin{equation}
 \begin{cases}
   x_1\preccurlyeq x_2 \quad&\text{if}\quad \sgen(x_1) \leq \sgen(x_2);\\
@@ -700,7 +704,7 @@ We conclude this section with the formal definition of CAFs sets.
 \subsection{Irreducible RAFs}\label{sec:IrrRAF}
 
 For a CRS $(X,\FR,\cat(\FR))$ with food-set $\food\subseteq X$, 
-the minimality of the RAF structure $\RAF$ with respect to its F-reactions, 
+the minimality of the RAF structure $\RAF$ with respect to its F-reactions 
 has been investigated in \cite{steel_minimal_2013}. To this aim, the 
 notion of \emph{irreducible RAFs} has been introduced.
 
@@ -756,8 +760,13 @@ Def.~\ref{def:irrerRAF} directly yields the following two structural lemmas.
   $\food$-generated; in particular, $\RAF'$ is a RAF which contradicts
   $\RAF$ being irreducible.
 \end{proof}
-We remark that \eqref{eq:inverse} in particular formally excludes the presence in any irreducible RAF of two F-reactions that are each other's inverse. \NV{More specifically, for an F-reaction $\fr=\fr_1$, we write $\bar{\fr}=\fr_2$ for its reverse reaction satisfying \eqref{eq:inverse}. Similarly, for a set of F-reactions $
-  \RAF' = \{\fr_1,\fr_2,\ldots,\fr_k\}$, we write $\bar{\FR}'' = \{\bar{\fr}_1,\bar{\fr}_2,\ldots,\bar{\fr}_k\}$ for the set of the reverse F-reactions of $\RAF'$. We state then the following result.
+We remark that \eqref{eq:inverse} in particular formally excludes the presence 
+in any irreducible RAF of two F-reactions that are each other's inverse. \NV{More 
+specifically, for an F-reaction $\fr=\fr_1$, we write $\bar{\fr}=\fr_2$ \TODO{(Why 
+$=\fr_1$ and $=\fr_2$, especially because you use then $\fr_1$ and $\fr_2$ only 
+in $\RAF'$?)} for its reverse reaction satisfying \eqref{eq:inverse}. Similarly, for 
+a set of F-reactions $
+  \RAF' = \{\fr_1,\fr_2,\ldots,\fr_k\}$, we write $\bar{\FR}'' = \{\bar{\fr}_1,\bar{\fr}_2,\ldots,\bar{\fr}_k\}$ for the set of the reverse F-reactions of $\RAF'$.} We then state the following result.
 \vspace{6pt}
 \begin{lemma}\label{lem:noReverseIrrRAF}
   Let $(X,\FR,\cat(\FR))$ be a CRS with food-set $\food\subseteq X$, and $\RAF \subset \FR$ an irreducible RAF with $|\RAF|>1$. For any subset $\RAF' \subseteq \RAF$, the set $\widetilde{\RAF}:=(\RAF \setminus \RAF') \cup \bar{\FR}''$ is not an irreducible RAF.
@@ -767,10 +776,11 @@ Indirectly assume that $\widetilde{\RAF}$ is an irreducible RAF and pick an F-re
 \[\bar{\fr}_i\in
 \operatorname{argmin}_{\bar{\fr}\in\bar{\FR}''}\gamma(\bar{\fr}),\]
 where $\gamma$ is the generation order defined in \eqref{def:genreactionindex}.
-By construction, $\rho_F(\bar{\fr}_i)\subseteq \closure{\RAF \setminus \RAF'}{\food}$, and thus $\pi_F(\fr_i)\subseteq \closure{\RAF \setminus \RAF'}{\food}$. Consequently, $\closure{\RAF}{\food}=\closure{\RAF \setminus \{\fr_i\}}{\food}$. Since $|\RAF|>1$, $\RAF\setminus\{\fr_1\}$ is nonempty and thus a RAF, contradicting the irreducibility of $\RAF$.
+By construction, $\rho_F(\bar{\fr}_i)\subseteq \closure{\RAF \setminus \RAF'}{\food}$, 
+and thus $\pi_F(\fr_i)\subseteq \closure{\RAF \setminus \RAF'}{\food}$. Consequently, $\closure{\RAF}{\food}=\closure{\RAF \setminus \{\fr_i\}}{\food}$. Since $|\RAF|>1$, $\RAF\setminus\{\fr_1\}$ is nonempty and thus a RAF, contradicting the irreducibility of $\RAF$.
 \end{proof}
   %First assume that $\RAF$ with one (arbitrary) F-reaction $\fr_i$ reversed is an irreducible RAF $\RAF'$. That means that $\feducts(\bar{\fr}_i) = \fproducts(\fr_i) \subset \closure{\RAF}{\food}$. However, that means that $\RAF \setminus \{\fr_i\}$ is also a RAF, contradicting the fact that $\RAF$ is irreducible. Alternatively, it could be that $\feducts(\bar{\fr}_i) \not\subset \closure{\RAF}{\food}$, but that by reversing some other F-reaction $\fr_j \in \RAF$ it will be. But then the first argument can be applied to $\fr_j$, or otherwise it leads to an increasing sequence of reversed F-reactions where (i) some reversed F-reaction $\bar{\fr}_k$ requires an F-reactant that is an F-product of an earlier reversed F-reaction, or (2) for some reversed F-reaction $\bar{\fr}_k$ it is the case that $\feducts(\bar{\fr}_k) \subset \food$. In case (i) $\RAF'$ cannot be an irreducible RAF as it is not $\food$-generated (having a cycle of F-reactions where each F-reaction has an F-reactant that is only produced by the previous F-reaction in the cycle), and in case (ii) it follows that $\fproducts(\fr_k) \subset \food$, which contradicts the fact that $\RAF$ is irreducible.
-In words, given an irreducible RAF $\RAF$, there is no subset of F-reactions $\RAF' \subseteq \RAF$ such that when all F-reactions in the subset $\RAF'$ are reversed, the resulting set is also an irreducible RAF. The only admissible exception is an irreducible RAF consisting of a single reaction where all F-reactants, F-products, and at least one catalyst are all in the food set $\food$.}
+In words, given an irreducible RAF $\RAF$, there is no subset of F-reactions $\RAF' \subseteq \RAF$ such that when all F-reactions in the subset $\RAF'$ are reversed, the resulting set is also an irreducible RAF. The only admissible exception is an irreducible RAF consisting of a single reaction where all F-reactants, F-products, and at least one catalyst are all in the food set $\food$.
 
 Since a RAF is defined in Def.~\ref{def:RAF} as a subset of F-reactions,
 Def.~\ref{def:irrerRAF} imposes a minimality condition only on the set of
@@ -929,11 +939,11 @@ The K\H{o}nig graph emerged under various names in CRN theory, as the
 
 A \emph{directed path} $\mathcal{P}$ in $K(\RAF)$ is an ordered sequence of
 vertices $\mathcal{P}=(v_1,\ldots, v_n)$, starting at $v_1$ and terminating
-at $v_n$, such that $(v_i,v_{i+1})\in E(K(\RAF)), 1\leq i\leq n-1$, \NV{and no vertices are repeated}. We say
-that such $\mathcal{P}$ is a path from $v_1$ to $v_n$. $K(\RAF)$ is
-\emph{strongly connected} if, for every pair of vertices
+at $v_n$, such that $(v_i,v_{i+1})\in E(\king(\RAF)), 1\leq i\leq n-1$, and no vertex 
+is repeated. We say that such $\mathcal{P}$ is a path from $v_1$ to $v_n$. 
+$\king(\RAF)$ is \emph{strongly connected} if, for every pair of vertices
 $v,w\in (X\cup\mathcal{R})$ there is a directed path from $v$ to $w$. If
-$K(\RAF)$ is not strongly connected, the \emph{strongly connected
+$\king(\RAF)$ is not strongly connected, the \emph{strongly connected
   component} containing a vertex $v_1$ is the maximum set of vertices $V_1$
 with $v_1\in V_1$ such that for any pair of vertices $v$ and $w$ in $V_1$
 there is a directed path from $v$ to $w$.
@@ -942,7 +952,7 @@ We note that, for a species $x_f \in \food$ in the food set, there may be
 no directed edge $(r,x_f)$ at all.  Complementarily, we introduce the set
 $\mathbf{W}_{\RAF}$ of \emph{waste species} (with respect to $\RAF$) as the
 species $x_w$ for which there is no directed edges $(x_w,r)\in
-K(\RAF)$. Equivalently, in symbols:
+\king(\RAF)$. Equivalently, in symbols:
 \begin{equation}\label{eq:Waste}
   \mathbf{W}_{\RAF}\coloneqq \{x\in \closure{\RAF}{\food} \ | \
   \nexists r \in \CR' \text{ s.t. } s^-_{xr}>0\}.
@@ -951,7 +961,7 @@ We now have the following statement:
 \vspace{6pt}
 \begin{lemma}[Strong connectivity]\label{lem:PSC}
   Let $\RAF$ be an irreducible, monocatalyzed RAF, and let $v_1,v_2$ be two
-  vertices of $K(\RAF)$, which are not in the food and waste sets, i.e.
+  vertices of $\king(\RAF)$, which are not in the food and waste sets, i.e.
   \begin{equation}
     v_1,v_2\in (\closure{\RAF}{\food} \cup \mathcal{R}') \setminus
     `(\food \cup\mathbf{W}_{\RAF}).
@@ -976,7 +986,7 @@ We now have the following statement:
   $\mathcal{R}'_1\coloneqq \mathcal{R}' \setminus \mathbf{D}(r_1)$. Our
   indirect assumption implies that $v_2\not\in\mathbf{D}(r_1)$, and thus it
   follows that, for any F-reaction $\fr\in \RAF_1$,
-  $\kappa'_F(\fr)\cup \rho_F(\fr)\subseteq \closure{\RAF_1}{\food}$. In
+  $\cat'(\fr)\cup \rho_F(\fr)\subseteq \closure{\RAF_1}{\food}$. In
   particular, $\RAF_1$ satisfies the RAF Def.~\ref{def:RAF}, which
   contradicts the irreducibility of $\RAF$: $\RAF_1\subset \RAF$ is a
   strict subset of $\RAF$ since it does not contain
@@ -995,13 +1005,13 @@ theory SI Sec.~\ref{S-sec:Glossary}). The example in
 Fig.~\ref{ex:CutVertex2} captures this situation, as each reaction of the
 associated CRN of an irreducible, monocatalyzed RAF is a cut-vertex in the
 bipartite K\H{o}nig graph $\king(\RAF)$. The next result shows that,
-indeed, for $K(\RAF)$ cut-vertices can only be reaction-vertices
+indeed, for $\king(\RAF)$ cut-vertices can only be reaction-vertices
 $r\in \mathcal{R}'$.
 
 \vspace{6pt}
 \begin{lemma}[Cut vertices]\label{lem:cutvert}
   Let $\RAF$ be an irreducible, monocatalyzed RAF. Every cut-vertex of
-  $K(\RAF)$ is a reaction $r\in \mathcal{R}'$.
+  $\king(\RAF)$ is a reaction $r\in \mathcal{R}'$.
 \end{lemma}
 \begin{proof}
   Indirectly, assume that there exists a cut vertex $x^*$ of $\king(\RAF)$
@@ -1009,19 +1019,19 @@ $r\in \mathcal{R}'$.
   $\tilde{K}_1,...,\tilde{K}_n$ of the bipartite subgraph $\tilde{K}$
   obtained from $\king(\RAF)$ by removing $x^*$ and all adjacent edges
   $(x^*,r)$ or $(r,x^*)$. Note that - by construction - no species-vertex
-  in any component $\tilde{K}_i$ is an F-reactant or an F-catalyst for any
-  reaction-vertex in any component $\tilde{K}_j$, with $i\neq j$. In
+  in any component $\tilde{\king}_i$ is an F-reactant or an F-catalyst for any
+  reaction-vertex in any component $\tilde{\king}_j$, with $i\neq j$. In
   particular, from $\RAF$ being a RAF, it follows that there is at least
-  one of such connected component $\tilde{K}_1$ whose associated F-reaction
+  one such connected component $\tilde{\king}_1$ whose associated F-reaction
   set $\RAF_1$ is a RAF as well. Since any other
-  $\tilde{K}_i \neq \tilde{K}_1$ contains, by construction, a
+  $\tilde{\king}_i \neq \tilde{\king}_1$ contains, by construction, a
   reaction-vertex, then the RAF $\RAF_1$ is a strict subset of $\RAF$,
   which leads to a contradiction.
 \end{proof}
 
 Building on the perspectives of Lemmata \ref{lem:PSC} and
 \ref{lem:cutvert}, the third and main result of this section considers
-\emph{maximal strong blocks} $\block$ of $K(\RAF)$, i.e. maximal
+\emph{maximal strong blocks} $\block$ of $\king(\RAF)$, i.e. maximal
 strongly-connected subgraphs that possess no cut-vertices
 \cite{grotschel_minimal_1979}.  An example of an irreducible, monocatalyzed
 RAF containing multiple strong blocks is captured in
@@ -1030,7 +1040,7 @@ Fig.~\ref{ex:CutVertex2}.
 \vspace{6pt}
 \begin{lemma}[Strong blocks]\label{lem:StrongBlocks}
   Consider an irreducible, monocatalyzed RAF $\RAF$. Let $\block$ be a
-  maximal strong block of $K(\RAF)$ such that $\block$ contains a
+  maximal strong block of $\king(\RAF)$ such that $\block$ contains a
   species-vertex $x^*$, which is not in the food and waste sets,
   i.e. $x^*\notin \food \cup\mathbf{W}_{\RAF}$, and let
   $r^*\in \mathcal{R}(\block)$ be a reaction satisfying $r^* \preceq r$,
@@ -1048,7 +1058,7 @@ Fig.~\ref{ex:CutVertex2}.
 \begin{proof}
   (i) Indirectly assume there is a species vertex $x\not\in \food$ in
   $\block$ such that $x$ is an F-reactant of $r^*$. Lemma \ref{lem:cutvert}
-  excludes that $x$ is a cut-vertex for $K(\RAF)$, and therefore all
+  excludes that $x$ is a cut-vertex for $\king(\RAF)$, and therefore all
   reactions $\tilde{r}\in \mathcal{R}'$ for which $x$ is an F-product must
   be vertices in $\block$, contradicting the assumed $\preceq$-minimality
   of $r^*$ in $\block$.
