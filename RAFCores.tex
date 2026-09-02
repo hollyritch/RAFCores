@@ -1163,38 +1163,37 @@ We refer to a reaction $r^*$ as in the statement of
 Lemma~\ref{lem:StrongBlocks} as an \emph{entry reaction} for $\block$. By
 an inspection of the example in Fig.~\ref{ex:CutVertex2} we \PFS{observe}
 that such entry reactions appear in intimate relation with cut-vertices of
-the bipartite graph $K(\mathcal{R}')$. For brevity, we investigate this
-intuition only via the following two corollaries of
-Lemma~\ref{lem:StrongBlocks}.   \vspace{6pt}
-\begin{corollary}\label{cor:strongblock1}
- \NV{ Let $\RAF$ be an irreducible monocatalyzed RAF. Let $\block_1$ be a maximal
-  strong block of $K(\RAF)$ containing at least one species-vertex outside
-  the food and waste sets. Let $r^*$ be an entry reaction of $\block_1$ and assume there exists a distinct maximal strong block $\block_2$ of $K(\RAF)$, also containing at least one non-food, non-waste species, and such that  such that $\block_1\cap \block_2=\{r^*\}$. Then $r^*$ has at least two distinct non-food F-products.}
-\end{corollary}
+the bipartite graph $K(\mathcal{R}')$. \NV{We investigate this
+intuition in the following lemma, which generalizes part (iii) of Lemma~\ref{lem:StrongBlocks} to reactions $\tilde{r}$ that are cut vertices, but not necessarily minimal in the generation order.}  \vspace{6pt}
+
+\begin{lemma}\label{cor:strongblock1}
+ \NV{ Let $\RAF$ be an irreducible monocatalyzed RAF. Let $\block_1, \block_2$ be two maximal
+  strong blocks of $K(\RAF)$ containing at least one species-vertex outside
+  the food and waste set, which intersect in a reaction $\tilde{r},$ i.e. $\block_1\cap\block_2=\{\tilde{r}\}$. Then $\tilde{r}$ has at least one F-product in $\block_1$ and one F-product in $\block_2$, i.e.
+  \[\fproducts(\tilde{r})\cap X(\block_i)\neq\emptyset,\qquad i=1,2.\]
+  In particular, $\tilde{r}$ has at least two distinct non-food F-products.}
+\end{lemma}
+
+
 \begin{proof}
-\NV{Let $\{r^*\}=\block_1\cap \block_2$. Lemma~\ref{lem:StrongBlocks} yields that $r^*$ has an F-product
-  $x_{\pi_1}$ in $\block_1$. In turn, via Lemma~\ref{lem:PSC}, there exists a
-  directed path $\mathcal{P}$ in $K(\RAF)$ from $r^*$ to
-  $\tilde{x}\in X(\block_2)\setminus(\food \cup \mathbf{W}_{\RAF})$, with $\mathcal{P}\cap
-  \food=\emptyset$. Since $\block_2$ is  a strong block, $\mathcal{P}$ is entirely inside $\block_2$. %Since $\block_1\cap\block_2={r^*}$, it follows that $\mathcal P\cap\block_1={r^*}$.
-Let $\tilde{\tilde{x}}$ be the first
-  species-vertex after $r^*$ in $\mathcal{P}$. By construction,
-  $\tilde{\tilde{x}}\not \in \mathbf{W}_{\RAF}$. Moreover, via Lemma
-  \ref{lem:cutvert}, $\tilde{\tilde{x}}$ cannot be a cut-vertex and thus the maximal strong block containing both
-$r^*$ and $\tilde{\tilde{x}}$ is $\block_2$.  If
-  $\{r^*, \tilde{\tilde{x}}\}$ are the only two vertices in
-  $\block_2$, then $\tilde{\tilde{x}}$ is an F-product of $r^*$, and
+\NV{For $i\in{1,2}$, pick a species $\tilde{x}_i\in X(\block_i)\setminus(\food\cup\mathbf{W}_{\RAF})$. Via Lemma~\ref{lem:PSC}, there exist directed paths $\mathcal{P}_i$ in $K(\RAF)$ from $\bar r$ to $\tilde{x}_i$ such that $\mathcal{P}_i\cap\food=\emptyset$. Since $\block_i$ are maximal strong block, it follows that each of the path is contained in one of the strong blocks, specifically:  $\mathcal{P}_i\subseteq\block_i$. 
+Let now $\tilde{\tilde{x}}_{i}$ be the first species-vertex after $\tilde r$ in $\mathcal{P}_i$. If
+  $\{\tilde{r}, \tilde{\tilde{x}}_1\}$ are the only two vertices in
+  $\block_i$, then $\tilde{\tilde{x}}_i$ is an F-product of $\tilde{r}$, and
   we are done. Otherwise, there exists at least another reaction
-  $\tilde{r}\in \mathcal{R}(\block_2)$, $\tilde{r}\neq r^*$, which has $\tilde{\tilde{x}}$ as an F-product.
+  $\tilde{\tilde{r}}_i\in \mathcal{R}(\block_i)$, $\tilde{\tilde{r}}_i\neq \tilde{r}$, which has $\tilde{\tilde{x}}_i$ as an F-product.
   Indirectly
-  assume there exists no non-food F-product $x_{\pi_2}$ of $r^*$ in $\block_2$. Arguing exactly as in the proof of Lemma
+  assume there exists no non-food F-product $x_{\pi_i}$ of $\tilde{r}$ in $\block_i$. Arguing exactly as in the proof of Lemma
   \ref{lem:StrongBlocks}, starting from
-  $\tilde{\mathbf{R}}_0=\{\tilde{\fr}\}$ and building a RAF via
+  $\tilde{\mathbf{R}}_0=\{\tilde{\tilde{\fr}}\}$ and building a RAF via
   \eqref{RAFbuild}, we construct a nonempty
-  $\RAF'\subseteq \RAF\setminus \fr^* \subset \RAF$, leading to
+  $\RAF'\subseteq \RAF\setminus \tilde{\fr}\subset \RAF$, leading to
   contradiction.}
-\end{proof}
-Corollary~\ref{cor:strongblock1} directly yields the following statement,
+  \end{proof}
+
+
+
+Lemma~\ref{cor:strongblock1} directly yields the following statement,
 which gives an easy-to-check structural necessary condition for the
 presence of multiple strong blocks involving species that are not in the
 food or in the waste sets.  \vspace{6pt}
@@ -1208,7 +1207,7 @@ food or in the waste sets.  \vspace{6pt}
   species-vertex outside the food and waste sets.
 \end{corollary}
 \begin{proof}
- \NV{[Not so sure it is so `immediate', I think Cor 14 shall Go and instead a general statement on cutvertices between "nontrivial" strong blocks should go, then this would be immediate. Essentially part iii of lemma13 holds without hte minimality assumption.]} Immediate from Cor.~\ref{cor:strongblock1}.
+\NV{Indirectly assume that there exist two distinct maximal strong blocks $\block_1$ and $\block_2$, each containing a species-vertex outside the food and waste sets. Via Lemma~\ref{lem:PSC}, there exists a directed path between such species in $\block_1$ and $\block_2$ which does not intersect the food set. Such path must cross at least one cut-vertex  via Lemma \ref{lem:cutvert} two maximal strong blocks each containing a species-vertex outside the food and waste set, leading via Lemma \ref{cor:strongblock1} to a contradiction with the assumption.}
 \end{proof}
 For example, if all F-reactions $\fr\in\RAF$ are of the form
 \begin{equation*} 
