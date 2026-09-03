@@ -359,17 +359,19 @@ Catalysis is assigned randomly. In particular, there is a fixed probability $p$ 
   \item {$\food = \{0,1\}^{\leq t}$}
 \end{itemize}
 
-Table~\ref{tab:SimulationDetails} specifies different simulation details for different instances of the binary polymer model that 
-were used within this contribution. In particular, all models contributed to the generation of Fig.~\ref{M-fig:StrongBlocks}, while 
-only \textit{n6\_split} and \textit{n6\_forw} were employed for the generation of Fig.~\ref{M-fig:irrRAFCores} and Fig.~\ref{M-fig:FoodVsNonFood}.
+\subsection{Simulation Details}
 
+Table~\ref{tab:SimulationDetails} specifies simulation details for different instances of the binary polymer models. 
+In particular, all models contributed to the generation of Fig.~\ref{fig:StrongBlocks}, while only \textit{n6\_split} 
+and \textit{n6\_forw} were employed for the generation of Fig.~\ref{M-fig:irrRAFCores} and Fig.~\ref{M-fig:FoodVsNonFood}.
+\vspace{-12pt}
 \begin{table}[htb]
 	\caption{Specification of simulation details for irreducible RAFs from different instances of the binary polymer model. 
 	Maximal polymer size is specified by $n$, while the maximum size of food molecules is specified by $t$. The 
 	uniform probability for a non-food molecule to catalyze an F-reaction is given by $p$, while food species are excluded 
 	from being catalysts. F-reactions are in general considered irreversible.}
 	\label{tab:SimulationDetails}
-	\begin{tabular}{c|c|c|c|c|c|c}
+	\begin{tabular}{p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1cm}}
 	Name & n & t & p & food-catalysts & Ligation & Cleavage \\
 	\hline 
 	n4\_split     		& 	4 	& 	1 	& 	0.018 	& 	no 	& 	yes 		& 	yes 		\\
@@ -388,7 +390,140 @@ only \textit{n6\_split} and \textit{n6\_forw} were employed for the generation o
 	\end{tabular}
 \end{table}
 
+\subsection{Maximal Strong Blocks}
+\begin{figure}[htb]
+	\vspace{-24pt}
+	\begin{minipage}[c]{0.5\textwidth}
+		\centering
+	\includegraphics[width=0.8\textwidth]{./Pictures/iRAFrevStrongBlocks.png}
+	\end{minipage}%
+	\hfill%
+	\begin{minipage}[c]{0.5\textwidth}
+		\centering
+		\includegraphics[width=0.8\textwidth]{./Pictures/iRAFirrevStrongBlocks.png}
+	\end{minipage}
+	\caption{Number of maximal strong blocks containing at least one non-food, 
+	non-waste species vertex in irreducible RAFs from different instances of the 
+	binary polymer model containing ligation/cleavage (\textbf{left}) or only ligation 
+	reactions (\textbf{right}). See SI Table~\ref{tab:SimulationDetails}. Dots, each 
+	representing an irreducible RAF with indicated maximal polymer length, are 
+	plotted in a non-overlapping manner.} 
+	\label{fig:StrongBlocks}
+\end{figure}
 
+Figure~\ref{fig:StrongBlocks} shows the number of maximal strong blocks containing at least one non-food, 
+non-waste species for all irreducible RAFs collected from the binary polymer models that are specified in 
+Tab.~\ref{tab:SimulationDetails}.
+
+Figure~\ref{fig:BPMMultipleStrongBlocks} depicts a theoretical example of an instance of the binary 
+polymer model that is composed of two maximal strong blocks containing at least one non-food, 
+non-waste species. However, as depicted in Fig.~\ref{fig:StrongBlocks}, such an instance was 
+not observed by us. 
+
+\begin{figure}[htb]
+	\begin{minipage}[c]{0.4\textwidth}
+		\begin{tikzpicture}
+			\node[draw, ellipse] (01) at (0,0) {$01$};
+			\node[draw, ellipse] (11) at (2,0) {$11$};
+			\node[draw, ellipse] (00) at (4,0) {$00$};						
+			\node[draw, ellipse] (100) at (-1.5,-2.5) {$100$};
+			\node[draw, ellipse] (0111) at (1,-2.5) {$0111$};
+			\node[draw, ellipse] (011) at (3.5,-4) {$011$};
+			\node[draw, ellipse] (1100) at (3,-2.5) {$1100$};
+			\node[draw, ellipse] (11100) at (5,-2.5) {$11100$};
+			\node[draw, ellipse] (01111100) at (2,-5) {$01111100$};
+			\node[draw, ellipse] (01111) at (-2, -5) {$01111$};
+			\node[draw, ellipse] (1111) at (0, -6.5) {$1111$};
+			\node[draw, ellipse] (010) at (-2, -8) {$010$};
+			\node[draw, ellipse] (0) at (-1, -10) {$0$};
+			\node[draw, ellipse] (10) at (1, -10) {$10$};
+			
+			\node[draw, rectangle] (r1) at (1,-1) {$r_1$};
+			\node[draw, rectangle] (r2) at (3,-1) {$r_2$};
+			\node[draw, rectangle] (r3) at (2,-4) {$r_3$};
+			\node[draw, rectangle] (r4) at (5,-4) {$r_4$};
+			\node[draw, rectangle] (r5) at (0,-5) {$r_5$};
+			\node[draw, rectangle] (r6) at (-2,-6.5) {$r_6$};
+			\node[draw, rectangle] (r7) at (0,-8) {$r_7$};
+			
+			\draw[->] (01) to (r1);
+			\draw[->] (11) to (r1);
+			\draw[->] (r1) to (0111);
+			\draw[->, dashed] (100) to [bend left = 15] (r1);
+			\draw[->, dashed] (r1) to [bend left = 15] (100);
+
+			\draw[->] (11) to (r2);
+			\draw[->] (00) to (r2);			
+			\draw[->] (r2) to (1100);
+			\draw[->, dashed] (11100) to [bend left = 15] (r2);
+			\draw[->, dashed] (r2) to [bend left = 15] (11100);
+			
+			\draw[->] (0111) to (r3);
+			\draw[->] (1100) to (r3);
+			\draw[->, dashed] (r3) to [bend right = 15] (011);
+			\draw[->, dashed] (011) to [bend right = 15] (r3);
+			\draw[->] (r3) to (01111100);
+			
+			\draw[->] (01111100) to [bend right = 30] (r4);
+			\draw[->] (r4) to (11100);
+			\draw[->] (r4) to (011);
+			\draw[->, dashed] (r4) to [bend right = 15] (1100);
+			\draw[->, dashed] (1100) to [bend right = 15] (r4);
+			
+			\draw[->] (01111100) to (r5);
+			\draw[->] (r5) to (100);
+			\draw[->] (r5) to (01111);
+			\draw[->, dashed] (r5) to [bend right = 15] (1111);
+			\draw[->, dashed] (1111) to [bend right = 15] (r5);
+			
+			\draw[->] (01111) to (r6);
+			\draw[->] (r6) to (1111);
+			\draw[->] (r6) to [bend right = 60] (0);
+			\draw[->, dashed] (r6) to [bend right = 15] (010);
+			\draw[->, dashed] (010) to [bend right = 15] (r6);
+			
+			\draw[->] (0) to (r7);
+			\draw[->] (10) to (r7);
+			\draw[->] (r7) to (010);
+			\draw[->, dashed] (r7) to [bend right = 30] (1111);
+			\draw[->, dashed] (1111) to [bend right = 30] (r7);
+		\end{tikzpicture}
+	\end{minipage}%
+	\hfill%
+	\begin{minipage}[c]{0.6\textwidth}
+		\par\bigskip
+		\par\bigskip
+		\par\bigskip
+		\par\bigskip
+		\par\bigskip
+		\par\bigskip
+		\par\bigskip
+		\par\bigskip
+		\par\bigskip
+		\par\bigskip
+		\par\bigskip
+		\par\bigskip
+		\begin{equation*}
+			\begin{split}
+				r_1&: 01 + 11 + (100) \rightarrow 0111 + (100) \\
+				r_2&: 11 + 00 + (11100) \rightarrow 1100 + (11100) \\
+				r_3&: 0111 + 1100 (011) \rightarrow 01111100 + (011) \\
+				r_4&: 01111100 + (1100) \rightarrow 011 + 11100 + (1100) \\
+				r_5&: 01111100 + (1111) \rightarrow 01111 + 100 + (1111) \\
+				r_6&: 01111 + (010) \rightarrow 0 + 1111 + (010) \\
+				r_7&: 0 + 10 + (1111) \rightarrow 010 + (1111)
+			\end{split}
+		\end{equation*}
+	\end{minipage}
+	\caption{Example for an irreducible RAF from the binary polymer model with multiple strong blocks.}
+	\label{fig:BPMMultipleStrongBlocks}	
+\end{figure}
+
+\subsection{Compositions of irreducible RAFs}
+
+Figure~\ref{fig:irrRAFCoreComp} shows the composition in terms of F-reactions of the 50 arbitrarily chosen 
+irreducible RAFs from two instances of the binary polymer model, i.e., n6\_split and n6\_forw, depicted in 
+Fig.~\ref{M-fig:irrRAFCores}.
 
 \begin{figure}
 	\centering
@@ -400,10 +535,10 @@ only \textit{n6\_split} and \textit{n6\_forw} were employed for the generation o
 	\begin{minipage}[c]{0.5\textwidth}
 		\includegraphics[width=\textwidth]{./Pictures/n6_forw_present.pdf}
 	\end{minipage}
-	\caption{Depiction of the F-reaction composition of 50 arbitrary irreducible 
-	RAFs from two instances of the binary polymer model as depicted in 
+	\caption{Depiction of the F-reaction composition of 50 arbitrarily chosen 
+	irreducible RAFs from two instances of the binary polymer model as depicted in 
 	Fig.~\ref{M-fig:irrRAFCores} with maximal polymer size of $n=6$. See  
-	Table~\ref{tab:} for simulation details.}
+	Table~\ref{tab:SimulationDetails} for simulation details.}
 	\label{fig:irrRAFCoreComp}
 \end{figure}
 

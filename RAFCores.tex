@@ -1433,125 +1433,6 @@ cleavage and ligation, while the other containing only ligation
 F-reactions. A surprisingly large number of autocatalytic cores were 
 detected in each irreducible RAF, which is depicted in Fig.~\ref{fig:irrRAFCores}.}
 
-\begin{figure}[htb]
-	\begin{minipage}[c]{0.5\textwidth}
-		\centering
-	\includegraphics[width=\textwidth]{./Pictures/iRAFrevStrongBlocks.png}
-	\end{minipage}%
-	\hfill%
-	\begin{minipage}[c]{0.5\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{./Pictures/iRAFirrevStrongBlocks.png}
-	\end{minipage}
-	\caption{\holy{Number of maximal strong blocks that contain at least one non-food, 
-	non-waste species vertex in irreducible RAFs from different instances of the 
-	binary polymer model containing either both ligation and cleavage reactions 
-	(\textbf{left}) or only ligation reactions (\textbf{right}) as described in 
-	SI Sect.~\ref{S-sec:BinPol} and SI Table~\ref{tab:SimulationDetails}. To represent 
-	each irreducible RAF individually within the plot, dots are depicted in a non-overlapping 
-	manner; however, values are discrete.}} 
-	\label{fig:StrongBlocks}
-\end{figure}
-
-
-\begin{figure}
-	\begin{minipage}[c]{0.4\textwidth}
-		\begin{tikzpicture}
-			\node[draw, ellipse] (01) at (0,0) {$01$};
-			\node[draw, ellipse] (11) at (2,0) {$11$};
-			\node[draw, ellipse] (00) at (4,0) {$00$};						
-			\node[draw, ellipse] (100) at (-1.5,-2.5) {$100$};
-			\node[draw, ellipse] (0111) at (1,-2.5) {$0111$};
-			\node[draw, ellipse] (011) at (3.5,-4) {$011$};
-			\node[draw, ellipse] (1100) at (3,-2.5) {$1100$};
-			\node[draw, ellipse] (11100) at (5,-2.5) {$11100$};
-			\node[draw, ellipse] (01111100) at (2,-5) {$01111100$};
-			\node[draw, ellipse] (01111) at (-2, -5) {$01111$};
-			\node[draw, ellipse] (1111) at (0, -6.5) {$1111$};
-			\node[draw, ellipse] (010) at (-2, -8) {$010$};
-			\node[draw, ellipse] (0) at (-1, -10) {$0$};
-			\node[draw, ellipse] (10) at (1, -10) {$10$};
-			
-			\node[draw, rectangle] (r1) at (1,-1) {$r_1$};
-			\node[draw, rectangle] (r2) at (3,-1) {$r_2$};
-			\node[draw, rectangle] (r3) at (2,-4) {$r_3$};
-			\node[draw, rectangle] (r4) at (5,-4) {$r_4$};
-			\node[draw, rectangle] (r5) at (0,-5) {$r_5$};
-			\node[draw, rectangle] (r6) at (-2,-6.5) {$r_6$};
-			\node[draw, rectangle] (r7) at (0,-8) {$r_7$};
-			
-			\draw[->] (01) to (r1);
-			\draw[->] (11) to (r1);
-			\draw[->] (r1) to (0111);
-			\draw[->, dashed] (100) to [bend left = 15] (r1);
-			\draw[->, dashed] (r1) to [bend left = 15] (100);
-
-			\draw[->] (11) to (r2);
-			\draw[->] (00) to (r2);			
-			\draw[->] (r2) to (1100);
-			\draw[->, dashed] (11100) to [bend left = 15] (r2);
-			\draw[->, dashed] (r2) to [bend left = 15] (11100);
-			
-			\draw[->] (0111) to (r3);
-			\draw[->] (1100) to (r3);
-			\draw[->, dashed] (r3) to [bend right = 15] (011);
-			\draw[->, dashed] (011) to [bend right = 15] (r3);
-			\draw[->] (r3) to (01111100);
-			
-			\draw[->] (01111100) to [bend right = 30] (r4);
-			\draw[->] (r4) to (11100);
-			\draw[->] (r4) to (011);
-			\draw[->, dashed] (r4) to [bend right = 15] (1100);
-			\draw[->, dashed] (1100) to [bend right = 15] (r4);
-			
-			\draw[->] (01111100) to (r5);
-			\draw[->] (r5) to (100);
-			\draw[->] (r5) to (01111);
-			\draw[->, dashed] (r5) to [bend right = 15] (1111);
-			\draw[->, dashed] (1111) to [bend right = 15] (r5);
-			
-			\draw[->] (01111) to (r6);
-			\draw[->] (r6) to (1111);
-			\draw[->] (r6) to [bend right = 60] (0);
-			\draw[->, dashed] (r6) to [bend right = 15] (010);
-			\draw[->, dashed] (010) to [bend right = 15] (r6);
-			
-			\draw[->] (0) to (r7);
-			\draw[->] (10) to (r7);
-			\draw[->] (r7) to (010);
-			\draw[->, dashed] (r7) to [bend right = 30] (1111);
-			\draw[->, dashed] (1111) to [bend right = 30] (r7);
-		\end{tikzpicture}
-	\end{minipage}%
-	\hfill%
-	\begin{minipage}[c]{0.6\textwidth}
-		\par\bigskip
-		\par\bigskip
-		\par\bigskip
-		\par\bigskip
-		\par\bigskip
-		\par\bigskip
-		\par\bigskip
-		\par\bigskip
-		\par\bigskip
-		\par\bigskip
-		\par\bigskip
-		\par\bigskip
-		\begin{equation*}
-			\begin{split}
-				r_1&: 01 + 11 + (100) \rightarrow 0111 + (100) \\
-				r_2&: 11 + 00 + (11100) \rightarrow 1100 + (11100) \\
-				r_3&: 0111 + 1100 (011) \rightarrow 01111100 + (011) \\
-				r_4&: 01111100 + (1100) \rightarrow 011 + 11100 + (1100) \\
-				r_5&: 01111100 + (1111) \rightarrow 01111 + 100 + (1111) \\
-				r_6&: 01111 + (010) \rightarrow 0 + 1111 + (010) \\
-				r_7&: 0 + 10 + (1111) \rightarrow 010 + (1111)
-			\end{split}
-		\end{equation*}
-	\end{minipage}
-	\caption{Example for an irreducible RAF from the binary polymer model with multiple strong blocks.}
-	\label{fig:BPMMultipleStrongBlocks}	
-\end{figure}
 
 \holy{As one explanation, we established in Sec.~\ref{subsec:King} that any 
 monocatalyzed, irreducible RAF can be composed of multiple, maximal 
@@ -1782,8 +1663,6 @@ is determined in general by $2^n$, while the number of autocatalytic cores of si
 the number of catalyzations may not be restricted to two. In this way, we obtain $\prod_{i=1}^{n} |\cat(\fr_i)|$ and 
 $\sum_{i=1}^{n} |\cat(\fr_i)|\cdot |\cat(\fr_{i+1})|$ number of autocatalytic cores of sizes $n$ and $2$, respectively.}
 \FloatBarrier
-
-\subsection{Irreducible RAFs from the binary polymer model}
 
 \subsection{\NV{Many irreducible RAFs and just one autocatalytic core}}
 
