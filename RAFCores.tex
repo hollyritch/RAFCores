@@ -1767,6 +1767,30 @@ $\sum_{i=1}^{n} |\cat(\fr_i)|\cdot |\cat(\fr_{i+1})|$ number of autocatalytic co
 
 \subsection{Irreducible RAFs from the binary polymer model}
 
+\subsection{\NV{Many irreducible RAFs and just one autocatalytic core}}
+
+Up to now, the presented examples suggest how the number of autocatalytic cores can be very high in a single irreducible RAF. However, this observation really depends on the network architecture. In fact, we present an example of a family of networks that may contain any number $n$ of irreducible RAFs and invariably only one autocatalytic core. Since such family is monocatalyzed, we use the CRN notation for simplicity.
+
+Consider a simple autocatalytic reaction $r_A$:
+\[x_S+(x_K)\quad\underset{r_A}{\longrightarrow}\quad x_K + (x_K), \]
+which is stoichiometrically equivalent to the standard autocatalytic reaction $x_S+x_K\rightarrow 2x_K$. Assume now $x_S$ is not in the food set but it can be produced from $n$ distinct food molecules via distinct reactions, all catalyzed by $x_K$, i.e.
+\begin{equation}
+    \begin{cases}
+        f_1+(x_K)\quad&\underset{r_1}{\longrightarrow}\quad x_S + (x_K)\\
+         f_2+(x_K)\quad&\underset{r_2}{\longrightarrow}\quad x_S + (x_K)\\
+         &\vdots \\
+         f_n+(x_K)\quad&\underset{r_n}{\longrightarrow}\quad x_S + (x_K)
+    \end{cases}
+\end{equation}
+Consider now the network consisting of the $n+2$ species $X=(f_1,...,f_n,x_S,x_K)$ of which the food set is defined as $\food=\{f_1,...,f_n)$, together with the $n+1$ reactions $\mathcal{R}=(r_1,..., r_N, r_A)$. The network contains $n$ irreducible RAFs of the form $\mathcal{R}'_i=\{r_i,r_A\}$ for $i=1,\ldots,n$. Each of those contains the same autocatalytic core, identified by $r_A$ alone, which is stoichiometrically-one dimensional and corresponding to 
+\[S[\{x_K\},\{r_A\}]=(1).\]
+A similar architecture was already presented in \cite{golnik_bridging_2026}, Example 5.5. The structural ingredients can be summarized as:
+\begin{enumerate}
+    \item \emph{Few species play the role of F-catalysts}: all reactions share the same F-catalyst;
+    \item \emph{No autocatalytic cores involving food molecules}: food molecules only appear as F-reactants but not as F-product.
+\end{enumerate}
+
+
 \section{Discussion}
 
 \textsc{Reflexively autocatalytic sets (RAFs)} and \emph{stoichiometric
