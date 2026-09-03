@@ -148,7 +148,7 @@
 \newcommand{\NEW}[1]{\begingroup\color{blue}#1\endgroup}
 \newcommand{\TODO}[1]{\begingroup\color{red}#1\endgroup}
 \newcommand{\PFS}[1]{\begingroup\color{cyan}#1\endgroup}
-\newcommand{\holy}[1]{\begingroup\color{royalpurple}#1\endgroup}
+\newcommand{\holy}[1]{\begingroup\color{orange}#1\endgroup}
 \newcommand{\TG}[1]{\begingroup\color{middlegreen}#1\endgroup}
 \newcommand{\NV}[1]{\begingroup\color{teal}#1\endgroup}
 \newcommand{\Wim}[1]{\begingroup\color{purple}#1\endgroup}
@@ -1096,7 +1096,7 @@ Fig.~\ref{ex:CutVertex2}.
     \tilde{\mathbf{R}}_{n}=\tilde{\mathbf{R}}_{n-1}\cup
     \left\{\fr\in \RAF \; \middle| \; \bigcup_{\hat{\fr}\in \mathbf{R}_{n-1}}
     \bigg(\feducts(\hat{\fr}) \cup \cat(\hat{\fr})\bigg)
-    \bigcap \TODO{\left( \fproducts(\fr) \setminus \food \right)} \neq \emptyset \right\}.
+    \bigcap \holy{\left( \fproducts(\fr) \setminus \food \right)} \neq \emptyset \right\}.
   \end{equation}
   Since $\RAF$ is a finite set, the iteration converges at a finite step
   $\bar{n}$ to a set $\RAF'\coloneqq \tilde{\mathbf{R}}_{\bar{n}}$.  By
@@ -1104,13 +1104,12 @@ Fig.~\ref{ex:CutVertex2}.
   itself. However, no direct path
   $\mathcal{P}=(r^*, x_\pi,..., \tilde{r},x_\kappa)$ exists, and thus
   $\fr^*\not\in \RAF'$, in contradiction with the assumption of
-  irreducibility of $\RAF$. \TODO{(I think the food molecules need to be 
-  removed from $\fproducts(\fr)$. Otherwise, there is no guarantee that 
-  $\fr^*$ is not added to $\FR''$ and $\RAF' = \RAF$ could be true.)}
-\end{proof}
+  irreducibility of $\RAF$.
+ \end{proof}
 
 \begin{figure}[bth]
   \begin{minipage}[c]{0.45\textwidth}
+  \vspace{-72pt}
     \begin{equation*}
       \begin{split}
 	f_1 + (x_1) \quad&\underset{r_1}\longrightarrow \quad x_2 + (x_1) \\
@@ -1200,19 +1199,17 @@ generation order.
 \begin{proof}
 For $i\in{1,2}$, pick a species $\tilde{x}_i\in X(\block_i)\setminus(\food\cup\mathbf{W}_{\RAF})$. 
 Via Lemma~\ref{lem:PSC}, there exist directed paths $\mathcal{P}_i$ in $K(\RAF)$ from $\bar r$ 
-\TODO{(What is $\bar{r}$? Do you mean $\tilde{r}$?)} to $\tilde{x}_i$ such that $\mathcal{P}_i\cap\food=\emptyset$. 
+$\tilde{r}$ to $\tilde{x}_i$ such that $\mathcal{P}_i\cap\food=\emptyset$. 
 Since $\block_i$ are maximal strong blocks, it follows that each of the paths is contained in one of the strong blocks, 
 specifically:  $\mathcal{P}_i\subseteq\block_i$. Let now $\tilde{\tilde{x}}_{i}$ be the first 
-species-vertex after $\tilde r$ in $\mathcal{P}_i$. If $\{\tilde{r}, \tilde{\tilde{x}}_1\}$ \TODO{(only $x_1$? Or both,
-i.e., $\{\tilde{r}, \tilde{\tilde{x_i}}\}$?)} are the only two vertices in $\block_i$, then $\tilde{\tilde{x}}_i$ is an F-product 
+species-vertex after $\tilde r$ in $\mathcal{P}_i$. If $\{\tilde{r}, \tilde{\tilde{x}}_i\}$ 
+are the only two vertices in $\block_i$, then $\tilde{\tilde{x}}_i$ is an F-product 
 of $\tilde{r}$. Otherwise, there exists at least another reaction $\tilde{\tilde{r}}_i\in \mathcal{R}(\block_i)$, 
 $\tilde{\tilde{r}}_i\neq \tilde{r}$, which has $\tilde{\tilde{x}}_i$ as an F-product. Indirectly assume there exists no 
 non-food F-product $x_{\pi_i}$ of $\tilde{r}$ in $\block_i$. Arguing exactly as in the proof of Lemma \ref{lem:StrongBlocks}, starting from
 $\tilde{\mathbf{R}}_0=\{\tilde{\tilde{\fr}}\}$ and building a RAF via \eqref{RAFbuild}, we construct a nonempty 
-$\RAF'\subseteq \RAF\setminus \{\tilde{\fr}\}\subset \RAF$, leading to contradiction. \TODO{(\eqref{RAFbuild} does 
-not prevent $\tilde{r}$ from being added since $\tilde{r}$ could have a food F-product that is an F-reactant for 
-a reaction that was added to $\tilde{\FR}_k$)}
-  \end{proof}
+$\RAF'\subseteq \RAF\setminus \{\tilde{\fr}\}\subset \RAF$, leading to contradiction.   
+\end{proof}
 
 Lemma~\ref{cor:strongblock1} directly yields the following statement,
 which gives an easy-to-check structural necessary condition for the
@@ -1492,19 +1489,17 @@ numbers can be a result of polycatalyzation.
 \begin{figure}
 	\begin{minipage}[c]{\textwidth}
 		\begin{minipage}[l]{0.6\textwidth}
-			\begin{equation*}
-				\begin{split}
-					r'_1&: f + (x'_1) \rightarrow x_2 + (x'_1)\\
-					r''_1&: f + (x''_1) \rightarrow x_2 + (x''_1)\\
-					r'_2&: x_2 + (x'_2) \rightarrow x_3 + (x'_2) \\
-					r''_2&: x_2 + (x''_2) \rightarrow x_3 + (x''_2) \\
-					r'_k&: x_k + (x'_k) \rightarrow x_4 + x'_{k-1} + x''_{k-1} + (x'_k) \\
-					r''_k&: x_k + (x''_k) \rightarrow x_4 + x'_{k-1} + x''_{k-1} + (x''_k) \\
-					 & \hspace{3pt} \vdots \\
-					r'_n&:  x_n + (x'_n) \rightarrow x'_1 + x''_1 + x'_{n-1} + x''_{n-1} + x'_n + (x'_n) \\
-					r''_n&:  x_n + (x''_n) \rightarrow x'_1 + x''_1 + x'_{n-1} + x''_{n-1} + x''_n + (x''_n) \\
-				\end{split}
-			\end{equation*}
+				\begin{align*}
+					r'_1&: f + (x'_1) & \rightarrow &\  x_2 + (x'_1)\\
+					r''_1&: f + (x''_1) & \rightarrow & \ x_2 + (x''_1)\\
+					r'_2&: x_2 + (x'_2) & \rightarrow & \ x_3 + (x'_2) \\
+					r''_2&: x_2 + (x''_2) & \rightarrow & \ x_3 + (x''_2) \\
+					r'_k&: x_k + (x'_k) & \rightarrow & \ x_4 + x'_{k-1} + x''_{k-1} + (x'_k) \\
+					r''_k&: x_k + (x''_k) & \rightarrow & \ x_4 + x'_{k-1} + x''_{k-1} + (x''_k) \\
+					 & \hspace{3pt}  & \vdots  & \ \\
+					r'_n&:  x_n + (x'_n) & \rightarrow & \ x'_1 + x''_1 + x'_{n-1} + x''_{n-1} + x'_n + (x'_n) \\
+					r''_n&:  x_n + (x''_n) & \rightarrow &\ x'_1 + x''_1 + x'_{n-1} + x''_{n-1} + x''_n + (x''_n) \\
+				\end{align*}
 		\end{minipage}%
 		\hfill%
 		\begin{minipage}[r]{0.4\textwidth}
@@ -1658,11 +1653,15 @@ $\prod_{i=1}^{n} |\cat(\fr_i)|$ and $\sum_{i=1}^{n} |\cat(\fr_i)|\cdot |\cat(\fr
 
 \subsection{Many irreducible RAFs and just one autocatalytic core}
 
-Up to now, the presented examples suggest how the number of autocatalytic cores can be very high in a single irreducible RAF. However, this observation really depends on the network architecture. In fact, we present an example of a family of networks that may contain any number $n$ of irreducible RAFs and invariably only one autocatalytic core. Since such family is monocatalyzed, we use the CRN notation for simplicity.
+Up to now, the presented examples suggest how the number of autocatalytic cores can be very high in a single irreducible RAF. 
+However, this observation really depends on the network architecture. In fact, we present an example of a family of networks that 
+may contain any number $n$ of irreducible RAFs and invariably only one autocatalytic core. Since such a family is monocatalyzed, 
+we use the CRN notation for simplicity.
 
 Consider a simple autocatalytic reaction $r_A$:
 \[x_S+(x_K)\quad\underset{r_A}{\longrightarrow}\quad x_K + (x_K), \]
-which is stoichiometrically equivalent to the standard autocatalytic reaction $x_S+x_K\rightarrow 2x_K$. Assume now $x_S$ is not in the food set but it can be produced from $n$ distinct food molecules via distinct reactions, all catalyzed by $x_K$, i.e.
+which is stoichiometrically equivalent to the standard autocatalytic reaction $x_S+x_K\rightarrow 2x_K$. Assume now $x_S$ is not 
+in the food set, but it can be produced from $n$ distinct food molecules via distinct reactions, all catalyzed by $x_K$, i.e.
 \begin{equation}
     \begin{cases}
         f_1+(x_K)\quad&\underset{r_1}{\longrightarrow}\quad x_S + (x_K)\\
