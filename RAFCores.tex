@@ -761,14 +761,18 @@ Def.~\ref{def:irrerRAF} directly yields the following two structural lemmas.
   $\RAF$ being irreducible.
 \end{proof}
 We remark that \eqref{eq:inverse} in particular formally excludes the presence 
-in any irreducible RAF of two F-reactions that are each other's reverse \NV{at the level of F-reactants and F-products. More 
-specifically, for an F-reaction $\fr$, we write $\bar{\fr}$ for its reverse reaction satisfying 
+in any irreducible RAF of two F-reactions that are each other's reverse at the 
+level of F-reactants and F-products. More specifically, for an F-reaction $\fr$, 
+we write $\bar{\fr}$ for its reverse reaction satisfying 
 $\feducts(\bar{\fr}):=\fproducts(\fr)$ and $\feducts(\bar{\fr}):=\fproducts(\fr)$. Similarly, for 
 a set of F-reactions $
-  \RAF' = \{\fr_1,\fr_2,\ldots,\fr_k\}$, we write $\bar{\FR}'' = \{\bar{\fr}_1,\bar{\fr}_2,\ldots,\bar{\fr}_k\}$ for the set of the reverse F-reactions of $\RAF'$.} We then state the following result.
+  \RAF' = \{\fr_1,\fr_2,\ldots,\fr_k\}$, we write $\bar{\FR}'' = \{\bar{\fr}_1,\bar{\fr}_2,\ldots,\bar{\fr}_k\}$ 
+  for the set of the reverse F-reactions of $\RAF'$. We then state the following result.
 \vspace{6pt}
 \begin{lemma}\label{lem:noReverseIrrRAF}
-  Let $(X,\FR,\cat(\FR))$ be a CRS with food-set $\food\subseteq X$, and $\RAF \subset \FR$ an irreducible RAF with $|\RAF|>1$. For any subset $\RAF' \subseteq \RAF$, the set $\widetilde{\RAF}:=(\RAF \setminus \RAF') \cup \bar{\FR}''$ is not an irreducible RAF.
+Let $(X,\FR,\cat(\FR))$ be a CRS with food-set $\food\subseteq X$, and $\RAF \subset \FR$ 
+an irreducible RAF with $|\RAF|>1$. For any subset $\RAF' \subseteq \RAF$, the set 
+$\widetilde{\RAF}:=(\RAF \setminus \RAF') \cup \bar{\FR}''$ is not an irreducible RAF.
 \end{lemma}
 \begin{proof}
 Indirectly assume that $\widetilde{\RAF}$ is an irreducible RAF and pick an F-reaction $\bar{\fr}_i$ as
@@ -776,10 +780,15 @@ Indirectly assume that $\widetilde{\RAF}$ is an irreducible RAF and pick an F-re
 \operatorname{argmin}_{\bar{\fr}\in\bar{\FR}''}\gamma(\bar{\fr}),\]
 where $\gamma$ is the generation order defined in \eqref{def:genreactionindex}.
 By construction, $\rho_F(\bar{\fr}_i)\subseteq \closure{\RAF \setminus \RAF'}{\food}$, 
-and thus $\pi_F(\fr_i)\subseteq \closure{\RAF \setminus \RAF'}{\food}$. Consequently, $\closure{\RAF}{\food}=\closure{\RAF \setminus \{\fr_i\}}{\food}$. Since $|\RAF|>1$, $\RAF\setminus\{\fr_i\}$ is nonempty and thus a RAF, contradicting the irreducibility of $\RAF$.
+and thus $\pi_F(\fr_i)\subseteq \closure{\RAF \setminus \RAF'}{\food}$. Consequently, 
+$\closure{\RAF}{\food}=\closure{\RAF \setminus \{\fr_i\}}{\food}$. Since $|\RAF|>1$, 
+$\RAF\setminus\{\fr_i\}$ is nonempty and thus a RAF, contradicting the irreducibility of $\RAF$.
 \end{proof}
-  %First assume that $\RAF$ with one (arbitrary) F-reaction $\fr_i$ reversed is an irreducible RAF $\RAF'$. That means that $\feducts(\bar{\fr}_i) = \fproducts(\fr_i) \subset \closure{\RAF}{\food}$. However, that means that $\RAF \setminus \{\fr_i\}$ is also a RAF, contradicting the fact that $\RAF$ is irreducible. Alternatively, it could be that $\feducts(\bar{\fr}_i) \not\subset \closure{\RAF}{\food}$, but that by reversing some other F-reaction $\fr_j \in \RAF$ it will be. But then the first argument can be applied to $\fr_j$, or otherwise it leads to an increasing sequence of reversed F-reactions where (i) some reversed F-reaction $\bar{\fr}_k$ requires an F-reactant that is an F-product of an earlier reversed F-reaction, or (2) for some reversed F-reaction $\bar{\fr}_k$ it is the case that $\feducts(\bar{\fr}_k) \subset \food$. In case (i) $\RAF'$ cannot be an irreducible RAF as it is not $\food$-generated (having a cycle of F-reactions where each F-reaction has an F-reactant that is only produced by the previous F-reaction in the cycle), and in case (ii) it follows that $\fproducts(\fr_k) \subset \food$, which contradicts the fact that $\RAF$ is irreducible.
-In words, given an irreducible RAF $\RAF$, there is no subset of F-reactions $\RAF' \subseteq \RAF$ such that when all F-reactions in the subset $\RAF'$ are reversed, the resulting set is also an irreducible RAF. The only admissible exception is an irreducible RAF consisting of a single reaction where all F-reactants, F-products, and at least one catalyst are all in the food set $\food$.
+
+In words, given an irreducible RAF $\RAF$, there is no subset of F-reactions $\RAF' \subseteq \RAF$ 
+such that when all F-reactions in the subset $\RAF'$ are reversed, the resulting set is also an irreducible 
+RAF. The only admissible exception is an irreducible RAF consisting of a single reaction where all 
+F-reactants, F-products, and at least one catalyst are all in the food set $\food$.
 
 Since a RAF is defined in Def.~\ref{def:RAF} as a subset of F-reactions,
 Def.~\ref{def:irrerRAF} imposes a minimality condition only on the set of
@@ -934,8 +943,6 @@ The K\H{o}nig graph emerged under various names in CRN theory, as the
 \emph{species-reaction} (SR) graph \cite{craciun_multiple_2006} and
 \emph{Petri nets} \cite{angeli_petri_2007}.
 
-%\subsubsection{Properties of $K(\RAF)$}
-
 A \emph{directed path} $\mathcal{P}$ in $K(\RAF)$ is an ordered sequence of
 vertices $\mathcal{P}=(v_1,\ldots, v_n)$, starting at $v_1$ and terminating
 at $v_n$, such that $(v_i,v_{i+1})\in E(\king(\RAF)), 1\leq i\leq n-1$, and no vertex 
@@ -1073,7 +1080,7 @@ Fig.~\ref{ex:CutVertex2}.
   is an F-reactant, so (ii) follows.
   \\
   (iii) preliminarily observe that $r^*$ possesses an F-product
-  $x_\pi \not\in \food$, since otherwise $\RAF \setminus r^*$ would still
+  $x_\pi \not\in \food$, since otherwise $\RAF \setminus \{r^*\}$ would still
   be a RAF, contradicting irreducibility of $\RAF$. Let then $x_\pi$
   indicate an F-product of $r^*$ and $x_\kappa$ and F-catalyst of $r^*$ in
   $\block$, whose existence we proved above in (ii). Assume now indirectly
@@ -1081,14 +1088,14 @@ Fig.~\ref{ex:CutVertex2}.
   directed path $\mathcal{P}=(r^*, x_\pi,...,x_\kappa)$ since otherwise
   $x_\pi$ would be in $\block$ as well, against the indirect
   assumption. Consider any reaction $\tilde{r}$ which has $x_\kappa$ as
-  F-product and construct iteratively a family of sets
+  F-product and construct a family of sets iteratively
   $\tilde{\mathbf{R}}_n$ of F-reactions from
   $\tilde{\mathbf{R}}_0=\{\tilde{\fr}\}$ as follows:
   \begin{equation}\label{RAFbuild}
     \tilde{\mathbf{R}}_{n}=\tilde{\mathbf{R}}_{n-1}\cup
-    \bigg\{\fr\in \RAF \;|\;\bigcup_{\hat{\fr}\in \mathbf{R}_{n-1}}
+    \left\{\fr\in \RAF \; \middle| \; \bigcup_{\hat{\fr}\in \mathbf{R}_{n-1}}
     \bigg(\feducts(\hat{\fr}) \cup \cat(\hat{\fr})\bigg)
-    \bigcap \fproducts (\fr) \neq \emptyset\bigg\}.
+    \bigcap \TODO{\left( \fproducts(\fr) \setminus \food \right)} \neq \emptyset \right\}.
   \end{equation}
   Since $\RAF$ is a finite set, the iteration converges at a finite step
   $\bar{n}$ to a set $\RAF'\coloneqq \tilde{\mathbf{R}}_{\bar{n}}$.  By
@@ -1096,7 +1103,9 @@ Fig.~\ref{ex:CutVertex2}.
   itself. However, no direct path
   $\mathcal{P}=(r^*, x_\pi,..., \tilde{r},x_\kappa)$ exists, and thus
   $\fr^*\not\in \RAF'$, in contradiction with the assumption of
-  irreducibility of $\RAF$.
+  irreducibility of $\RAF$. \TODO{(I think the food molecules need to be 
+  removed from $\fproducts(\fr)$. Otherwise, there is no guarantee that 
+  $\fr^*$ is not added to $\FR''$ and $\RAF' = \RAF$ could be true.)}
 \end{proof}
 
 \begin{figure}[bth]
@@ -1162,7 +1171,7 @@ Fig.~\ref{ex:CutVertex2}.
     Depiction of the corresponding König graph with catalyzations indicated
     as dashed lines. Different strong blocks are depicted in different
     colours, while the cut-vertices $r_2$, belonging to two strong blocks
-    (teal and orange) is coloured black. For the teal strong block, $r_4$
+    (teal and orange), is coloured black. For the teal strong block, $r_4$
     is the `$r^*$' reaction expected via Lemma \ref{lem:StrongBlocks} and
     for the orange strong block it is $r_2$.}
   \label{ex:CutVertex2}
@@ -1170,37 +1179,39 @@ Fig.~\ref{ex:CutVertex2}.
 
 We refer to a reaction $r^*$ as in the statement of
 Lemma~\ref{lem:StrongBlocks} as an \emph{entry reaction} for $\block$. By
-an inspection of the example in Fig.~\ref{ex:CutVertex2} we \PFS{observe}
+an inspection of the example in Fig.~\ref{ex:CutVertex2}, we observe
 that such entry reactions appear in intimate relation with cut-vertices of
-the bipartite graph $K(\mathcal{R}')$. \NV{We investigate this
-intuition in the following lemma, which generalizes part (iii) of Lemma~\ref{lem:StrongBlocks} to reactions $\tilde{r}$ that are cut vertices, but not necessarily minimal in the generation order.}  \vspace{6pt}
+the bipartite graph $K(\mathcal{R}')$. We investigate this intuition in the 
+following lemma, which generalizes part (iii) of Lemma~\ref{lem:StrongBlocks} 
+to reactions $\tilde{r}$ that are cut vertices, but not necessarily minimal in the 
+generation order.
+\vspace{6pt}
 
 \begin{lemma}\label{cor:strongblock1}
- \NV{ Let $\RAF$ be an irreducible monocatalyzed RAF. Let $\block_1, \block_2$ be two maximal
-  strong blocks of $K(\RAF)$ containing at least one species-vertex outside
-  the food and waste set, which intersect in a reaction $\tilde{r},$ i.e. $\block_1\cap\block_2=\{\tilde{r}\}$. Then $\tilde{r}$ has at least one F-product in $\block_1$ and one F-product in $\block_2$, i.e.
-  \[\fproducts(\tilde{r})\cap X(\block_i)\neq\emptyset,\qquad i=1,2.\]
-  In particular, $\tilde{r}$ has at least two distinct non-food F-products.}
+ Let $\RAF$ be an irreducible monocatalyzed RAF. Let $\block_1, \block_2$ be two maximal
+ strong blocks of $K(\RAF)$ containing at least one species-vertex outside
+ the food and waste set, which intersect in a reaction $\tilde{r},$ i.e. $\block_1\cap\block_2=\{\tilde{r}\}$. 
+ Then $\tilde{r}$ has at least one F-product in $\block_1$ and one F-product in $\block_2$, i.e.
+ \[\fproducts(\tilde{r})\cap X(\block_i)\neq\emptyset,\qquad i=1,2.\]
+ In particular, $\tilde{r}$ has at least two distinct non-food F-products.
 \end{lemma}
 
-
 \begin{proof}
-\NV{For $i\in{1,2}$, pick a species $\tilde{x}_i\in X(\block_i)\setminus(\food\cup\mathbf{W}_{\RAF})$. Via Lemma~\ref{lem:PSC}, there exist directed paths $\mathcal{P}_i$ in $K(\RAF)$ from $\bar r$ to $\tilde{x}_i$ such that $\mathcal{P}_i\cap\food=\emptyset$. Since $\block_i$ are maximal strong block, it follows that each of the path is contained in one of the strong blocks, specifically:  $\mathcal{P}_i\subseteq\block_i$. 
-Let now $\tilde{\tilde{x}}_{i}$ be the first species-vertex after $\tilde r$ in $\mathcal{P}_i$. If
-  $\{\tilde{r}, \tilde{\tilde{x}}_1\}$ are the only two vertices in
-  $\block_i$, then $\tilde{\tilde{x}}_i$ is an F-product of $\tilde{r}$, and
-  we are done. Otherwise, there exists at least another reaction
-  $\tilde{\tilde{r}}_i\in \mathcal{R}(\block_i)$, $\tilde{\tilde{r}}_i\neq \tilde{r}$, which has $\tilde{\tilde{x}}_i$ as an F-product.
-  Indirectly
-  assume there exists no non-food F-product $x_{\pi_i}$ of $\tilde{r}$ in $\block_i$. Arguing exactly as in the proof of Lemma
-  \ref{lem:StrongBlocks}, starting from
-  $\tilde{\mathbf{R}}_0=\{\tilde{\tilde{\fr}}\}$ and building a RAF via
-  \eqref{RAFbuild}, we construct a nonempty
-  $\RAF'\subseteq \RAF\setminus \tilde{\fr}\subset \RAF$, leading to
-  contradiction.}
+For $i\in{1,2}$, pick a species $\tilde{x}_i\in X(\block_i)\setminus(\food\cup\mathbf{W}_{\RAF})$. 
+Via Lemma~\ref{lem:PSC}, there exist directed paths $\mathcal{P}_i$ in $K(\RAF)$ from $\bar r$ 
+\TODO{(What is $\bar{r}$? Do you mean $\tilde{r}$?)} to $\tilde{x}_i$ such that $\mathcal{P}_i\cap\food=\emptyset$. 
+Since $\block_i$ are maximal strong blocks, it follows that each of the paths is contained in one of the strong blocks, 
+specifically:  $\mathcal{P}_i\subseteq\block_i$. Let now $\tilde{\tilde{x}}_{i}$ be the first 
+species-vertex after $\tilde r$ in $\mathcal{P}_i$. If $\{\tilde{r}, \tilde{\tilde{x}}_1\}$ \TODO{(only $x_1$? Or both,
+i.e., $\{\tilde{r}, \tilde{\tilde{x_i}}\}$?)} are the only two vertices in $\block_i$, then $\tilde{\tilde{x}}_i$ is an F-product 
+of $\tilde{r}$. Otherwise, there exists at least another reaction $\tilde{\tilde{r}}_i\in \mathcal{R}(\block_i)$, 
+$\tilde{\tilde{r}}_i\neq \tilde{r}$, which has $\tilde{\tilde{x}}_i$ as an F-product. Indirectly assume there exists no 
+non-food F-product $x_{\pi_i}$ of $\tilde{r}$ in $\block_i$. Arguing exactly as in the proof of Lemma \ref{lem:StrongBlocks}, starting from
+$\tilde{\mathbf{R}}_0=\{\tilde{\tilde{\fr}}\}$ and building a RAF via \eqref{RAFbuild}, we construct a nonempty 
+$\RAF'\subseteq \RAF\setminus \{\tilde{\fr}\}\subset \RAF$, leading to contradiction. \TODO{(\eqref{RAFbuild} does 
+not prevent $\tilde{r}$ from being added since $\tilde{r}$ could have a food F-product that is an F-reactant for 
+a reaction that was added to $\tilde{\FR}_k$)}
   \end{proof}
-
-
 
 Lemma~\ref{cor:strongblock1} directly yields the following statement,
 which gives an easy-to-check structural necessary condition for the
@@ -1216,7 +1227,14 @@ food or in the waste sets.  \vspace{6pt}
   species-vertex outside the food and waste sets.
 \end{corollary}
 \begin{proof}
-\NV{Indirectly assume that there exist two distinct maximal strong blocks $\block_1$ and $\block_2$, each containing a species-vertex outside the food and waste sets. Via Lemma~\ref{lem:PSC}, there exists a directed path between such species in $\block_1$ and $\block_2$ which does not intersect the food set. Such path must cross at least one cut-vertex  via Lemma \ref{lem:cutvert} two maximal strong blocks each containing a species-vertex outside the food and waste set, leading via Lemma \ref{cor:strongblock1} to a contradiction with the assumption.}
+Indirectly assume that there exist two distinct maximal strong blocks 
+$\block_1$ and $\block_2$, each containing a species-vertex outside the food 
+and waste sets. Via Lemma~\ref{lem:PSC}, there exists a directed path between 
+such species in $\block_1$ and $\block_2$ which does not intersect the food set. 
+Such a path must cross at least one cut-vertex via Lemma \ref{lem:cutvert} 
+of two maximal strong blocks each containing a species-vertex 
+outside the food and waste set, leading via Lemma \ref{cor:strongblock1} to a 
+contradiction with the assumption.
 \end{proof}
 For example, if all F-reactions $\fr\in\RAF$ are of the form
 \begin{equation*} 
@@ -1285,7 +1303,8 @@ autocatalysis (via the semipositivity condition). In RAF, in turn, the
 quantitative value of the stoichiometry is irrelevant. However,
 semipositivity of the stoichiometric matrix restricted to the non-food
 molecules follows naturally for any food-generated set of reactions, as the
-next lemma shows. \NV{We recall Remark \ref{rmk:RAFCRN} on the validity of the RAF definition for CRN.} 
+next lemma shows. We recall Remark \ref{rmk:RAFCRN} on the validity 
+of the RAF definition for CRN.
 
 \vspace{6pt}
 \begin{lemma}~\label{lem:NonFoodSemipositiv2}
