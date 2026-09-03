@@ -1461,7 +1461,7 @@ revealed that they account for a large number of autocatalytic cores, at least i
 irreducible RAFs containing both ligation and cleavage reactions (Fig.~\ref{fig:FoodVsNonFood}). 
 That irreducible RAFs composed of ligation reactions only exhibited the same 
 number of autocatalytic cores, disregarding the presence of food species, 
-is, indeed, not surprising, as irreducibility excludes ligation F-reactions having only 
+is indeed not surprising, as irreducibility excludes ligation F-reactions having only 
 food species as F-products. Many instances of both models still comprise hundreds 
 to thousands of autocatalytic cores, even after removal of food species, an 
 observation that still requires an explanation. We will examine next how these  
@@ -1489,17 +1489,19 @@ numbers can be a result of polycatalyzation.
 \begin{figure}
 	\begin{minipage}[c]{\textwidth}
 		\begin{minipage}[l]{0.6\textwidth}
-				\begin{align*}
-					r'_1&: f + (x'_1) & \rightarrow &\  x_2 + (x'_1)\\
-					r''_1&: f + (x''_1) & \rightarrow & \ x_2 + (x''_1)\\
-					r'_2&: x_2 + (x'_2) & \rightarrow & \ x_3 + (x'_2) \\
-					r''_2&: x_2 + (x''_2) & \rightarrow & \ x_3 + (x''_2) \\
-					r'_k&: x_k + (x'_k) & \rightarrow & \ x_4 + x'_{k-1} + x''_{k-1} + (x'_k) \\
-					r''_k&: x_k + (x''_k) & \rightarrow & \ x_4 + x'_{k-1} + x''_{k-1} + (x''_k) \\
-					 & \hspace{3pt}  & \vdots  & \ \\
-					r'_n&:  x_n + (x'_n) & \rightarrow & \ x'_1 + x''_1 + x'_{n-1} + x''_{n-1} + x'_n + (x'_n) \\
-					r''_n&:  x_n + (x''_n) & \rightarrow &\ x'_1 + x''_1 + x'_{n-1} + x''_{n-1} + x''_n + (x''_n) \\
-				\end{align*}
+			\begin{equation*}
+				\begin{split}
+					f + (x'_1) & \underset{r'_1}{\longrightarrow} x_2 + (x'_1)  \\[-0.5em]
+					f + (x''_1) & \underset{r''_1}{\longrightarrow} x_2 + (x''_1)  \\[-0.5em]
+					x_2 + (x'_2) & \underset{r'_2}{\longrightarrow} x_3 + (x'_2)  \\[-0.5em]
+					x_2 + (x''_2) & \underset{r''_2}{\longrightarrow}  x_3 + (x''_2)  \\[-0.5em]
+					x_k + (x'_k) & \underset{r'_k}{\longrightarrow} x_4 + x'_{k-1} + x''_{k-1} + (x'_k)  \\[-0.5em]
+					x_k + (x''_k) & \underset{r''_k}{\longrightarrow} x_4 + x'_{k-1} + x''_{k-1} + (x''_k)  \\[-0.5em]
+					  \hspace{3pt}  & \vdots   \ \\[-0.5em]
+					x_n + (x'_n) & \underset{r'_n}{\longrightarrow}  x'_1 + x''_1 + x'_{n-1} + x''_{n-1} + x'_n + (x'_n)  \\[-0.5em]
+					x_n + (x''_n) & \underset{r''_n}{\longrightarrow} x'_1 + x''_1 + x'_{n-1} + x''_{n-1} + x''_n + (x''_n)  
+				\end{split}
+			\end{equation*}
 		\end{minipage}%
 		\hfill%
 		\begin{minipage}[r]{0.4\textwidth}
@@ -1628,10 +1630,9 @@ numbers can be a result of polycatalyzation.
 		\end{tikzpicture}		
 	\end{minipage}
 	\caption{\textbf{The necklace RAF}. \textbf{Upper left}: CRN reactions for an irreducible RAF, where each 
-	F-reaction is associated with two catalyzations, referred to as the \emph{necklace RAF} of size $n$. 
-	The \textbf{upper right} panel represents the associated stoichiometric matrix of a necklace RAF of size $n=4$, 
-	while its corresponding K\"onig graph is depicted in the \textbf{lower} panel. The edges $(r'_3, x'_2), (r'_3, x''_2), 
-	(r''_3, x'_2)$, and $(r'_3, x''_2)$ were ommitted for increased visbility.}
+	F-reaction is associated with two catalyzations, referred to as \emph{necklace RAF} of size $n$. 
+	Stoichiometric matrix \textbf{(upper right)}  of a necklace RAF of size $n=4$ with K\"onig graph \textbf{lower}. 
+	The edges $(r'_3, x'_2), (r'_3, x''_2), (r''_3, x'_2)$, and $(r'_3, x''_2)$ were ommitted for increased visbility.}
 	\label{fig:NecklaceRAF}
 \end{figure}
 The majority of the results shown in this contribution relate to monocatalyzed, irreducible RAFs. However, irreducible RAFs 
