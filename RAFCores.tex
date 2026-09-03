@@ -761,10 +761,9 @@ Def.~\ref{def:irrerRAF} directly yields the following two structural lemmas.
   $\RAF$ being irreducible.
 \end{proof}
 We remark that \eqref{eq:inverse} in particular formally excludes the presence 
-in any irreducible RAF of two F-reactions that are each other's inverse. \NV{More 
-specifically, for an F-reaction $\fr=\fr_1$, we write $\bar{\fr}=\fr_2$ \TODO{(Why 
-$=\fr_1$ and $=\fr_2$, especially because you use then $\fr_1$ and $\fr_2$ only 
-in $\RAF'$?)} for its reverse reaction satisfying \eqref{eq:inverse}. Similarly, for 
+in any irreducible RAF of two F-reactions that are each other's reverse \NV{at the level of F-reactants and F-products. More 
+specifically, for an F-reaction $\fr$, we write $\bar{\fr}$ for its reverse reaction satisfying 
+$\feducts(\bar{\fr}):=\fproducts(\fr)$ and $\feducts(\bar{\fr}):=\fproducts(\fr)$. Similarly, for 
 a set of F-reactions $
   \RAF' = \{\fr_1,\fr_2,\ldots,\fr_k\}$, we write $\bar{\FR}'' = \{\bar{\fr}_1,\bar{\fr}_2,\ldots,\bar{\fr}_k\}$ for the set of the reverse F-reactions of $\RAF'$.} We then state the following result.
 \vspace{6pt}
@@ -777,7 +776,7 @@ Indirectly assume that $\widetilde{\RAF}$ is an irreducible RAF and pick an F-re
 \operatorname{argmin}_{\bar{\fr}\in\bar{\FR}''}\gamma(\bar{\fr}),\]
 where $\gamma$ is the generation order defined in \eqref{def:genreactionindex}.
 By construction, $\rho_F(\bar{\fr}_i)\subseteq \closure{\RAF \setminus \RAF'}{\food}$, 
-and thus $\pi_F(\fr_i)\subseteq \closure{\RAF \setminus \RAF'}{\food}$. Consequently, $\closure{\RAF}{\food}=\closure{\RAF \setminus \{\fr_i\}}{\food}$. Since $|\RAF|>1$, $\RAF\setminus\{\fr_1\}$ is nonempty and thus a RAF, contradicting the irreducibility of $\RAF$.
+and thus $\pi_F(\fr_i)\subseteq \closure{\RAF \setminus \RAF'}{\food}$. Consequently, $\closure{\RAF}{\food}=\closure{\RAF \setminus \{\fr_i\}}{\food}$. Since $|\RAF|>1$, $\RAF\setminus\{\fr_i\}$ is nonempty and thus a RAF, contradicting the irreducibility of $\RAF$.
 \end{proof}
   %First assume that $\RAF$ with one (arbitrary) F-reaction $\fr_i$ reversed is an irreducible RAF $\RAF'$. That means that $\feducts(\bar{\fr}_i) = \fproducts(\fr_i) \subset \closure{\RAF}{\food}$. However, that means that $\RAF \setminus \{\fr_i\}$ is also a RAF, contradicting the fact that $\RAF$ is irreducible. Alternatively, it could be that $\feducts(\bar{\fr}_i) \not\subset \closure{\RAF}{\food}$, but that by reversing some other F-reaction $\fr_j \in \RAF$ it will be. But then the first argument can be applied to $\fr_j$, or otherwise it leads to an increasing sequence of reversed F-reactions where (i) some reversed F-reaction $\bar{\fr}_k$ requires an F-reactant that is an F-product of an earlier reversed F-reaction, or (2) for some reversed F-reaction $\bar{\fr}_k$ it is the case that $\feducts(\bar{\fr}_k) \subset \food$. In case (i) $\RAF'$ cannot be an irreducible RAF as it is not $\food$-generated (having a cycle of F-reactions where each F-reaction has an F-reactant that is only produced by the previous F-reaction in the cycle), and in case (ii) it follows that $\fproducts(\fr_k) \subset \food$, which contradicts the fact that $\RAF$ is irreducible.
 In words, given an irreducible RAF $\RAF$, there is no subset of F-reactions $\RAF' \subseteq \RAF$ such that when all F-reactions in the subset $\RAF'$ are reversed, the resulting set is also an irreducible RAF. The only admissible exception is an irreducible RAF consisting of a single reaction where all F-reactants, F-products, and at least one catalyst are all in the food set $\food$.
@@ -1275,7 +1274,7 @@ are nonnegative \cite{blokhuis_Universal_2020, golnik_autocatalytic_2026,
 vassena_unstable_2024}. Matrices with
 nonnegative off-diagonal entries are called \emph{Metzler matrices} in the
 literature. An autocatalytic core of size $1$, i.e.,
-$|X'|=|R'|=1$, is thus simply an \emph{autocatalytic reaction}
+$|X'|=|\mathcal{R}'|=1$, is thus simply an \emph{autocatalytic reaction}
 $r$ of the type:
 \begin{equation}
     s^-_{x_1r}x_1+\ldots \quad\underset{r}\longrightarrow \quad s^+_{x_1r}x_2+\ldots\quad\quad\quad\text{with $s^+_{x_1r}>s^-_{x_1r}$.}
@@ -1286,7 +1285,7 @@ autocatalysis (via the semipositivity condition). In RAF, in turn, the
 quantitative value of the stoichiometry is irrelevant. However,
 semipositivity of the stoichiometric matrix restricted to the non-food
 molecules follows naturally for any food-generated set of reactions, as the
-next lemma shows. \TODO{ADD SPECIFICATION ON THE F-REACTION ANNOYANCE}
+next lemma shows. \NV{We recall Remark \ref{rmk:RAFCRN} on the validity of the RAF definition for CRN.} 
 
 \vspace{6pt}
 \begin{lemma}~\label{lem:NonFoodSemipositiv2}
