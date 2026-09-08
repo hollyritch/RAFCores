@@ -274,23 +274,23 @@ of vertices $(v_1,\ldots, v_k, v_1)$ such that $(v_1,\ldots, v_k)$ is a path, $(
 
 \subsection{A \TODO{Pre}-Order on RAFs}
 
-The easiest way to define such a partial order is by generating the set
+The easiest way to define such a \TODO{pre-}order is by generating the set
 $\closure{R'}{X'}$ iteratively. Let therefore:
 \begin{equation}
   c_{\RAF}: 2^X \rightarrow 2^X, c_{\RAF}(X') \coloneqq X' \cup \{\fproducts(\fr) \subseteq X' \ \vert \ \feducts(\fr)\subseteq X'\}. 
 \end{equation}
 We may drop the subscript $\RAF$ whenever appropriate. In particular, we
 write $c(X')$ instead of $c_{\RAF}(X')$ as well as $\closure{}{X'}$ instead
-of $\closure{\RAF}{X'}$. \PFS{By construction, $c:2^X \rightarrow 2^X$ is a
-  generalized closure operator, i.e., it satisfies, for all $X',X''\in 2^X$
+of $\closure{\RAF}{X'}$. By construction, $c:2^X \rightarrow 2^X$ is a
+generalized closure operator, i.e., it satisfies, for all $X', X''\in 2^X$
   \begin{itemize}
   \item[(c0)] $c(\emptyset)=\emptyset$,
   \item[(c1)] $X'\subseteq X''$ implies $c(X')\subseteq c(X'')$ (isotone)
   \item[(c2)] $X\subseteq c(X')$ (extensive)
   \end{itemize}
-  A set $X\subseteq X'$ is closed (w.r.t.\ $c$) if $X'=c(X')$.  Since $X$
-  is finite, iterated application $c$ eventually yields a close set: to see
-  this is suffices to note that by (c1) and (c2) we have $X'\subseteq
+  A set $X\subseteq X'$ is closed (w.r.t.\ $c$) if $X'=c(X')$. Since $X$
+  is finite, iterated application of $c$ eventually yields a closed set: to see
+  this it suffices to note that by (c1) and (c2) we have $X'\subseteq
   c^k(X')\subseteq c^{k+1}(X')$ for all $k\ge 1$. Thus for every $X'\in X$,
   there is $n\in\mathbb{N}$ such that $c^{n+1}(X')=c^{n}(X')$. Moreover,
   comparison of the definitions of $c$ and $\mathscr{C}$ implies that
@@ -300,9 +300,8 @@ of $\closure{\RAF}{X'}$. \PFS{By construction, $c:2^X \rightarrow 2^X$ is a
   such that
   \begin{equation}
     \label{eq:seqLimit}
-    \closure{\food} = c^k(\food) \qquad\text{for all } k\ge n 
+    \closure{}{\food} = c^k(\food) \qquad\text{for all } k\ge n 
   \end{equation}
-}
 
 The sequence $(c^k(\food))_{k\in\mathbb{N}}$ therefore defines a sequence
 of reactions that can be executed in the $k$-th step, i.e., for which all
@@ -318,13 +317,12 @@ reactions that are not present in an ``earlier'' set $c^\ell(\food)$ and $d^\ell
     \FR^0(\food) & \coloneqq \emptyset \qquad \FR^k(\food)\coloneqq d^k(\food) \setminus \left(\bigcup_{i=0}^{k-1} d^k(\food) \right)
   \end{split}
 \end{equation}
-These sequences naturally generate a partial order $\preceq$, which we make
-explicit by two maps that extract for each species and reaction, the
-iteration of their first appearance:
+These sequences naturally generate the \TODO{pre-}orders $\preccurlyeq$ and $\preceq$, which we make
+explicit by two maps that extract for each species and reaction the iteration of their first appearance:
 \begin{equation}\label{eq:Gen}
   \begin{split}
-    \sgen&: \closure{\RAF}{\food} \rightarrow \mathbb{N}, \sgen(x)\coloneqq k \quad \text{ s. t. } x\in X^k(\PFS{\food}) \\
-    \rgen&: \RAF \rightarrow \mathbb{N}, \rgen(r)\coloneqq k \quad \text{ s. t. } r\in \FR^k(\PFS{\food}). 
+    \sgen&: \closure{\RAF}{\food} \rightarrow \mathbb{N}, \sgen(x)\coloneqq k \quad \text{ s. t. } x\in X^k(\food) \\
+    \rgen&: \qquad \RAF \rightarrow \mathbb{N}, \rgen(r)\coloneqq k \quad \text{ s. t. } r\in \FR^k(\food). 
   \end{split}
 \end{equation}
 In particular, a species $x_1$ precedes a species $x_2: x_1\preceq x_2$ if and only if $\sgen(x_1) \leq \sgen(x_2)$ 
@@ -347,15 +345,15 @@ denote this graph as $\queen'\coloneqq \queen(\closure{\RAF}{\food}, \RAF,
 
 \subsection{The Binary Polymer Model}\label{sec:BinPol}
 
-The binary polymer model is an abstract model of polymer chemistry that was introduced to argue about the probability of emergence of autocatalytic sets in random reaction networks. The set of molecules $X$ consists of all binary strings up to a maximal specified length $n$. In general, the reaction set $\FR$ consists of all possible \emph{ligation} reactions concatenating two bit strings together into a product as long as it does not exceed the maximum polymer length $n$ together with their reverse \emph{cleavage} reactions that decompose a bit string into two smaller ones. We denote the inverse of an F-reaction $\fr$ with $\overset{\leftarrow}{\fr}$. The food set $\food$ consists of all binary strings up to a given length $t$, here always $t=2$, i.e., the food set consists of the monomer and dimers. However, for some models $\FR$ is composed of ligation reactions only.
+The binary polymer model is an abstract model of polymer chemistry that was introduced to argue about the probability of emergence of autocatalytic sets in random reaction networks. The set of molecules $X$ consists of all binary strings up to a maximal specified length $n$. In general, the reaction set $\FR$ consists of all possible \emph{ligation} reactions concatenating two bit strings together into a product as long as it does not exceed the maximum polymer length $n$, together with their reverse \emph{cleavage} reactions that decompose a bit string into two smaller ones. We denote the reverse of an F-reaction $\fr$ with $\bar{\fr}$. The food set $\food$ consists of all binary strings up to a given length $t$, here always $t=2$, i.e., the food set consists of the monomer and dimers. However, for some models $\FR$ is composed of ligation reactions only.
 
 Catalysis is assigned randomly. In particular, there is a fixed probability $p$ that a given molecule (binary string) can catalyze a given F-reaction. For instances containing both ligation and cleavage, F-reactions that are the inverse of each other share the same catalysts. In other words, to create an instance of the binary model, for predetermined $n$ and $t$, each molecule-reaction pair $(x,\fr), x \in X, \fr \in \FR$ is included in the set of catalyzations $\cat(\FR)$ with probability $p$. More formally, an instance of the binary polymer model forms a CRS $\mathbf{\Phi}\coloneqq (X, \FR, \cat(\FR))$, where:
 \begin{itemize}
-  \item {$X = \{0,1\}^{\leq n} \text{ and } \FR \coloneqq \FR_f \cup \FR_r$} 
-  \item {$\FR_f \coloneqq \{x_i + x_j \rightarrow x_i \cdot x_j : (x_i, x_j \in X) \wedge (|x_i \cdot x_j| \leq n)\}$}
-  \item {$\FR_r \coloneqq \{x_i \cdot x_j \rightarrow x_i + x_j : (x_i\cdot x_j \in X)\}$} 
-  \item {$\mathbb{P}[(x \in X, \fr \in \FR_f) \in \cat(\FR)] = p$}
-  \item {$\mathbb{P}[(x \in X, \fr \in \FR_r) \in \cat(\FR)] = \begin{cases} 1 & \text{if} (x, \overset{\leftarrow}{\fr}) \in \cat(\FR) \\ 0 & \text{otherwise} \end{cases} $}
+  \item {$X = \{0,1\}^{\leq n} \text{ and } \FR \coloneqq \FR \cup \bar{\FR}$} 
+  \item {$\FR \coloneqq \{x_i + x_j \rightarrow x_i \cdot x_j : (x_i, x_j \in X) \wedge (|x_i \cdot x_j| \leq n)\}$}
+  \item {$\bar{\FR} \coloneqq \{\bar{\fr} \ \vert \ \fr \in \FR \}$} 
+  \item {$\mathbb{P}[(x, \fr) \in \cat(\FR)] = p \hspace{100pt} x\in X, \fr \in \FR$}
+  \item {$\mathbb{P}[(x, \bar{\fr}) \in \cat(\FR)] = \begin{cases} 1 & \text{if } (x, \fr) \in \cat(\FR) \\ 0 & \text{otherwise} \end{cases} \quad x\in X, \bar{\fr}\in \bar{\FR}$}
   \item {$\food = \{0,1\}^{\leq t}$}
 \end{itemize}
 
