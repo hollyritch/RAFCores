@@ -371,7 +371,7 @@ in the main text.
 	uniform probability for a non-food molecule to catalyze an F-reaction is given by $p$, while food species are excluded 
 	from being catalysts. F-reactions are in general considered irreversible.}
 	\label{tab:SimulationDetails}
-	\begin{tabular}{p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1cm}}
+	\begin{tabular}{p{1.5cm}|p{1cm}|p{1.5cm}|p{1.5cm}|p{2.0cm}|p{1.5cm}|p{1cm}}
 	Name & n & t & p & food-catalysts & Ligation & Cleavage \\
 	\hline 
 	n4\_split     		& 	4 	& 	1 	& 	0.018 	& 	no 	& 	yes 		& 	yes 		\\
@@ -402,11 +402,10 @@ in the main text.
 		\includegraphics[width=0.8\textwidth]{./Pictures/iRAFirrevStrongBlocks.png}
 	\end{minipage}
 	\caption{Number of maximal strong blocks containing at least one non-food, 
-	non-waste species vertex in irreducible RAFs from different instances of the 
-	BPM containing ligation/cleavage (\textbf{left}) or only ligation 
-	reactions (\textbf{right}). See SI Table~\ref{tab:SimulationDetails}. Dots, each 
-	representing an irreducible RAF with indicated maximal polymer length, are 
-	plotted in a non-overlapping manner.} 
+		non-waste species vertex in irreducible RAFs from different instances of the 
+		BPM containing ligation/cleavage (\textbf{left}) or only ligation (\textbf{right}). 
+		See SI Table~\ref{tab:SimulationDetails}. Dots, each representing an irreducible 
+		RAF with indicated maximal polymer length, are plotted in a non-overlapping manner.} 
 	\label{fig:StrongBlocks}
 \end{figure}
 
@@ -414,12 +413,12 @@ Figure~\ref{fig:StrongBlocks} shows the number of maximal strong blocks containi
 non-waste species for all irreducible RAFs collected from the binary polymer models that are specified in 
 Tab.~\ref{tab:SimulationDetails}.
 
-Figure~\ref{fig:BPMMultipleStrongBlocks} depicts a theoretical example of an instance of the binary 
+\noindent Figure~\ref{fig:BPMMultipleStrongBlocks} depicts a theoretical example of an instance of the binary 
 polymer model that is composed of two maximal strong blocks containing at least one non-food, 
 non-waste species. However, as depicted in Fig.~\ref{fig:StrongBlocks}, such an instance was 
 not observed by us. 
 
-\begin{figure}[htb]
+\begin{figure}[tbh]
 	\begin{minipage}[c]{0.4\textwidth}
 		\begin{tikzpicture}
 			\node[draw, ellipse] (01) at (0,0) {$01$};
@@ -519,8 +518,12 @@ not observed by us.
 \end{figure}
 
 \subsection{Compositions of irreducible RAFs}
+Fig.~\ref{fig:irrRAFOverlap} and Fig.~\ref{fig:irrRAFCoreComp} show the overlap and 
+composition in terms of F-reactions of the 50 arbitrarily chosen irreducible RAFs from 
+two instances of the binary polymer model, i.e., n6\_split and n6\_forw, depicted in 
+Fig.~\ref{M-fig:irrRAFCores}.
 
-\begin{figure}[htb]
+\begin{figure}[bth]
 	\centering
 	\begin{minipage}[c]{0.5\textwidth}
 		\centering
@@ -536,10 +539,7 @@ not observed by us.
 	\label{fig:irrRAFOverlap}
 \end{figure}
 
-Fig.~\ref{fig:irrRAFOverlap} and Fig.~\ref{fig:irrRAFCoreComp} show the overlap and 
-composition in terms of F-reactions of the 50 arbitrarily chosen irreducible RAFs from 
-two instances of the binary polymer model, i.e., n6\_split and n6\_forw, depicted in 
-Fig.~\ref{M-fig:irrRAFCores}.
+
 
 \begin{figure}
 	\centering
