@@ -1777,15 +1777,19 @@ $\mathbf{\Phi}\coloneqq (X, \FR, \kappa_F(\FR))$ can be obtained from
 $\kappa_F(\FR)$, since each catalyzation of an F-reaction specifies a
 unique CRN reaction. 
 
-Irreducible RAFs are sets of F-reactions minimal w.r.t. the two RAF properties 
-of Def.~\ref{def:RAF}. Consequently, of two reactions sharing the same set of 
-F-reactants and F-products, only one can be an element of an irreducible RAF 
-(Lemma~\ref{lem:OneFReacPerRAF}). In the same vein, two reactions that 
-are reverse to one another w.r.t. the set of F-reactants and F-products will 
-never be inside the same irreducible RAF. In particular, if an F-reaction is 
-contained in an irreducible RAF, its reverse cannot be part of that RAF.  
+Irreducible RAFs are sets of F-reactions minimal w.r.t. the RAF properties 
+of Def.~\ref{def:RAF}. Consequently, among two reactions sharing the same set of 
+F-reactants and F-products, at most one can be an element of an irreducible RAF 
+(Lemma~\ref{lem:OneFReacPerRAF}). In the same vein, two F-reactions $\fr_1$ 
+and $\fr_2$ that satisfy $\feducts(\fr_1)=\fproducts(\fr_2)$ and vice versa cannot  
+both be part of the same irreducible RAF. In particular, an F-reaction and its reverse 
+cannot both belong to the same irreducible RAF. In general, irreducible 
+RAFs are unique w.r.t. their corresponding sets of reversible F-reactions. In fact,
+a set of F-reactions derived from an irreducible RAF $\RAF$ that contains a 
+subset of F-reactions $\bar{\RAF}'$, which are all reverse to some F-reaction 
+of $\RAF$, is not an irreducible RAF (Lemma~\ref{lem:noReverseIrrRAF}).
 
-The translation from F-  to CRN-reactions suggests introducing 
+The translation from F- to CRN-reactions suggests introducing 
 an additional layer of minimality. In particular, Lemma~\ref{lem:mono} 
 guarantees that an irreducible RAF $\RAF$ retains the minimality property in 
 any CRS, where each F-reaction of $\RAF$ is associated with a single 
@@ -1819,16 +1823,16 @@ Irreducibility endows $\king(\RAF)$ with three fundamental properties for
 any irreducible, monocatalyzed RAF $\RAF$
 (Lemmata~\ref{lem:PSC}--\ref{lem:StrongBlocks}).
 \begin{itemize}
-\item[I1.] The subgraph of $\king(\RAF)$ induced by all species that are
-    neither food nor waste is strongly connected.
-\item[I2.] Every cut vertex of $\king(\RAF)$ is a reaction.
-\item[I3.] Every maximal strong block $\block$ of $\king(\RAF)$ that contains 
-at least one non-food, non-waste species vertex contains a unique reaction 
-$r^*$, also referred to as \emph{entry reaction}, that exerts the function of 
-an inflow reaction for $\block$ -- that is, all F-reactants of $r^*$ are located 
-outside, at least one F-product and one F-catalyst that is not a food-species 
-is located inside, and $r^*$ has the lowest generation order among all reactions 
-of $\block$.
+	\item[I1.] The subgraph of $\king(\RAF)$ induced by all species that are
+    		      neither food nor waste is strongly connected.
+	\item[I2.] Every cut vertex of $\king(\RAF)$ is a reaction.
+	\item[I3.] Every maximal strong block $\block$ of $\king(\RAF)$ that contains 
+		      at least one non-food, non-waste species vertex contains a unique reaction 
+		      $r^*$, also referred to as \emph{entry reaction}, that exerts the function of 
+		      an inflow reaction for $\block$ -- that is, all F-reactants of $r^*$ are located 
+		      outside, at least one F-product and one F-catalyst that is not a food-species 
+		      is located inside, and $r^*$ has the lowest generation order among all reactions 
+		      of $\block$.
 \end{itemize}
 Properties I1 and I2 impose a partition of $\king(\RAF)$ into strong blocks
 that are separated by reaction vertices. Property I3 guarantees that each
