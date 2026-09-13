@@ -372,14 +372,14 @@ which we investigate the structural properties of irreducible RAFs.
       \includegraphics[width=\textwidth]{./Pictures/n6iRAFirrevNoFReactions.png}
     \end{minipage}
   \end{minipage}	
-  \caption{Irreducible RAFs typically contain many autocatalytic cores. Number of 
-  autocatalytic cores (\textbf{top}) and F-reactions (\textbf{bottom}). The figure shows 
+  \caption{\NV{Single irreducible RAFs may} contain many autocatalytic cores. The plots show the number of 
+  autocatalytic cores (\textbf{top}) and reactions (\textbf{bottom}) in  
   50 arbitrarily chosen irreducible RAFs from two instances of the binary polymer model 
-  (BPM) with maximum polymer length of $6$. While the \textbf{left} panels reflect a 
+  (BPM) with polymers of up to six monomers. \NV{We use ‘reactions’ here informally; the distinction between reactions in a CRN and `F-reactions' in a CRS is clarified in Sect.~\ref{sect:term}.[Alternatively, change the picture to `F-reactions', but then below `cleavage reaction' is a bit odd, so safer to stay with reactions here.]} The \textbf{left} panels reflect a 
   BPM including both ligation and cleavage reactions with a fixed probability for a 
-  non-food species to catalyze any reaction of $p=0.0025$, the \textbf{right} panels
-  reflect a model containing ligation reactions only with a fixed probability for a non-food species 
-   to catalyze any reaction of $p=0.006$. See Sect.~\ref{sect:term} for the definition of terminology, 
+  non-food species to catalyze any reaction of $p=0.0025$. The \textbf{right} panels
+  reflect a model containing ligation reactions only, with a fixed probability for a non-food species 
+   to catalyze any reaction of $p=0.006$. See {\tiny Sect.~\ref{sect:term} for terminology, }
    SI Sect.~\ref{S-sec:BinPol} as well as SI Table~\ref{S-tab:SimulationDetails} for simulation details, 
    and SI Fig.~\ref{S-fig:irrRAFCoreComp} for composition of each irreducible RAF.}
   \label{fig:irrRAFCores}
@@ -430,7 +430,7 @@ product species,
   \underset{r}{\longrightarrow} \quad
   \sum_{x\in X} \ s^+_{xr}\cdot x\,,
 \end{equation}
-where $s^{\pm}_{xr}$ are the reactant and product stoichiometry of the
+where $s^{\pm}_{xr}\ge0$ are the reactant and product stoichiometry of the
 molecule $x$ in the reaction $r$. The $|X|\times|\CR|$ \emph{stoichiometric
   matrix} $\SM$ encodes all \emph{net-stoichiometries}:
 \begin{equation} 
