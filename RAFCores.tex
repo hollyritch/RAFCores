@@ -646,14 +646,13 @@ definition of catalyzations of a RAF, as the following Lemma underlines.
   $\{c_j(\fr)\}$ of sets of species $c_j(\fr)\subseteq X$. For
   $\mathbf{r}\in \RAF$, we shall further require that at least one set
   $c_{j^*}(\fr)$ consists only of species that are in the closure,
-  i.e. ${c_{j^*}}(\fr)\subseteq \closure{\RAF}{\food}$. Obviously, any such
-  choice of catalyzations renders $\RAF$ Reflexively Autocatalytic. It is
-  also obvious that such arbitrary assignments are infinite.
+  i.e. ${c_{j^*}}(\fr)\subseteq \closure{\RAF}{\food}$. Any such
+  choice of catalyzations renders $\RAF$ Reflexively Autocatalytic. It follows that such arbitrary assignments are infinite.
 \end{proof}
 
 \subsection{A preorder on RAFs}
 
-The reactions of a RAF can be partially ordered such that for each
+The F-reactions of a RAF can be partially ordered such that for each
 $x\in\feducts(\mathbf{r})$ we have $x\in\food$ or there is a reaction
 $\mathbf{r}'\prec \mathbf{r}$ such that $x\in\fproducts(\mathbf{r}')$.  We
 construct one such order that is reminiscent of a breadth-first search.  To
@@ -707,8 +706,8 @@ We conclude this section with the formal definition of CAFs sets.
 
 For a CRS $(X,\FR,\cat(\FR))$ with food-set $\food\subseteq X$, 
 the minimality of the RAF structure $\RAF$ with respect to its F-reactions 
-has been investigated in \cite{steel_minimal_2013}. To this aim, the 
-notion of \emph{irreducible RAFs} has been introduced.
+has been investigated in \cite{steel_minimal_2013} via the 
+notion of \emph{irreducible RAFs}.
 
 \vspace{3mm}
 \begin{definition}[Irreducible RAF]\label{def:irrerRAF}
@@ -766,7 +765,7 @@ We remark that \eqref{eq:inverse} in particular formally excludes the presence
 in any irreducible RAF of two F-reactions that are each other's reverse at the 
 level of F-reactants and F-products. More specifically, for an F-reaction $\fr$, 
 we write $\bar{\fr}$ for its reverse reaction satisfying 
-$\feducts(\bar{\fr}):=\fproducts(\fr)$ and $\feducts(\bar{\fr}):=\fproducts(\fr)$. Similarly, for 
+$\feducts(\bar{\fr})=\fproducts(\fr)$ and $\fproducts(\bar{\fr})=\feducts(\fr)$. Similarly, for 
 a set of F-reactions $
   \RAF' = \{\fr_1,\fr_2,\ldots,\fr_k\}$, we write $\bar{\FR}'' = \{\bar{\fr}_1,\bar{\fr}_2,\ldots,\bar{\fr}_k\}$ 
   for the set of the reverse F-reactions of $\RAF'$. We then state the following result.
@@ -824,28 +823,28 @@ $|\cat'(\fr)|=1$ for all F-reactions $\fr\in \RAF$.
 \end{lemma}
 \begin{proof}
   The first case in \eqref{eq:casesmono} guarantees that $\RAF$ is
-  Reflexively Autocatalytic in $(X, \FR,\cat'(\FR))$.  Once a set $\RAF$ is
-  Reflexively Autocatalytic, being an irreducible RAF only depends on the
-  $\food$-generated property, which - in turn - is independent from the
-  catalyzations. Therefore, $\RAF$ is an irreducible RAF in
+  Reflexively Autocatalytic in $(X, \FR,\cat'(\FR))$. Since
+  $\cat'(\FR)\subseteq\cat(\FR)$, any subset of $\RAF$ that is a RAF in
+  $(X,\FR,\cat'(\FR))$ is also a RAF in $(X,\FR,\cat(\FR))$, while the
+  $\food$-generated property is independent of the catalyzations. Therefore, $\RAF$ is an irreducible RAF in
   $(X, \FR,\cat'(\FR))$.
 \end{proof}
 
-\vspace{6pt}
+
 Lemma~\ref{lem:mono} suggests introducing the following notion.
 \vspace{6pt}
 \begin{definition}
-  Let $(X,\FR,\cat(\FR))$ be a CRS with specified \emph{food set}
-  $\food\subseteq X$. We call $\RAF$ a \emph{monocatalyzed RAF} if it is a
+  Let $(X,\FR,\cat(\FR))$ be a CRS with \emph{food set}
+  $\food\subseteq X$. We call $\RAF$ a \emph{monocatalyzed} RAF if it is a
   RAF and it holds $|\cat(\fr)|=1$ for all F-reactions $\fr \in \RAF$.
 \end{definition}
 
-We stress that a monocatalyzed RAF may include, nevertheless, F-reactions
+A monocatalyzed RAF may include, nevertheless, F-reactions
 $\fr$, whose unique catalyzation $c$ is a set of multiple pairs
 $(x_i, k^c_{x_i\fr})$, i.e.
 $c=\{((x_1, k^c_{x_1\fr}),..., (x_n, k^c_{x_n\fr})\}$. Lemma \ref{lem:mono}
 implies that, for a CRS $\mathbf{\Phi}=(X,\FR,\cat(\FR))$ with irreducible
-RAF $\RAF\subseteq\FR$, there exists potentiall exponentially many sub-CRS $\Phi'_i$
+RAF $\RAF\subseteq\FR$, there exists potentially exponentially many sub-CRS $\Phi'_i$
 for which $\RAF$ is a monocatalyzed irreducible RAF. This is formalized in
 the following lemma.
 
@@ -855,7 +854,7 @@ the following lemma.
     set} $\food\subseteq X$ and $\RAF$ be an irreducible RAF. Then there
   exist at least $N$ distinct sub-CRS
   $\mathbf{\Phi}'_1,\ldots, \mathbf{\Phi}'_N$ with
-  \begin{equation} \label{eq:ExpoNum} N = \prod_{\fr\in \RAF}\ \vert \{ c
+  \begin{equation} \label{eq:ExpoNum} N := \prod_{\fr\in \RAF}\ \vert \{ c
     \in\cat(\fr) \; \mid\; c \subseteq \closure{\RAF}{\food} \vert,
   \end{equation}
   such that for $i=1,\ldots,N$ it holds that $\RAF$ is a monocatalyzed
@@ -863,10 +862,10 @@ the following lemma.
 \end{lemma} 
 \begin{proof}
   Lemma \ref{lem:mono} implies that there are at least
-  $N=\prod_{\fr\in \RAF}\ \vert \cat(\fr) \vert$ distinct combinations of
+  $N$ distinct combinations of
   possible monocatalyzations for all F-reactions in $\RAF$. Any such
   monocatalyzation $\cat'(\RAF)$ provides a sub-CRS
-  $\mathbf{\Phi}'=(X,\FR,\cat'(\FR))$, where
+  $\mathbf{\Phi}_i'=(X,\FR,\cat'(\FR))$, where
   $\cat'(\RAF)\subseteq\cat(\FR)$ is arbitrarily extended to $\FR$, for
   which $\RAF$ is a monocatalyzed irreducible RAF.
 \end{proof}
@@ -883,7 +882,7 @@ only for RAFs that are not CAFs: \vspace{6pt}
   Def.~\ref{def:CAF} and of generation reaction-index $\gamma$
   (Eq.~\eqref{def:genreactionindex}), it follows that all F-reactants
   $\rho(\fr)$ and at least one catalyzation $c\in \cat(\fr)$ are in the
-  food set $\food$. Therefore $\fr$ is a CAF (and RAF) itself, and
+  food set $\food$. Thus $\fr$ is a CAF (and RAF) itself, and
   $\RAF=\{\fr\}$ by irreducibility of $\RAF$.
 \end{proof}
 
