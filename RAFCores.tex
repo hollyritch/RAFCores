@@ -1417,8 +1417,10 @@ monocatalyzed RAF $\RAF$, is \emph{stoichiometrically autocatalytic}.
   of $S[X(\block)\setminus \tilde{\food},\mathcal{R}(\block)]$ .
 \end{proof}
 
-\section{Three different kinds of examples}
+\section{Examples}
 \label{sec:examples}
+
+\NV{Probably nobody cares, but we defined the König graph only for the monocatalyzed RAF while here we depict for multiRAF. The necklace has an aesthetics reason...}
 
 \subsection{Irreducible RAFs from the binary polymer model}
 
@@ -1494,7 +1496,284 @@ numbers can be a result of polycatalyzation.}
 \end{figure}
 
 \subsection{The necklace RAF}\label{sec:NecklaceRAF}
+\NV{[All in big is my polished suggestion, all tiny is what was before]}
 
+
+\begin{figure}
+		\centering
+		\begin{tikzpicture}
+			\node[draw, circle] (f) at (1,-1.5) {$f$};
+			\node[draw, circle] (x'1) at (0,1) {$x'_1$};
+			\node[draw, circle] (x''1) at (2,1) {$x''_1$};
+			\node[draw, circle] (x2) at (1,-5) {$x_2$};
+			\node[draw, circle] (x'2) at (6,-5) {$x'_2$};
+			\node[draw, circle] (x''2) at (6,-3) {$x''_2$};
+			\node[draw, circle] (x3) at (8,-5) {$x_3$};
+			\node[draw, circle] (x'3) at (5,1) {$x'_3$};
+			\node[draw, circle] (x''3) at (5,-1) {$x''_3$};
+%			\node[draw, circle] (x4) at (8,1) {$x_4$};
+%			\node[draw, circle] (x'4) at (5.5,3) {$x'_n$};
+%			\node[draw, circle] (x''4) at (5.5,-1) {$x''_n$};
+			
+			\node[draw, rectangle] (r'1) at (0,-2) {$r'_1$};
+			\node[draw, rectangle] (r''1) at (2,-2) {$r''_1$};
+			\node[draw, rectangle] (r'2) at (4.5,-6) {$r'_2$};
+			\node[draw, rectangle] (r''2) at (4.5,-4) {$r''_2$};			
+			\node[draw, rectangle] (r'3) at (7,2) {$r'_3$};
+			\node[draw, rectangle] (r''3) at (7,0) {$r''_3$};
+			
+			
+%			\node[draw, minimum size=0.55cm] (r'3) at (9,-1.75) {};
+%			\node[draw, minimum size=0.55cm] (r''3) at (11,-1.75) {};
+%			\node[draw, circle] (r'3) at (9,-1.75) {$\cdots$};
+%			\node[draw, circle] (r''3) at (11,-1.75) {$\cdots$};			
+			
+%			\node[draw, rectangle] (r'4) at (4.5,2) {$r'_4$};
+%			\node[draw, rectangle] (r''4) at (4.5,0) {$r''_4$};			
+			
+			\draw[->] (f) to (r'1);
+			\draw[->] (f) to (r''1);
+			\draw[->, dashed] (x'1) to [bend right = 30](r'1);
+			\draw[->, dashed] (r'1) to [bend right = 30] (x'1);
+			\draw[->, dashed] (x''1) to [bend right = 30](r''1);
+			\draw[->, dashed] (r''1) to [bend right = 30] (x''1);
+			
+			\draw[->] (r'1) to [bend right = 30] (x2);
+			\draw[->] (r''1) to [bend left = 30]  (x2);
+			\draw[->] (x2) to [bend right = 15] (r'2);
+			\draw[->] (x2) to [bend left = 15] (r''2);			
+			\draw[->, dashed] (x'2) to [bend right = 15] (r'2);
+			\draw[->, dashed] (r'2) to [bend right = 15] (x'2);
+			\draw[->, dashed] (x''2) to [bend right = 15] (r''2);
+			\draw[->, dashed] (r''2) to [bend right = 15] (x''2);			
+			\draw[->] (r'2) to [bend right = 15] (x3);
+			\draw[->] (r''2) to [bend left = 15] (x3);
+			
+			\draw[->] (x3) to [bend right=30] (r'3);
+			\draw[->] (x3) to [bend left=15] (r''3);
+			\draw[->] (r'3) to [bend right=15] (x'1);
+			\draw[->] (r'3) to [bend right=15] (x''1);
+			\draw[->] (r''3) to [bend left=15] (x''1);
+			\draw[->] (r''3) to [bend left=15] (x'1);			
+%			\draw[->, opacity=0.3] (r''3) to [bend left = 10] (x''2);
+%			\draw[->, opacity=0.3] (r'3) to [bend left=60, looseness=1.5] (x'2);
+%			\draw[->, opacity=0.3] (r'3) to [bend left = 35] (x''2);
+%			\draw[->, opacity=0.3] (r''3) to [bend left=60, looseness=1.4] (x'2);
+			
+			\draw[->, dashed] (x'3) to [bend left=15] (r'3);
+			\draw[->, dashed] (r'3) to [bend left=15] node[midway, below] {$2$} (x'3);
+			\draw[->, dashed] (x''3) to [bend left=15] (r''3);
+			\draw[->, dashed] (r''3) to [bend left=15] node[midway, below] {$2$} (x''3);
+						
+%			\draw[->, opacity=0.3] (r'4) to [bend left=60, looseness=1.2] (x'3);
+%			\draw[->, opacity=0.3] (r'4) to [bend right = 45] (x''3);
+%			\draw[->, opacity=0.3] (r''4) to [bend left=70, looseness=1.5] (x'3);
+%			\draw[->, opacity=0.3] (r''4) to [bend right = 20] (x''3);
+												
+%			\draw[->] (x4) to [bend right=10] (r'4);
+%			\draw[->] (x4) to [bend left=10] (r''4);
+			
+%			\draw[->] (r'4) to [bend right=10] (x'1);
+%			\draw[->] (r''4) to [bend left=10] (x'1);
+%			
+%			\draw[->] (r'4) to [bend right=10] (x''1);
+%			\draw[->] (r''4) to [bend left=10] (x''1);
+%			
+%			\draw[->, dashed] (r'4) to [bend left=15] node[midway, left]{$2$} (x'4);
+%			\draw[->, dashed] (x'4) to [bend left=15] (r'4);
+%			
+%			\draw[->, dashed] (r''4) to [bend left=15] node[midway, right]{$2$} (x''4);
+%			\draw[->, dashed] (x''4) to [bend left=15] (r''4);
+											
+		\end{tikzpicture}		
+	\caption{The K\"onig graph of the 2-necklace RAF with $n=3$. 
+	The edges $(r'_3, x'_2), (r'_3, x''_2), (r''_3, x'_2)$, and $(r'_3, x''_2)$ were omitted for increased visibility. 
+	Edges connecting catalysts with reaction vertices are depicted with dashed lines.}
+	\label{fig:NecklaceRAF}
+\end{figure}
+
+
+We present an example of an irreducible RAF with $3n$ species and $n$
+F-reactions, each of which possesses two distinct catalyzations and no
+species catalyzes more than one F-reaction. The RAF contains an exponential number (w.r.t. the number of F-reactions) of autocatalytic cores. We use the CRN notation for simplicity, and we
+highlight the two reactions in the same F-reaction $\fr_i$, $i=1,\dots,n$,
+as $r'_i$ and $r''_i$. We assume throughout that $n\geq 3$.
+\begin{equation*}
+  \begin{cases}
+    f + (x'_1) &
+    \underset{r'_1}{\longrightarrow} x_2 + (x'_1)  \\
+    f + (x''_1) &
+    \underset{r''_1}{\longrightarrow} x_2 + (x''_1)  \\
+    x_2 + (x'_2) &
+    \underset{r'_2}{\longrightarrow} x_3 + (x'_2)  \\
+    x_2 + (x''_2) &
+    \underset{r''_2}{\longrightarrow} x_3 + (x''_2)  \\
+    &\vdots\\
+    x_k + (x'_k) &
+    \underset{r'_k}{\longrightarrow}
+    x_{k+1} + x'_{k-1} + x''_{k-1} + (x'_k) \qquad\qquad k=3,\ldots,n-1. \\
+    x_k + (x''_k) &
+    \underset{r''_k}{\longrightarrow}
+    x_{k+1} + x'_{k-1} + x''_{k-1} + (x''_k)  \\
+    &\vdots\\
+    x_n + (x'_n) &
+    \underset{r'_n}{\longrightarrow}
+    x'_1 + x''_1 + x'_{n-1} + x''_{n-1}
+    + x'_n + x''_n + (x'_n)  \\
+    x_n + (x''_n) &
+    \underset{r''_n}{\longrightarrow}
+    x'_1 + x''_1 + x'_{n-1} + x''_{n-1}
+    + x'_n + x''_n + (x''_n)
+  \end{cases}
+\end{equation*}
+In view of its geometry and architecture, we call the example the
+$2$-\emph{necklace RAF} of size $n$. See
+Fig.~\ref{fig:NecklaceRAF} for a depiction of the case $n=3$.
+
+The two reactions $r'_i$ and $r''_i$ have identical F-reactants and
+F-products and differ only in their catalyzation, and thus correspond to
+the same F-reaction $\fr_i$. The food set is the singleton $\food=\{f\}$ and it is easy to see that $\RAF=\{\fr_1,\ldots,\fr_n\}$
+is an irreducible RAF, as both the F-catalysts of the first $\fr_1$ are produced only via the last F-reaction $\fr_n$ of the chain. The same observation shows that the K\H{o}nig graph associated to the entire network possesses only one strong block containing non-food species. Each $2$-\emph{necklace RAF} has exactly $\mathbf{2}^n+\mathbf{2}^2(n-2)+\mathbf{2}^1$ 
+autocatalytic cores identified in three groups, corresponding to the
+three summands:
+\begin{itemize}
+\item The CRS $\RAF$ contains exactly $2^n$ distinct monocatalyzed
+sub-CRSs, each of which identifies an autocatalytic core of size $n$,
+containing all the $n$ reactions denoted generically as $(r_1,r_2,...,r_n)$ and $n$ species $(\cat(r_1),x_2,...,x_n)$. The associated stoichiometric matrix has the identical form
+\[S_n=
+  \begin{pmatrix}
+    0 & 0 & 0 & \cdots & 0 & 1\\
+    1 & -1 & 0 & \cdots & 0 & 0\\
+    0 & 1 & -1 & \cdots & 0 & 0\\
+    \vdots & \vdots & \vdots & \ddots & \vdots & \vdots\\
+    0 & 0 & \cdots & 1 & -1 & 0\\
+    0 & 0 & \cdots & 0 & 1 & -1
+  \end{pmatrix}.
+\]
+The subnetwork is naturally well-formed, and (via the construction in Lemma \ref{lem:NonFoodSemipositiv2}) choosing $v=(n,n-1,\ldots,2,1)^T$ shows semipositivity since $
+  S_nv=(1,\ldots,1)^\top>0$. The minimality also follows directly from the cycle structure of the autocatalytic core, as removing any set of columns destroys semipositivity and removing any set of rows destroys well-formedness. As different monocatalyzation choices identify different CRN reactions, the autocatalytic cores are distinct and of precise number $2^n$.
+\item Each pair $(\fr_k,\fr_{k+1})$ of consecutive F-reactions, with $k=2,\ldots,n-1$, identifies each $2^2=4$ distinct
+autocatalytic cores of size $2$. The associated species are chosen $(\cat(r_k),x_{k+1})$, and the associated stoichiometric matrix reads
+\[ \begin{pmatrix}
+    0 & 1\\
+    1 & -1
+  \end{pmatrix}.
+\]
+There are $n-2$ such consecutive pairs and
+$2\cdot2=4$ choices of catalyzations for each pair, yielding $4(n-2)$ distinct autocatalytic cores of size $2$. 
+\item Different choices of catalyzation for the F-reaction $\fr_n$,
+i.e. reactions $r'_n$ and $r''_n$, identify two additional
+one-dimensional autocatalytic cores. Indeed,
+\[
+  S[\{x'_n\},\{r'_n\}]=(1),
+  \qquad
+  S[\{x''_n\},\{r''_n\}]=(1),
+\]
+since $r'_n$ and $r''_n$ produce one additional copy of their
+respective F-catalyst. Hence each reaction alone identifies an
+autocatalytic core.
+
+\end{itemize}
+It can be verified that these three families exhaust all autocatalytic cores of the
+$2$-\emph{necklace RAF}. We omit a detailed argument since a lower exponential bound already serves our point. Via the arguments above and $
+  1+(n-2)+1=n$, we also remark that each monocatalyzed sub-CRS of $\RAF$ contains $n$ 
+autocatalytic cores: one of size $n$, $n-2$ of size $2$, and one of
+size $1$. This shows indeed that a high number of cores is achievable also for monocatalyzed networks. Note as well that different monocatalyzed sub-CRSs share many of the
+size-$2$ and size-$1$ cores.
+
+The construction and calculation can be generalized to an
+$m$-\emph{necklace RAF} of size $n$, where each F-reaction has $m$
+distinct catalyzations. The same argument gives
+  $m^n+m^2(n-2)+m$
+autocatalytic cores. More generally, suppose that the F-reaction $\fr_i$ has $m_i$ distinct
+catalyzations, with the same necklace architecture as above. The number
+of distinct autocatalytic cores is then
+\begin{equation}
+  \prod_{i=1}^{n}m_i
+  +
+  \sum_{k=2}^{n-1}m_km_{k+1}
+  +
+  m_n.
+\end{equation}
+We stress that such construction heavily relies indeed on the fact that each
+species is a catalyst of at most one reaction. In contrast, when this is
+not the case, we first emphasize that catalyzations might indeed affect
+the minimality property of autocatalytic sub-CRNs. 
+The following example (see also Fig.~\ref{fig:Minimality}) illustrates a situation where two
+autocatalytic sub-CRNs differ only by catalyzation;
+\begin{equation*}
+  \begin{cases}
+    f + (x_1) &
+    \underset{r_1}{\rightarrow} x_2 + x_4 + (x_1) \\[0.5em]
+    x_2 + (x_1) &
+    \underset{r'_2}{\rightarrow} x_2 + x_3 + (x_1) \\[0.5em]
+    x_2 + (x_4) &
+    \underset{r''_2}{\rightarrow} x_2 + x_3 + (x_4) \\[0.5em]
+    x_3 + (x_3) &
+    \underset{r_3}{\rightarrow} x_1 + (x_3)
+  \end{cases}
+\end{equation*}
+in particular, $
+  (\{x_1,x_2,x_3\},\{r_1,r''_2,r_3\})$
+is a core, while 
+$
+  (\{x_1,x_2,x_3\},\{r_1,r'_2,r_3\})
+$
+is not. In the latter, the catalyzation of $r'_2$ by
+$x_1$ creates the proper autocatalytic sub-CRN
+\[
+  (\{x_1,x_3\},\{r'_2,r_3\}),
+\]
+so that the three-reaction sub-CRN is not minimal. In contrast, replacing
+$r'_2$ by $r''_2$ removes this smaller feedback structure because its
+F-catalyst $x_4$ is not contained in the considered species set, and the
+three-reaction sub-CRN is an autocatalytic core. In the next example we present a construction at the opposite extreme: a RAF where all reactions are catalyzed by one single same species and indeed it admits only one autocatalytic core but multiple irreducible RAFs.
+
+
+\begin{figure}[htb]
+	\centering
+		\begin{tikzpicture}
+			\node[draw, circle] (f) at (1.5,1.5) {$f$};		
+			\node[draw, circle] (x1) at (0,0) {$x_1$};
+			\node[draw, circle] (x2) at (3,0) {$x_2$};
+			\node[draw, circle] (x3) at (3,-2) {$x_3$};
+			\node[draw, circle] (x4) at (6,-1) {$x_4$};	
+			
+			\node[draw, rectangle] (r1) at (1.5,0) {$r_1$};
+			\node[draw, rectangle] (r2') at (1.5,-1) {$r'_2$};
+			\node[draw, rectangle] (r2'') at (4.5,-1) {$r''_2$};
+			\node[draw, rectangle] (r3) at (0,-2) {$r_3$};
+			
+			\draw[->] (f) to (r1);
+			\draw[->] (x1) to [bend right = 15] (r1);
+			\draw[->] (r1) to [bend right = 15] (x1);			
+			\draw[->] (r1) to (x2);
+			\draw[->] (r1) to [bend left = 60, looseness = 1.5] (x4);
+			
+			\draw[->] (x2) to (r2');
+			\draw[->] (x2) to (r2'');
+			
+			\draw[->] (x1) to [bend right = 10] (r2');
+			\draw[->] (r2') to [bend right = 10] (x1);			
+			\draw[->] (x4) to [bend right = 30] (r2'');
+			\draw[->] (r2'') to [bend right = 30] (x4);
+			
+			\draw[->] (r2') to (x3);
+			\draw[->] (r2'') to (x3);
+			
+			\draw[->] (x3) to [bend right = 15] (r3);
+			\draw[->] (r3) to [bend right = 15] (x3);
+			
+			\draw[->] (r3) to (x1);
+
+		\end{tikzpicture}
+	\caption{The bipartite K\H{o}nig graph of an 
+	irreducible RAF in which two catalyzations for one F-reaction influence the minimality of an autocatalytic 
+	subsystem and give rise to two distinct autocatalytic cores of different size.}
+	\label{fig:Minimality}
+\end{figure}
+
+{\tiny
 \begin{figure}
 	\begin{minipage}[c]{\textwidth}
 		\begin{minipage}[l]{0.6\textwidth}
@@ -1721,7 +2000,7 @@ $(\{x_1, x_2, x_3\}, \{r_1, r''_2, r_3\})$ is a core, while the other ($\{x_1, x
 	irreducible RAF in which two catalyzations for one F-reaction influence the minimality of an autocatalytic 
 	subsystem and give rise to two distinct autocatalytic cores of different size.}
 	\label{fig:Minimality}
-\end{figure}
+\end{figure}}
 
 
 \subsection{Many irreducible RAFs and just one autocatalytic core}\label{sec:1CMiRAF}
