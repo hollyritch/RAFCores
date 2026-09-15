@@ -2043,9 +2043,9 @@ distinguished by the manner in which catalysis is handled. While in CRNs,
 underlying the theory of \emph{stoichiometric autocatalysis}, catalysts are
 not formally distinguished from other reactants and products, \NV{the CRS framework distinguishes F-reactions, intended as molecular transformations, from their catalyzations, which are specified separately}. {\tiny In addition, in CRS, species can appear on both sides of
 the stoichiometric equation without being considered a catalyst.} As a
-consequence, F-reactions are equivalence classes of CRN reactions with
+consequence, F-reactions in CRS are equivalence classes of CRN reactions with
 respect to the equivalence relation $\sim$ (Eq.~\eqref{eq:EqRel}),
-describing reactions that share the same non-catalyst reactants
+characterizing reactions that share the same non-catalyst reactants
 (F-reactants) and the same non-catalyst products (F-products), with
 identical stoichiometries, see Sec.~\ref{sec:CRNCRS}.
 
@@ -2057,7 +2057,7 @@ $\FR$ can be obtained as the quotient set of $\CR$, i.e.
 
 This implies that the CRS $\mathbf{\Phi}(\Gamma)= (X, \CR/\mathord{\sim},
 \kappa_F(\CR/\mathord{\sim}))$, with $\kappa_F(\CR/\mathord{\sim})$
-determined as described in Eq.~\eqref{eq:CatCFR}, reflects the quotient
+determined as described in Eq.~\eqref{eq:CatCFR}, reflects a quotient
 structure of the CRN $\Gamma=(X, \CR)$. In turn, the reactions of the CRN
 $\Gamma(\mathbf{\Phi})$ associated with a given CRS 
 $\mathbf{\Phi}\coloneqq (X, \FR, \kappa_F(\FR))$ can be obtained from
@@ -2071,8 +2071,8 @@ unique CRN reaction.
 we focused on the }interplay between the minimal structures arising in both frameworks,
 i.e., \textsc{irreducible RAFs} and \emph{autocatalytic cores}. Analyzing 
 irreducible RAFs obtained from random instances of the \NV{Binary Polymer Model}
-\cite{kauffman_autocatalytic_1986} with \texttt{autogatito}, 
-we observed an unexpectedly large number of autocatalytic cores in each 
+\cite{kauffman_autocatalytic_1986} with \texttt{autogatito} \cite{golnik_using_2026}, 
+we observed a large number of autocatalytic cores in each 
 irreducible RAF (Fig.~\ref{fig:irrRAFCores}). This observation could not 
 be explained by the theoretical results stated in \cite{golnik_bridging_2026}.
 
@@ -2097,40 +2097,35 @@ guarantees that an irreducible RAF $\RAF$ retains the minimality property in
 any CRS, where each F-reaction of $\RAF$ is associated with a single 
 catalyzation. In this \emph{monocatalyzed} case, CRN and F-reactions 
 are in one-to-one correspondence; each equivalence class consists of 
-a single element. 
-
-\NV{[I suggest not to mention fluffles here for the first and only time]}{\tiny \emph{Autocatalytic cores} correspond to \emph{fluffles} in the bipartite
+a single element, \NV{and thus CRN and CRS 
+can be canonically identified with each other.} 
+{\tiny  \NV{[I suggest not to mention fluffles here for the first and only time]} \emph{Autocatalytic cores} correspond to \emph{fluffles} in the bipartite
 K\H{o}nig graph -- that is, strongly connected blocks containing equal
 numbers of species and reaction vertices, in which every species vertex has
 out-degree~1, and every reaction vertex has in-degree~1 (F1--F3). Consequently,
-we aimed to identify analogous patterns in irreducible RAFs.} CRN and CRS 
+we aimed to identify analogous patterns in irreducible RAFs. CRN and CRS 
 can be canonically identified with each other whenever each equivalence class 
-\NV{is composed only of one element, namely whenever each F-reaction possesses only one catalyzation}. For this reason, we focused on monocatalyzed, irreducible RAFs $\RAF$. This allowed 
+\NV{is composed only of one element, namely whenever each F-reaction possesses only one catalyzation}. } For this reason, we focused on monocatalyzed, irreducible RAFs $\RAF$. This allowed 
 us to investigate their properties by examining the structure of the bipartite 
 K\H{o}nig graph $\king(\RAF)$ of the corresponding CRN representation.
 
-\NV{[NV TILL HERE, Later or tomorrow i finish]}
-
-Irreducibility endows $\king(\RAF)$ with three fundamental properties for
+\NV{RAF-}irreducibility endows $\king(\RAF)$ with three fundamental properties for
 any irreducible, monocatalyzed RAF $\RAF$
 (Lemmata~\ref{lem:PSC}--\ref{lem:StrongBlocks}).
 \begin{itemize}
-	\item[I1.] The subgraph of $\king(\RAF)$ induced by all species that are
-    		      neither food nor waste is strongly connected.
-	\item[I2.] Every cut vertex of $\king(\RAF)$ is a reaction.
+	\item[I1.] \NV{Disregarding food and waste molecules, $\king(\RAF)$ is strongly connected, i.e., for any two non-food/non-waste vertices in $\king(\RAF)$ there exists a directed path connected them, which does not touch the food set.}
+	\item[I2.] Every cut vertex of $\king(\RAF)$ is a reaction \NV{ vertex}.
 	\item[I3.] Every maximal strong block $\block$ of $\king(\RAF)$ that contains 
-		      at least one non-food, non-waste species vertex contains a unique reaction 
+		      at least one non-food, non-waste species vertex contains a reaction 
 		      $r^*$, also referred to as \emph{entry reaction}, that exerts the function of 
 		      an inflow reaction for $\block$ -- that is, all F-reactants of $r^*$ are located 
-		      outside, at least one F-product and one F-catalyst that is not a food-species 
-		      is located inside, and $r^*$ has the lowest generation order among all reactions 
-		      of $\block$.
+		      outside $\block$, at least one F-product and one F-catalyst that is not a food-species 
+		      is located inside $\block$.
 \end{itemize}
-Properties I1 and I2 impose a partition of $\king(\RAF)$ into strong blocks
-that are separated by reaction vertices. Property I3 guarantees that each
-such block is \emph{stoichiometrically autocatalytic}.
-
-In fact, strong blocks are, by definition, well-formed. In addition,
+\NV{Together, these properties imply that every maximal strong block containing at least one non-food, non-waste species vertex is \emph{stoichiometrically autocatalytic} and therefore contains in particular an autocatalytic core. Indeed, by definition each strong block is strongly connected, which guarantees well-formedness, while the entry reaction identified in I3 allowed us to establish semipositivity of the corresponding stoichiometric submatrix (Lemma~\ref{lem:NonFoodSemipositiv2}).}
+{\tiny Properties I2 impose a partition of $\king(\RAF)$ into strong blocks
+that are separated by reaction vertices. Property I3, in particular, guarantees that each
+such block is \emph{stoichiometrically autocatalytic}. In fact, strong blocks are, by definition, well-formed. In addition,
 \emph{entry reactions}, which have only F-catalysts as reactants and at
 least one F-product inside the corresponding block $\block$, induce a
 nonnegative column with at least one positive entry in the stoichiometric 
@@ -2142,8 +2137,9 @@ of the associated stoichiometric submatrix are the key ingredients a sub-CRN
 has to satisfy to exert autocatalytic capacity (Def.~\ref{def:autSubRN}). Thereby, 
 any maximal strong block with at least one non-food, non-waste species vertex 
 is \emph{stoichiometrically autocatalytic} and therefore contains an autocatalytic 
-core (Thm.~\ref{Thm:StrBlockCore}).
+core (Thm.~\ref{Thm:StrBlockCore}).}
 
+\NV{[I just need to polish the next paragraph and then I am done.]}
 Lifting the restriction of monocatalyzation generates multiple reaction vertices in 
 $\king(\RAF)$ for a single F-reaction that is associated with more than one catalyzation. In this 
 case, equivalence classes of CRN reactions translate into equivalence classes 
@@ -2227,14 +2223,14 @@ autocatalytic core, while the other does not.
 %reactants for each reaction inside a core.
 
 The results obtained here demonstrate that there are meaningful connections 
-between the CRS and CRN formalisms that translate into strong similarities 
+between the CRS and CRN formalisms that translate into similarities 
 between two different notions of autocatalysis, in particular between \textsc{irreducible RAFs} 
-and \emph{autocatalytic cores}. Although our results yield astonishing insights as well as 
-useful implications, they are still far from establishing 1-to-1 correspondences between 
+and \emph{autocatalytic cores}. Although our results yield insights as well as 
+useful implications, they do not establish 1-to-1 correspondences between 
 concepts in the two alternative formal frameworks. In particular, on the one hand, a single 
 irreducible RAF can give rise to exponentially many autocatalytic cores (Sec.~\ref{sec:NecklaceRAF}), 
-while, on the other hand, one autocatalytic core can be part of exponentially many irreducible RAFs 
-(Sec.~\ref{sec:1CMiRAF}). While the present results in essence characterize minimal RAFs in terms of CRNs, 
+while, on the other hand, \NV{one single autocatalytic core can be shared by arbitrarily} many irreducible RAFs 
+(Sec.~\ref{sec:1CMiRAF}). As the present results in essence characterize minimal RAFs in terms of CRNs, 
 the converse, i.e., a characterization of autocatalytic cores in the language of CRS, 
 remains an open research project.
 
