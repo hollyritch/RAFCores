@@ -2043,7 +2043,7 @@ distinguished by the manner in which catalysis is handled. While in CRNs,
 underlying the theory of \emph{stoichiometric autocatalysis}, catalysts are
 not formally distinguished from other reactants and products, \NV{the CRS framework distinguishes F-reactions, intended as molecular transformations, from their catalyzations, which are specified separately}. {\tiny In addition, in CRS, species can appear on both sides of
 the stoichiometric equation without being considered a catalyst.} As a
-consequence, F-reactions in CRS are equivalence classes of CRN reactions with
+consequence, F-reactions \NV{in CRS} are equivalence classes of CRN reactions with
 respect to the equivalence relation $\sim$ (Eq.~\eqref{eq:EqRel}),
 characterizing reactions that share the same non-catalyst reactants
 (F-reactants) and the same non-catalyst products (F-products), with
@@ -2113,12 +2113,12 @@ K\H{o}nig graph $\king(\RAF)$ of the corresponding CRN representation.
 any irreducible, monocatalyzed RAF $\RAF$
 (Lemmata~\ref{lem:PSC}--\ref{lem:StrongBlocks}).
 \begin{itemize}
-	\item[I1.] \NV{Disregarding food and waste molecules, $\king(\RAF)$ is strongly connected, i.e., for any two non-food/non-waste vertices in $\king(\RAF)$ there exists a directed path connected them, which does not touch the food set.}
+	\item[I1.] \NV{The subgraph of $\king(\RAF)$ obtained by deleting food and waste species vertices is strongly connected.}
 	\item[I2.] Every cut vertex of $\king(\RAF)$ is a reaction \NV{ vertex}.
 	\item[I3.] Every maximal strong block $\block$ of $\king(\RAF)$ that contains 
 		      at least one non-food, non-waste species vertex contains a reaction 
 		      $r^*$, also referred to as \emph{entry reaction}, that exerts the function of 
-		      an inflow reaction for $\block$ -- that is, all F-reactants of $r^*$ are located 
+		      an inflow reaction for $\block$ -- that is, all non-food F-reactants of $r^*$ are located 
 		      outside $\block$, at least one F-product and one F-catalyst that is not a food-species 
 		      is located inside $\block$.
 \end{itemize}
@@ -2139,8 +2139,8 @@ any maximal strong block with at least one non-food, non-waste species vertex
 is \emph{stoichiometrically autocatalytic} and therefore contains an autocatalytic 
 core (Thm.~\ref{Thm:StrBlockCore}).}
 
-\NV{[I just need to polish the next paragraph and then I am done.]}
-Lifting the restriction of monocatalyzation generates multiple reaction vertices in 
+\NV{In particular, our results show that the number of autocatalytic cores in an irreducible RAF is at least as large as the number of relevant maximal strong blocks in any of its monocatalyzed realizations. However, different monocatalyzed realizations may share autocatalytic cores. More importantly, the analysis of the BPM instances suggests that the internal connectivity of a single strong block, together with the availability of many distinct catalyst species and multiple catalyzations of the same F-reaction, may play a larger role in the abundance of autocatalytic cores. Indeed, our structural results, in particular Lemma~\ref{cor:strongblock1}, much constrain the occurrence of multiple strong blocks; for instance, they are excluded in the ligation-only case (Cor.~\ref{cor:strongblock2}). All irreducible RAFs from the BPM analyzed here indeed contained only one highly connected strong block (after excluding food and waste species). Together with the occurrence of a few F-reactions possessing more than one catalyzation, this suggests that the observed multiplicity of cores arises mainly from the internal architecture of a single strongly connected block. To reinforce this intuition, Sec.~\ref{sec:NecklaceRAF} provided the architecture of a \emph{necklace RAF}, in which a single strong block contains an exponentially large number of autocatalytic cores. To stress that this relationship depends strongly on the network architecture, Sec.~\ref{sec:1CMiRAF} also provided an opposite construction with arbitrarily many irreducible RAFs but only one autocatalytic core, shared by all of them.}
+{\tiny Lifting the restriction of monocatalyzation generates multiple reaction vertices in 
 $\king(\RAF)$ for a single F-reaction that is associated with more than one catalyzation. In this 
 case, equivalence classes of CRN reactions translate into equivalence classes 
 of sub-CRNs, of which multiple, i.e., exponentially many, can be autocatalytic cores, 
@@ -2152,7 +2152,7 @@ Nevertheless, substituting a CRN reaction of an autocatalytic core with a member
 of its resident $\sim$-equivalence class conserves stoichiometric autocatalycity, 
 but not necessarily minimality. Fig.~\ref{fig:Minimality} illustrates how catalyzations 
 impact the minimality of autocatalytic sub-CRNs, where one gives rise to an 
-autocatalytic core, while the other does not. 
+autocatalytic core, while the other does not.}
 
 %\begin{figure}[bth]
 %  \begin{minipage}[c]{0.49\textwidth}
@@ -2227,10 +2227,10 @@ between the CRS and CRN formalisms that translate into similarities
 between two different notions of autocatalysis, in particular between \textsc{irreducible RAFs} 
 and \emph{autocatalytic cores}. Although our results yield insights as well as 
 useful implications, they do not establish 1-to-1 correspondences between 
-concepts in the two alternative formal frameworks. In particular, on the one hand, a single 
+concepts in the two alternative formal frameworks. {\tiny In particular, on the one hand, a single 
 irreducible RAF can give rise to exponentially many autocatalytic cores (Sec.~\ref{sec:NecklaceRAF}), 
 while, on the other hand, \NV{one single autocatalytic core can be shared by arbitrarily} many irreducible RAFs 
-(Sec.~\ref{sec:1CMiRAF}). As the present results in essence characterize minimal RAFs in terms of CRNs, 
+(Sec.~\ref{sec:1CMiRAF}).} As the present results in essence characterize minimal RAFs in terms of CRNs, 
 the converse, i.e., a characterization of autocatalytic cores in the language of CRS, 
 remains an open research project.
 
