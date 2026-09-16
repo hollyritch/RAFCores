@@ -372,16 +372,16 @@ which we investigate the structural properties of irreducible RAFs.
       \includegraphics[width=\textwidth]{./Pictures/n6iRAFirrevNoFReactions.png}
     \end{minipage}
   \end{minipage}	
-  \caption{\NV{Single irreducible RAFs may} contain many autocatalytic cores. The plots show the number of 
-  autocatalytic cores (\textbf{top}) and reactions (\textbf{bottom}) in  
-  50 arbitrarily chosen irreducible RAFs from two instances of the binary polymer model 
-  (BPM) with polymers of up to six monomers. \NV{We use ‘reactions’ here informally; the distinction between reactions in a CRN and `F-reactions' in a CRS is clarified in Sect.~\ref{sect:term}.[Alternatively, change the picture to `F-reactions', but then below `cleavage reaction' is a bit odd, so safer to stay with reactions here.]} The \textbf{left} panels reflect a 
-  BPM including both ligation and cleavage reactions with a fixed probability for a 
-  non-food species to catalyze any reaction of $p=0.0025$. The \textbf{right} panels
-  reflect a model containing ligation reactions only, with a fixed probability for a non-food species 
-   to catalyze any reaction of $p=0.006$. See {\tiny Sect.~\ref{sect:term} for terminology, }
-   SI Sect.~\ref{S-sec:BinPol} as well as SI Table~\ref{S-tab:SimulationDetails} for simulation details, 
-   and SI Fig.~\ref{S-fig:irrRAFCoreComp} for composition of each irreducible RAF.}
+  \caption{Single irreducible RAFs may contain many autocatalytic cores. The plots show the number of 
+  autocatalytic cores (\textbf{top}) and reactions (\textbf{bottom}) in 50 arbitrarily chosen irreducible RAFs 
+  from two instances of the binary polymer model (BPM) with polymers of up to six monomers. We use 
+  ‘reactions’ here informally; the distinction between reactions in a CRN and `F-reactions' in a CRS is 
+  clarified in Sect.~\ref{sect:term}. The \textbf{left} panels reflect a BPM including both ligation and cleavage 
+  reactions with a fixed probability for a non-food species to catalyze any reaction of $p=0.0025$. The 
+  \textbf{right} panels reflect a model containing ligation reactions only, with a fixed probability for a 
+  non-food species to catalyze any reaction of $p=0.006$. See SI Sect.~\ref{S-sec:BinPol} as well as SI 
+  Table~\ref{S-tab:SimulationDetails} for simulation details, and SI Fig.~\ref{S-fig:irrRAFCoreComp} for 
+  composition of each irreducible RAF.}
   \label{fig:irrRAFCores}
 \end{figure}
 
@@ -1096,7 +1096,7 @@ Fig.~\ref{ex:CutVertex2}.
     \tilde{\mathbf{R}}_{n}=\tilde{\mathbf{R}}_{n-1}\cup
     \left\{\fr\in \RAF \; \middle| \; \bigcup_{\hat{\fr}\in \tilde{\mathbf{R}}_{n-1}}
     \bigg(\feducts(\hat{\fr}) \cup \cat(\hat{\fr})\bigg)
-    \bigcap \holy{\left( \fproducts(\fr) \setminus \food \right)} \neq \emptyset \right\}.
+    \bigcap \left( \fproducts(\fr) \setminus \food \right) \neq \emptyset \right\}.
   \end{equation}
   Since $\RAF$ is a finite set, the iteration converges at a finite step
   $\bar{n}$ to a set $\RAF'\coloneqq \tilde{\mathbf{R}}_{\bar{n}}$.  By
@@ -1424,59 +1424,15 @@ monocatalyzed RAF $\RAF$, is \emph{stoichiometrically autocatalytic}.
 
 \subsection{Irreducible RAFs from the binary polymer model}
 
-\NV{We started this contribution with the observation of a large number of autocatalytic cores in irreducible RAFs from two instances of the binary polymer model. The first instance was only composed by cleavage and ligation, while the second contained only ligation F-reactions, see Fig.~\ref{fig:irrRAFCores}.  To clarify a bit this relation, we investigated the structure of irreducible RAFs. We comment here on three aspects.
+We started this contribution with the observation of a large number of autocatalytic cores in irreducible RAFs from two instances of the binary polymer model. The first instance was composed only of cleavage and ligation, while the second contained only ligation F-reactions; see Fig.~\ref{fig:irrRAFCores}.  To clarify this relation, we investigated the structure of irreducible RAFs. We comment here on three aspects.
 \begin{itemize}
-\item \textbf{F-products in the food set.} The RAF definition~\ref{def:RAF} and the consequent structural analysis in Sec.~\ref{subsec:King} do not distinguish F-products that belong to the food set, as our structural results disregard paths passing through food species. In contrast, Def.~\ref{def:autSubRN} of stoichiometric autocatalysis is sensitive to the presence of food species in an autocatalytic sub-CRN. Filtering out food species revealed that food-containing cores indeed contribute to the total number of autocatalytic cores, at least in irreducible RAFs containing both ligation and cleavage reactions (Fig.~\ref{fig:FoodVsNonFood}). That irreducible RAFs composed only of ligation reactions exhibit the same number of autocatalytic cores after  removal of food species is, in turn, not surprising, since irreducibility excludes ligation F-reactions whose F-product lies in the food set. Nevertheless, many autocatalytic cores remain after food species are removed.
-\item \textbf{The number of distinct catalyzations.} Lemma~\ref{lem:ExpoSubCRS} shows that a single `policatalyzed' irreducible RAF may be associated with an exponentially large number of monocatalyzed RAFs. Since each such realization is itself an irreducible RAF, our results guarantee the presence of autocatalytic cores in each of the corresponding CRNs. This, however, does not imply per se an exponentially large number of \emph{distinct} autocatalytic cores: the correspondence clearly needs not be injective at the level of autocatalytic cores. Multiple catalyzations should therefore be regarded only as a possible source of the observed multiplicity. Moreover, F-reactions with multiple catalyzations are not prevalent in the irreducible RAFs considered here, where only a handful of F-reactions admit more than one catalyzation.
-\item \textbf{Strong blocks.} The results in Sec.~\ref{subsec:King} show that, for a monocatalyzed irreducible RAF, the subgraph of the associated K\"onig graph obtained after excluding food and waste species is strongly connected. Moreover, the occurrence of multiple maximal strong blocks is much constrained: only reaction vertices may be cut-vertices, and their structure is restricted by Lemma~\ref{lem:StrongBlocks} and Lemma~\ref{cor:strongblock1}. For ligation-only instances of the binary polymer model, for example, the presence of a single relevant maximal strong block follows directly from Cor.~\ref{cor:strongblock2}, since every F-reaction has a single F-product. Moreover, albeit multiple blocks are in theory possible (see SI Fig.~\ref{S-fig:BPMMultipleStrongBlocks}), even for BPM instances with maximum polymer lengths $4,5,6,7,8$ containing both cleavage and ligation reactions, none of the collected irreducible RAFs exhibited more than one such block. \NV{[TBD: add evidence for this in repo / SI, or phrase `undisclosed' explorations..]} Thm.~\ref{Thm:StrBlockCore} shows that every relevant maximal strong block is stoichiometrically autocatalytic and therefore contains an autocatalytic core. The decomposition into multiple strong blocks, however, could not explain the large number of cores observed here, since the number of strong blocks is necessarily constrained by the number of vertices of the K\"onig graph, i.e., by the number of species and reactions, while a single strong block may contain many distinct autocatalytic cores. In view also of our results in \cite{golnik_enumeration_2026,golnik_bridging_2026}, this analysis rather suggests that it is the internal connectivity within a single strong block that provides the structural setting in which many distinct autocatalytic cores can occur.
+\item \textbf{F-products in the food set.} The RAF Def.~\ref{def:RAF} and the consequent structural analysis in Sec.~\ref{subsec:King} do not distinguish F-products that belong to the food set, as our structural results disregard paths passing through food species. In contrast, Def.~\ref{def:autSubRN} of stoichiometric autocatalysis is sensitive to the presence of food species in an autocatalytic sub-CRN. Filtering out food species revealed that food-containing cores indeed contribute to the total number of autocatalytic cores, at least in irreducible RAFs containing both ligation and cleavage reactions (Fig.~\ref{fig:FoodVsNonFood}). That irreducible RAFs composed only of ligation reactions exhibit the same number of autocatalytic cores after removal of food species is, in turn, not surprising, since irreducibility excludes ligation F-reactions whose F-product lies in the food set. Nevertheless, many autocatalytic cores remain after food species are removed.
+\item \textbf{The number of distinct catalyzations.} Lemma~\ref{lem:ExpoSubCRS} shows that a single `polycatalyzed' irreducible RAF may be associated with an exponentially large number of monocatalyzed RAFs. Since each such realization is itself an irreducible RAF, our results guarantee the presence of autocatalytic cores in each of the corresponding CRNs. This, however, does not imply per se an exponentially large number of \emph{distinct} autocatalytic cores: the correspondence clearly needs not be injective at the level of autocatalytic cores. Multiple catalyzations should therefore be regarded only as a possible source of the observed multiplicity. Moreover, F-reactions with multiple catalyzations are not prevalent in the irreducible RAFs considered here, where only a handful of F-reactions admit more than one catalyzation.
+\item \textbf{Strong blocks.} The results in Sec.~\ref{subsec:King} show that, for a monocatalyzed irreducible RAF, the subgraph of the associated K\"onig graph obtained after excluding food and waste species is strongly connected. Moreover, the occurrence of multiple maximal strong blocks is much constrained: only reaction vertices may be cut-vertices, and their structure is restricted by Lemma~\ref{lem:StrongBlocks} and Lemma~\ref{cor:strongblock1}. For ligation-only instances of the binary polymer model, for example, the presence of a single relevant maximal strong block follows directly from Cor.~\ref{cor:strongblock2}, since every F-reaction has a single F-product. Moreover, although multiple blocks are in theory possible (see SI Fig.~\ref{S-fig:BPMMultipleStrongBlocks}), even for BPM instances with maximum polymer lengths $4,5,6,7$, and $8$ containing both cleavage and ligation reactions, none of the collected irreducible RAFs exhibited more than one such block (SI Fig.~\ref{S-fig:StrongBlocks}). Thm.~\ref{Thm:StrBlockCore} shows that every relevant maximal strong block is stoichiometrically autocatalytic and therefore contains an autocatalytic core. The decomposition into multiple strong blocks could, however, not explain the large number of cores observed here, since the number of strong blocks is necessarily constrained by the number of vertices of the K\"onig graph, i.e., by the number of species and reactions, while a single strong block may contain many distinct autocatalytic cores. In view also of our results in \cite{golnik_enumeration_2026,golnik_bridging_2026}, this analysis rather suggests that it is the internal connectivity within a single strong block that provides the structural setting in which many distinct autocatalytic cores can occur.
 \end{itemize}
-Finally, and more informally, the binary polymer model naturally allows a large number of distinct species to act as catalysts. Such diversity seems to provide the connectivity richness that gives rise to a large number of autocatalytic cores within a single irreducible RAF.}
+Finally, and more informally, the binary polymer model naturally allows a large number of distinct species to act as catalysts. Such diversity seems to provide the connectivity richness that gives rise to a large number of autocatalytic cores within a single irreducible RAF.
 
-\NV{In the next two abstract examples, we build on the above intuitions. In the first, both catalytic diversity and multiple catalyzations are combined to produce an exponential number of autocatalytic cores within a single irreducible RAF. In the second, we consider the opposite extreme, where all F-reactions are monocatalyzed and share the same catalyst, and construct arbitrarily many irreducible RAFs that possess only a single shared autocatalytic core.}
-
-{\tiny
-The starting point for this contribution was a computational analysis of the number of autocatalytic cores in 50 arbitrarily chosen irreducible RAFs 
-obtained from two instances of the binary polymer model (BPM), one composed of cleavage and ligation, while the other containing only ligation 
-F-reactions. In both cases, a surprisingly large number of autocatalytic cores was detected in each irreducible RAF, which is depicted in 
-Fig.~\ref{fig:irrRAFCores}. We therefore examined the topological properties of irreducible RAFs in their bipartite K\"onig graph representation 
-and compared them with monocatalyzed irreducible RAFs. 
-
-In Sec.~\ref{subsec:King} we showed that any monocatalyzed, irreducible RAF can be composed of 
-multiple, maximal strong blocks that contain at least one non-food, non-waste species, each of which 
-is stoichiometrically autocatalytic. However, every irreducible RAF that is shown in Fig.~\ref{fig:irrRAFCores} 
-consists of only one such block (SI Fig.~\ref{S-fig:StrongBlocks}, upper panles). According to 
-Cor.~\ref{cor:strongblock2}, this is not surprising for instances with ligation F-reactions only (Fig.~\ref{fig:irrRAFCores}, 
-right panels), which all have a single F-product. However, we examined irreducible RAFs for instances of the BPM with 
-maximal polymer sizes of 4, 5, 6, 7, and 8. Even in the presence of both cleavage and ligation reactions, 
-none of the collected irreducible RAFs exhibited more than one such block (see SI Fig.~\ref{S-fig:StrongBlocks},
-upper panels). 
-
-We remark that irreducible RAFs represented in Fig.~\ref{fig:irrRAFCores} might contain F-reactions associated 
-with more than one catalyzation. However, only those catalyzations were included for which all catalysts are 
-elements of the closure obtained from the particular set of F-reactions. At the same time, food species had been 
-excluded a priori from being catalysts. In this case, the number of maximal strong blocks containing at least one 
-non-food, non-waste species might be reduced in contrast to a corresponding irreducible, monocatalyzed RAF 
-obtained by an arbitrary choice of single catalyzations for each F-reaction as a result of increased connectivity.
-
-In theory, irreducible RAFs of instances from the BPM can be composed of multiple 
-maximal strong blocks containing at least one one-food, non-waste species vertex. An example 
-illustrating such a situation is shown in SI Fig.~\ref{S-fig:BPMMultipleStrongBlocks}.
-The network structure depends, in general, tremendously on the generating procedure of 
-the instances. Importantly for this contribution, however, is that the large number of autocatalytic 
-cores in each irreducible RAF from Fig.~\ref{fig:irrRAFCores} remains unexplained.
-
-Thm.~\ref{Thm:StrBlockCore} guarantees that each maximal strong block that 
-contains at least one non-food, non-waste species vertex comprises at least one
-autocatalytic core free of food molecules. Filtering for the absence of food species 
-revealed that they account for a large number of autocatalytic cores, at least in 
-irreducible RAFs containing both ligation and cleavage reactions (Fig.~\ref{fig:FoodVsNonFood}). 
-That irreducible RAFs composed of ligation reactions only exhibited the same 
-number of autocatalytic cores, disregarding the presence of food species, 
-is indeed not surprising, as irreducibility excludes ligation F-reactions having only 
-food species as F-products. Many instances of both models still comprise hundreds 
-to thousands of autocatalytic cores, even after removal of food species, an 
-observation that still requires an explanation. We will examine next how these  
-numbers can be a result of polycatalyzation.}
+In the next two abstract examples, we build on the above intuitions. In the first, both catalytic diversity and multiple catalyzations are combined to produce an exponential number of autocatalytic cores within a single irreducible RAF. In the second, we consider the opposite extreme, where all F-reactions are monocatalyzed and share the same catalyst, and construct arbitrarily many irreducible RAFs that possess only a single shared autocatalytic core.
 
 \begin{figure}
 	\centering
@@ -1496,8 +1452,6 @@ numbers can be a result of polycatalyzation.}
 \end{figure}
 
 \subsection{The necklace RAF}\label{sec:NecklaceRAF}
-\NV{[All in big is my polished suggestion, all tiny is what was before]}
-
 
 \begin{figure}
 		\centering
@@ -1633,7 +1587,9 @@ Fig.~\ref{fig:NecklaceRAF} for a depiction of the case $n=3$.
 The two reactions $r'_i$ and $r''_i$ have identical F-reactants and
 F-products and differ only in their catalyzation, and thus correspond to
 the same F-reaction $\fr_i$. The food set is the singleton $\food=\{f\}$ and it is easy to see that $\RAF=\{\fr_1,\ldots,\fr_n\}$
-is an irreducible RAF, as both the F-catalysts of the first $\fr_1$ are produced only via the last F-reaction $\fr_n$ of the chain. The same observation shows that the K\H{o}nig graph associated to the entire network possesses only one strong block containing non-food species. Each $2$-\emph{necklace RAF} has exactly $\mathbf{2}^n+\mathbf{2}^2(n-2)+\mathbf{2}^1$ 
+is an irreducible RAF, as both the F-catalysts of the first $\fr_1$ are produced only via the last F-reaction $\fr_n$ of the chain. 
+The same observation shows that the K\H{o}nig graph associated to the entire network possesses only one maximal strong 
+block containing non-food species. Each $2$-\emph{necklace RAF} has exactly $\mathbf{2}^n+\mathbf{2}^2(n-2)+\mathbf{2}^1$ 
 autocatalytic cores identified in three groups, corresponding to the
 three summands:
 \begin{itemize}
@@ -1651,7 +1607,9 @@ containing all the $n$ reactions denoted generically as $(r_1,r_2,...,r_n)$ and 
   \end{pmatrix}.
 \]
 The subnetwork is naturally well-formed, and (via the construction in Lemma \ref{lem:NonFoodSemipositiv2}) choosing $v=(n,n-1,\ldots,2,1)^T$ shows semipositivity since $
-  S_nv=(1,\ldots,1)^\top>0$. The minimality also follows directly from the cycle structure of the autocatalytic core, as removing any set of columns destroys semipositivity and removing any set of rows destroys well-formedness. As different monocatalyzation choices identify different CRN reactions, the autocatalytic cores are distinct and of precise number $2^n$.
+  S_nv=(1,\ldots,1)^\top>0$. The minimality also follows directly from the cycle structure of the autocatalytic core, as removing any set of columns destroys semipositivity and 
+  removing any set of rows destroys well-formedness. As different monocatalyzation choices identify different CRN reactions, the autocatalytic cores are distinct and of precise 
+  number $2^n$.
 \item Each pair $(\fr_k,\fr_{k+1})$ of consecutive F-reactions, with $k=2,\ldots,n-1$, identifies each $2^2=4$ distinct
 autocatalytic cores of size $2$. The associated species are chosen $(\cat(r_k),x_{k+1})$, and the associated stoichiometric matrix reads
 \[ \begin{pmatrix}
@@ -1659,8 +1617,8 @@ autocatalytic cores of size $2$. The associated species are chosen $(\cat(r_k),x
     1 & -1
   \end{pmatrix}.
 \]
-There are $n-2$ such consecutive pairs and
-$2\cdot2=4$ choices of catalyzations for each pair, yielding $4(n-2)$ distinct autocatalytic cores of size $2$. 
+There are $n-2$ such consecutive pairs and $2\cdot2=4$ choices of catalyzations 
+for each pair, yielding $4(n-2)$ distinct autocatalytic cores of size $2$. 
 \item Different choices of catalyzation for the F-reaction $\fr_n$,
 i.e. reactions $r'_n$ and $r''_n$, identify two additional
 one-dimensional autocatalytic cores. Indeed,
@@ -1697,7 +1655,7 @@ of distinct autocatalytic cores is then
 \end{equation}
 We stress that such construction heavily relies indeed on the fact that each
 species is a catalyst of at most one reaction. In contrast, when this is
-not the case, we first emphasize that catalyzations might indeed affect
+not the case, we emphasize that catalyzations might indeed affect
 the minimality property of autocatalytic sub-CRNs. 
 The following example (see also Fig.~\ref{fig:Minimality}) illustrates a situation where two
 autocatalytic sub-CRNs differ only by catalyzation;
@@ -1727,8 +1685,10 @@ $x_1$ creates the proper autocatalytic sub-CRN
 so that the three-reaction sub-CRN is not minimal. In contrast, replacing
 $r'_2$ by $r''_2$ removes this smaller feedback structure because its
 F-catalyst $x_4$ is not contained in the considered species set, and the
-three-reaction sub-CRN is an autocatalytic core. In the next example we present a construction at the opposite extreme: a RAF where all reactions are catalyzed by one single same species and indeed it admits only one autocatalytic core but multiple irreducible RAFs.
-
+three-reaction sub-CRN is an autocatalytic core. In the next example we 
+present a construction at the opposite extreme: a RAF where all reactions 
+are catalyzed by one single species and indeed it admits only one autocatalytic 
+core but multiple irreducible RAFs.
 
 \begin{figure}[htb]
 	\centering
@@ -1772,236 +1732,6 @@ three-reaction sub-CRN is an autocatalytic core. In the next example we present 
 	subsystem and give rise to two distinct autocatalytic cores of different size.}
 	\label{fig:Minimality}
 \end{figure}
-
-{\tiny
-\begin{figure}
-	\begin{minipage}[c]{\textwidth}
-		\begin{minipage}[l]{0.6\textwidth}
-			\begin{equation*}
-				\begin{split}
-					f + (x'_1) & \underset{r'_1}{\longrightarrow} x_2 + (x'_1)  \\[-0.5em]
-					f + (x''_1) & \underset{r''_1}{\longrightarrow} x_2 + (x''_1)  \\[-0.5em]
-					x_2 + (x'_2) & \underset{r'_2}{\longrightarrow} x_3 + (x'_2)  \\[-0.5em]
-					x_2 + (x''_2) & \underset{r''_2}{\longrightarrow}  x_3 + (x''_2)  \\[-0.5em]
-					x_k + (x'_k) & \underset{r'_k}{\longrightarrow} x_4 + x'_{k-1} + x''_{k-1} + (x'_k)  \\[-0.5em]
-					x_k + (x''_k) & \underset{r''_k}{\longrightarrow} x_4 + x'_{k-1} + x''_{k-1} + (x''_k)  \\[-0.5em]
-					  \hspace{3pt}  & \vdots   \ \\[-0.5em]
-					x_n + (x'_n) & \underset{r'_n}{\longrightarrow}  x'_1 + x''_1 + x'_{n-1} + x''_{n-1} + x'_n + (x'_n)  \\[-0.5em]
-					x_n + (x''_n) & \underset{r''_n}{\longrightarrow} x'_1 + x''_1 + x'_{n-1} + x''_{n-1} + x''_n + (x''_n)  
-				\end{split}
-			\end{equation*}
-		\end{minipage}%
-		\hfill%
-		\begin{minipage}[r]{0.4\textwidth}
-			\begin{equation*}
-				\SM=\left(
-					\begin{array}{c|c} 
-					&	\begin{array}{cccccc}
-						r'_1 	\hspace{3pt} & \hspace{3pt} r''_1 & \hspace{3pt} r'_2	& \hspace{3pt}	r''_2 	& \hspace{3pt}	r'_3 	& \hspace{3pt}	r''_3 
-					\end{array} \\
-					\hline 
-					\begin{array}{c}
-					f \\
-					x'_1 \\
-					x''_1 \\
-					x_2 \\
-					x'_2 \\
-					x''_2 \\
-					x_3 \\
-					x'_3 \\
-					x''_3 \\
-					\end{array}
-					& 
-					\begin{array}{cccccc}
-						-1	&	-1	&	0	&	0	&	0	&	0	\\
-						0 	& 	0	& 	0  	& 	0	&	0 	&	0	\\
-						0 	& 	0	& 	0  	& 	0	&	0 	&	0	\\
-						1 	&	1	& 	-1 	& 	-1	&	0 	&	0	\\
-						0 	&	0	& 	0  	& 	0	&	1 	&	1	\\
-						0 	&	0	& 	0  	& 	0	&	1 	&	1	\\
-						0 	&	0	& 	1 	 & 	1	&	-1 	&	-1	\\
-						0 	&	0	& 	0	&	0	&	1	&	1	\\
-						0 	&	0	& 	0	&	0	&	1	&	1	
-					\end{array} 
-				\end{array}
-				\right)
-			\end{equation*}
-		\end{minipage}
-	\end{minipage}
-	\par \bigskip
-	\begin{minipage}[c]{\textwidth}
-		\centering
-		\begin{tikzpicture}
-			\node[draw, circle] (f) at (1,-1.5) {$f$};
-			\node[draw, circle] (x'1) at (0,1) {$x'_1$};
-			\node[draw, circle] (x''1) at (2,1) {$x''_1$};
-			\node[draw, circle] (x2) at (1,-5) {$x_2$};
-			\node[draw, circle] (x'2) at (6,-5) {$x'_2$};
-			\node[draw, circle] (x''2) at (6,-3) {$x''_2$};
-			\node[draw, circle] (x3) at (8,-5) {$x_3$};
-			\node[draw, circle] (x'3) at (5,1) {$x'_3$};
-			\node[draw, circle] (x''3) at (5,-1) {$x''_3$};
-%			\node[draw, circle] (x4) at (8,1) {$x_4$};
-%			\node[draw, circle] (x'4) at (5.5,3) {$x'_n$};
-%			\node[draw, circle] (x''4) at (5.5,-1) {$x''_n$};
-			
-			\node[draw, rectangle] (r'1) at (0,-2) {$r'_1$};
-			\node[draw, rectangle] (r''1) at (2,-2) {$r''_1$};
-			\node[draw, rectangle] (r'2) at (4.5,-6) {$r'_2$};
-			\node[draw, rectangle] (r''2) at (4.5,-4) {$r''_2$};			
-			\node[draw, rectangle] (r'3) at (7,2) {$r'_3$};
-			\node[draw, rectangle] (r''3) at (7,0) {$r''_3$};
-			
-			
-%			\node[draw, minimum size=0.55cm] (r'3) at (9,-1.75) {};
-%			\node[draw, minimum size=0.55cm] (r''3) at (11,-1.75) {};
-%			\node[draw, circle] (r'3) at (9,-1.75) {$\cdots$};
-%			\node[draw, circle] (r''3) at (11,-1.75) {$\cdots$};			
-			
-%			\node[draw, rectangle] (r'4) at (4.5,2) {$r'_4$};
-%			\node[draw, rectangle] (r''4) at (4.5,0) {$r''_4$};			
-			
-			\draw[->] (f) to (r'1);
-			\draw[->] (f) to (r''1);
-			\draw[->, dashed] (x'1) to [bend right = 30](r'1);
-			\draw[->, dashed] (r'1) to [bend right = 30] (x'1);
-			\draw[->, dashed] (x''1) to [bend right = 30](r''1);
-			\draw[->, dashed] (r''1) to [bend right = 30] (x''1);
-			
-			\draw[->] (r'1) to [bend right = 30] (x2);
-			\draw[->] (r''1) to [bend left = 30]  (x2);
-			\draw[->] (x2) to [bend right = 15] (r'2);
-			\draw[->] (x2) to [bend left = 15] (r''2);			
-			\draw[->, dashed] (x'2) to [bend right = 15] (r'2);
-			\draw[->, dashed] (r'2) to [bend right = 15] (x'2);
-			\draw[->, dashed] (x''2) to [bend right = 15] (r''2);
-			\draw[->, dashed] (r''2) to [bend right = 15] (x''2);			
-			\draw[->] (r'2) to [bend right = 15] (x3);
-			\draw[->] (r''2) to [bend left = 15] (x3);
-			
-			\draw[->] (x3) to [bend right=30] (r'3);
-			\draw[->] (x3) to [bend left=15] (r''3);
-			\draw[->] (r'3) to [bend right=15] (x'1);
-			\draw[->] (r'3) to [bend right=15] (x''1);
-			\draw[->] (r''3) to [bend left=15] (x''1);
-			\draw[->] (r''3) to [bend left=15] (x'1);			
-%			\draw[->, opacity=0.3] (r''3) to [bend left = 10] (x''2);
-%			\draw[->, opacity=0.3] (r'3) to [bend left=60, looseness=1.5] (x'2);
-%			\draw[->, opacity=0.3] (r'3) to [bend left = 35] (x''2);
-%			\draw[->, opacity=0.3] (r''3) to [bend left=60, looseness=1.4] (x'2);
-			
-			\draw[->, dashed] (x'3) to [bend left=15] (r'3);
-			\draw[->, dashed] (r'3) to [bend left=15] node[midway, below] {$2$} (x'3);
-			\draw[->, dashed] (x''3) to [bend left=15] (r''3);
-			\draw[->, dashed] (r''3) to [bend left=15] node[midway, below] {$2$} (x''3);
-						
-%			\draw[->, opacity=0.3] (r'4) to [bend left=60, looseness=1.2] (x'3);
-%			\draw[->, opacity=0.3] (r'4) to [bend right = 45] (x''3);
-%			\draw[->, opacity=0.3] (r''4) to [bend left=70, looseness=1.5] (x'3);
-%			\draw[->, opacity=0.3] (r''4) to [bend right = 20] (x''3);
-												
-%			\draw[->] (x4) to [bend right=10] (r'4);
-%			\draw[->] (x4) to [bend left=10] (r''4);
-			
-%			\draw[->] (r'4) to [bend right=10] (x'1);
-%			\draw[->] (r''4) to [bend left=10] (x'1);
-%			
-%			\draw[->] (r'4) to [bend right=10] (x''1);
-%			\draw[->] (r''4) to [bend left=10] (x''1);
-%			
-%			\draw[->, dashed] (r'4) to [bend left=15] node[midway, left]{$2$} (x'4);
-%			\draw[->, dashed] (x'4) to [bend left=15] (r'4);
-%			
-%			\draw[->, dashed] (r''4) to [bend left=15] node[midway, right]{$2$} (x''4);
-%			\draw[->, dashed] (x''4) to [bend left=15] (r''4);
-											
-		\end{tikzpicture}		
-	\end{minipage}
-	\caption{\textbf{The necklace RAF}. \textbf{Upper left}: CRN reactions for an irreducible RAF, where each 
-	F-reaction is associated with two catalyzations, referred to as \emph{necklace RAF} of size $n$. 
-	Stoichiometric matrix \textbf{(upper right)}  of a necklace RAF of size $n=4$ with K\"onig graph \textbf{lower}. 
-	The edges $(r'_3, x'_2), (r'_3, x''_2), (r''_3, x'_2)$, and $(r'_3, x''_2)$ were ommitted for increased visbility. 
-	Edges connecting catalysts with reaction vertices are depicted with dashed lines.}
-	\label{fig:NecklaceRAF}
-\end{figure}
-The majority of the results shown in this contribution relate to monocatalyzed, irreducible RAFs. However, irreducible RAFs 
-derived from instances of the BPM (see Fig.~\ref{fig:irrRAFCores} contain reactions that are associated with 
-multiple catalyzations. Although they are composed of no more than 60 CRN reactions, they contain up to 1000 autocatalytic 
-cores even if all food species have been removed. Indeed, the number of autocatalytic cores can rise exponentially as the 
-following example shows. 
-
-In the \emph{necklace RAF} of size $n=3$ there are $2^3$ autocatalytic cores of size $3$, i.e., 
-$(\{x'_1,x_2,x_3\} \{r'_1, r^*_2, r^*_3\})$, whereby $r_i^*=r'_i$ or $r_i^*=r''_i$ as well as 
-$(\{x''_1,x_2,x_3\} \{r''_1, r^*_2, r^*_3\}$, whereby $r_i^*=r'_i$ or $r_i^*=r''_i$. In addition, 
-there are not only autocatalytic cores of size $3$ but also $2\cdot 2=4$ autocatalytic cores of size 
-$2$ and $2$ of size $1$. 
-
-As the upper-left panel of Fig.~\ref{fig:NecklaceRAF} indicates, the example can be generalized to any number of reactions 
-such that the number of autocatalytic cores of size $n$ is determined in general by $2^n$, while the number of autocatalytic cores of 
-size $2$ grows as $(n-1)\cdot 2\cdot 2$. However, the number of catalyzations may not be restricted to two. In this way, we obtain 
-$\prod_{i=1}^{n} |\cat(\fr_i)|$ and $\sum_{i=1}^{n} |\cat(\fr_i)|\cdot |\cat(\fr_{i+1})|$ number of autocatalytic cores of sizes $n$ and $2$, respectively.
-
-We emphasize that catalyzations might affect the minimality property of autocatalytic sub-CRNs. Indeed, the following 
-example illustrates a situation where two autocatalytic sub-CRNs differ only by catalyzation; in particular, one 
-$(\{x_1, x_2, x_3\}, \{r_1, r''_2, r_3\})$ is a core, while the other ($\{x_1, x_2, x_3\}, \{r_1, r'_2, r_3\})$ is not.
-
-\begin{figure}[htb]
-	\centering
-	\begin{minipage}[c]{0.4\textwidth}
-		\begin{equation*}
-			\begin{split}
-				f + (x_1) & \underset{r_1}{\rightarrow} x_2 + x_4 + (x_1) \\[0.5em]
-				x_2 + (x_1) & \underset{r'_2}{\rightarrow} x_2 + x_3 + (x_1) \\[0.5em]
-				x_2 + (x_4) & \underset{r''_2}{\rightarrow} x_2 + x_3 + (x_4) \\[0.5em]
-				x_3 + (x_3) & \underset{r_3}{\rightarrow} x_1 + (x_3)				
-			\end{split}			
-		\end{equation*}
-	\end{minipage}%
-	\hfill%
-	\begin{minipage}[c]{0.6\textwidth}
-		\centering
-		\begin{tikzpicture}
-			\node[draw, circle] (f) at (1.5,1.5) {$f$};		
-			\node[draw, circle] (x1) at (0,0) {$x_1$};
-			\node[draw, circle] (x2) at (3,0) {$x_2$};
-			\node[draw, circle] (x3) at (3,-2) {$x_3$};
-			\node[draw, circle] (x4) at (6,-1) {$x_4$};	
-			
-			\node[draw, rectangle] (r1) at (1.5,0) {$r_1$};
-			\node[draw, rectangle] (r2') at (1.5,-1) {$r'_2$};
-			\node[draw, rectangle] (r2'') at (4.5,-1) {$r''_2$};
-			\node[draw, rectangle] (r3) at (0,-2) {$r_3$};
-			
-			\draw[->] (f) to (r1);
-			\draw[->] (x1) to [bend right = 15] (r1);
-			\draw[->] (r1) to [bend right = 15] (x1);			
-			\draw[->] (r1) to (x2);
-			\draw[->] (r1) to [bend left = 60, looseness = 1.5] (x4);
-			
-			\draw[->] (x2) to (r2');
-			\draw[->] (x2) to (r2'');
-			
-			\draw[->] (x1) to [bend right = 10] (r2');
-			\draw[->] (r2') to [bend right = 10] (x1);			
-			\draw[->] (x4) to [bend right = 30] (r2'');
-			\draw[->] (r2'') to [bend right = 30] (x4);
-			
-			\draw[->] (r2') to (x3);
-			\draw[->] (r2'') to (x3);
-			
-			\draw[->] (x3) to [bend right = 15] (r3);
-			\draw[->] (r3) to [bend right = 15] (x3);
-			
-			\draw[->] (r3) to (x1);
-
-		\end{tikzpicture}
-	\end{minipage}
-	\caption{Illustration of CRN reactions (\textbf{left}) and the bipartite K\H{o}nig graph (\textbf{right}) of an 
-	irreducible RAF in which two catalyzations for one F-reaction influence the minimality of an autocatalytic 
-	subsystem and give rise to two distinct autocatalytic cores of different size.}
-	\label{fig:Minimality}
-\end{figure}}
-
 
 \subsection{Many irreducible RAFs and just one autocatalytic core}\label{sec:1CMiRAF}
 
